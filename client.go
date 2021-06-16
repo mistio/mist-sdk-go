@@ -51,6 +51,8 @@ type APIClient struct {
 
 	CloudsApi *CloudsApiService
 
+	CloudsCountApi *CloudsCountApiService
+
 	ImagesApi *ImagesApiService
 
 	JobsApi *JobsApiService
@@ -61,7 +63,13 @@ type APIClient struct {
 
 	MachinesApi *MachinesApiService
 
+	MembersApi *MembersApiService
+
+	NameApi *NameApiService
+
 	NetworksApi *NetworksApiService
+
+	OrgsApi *OrgsApiService
 
 	RulesApi *RulesApiService
 
@@ -70,6 +78,10 @@ type APIClient struct {
 	SizesApi *SizesApiService
 
 	SnapshotsApi *SnapshotsApiService
+
+	TeamsApi *TeamsApiService
+
+	TotalMachineCountApi *TotalMachineCountApiService
 
 	VolumesApi *VolumesApiService
 
@@ -93,16 +105,22 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.CloudsApi = (*CloudsApiService)(&c.common)
+	c.CloudsCountApi = (*CloudsCountApiService)(&c.common)
 	c.ImagesApi = (*ImagesApiService)(&c.common)
 	c.JobsApi = (*JobsApiService)(&c.common)
 	c.KeysApi = (*KeysApiService)(&c.common)
 	c.LocationsApi = (*LocationsApiService)(&c.common)
 	c.MachinesApi = (*MachinesApiService)(&c.common)
+	c.MembersApi = (*MembersApiService)(&c.common)
+	c.NameApi = (*NameApiService)(&c.common)
 	c.NetworksApi = (*NetworksApiService)(&c.common)
+	c.OrgsApi = (*OrgsApiService)(&c.common)
 	c.RulesApi = (*RulesApiService)(&c.common)
 	c.ScriptsApi = (*ScriptsApiService)(&c.common)
 	c.SizesApi = (*SizesApiService)(&c.common)
 	c.SnapshotsApi = (*SnapshotsApiService)(&c.common)
+	c.TeamsApi = (*TeamsApiService)(&c.common)
+	c.TotalMachineCountApi = (*TotalMachineCountApiService)(&c.common)
 	c.VolumesApi = (*VolumesApiService)(&c.common)
 	c.ZonesApi = (*ZonesApiService)(&c.common)
 

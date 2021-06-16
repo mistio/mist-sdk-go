@@ -83,6 +83,7 @@ Class | Method | HTTP request | Description
 *CloudsApi* | [**EditCloud**](docs/CloudsApi.md#editcloud) | **Put** /api/v2/clouds/{cloud} | Edit cloud
 *CloudsApi* | [**GetCloud**](docs/CloudsApi.md#getcloud) | **Get** /api/v2/clouds/{cloud} | Get cloud
 *CloudsApi* | [**ListClouds**](docs/CloudsApi.md#listclouds) | **Get** /api/v2/clouds | List clouds
+*CloudsCountApi* | [**GetOrg**](docs/CloudsCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *ImagesApi* | [**GetImage**](docs/ImagesApi.md#getimage) | **Get** /api/v2/images/{image} | Get image
 *ImagesApi* | [**ListImages**](docs/ImagesApi.md#listimages) | **Get** /api/v2/images | List images
 *JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **Get** /api/v2/jobs/{job_id} | Get job
@@ -110,10 +111,17 @@ Class | Method | HTTP request | Description
 *MachinesApi* | [**StopMachine**](docs/MachinesApi.md#stopmachine) | **Post** /api/v2/machines/{machine}/actions/stop | Stop machine
 *MachinesApi* | [**SuspendMachine**](docs/MachinesApi.md#suspendmachine) | **Post** /api/v2/machines/{machine}/actions/suspend | Suspend machine
 *MachinesApi* | [**UndefineMachine**](docs/MachinesApi.md#undefinemachine) | **Post** /api/v2/machines/{machine}/actions/undefine | Undefine machine
+*MembersApi* | [**ListOrgMembers**](docs/MembersApi.md#listorgmembers) | **Get** /api/v2/orgs/{org}/members | List org members
+*NameApi* | [**GetOrg**](docs/NameApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *NetworksApi* | [**CreateNetwork**](docs/NetworksApi.md#createnetwork) | **Post** /api/v2/networks | Create network
 *NetworksApi* | [**EditNetwork**](docs/NetworksApi.md#editnetwork) | **Put** /api/v2/networks/{network} | Edit network
 *NetworksApi* | [**GetNetwork**](docs/NetworksApi.md#getnetwork) | **Get** /api/v2/networks/{network} | Get network
 *NetworksApi* | [**ListNetworks**](docs/NetworksApi.md#listnetworks) | **Get** /api/v2/networks | List networks
+*OrgsApi* | [**GetMember**](docs/OrgsApi.md#getmember) | **Get** /api/v2/orgs/{org}/members/{member} | Get Org
+*OrgsApi* | [**GetOrg**](docs/OrgsApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
+*OrgsApi* | [**ListOrgMembers**](docs/OrgsApi.md#listorgmembers) | **Get** /api/v2/orgs/{org}/members | List org members
+*OrgsApi* | [**ListOrgTeams**](docs/OrgsApi.md#listorgteams) | **Get** /api/v2/orgs/{org}/teams | List org teams
+*OrgsApi* | [**ListOrgs**](docs/OrgsApi.md#listorgs) | **Get** /api/v2/orgs | List orgs
 *RulesApi* | [**AddRule**](docs/RulesApi.md#addrule) | **Post** /api/v2/rules | Add rule
 *RulesApi* | [**DeleteRule**](docs/RulesApi.md#deleterule) | **Delete** /api/v2/rules/{rule} | Delete rule
 *RulesApi* | [**GetRule**](docs/RulesApi.md#getrule) | **Get** /api/v2/rules/{rule} | Get rule
@@ -131,6 +139,8 @@ Class | Method | HTTP request | Description
 *SnapshotsApi* | [**ListSnapshots**](docs/SnapshotsApi.md#listsnapshots) | **Get** /api/v2/machines/{machine}/snapshots | List machine snapshots
 *SnapshotsApi* | [**RemoveSnapshot**](docs/SnapshotsApi.md#removesnapshot) | **Delete** /api/v2/machines/{machine}/snapshots/{snapshot} | Remove snapshot
 *SnapshotsApi* | [**RevertToSnapshot**](docs/SnapshotsApi.md#reverttosnapshot) | **Post** /api/v2/machines/{machine}/snapshots/{snapshot} | Revert to snapshot
+*TeamsApi* | [**ListOrgTeams**](docs/TeamsApi.md#listorgteams) | **Get** /api/v2/orgs/{org}/teams | List org teams
+*TotalMachineCountApi* | [**GetOrg**](docs/TotalMachineCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /api/v2/volumes | Create volume
 *VolumesApi* | [**DeleteVolume**](docs/VolumesApi.md#deletevolume) | **Delete** /api/v2/volumes/{volume} | Delete volume
 *VolumesApi* | [**EditVolume**](docs/VolumesApi.md#editvolume) | **Put** /api/v2/volumes/{volume} | Edit volume
@@ -196,6 +206,8 @@ Class | Method | HTTP request | Description
  - [GetLocationResponse](docs/GetLocationResponse.md)
  - [GetMachineResponse](docs/GetMachineResponse.md)
  - [GetNetworkResponse](docs/GetNetworkResponse.md)
+ - [GetOrgMemberResponse](docs/GetOrgMemberResponse.md)
+ - [GetOrgResponse](docs/GetOrgResponse.md)
  - [GetRuleResponse](docs/GetRuleResponse.md)
  - [GetScriptResponse](docs/GetScriptResponse.md)
  - [GetSizeResponse](docs/GetSizeResponse.md)
@@ -226,6 +238,9 @@ Class | Method | HTTP request | Description
  - [ListLocationsResponse](docs/ListLocationsResponse.md)
  - [ListMachinesResponse](docs/ListMachinesResponse.md)
  - [ListNetworksResponse](docs/ListNetworksResponse.md)
+ - [ListOrgMembersResponse](docs/ListOrgMembersResponse.md)
+ - [ListOrgTeamsResponse](docs/ListOrgTeamsResponse.md)
+ - [ListOrgsResponse](docs/ListOrgsResponse.md)
  - [ListRulesResponse](docs/ListRulesResponse.md)
  - [ListScriptsResponse](docs/ListScriptsResponse.md)
  - [ListSizesResponse](docs/ListSizesResponse.md)
@@ -240,12 +255,14 @@ Class | Method | HTTP request | Description
  - [MachineState](docs/MachineState.md)
  - [MaxihostCloudRequest](docs/MaxihostCloudRequest.md)
  - [MaxihostCredentials](docs/MaxihostCredentials.md)
+ - [Member](docs/Member.md)
  - [Network](docs/Network.md)
  - [OnappCloudRequest](docs/OnappCloudRequest.md)
  - [OnappCredentials](docs/OnappCredentials.md)
  - [OneOffSchedule](docs/OneOffSchedule.md)
  - [OpenstackCloudRequest](docs/OpenstackCloudRequest.md)
  - [OpenstackCredentials](docs/OpenstackCredentials.md)
+ - [Org](docs/Org.md)
  - [OtherCloudRequest](docs/OtherCloudRequest.md)
  - [PostDeployScript](docs/PostDeployScript.md)
  - [Query](docs/Query.md)
@@ -258,6 +275,7 @@ Class | Method | HTTP request | Description
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)
  - [SupportedProviders](docs/SupportedProviders.md)
+ - [Team](docs/Team.md)
  - [TriggerAfter](docs/TriggerAfter.md)
  - [VcloudCloudRequest](docs/VcloudCloudRequest.md)
  - [VcloudCredentials](docs/VcloudCredentials.md)
