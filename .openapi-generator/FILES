@@ -24,7 +24,6 @@ docs/AddKeyRequestAnyOf.md
 docs/AddKeyRequestAnyOf1.md
 docs/AddKeyRequestAnyOf2.md
 docs/AddKeyResponse.md
-docs/AddKubernetesCloudRequest.md
 docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
 docs/AmazonCloudRequest.md
@@ -91,6 +90,7 @@ docs/KVMNet.md
 docs/KVMNetNetworks.md
 docs/Key.md
 docs/KeysApi.md
+docs/KubernetesCloudRequest.md
 docs/KubernetesCredentials.md
 docs/KubevirtCloudRequest.md
 docs/KvmCloudRequest.md
@@ -164,7 +164,6 @@ model_add_key_request_any_of.go
 model_add_key_request_any_of_1.go
 model_add_key_request_any_of_2.go
 model_add_key_response.go
-model_add_kubernetes_cloud_request.go
 model_alibaba_cloud_request.go
 model_alibaba_credentials.go
 model_amazon_cloud_request.go
@@ -225,6 +224,7 @@ model_inline_script.go
 model_interval_schedule.go
 model_job.go
 model_key.go
+model_kubernetes_cloud_request.go
 model_kubernetes_credentials.go
 model_kubevirt_cloud_request.go
 model_kvm_cloud_request.go
