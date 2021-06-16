@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 *SnapshotsApi* | [**ListSnapshots**](docs/SnapshotsApi.md#listsnapshots) | **Get** /api/v2/machines/{machine}/snapshots | List machine snapshots
 *SnapshotsApi* | [**RemoveSnapshot**](docs/SnapshotsApi.md#removesnapshot) | **Delete** /api/v2/machines/{machine}/snapshots/{snapshot} | Remove snapshot
 *SnapshotsApi* | [**RevertToSnapshot**](docs/SnapshotsApi.md#reverttosnapshot) | **Post** /api/v2/machines/{machine}/snapshots/{snapshot} | Revert to snapshot
+*UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **Get** /api/v2/users | List users
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /api/v2/volumes | Create volume
 *VolumesApi* | [**DeleteVolume**](docs/VolumesApi.md#deletevolume) | **Delete** /api/v2/volumes/{volume} | Delete volume
 *VolumesApi* | [**EditVolume**](docs/VolumesApi.md#editvolume) | **Put** /api/v2/volumes/{volume} | Edit volume
@@ -230,6 +231,7 @@ Class | Method | HTTP request | Description
  - [ListScriptsResponse](docs/ListScriptsResponse.md)
  - [ListSizesResponse](docs/ListSizesResponse.md)
  - [ListSnapshotsResponse](docs/ListSnapshotsResponse.md)
+ - [ListUsersResponse](docs/ListUsersResponse.md)
  - [ListVolumesResponse](docs/ListVolumesResponse.md)
  - [ListZonesResponse](docs/ListZonesResponse.md)
  - [Location](docs/Location.md)
@@ -259,6 +261,7 @@ Class | Method | HTTP request | Description
  - [Size](docs/Size.md)
  - [SupportedProviders](docs/SupportedProviders.md)
  - [TriggerAfter](docs/TriggerAfter.md)
+ - [User](docs/User.md)
  - [VcloudCloudRequest](docs/VcloudCloudRequest.md)
  - [VcloudCredentials](docs/VcloudCredentials.md)
  - [Volume](docs/Volume.md)

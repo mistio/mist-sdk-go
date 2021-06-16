@@ -13,6 +13,7 @@ api_rules.go
 api_scripts.go
 api_sizes.go
 api_snapshots.go
+api_users.go
 api_volumes.go
 api_zones.go
 client.go
@@ -107,6 +108,7 @@ docs/ListRulesResponse.md
 docs/ListScriptsResponse.md
 docs/ListSizesResponse.md
 docs/ListSnapshotsResponse.md
+docs/ListUsersResponse.md
 docs/ListVolumesResponse.md
 docs/ListZonesResponse.md
 docs/Location.md
@@ -143,6 +145,8 @@ docs/SizesApi.md
 docs/SnapshotsApi.md
 docs/SupportedProviders.md
 docs/TriggerAfter.md
+docs/User.md
+docs/UsersApi.md
 docs/VcloudCloudRequest.md
 docs/VcloudCredentials.md
 docs/Volume.md
@@ -243,6 +247,7 @@ model_list_rules_response.go
 model_list_scripts_response.go
 model_list_sizes_response.go
 model_list_snapshots_response.go
+model_list_users_response.go
 model_list_volumes_response.go
 model_list_zones_response.go
 model_location.go
@@ -272,6 +277,7 @@ model_selector.go
 model_size.go
 model_supported_providers.go
 model_trigger_after.go
+model_user.go
 model_vcloud_cloud_request.go
 model_vcloud_credentials.go
 model_volume.go

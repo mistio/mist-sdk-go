@@ -3024,6 +3024,108 @@ paths:
       - locations
       - external_id
       - machines
+  /api/v2/users:
+    get:
+      description: Return current user if requester is not admin. Return all users
+        for admin.
+      operationId: list-users
+      parameters:
+      - description: Only return results matching search filter
+        examples:
+          Filter by email:
+            value: email:dev@mist.io
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Order results by
+        examples:
+          Sort by name, descending:
+            value: -name
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Start results from index or id
+        examples:
+          Start from the 50th result:
+            value: "50"
+          Start from item with id xyz:
+            value: xyz
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Limit number of results, 1000 max
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Only return these fields
+        examples:
+          Only return id:
+            value: id
+          Return email, last_login & registration_date:
+            value: email,last_login,registration_date
+        explode: true
+        in: query
+        name: only
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Dereference foreign keys
+        examples:
+          '(default) Automatically replace all foreign key ids with referenced resource name ':
+            value: auto
+          Do not dereference anything, just return ids:
+            value: none
+        explode: true
+        in: query
+        name: deref
+        required: false
+        schema:
+          default: auto
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListUsersResponse'
+          description: List users response
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - ""
+      - CookieAuth:
+        - ""
+      summary: List users
+      tags:
+      - users
+      x-cli-table-default:
+      - email
+      x-cli-table-extended:
+      - email
+      - id
+      - last_login
+      - registration_date
   /api/v2/volumes:
     get:
       description: List volumes owned by the active org. READ permission required
@@ -5530,6 +5632,36 @@ components:
         meta:
           $ref: '#/components/schemas/ResponseMetadata'
       type: object
+    ListUsersResponse:
+      example:
+        data:
+        - registration_date: registration_date
+          last_login: last_login
+          last_name: last_name
+          id: id
+          first_name: first_name
+          email: email
+          username: username
+        - registration_date: registration_date
+          last_login: last_login
+          last_name: last_name
+          id: id
+          first_name: first_name
+          email: email
+          username: username
+        meta:
+          total: 0
+          start: 1
+          sort: sort
+          returned: 6
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
+      type: object
     ListVolumesResponse:
       example:
         data:
@@ -6129,6 +6261,31 @@ components:
       - offset
       - period
       type: object
+    User:
+      example:
+        registration_date: registration_date
+        last_login: last_login
+        last_name: last_name
+        id: id
+        first_name: first_name
+        email: email
+        username: username
+      properties:
+        email:
+          type: string
+        id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        last_login:
+          type: string
+        username:
+          type: string
+        registration_date:
+          type: string
+      type: object
     VcloudCloudRequest:
       properties:
         provider:
@@ -6484,3 +6641,24 @@ components:
       in: cookie
       name: session.id
       type: apiKey
+x-cli-waiters:
+  job-finished:
+    short: Wait job
+    long: Wait until job finishes
+    delay: 2
+    attempts: 900
+    retryCodes:
+    - 404
+    operationId: get-job
+    matchers:
+    - select: response.body#data.finished_at
+      test: notEqual
+      expected: 0
+      state: success
+    - select: response.body#data.error
+      expected: true
+      state: failure
+    updates: response.body#data.logs[:].action
+    after:
+      create-machine:
+        job_id: response.body#jobId
