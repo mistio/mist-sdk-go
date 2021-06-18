@@ -5226,6 +5226,7 @@ components:
       example:
         data:
           enterprise_plan: '{}'
+          total_machine_count: total_machine_count
           selected_plan: selected_plan
           enable_r12ns: true
           created: true
@@ -6024,6 +6025,7 @@ components:
       example:
         data:
         - enterprise_plan: '{}'
+          total_machine_count: total_machine_count
           selected_plan: selected_plan
           enable_r12ns: true
           created: true
@@ -6035,6 +6037,7 @@ components:
           teams_count: teams_count
           default_monitoring_method: default_monitoring_method
         - enterprise_plan: '{}'
+          total_machine_count: total_machine_count
           selected_plan: selected_plan
           enable_r12ns: true
           created: true
@@ -6511,6 +6514,7 @@ components:
     Org:
       example:
         enterprise_plan: '{}'
+        total_machine_count: total_machine_count
         selected_plan: selected_plan
         enable_r12ns: true
         created: true
@@ -6529,6 +6533,8 @@ components:
         clouds_count:
           type: string
         teams_count:
+          type: string
+        total_machine_count:
           type: string
         created:
           type: boolean
