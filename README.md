@@ -258,6 +258,7 @@ Class | Method | HTTP request | Description
  - [RuleAction](docs/RuleAction.md)
  - [SSHKey](docs/SSHKey.md)
  - [SSHKeyOneOf](docs/SSHKeyOneOf.md)
+ - [SSHKeyOneOf1](docs/SSHKeyOneOf1.md)
  - [Script](docs/Script.md)
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)
