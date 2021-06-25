@@ -93,10 +93,12 @@ Class | Method | HTTP request | Description
 *KeysApi* | [**ListKeys**](docs/KeysApi.md#listkeys) | **Get** /api/v2/keys | List keys
 *LocationsApi* | [**GetLocation**](docs/LocationsApi.md#getlocation) | **Get** /api/v2/locations/{location} | Get location
 *LocationsApi* | [**ListLocations**](docs/LocationsApi.md#listlocations) | **Get** /api/v2/locations | List locations
+*MachinesApi* | [**AssociateKey**](docs/MachinesApi.md#associatekey) | **Put** /api/v2/machines/{machine}/actions/associate-key | Associate a key with a machine
 *MachinesApi* | [**CloneMachine**](docs/MachinesApi.md#clonemachine) | **Post** /api/v2/machines/{machine}/actions/clone | Clone machine
 *MachinesApi* | [**Console**](docs/MachinesApi.md#console) | **Post** /api/v2/machines/{machine}/actions/console | Open console
 *MachinesApi* | [**CreateMachine**](docs/MachinesApi.md#createmachine) | **Post** /api/v2/machines | Create machine
 *MachinesApi* | [**DestroyMachine**](docs/MachinesApi.md#destroymachine) | **Post** /api/v2/machines/{machine}/actions/destroy | Destroy machine
+*MachinesApi* | [**DisassociateKey**](docs/MachinesApi.md#disassociatekey) | **Delete** /api/v2/machines/{machine}/actions/disassociate-key | Associate a key with a machine
 *MachinesApi* | [**EditMachine**](docs/MachinesApi.md#editmachine) | **Put** /api/v2/machines/{machine} | Edit machine
 *MachinesApi* | [**ExposeMachine**](docs/MachinesApi.md#exposemachine) | **Post** /api/v2/machines/{machine}/actions/expose | Expose machine
 *MachinesApi* | [**GetMachine**](docs/MachinesApi.md#getmachine) | **Get** /api/v2/machines/{machine} | Get machine
@@ -254,6 +256,8 @@ Class | Method | HTTP request | Description
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)
  - [RuleAction](docs/RuleAction.md)
+ - [SSHKey](docs/SSHKey.md)
+ - [SSHKeyOneOf](docs/SSHKeyOneOf.md)
  - [Script](docs/Script.md)
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)
