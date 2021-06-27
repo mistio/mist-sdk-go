@@ -141,6 +141,7 @@ Class | Method | HTTP request | Description
 *SnapshotsApi* | [**RevertToSnapshot**](docs/SnapshotsApi.md#reverttosnapshot) | **Post** /api/v2/machines/{machine}/snapshots/{snapshot} | Revert to snapshot
 *TeamsApi* | [**ListOrgTeams**](docs/TeamsApi.md#listorgteams) | **Get** /api/v2/orgs/{org}/teams | List org teams
 *TotalMachineCountApi* | [**GetOrg**](docs/TotalMachineCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
+*UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **Get** /api/v2/users | List users
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /api/v2/volumes | Create volume
 *VolumesApi* | [**DeleteVolume**](docs/VolumesApi.md#deletevolume) | **Delete** /api/v2/volumes/{volume} | Delete volume
 *VolumesApi* | [**EditVolume**](docs/VolumesApi.md#editvolume) | **Put** /api/v2/volumes/{volume} | Edit volume
@@ -161,7 +162,6 @@ Class | Method | HTTP request | Description
  - [AddKeyRequestAnyOf1](docs/AddKeyRequestAnyOf1.md)
  - [AddKeyRequestAnyOf2](docs/AddKeyRequestAnyOf2.md)
  - [AddKeyResponse](docs/AddKeyResponse.md)
- - [AddKubernetesCloudRequest](docs/AddKubernetesCloudRequest.md)
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)
  - [AlibabaCredentials](docs/AlibabaCredentials.md)
  - [AmazonCloudRequest](docs/AmazonCloudRequest.md)
@@ -226,6 +226,7 @@ Class | Method | HTTP request | Description
  - [KVMNet](docs/KVMNet.md)
  - [KVMNetNetworks](docs/KVMNetNetworks.md)
  - [Key](docs/Key.md)
+ - [KubernetesCloudRequest](docs/KubernetesCloudRequest.md)
  - [KubernetesCredentials](docs/KubernetesCredentials.md)
  - [KubevirtCloudRequest](docs/KubevirtCloudRequest.md)
  - [KvmCloudRequest](docs/KvmCloudRequest.md)
@@ -245,6 +246,7 @@ Class | Method | HTTP request | Description
  - [ListScriptsResponse](docs/ListScriptsResponse.md)
  - [ListSizesResponse](docs/ListSizesResponse.md)
  - [ListSnapshotsResponse](docs/ListSnapshotsResponse.md)
+ - [ListUsersResponse](docs/ListUsersResponse.md)
  - [ListVolumesResponse](docs/ListVolumesResponse.md)
  - [ListZonesResponse](docs/ListZonesResponse.md)
  - [Location](docs/Location.md)
@@ -277,6 +279,7 @@ Class | Method | HTTP request | Description
  - [SupportedProviders](docs/SupportedProviders.md)
  - [Team](docs/Team.md)
  - [TriggerAfter](docs/TriggerAfter.md)
+ - [User](docs/User.md)
  - [VcloudCloudRequest](docs/VcloudCloudRequest.md)
  - [VcloudCredentials](docs/VcloudCredentials.md)
  - [Volume](docs/Volume.md)
