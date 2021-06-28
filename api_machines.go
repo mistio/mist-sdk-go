@@ -31,11 +31,11 @@ type ApiAssociateKeyRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
-	sSHKey *SSHKey
+	inlineObject *InlineObject
 }
 
-func (r ApiAssociateKeyRequest) SSHKey(sSHKey SSHKey) ApiAssociateKeyRequest {
-	r.sSHKey = &sSHKey
+func (r ApiAssociateKeyRequest) InlineObject(inlineObject InlineObject) ApiAssociateKeyRequest {
+	r.inlineObject = &inlineObject
 	return r
 }
 
@@ -100,7 +100,7 @@ func (a *MachinesApiService) AssociateKeyExecute(r ApiAssociateKeyRequest) (*_ne
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sSHKey
+	localVarPostBody = r.inlineObject
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -592,11 +592,11 @@ type ApiDisassociateKeyRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
-	sSHKey *SSHKey
+	inlineObject1 *InlineObject1
 }
 
-func (r ApiDisassociateKeyRequest) SSHKey(sSHKey SSHKey) ApiDisassociateKeyRequest {
-	r.sSHKey = &sSHKey
+func (r ApiDisassociateKeyRequest) InlineObject1(inlineObject1 InlineObject1) ApiDisassociateKeyRequest {
+	r.inlineObject1 = &inlineObject1
 	return r
 }
 
@@ -661,7 +661,7 @@ func (a *MachinesApiService) DisassociateKeyExecute(r ApiDisassociateKeyRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.sSHKey
+	localVarPostBody = r.inlineObject1
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

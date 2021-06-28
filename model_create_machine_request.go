@@ -30,7 +30,8 @@ type CreateMachineRequest struct {
 	Image OneOfobjectstring `json:"image"`
 	// Specify network configuration parameters
 	Net *AnyOfAmazonNetEquinixMetalNetGoogleNetKVMNetLinodeNet `json:"net,omitempty"`
-	Key *SSHKey `json:"key,omitempty"`
+	// Associate SSH key
+	Key *OneOfobjectstring `json:"key,omitempty"`
 	Disks *CreateMachineRequestDisks `json:"disks,omitempty"`
 	// Configure of attached storage volumes, e.g. cloud disks
 	Volumes *AnyOfarrayarrayarrayarrayarray `json:"volumes,omitempty"`
@@ -278,9 +279,9 @@ func (o *CreateMachineRequest) SetNet(v AnyOfAmazonNetEquinixMetalNetGoogleNetKV
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
-func (o *CreateMachineRequest) GetKey() SSHKey {
+func (o *CreateMachineRequest) GetKey() OneOfobjectstring {
 	if o == nil || o.Key == nil {
-		var ret SSHKey
+		var ret OneOfobjectstring
 		return ret
 	}
 	return *o.Key
@@ -288,7 +289,7 @@ func (o *CreateMachineRequest) GetKey() SSHKey {
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateMachineRequest) GetKeyOk() (*SSHKey, bool) {
+func (o *CreateMachineRequest) GetKeyOk() (*OneOfobjectstring, bool) {
 	if o == nil || o.Key == nil {
 		return nil, false
 	}
@@ -304,8 +305,8 @@ func (o *CreateMachineRequest) HasKey() bool {
 	return false
 }
 
-// SetKey gets a reference to the given SSHKey and assigns it to the Key field.
-func (o *CreateMachineRequest) SetKey(v SSHKey) {
+// SetKey gets a reference to the given OneOfobjectstring and assigns it to the Key field.
+func (o *CreateMachineRequest) SetKey(v OneOfobjectstring) {
 	o.Key = &v
 }
 
