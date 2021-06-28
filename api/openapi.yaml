@@ -3659,111 +3659,6 @@ paths:
       x-cli-table-extended:
       - email
       - id
-      - name
-      - cloud
-      - locations
-      - external_id
-      - machines
-  /api/v2/users:
-    get:
-      description: Return current user if requester is not admin. Return all users
-        for admin.
-      operationId: list-users
-      parameters:
-      - description: Only return results matching search filter
-        examples:
-          Filter by email:
-            value: email:dev@mist.io
-        explode: true
-        in: query
-        name: search
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Order results by
-        examples:
-          Sort by name, descending:
-            value: -name
-        explode: true
-        in: query
-        name: sort
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Start results from index or id
-        examples:
-          Start from the 50th result:
-            value: "50"
-          Start from item with id xyz:
-            value: xyz
-        explode: true
-        in: query
-        name: start
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Limit number of results, 1000 max
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          type: integer
-        style: form
-      - description: Only return these fields
-        examples:
-          Only return id:
-            value: id
-          Return email, last_login & registration_date:
-            value: email,last_login,registration_date
-        explode: true
-        in: query
-        name: only
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Dereference foreign keys
-        examples:
-          '(default) Automatically replace all foreign key ids with referenced resource name ':
-            value: auto
-          Do not dereference anything, just return ids:
-            value: none
-        explode: true
-        in: query
-        name: deref
-        required: false
-        schema:
-          default: auto
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListUsersResponse'
-          description: List users response
-        "401":
-          description: Authentication failed
-        "403":
-          description: You are not authorized to perform this action
-      security:
-      - ApiKeyAuth:
-        - ""
-      - CookieAuth:
-        - ""
-      summary: List users
-      tags:
-      - users
-      x-cli-table-default:
-      - email
-      x-cli-table-extended:
-      - email
-      - id
       - last_login
       - registration_date
   /api/v2/volumes:
@@ -7025,7 +6920,6 @@ components:
     SSHKey:
       oneOf:
       - $ref: '#/components/schemas/SSHKey_oneOf'
-      - $ref: '#/components/schemas/SSHKey_oneOf_1'
       - description: Name or ID of the SSH key to deploy
         type: string
       type: object
@@ -7549,18 +7443,6 @@ components:
           type: string
         user:
           description: SSH user, supported on Google
-          type: string
-      type: object
-    SSHKey_oneOf_1:
-      properties:
-        key:
-          description: Name or ID of the SSH key to deploy
-          type: string
-        port:
-          description: SSH port
-          type: integer
-        user:
-          description: SSH user
           type: string
       type: object
   securitySchemes:

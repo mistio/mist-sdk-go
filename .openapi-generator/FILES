@@ -156,7 +156,6 @@ docs/RuleAction.md
 docs/RulesApi.md
 docs/SSHKey.md
 docs/SSHKeyOneOf.md
-docs/SSHKeyOneOf1.md
 docs/Script.md
 docs/ScriptsApi.md
 docs/Selector.md
@@ -307,7 +306,6 @@ model_selector.go
 model_size.go
 model_ssh_key.go
 model_ssh_key_one_of.go
-model_ssh_key_one_of_1.go
 model_supported_providers.go
 model_team.go
 model_trigger_after.go
