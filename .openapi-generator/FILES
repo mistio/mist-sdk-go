@@ -36,6 +36,7 @@ docs/AlibabaCredentials.md
 docs/AmazonCloudRequest.md
 docs/AmazonCredentials.md
 docs/AmazonNet.md
+docs/AssociationSSHKey.md
 docs/AzureCloudRequest.md
 docs/AzureCredentials.md
 docs/Cloud.md
@@ -154,10 +155,6 @@ docs/ResponseMetadata.md
 docs/Rule.md
 docs/RuleAction.md
 docs/RulesApi.md
-docs/SSHKey.md
-docs/SSHKeyOneOf.md
-docs/SSHKeyOneOf1.md
-docs/SSHKeyOneOf2.md
 docs/Script.md
 docs/ScriptsApi.md
 docs/Selector.md
@@ -197,6 +194,7 @@ model_alibaba_credentials.go
 model_amazon_cloud_request.go
 model_amazon_credentials.go
 model_amazon_net.go
+model_association_ssh_key.go
 model_azure_cloud_request.go
 model_azure_credentials.go
 model_cloud.go
@@ -306,10 +304,6 @@ model_rule_action.go
 model_script.go
 model_selector.go
 model_size.go
-model_ssh_key.go
-model_ssh_key_one_of.go
-model_ssh_key_one_of_1.go
-model_ssh_key_one_of_2.go
 model_supported_providers.go
 model_team.go
 model_trigger_after.go

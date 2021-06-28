@@ -1342,7 +1342,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SSHKey'
+              $ref: '#/components/schemas/AssociationSSHKey'
       responses:
         "200":
           description: Association successful
@@ -1475,7 +1475,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SSHKey'
+              $ref: '#/components/schemas/AssociationSSHKey'
       responses:
         "200":
           description: Association successful
@@ -4453,6 +4453,22 @@ components:
         type: object
       title: Amazon volumes parameter
       type: array
+    AssociationSSHKey:
+      example:
+        port: 0
+        user: user
+        key: key
+      properties:
+        key:
+          description: Name or ID of the SSH key to deploy
+          type: string
+        port:
+          description: SSH port
+          type: integer
+        user:
+          description: SSH user
+          type: string
+      type: object
     AzureCloudRequest:
       properties:
         provider:
@@ -4597,6 +4613,7 @@ components:
         scripts:
         - ""
         - ""
+        key: '{}'
       properties:
         name:
           description: Specify machine name
@@ -4655,7 +4672,19 @@ components:
           - $ref: '#/components/schemas/LinodeNet'
           description: Specify network configuration parameters
         key:
-          $ref: '#/components/schemas/SSHKey'
+          description: Associate SSH key
+          oneOf:
+          - properties:
+              key:
+                description: Name or ID of the SSH key to deploy
+                type: string
+              user:
+                description: SSH user, supported on Google
+                type: string
+            type: object
+          - description: Name or ID of the SSH key to deploy
+            type: string
+          type: object
         disks:
           $ref: '#/components/schemas/CreateMachineRequest_disks'
         volumes:
@@ -6917,12 +6946,6 @@ components:
       items:
         $ref: '#/components/schemas/RuleAction'
       type: array
-    SSHKey:
-      oneOf:
-      - $ref: '#/components/schemas/SSHKey_oneOf'
-      - $ref: '#/components/schemas/SSHKey_oneOf_1'
-      - $ref: '#/components/schemas/SSHKey_oneOf_2'
-      type: object
     Script:
       example:
         name: name
@@ -7436,30 +7459,6 @@ components:
       required:
       - network
       type: object
-    SSHKey_oneOf:
-      properties:
-        key:
-          description: Name or ID of the SSH key to deploy
-          type: string
-        user:
-          description: SSH user, supported on Google
-          type: string
-    SSHKey_oneOf_1:
-      properties:
-        key:
-          description: Name or ID of the SSH key to deploy
-          type: string
-        port:
-          description: SSH port
-          type: integer
-        user:
-          description: SSH user
-          type: string
-    SSHKey_oneOf_2:
-      properties:
-        key:
-          description: Name or ID of the SSH key to deploy
-          type: string
   securitySchemes:
     ApiKeyAuth:
       in: header
