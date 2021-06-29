@@ -91,8 +91,6 @@ docs/IbmCloudRequest.md
 docs/IbmCredentials.md
 docs/Image.md
 docs/ImagesApi.md
-docs/InlineObject.md
-docs/InlineObject1.md
 docs/InlineResponse200.md
 docs/InlineScript.md
 docs/IntervalSchedule.md
@@ -101,6 +99,7 @@ docs/JobsApi.md
 docs/KVMNet.md
 docs/KVMNetNetworks.md
 docs/Key.md
+docs/KeyMachineAssociation.md
 docs/KeysApi.md
 docs/KubernetesCloudRequest.md
 docs/KubernetesCredentials.md
@@ -247,13 +246,12 @@ model_google_net.go
 model_ibm_cloud_request.go
 model_ibm_credentials.go
 model_image.go
-model_inline_object.go
-model_inline_object_1.go
 model_inline_response_200.go
 model_inline_script.go
 model_interval_schedule.go
 model_job.go
 model_key.go
+model_key_machine_association.go
 model_kubernetes_cloud_request.go
 model_kubernetes_credentials.go
 model_kubevirt_cloud_request.go
