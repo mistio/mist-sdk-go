@@ -38,6 +38,8 @@ docs/AmazonCredentials.md
 docs/AmazonNet.md
 docs/AzureCloudRequest.md
 docs/AzureCredentials.md
+docs/AzureExtra.md
+docs/AzureNet.md
 docs/Cloud.md
 docs/CloudFeatures.md
 docs/CloudSigmaCloudRequest.md
@@ -46,7 +48,6 @@ docs/CloudsApi.md
 docs/CloudsCountApi.md
 docs/CreateMachineRequest.md
 docs/CreateMachineRequestDisks.md
-docs/CreateMachineRequestExtra.md
 docs/CreateMachineResponse.md
 docs/CreateMachineResponseOneOf.md
 docs/CreateMachineResponseOneOf1.md
@@ -65,6 +66,7 @@ docs/EditCloudRequest.md
 docs/EditCloudRequestAnyOf.md
 docs/EquinixCloudRequest.md
 docs/EquinixCredentials.md
+docs/EquinixMetalExtra.md
 docs/EquinixMetalNet.md
 docs/EquinixMetalNetIpAddresses.md
 docs/Expiration.md
@@ -107,6 +109,7 @@ docs/KubevirtCloudRequest.md
 docs/KvmCloudRequest.md
 docs/LinodeCloudRequest.md
 docs/LinodeCredentials.md
+docs/LinodeExtra.md
 docs/LinodeNet.md
 docs/ListCloudsResponse.md
 docs/ListImagesResponse.md
@@ -196,13 +199,14 @@ model_amazon_credentials.go
 model_amazon_net.go
 model_azure_cloud_request.go
 model_azure_credentials.go
+model_azure_extra.go
+model_azure_net.go
 model_cloud.go
 model_cloud_features.go
 model_cloud_sigma_cloud_request.go
 model_cloud_sigma_credentials.go
 model_create_machine_request.go
 model_create_machine_request_disks.go
-model_create_machine_request_extra.go
 model_create_machine_response.go
 model_create_machine_response_one_of.go
 model_create_machine_response_one_of_1.go
@@ -221,6 +225,7 @@ model_edit_cloud_request.go
 model_edit_cloud_request_any_of.go
 model_equinix_cloud_request.go
 model_equinix_credentials.go
+model_equinix_metal_extra.go
 model_equinix_metal_net.go
 model_equinix_metal_net_ip_addresses.go
 model_expiration.go
@@ -260,6 +265,7 @@ model_kvm_net.go
 model_kvm_net_networks.go
 model_linode_cloud_request.go
 model_linode_credentials.go
+model_linode_extra.go
 model_linode_net.go
 model_list_clouds_response.go
 model_list_images_response.go
