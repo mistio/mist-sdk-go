@@ -4,6 +4,7 @@ README.md
 api/openapi.yaml
 api_clouds.go
 api_clouds_count.go
+api_datapoints.go
 api_images.go
 api_jobs.go
 api_keys.go
@@ -58,6 +59,9 @@ docs/CreateVolumeResponse.md
 docs/CreateZoneRequest.md
 docs/CreateZoneResponse.md
 docs/CronSchedule.md
+docs/Datapoints.md
+docs/DatapointsApi.md
+docs/DatapointsData.md
 docs/DigitaloceanCloudRequest.md
 docs/DigitaloceanCredentials.md
 docs/DockerCloudRequest.md
@@ -73,6 +77,7 @@ docs/Expiration.md
 docs/ExpirationNotify.md
 docs/Frequency.md
 docs/GetCloudResponse.md
+docs/GetDatapointsResponse.md
 docs/GetImageResponse.md
 docs/GetJobResponse.md
 docs/GetKeyResponse.md
@@ -95,6 +100,7 @@ docs/Image.md
 docs/ImagesApi.md
 docs/InlineResponse200.md
 docs/InlineScript.md
+docs/InstantVector.md
 docs/IntervalSchedule.md
 docs/Job.md
 docs/JobsApi.md
@@ -156,6 +162,7 @@ docs/PostDeployScript.md
 docs/Query.md
 docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
+docs/RangeVector.md
 docs/ResponseMetadata.md
 docs/Rule.md
 docs/RuleAction.md
@@ -219,6 +226,8 @@ model_create_volume_response.go
 model_create_zone_request.go
 model_create_zone_response.go
 model_cron_schedule.go
+model_datapoints.go
+model_datapoints_data.go
 model_digitalocean_cloud_request.go
 model_digitalocean_credentials.go
 model_docker_cloud_request.go
@@ -234,6 +243,7 @@ model_expiration.go
 model_expiration_notify.go
 model_frequency.go
 model_get_cloud_response.go
+model_get_datapoints_response.go
 model_get_image_response.go
 model_get_job_response.go
 model_get_key_response.go
@@ -255,6 +265,7 @@ model_ibm_credentials.go
 model_image.go
 model_inline_response_200.go
 model_inline_script.go
+model_instant_vector.go
 model_interval_schedule.go
 model_job.go
 model_key.go
@@ -308,6 +319,7 @@ model_post_deploy_script.go
 model_query.go
 model_rackspace_cloud_request.go
 model_rackspace_credentials.go
+model_range_vector.go
 model_response_metadata.go
 model_rule.go
 model_rule_action.go
