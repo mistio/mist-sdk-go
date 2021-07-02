@@ -18,7 +18,7 @@ import (
 // RangeVector struct for RangeVector
 type RangeVector struct {
 	Metric *map[string]interface{} `json:"metric,omitempty"`
-	Value *[][]AnyOfstringnumber `json:"value,omitempty"`
+	Value *[][]DatapointsValuesItem `json:"value,omitempty"`
 }
 
 // NewRangeVector instantiates a new RangeVector object
@@ -71,9 +71,9 @@ func (o *RangeVector) SetMetric(v map[string]interface{}) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *RangeVector) GetValue() [][]AnyOfstringnumber {
+func (o *RangeVector) GetValue() [][]DatapointsValuesItem {
 	if o == nil || o.Value == nil {
-		var ret [][]AnyOfstringnumber
+		var ret [][]DatapointsValuesItem
 		return ret
 	}
 	return *o.Value
@@ -81,7 +81,7 @@ func (o *RangeVector) GetValue() [][]AnyOfstringnumber {
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RangeVector) GetValueOk() (*[][]AnyOfstringnumber, bool) {
+func (o *RangeVector) GetValueOk() (*[][]DatapointsValuesItem, bool) {
 	if o == nil || o.Value == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *RangeVector) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given [][]AnyOfstringnumber and assigns it to the Value field.
-func (o *RangeVector) SetValue(v [][]AnyOfstringnumber) {
+// SetValue gets a reference to the given [][]DatapointsValuesItem and assigns it to the Value field.
+func (o *RangeVector) SetValue(v [][]DatapointsValuesItem) {
 	o.Value = &v
 }
 

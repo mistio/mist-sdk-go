@@ -18,7 +18,7 @@ import (
 // InstantVector struct for InstantVector
 type InstantVector struct {
 	Metric *map[string]interface{} `json:"metric,omitempty"`
-	Values *[]AnyOfstringnumber `json:"values,omitempty"`
+	Values *[]DatapointsValuesItem `json:"values,omitempty"`
 }
 
 // NewInstantVector instantiates a new InstantVector object
@@ -71,9 +71,9 @@ func (o *InstantVector) SetMetric(v map[string]interface{}) {
 }
 
 // GetValues returns the Values field value if set, zero value otherwise.
-func (o *InstantVector) GetValues() []AnyOfstringnumber {
+func (o *InstantVector) GetValues() []DatapointsValuesItem {
 	if o == nil || o.Values == nil {
-		var ret []AnyOfstringnumber
+		var ret []DatapointsValuesItem
 		return ret
 	}
 	return *o.Values
@@ -81,7 +81,7 @@ func (o *InstantVector) GetValues() []AnyOfstringnumber {
 
 // GetValuesOk returns a tuple with the Values field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstantVector) GetValuesOk() (*[]AnyOfstringnumber, bool) {
+func (o *InstantVector) GetValuesOk() (*[]DatapointsValuesItem, bool) {
 	if o == nil || o.Values == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *InstantVector) HasValues() bool {
 	return false
 }
 
-// SetValues gets a reference to the given []AnyOfstringnumber and assigns it to the Values field.
-func (o *InstantVector) SetValues(v []AnyOfstringnumber) {
+// SetValues gets a reference to the given []DatapointsValuesItem and assigns it to the Values field.
+func (o *InstantVector) SetValues(v []DatapointsValuesItem) {
 	o.Values = &v
 }
 

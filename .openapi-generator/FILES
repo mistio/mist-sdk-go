@@ -62,6 +62,7 @@ docs/CronSchedule.md
 docs/Datapoints.md
 docs/DatapointsApi.md
 docs/DatapointsData.md
+docs/DatapointsValuesItem.md
 docs/DigitaloceanCloudRequest.md
 docs/DigitaloceanCredentials.md
 docs/DockerCloudRequest.md
@@ -229,6 +230,7 @@ model_create_zone_response.go
 model_cron_schedule.go
 model_datapoints.go
 model_datapoints_data.go
+model_datapoints_values_item.go
 model_digitalocean_cloud_request.go
 model_digitalocean_credentials.go
 model_docker_cloud_request.go

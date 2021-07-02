@@ -192,6 +192,7 @@ Class | Method | HTTP request | Description
  - [CronSchedule](docs/CronSchedule.md)
  - [Datapoints](docs/Datapoints.md)
  - [DatapointsData](docs/DatapointsData.md)
+ - [DatapointsValuesItem](docs/DatapointsValuesItem.md)
  - [DigitaloceanCloudRequest](docs/DigitaloceanCloudRequest.md)
  - [DigitaloceanCredentials](docs/DigitaloceanCredentials.md)
  - [DockerCloudRequest](docs/DockerCloudRequest.md)
