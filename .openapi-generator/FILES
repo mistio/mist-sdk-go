@@ -145,6 +145,7 @@ docs/NetworksApi.md
 docs/OnappCloudRequest.md
 docs/OnappCredentials.md
 docs/OneOffSchedule.md
+docs/OpenshiftCloudRequest.md
 docs/OpenstackCloudRequest.md
 docs/OpenstackCredentials.md
 docs/Org.md
@@ -296,6 +297,7 @@ model_network.go
 model_onapp_cloud_request.go
 model_onapp_credentials.go
 model_one_off_schedule.go
+model_openshift_cloud_request.go
 model_openstack_cloud_request.go
 model_openstack_credentials.go
 model_org.go

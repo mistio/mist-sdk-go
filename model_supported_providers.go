@@ -42,6 +42,7 @@ const (
 	DOCKER SupportedProviders = "docker"
 	KUBEVIRT SupportedProviders = "kubevirt"
 	KUBERNETES SupportedProviders = "kubernetes"
+	OPENSHIFT SupportedProviders = "openshift"
 	OTHER SupportedProviders = "other"
 )
 
@@ -52,7 +53,7 @@ func (v *SupportedProviders) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := SupportedProviders(value)
-	for _, existing := range []SupportedProviders{ "amazon", "azure", "google", "alibaba", "cloudsigma", "equinix", "ibm", "digitalocean", "linode", "rackspace", "maxihost", "vultr", "openstack", "onapp", "vsphere", "vcloud", "kvm", "lxd", "docker", "kubevirt", "kubernetes", "other",   } {
+	for _, existing := range []SupportedProviders{ "amazon", "azure", "google", "alibaba", "cloudsigma", "equinix", "ibm", "digitalocean", "linode", "rackspace", "maxihost", "vultr", "openstack", "onapp", "vsphere", "vcloud", "kvm", "lxd", "docker", "kubevirt", "kubernetes", "openshift", "other",   } {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
