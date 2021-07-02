@@ -182,6 +182,7 @@ docs/User.md
 docs/UsersApi.md
 docs/VcloudCloudRequest.md
 docs/VcloudCredentials.md
+docs/Vector.md
 docs/Volume.md
 docs/VolumesApi.md
 docs/VsphereCloudRequest.md
@@ -332,6 +333,7 @@ model_trigger_after.go
 model_user.go
 model_vcloud_cloud_request.go
 model_vcloud_credentials.go
+model_vector.go
 model_volume.go
 model_vsphere_cloud_request.go
 model_vsphere_credentials.go

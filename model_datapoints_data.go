@@ -18,7 +18,7 @@ import (
 // DatapointsData struct for DatapointsData
 type DatapointsData struct {
 	ResultType *string `json:"resultType,omitempty"`
-	Result *[]OneOfInstantVectorRangeVector `json:"result,omitempty"`
+	Result *[]Vector `json:"result,omitempty"`
 }
 
 // NewDatapointsData instantiates a new DatapointsData object
@@ -71,9 +71,9 @@ func (o *DatapointsData) SetResultType(v string) {
 }
 
 // GetResult returns the Result field value if set, zero value otherwise.
-func (o *DatapointsData) GetResult() []OneOfInstantVectorRangeVector {
+func (o *DatapointsData) GetResult() []Vector {
 	if o == nil || o.Result == nil {
-		var ret []OneOfInstantVectorRangeVector
+		var ret []Vector
 		return ret
 	}
 	return *o.Result
@@ -81,7 +81,7 @@ func (o *DatapointsData) GetResult() []OneOfInstantVectorRangeVector {
 
 // GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatapointsData) GetResultOk() (*[]OneOfInstantVectorRangeVector, bool) {
+func (o *DatapointsData) GetResultOk() (*[]Vector, bool) {
 	if o == nil || o.Result == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *DatapointsData) HasResult() bool {
 	return false
 }
 
-// SetResult gets a reference to the given []OneOfInstantVectorRangeVector and assigns it to the Result field.
-func (o *DatapointsData) SetResult(v []OneOfInstantVectorRangeVector) {
+// SetResult gets a reference to the given []Vector and assigns it to the Result field.
+func (o *DatapointsData) SetResult(v []Vector) {
 	o.Result = &v
 }
 
