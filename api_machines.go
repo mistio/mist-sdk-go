@@ -592,11 +592,11 @@ type ApiDisassociateKeyRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
-	keyMachineDisassociation *KeyMachineDisassociation
+	keyMachineAssociation *KeyMachineAssociation
 }
 
-func (r ApiDisassociateKeyRequest) KeyMachineDisassociation(keyMachineDisassociation KeyMachineDisassociation) ApiDisassociateKeyRequest {
-	r.keyMachineDisassociation = &keyMachineDisassociation
+func (r ApiDisassociateKeyRequest) KeyMachineAssociation(keyMachineAssociation KeyMachineAssociation) ApiDisassociateKeyRequest {
+	r.keyMachineAssociation = &keyMachineAssociation
 	return r
 }
 
@@ -605,7 +605,7 @@ func (r ApiDisassociateKeyRequest) Execute() (*_nethttp.Response, error) {
 }
 
 /*
- * DisassociateKey Disassociate a key from a machine
+ * DisassociateKey Associate a key with a machine
  * Disassociate a key from a machine.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param machine
@@ -661,7 +661,7 @@ func (a *MachinesApiService) DisassociateKeyExecute(r ApiDisassociateKeyRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.keyMachineDisassociation
+	localVarPostBody = r.keyMachineAssociation
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

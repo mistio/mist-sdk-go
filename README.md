@@ -99,7 +99,7 @@ Class | Method | HTTP request | Description
 *MachinesApi* | [**Console**](docs/MachinesApi.md#console) | **Post** /api/v2/machines/{machine}/actions/console | Open console
 *MachinesApi* | [**CreateMachine**](docs/MachinesApi.md#createmachine) | **Post** /api/v2/machines | Create machine
 *MachinesApi* | [**DestroyMachine**](docs/MachinesApi.md#destroymachine) | **Post** /api/v2/machines/{machine}/actions/destroy | Destroy machine
-*MachinesApi* | [**DisassociateKey**](docs/MachinesApi.md#disassociatekey) | **Delete** /api/v2/machines/{machine}/actions/disassociate-key | Disassociate a key from a machine
+*MachinesApi* | [**DisassociateKey**](docs/MachinesApi.md#disassociatekey) | **Delete** /api/v2/machines/{machine}/actions/disassociate-key | Associate a key with a machine
 *MachinesApi* | [**EditMachine**](docs/MachinesApi.md#editmachine) | **Put** /api/v2/machines/{machine} | Edit machine
 *MachinesApi* | [**ExposeMachine**](docs/MachinesApi.md#exposemachine) | **Post** /api/v2/machines/{machine}/actions/expose | Expose machine
 *MachinesApi* | [**GetMachine**](docs/MachinesApi.md#getmachine) | **Get** /api/v2/machines/{machine} | Get machine
@@ -231,7 +231,6 @@ Class | Method | HTTP request | Description
  - [KVMNetNetworks](docs/KVMNetNetworks.md)
  - [Key](docs/Key.md)
  - [KeyMachineAssociation](docs/KeyMachineAssociation.md)
- - [KeyMachineDisassociation](docs/KeyMachineDisassociation.md)
  - [KubernetesCloudRequest](docs/KubernetesCloudRequest.md)
  - [KubernetesCredentials](docs/KubernetesCredentials.md)
  - [KubevirtCloudRequest](docs/KubevirtCloudRequest.md)

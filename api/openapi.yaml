@@ -1477,10 +1477,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/KeyMachineDisassociation'
+              $ref: '#/components/schemas/KeyMachineAssociation'
       responses:
         "200":
-          description: Disassociation successful
+          description: Association successful
         "401":
           description: Authentication failed
         "403":
@@ -1496,7 +1496,7 @@ paths:
       - CookieAuth:
         - disassociate_key:machine
         - read:cloud
-      summary: Disassociate a key from a machine
+      summary: Associate a key with a machine
       tags:
       - machines
   /api/v2/machines/{machine}/actions/expose:
@@ -5887,21 +5887,13 @@ components:
         key: key
       properties:
         key:
-          description: Name or ID of the SSH key to associate
+          description: Name or ID of the SSH key to deploy
           type: string
         port:
           description: SSH port
           type: integer
         user:
           description: SSH user
-          type: string
-      type: object
-    KeyMachineDisassociation:
-      example:
-        key: key
-      properties:
-        key:
-          description: Name or ID of the SSH key to disassociate
           type: string
       type: object
     KubernetesCloudRequest:

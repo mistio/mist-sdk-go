@@ -17,7 +17,7 @@ import (
 
 // KeyMachineAssociation struct for KeyMachineAssociation
 type KeyMachineAssociation struct {
-	// Name or ID of the SSH key to associate
+	// Name or ID of the SSH key to deploy
 	Key *string `json:"key,omitempty"`
 	// SSH port
 	Port *int32 `json:"port,omitempty"`
