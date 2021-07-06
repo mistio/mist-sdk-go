@@ -102,6 +102,7 @@ docs/KVMNet.md
 docs/KVMNetNetworks.md
 docs/Key.md
 docs/KeyMachineAssociation.md
+docs/KeyMachineDisassociation.md
 docs/KeysApi.md
 docs/KubernetesCloudRequest.md
 docs/KubernetesCredentials.md
@@ -258,6 +259,7 @@ model_interval_schedule.go
 model_job.go
 model_key.go
 model_key_machine_association.go
+model_key_machine_disassociation.go
 model_kubernetes_cloud_request.go
 model_kubernetes_credentials.go
 model_kubevirt_cloud_request.go
