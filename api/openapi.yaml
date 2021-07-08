@@ -4567,6 +4567,7 @@ components:
       example:
         features:
           compute: true
+          container: false
           dns: false
         owned_by: owned_by
         id: id
@@ -4596,6 +4597,7 @@ components:
       description: The cloud features that should be enabled
       example:
         compute: true
+        container: false
         dns: false
       properties:
         compute:
@@ -4605,6 +4607,10 @@ components:
         dns:
           default: false
           description: Enable DNS services
+          type: boolean
+        container:
+          default: false
+          description: Enable container services
           type: boolean
       type: object
     CloudSigmaCloudRequest:
@@ -5308,6 +5314,7 @@ components:
         data:
           features:
             compute: true
+            container: false
             dns: false
           owned_by: owned_by
           id: id
@@ -6040,6 +6047,7 @@ components:
         data:
         - features:
             compute: true
+            container: false
             dns: false
           owned_by: owned_by
           id: id
@@ -6049,6 +6057,7 @@ components:
           tags: '{}'
         - features:
             compute: true
+            container: false
             dns: false
           owned_by: owned_by
           id: id
