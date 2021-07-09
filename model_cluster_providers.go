@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ClusterProviders The provider of the cluster
+// ClusterProviders The cloud provider of the cluster
 type ClusterProviders string
 
 // List of ClusterProviders

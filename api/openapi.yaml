@@ -4902,7 +4902,7 @@ components:
           type: string
       type: object
     ClusterProviders:
-      description: The provider of the cluster
+      description: The cloud provider of the cluster
       enum:
       - amazon
       - azure
@@ -7819,9 +7819,13 @@ components:
         title:
           description: The name of the cluster to create
           type: string
+        cloud:
+          description: The cloud the cluster belongs to
+          type: string
         provider:
           $ref: '#/components/schemas/ClusterProviders'
       required:
+      - cloud
       - provider
       - title
       type: object

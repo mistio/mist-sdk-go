@@ -19,6 +19,8 @@ import (
 type CreateClusterRequestAllOf struct {
 	// The name of the cluster to create
 	Title string `json:"title"`
+	// The cloud the cluster belongs to
+	Cloud string `json:"cloud"`
 	Provider ClusterProviders `json:"provider"`
 }
 
@@ -26,9 +28,10 @@ type CreateClusterRequestAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateClusterRequestAllOf(title string, provider ClusterProviders, ) *CreateClusterRequestAllOf {
+func NewCreateClusterRequestAllOf(title string, cloud string, provider ClusterProviders, ) *CreateClusterRequestAllOf {
 	this := CreateClusterRequestAllOf{}
 	this.Title = title
+	this.Cloud = cloud
 	this.Provider = provider
 	return &this
 }
@@ -65,6 +68,30 @@ func (o *CreateClusterRequestAllOf) SetTitle(v string) {
 	o.Title = v
 }
 
+// GetCloud returns the Cloud field value
+func (o *CreateClusterRequestAllOf) GetCloud() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Cloud
+}
+
+// GetCloudOk returns a tuple with the Cloud field value
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequestAllOf) GetCloudOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Cloud, true
+}
+
+// SetCloud sets field value
+func (o *CreateClusterRequestAllOf) SetCloud(v string) {
+	o.Cloud = v
+}
+
 // GetProvider returns the Provider field value
 func (o *CreateClusterRequestAllOf) GetProvider() ClusterProviders {
 	if o == nil  {
@@ -93,6 +120,9 @@ func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["title"] = o.Title
+	}
+	if true {
+		toSerialize["cloud"] = o.Cloud
 	}
 	if true {
 		toSerialize["provider"] = o.Provider
