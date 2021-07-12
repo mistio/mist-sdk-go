@@ -38,7 +38,7 @@ func (r ApiCreateClusterRequest) CreateClusterRequest(createClusterRequest Creat
 	return r
 }
 
-func (r ApiCreateClusterRequest) Execute() (InlineResponse200, *_nethttp.Response, error) {
+func (r ApiCreateClusterRequest) Execute() (CreateClusterResponse, *_nethttp.Response, error) {
 	return r.ApiService.CreateClusterExecute(r)
 }
 
@@ -57,16 +57,16 @@ func (a *ClustersApiService) CreateCluster(ctx _context.Context) ApiCreateCluste
 
 /*
  * Execute executes the request
- * @return InlineResponse200
+ * @return CreateClusterResponse
  */
-func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (InlineResponse200, *_nethttp.Response, error) {
+func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (CreateClusterResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse200
+		localVarReturnValue  CreateClusterResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.CreateCluster")
