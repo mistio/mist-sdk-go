@@ -21,18 +21,17 @@ type CreateClusterRequestAllOf struct {
 	Title string `json:"title"`
 	// The cloud the cluster belongs to
 	Cloud string `json:"cloud"`
-	Provider ClusterProviders `json:"provider"`
+	Provider *ClusterProviders `json:"provider,omitempty"`
 }
 
 // NewCreateClusterRequestAllOf instantiates a new CreateClusterRequestAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateClusterRequestAllOf(title string, cloud string, provider ClusterProviders, ) *CreateClusterRequestAllOf {
+func NewCreateClusterRequestAllOf(title string, cloud string, ) *CreateClusterRequestAllOf {
 	this := CreateClusterRequestAllOf{}
 	this.Title = title
 	this.Cloud = cloud
-	this.Provider = provider
 	return &this
 }
 
@@ -92,28 +91,36 @@ func (o *CreateClusterRequestAllOf) SetCloud(v string) {
 	o.Cloud = v
 }
 
-// GetProvider returns the Provider field value
+// GetProvider returns the Provider field value if set, zero value otherwise.
 func (o *CreateClusterRequestAllOf) GetProvider() ClusterProviders {
-	if o == nil  {
+	if o == nil || o.Provider == nil {
 		var ret ClusterProviders
 		return ret
 	}
-
-	return o.Provider
+	return *o.Provider
 }
 
-// GetProviderOk returns a tuple with the Provider field value
+// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateClusterRequestAllOf) GetProviderOk() (*ClusterProviders, bool) {
-	if o == nil  {
+	if o == nil || o.Provider == nil {
 		return nil, false
 	}
-	return &o.Provider, true
+	return o.Provider, true
 }
 
-// SetProvider sets field value
+// HasProvider returns a boolean if a field has been set.
+func (o *CreateClusterRequestAllOf) HasProvider() bool {
+	if o != nil && o.Provider != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProvider gets a reference to the given ClusterProviders and assigns it to the Provider field.
 func (o *CreateClusterRequestAllOf) SetProvider(v ClusterProviders) {
-	o.Provider = v
+	o.Provider = &v
 }
 
 func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
@@ -124,7 +131,7 @@ func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["cloud"] = o.Cloud
 	}
-	if true {
+	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
 	}
 	return json.Marshal(toSerialize)
