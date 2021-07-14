@@ -7869,6 +7869,9 @@ components:
         cloud:
           description: The cloud the cluster belongs to
           type: string
+        config:
+          description: The provider-specific cluster configuration
+          type: object
         provider:
           $ref: '#/components/schemas/ClusterProviders'
       required:

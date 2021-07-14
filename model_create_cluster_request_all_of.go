@@ -21,6 +21,8 @@ type CreateClusterRequestAllOf struct {
 	Name string `json:"name"`
 	// The cloud the cluster belongs to
 	Cloud string `json:"cloud"`
+	// The provider-specific cluster configuration
+	Config *map[string]interface{} `json:"config,omitempty"`
 	Provider *ClusterProviders `json:"provider,omitempty"`
 }
 
@@ -91,6 +93,38 @@ func (o *CreateClusterRequestAllOf) SetCloud(v string) {
 	o.Cloud = v
 }
 
+// GetConfig returns the Config field value if set, zero value otherwise.
+func (o *CreateClusterRequestAllOf) GetConfig() map[string]interface{} {
+	if o == nil || o.Config == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Config
+}
+
+// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequestAllOf) GetConfigOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Config == nil {
+		return nil, false
+	}
+	return o.Config, true
+}
+
+// HasConfig returns a boolean if a field has been set.
+func (o *CreateClusterRequestAllOf) HasConfig() bool {
+	if o != nil && o.Config != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
+func (o *CreateClusterRequestAllOf) SetConfig(v map[string]interface{}) {
+	o.Config = &v
+}
+
 // GetProvider returns the Provider field value if set, zero value otherwise.
 func (o *CreateClusterRequestAllOf) GetProvider() ClusterProviders {
 	if o == nil || o.Provider == nil {
@@ -130,6 +164,9 @@ func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["cloud"] = o.Cloud
+	}
+	if o.Config != nil {
+		toSerialize["config"] = o.Config
 	}
 	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
