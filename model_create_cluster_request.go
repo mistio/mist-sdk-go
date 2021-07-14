@@ -18,7 +18,7 @@ import (
 // CreateClusterRequest struct for CreateClusterRequest
 type CreateClusterRequest struct {
 	// The name of the cluster to create
-	Title string `json:"title"`
+	Name string `json:"name"`
 	// The cloud the cluster belongs to
 	Cloud string `json:"cloud"`
 	Provider *ClusterProviders `json:"provider,omitempty"`
@@ -28,9 +28,9 @@ type CreateClusterRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateClusterRequest(title string, cloud string, ) *CreateClusterRequest {
+func NewCreateClusterRequest(name string, cloud string, ) *CreateClusterRequest {
 	this := CreateClusterRequest{}
-	this.Title = title
+	this.Name = name
 	this.Cloud = cloud
 	return &this
 }
@@ -43,28 +43,28 @@ func NewCreateClusterRequestWithDefaults() *CreateClusterRequest {
 	return &this
 }
 
-// GetTitle returns the Title field value
-func (o *CreateClusterRequest) GetTitle() string {
+// GetName returns the Name field value
+func (o *CreateClusterRequest) GetName() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.Title
+	return o.Name
 }
 
-// GetTitleOk returns a tuple with the Title field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetTitleOk() (*string, bool) {
+func (o *CreateClusterRequest) GetNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Title, true
+	return &o.Name, true
 }
 
-// SetTitle sets field value
-func (o *CreateClusterRequest) SetTitle(v string) {
-	o.Title = v
+// SetName sets field value
+func (o *CreateClusterRequest) SetName(v string) {
+	o.Name = v
 }
 
 // GetCloud returns the Cloud field value
@@ -126,7 +126,7 @@ func (o *CreateClusterRequest) SetProvider(v ClusterProviders) {
 func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["title"] = o.Title
+		toSerialize["name"] = o.Name
 	}
 	if true {
 		toSerialize["cloud"] = o.Cloud

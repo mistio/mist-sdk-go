@@ -18,13 +18,17 @@ import (
 // Cluster struct for Cluster
 type Cluster struct {
 	Id *string `json:"id,omitempty"`
-	Title *string `json:"title,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Cloud *string `json:"cloud,omitempty"`
 	Provider *ClusterProviders `json:"provider,omitempty"`
+	TotalNodes *int `json:"total_nodes,omitempty"`
+	TotalCpus *string `json:"total_cpus,omitempty"`
+	TotalMemory *string `json:"total_memory,omitempty"`
 	Config *map[string]interface{} `json:"config,omitempty"`
 	Tags *map[string]interface{} `json:"tags,omitempty"`
 	CreatedBy *string `json:"created_by,omitempty"`
 	OwnedBy *string `json:"owned_by,omitempty"`
+	Extra *map[string]interface{} `json:"extra,omitempty"`
 }
 
 // NewCluster instantiates a new Cluster object
@@ -76,36 +80,36 @@ func (o *Cluster) SetId(v string) {
 	o.Id = &v
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *Cluster) GetTitle() string {
-	if o == nil || o.Title == nil {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *Cluster) GetName() string {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
-	return *o.Title
+	return *o.Name
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetTitleOk() (*string, bool) {
-	if o == nil || o.Title == nil {
+func (o *Cluster) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
-	return o.Title, true
+	return o.Name, true
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *Cluster) HasTitle() bool {
-	if o != nil && o.Title != nil {
+// HasName returns a boolean if a field has been set.
+func (o *Cluster) HasName() bool {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *Cluster) SetTitle(v string) {
-	o.Title = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *Cluster) SetName(v string) {
+	o.Name = &v
 }
 
 // GetCloud returns the Cloud field value if set, zero value otherwise.
@@ -170,6 +174,102 @@ func (o *Cluster) HasProvider() bool {
 // SetProvider gets a reference to the given ClusterProviders and assigns it to the Provider field.
 func (o *Cluster) SetProvider(v ClusterProviders) {
 	o.Provider = &v
+}
+
+// GetTotalNodes returns the TotalNodes field value if set, zero value otherwise.
+func (o *Cluster) GetTotalNodes() int {
+	if o == nil || o.TotalNodes == nil {
+		var ret int
+		return ret
+	}
+	return *o.TotalNodes
+}
+
+// GetTotalNodesOk returns a tuple with the TotalNodes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetTotalNodesOk() (*int, bool) {
+	if o == nil || o.TotalNodes == nil {
+		return nil, false
+	}
+	return o.TotalNodes, true
+}
+
+// HasTotalNodes returns a boolean if a field has been set.
+func (o *Cluster) HasTotalNodes() bool {
+	if o != nil && o.TotalNodes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalNodes gets a reference to the given int and assigns it to the TotalNodes field.
+func (o *Cluster) SetTotalNodes(v int) {
+	o.TotalNodes = &v
+}
+
+// GetTotalCpus returns the TotalCpus field value if set, zero value otherwise.
+func (o *Cluster) GetTotalCpus() string {
+	if o == nil || o.TotalCpus == nil {
+		var ret string
+		return ret
+	}
+	return *o.TotalCpus
+}
+
+// GetTotalCpusOk returns a tuple with the TotalCpus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetTotalCpusOk() (*string, bool) {
+	if o == nil || o.TotalCpus == nil {
+		return nil, false
+	}
+	return o.TotalCpus, true
+}
+
+// HasTotalCpus returns a boolean if a field has been set.
+func (o *Cluster) HasTotalCpus() bool {
+	if o != nil && o.TotalCpus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalCpus gets a reference to the given string and assigns it to the TotalCpus field.
+func (o *Cluster) SetTotalCpus(v string) {
+	o.TotalCpus = &v
+}
+
+// GetTotalMemory returns the TotalMemory field value if set, zero value otherwise.
+func (o *Cluster) GetTotalMemory() string {
+	if o == nil || o.TotalMemory == nil {
+		var ret string
+		return ret
+	}
+	return *o.TotalMemory
+}
+
+// GetTotalMemoryOk returns a tuple with the TotalMemory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetTotalMemoryOk() (*string, bool) {
+	if o == nil || o.TotalMemory == nil {
+		return nil, false
+	}
+	return o.TotalMemory, true
+}
+
+// HasTotalMemory returns a boolean if a field has been set.
+func (o *Cluster) HasTotalMemory() bool {
+	if o != nil && o.TotalMemory != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalMemory gets a reference to the given string and assigns it to the TotalMemory field.
+func (o *Cluster) SetTotalMemory(v string) {
+	o.TotalMemory = &v
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
@@ -300,19 +400,60 @@ func (o *Cluster) SetOwnedBy(v string) {
 	o.OwnedBy = &v
 }
 
+// GetExtra returns the Extra field value if set, zero value otherwise.
+func (o *Cluster) GetExtra() map[string]interface{} {
+	if o == nil || o.Extra == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Extra
+}
+
+// GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetExtraOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Extra == nil {
+		return nil, false
+	}
+	return o.Extra, true
+}
+
+// HasExtra returns a boolean if a field has been set.
+func (o *Cluster) HasExtra() bool {
+	if o != nil && o.Extra != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExtra gets a reference to the given map[string]interface{} and assigns it to the Extra field.
+func (o *Cluster) SetExtra(v map[string]interface{}) {
+	o.Extra = &v
+}
+
 func (o Cluster) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.Title != nil {
-		toSerialize["title"] = o.Title
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
 	if o.Cloud != nil {
 		toSerialize["cloud"] = o.Cloud
 	}
 	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
+	}
+	if o.TotalNodes != nil {
+		toSerialize["total_nodes"] = o.TotalNodes
+	}
+	if o.TotalCpus != nil {
+		toSerialize["total_cpus"] = o.TotalCpus
+	}
+	if o.TotalMemory != nil {
+		toSerialize["total_memory"] = o.TotalMemory
 	}
 	if o.Config != nil {
 		toSerialize["config"] = o.Config
@@ -325,6 +466,9 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	}
 	if o.OwnedBy != nil {
 		toSerialize["owned_by"] = o.OwnedBy
+	}
+	if o.Extra != nil {
+		toSerialize["extra"] = o.Extra
 	}
 	return json.Marshal(toSerialize)
 }
