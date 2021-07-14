@@ -4886,17 +4886,18 @@ components:
       type: object
     Cluster:
       example:
+        total_cpus: total_cpus
+        owned_by: owned_by
+        created_by: created_by
+        tags: '{}'
         cloud: cloud
         total_memory: total_memory
         extra: '{}'
         name: name
         total_nodes: ""
-        total_cpus: total_cpus
-        owned_by: owned_by
+        location: location
         id: id
         config: '{}'
-        created_by: created_by
-        tags: '{}'
       properties:
         id:
           type: string
@@ -4911,6 +4912,8 @@ components:
         total_cpus:
           type: string
         total_memory:
+          type: string
+        location:
           type: string
         config:
           type: object
@@ -5637,17 +5640,18 @@ components:
     GetClusterResponse:
       example:
         data:
+          total_cpus: total_cpus
+          owned_by: owned_by
+          created_by: created_by
+          tags: '{}'
           cloud: cloud
           total_memory: total_memory
           extra: '{}'
           name: name
           total_nodes: ""
-          total_cpus: total_cpus
-          owned_by: owned_by
+          location: location
           id: id
           config: '{}'
-          created_by: created_by
-          tags: '{}'
         meta:
           total: 0
           start: 1
@@ -6415,28 +6419,30 @@ components:
     ListClustersResponse:
       example:
         data:
-        - cloud: cloud
+        - total_cpus: total_cpus
+          owned_by: owned_by
+          created_by: created_by
+          tags: '{}'
+          cloud: cloud
           total_memory: total_memory
           extra: '{}'
           name: name
           total_nodes: ""
-          total_cpus: total_cpus
-          owned_by: owned_by
+          location: location
           id: id
           config: '{}'
+        - total_cpus: total_cpus
+          owned_by: owned_by
           created_by: created_by
           tags: '{}'
-        - cloud: cloud
+          cloud: cloud
           total_memory: total_memory
           extra: '{}'
           name: name
           total_nodes: ""
-          total_cpus: total_cpus
-          owned_by: owned_by
+          location: location
           id: id
           config: '{}'
-          created_by: created_by
-          tags: '{}'
         meta:
           total: 0
           start: 1

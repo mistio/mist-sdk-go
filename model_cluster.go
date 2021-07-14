@@ -24,6 +24,7 @@ type Cluster struct {
 	TotalNodes *int `json:"total_nodes,omitempty"`
 	TotalCpus *string `json:"total_cpus,omitempty"`
 	TotalMemory *string `json:"total_memory,omitempty"`
+	Location *string `json:"location,omitempty"`
 	Config *map[string]interface{} `json:"config,omitempty"`
 	Tags *map[string]interface{} `json:"tags,omitempty"`
 	CreatedBy *string `json:"created_by,omitempty"`
@@ -272,6 +273,38 @@ func (o *Cluster) SetTotalMemory(v string) {
 	o.TotalMemory = &v
 }
 
+// GetLocation returns the Location field value if set, zero value otherwise.
+func (o *Cluster) GetLocation() string {
+	if o == nil || o.Location == nil {
+		var ret string
+		return ret
+	}
+	return *o.Location
+}
+
+// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetLocationOk() (*string, bool) {
+	if o == nil || o.Location == nil {
+		return nil, false
+	}
+	return o.Location, true
+}
+
+// HasLocation returns a boolean if a field has been set.
+func (o *Cluster) HasLocation() bool {
+	if o != nil && o.Location != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLocation gets a reference to the given string and assigns it to the Location field.
+func (o *Cluster) SetLocation(v string) {
+	o.Location = &v
+}
+
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *Cluster) GetConfig() map[string]interface{} {
 	if o == nil || o.Config == nil {
@@ -454,6 +487,9 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	}
 	if o.TotalMemory != nil {
 		toSerialize["total_memory"] = o.TotalMemory
+	}
+	if o.Location != nil {
+		toSerialize["location"] = o.Location
 	}
 	if o.Config != nil {
 		toSerialize["config"] = o.Config
