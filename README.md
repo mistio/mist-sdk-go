@@ -84,6 +84,7 @@ Class | Method | HTTP request | Description
 *CloudsApi* | [**GetCloud**](docs/CloudsApi.md#getcloud) | **Get** /api/v2/clouds/{cloud} | Get cloud
 *CloudsApi* | [**ListClouds**](docs/CloudsApi.md#listclouds) | **Get** /api/v2/clouds | List clouds
 *CloudsCountApi* | [**GetOrg**](docs/CloudsCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
+*DatapointsApi* | [**GetDatapoints**](docs/DatapointsApi.md#getdatapoints) | **Get** /api/v2/datapoints | Get datapoints
 *ImagesApi* | [**GetImage**](docs/ImagesApi.md#getimage) | **Get** /api/v2/images/{image} | Get image
 *ImagesApi* | [**ListImages**](docs/ImagesApi.md#listimages) | **Get** /api/v2/images | List images
 *JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **Get** /api/v2/jobs/{job_id} | Get job
@@ -189,6 +190,9 @@ Class | Method | HTTP request | Description
  - [CreateZoneRequest](docs/CreateZoneRequest.md)
  - [CreateZoneResponse](docs/CreateZoneResponse.md)
  - [CronSchedule](docs/CronSchedule.md)
+ - [Datapoints](docs/Datapoints.md)
+ - [DatapointsData](docs/DatapointsData.md)
+ - [DatapointsValuesItem](docs/DatapointsValuesItem.md)
  - [DigitaloceanCloudRequest](docs/DigitaloceanCloudRequest.md)
  - [DigitaloceanCredentials](docs/DigitaloceanCredentials.md)
  - [DockerCloudRequest](docs/DockerCloudRequest.md)
@@ -204,6 +208,7 @@ Class | Method | HTTP request | Description
  - [ExpirationNotify](docs/ExpirationNotify.md)
  - [Frequency](docs/Frequency.md)
  - [GetCloudResponse](docs/GetCloudResponse.md)
+ - [GetDatapointsResponse](docs/GetDatapointsResponse.md)
  - [GetImageResponse](docs/GetImageResponse.md)
  - [GetJobResponse](docs/GetJobResponse.md)
  - [GetKeyResponse](docs/GetKeyResponse.md)
@@ -225,6 +230,7 @@ Class | Method | HTTP request | Description
  - [Image](docs/Image.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineScript](docs/InlineScript.md)
+ - [InstantVector](docs/InstantVector.md)
  - [IntervalSchedule](docs/IntervalSchedule.md)
  - [Job](docs/Job.md)
  - [KVMNet](docs/KVMNet.md)
@@ -278,6 +284,7 @@ Class | Method | HTTP request | Description
  - [Query](docs/Query.md)
  - [RackspaceCloudRequest](docs/RackspaceCloudRequest.md)
  - [RackspaceCredentials](docs/RackspaceCredentials.md)
+ - [RangeVector](docs/RangeVector.md)
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)
  - [RuleAction](docs/RuleAction.md)
@@ -290,6 +297,7 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [VcloudCloudRequest](docs/VcloudCloudRequest.md)
  - [VcloudCredentials](docs/VcloudCredentials.md)
+ - [Vector](docs/Vector.md)
  - [Volume](docs/Volume.md)
  - [VsphereCloudRequest](docs/VsphereCloudRequest.md)
  - [VsphereCredentials](docs/VsphereCredentials.md)
