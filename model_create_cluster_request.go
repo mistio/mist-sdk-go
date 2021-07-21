@@ -19,6 +19,8 @@ import (
 type CreateClusterRequest struct {
 	// The name of the cluster to create
 	Name string `json:"name"`
+	// The name of the zone to create the cluster in
+	Zone string `json:"zone"`
 	// The cloud the cluster belongs to
 	Cloud string `json:"cloud"`
 	// The provider-specific cluster configuration
@@ -30,9 +32,10 @@ type CreateClusterRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateClusterRequest(name string, cloud string, ) *CreateClusterRequest {
+func NewCreateClusterRequest(name string, zone string, cloud string, ) *CreateClusterRequest {
 	this := CreateClusterRequest{}
 	this.Name = name
+	this.Zone = zone
 	this.Cloud = cloud
 	return &this
 }
@@ -67,6 +70,30 @@ func (o *CreateClusterRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateClusterRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetZone returns the Zone field value
+func (o *CreateClusterRequest) GetZone() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Zone
+}
+
+// GetZoneOk returns a tuple with the Zone field value
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetZoneOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Zone, true
+}
+
+// SetZone sets field value
+func (o *CreateClusterRequest) SetZone(v string) {
+	o.Zone = v
 }
 
 // GetCloud returns the Cloud field value
@@ -161,6 +188,9 @@ func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["zone"] = o.Zone
 	}
 	if true {
 		toSerialize["cloud"] = o.Cloud

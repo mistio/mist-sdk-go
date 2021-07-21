@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**DeleteCluster**](docs/ClustersApi.md#deletecluster) | **Delete** /api/v2/clusters/{cluster} | Delete cluster
 *ClustersApi* | [**GetCluster**](docs/ClustersApi.md#getcluster) | **Get** /api/v2/clusters/{cluster} | Get cluster
 *ClustersApi* | [**ListClusters**](docs/ClustersApi.md#listclusters) | **Get** /api/v2/clusters | List clusters
+*DatapointsApi* | [**GetDatapoints**](docs/DatapointsApi.md#getdatapoints) | **Get** /api/v2/datapoints | Get datapoints
 *ImagesApi* | [**GetImage**](docs/ImagesApi.md#getimage) | **Get** /api/v2/images/{image} | Get image
 *ImagesApi* | [**ListImages**](docs/ImagesApi.md#listimages) | **Get** /api/v2/images | List images
 *JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **Get** /api/v2/jobs/{job_id} | Get job
@@ -198,6 +199,9 @@ Class | Method | HTTP request | Description
  - [CreateZoneRequest](docs/CreateZoneRequest.md)
  - [CreateZoneResponse](docs/CreateZoneResponse.md)
  - [CronSchedule](docs/CronSchedule.md)
+ - [Datapoints](docs/Datapoints.md)
+ - [DatapointsData](docs/DatapointsData.md)
+ - [DatapointsValuesItem](docs/DatapointsValuesItem.md)
  - [DigitaloceanCloudRequest](docs/DigitaloceanCloudRequest.md)
  - [DigitaloceanCredentials](docs/DigitaloceanCredentials.md)
  - [DockerCloudRequest](docs/DockerCloudRequest.md)
@@ -214,6 +218,7 @@ Class | Method | HTTP request | Description
  - [Frequency](docs/Frequency.md)
  - [GetCloudResponse](docs/GetCloudResponse.md)
  - [GetClusterResponse](docs/GetClusterResponse.md)
+ - [GetDatapointsResponse](docs/GetDatapointsResponse.md)
  - [GetImageResponse](docs/GetImageResponse.md)
  - [GetJobResponse](docs/GetJobResponse.md)
  - [GetKeyResponse](docs/GetKeyResponse.md)
@@ -235,6 +240,7 @@ Class | Method | HTTP request | Description
  - [Image](docs/Image.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineScript](docs/InlineScript.md)
+ - [InstantVector](docs/InstantVector.md)
  - [IntervalSchedule](docs/IntervalSchedule.md)
  - [Job](docs/Job.md)
  - [KVMNet](docs/KVMNet.md)
@@ -289,6 +295,7 @@ Class | Method | HTTP request | Description
  - [Query](docs/Query.md)
  - [RackspaceCloudRequest](docs/RackspaceCloudRequest.md)
  - [RackspaceCredentials](docs/RackspaceCredentials.md)
+ - [RangeVector](docs/RangeVector.md)
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)
  - [RuleAction](docs/RuleAction.md)
@@ -301,6 +308,7 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [VcloudCloudRequest](docs/VcloudCloudRequest.md)
  - [VcloudCredentials](docs/VcloudCredentials.md)
+ - [Vector](docs/Vector.md)
  - [Volume](docs/Volume.md)
  - [VsphereCloudRequest](docs/VsphereCloudRequest.md)
  - [VsphereCredentials](docs/VsphereCredentials.md)

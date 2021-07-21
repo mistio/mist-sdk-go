@@ -22,8 +22,8 @@ type Cluster struct {
 	Cloud *string `json:"cloud,omitempty"`
 	Provider *ClusterProviders `json:"provider,omitempty"`
 	TotalNodes *int32 `json:"total_nodes,omitempty"`
-	TotalCpus *float32 `json:"total_cpus,omitempty"`
-	TotalMemory *float32 `json:"total_memory,omitempty"`
+	TotalCpus *int32 `json:"total_cpus,omitempty"`
+	TotalMemory *int32 `json:"total_memory,omitempty"`
 	Location *string `json:"location,omitempty"`
 	Config *map[string]interface{} `json:"config,omitempty"`
 	Tags *map[string]interface{} `json:"tags,omitempty"`
@@ -210,9 +210,9 @@ func (o *Cluster) SetTotalNodes(v int32) {
 }
 
 // GetTotalCpus returns the TotalCpus field value if set, zero value otherwise.
-func (o *Cluster) GetTotalCpus() float32 {
+func (o *Cluster) GetTotalCpus() int32 {
 	if o == nil || o.TotalCpus == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.TotalCpus
@@ -220,7 +220,7 @@ func (o *Cluster) GetTotalCpus() float32 {
 
 // GetTotalCpusOk returns a tuple with the TotalCpus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetTotalCpusOk() (*float32, bool) {
+func (o *Cluster) GetTotalCpusOk() (*int32, bool) {
 	if o == nil || o.TotalCpus == nil {
 		return nil, false
 	}
@@ -236,15 +236,15 @@ func (o *Cluster) HasTotalCpus() bool {
 	return false
 }
 
-// SetTotalCpus gets a reference to the given float32 and assigns it to the TotalCpus field.
-func (o *Cluster) SetTotalCpus(v float32) {
+// SetTotalCpus gets a reference to the given int32 and assigns it to the TotalCpus field.
+func (o *Cluster) SetTotalCpus(v int32) {
 	o.TotalCpus = &v
 }
 
 // GetTotalMemory returns the TotalMemory field value if set, zero value otherwise.
-func (o *Cluster) GetTotalMemory() float32 {
+func (o *Cluster) GetTotalMemory() int32 {
 	if o == nil || o.TotalMemory == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.TotalMemory
@@ -252,7 +252,7 @@ func (o *Cluster) GetTotalMemory() float32 {
 
 // GetTotalMemoryOk returns a tuple with the TotalMemory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetTotalMemoryOk() (*float32, bool) {
+func (o *Cluster) GetTotalMemoryOk() (*int32, bool) {
 	if o == nil || o.TotalMemory == nil {
 		return nil, false
 	}
@@ -268,8 +268,8 @@ func (o *Cluster) HasTotalMemory() bool {
 	return false
 }
 
-// SetTotalMemory gets a reference to the given float32 and assigns it to the TotalMemory field.
-func (o *Cluster) SetTotalMemory(v float32) {
+// SetTotalMemory gets a reference to the given int32 and assigns it to the TotalMemory field.
+func (o *Cluster) SetTotalMemory(v int32) {
 	o.TotalMemory = &v
 }
 
