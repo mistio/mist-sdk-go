@@ -31,6 +31,7 @@ type ApiGetDatapointsRequest struct {
 	ApiService *DatapointsApiService
 	query *string
 	tags *string
+	search *string
 	start *string
 	end *string
 	step *string
@@ -43,6 +44,10 @@ func (r ApiGetDatapointsRequest) Query(query string) ApiGetDatapointsRequest {
 }
 func (r ApiGetDatapointsRequest) Tags(tags string) ApiGetDatapointsRequest {
 	r.tags = &tags
+	return r
+}
+func (r ApiGetDatapointsRequest) Search(search string) ApiGetDatapointsRequest {
+	r.search = &search
 	return r
 }
 func (r ApiGetDatapointsRequest) Start(start string) ApiGetDatapointsRequest {
@@ -110,6 +115,9 @@ func (a *DatapointsApiService) GetDatapointsExecute(r ApiGetDatapointsRequest) (
 	localVarQueryParams.Add("query", parameterToString(*r.query, ""))
 	if r.tags != nil {
 		localVarQueryParams.Add("tags", parameterToString(*r.tags, ""))
+	}
+	if r.search != nil {
+		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
 	if r.start != nil {
 		localVarQueryParams.Add("start", parameterToString(*r.start, ""))
