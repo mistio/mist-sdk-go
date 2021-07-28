@@ -17,23 +17,28 @@ import (
 
 // AmazonClusterRequest struct for AmazonClusterRequest
 type AmazonClusterRequest struct {
-	Provider *string `json:"provider,omitempty"`
+	Provider string `json:"provider"`
 	// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf
-	RoleArn *string `json:"role_arn,omitempty"`
+	RoleArn string `json:"role_arn"`
 	// The VPC associated with the cluster
-	VpcId *string `json:"vpc_id,omitempty"`
+	VpcId string `json:"vpc_id"`
 	// The subnets associated with the cluster
-	SubnetIds *[]string `json:"subnet_ids,omitempty"`
+	SubnetIds []string `json:"subnet_ids"`
 	// The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane
-	SecurityGroupIds *[]string `json:"security_group_ids,omitempty"`
+	SecurityGroupIds []string `json:"security_group_ids"`
 }
 
 // NewAmazonClusterRequest instantiates a new AmazonClusterRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmazonClusterRequest() *AmazonClusterRequest {
+func NewAmazonClusterRequest(provider string, roleArn string, vpcId string, subnetIds []string, securityGroupIds []string, ) *AmazonClusterRequest {
 	this := AmazonClusterRequest{}
+	this.Provider = provider
+	this.RoleArn = roleArn
+	this.VpcId = vpcId
+	this.SubnetIds = subnetIds
+	this.SecurityGroupIds = securityGroupIds
 	return &this
 }
 
@@ -45,181 +50,141 @@ func NewAmazonClusterRequestWithDefaults() *AmazonClusterRequest {
 	return &this
 }
 
-// GetProvider returns the Provider field value if set, zero value otherwise.
+// GetProvider returns the Provider field value
 func (o *AmazonClusterRequest) GetProvider() string {
-	if o == nil || o.Provider == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.Provider
+
+	return o.Provider
 }
 
-// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
+// GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
 func (o *AmazonClusterRequest) GetProviderOk() (*string, bool) {
-	if o == nil || o.Provider == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Provider, true
+	return &o.Provider, true
 }
 
-// HasProvider returns a boolean if a field has been set.
-func (o *AmazonClusterRequest) HasProvider() bool {
-	if o != nil && o.Provider != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProvider gets a reference to the given string and assigns it to the Provider field.
+// SetProvider sets field value
 func (o *AmazonClusterRequest) SetProvider(v string) {
-	o.Provider = &v
+	o.Provider = v
 }
 
-// GetRoleArn returns the RoleArn field value if set, zero value otherwise.
+// GetRoleArn returns the RoleArn field value
 func (o *AmazonClusterRequest) GetRoleArn() string {
-	if o == nil || o.RoleArn == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.RoleArn
+
+	return o.RoleArn
 }
 
-// GetRoleArnOk returns a tuple with the RoleArn field value if set, nil otherwise
+// GetRoleArnOk returns a tuple with the RoleArn field value
 // and a boolean to check if the value has been set.
 func (o *AmazonClusterRequest) GetRoleArnOk() (*string, bool) {
-	if o == nil || o.RoleArn == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.RoleArn, true
+	return &o.RoleArn, true
 }
 
-// HasRoleArn returns a boolean if a field has been set.
-func (o *AmazonClusterRequest) HasRoleArn() bool {
-	if o != nil && o.RoleArn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRoleArn gets a reference to the given string and assigns it to the RoleArn field.
+// SetRoleArn sets field value
 func (o *AmazonClusterRequest) SetRoleArn(v string) {
-	o.RoleArn = &v
+	o.RoleArn = v
 }
 
-// GetVpcId returns the VpcId field value if set, zero value otherwise.
+// GetVpcId returns the VpcId field value
 func (o *AmazonClusterRequest) GetVpcId() string {
-	if o == nil || o.VpcId == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.VpcId
+
+	return o.VpcId
 }
 
-// GetVpcIdOk returns a tuple with the VpcId field value if set, nil otherwise
+// GetVpcIdOk returns a tuple with the VpcId field value
 // and a boolean to check if the value has been set.
 func (o *AmazonClusterRequest) GetVpcIdOk() (*string, bool) {
-	if o == nil || o.VpcId == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.VpcId, true
+	return &o.VpcId, true
 }
 
-// HasVpcId returns a boolean if a field has been set.
-func (o *AmazonClusterRequest) HasVpcId() bool {
-	if o != nil && o.VpcId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVpcId gets a reference to the given string and assigns it to the VpcId field.
+// SetVpcId sets field value
 func (o *AmazonClusterRequest) SetVpcId(v string) {
-	o.VpcId = &v
+	o.VpcId = v
 }
 
-// GetSubnetIds returns the SubnetIds field value if set, zero value otherwise.
+// GetSubnetIds returns the SubnetIds field value
 func (o *AmazonClusterRequest) GetSubnetIds() []string {
-	if o == nil || o.SubnetIds == nil {
+	if o == nil  {
 		var ret []string
 		return ret
 	}
-	return *o.SubnetIds
+
+	return o.SubnetIds
 }
 
-// GetSubnetIdsOk returns a tuple with the SubnetIds field value if set, nil otherwise
+// GetSubnetIdsOk returns a tuple with the SubnetIds field value
 // and a boolean to check if the value has been set.
 func (o *AmazonClusterRequest) GetSubnetIdsOk() (*[]string, bool) {
-	if o == nil || o.SubnetIds == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.SubnetIds, true
+	return &o.SubnetIds, true
 }
 
-// HasSubnetIds returns a boolean if a field has been set.
-func (o *AmazonClusterRequest) HasSubnetIds() bool {
-	if o != nil && o.SubnetIds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSubnetIds gets a reference to the given []string and assigns it to the SubnetIds field.
+// SetSubnetIds sets field value
 func (o *AmazonClusterRequest) SetSubnetIds(v []string) {
-	o.SubnetIds = &v
+	o.SubnetIds = v
 }
 
-// GetSecurityGroupIds returns the SecurityGroupIds field value if set, zero value otherwise.
+// GetSecurityGroupIds returns the SecurityGroupIds field value
 func (o *AmazonClusterRequest) GetSecurityGroupIds() []string {
-	if o == nil || o.SecurityGroupIds == nil {
+	if o == nil  {
 		var ret []string
 		return ret
 	}
-	return *o.SecurityGroupIds
+
+	return o.SecurityGroupIds
 }
 
-// GetSecurityGroupIdsOk returns a tuple with the SecurityGroupIds field value if set, nil otherwise
+// GetSecurityGroupIdsOk returns a tuple with the SecurityGroupIds field value
 // and a boolean to check if the value has been set.
 func (o *AmazonClusterRequest) GetSecurityGroupIdsOk() (*[]string, bool) {
-	if o == nil || o.SecurityGroupIds == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.SecurityGroupIds, true
+	return &o.SecurityGroupIds, true
 }
 
-// HasSecurityGroupIds returns a boolean if a field has been set.
-func (o *AmazonClusterRequest) HasSecurityGroupIds() bool {
-	if o != nil && o.SecurityGroupIds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSecurityGroupIds gets a reference to the given []string and assigns it to the SecurityGroupIds field.
+// SetSecurityGroupIds sets field value
 func (o *AmazonClusterRequest) SetSecurityGroupIds(v []string) {
-	o.SecurityGroupIds = &v
+	o.SecurityGroupIds = v
 }
 
 func (o AmazonClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Provider != nil {
+	if true {
 		toSerialize["provider"] = o.Provider
 	}
-	if o.RoleArn != nil {
+	if true {
 		toSerialize["role_arn"] = o.RoleArn
 	}
-	if o.VpcId != nil {
+	if true {
 		toSerialize["vpc_id"] = o.VpcId
 	}
-	if o.SubnetIds != nil {
+	if true {
 		toSerialize["subnet_ids"] = o.SubnetIds
 	}
-	if o.SecurityGroupIds != nil {
+	if true {
 		toSerialize["security_group_ids"] = o.SecurityGroupIds
 	}
 	return json.Marshal(toSerialize)
