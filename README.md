@@ -84,6 +84,10 @@ Class | Method | HTTP request | Description
 *CloudsApi* | [**GetCloud**](docs/CloudsApi.md#getcloud) | **Get** /api/v2/clouds/{cloud} | Get cloud
 *CloudsApi* | [**ListClouds**](docs/CloudsApi.md#listclouds) | **Get** /api/v2/clouds | List clouds
 *CloudsCountApi* | [**GetOrg**](docs/CloudsCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
+*ClustersApi* | [**CreateCluster**](docs/ClustersApi.md#createcluster) | **Post** /api/v2/clusters | Create cluster
+*ClustersApi* | [**DeleteCluster**](docs/ClustersApi.md#deletecluster) | **Delete** /api/v2/clusters/{cluster} | Delete cluster
+*ClustersApi* | [**GetCluster**](docs/ClustersApi.md#getcluster) | **Get** /api/v2/clusters/{cluster} | Get cluster
+*ClustersApi* | [**ListClusters**](docs/ClustersApi.md#listclusters) | **Get** /api/v2/clusters | List clusters
 *DatapointsApi* | [**GetDatapoints**](docs/DatapointsApi.md#getdatapoints) | **Get** /api/v2/datapoints | Get datapoints
 *ImagesApi* | [**GetImage**](docs/ImagesApi.md#getimage) | **Get** /api/v2/images/{image} | Get image
 *ImagesApi* | [**ListImages**](docs/ImagesApi.md#listimages) | **Get** /api/v2/images | List images
@@ -178,6 +182,10 @@ Class | Method | HTTP request | Description
  - [CloudFeatures](docs/CloudFeatures.md)
  - [CloudSigmaCloudRequest](docs/CloudSigmaCloudRequest.md)
  - [CloudSigmaCredentials](docs/CloudSigmaCredentials.md)
+ - [Cluster](docs/Cluster.md)
+ - [ClusterProviders](docs/ClusterProviders.md)
+ - [CreateClusterRequest](docs/CreateClusterRequest.md)
+ - [CreateClusterRequestAllOf](docs/CreateClusterRequestAllOf.md)
  - [CreateMachineRequest](docs/CreateMachineRequest.md)
  - [CreateMachineRequestDisks](docs/CreateMachineRequestDisks.md)
  - [CreateMachineResponse](docs/CreateMachineResponse.md)
@@ -208,6 +216,7 @@ Class | Method | HTTP request | Description
  - [ExpirationNotify](docs/ExpirationNotify.md)
  - [Frequency](docs/Frequency.md)
  - [GetCloudResponse](docs/GetCloudResponse.md)
+ - [GetClusterResponse](docs/GetClusterResponse.md)
  - [GetDatapointsResponse](docs/GetDatapointsResponse.md)
  - [GetImageResponse](docs/GetImageResponse.md)
  - [GetJobResponse](docs/GetJobResponse.md)
@@ -247,6 +256,7 @@ Class | Method | HTTP request | Description
  - [LinodeExtra](docs/LinodeExtra.md)
  - [LinodeNet](docs/LinodeNet.md)
  - [ListCloudsResponse](docs/ListCloudsResponse.md)
+ - [ListClustersResponse](docs/ListClustersResponse.md)
  - [ListImagesResponse](docs/ListImagesResponse.md)
  - [ListKeysResponse](docs/ListKeysResponse.md)
  - [ListLocationsResponse](docs/ListLocationsResponse.md)

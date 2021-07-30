@@ -4,6 +4,7 @@ README.md
 api/openapi.yaml
 api_clouds.go
 api_clouds_count.go
+api_clusters.go
 api_datapoints.go
 api_images.go
 api_jobs.go
@@ -47,6 +48,11 @@ docs/CloudSigmaCloudRequest.md
 docs/CloudSigmaCredentials.md
 docs/CloudsApi.md
 docs/CloudsCountApi.md
+docs/Cluster.md
+docs/ClusterProviders.md
+docs/ClustersApi.md
+docs/CreateClusterRequest.md
+docs/CreateClusterRequestAllOf.md
 docs/CreateMachineRequest.md
 docs/CreateMachineRequestDisks.md
 docs/CreateMachineResponse.md
@@ -78,6 +84,7 @@ docs/Expiration.md
 docs/ExpirationNotify.md
 docs/Frequency.md
 docs/GetCloudResponse.md
+docs/GetClusterResponse.md
 docs/GetDatapointsResponse.md
 docs/GetImageResponse.md
 docs/GetJobResponse.md
@@ -120,6 +127,7 @@ docs/LinodeCredentials.md
 docs/LinodeExtra.md
 docs/LinodeNet.md
 docs/ListCloudsResponse.md
+docs/ListClustersResponse.md
 docs/ListImagesResponse.md
 docs/ListKeysResponse.md
 docs/ListLocationsResponse.md
@@ -216,6 +224,10 @@ model_cloud.go
 model_cloud_features.go
 model_cloud_sigma_cloud_request.go
 model_cloud_sigma_credentials.go
+model_cluster.go
+model_cluster_providers.go
+model_create_cluster_request.go
+model_create_cluster_request_all_of.go
 model_create_machine_request.go
 model_create_machine_request_disks.go
 model_create_machine_response.go
@@ -246,6 +258,7 @@ model_expiration.go
 model_expiration_notify.go
 model_frequency.go
 model_get_cloud_response.go
+model_get_cluster_response.go
 model_get_datapoints_response.go
 model_get_image_response.go
 model_get_job_response.go
@@ -285,6 +298,7 @@ model_linode_credentials.go
 model_linode_extra.go
 model_linode_net.go
 model_list_clouds_response.go
+model_list_clusters_response.go
 model_list_images_response.go
 model_list_keys_response.go
 model_list_locations_response.go
