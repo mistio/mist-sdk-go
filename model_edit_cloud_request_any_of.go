@@ -17,17 +17,17 @@ import (
 
 // EditCloudRequestAnyOf struct for EditCloudRequestAnyOf
 type EditCloudRequestAnyOf struct {
-	// Updated title
-	Title string `json:"title"`
+	// Updated name
+	Name string `json:"name"`
 }
 
 // NewEditCloudRequestAnyOf instantiates a new EditCloudRequestAnyOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditCloudRequestAnyOf(title string, ) *EditCloudRequestAnyOf {
+func NewEditCloudRequestAnyOf(name string, ) *EditCloudRequestAnyOf {
 	this := EditCloudRequestAnyOf{}
-	this.Title = title
+	this.Name = name
 	return &this
 }
 
@@ -39,34 +39,34 @@ func NewEditCloudRequestAnyOfWithDefaults() *EditCloudRequestAnyOf {
 	return &this
 }
 
-// GetTitle returns the Title field value
-func (o *EditCloudRequestAnyOf) GetTitle() string {
+// GetName returns the Name field value
+func (o *EditCloudRequestAnyOf) GetName() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.Title
+	return o.Name
 }
 
-// GetTitleOk returns a tuple with the Title field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *EditCloudRequestAnyOf) GetTitleOk() (*string, bool) {
+func (o *EditCloudRequestAnyOf) GetNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Title, true
+	return &o.Name, true
 }
 
-// SetTitle sets field value
-func (o *EditCloudRequestAnyOf) SetTitle(v string) {
-	o.Title = v
+// SetName sets field value
+func (o *EditCloudRequestAnyOf) SetName(v string) {
+	o.Name = v
 }
 
 func (o EditCloudRequestAnyOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["title"] = o.Title
+		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
 }

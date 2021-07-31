@@ -275,7 +275,7 @@ func (r ApiEditCloudRequest) Execute() (*_nethttp.Response, error) {
 
 /*
  * EditCloud Edit cloud
- * Update target cloud title or credentials
+ * Update target cloud name or credentials
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param cloud
  * @return ApiEditCloudRequest

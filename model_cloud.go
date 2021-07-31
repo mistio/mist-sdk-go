@@ -18,7 +18,7 @@ import (
 // Cloud struct for Cloud
 type Cloud struct {
 	Id *string `json:"id,omitempty"`
-	Title *string `json:"title,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Provider *SupportedProviders `json:"provider,omitempty"`
 	Config *map[string]interface{} `json:"config,omitempty"`
 	Features *CloudFeatures `json:"features,omitempty"`
@@ -76,36 +76,36 @@ func (o *Cloud) SetId(v string) {
 	o.Id = &v
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *Cloud) GetTitle() string {
-	if o == nil || o.Title == nil {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *Cloud) GetName() string {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
-	return *o.Title
+	return *o.Name
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cloud) GetTitleOk() (*string, bool) {
-	if o == nil || o.Title == nil {
+func (o *Cloud) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
-	return o.Title, true
+	return o.Name, true
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *Cloud) HasTitle() bool {
-	if o != nil && o.Title != nil {
+// HasName returns a boolean if a field has been set.
+func (o *Cloud) HasName() bool {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *Cloud) SetTitle(v string) {
-	o.Title = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *Cloud) SetName(v string) {
+	o.Name = &v
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
@@ -305,8 +305,8 @@ func (o Cloud) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.Title != nil {
-		toSerialize["title"] = o.Title
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
 	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
