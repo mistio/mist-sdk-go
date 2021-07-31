@@ -18,7 +18,7 @@ import (
 // Rule struct for Rule
 type Rule struct {
 	Id *string `json:"id,omitempty"`
-	Title *string `json:"title,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Queries *map[string]interface{} `json:"queries,omitempty"`
 	Window *map[string]interface{} `json:"window,omitempty"`
 	Frequency *map[string]interface{} `json:"frequency,omitempty"`
@@ -77,36 +77,36 @@ func (o *Rule) SetId(v string) {
 	o.Id = &v
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *Rule) GetTitle() string {
-	if o == nil || o.Title == nil {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *Rule) GetName() string {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
-	return *o.Title
+	return *o.Name
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Rule) GetTitleOk() (*string, bool) {
-	if o == nil || o.Title == nil {
+func (o *Rule) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
-	return o.Title, true
+	return o.Name, true
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *Rule) HasTitle() bool {
-	if o != nil && o.Title != nil {
+// HasName returns a boolean if a field has been set.
+func (o *Rule) HasName() bool {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *Rule) SetTitle(v string) {
-	o.Title = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *Rule) SetName(v string) {
+	o.Name = &v
 }
 
 // GetQueries returns the Queries field value if set, zero value otherwise.
@@ -338,8 +338,8 @@ func (o Rule) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.Title != nil {
-		toSerialize["title"] = o.Title
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
 	if o.Queries != nil {
 		toSerialize["queries"] = o.Queries

@@ -18,7 +18,7 @@ import (
 // AddCloudRequest struct for AddCloudRequest
 type AddCloudRequest struct {
 	// The name of the cloud to add
-	Title string `json:"title"`
+	Name string `json:"name"`
 	Provider string `json:"provider"`
 	Credentials map[string]interface{} `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
@@ -28,9 +28,9 @@ type AddCloudRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddCloudRequest(title string, provider string, credentials map[string]interface{}, ) *AddCloudRequest {
+func NewAddCloudRequest(name string, provider string, credentials map[string]interface{}, ) *AddCloudRequest {
 	this := AddCloudRequest{}
-	this.Title = title
+	this.Name = name
 	this.Provider = provider
 	this.Credentials = credentials
 	return &this
@@ -44,28 +44,28 @@ func NewAddCloudRequestWithDefaults() *AddCloudRequest {
 	return &this
 }
 
-// GetTitle returns the Title field value
-func (o *AddCloudRequest) GetTitle() string {
+// GetName returns the Name field value
+func (o *AddCloudRequest) GetName() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.Title
+	return o.Name
 }
 
-// GetTitleOk returns a tuple with the Title field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *AddCloudRequest) GetTitleOk() (*string, bool) {
+func (o *AddCloudRequest) GetNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Title, true
+	return &o.Name, true
 }
 
-// SetTitle sets field value
-func (o *AddCloudRequest) SetTitle(v string) {
-	o.Title = v
+// SetName sets field value
+func (o *AddCloudRequest) SetName(v string) {
+	o.Name = v
 }
 
 // GetProvider returns the Provider field value
@@ -151,7 +151,7 @@ func (o *AddCloudRequest) SetFeatures(v CloudFeatures) {
 func (o AddCloudRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["title"] = o.Title
+		toSerialize["name"] = o.Name
 	}
 	if true {
 		toSerialize["provider"] = o.Provider

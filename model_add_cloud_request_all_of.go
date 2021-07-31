@@ -18,7 +18,7 @@ import (
 // AddCloudRequestAllOf struct for AddCloudRequestAllOf
 type AddCloudRequestAllOf struct {
 	// The name of the cloud to add
-	Title string `json:"title"`
+	Name string `json:"name"`
 	// The provider of the cloud
 	Provider string `json:"provider"`
 }
@@ -27,9 +27,9 @@ type AddCloudRequestAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddCloudRequestAllOf(title string, provider string, ) *AddCloudRequestAllOf {
+func NewAddCloudRequestAllOf(name string, provider string, ) *AddCloudRequestAllOf {
 	this := AddCloudRequestAllOf{}
-	this.Title = title
+	this.Name = name
 	this.Provider = provider
 	return &this
 }
@@ -42,28 +42,28 @@ func NewAddCloudRequestAllOfWithDefaults() *AddCloudRequestAllOf {
 	return &this
 }
 
-// GetTitle returns the Title field value
-func (o *AddCloudRequestAllOf) GetTitle() string {
+// GetName returns the Name field value
+func (o *AddCloudRequestAllOf) GetName() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.Title
+	return o.Name
 }
 
-// GetTitleOk returns a tuple with the Title field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *AddCloudRequestAllOf) GetTitleOk() (*string, bool) {
+func (o *AddCloudRequestAllOf) GetNameOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Title, true
+	return &o.Name, true
 }
 
-// SetTitle sets field value
-func (o *AddCloudRequestAllOf) SetTitle(v string) {
-	o.Title = v
+// SetName sets field value
+func (o *AddCloudRequestAllOf) SetName(v string) {
+	o.Name = v
 }
 
 // GetProvider returns the Provider field value
@@ -93,7 +93,7 @@ func (o *AddCloudRequestAllOf) SetProvider(v string) {
 func (o AddCloudRequestAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["title"] = o.Title
+		toSerialize["name"] = o.Name
 	}
 	if true {
 		toSerialize["provider"] = o.Provider
