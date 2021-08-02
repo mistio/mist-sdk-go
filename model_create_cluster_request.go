@@ -30,15 +30,15 @@ type CreateClusterRequest struct {
 	SubnetIds []string `json:"subnet_ids"`
 	// The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane
 	SecurityGroupIds []string `json:"security_group_ids"`
-	// The name of the zone to create the cluster in
-	Zone string `json:"zone"`
+	// The name of the location to create the cluster in
+	Location string `json:"location"`
 }
 
 // NewCreateClusterRequest instantiates a new CreateClusterRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateClusterRequest(name string, cloud string, provider string, roleArn string, vpcId string, subnetIds []string, securityGroupIds []string, zone string, ) *CreateClusterRequest {
+func NewCreateClusterRequest(name string, cloud string, provider string, roleArn string, vpcId string, subnetIds []string, securityGroupIds []string, location string, ) *CreateClusterRequest {
 	this := CreateClusterRequest{}
 	this.Name = name
 	this.Cloud = cloud
@@ -47,7 +47,7 @@ func NewCreateClusterRequest(name string, cloud string, provider string, roleArn
 	this.VpcId = vpcId
 	this.SubnetIds = subnetIds
 	this.SecurityGroupIds = securityGroupIds
-	this.Zone = zone
+	this.Location = location
 	return &this
 }
 
@@ -227,28 +227,28 @@ func (o *CreateClusterRequest) SetSecurityGroupIds(v []string) {
 	o.SecurityGroupIds = v
 }
 
-// GetZone returns the Zone field value
-func (o *CreateClusterRequest) GetZone() string {
+// GetLocation returns the Location field value
+func (o *CreateClusterRequest) GetLocation() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.Zone
+	return o.Location
 }
 
-// GetZoneOk returns a tuple with the Zone field value
+// GetLocationOk returns a tuple with the Location field value
 // and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetZoneOk() (*string, bool) {
+func (o *CreateClusterRequest) GetLocationOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Zone, true
+	return &o.Location, true
 }
 
-// SetZone sets field value
-func (o *CreateClusterRequest) SetZone(v string) {
-	o.Zone = v
+// SetLocation sets field value
+func (o *CreateClusterRequest) SetLocation(v string) {
+	o.Location = v
 }
 
 func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
@@ -275,7 +275,7 @@ func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["security_group_ids"] = o.SecurityGroupIds
 	}
 	if true {
-		toSerialize["zone"] = o.Zone
+		toSerialize["location"] = o.Location
 	}
 	return json.Marshal(toSerialize)
 }

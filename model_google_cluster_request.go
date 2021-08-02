@@ -18,18 +18,18 @@ import (
 // GoogleClusterRequest struct for GoogleClusterRequest
 type GoogleClusterRequest struct {
 	Provider string `json:"provider"`
-	// The name of the zone to create the cluster in
-	Zone string `json:"zone"`
+	// The name of the location to create the cluster in
+	Location string `json:"location"`
 }
 
 // NewGoogleClusterRequest instantiates a new GoogleClusterRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleClusterRequest(provider string, zone string, ) *GoogleClusterRequest {
+func NewGoogleClusterRequest(provider string, location string, ) *GoogleClusterRequest {
 	this := GoogleClusterRequest{}
 	this.Provider = provider
-	this.Zone = zone
+	this.Location = location
 	return &this
 }
 
@@ -65,28 +65,28 @@ func (o *GoogleClusterRequest) SetProvider(v string) {
 	o.Provider = v
 }
 
-// GetZone returns the Zone field value
-func (o *GoogleClusterRequest) GetZone() string {
+// GetLocation returns the Location field value
+func (o *GoogleClusterRequest) GetLocation() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.Zone
+	return o.Location
 }
 
-// GetZoneOk returns a tuple with the Zone field value
+// GetLocationOk returns a tuple with the Location field value
 // and a boolean to check if the value has been set.
-func (o *GoogleClusterRequest) GetZoneOk() (*string, bool) {
+func (o *GoogleClusterRequest) GetLocationOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Zone, true
+	return &o.Location, true
 }
 
-// SetZone sets field value
-func (o *GoogleClusterRequest) SetZone(v string) {
-	o.Zone = v
+// SetLocation sets field value
+func (o *GoogleClusterRequest) SetLocation(v string) {
+	o.Location = v
 }
 
 func (o GoogleClusterRequest) MarshalJSON() ([]byte, error) {
@@ -95,7 +95,7 @@ func (o GoogleClusterRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["provider"] = o.Provider
 	}
 	if true {
-		toSerialize["zone"] = o.Zone
+		toSerialize["location"] = o.Location
 	}
 	return json.Marshal(toSerialize)
 }
