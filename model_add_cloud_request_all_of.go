@@ -19,15 +19,14 @@ import (
 type AddCloudRequestAllOf struct {
 	// The name of the cloud to add
 	Name string `json:"name"`
-	// The provider of the cloud
-	Provider string `json:"provider"`
+	Provider SupportedProviders `json:"provider"`
 }
 
 // NewAddCloudRequestAllOf instantiates a new AddCloudRequestAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddCloudRequestAllOf(name string, provider string, ) *AddCloudRequestAllOf {
+func NewAddCloudRequestAllOf(name string, provider SupportedProviders, ) *AddCloudRequestAllOf {
 	this := AddCloudRequestAllOf{}
 	this.Name = name
 	this.Provider = provider
@@ -67,9 +66,9 @@ func (o *AddCloudRequestAllOf) SetName(v string) {
 }
 
 // GetProvider returns the Provider field value
-func (o *AddCloudRequestAllOf) GetProvider() string {
+func (o *AddCloudRequestAllOf) GetProvider() SupportedProviders {
 	if o == nil  {
-		var ret string
+		var ret SupportedProviders
 		return ret
 	}
 
@@ -78,7 +77,7 @@ func (o *AddCloudRequestAllOf) GetProvider() string {
 
 // GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
-func (o *AddCloudRequestAllOf) GetProviderOk() (*string, bool) {
+func (o *AddCloudRequestAllOf) GetProviderOk() (*SupportedProviders, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -86,7 +85,7 @@ func (o *AddCloudRequestAllOf) GetProviderOk() (*string, bool) {
 }
 
 // SetProvider sets field value
-func (o *AddCloudRequestAllOf) SetProvider(v string) {
+func (o *AddCloudRequestAllOf) SetProvider(v SupportedProviders) {
 	o.Provider = v
 }
 
