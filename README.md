@@ -288,6 +288,7 @@ Class | Method | HTTP request | Description
  - [OnappCredentials](docs/OnappCredentials.md)
  - [OneOffSchedule](docs/OneOffSchedule.md)
  - [OpenshiftCloudRequest](docs/OpenshiftCloudRequest.md)
+ - [OpenshiftCredentials](docs/OpenshiftCredentials.md)
  - [OpenstackCloudRequest](docs/OpenstackCloudRequest.md)
  - [OpenstackCredentials](docs/OpenstackCredentials.md)
  - [Org](docs/Org.md)

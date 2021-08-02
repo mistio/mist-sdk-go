@@ -18,7 +18,7 @@ import (
 // OpenshiftCloudRequest struct for OpenshiftCloudRequest
 type OpenshiftCloudRequest struct {
 	Provider string `json:"provider"`
-	Credentials KubernetesCredentials `json:"credentials"`
+	Credentials OpenshiftCredentials `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
 }
 
@@ -26,7 +26,7 @@ type OpenshiftCloudRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenshiftCloudRequest(provider string, credentials KubernetesCredentials, ) *OpenshiftCloudRequest {
+func NewOpenshiftCloudRequest(provider string, credentials OpenshiftCredentials, ) *OpenshiftCloudRequest {
 	this := OpenshiftCloudRequest{}
 	this.Provider = provider
 	this.Credentials = credentials
@@ -66,9 +66,9 @@ func (o *OpenshiftCloudRequest) SetProvider(v string) {
 }
 
 // GetCredentials returns the Credentials field value
-func (o *OpenshiftCloudRequest) GetCredentials() KubernetesCredentials {
+func (o *OpenshiftCloudRequest) GetCredentials() OpenshiftCredentials {
 	if o == nil  {
-		var ret KubernetesCredentials
+		var ret OpenshiftCredentials
 		return ret
 	}
 
@@ -77,7 +77,7 @@ func (o *OpenshiftCloudRequest) GetCredentials() KubernetesCredentials {
 
 // GetCredentialsOk returns a tuple with the Credentials field value
 // and a boolean to check if the value has been set.
-func (o *OpenshiftCloudRequest) GetCredentialsOk() (*KubernetesCredentials, bool) {
+func (o *OpenshiftCloudRequest) GetCredentialsOk() (*OpenshiftCredentials, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -85,7 +85,7 @@ func (o *OpenshiftCloudRequest) GetCredentialsOk() (*KubernetesCredentials, bool
 }
 
 // SetCredentials sets field value
-func (o *OpenshiftCloudRequest) SetCredentials(v KubernetesCredentials) {
+func (o *OpenshiftCloudRequest) SetCredentials(v OpenshiftCredentials) {
 	o.Credentials = v
 }
 
