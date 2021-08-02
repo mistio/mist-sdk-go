@@ -17,13 +17,13 @@ import (
 
 // OpenshiftCredentials struct for OpenshiftCredentials
 type OpenshiftCredentials struct {
-	// Your Kubernetes API host
+	// Your OpenShift API host
 	Host string `json:"host"`
-	// Your Kubernetes API port
+	// Your OpenShift API port
 	Port string `json:"port"`
-	// Your Kubernetes API username
+	// Your OpenShift API username
 	Username string `json:"username"`
-	// Your Kubernetes API password
+	// Your OpenShift API password
 	Password string `json:"password"`
 }
 
