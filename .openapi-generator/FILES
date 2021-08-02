@@ -36,6 +36,7 @@ docs/AddKeyResponse.md
 docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
 docs/AmazonCloudRequest.md
+docs/AmazonClusterRequest.md
 docs/AmazonCredentials.md
 docs/AmazonNet.md
 docs/AzureCloudRequest.md
@@ -100,6 +101,7 @@ docs/GetSizeResponse.md
 docs/GetVolumeResponse.md
 docs/GetZoneResponse.md
 docs/GoogleCloudRequest.md
+docs/GoogleClusterRequest.md
 docs/GoogleCredentials.md
 docs/GoogleNet.md
 docs/IbmCloudRequest.md
@@ -214,6 +216,7 @@ model_add_key_response.go
 model_alibaba_cloud_request.go
 model_alibaba_credentials.go
 model_amazon_cloud_request.go
+model_amazon_cluster_request.go
 model_amazon_credentials.go
 model_amazon_net.go
 model_azure_cloud_request.go
@@ -274,6 +277,7 @@ model_get_size_response.go
 model_get_volume_response.go
 model_get_zone_response.go
 model_google_cloud_request.go
+model_google_cluster_request.go
 model_google_credentials.go
 model_google_net.go
 model_ibm_cloud_request.go
