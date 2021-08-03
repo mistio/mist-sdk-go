@@ -138,26 +138,26 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*_
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteClusterRequest struct {
+type ApiDestroyClusterRequest struct {
 	ctx _context.Context
 	ApiService *ClustersApiService
 	cluster string
 }
 
 
-func (r ApiDeleteClusterRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.DeleteClusterExecute(r)
+func (r ApiDestroyClusterRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DestroyClusterExecute(r)
 }
 
 /*
- * DeleteCluster Delete cluster
- * Delete target clusters
+ * DestroyCluster Destroy cluster
+ * Destroy target clusters
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param cluster
- * @return ApiDeleteClusterRequest
+ * @return ApiDestroyClusterRequest
  */
-func (a *ClustersApiService) DeleteCluster(ctx _context.Context, cluster string) ApiDeleteClusterRequest {
-	return ApiDeleteClusterRequest{
+func (a *ClustersApiService) DestroyCluster(ctx _context.Context, cluster string) ApiDestroyClusterRequest {
+	return ApiDestroyClusterRequest{
 		ApiService: a,
 		ctx: ctx,
 		cluster: cluster,
@@ -167,7 +167,7 @@ func (a *ClustersApiService) DeleteCluster(ctx _context.Context, cluster string)
 /*
  * Execute executes the request
  */
-func (a *ClustersApiService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*_nethttp.Response, error) {
+func (a *ClustersApiService) DestroyClusterExecute(r ApiDestroyClusterRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -176,7 +176,7 @@ func (a *ClustersApiService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*_
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.DeleteCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.DestroyCluster")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
