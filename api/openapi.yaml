@@ -453,8 +453,8 @@ paths:
       - clusters
   /api/v2/clusters/{cluster}:
     delete:
-      description: Delete target clusters
-      operationId: delete-cluster
+      description: Destroy target clusters
+      operationId: destroy-cluster
       parameters:
       - explode: false
         in: path
@@ -465,7 +465,7 @@ paths:
         style: simple
       responses:
         "200":
-          description: Cluster deleted successfully
+          description: Cluster destruction successful
         "401":
           description: Authentication failed
         "403":
@@ -475,11 +475,11 @@ paths:
       security:
       - ApiKeyAuth:
         - read:cloud
-        - delete:cluster
+        - destroy:cluster
       - CookieAuth:
         - read:cloud
-        - delete:cluster
-      summary: Delete cluster
+        - destroy:cluster
+      summary: Destroy cluster
       tags:
       - clusters
     get:

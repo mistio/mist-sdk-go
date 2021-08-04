@@ -85,7 +85,7 @@ Class | Method | HTTP request | Description
 *CloudsApi* | [**ListClouds**](docs/CloudsApi.md#listclouds) | **Get** /api/v2/clouds | List clouds
 *CloudsCountApi* | [**GetOrg**](docs/CloudsCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *ClustersApi* | [**CreateCluster**](docs/ClustersApi.md#createcluster) | **Post** /api/v2/clusters | Create cluster
-*ClustersApi* | [**DeleteCluster**](docs/ClustersApi.md#deletecluster) | **Delete** /api/v2/clusters/{cluster} | Delete cluster
+*ClustersApi* | [**DestroyCluster**](docs/ClustersApi.md#destroycluster) | **Delete** /api/v2/clusters/{cluster} | Destroy cluster
 *ClustersApi* | [**GetCluster**](docs/ClustersApi.md#getcluster) | **Get** /api/v2/clusters/{cluster} | Get cluster
 *ClustersApi* | [**ListClusters**](docs/ClustersApi.md#listclusters) | **Get** /api/v2/clusters | List clusters
 *DatapointsApi* | [**GetDatapoints**](docs/DatapointsApi.md#getdatapoints) | **Get** /api/v2/datapoints | Get datapoints
