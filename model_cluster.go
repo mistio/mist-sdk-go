@@ -25,6 +25,7 @@ type Cluster struct {
 	TotalCpus *int32 `json:"total_cpus,omitempty"`
 	TotalMemory *int32 `json:"total_memory,omitempty"`
 	Location *string `json:"location,omitempty"`
+	Credentials *map[string]interface{} `json:"credentials,omitempty"`
 	Config *map[string]interface{} `json:"config,omitempty"`
 	Tags *map[string]interface{} `json:"tags,omitempty"`
 	CreatedBy *string `json:"created_by,omitempty"`
@@ -305,6 +306,38 @@ func (o *Cluster) SetLocation(v string) {
 	o.Location = &v
 }
 
+// GetCredentials returns the Credentials field value if set, zero value otherwise.
+func (o *Cluster) GetCredentials() map[string]interface{} {
+	if o == nil || o.Credentials == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Credentials
+}
+
+// GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetCredentialsOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Credentials == nil {
+		return nil, false
+	}
+	return o.Credentials, true
+}
+
+// HasCredentials returns a boolean if a field has been set.
+func (o *Cluster) HasCredentials() bool {
+	if o != nil && o.Credentials != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentials gets a reference to the given map[string]interface{} and assigns it to the Credentials field.
+func (o *Cluster) SetCredentials(v map[string]interface{}) {
+	o.Credentials = &v
+}
+
 // GetConfig returns the Config field value if set, zero value otherwise.
 func (o *Cluster) GetConfig() map[string]interface{} {
 	if o == nil || o.Config == nil {
@@ -490,6 +523,9 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	}
 	if o.Location != nil {
 		toSerialize["location"] = o.Location
+	}
+	if o.Credentials != nil {
+		toSerialize["credentials"] = o.Credentials
 	}
 	if o.Config != nil {
 		toSerialize["config"] = o.Config
