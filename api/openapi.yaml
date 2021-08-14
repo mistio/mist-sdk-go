@@ -3725,14 +3725,6 @@ paths:
         on secret.
       operationId: list-secrets
       parameters:
-      - description: Only return secrets under this path
-        explode: true
-        in: query
-        name: path
-        required: false
-        schema:
-          type: string
-        style: form
       - description: Only return results matching search filter
         examples:
           Filter by name:
@@ -5264,7 +5256,6 @@ components:
       type: object
     Cluster:
       example:
-        credentials: '{}'
         total_cpus: 6
         owned_by: owned_by
         created_by: created_by
@@ -5294,8 +5285,6 @@ components:
           type: integer
         location:
           type: string
-        credentials:
-          type: object
         config:
           type: object
         tags:
@@ -6044,7 +6033,6 @@ components:
     GetClusterResponse:
       example:
         data:
-          credentials: '{}'
           total_cpus: 6
           owned_by: owned_by
           created_by: created_by
@@ -6885,8 +6873,7 @@ components:
     ListClustersResponse:
       example:
         data:
-        - credentials: '{}'
-          total_cpus: 6
+        - total_cpus: 6
           owned_by: owned_by
           created_by: created_by
           tags: '{}'
@@ -6898,8 +6885,7 @@ components:
           location: location
           id: id
           config: '{}'
-        - credentials: '{}'
-          total_cpus: 6
+        - total_cpus: 6
           owned_by: owned_by
           created_by: created_by
           tags: '{}'

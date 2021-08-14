@@ -513,7 +513,6 @@ func (a *SecretsApiService) GetSecretExecute(r ApiGetSecretRequest) (GetSecretRe
 type ApiListSecretsRequest struct {
 	ctx _context.Context
 	ApiService *SecretsApiService
-	path *string
 	search *string
 	sort *string
 	start *string
@@ -521,10 +520,6 @@ type ApiListSecretsRequest struct {
 	only *string
 }
 
-func (r ApiListSecretsRequest) Path(path string) ApiListSecretsRequest {
-	r.path = &path
-	return r
-}
 func (r ApiListSecretsRequest) Search(search string) ApiListSecretsRequest {
 	r.search = &search
 	return r
@@ -588,9 +583,6 @@ func (a *SecretsApiService) ListSecretsExecute(r ApiListSecretsRequest) (ListSec
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if r.path != nil {
-		localVarQueryParams.Add("path", parameterToString(*r.path, ""))
-	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
