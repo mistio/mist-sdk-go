@@ -3719,6 +3719,236 @@ paths:
       summary: Edit script
       tags:
       - scripts
+  /api/v2/secrets:
+    get:
+      description: List secrets owned by the active org. READ permission required
+        on secret.
+      operationId: list-secrets
+      parameters:
+      - description: Only return results matching search filter
+        examples:
+          Filter by name:
+            value: name:clouds/EC2-Tokyo
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Order results by
+        examples:
+          Sort by name, descending:
+            value: -name
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Start results from index or id
+        examples:
+          Start from the 50th result:
+            value: "50"
+          Start from item with id xyz:
+            value: xyz
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Limit number of results, 1000 max
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Only return these fields
+        examples:
+          Only return id:
+            value: id
+          Return id, name & created_by:
+            value: id,title,created_by
+        explode: true
+        in: query
+        name: only
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSecretsResponse'
+          description: List secrets response
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - read:secret
+      - CookieAuth:
+        - read:secret
+      summary: List secrets
+      tags:
+      - secrets
+      x-cli-table-default:
+      - id
+      - name
+      - tags
+      x-cli-table-extended:
+      - id
+      - name
+      - tags
+      - owned_by
+      - created_by
+    post:
+      description: Creates a new secret and returns the secret's id. CREATE permission
+        required on secret.
+      operationId: create-secret
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSecretRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: Secret added succesfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "409":
+          description: Path already exists. Change name of key
+      security:
+      - ApiKeyAuth:
+        - create:secret
+      - CookieAuth:
+        - create:secret
+      summary: Create secret
+      tags:
+      - secrets
+  /api/v2/secrets/{secret}:
+    delete:
+      description: Delete target secret
+      operationId: delete-secret
+      parameters:
+      - explode: false
+        in: path
+        name: secret
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Secret deleted successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Secret not found
+      security:
+      - ApiKeyAuth:
+        - delete:secret
+      - CookieAuth:
+        - delete:secret
+      summary: Delete secret
+      tags:
+      - secrets
+    get:
+      description: Read target secret
+      operationId: get-secret
+      parameters:
+      - explode: false
+        in: path
+        name: secret
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Return the secret's value. Requires READ_VALUE permission on
+          secret.
+        explode: true
+        in: query
+        name: value
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSecretResponse'
+          description: Secret returned successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Secret not found
+      security:
+      - ApiKeyAuth:
+        - read:secret
+      - CookieAuth:
+        - read:secret
+      summary: Get secret
+      tags:
+      - secrets
+    put:
+      description: Edit/update target secret
+      operationId: edit-secret
+      parameters:
+      - explode: false
+        in: path
+        name: secret
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditSecretRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: Secret edited successfully
+        "400":
+          description: Missing `secret` required parameter
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Secret not found
+      security:
+      - ApiKeyAuth:
+        - edit:secret
+      - CookieAuth:
+        - edit:secret
+      summary: Edit secret
+      tags:
+      - secrets
   /api/v2/sizes:
     get:
       description: List sizes owned by the active org. READ permission required on
@@ -5026,7 +5256,6 @@ components:
       type: object
     Cluster:
       example:
-        credentials: '{}'
         total_cpus: 6
         owned_by: owned_by
         created_by: created_by
@@ -5056,8 +5285,6 @@ components:
           type: integer
         location:
           type: string
-        credentials:
-          type: object
         config:
           type: object
         tags:
@@ -5334,6 +5561,21 @@ components:
       oneOf:
       - $ref: '#/components/schemas/CreateMachineResponse_oneOf'
       - $ref: '#/components/schemas/CreateMachineResponse_oneOf_1'
+      type: object
+    CreateSecretRequest:
+      example:
+        name: name
+        secret: '{}'
+      properties:
+        name:
+          description: The name of the secret. This is equivalent to the path the
+            secret will be stored in Vault
+          type: string
+        secret:
+          type: object
+      required:
+      - name
+      - secret
       type: object
     CreateSnapshotResponse:
       type: object
@@ -5650,6 +5892,15 @@ components:
       required:
       - name
       type: object
+    EditSecretRequest:
+      example:
+        secret: '{}'
+      properties:
+        secret:
+          type: object
+      required:
+      - secret
+      type: object
     EquinixCloudRequest:
       properties:
         provider:
@@ -5782,7 +6033,6 @@ components:
     GetClusterResponse:
       example:
         data:
-          credentials: '{}'
           total_cpus: 6
           owned_by: owned_by
           created_by: created_by
@@ -6047,6 +6297,25 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Script'
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
+      type: object
+    GetSecretResponse:
+      example:
+        data:
+          name: name
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+          tags: '{}'
+        meta:
+          total: 0
+          start: 1
+          sort: sort
+          returned: 6
+      properties:
+        data:
+          $ref: '#/components/schemas/Secret'
         meta:
           $ref: '#/components/schemas/ResponseMetadata'
       type: object
@@ -6604,8 +6873,7 @@ components:
     ListClustersResponse:
       example:
         data:
-        - credentials: '{}'
-          total_cpus: 6
+        - total_cpus: 6
           owned_by: owned_by
           created_by: created_by
           tags: '{}'
@@ -6617,8 +6885,7 @@ components:
           location: location
           id: id
           config: '{}'
-        - credentials: '{}'
-          total_cpus: 6
+        - total_cpus: 6
           owned_by: owned_by
           created_by: created_by
           tags: '{}'
@@ -6983,6 +7250,32 @@ components:
         data:
           items:
             $ref: '#/components/schemas/Script'
+          type: array
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
+      type: object
+    ListSecretsResponse:
+      example:
+        data:
+        - name: name
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+          tags: '{}'
+        - name: name
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+          tags: '{}'
+        meta:
+          total: 0
+          start: 1
+          sort: sort
+          returned: 6
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Secret'
           type: array
         meta:
           $ref: '#/components/schemas/ResponseMetadata'
@@ -7674,6 +7967,25 @@ components:
         name:
           type: string
         description:
+          type: string
+        tags:
+          type: object
+        created_by:
+          type: string
+        owned_by:
+          type: string
+      type: object
+    Secret:
+      example:
+        name: name
+        owned_by: owned_by
+        id: id
+        created_by: created_by
+        tags: '{}'
+      properties:
+        id:
+          type: string
+        name:
           type: string
         tags:
           type: object
