@@ -291,6 +291,7 @@ Class | Method | HTTP request | Description
  - [OpenshiftCredentials](docs/OpenshiftCredentials.md)
  - [OpenstackCloudRequest](docs/OpenstackCloudRequest.md)
  - [OpenstackCredentials](docs/OpenstackCredentials.md)
+ - [OpenstackNet](docs/OpenstackNet.md)
  - [Org](docs/Org.md)
  - [OtherCloudRequest](docs/OtherCloudRequest.md)
  - [PostDeployScript](docs/PostDeployScript.md)
