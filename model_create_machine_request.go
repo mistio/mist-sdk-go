@@ -29,12 +29,12 @@ type CreateMachineRequest struct {
 	// Operating System image to boot from
 	Image OneOfobjectstring `json:"image"`
 	// Specify network configuration parameters
-	Net *AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNet `json:"net,omitempty"`
+	Net *AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNet `json:"net,omitempty"`
 	// Associate SSH key
 	Key *OneOfobjectstring `json:"key,omitempty"`
 	Disks *CreateMachineRequestDisks `json:"disks,omitempty"`
 	// Configure of attached storage volumes, e.g. cloud disks
-	Volumes *AnyOfarrayarrayarrayarrayarrayarray `json:"volumes,omitempty"`
+	Volumes *AnyOfarrayarrayarrayarrayarrayarrayarray `json:"volumes,omitempty"`
 	// Add DNS A Record that points machine's public IP to this Fully Qualified Domain Name. Zone needs to be managed by a configured Cloud DNS provider
 	Fqdn *string `json:"fqdn,omitempty"`
 	// Run this Cloud Init script on first boot
@@ -248,9 +248,9 @@ func (o *CreateMachineRequest) SetImage(v OneOfobjectstring) {
 }
 
 // GetNet returns the Net field value if set, zero value otherwise.
-func (o *CreateMachineRequest) GetNet() AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNet {
+func (o *CreateMachineRequest) GetNet() AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNet {
 	if o == nil || o.Net == nil {
-		var ret AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNet
+		var ret AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNet
 		return ret
 	}
 	return *o.Net
@@ -258,7 +258,7 @@ func (o *CreateMachineRequest) GetNet() AnyOfAmazonNetAzureNetEquinixMetalNetGoo
 
 // GetNetOk returns a tuple with the Net field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateMachineRequest) GetNetOk() (*AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNet, bool) {
+func (o *CreateMachineRequest) GetNetOk() (*AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNet, bool) {
 	if o == nil || o.Net == nil {
 		return nil, false
 	}
@@ -274,8 +274,8 @@ func (o *CreateMachineRequest) HasNet() bool {
 	return false
 }
 
-// SetNet gets a reference to the given AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNet and assigns it to the Net field.
-func (o *CreateMachineRequest) SetNet(v AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNet) {
+// SetNet gets a reference to the given AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNet and assigns it to the Net field.
+func (o *CreateMachineRequest) SetNet(v AnyOfAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNet) {
 	o.Net = &v
 }
 
@@ -344,9 +344,9 @@ func (o *CreateMachineRequest) SetDisks(v CreateMachineRequestDisks) {
 }
 
 // GetVolumes returns the Volumes field value if set, zero value otherwise.
-func (o *CreateMachineRequest) GetVolumes() AnyOfarrayarrayarrayarrayarrayarray {
+func (o *CreateMachineRequest) GetVolumes() AnyOfarrayarrayarrayarrayarrayarrayarray {
 	if o == nil || o.Volumes == nil {
-		var ret AnyOfarrayarrayarrayarrayarrayarray
+		var ret AnyOfarrayarrayarrayarrayarrayarrayarray
 		return ret
 	}
 	return *o.Volumes
@@ -354,7 +354,7 @@ func (o *CreateMachineRequest) GetVolumes() AnyOfarrayarrayarrayarrayarrayarray 
 
 // GetVolumesOk returns a tuple with the Volumes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateMachineRequest) GetVolumesOk() (*AnyOfarrayarrayarrayarrayarrayarray, bool) {
+func (o *CreateMachineRequest) GetVolumesOk() (*AnyOfarrayarrayarrayarrayarrayarrayarray, bool) {
 	if o == nil || o.Volumes == nil {
 		return nil, false
 	}
@@ -370,8 +370,8 @@ func (o *CreateMachineRequest) HasVolumes() bool {
 	return false
 }
 
-// SetVolumes gets a reference to the given AnyOfarrayarrayarrayarrayarrayarray and assigns it to the Volumes field.
-func (o *CreateMachineRequest) SetVolumes(v AnyOfarrayarrayarrayarrayarrayarray) {
+// SetVolumes gets a reference to the given AnyOfarrayarrayarrayarrayarrayarrayarray and assigns it to the Volumes field.
+func (o *CreateMachineRequest) SetVolumes(v AnyOfarrayarrayarrayarrayarrayarrayarray) {
 	o.Volumes = &v
 }
 
