@@ -155,7 +155,8 @@ paths:
       description: Delete target cloud
       operationId: delete-cloud
       parameters:
-      - explode: false
+      - example: example_cloud
+        explode: false
         in: path
         name: cloud
         required: true
@@ -183,7 +184,8 @@ paths:
       description: Get details about target cloud
       operationId: get-cloud
       parameters:
-      - explode: false
+      - example: example_cloud
+        explode: false
         in: path
         name: cloud
         required: true
@@ -266,7 +268,8 @@ paths:
       description: Update target cloud name or credentials
       operationId: edit-cloud
       parameters:
-      - explode: false
+      - example: example_cloud
+        explode: false
         in: path
         name: cloud
         required: true
@@ -4677,7 +4680,7 @@ components:
         - $ref: '#/components/schemas/OpenshiftCloudRequest'
         - $ref: '#/components/schemas/OtherCloudRequest'
       example:
-        name: example_aws_cloud
+        name: example_cloud
         provider: amazon
         credentials:
           apikey: apikey
