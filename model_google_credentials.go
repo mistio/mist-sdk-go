@@ -22,14 +22,14 @@ type GoogleCredentials struct {
 	// Your GCP private key
 	PrivateKey string `json:"privateKey"`
 	// Your GCP client email
-	Email Email `json:"email"`
+	Email string `json:"email"`
 }
 
 // NewGoogleCredentials instantiates a new GoogleCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleCredentials(projectId string, privateKey string, email Email, ) *GoogleCredentials {
+func NewGoogleCredentials(projectId string, privateKey string, email string, ) *GoogleCredentials {
 	this := GoogleCredentials{}
 	this.ProjectId = projectId
 	this.PrivateKey = privateKey
@@ -94,9 +94,9 @@ func (o *GoogleCredentials) SetPrivateKey(v string) {
 }
 
 // GetEmail returns the Email field value
-func (o *GoogleCredentials) GetEmail() Email {
+func (o *GoogleCredentials) GetEmail() string {
 	if o == nil  {
-		var ret Email
+		var ret string
 		return ret
 	}
 
@@ -105,7 +105,7 @@ func (o *GoogleCredentials) GetEmail() Email {
 
 // GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
-func (o *GoogleCredentials) GetEmailOk() (*Email, bool) {
+func (o *GoogleCredentials) GetEmailOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -113,7 +113,7 @@ func (o *GoogleCredentials) GetEmailOk() (*Email, bool) {
 }
 
 // SetEmail sets field value
-func (o *GoogleCredentials) SetEmail(v Email) {
+func (o *GoogleCredentials) SetEmail(v string) {
 	o.Email = v
 }
 

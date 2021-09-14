@@ -6186,7 +6186,7 @@ components:
           type: string
         email:
           description: Your GCP client email
-          type: email
+          type: string
       required:
       - email
       - privateKey
