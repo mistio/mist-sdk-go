@@ -21,16 +21,19 @@ type GoogleCredentials struct {
 	ProjectId string `json:"projectId"`
 	// Your GCP private key
 	PrivateKey string `json:"privateKey"`
+	// Your GCP client email
+	Email Email `json:"email"`
 }
 
 // NewGoogleCredentials instantiates a new GoogleCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleCredentials(projectId string, privateKey string, ) *GoogleCredentials {
+func NewGoogleCredentials(projectId string, privateKey string, email Email, ) *GoogleCredentials {
 	this := GoogleCredentials{}
 	this.ProjectId = projectId
 	this.PrivateKey = privateKey
+	this.Email = email
 	return &this
 }
 
@@ -90,6 +93,30 @@ func (o *GoogleCredentials) SetPrivateKey(v string) {
 	o.PrivateKey = v
 }
 
+// GetEmail returns the Email field value
+func (o *GoogleCredentials) GetEmail() Email {
+	if o == nil  {
+		var ret Email
+		return ret
+	}
+
+	return o.Email
+}
+
+// GetEmailOk returns a tuple with the Email field value
+// and a boolean to check if the value has been set.
+func (o *GoogleCredentials) GetEmailOk() (*Email, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Email, true
+}
+
+// SetEmail sets field value
+func (o *GoogleCredentials) SetEmail(v Email) {
+	o.Email = v
+}
+
 func (o GoogleCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -97,6 +124,9 @@ func (o GoogleCredentials) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["privateKey"] = o.PrivateKey
+	}
+	if true {
+		toSerialize["email"] = o.Email
 	}
 	return json.Marshal(toSerialize)
 }
