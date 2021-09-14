@@ -35,6 +35,7 @@ docs/AddKeyRequestAnyOf2.md
 docs/AddKeyResponse.md
 docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
+docs/AlibabaNet.md
 docs/AmazonCloudRequest.md
 docs/AmazonClusterRequest.md
 docs/AmazonCredentials.md
@@ -217,6 +218,7 @@ model_add_key_request_any_of_2.go
 model_add_key_response.go
 model_alibaba_cloud_request.go
 model_alibaba_credentials.go
+model_alibaba_net.go
 model_amazon_cloud_request.go
 model_amazon_cluster_request.go
 model_amazon_credentials.go
