@@ -17,7 +17,7 @@ import (
 
 // AlibabaNet struct for AlibabaNet
 type AlibabaNet struct {
-	// Name or ID of an existing or new network to associate the machine with. If not provided a default 'mistio' network will be created.
+	// Name or ID of an existing network to associate the machine with. If not provided, one existing network will be selected.
 	Network *string `json:"network,omitempty"`
 	// Name or ID of an existing or new subnet(switch) to launch the machine into. If not provided a default 'mistio' subnet will be created.
 	Subnet *string `json:"subnet,omitempty"`
