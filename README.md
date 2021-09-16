@@ -171,6 +171,7 @@ Class | Method | HTTP request | Description
  - [AddKeyResponse](docs/AddKeyResponse.md)
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)
  - [AlibabaCredentials](docs/AlibabaCredentials.md)
+ - [AlibabaNet](docs/AlibabaNet.md)
  - [AmazonCloudRequest](docs/AmazonCloudRequest.md)
  - [AmazonClusterRequest](docs/AmazonClusterRequest.md)
  - [AmazonCredentials](docs/AmazonCredentials.md)
