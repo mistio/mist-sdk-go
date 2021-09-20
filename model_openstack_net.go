@@ -21,7 +21,7 @@ type OpenstackNet struct {
 	SecurityGroups *[]string `json:"security_groups,omitempty"`
 	// Name or ID of the networks to launch the machine into. Required parameter when there are multiple networks defined for the tenant
 	Networks *[]string `json:"networks,omitempty"`
-	// Assign a floating IP to the machine, defaults to True
+	// Assign a floating IP to the machine, defaults to True for Openstack and False for Vexxhost
 	AssociateFloatingIp *bool `json:"associate_floating_ip,omitempty"`
 }
 
