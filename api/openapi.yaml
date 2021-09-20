@@ -7513,9 +7513,10 @@ components:
             type: string
           type: array
         associate_floating_ip:
-          description: Assign a floating IP to the machine, defaults to True
+          description: Assign a floating IP to the machine, defaults to True for Openstack
+            and False for Vexxhost
           type: boolean
-      title: Openstack net parameter
+      title: Openstack & Vexxhost net parameter
       type: object
     OpenstackVolumes:
       items:
@@ -7550,7 +7551,7 @@ components:
           required:
           - size
         type: object
-      title: Openstack volumes parameter
+      title: Openstack & Vexxhost volumes parameter
       type: array
     Org:
       example:
@@ -7855,6 +7856,7 @@ components:
       - openstack
       - onapp
       - vsphere
+      - vexxhost
       - vcloud
       - kvm
       - lxd
