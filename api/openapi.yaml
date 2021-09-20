@@ -7856,6 +7856,7 @@ components:
       - openstack
       - onapp
       - vsphere
+      - vexxhost
       - vcloud
       - kvm
       - lxd
