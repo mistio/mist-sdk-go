@@ -17,10 +17,10 @@ import (
 
 // VultrExtra struct for VultrExtra
 type VultrExtra struct {
-	// Enable automatic backups for the instance, invalid for \"Bare Metal\" & \"Dedicated Cloud\" size types. There is an additional charge depending on the size selected
+	// Enable automatic backups for the machine, invalid for \"Bare Metal\" & \"Dedicated Cloud\" size types. There is an additional charge depending on the size selected
 	Backups *bool `json:"backups,omitempty"`
 	// Enable DDoS protection, invalid for \"Bare Metal\" size type. There is an additional charge depending on the type of the size selected
-	DdosProtection interface{} `json:"ddos_protection,omitempty"`
+	DdosProtection *bool `json:"ddos_protection,omitempty"`
 }
 
 // NewVultrExtra instantiates a new VultrExtra object
@@ -72,23 +72,22 @@ func (o *VultrExtra) SetBackups(v bool) {
 	o.Backups = &v
 }
 
-// GetDdosProtection returns the DdosProtection field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VultrExtra) GetDdosProtection() interface{} {
-	if o == nil  {
-		var ret interface{}
+// GetDdosProtection returns the DdosProtection field value if set, zero value otherwise.
+func (o *VultrExtra) GetDdosProtection() bool {
+	if o == nil || o.DdosProtection == nil {
+		var ret bool
 		return ret
 	}
-	return o.DdosProtection
+	return *o.DdosProtection
 }
 
 // GetDdosProtectionOk returns a tuple with the DdosProtection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VultrExtra) GetDdosProtectionOk() (*interface{}, bool) {
+func (o *VultrExtra) GetDdosProtectionOk() (*bool, bool) {
 	if o == nil || o.DdosProtection == nil {
 		return nil, false
 	}
-	return &o.DdosProtection, true
+	return o.DdosProtection, true
 }
 
 // HasDdosProtection returns a boolean if a field has been set.
@@ -100,9 +99,9 @@ func (o *VultrExtra) HasDdosProtection() bool {
 	return false
 }
 
-// SetDdosProtection gets a reference to the given interface{} and assigns it to the DdosProtection field.
-func (o *VultrExtra) SetDdosProtection(v interface{}) {
-	o.DdosProtection = v
+// SetDdosProtection gets a reference to the given bool and assigns it to the DdosProtection field.
+func (o *VultrExtra) SetDdosProtection(v bool) {
+	o.DdosProtection = &v
 }
 
 func (o VultrExtra) MarshalJSON() ([]byte, error) {
