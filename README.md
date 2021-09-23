@@ -318,6 +318,8 @@ Class | Method | HTTP request | Description
  - [VsphereCredentials](docs/VsphereCredentials.md)
  - [VultrCloudRequest](docs/VultrCloudRequest.md)
  - [VultrCredentials](docs/VultrCredentials.md)
+ - [VultrExtra](docs/VultrExtra.md)
+ - [VultrNet](docs/VultrNet.md)
  - [Window](docs/Window.md)
  - [Zone](docs/Zone.md)
 
