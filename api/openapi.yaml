@@ -4643,7 +4643,6 @@ components:
             openstack: '#/components/schemas/OpenstackCloudRequest'
             onapp: '#/components/schemas/OnappCloudRequest'
             vsphere: '#/components/schemas/VsphereCloudRequest'
-            vcloud: '#/components/schemas/VcloudCloudRequest'
             kvm: '#/components/schemas/KvmCloudRequest'
             lxd: '#/components/schemas/LxdCloudRequest'
             docker: '#/components/schemas/DockerCloudRequest'
@@ -4668,7 +4667,6 @@ components:
         - $ref: '#/components/schemas/OpenstackCloudRequest'
         - $ref: '#/components/schemas/OnappCloudRequest'
         - $ref: '#/components/schemas/VsphereCloudRequest'
-        - $ref: '#/components/schemas/VcloudCloudRequest'
         - $ref: '#/components/schemas/KvmCloudRequest'
         - $ref: '#/components/schemas/LxdCloudRequest'
         - $ref: '#/components/schemas/DockerCloudRequest'
@@ -5670,7 +5668,6 @@ components:
               openstack: '#/components/schemas/OpenstackCloudRequest'
               onapp: '#/components/schemas/OnappCloudRequest'
               vsphere: '#/components/schemas/VsphereCloudRequest'
-              vcloud: '#/components/schemas/VcloudCloudRequest'
               kvm: '#/components/schemas/KvmCloudRequest'
               lxd: '#/components/schemas/LxdCloudRequest'
               docker: '#/components/schemas/DockerCloudRequest'
@@ -5695,7 +5692,6 @@ components:
           - $ref: '#/components/schemas/OpenstackCloudRequest'
           - $ref: '#/components/schemas/OnappCloudRequest'
           - $ref: '#/components/schemas/VsphereCloudRequest'
-          - $ref: '#/components/schemas/VcloudCloudRequest'
           - $ref: '#/components/schemas/KvmCloudRequest'
           - $ref: '#/components/schemas/LxdCloudRequest'
           - $ref: '#/components/schemas/DockerCloudRequest'
@@ -7860,7 +7856,6 @@ components:
       - onapp
       - vsphere
       - vexxhost
-      - vcloud
       - kvm
       - lxd
       - docker
@@ -7945,40 +7940,6 @@ components:
           type: string
         registration_date:
           type: string
-      type: object
-    VcloudCloudRequest:
-      properties:
-        provider:
-          enum:
-          - vcloud
-          type: string
-        credentials:
-          $ref: '#/components/schemas/VcloudCredentials'
-        features:
-          $ref: '#/components/schemas/CloudFeatures'
-      required:
-      - credentials
-      - provider
-      type: object
-    VcloudCredentials:
-      properties:
-        host:
-          description: Your vCloud host
-          type: string
-        port:
-          description: Your vCloud port
-          type: string
-        username:
-          description: Your vCloud username
-          type: string
-        password:
-          description: Your vCloud password
-          type: string
-      required:
-      - host
-      - password
-      - port
-      - username
       type: object
     Vector:
       oneOf:
