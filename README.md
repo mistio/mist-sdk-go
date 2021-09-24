@@ -310,6 +310,8 @@ Class | Method | HTTP request | Description
  - [Team](docs/Team.md)
  - [TriggerAfter](docs/TriggerAfter.md)
  - [User](docs/User.md)
+ - [VSphereExtra](docs/VSphereExtra.md)
+ - [VSphereNet](docs/VSphereNet.md)
  - [Vector](docs/Vector.md)
  - [Volume](docs/Volume.md)
  - [VsphereCloudRequest](docs/VsphereCloudRequest.md)
