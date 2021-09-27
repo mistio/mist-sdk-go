@@ -79,10 +79,10 @@ All URIs are relative to *https://mist.io*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *CloudsApi* | [**AddCloud**](docs/CloudsApi.md#addcloud) | **Post** /api/v2/clouds | Add cloud
-*CloudsApi* | [**DeleteCloud**](docs/CloudsApi.md#deletecloud) | **Delete** /api/v2/clouds/{cloud} | Delete cloud
 *CloudsApi* | [**EditCloud**](docs/CloudsApi.md#editcloud) | **Put** /api/v2/clouds/{cloud} | Edit cloud
 *CloudsApi* | [**GetCloud**](docs/CloudsApi.md#getcloud) | **Get** /api/v2/clouds/{cloud} | Get cloud
 *CloudsApi* | [**ListClouds**](docs/CloudsApi.md#listclouds) | **Get** /api/v2/clouds | List clouds
+*CloudsApi* | [**RemoveCloud**](docs/CloudsApi.md#removecloud) | **Delete** /api/v2/clouds/{cloud} | Remove cloud
 *CloudsCountApi* | [**GetOrg**](docs/CloudsCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *ClustersApi* | [**CreateCluster**](docs/ClustersApi.md#createcluster) | **Post** /api/v2/clusters | Create cluster
 *ClustersApi* | [**DestroyCluster**](docs/ClustersApi.md#destroycluster) | **Delete** /api/v2/clusters/{cluster} | Destroy cluster
@@ -310,6 +310,8 @@ Class | Method | HTTP request | Description
  - [Team](docs/Team.md)
  - [TriggerAfter](docs/TriggerAfter.md)
  - [User](docs/User.md)
+ - [VSphereExtra](docs/VSphereExtra.md)
+ - [VSphereNet](docs/VSphereNet.md)
  - [Vector](docs/Vector.md)
  - [Volume](docs/Volume.md)
  - [VsphereCloudRequest](docs/VsphereCloudRequest.md)

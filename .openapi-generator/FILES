@@ -194,6 +194,8 @@ docs/TotalMachineCountApi.md
 docs/TriggerAfter.md
 docs/User.md
 docs/UsersApi.md
+docs/VSphereExtra.md
+docs/VSphereNet.md
 docs/Vector.md
 docs/Volume.md
 docs/VolumesApi.md
@@ -357,6 +359,8 @@ model_supported_providers.go
 model_team.go
 model_trigger_after.go
 model_user.go
+model_v_sphere_extra.go
+model_v_sphere_net.go
 model_vector.go
 model_volume.go
 model_vsphere_cloud_request.go
