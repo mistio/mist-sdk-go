@@ -34,7 +34,7 @@ type CreateMachineRequest struct {
 	Key *OneOfobjectstring `json:"key,omitempty"`
 	Disks *CreateMachineRequestDisks `json:"disks,omitempty"`
 	// Configure of attached storage volumes, e.g. cloud disks
-	Volumes *AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarray `json:"volumes,omitempty"`
+	Volumes *AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray `json:"volumes,omitempty"`
 	// Add DNS A Record that points machine's public IP to this Fully Qualified Domain Name. Zone needs to be managed by a configured Cloud DNS provider
 	Fqdn *string `json:"fqdn,omitempty"`
 	// Run this Cloud Init script on first boot
@@ -344,9 +344,9 @@ func (o *CreateMachineRequest) SetDisks(v CreateMachineRequestDisks) {
 }
 
 // GetVolumes returns the Volumes field value if set, zero value otherwise.
-func (o *CreateMachineRequest) GetVolumes() AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarray {
+func (o *CreateMachineRequest) GetVolumes() AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray {
 	if o == nil || o.Volumes == nil {
-		var ret AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarray
+		var ret AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray
 		return ret
 	}
 	return *o.Volumes
@@ -354,7 +354,7 @@ func (o *CreateMachineRequest) GetVolumes() AnyOfarrayarrayarrayarrayarrayarraya
 
 // GetVolumesOk returns a tuple with the Volumes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateMachineRequest) GetVolumesOk() (*AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarray, bool) {
+func (o *CreateMachineRequest) GetVolumesOk() (*AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray, bool) {
 	if o == nil || o.Volumes == nil {
 		return nil, false
 	}
@@ -370,8 +370,8 @@ func (o *CreateMachineRequest) HasVolumes() bool {
 	return false
 }
 
-// SetVolumes gets a reference to the given AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarray and assigns it to the Volumes field.
-func (o *CreateMachineRequest) SetVolumes(v AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarray) {
+// SetVolumes gets a reference to the given AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray and assigns it to the Volumes field.
+func (o *CreateMachineRequest) SetVolumes(v AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray) {
 	o.Volumes = &v
 }
 
