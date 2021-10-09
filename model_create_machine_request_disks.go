@@ -17,7 +17,7 @@ import (
 
 // CreateMachineRequestDisks Configure local disks
 type CreateMachineRequestDisks struct {
-	// KVM specific parameter. The VM's size will be the size of the image plus the number in GBs provided here
+	// KVM, CloudSigma specific parameter
 	DiskSize *int32 `json:"disk_size,omitempty"`
 	// KVM specific parameter. Where the VM disk file will be created
 	DiskPath *string `json:"disk_path,omitempty"`
