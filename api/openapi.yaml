@@ -3879,7 +3879,7 @@ paths:
           type: string
         style: simple
       - description: New script name
-        example: example-script
+        example: renamed-example-script
         explode: true
         in: query
         name: name
@@ -3888,6 +3888,7 @@ paths:
           type: string
         style: form
       - description: New script description
+        example: description
         explode: true
         in: query
         name: description
@@ -4909,7 +4910,7 @@ components:
       type: object
     AddScriptRequest:
       example:
-        entrypoint: entrypoint
+        entrypoint: entrypoint.sh
         extra: '{}'
         name: example-script
         description: description
@@ -4935,6 +4936,7 @@ components:
           example: inline
           type: string
         entrypoint:
+          example: entrypoint.sh
           type: string
         exec_type:
           enum:
