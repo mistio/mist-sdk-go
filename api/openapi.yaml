@@ -4846,7 +4846,6 @@ components:
     AddScriptRequest:
       example:
         entrypoint: entrypoint.sh
-        extra: '{}'
         name: example-script
         description: description
         exec_type: executable
@@ -4881,8 +4880,6 @@ components:
           type: string
         description:
           type: string
-        extra:
-          type: object
       required:
       - exec_type
       - location_type

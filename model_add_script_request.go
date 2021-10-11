@@ -23,7 +23,6 @@ type AddScriptRequest struct {
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	ExecType string `json:"exec_type"`
 	Description *string `json:"description,omitempty"`
-	Extra *map[string]interface{} `json:"extra,omitempty"`
 }
 
 // NewAddScriptRequest instantiates a new AddScriptRequest object
@@ -207,38 +206,6 @@ func (o *AddScriptRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetExtra returns the Extra field value if set, zero value otherwise.
-func (o *AddScriptRequest) GetExtra() map[string]interface{} {
-	if o == nil || o.Extra == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Extra
-}
-
-// GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddScriptRequest) GetExtraOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Extra == nil {
-		return nil, false
-	}
-	return o.Extra, true
-}
-
-// HasExtra returns a boolean if a field has been set.
-func (o *AddScriptRequest) HasExtra() bool {
-	if o != nil && o.Extra != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExtra gets a reference to the given map[string]interface{} and assigns it to the Extra field.
-func (o *AddScriptRequest) SetExtra(v map[string]interface{}) {
-	o.Extra = &v
-}
-
 func (o AddScriptRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -258,9 +225,6 @@ func (o AddScriptRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
-	}
-	if o.Extra != nil {
-		toSerialize["extra"] = o.Extra
 	}
 	return json.Marshal(toSerialize)
 }
