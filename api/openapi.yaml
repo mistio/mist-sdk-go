@@ -3574,7 +3574,7 @@ paths:
       - description: Only return results matching search filter
         examples:
           Filter by script name:
-            value: install-tensorflow
+            value: example-script
         explode: true
         in: query
         name: search
