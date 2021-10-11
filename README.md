@@ -89,8 +89,6 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**GetCluster**](docs/ClustersApi.md#getcluster) | **Get** /api/v2/clusters/{cluster} | Get cluster
 *ClustersApi* | [**ListClusters**](docs/ClustersApi.md#listclusters) | **Get** /api/v2/clusters | List clusters
 *DatapointsApi* | [**GetDatapoints**](docs/DatapointsApi.md#getdatapoints) | **Get** /api/v2/datapoints | Get datapoints
-*DefaultApi* | [**DownloadScript**](docs/DefaultApi.md#downloadscript) | **Get** /api/v2/script/file/{script} | Download script
-*DefaultApi* | [**RunScript**](docs/DefaultApi.md#runscript) | **Post** /api/v2/script | Download script
 *ImagesApi* | [**GetImage**](docs/ImagesApi.md#getimage) | **Get** /api/v2/images/{image} | Get image
 *ImagesApi* | [**ListImages**](docs/ImagesApi.md#listimages) | **Get** /api/v2/images | List images
 *JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **Get** /api/v2/jobs/{job_id} | Get job
