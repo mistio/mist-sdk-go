@@ -3565,6 +3565,71 @@ paths:
       summary: Toggle rule
       tags:
       - rules
+  /api/v2/script:
+    post:
+      description: Start a script job to run the script.
+      operationId: run-script
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunScriptRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunScriptResponse'
+          description: Run-script job started successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Script not found
+      security:
+      - ApiKeyAuth:
+        - read:cloud
+        - run_scipt:machine
+        - run:script
+      - CookieAuth:
+        - read:cloud
+        - run_scipt:machine
+        - run:script
+      summary: Download script
+  /api/v2/script/file/{script}:
+    get:
+      description: Download script file or archive
+      operationId: download-script
+      parameters:
+      - example: example-script
+        explode: false
+        in: path
+        name: script
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: Script downloaded successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Script not found
+      security:
+      - ApiKeyAuth:
+        - read:script
+      - CookieAuth:
+        - read:script
+      summary: Download script
   /api/v2/scripts:
     get:
       description: List scripts owned by the active org. READ permission required
@@ -3672,6 +3737,33 @@ paths:
       - tags
       - owned_by
       - created_by
+    post:
+      description: Add script to user scripts
+      operationId: add-script
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddScriptRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: Script added succesfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - add:script
+      - CookieAuth:
+        - add:script
+      summary: Add script
+      tags:
+      - scripts
   /api/v2/scripts/{script}:
     delete:
       description: Delete target script
@@ -4814,6 +4906,51 @@ components:
           type: string
         public:
           type: string
+      type: object
+    AddScriptRequest:
+      example:
+        entrypoint: entrypoint
+        extra: '{}'
+        name: example-script
+        description: description
+        exec_type: executable
+        script: |-
+          #!/usr/bin/env bash
+          echo Hello, World!
+        location_type: inline
+      properties:
+        name:
+          example: example-script
+          type: string
+        script:
+          example: |-
+            #!/usr/bin/env bash
+            echo Hello, World!
+          type: string
+        location_type:
+          enum:
+          - inline
+          - github
+          - url
+          example: inline
+          type: string
+        entrypoint:
+          type: string
+        exec_type:
+          enum:
+          - executable
+          - ansible
+          example: executable
+          type: string
+        description:
+          type: string
+        extra:
+          type: object
+      required:
+      - exec_type
+      - location_type
+      - name
+      - script
       type: object
     AlibabaCloudRequest:
       properties:
@@ -7877,6 +8014,40 @@ components:
       items:
         $ref: '#/components/schemas/RuleAction'
       type: array
+    RunScriptRequest:
+      example:
+        su: true
+        machine: example-machine
+        job_id: job_id
+        params: params
+        env: env
+        script: example-script
+      properties:
+        script:
+          example: example-script
+          type: string
+        machine:
+          example: example-machine
+          type: string
+        params:
+          type: string
+        su:
+          type: boolean
+        env:
+          type: string
+        job_id:
+          type: string
+      required:
+      - machine
+      - script
+      type: object
+    RunScriptResponse:
+      example:
+        job_id: job_id
+      properties:
+        job_id:
+          type: string
+      type: object
     Script:
       example:
         name: name

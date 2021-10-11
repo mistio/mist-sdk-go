@@ -6,6 +6,7 @@ api_clouds.go
 api_clouds_count.go
 api_clusters.go
 api_datapoints.go
+api_default.go
 api_images.go
 api_jobs.go
 api_keys.go
@@ -33,6 +34,7 @@ docs/AddKeyRequestAnyOf.md
 docs/AddKeyRequestAnyOf1.md
 docs/AddKeyRequestAnyOf2.md
 docs/AddKeyResponse.md
+docs/AddScriptRequest.md
 docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
 docs/AlibabaNet.md
@@ -71,6 +73,7 @@ docs/Datapoints.md
 docs/DatapointsApi.md
 docs/DatapointsData.md
 docs/DatapointsValuesItem.md
+docs/DefaultApi.md
 docs/DigitaloceanCloudRequest.md
 docs/DigitaloceanCredentials.md
 docs/DockerCloudRequest.md
@@ -181,6 +184,8 @@ docs/ResponseMetadata.md
 docs/Rule.md
 docs/RuleAction.md
 docs/RulesApi.md
+docs/RunScriptRequest.md
+docs/RunScriptResponse.md
 docs/Script.md
 docs/ScriptsApi.md
 docs/Selector.md
@@ -218,6 +223,7 @@ model_add_key_request_any_of.go
 model_add_key_request_any_of_1.go
 model_add_key_request_any_of_2.go
 model_add_key_response.go
+model_add_script_request.go
 model_alibaba_cloud_request.go
 model_alibaba_credentials.go
 model_alibaba_net.go
@@ -352,6 +358,8 @@ model_range_vector.go
 model_response_metadata.go
 model_rule.go
 model_rule_action.go
+model_run_script_request.go
+model_run_script_response.go
 model_script.go
 model_selector.go
 model_size.go

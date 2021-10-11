@@ -89,6 +89,8 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**GetCluster**](docs/ClustersApi.md#getcluster) | **Get** /api/v2/clusters/{cluster} | Get cluster
 *ClustersApi* | [**ListClusters**](docs/ClustersApi.md#listclusters) | **Get** /api/v2/clusters | List clusters
 *DatapointsApi* | [**GetDatapoints**](docs/DatapointsApi.md#getdatapoints) | **Get** /api/v2/datapoints | Get datapoints
+*DefaultApi* | [**DownloadScript**](docs/DefaultApi.md#downloadscript) | **Get** /api/v2/script/file/{script} | Download script
+*DefaultApi* | [**RunScript**](docs/DefaultApi.md#runscript) | **Post** /api/v2/script | Download script
 *ImagesApi* | [**GetImage**](docs/ImagesApi.md#getimage) | **Get** /api/v2/images/{image} | Get image
 *ImagesApi* | [**ListImages**](docs/ImagesApi.md#listimages) | **Get** /api/v2/images | List images
 *JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **Get** /api/v2/jobs/{job_id} | Get job
@@ -136,6 +138,7 @@ Class | Method | HTTP request | Description
 *RulesApi* | [**RenameRule**](docs/RulesApi.md#renamerule) | **Patch** /api/v2/rules/{rule} | Rename rule
 *RulesApi* | [**ToggleRule**](docs/RulesApi.md#togglerule) | **Put** /api/v2/rules/{rule} | Toggle rule
 *RulesApi* | [**UpdateRule**](docs/RulesApi.md#updaterule) | **Post** /api/v2/rules/{rule} | Update rule
+*ScriptsApi* | [**AddScript**](docs/ScriptsApi.md#addscript) | **Post** /api/v2/scripts | Add script
 *ScriptsApi* | [**DeleteScript**](docs/ScriptsApi.md#deletescript) | **Delete** /api/v2/scripts/{script} | Delete script
 *ScriptsApi* | [**EditScript**](docs/ScriptsApi.md#editscript) | **Put** /api/v2/scripts/{script} | Edit script
 *ScriptsApi* | [**GetScript**](docs/ScriptsApi.md#getscript) | **Get** /api/v2/scripts/{script} | Get script
@@ -169,6 +172,7 @@ Class | Method | HTTP request | Description
  - [AddKeyRequestAnyOf1](docs/AddKeyRequestAnyOf1.md)
  - [AddKeyRequestAnyOf2](docs/AddKeyRequestAnyOf2.md)
  - [AddKeyResponse](docs/AddKeyResponse.md)
+ - [AddScriptRequest](docs/AddScriptRequest.md)
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)
  - [AlibabaCredentials](docs/AlibabaCredentials.md)
  - [AlibabaNet](docs/AlibabaNet.md)
@@ -303,6 +307,8 @@ Class | Method | HTTP request | Description
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)
  - [RuleAction](docs/RuleAction.md)
+ - [RunScriptRequest](docs/RunScriptRequest.md)
+ - [RunScriptResponse](docs/RunScriptResponse.md)
  - [Script](docs/Script.md)
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)
