@@ -111,6 +111,7 @@ docs/IbmCredentials.md
 docs/Image.md
 docs/ImagesApi.md
 docs/InlineResponse200.md
+docs/InlineResponse2001.md
 docs/InlineScript.md
 docs/InstantVector.md
 docs/IntervalSchedule.md
@@ -294,6 +295,7 @@ model_ibm_cloud_request.go
 model_ibm_credentials.go
 model_image.go
 model_inline_response_200.go
+model_inline_response_200_1.go
 model_inline_script.go
 model_instant_vector.go
 model_interval_schedule.go
