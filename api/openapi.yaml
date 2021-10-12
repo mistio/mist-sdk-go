@@ -8087,7 +8087,6 @@ components:
           type: string
       required:
       - machine
-      - script
       type: object
     RunScriptResponse:
       example:
