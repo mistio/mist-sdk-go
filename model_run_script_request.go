@@ -17,7 +17,6 @@ import (
 
 // RunScriptRequest struct for RunScriptRequest
 type RunScriptRequest struct {
-	Script string `json:"script"`
 	Machine string `json:"machine"`
 	Params *string `json:"params,omitempty"`
 	Su *string `json:"su,omitempty"`
@@ -29,9 +28,8 @@ type RunScriptRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRunScriptRequest(script string, machine string, ) *RunScriptRequest {
+func NewRunScriptRequest(machine string, ) *RunScriptRequest {
 	this := RunScriptRequest{}
-	this.Script = script
 	this.Machine = machine
 	return &this
 }
@@ -42,30 +40,6 @@ func NewRunScriptRequest(script string, machine string, ) *RunScriptRequest {
 func NewRunScriptRequestWithDefaults() *RunScriptRequest {
 	this := RunScriptRequest{}
 	return &this
-}
-
-// GetScript returns the Script field value
-func (o *RunScriptRequest) GetScript() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Script
-}
-
-// GetScriptOk returns a tuple with the Script field value
-// and a boolean to check if the value has been set.
-func (o *RunScriptRequest) GetScriptOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Script, true
-}
-
-// SetScript sets field value
-func (o *RunScriptRequest) SetScript(v string) {
-	o.Script = v
 }
 
 // GetMachine returns the Machine field value
@@ -222,9 +196,6 @@ func (o *RunScriptRequest) SetJobId(v string) {
 
 func (o RunScriptRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["script"] = o.Script
-	}
 	if true {
 		toSerialize["machine"] = o.Machine
 	}
