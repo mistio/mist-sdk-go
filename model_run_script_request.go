@@ -20,7 +20,7 @@ type RunScriptRequest struct {
 	Script string `json:"script"`
 	Machine string `json:"machine"`
 	Params *string `json:"params,omitempty"`
-	Su *bool `json:"su,omitempty"`
+	Su *string `json:"su,omitempty"`
 	Env *string `json:"env,omitempty"`
 	JobId *string `json:"job_id,omitempty"`
 }
@@ -125,9 +125,9 @@ func (o *RunScriptRequest) SetParams(v string) {
 }
 
 // GetSu returns the Su field value if set, zero value otherwise.
-func (o *RunScriptRequest) GetSu() bool {
+func (o *RunScriptRequest) GetSu() string {
 	if o == nil || o.Su == nil {
-		var ret bool
+		var ret string
 		return ret
 	}
 	return *o.Su
@@ -135,7 +135,7 @@ func (o *RunScriptRequest) GetSu() bool {
 
 // GetSuOk returns a tuple with the Su field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RunScriptRequest) GetSuOk() (*bool, bool) {
+func (o *RunScriptRequest) GetSuOk() (*string, bool) {
 	if o == nil || o.Su == nil {
 		return nil, false
 	}
@@ -151,8 +151,8 @@ func (o *RunScriptRequest) HasSu() bool {
 	return false
 }
 
-// SetSu gets a reference to the given bool and assigns it to the Su field.
-func (o *RunScriptRequest) SetSu(v bool) {
+// SetSu gets a reference to the given string and assigns it to the Su field.
+func (o *RunScriptRequest) SetSu(v string) {
 	o.Su = &v
 }
 
