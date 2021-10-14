@@ -125,6 +125,8 @@ docs/KubernetesCloudRequest.md
 docs/KubernetesCredentials.md
 docs/KubevirtCloudRequest.md
 docs/KvmCloudRequest.md
+docs/LXDExtra.md
+docs/LXDNet.md
 docs/LinodeCloudRequest.md
 docs/LinodeCredentials.md
 docs/LinodeExtra.md
@@ -328,6 +330,8 @@ model_location.go
 model_log.go
 model_lxd_cloud_request.go
 model_lxd_credentials.go
+model_lxd_extra.go
+model_lxd_net.go
 model_machine.go
 model_machine_state.go
 model_maxihost_cloud_request.go

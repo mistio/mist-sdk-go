@@ -254,6 +254,8 @@ Class | Method | HTTP request | Description
  - [KubernetesCredentials](docs/KubernetesCredentials.md)
  - [KubevirtCloudRequest](docs/KubevirtCloudRequest.md)
  - [KvmCloudRequest](docs/KvmCloudRequest.md)
+ - [LXDExtra](docs/LXDExtra.md)
+ - [LXDNet](docs/LXDNet.md)
  - [LinodeCloudRequest](docs/LinodeCloudRequest.md)
  - [LinodeCredentials](docs/LinodeCredentials.md)
  - [LinodeExtra](docs/LinodeExtra.md)
