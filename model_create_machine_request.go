@@ -24,8 +24,8 @@ type CreateMachineRequest struct {
 	Cloud *string `json:"cloud,omitempty"`
 	// Where to provision e.g. region, datacenter, rack
 	Location *string `json:"location,omitempty"`
-	// Machine sizing spec e.g. cpu/ram/flavor
-	Size OneOfobjectstring `json:"size"`
+	// Machine sizing spec e.g. cpu/ram/flavor. Mandatory field for all providers except LXD, Docker
+	Size *OneOfobjectstring `json:"size,omitempty"`
 	// Operating System image to boot from
 	Image OneOfobjectstring `json:"image"`
 	// Specify network configuration parameters
@@ -63,10 +63,9 @@ type CreateMachineRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateMachineRequest(name string, size OneOfobjectstring, image OneOfobjectstring, ) *CreateMachineRequest {
+func NewCreateMachineRequest(name string, image OneOfobjectstring, ) *CreateMachineRequest {
 	this := CreateMachineRequest{}
 	this.Name = name
-	this.Size = size
 	this.Image = image
 	return &this
 }
@@ -199,28 +198,36 @@ func (o *CreateMachineRequest) SetLocation(v string) {
 	o.Location = &v
 }
 
-// GetSize returns the Size field value
+// GetSize returns the Size field value if set, zero value otherwise.
 func (o *CreateMachineRequest) GetSize() OneOfobjectstring {
-	if o == nil  {
+	if o == nil || o.Size == nil {
 		var ret OneOfobjectstring
 		return ret
 	}
-
-	return o.Size
+	return *o.Size
 }
 
-// GetSizeOk returns a tuple with the Size field value
+// GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateMachineRequest) GetSizeOk() (*OneOfobjectstring, bool) {
-	if o == nil  {
+	if o == nil || o.Size == nil {
 		return nil, false
 	}
-	return &o.Size, true
+	return o.Size, true
 }
 
-// SetSize sets field value
+// HasSize returns a boolean if a field has been set.
+func (o *CreateMachineRequest) HasSize() bool {
+	if o != nil && o.Size != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSize gets a reference to the given OneOfobjectstring and assigns it to the Size field.
 func (o *CreateMachineRequest) SetSize(v OneOfobjectstring) {
-	o.Size = v
+	o.Size = &v
 }
 
 // GetImage returns the Image field value
@@ -773,7 +780,7 @@ func (o CreateMachineRequest) MarshalJSON() ([]byte, error) {
 	if o.Location != nil {
 		toSerialize["location"] = o.Location
 	}
-	if true {
+	if o.Size != nil {
 		toSerialize["size"] = o.Size
 	}
 	if true {
