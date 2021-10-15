@@ -19,6 +19,7 @@ import (
 type LXDExtra struct {
 	// Whether to destroy the container on shutdown, defaults to False
 	Ephemeral *bool `json:"ephemeral,omitempty"`
+	Limits *LXDExtraLimits `json:"limits,omitempty"`
 }
 
 // NewLXDExtra instantiates a new LXDExtra object
@@ -70,10 +71,45 @@ func (o *LXDExtra) SetEphemeral(v bool) {
 	o.Ephemeral = &v
 }
 
+// GetLimits returns the Limits field value if set, zero value otherwise.
+func (o *LXDExtra) GetLimits() LXDExtraLimits {
+	if o == nil || o.Limits == nil {
+		var ret LXDExtraLimits
+		return ret
+	}
+	return *o.Limits
+}
+
+// GetLimitsOk returns a tuple with the Limits field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LXDExtra) GetLimitsOk() (*LXDExtraLimits, bool) {
+	if o == nil || o.Limits == nil {
+		return nil, false
+	}
+	return o.Limits, true
+}
+
+// HasLimits returns a boolean if a field has been set.
+func (o *LXDExtra) HasLimits() bool {
+	if o != nil && o.Limits != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLimits gets a reference to the given LXDExtraLimits and assigns it to the Limits field.
+func (o *LXDExtra) SetLimits(v LXDExtraLimits) {
+	o.Limits = &v
+}
+
 func (o LXDExtra) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Ephemeral != nil {
 		toSerialize["ephemeral"] = o.Ephemeral
+	}
+	if o.Limits != nil {
+		toSerialize["limits"] = o.Limits
 	}
 	return json.Marshal(toSerialize)
 }

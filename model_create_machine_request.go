@@ -24,7 +24,7 @@ type CreateMachineRequest struct {
 	Cloud *string `json:"cloud,omitempty"`
 	// Where to provision e.g. region, datacenter, rack
 	Location *string `json:"location,omitempty"`
-	// Machine sizing spec e.g. cpu/ram/flavor. Mandatory field for all providers except LXD, Docker
+	// Machine sizing spec e.g. cpu/ram/flavor, not used on Docker, LXD
 	Size *OneOfobjectstring `json:"size,omitempty"`
 	// Operating System image to boot from
 	Image OneOfobjectstring `json:"image"`

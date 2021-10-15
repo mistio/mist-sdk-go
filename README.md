@@ -255,6 +255,7 @@ Class | Method | HTTP request | Description
  - [KubevirtCloudRequest](docs/KubevirtCloudRequest.md)
  - [KvmCloudRequest](docs/KvmCloudRequest.md)
  - [LXDExtra](docs/LXDExtra.md)
+ - [LXDExtraLimits](docs/LXDExtraLimits.md)
  - [LXDNet](docs/LXDNet.md)
  - [LinodeCloudRequest](docs/LinodeCloudRequest.md)
  - [LinodeCredentials](docs/LinodeCredentials.md)
