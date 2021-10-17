@@ -174,6 +174,7 @@ Class | Method | HTTP request | Description
  - [AddKeyRequestAnyOf1](docs/AddKeyRequestAnyOf1.md)
  - [AddKeyRequestAnyOf2](docs/AddKeyRequestAnyOf2.md)
  - [AddKeyResponse](docs/AddKeyResponse.md)
+ - [AddRuleRequest](docs/AddRuleRequest.md)
  - [AddScriptRequest](docs/AddScriptRequest.md)
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)
  - [AlibabaCredentials](docs/AlibabaCredentials.md)

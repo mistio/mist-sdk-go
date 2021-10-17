@@ -31,41 +31,11 @@ type RulesApiService service
 type ApiAddRuleRequest struct {
 	ctx _context.Context
 	ApiService *RulesApiService
-	queries *[]Query
-	window *Window
-	frequency *Frequency
-	triggerAfter *TriggerAfter
-	actions *[]RuleAction
-	selectors *Selector
-	dataType *DataType
+	addRuleRequest *AddRuleRequest
 }
 
-func (r ApiAddRuleRequest) Queries(queries []Query) ApiAddRuleRequest {
-	r.queries = &queries
-	return r
-}
-func (r ApiAddRuleRequest) Window(window Window) ApiAddRuleRequest {
-	r.window = &window
-	return r
-}
-func (r ApiAddRuleRequest) Frequency(frequency Frequency) ApiAddRuleRequest {
-	r.frequency = &frequency
-	return r
-}
-func (r ApiAddRuleRequest) TriggerAfter(triggerAfter TriggerAfter) ApiAddRuleRequest {
-	r.triggerAfter = &triggerAfter
-	return r
-}
-func (r ApiAddRuleRequest) Actions(actions []RuleAction) ApiAddRuleRequest {
-	r.actions = &actions
-	return r
-}
-func (r ApiAddRuleRequest) Selectors(selectors Selector) ApiAddRuleRequest {
-	r.selectors = &selectors
-	return r
-}
-func (r ApiAddRuleRequest) DataType(dataType DataType) ApiAddRuleRequest {
-	r.dataType = &dataType
+func (r ApiAddRuleRequest) AddRuleRequest(addRuleRequest AddRuleRequest) ApiAddRuleRequest {
+	r.addRuleRequest = &addRuleRequest
 	return r
 }
 
@@ -110,57 +80,9 @@ func (a *RulesApiService) AddRuleExecute(r ApiAddRuleRequest) (Rule, *_nethttp.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.queries == nil {
-		return localVarReturnValue, nil, reportError("queries is required and must be specified")
-	}
-	if r.window == nil {
-		return localVarReturnValue, nil, reportError("window is required and must be specified")
-	}
-	if r.frequency == nil {
-		return localVarReturnValue, nil, reportError("frequency is required and must be specified")
-	}
-	if r.triggerAfter == nil {
-		return localVarReturnValue, nil, reportError("triggerAfter is required and must be specified")
-	}
-	if r.actions == nil {
-		return localVarReturnValue, nil, reportError("actions is required and must be specified")
-	}
-	if r.selectors == nil {
-		return localVarReturnValue, nil, reportError("selectors is required and must be specified")
-	}
-	if r.dataType == nil {
-		return localVarReturnValue, nil, reportError("dataType is required and must be specified")
-	}
 
-	{
-		t := *r.queries
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("queries", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("queries", parameterToString(t, "multi"))
-		}
-	}
-	localVarQueryParams.Add("window", parameterToString(*r.window, ""))
-	localVarQueryParams.Add("frequency", parameterToString(*r.frequency, ""))
-	localVarQueryParams.Add("trigger_after", parameterToString(*r.triggerAfter, ""))
-	{
-		t := *r.actions
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("actions", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("actions", parameterToString(t, "multi"))
-		}
-	}
-	localVarQueryParams.Add("selectors", parameterToString(*r.selectors, ""))
-	localVarQueryParams.Add("data_type", parameterToString(*r.dataType, ""))
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -176,6 +98,8 @@ func (a *RulesApiService) AddRuleExecute(r ApiAddRuleRequest) (Rule, *_nethttp.R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.addRuleRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
