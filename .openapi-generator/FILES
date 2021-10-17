@@ -33,6 +33,7 @@ docs/AddKeyRequestAnyOf.md
 docs/AddKeyRequestAnyOf1.md
 docs/AddKeyRequestAnyOf2.md
 docs/AddKeyResponse.md
+docs/AddScriptRequest.md
 docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
 docs/AlibabaNet.md
@@ -67,6 +68,7 @@ docs/CreateVolumeResponse.md
 docs/CreateZoneRequest.md
 docs/CreateZoneResponse.md
 docs/CronSchedule.md
+docs/DataType.md
 docs/Datapoints.md
 docs/DatapointsApi.md
 docs/DatapointsData.md
@@ -110,6 +112,7 @@ docs/IbmCredentials.md
 docs/Image.md
 docs/ImagesApi.md
 docs/InlineResponse200.md
+docs/InlineResponse2001.md
 docs/InlineScript.md
 docs/InstantVector.md
 docs/IntervalSchedule.md
@@ -181,6 +184,8 @@ docs/ResponseMetadata.md
 docs/Rule.md
 docs/RuleAction.md
 docs/RulesApi.md
+docs/RunScriptRequest.md
+docs/RunScriptResponse.md
 docs/Script.md
 docs/ScriptsApi.md
 docs/Selector.md
@@ -218,6 +223,7 @@ model_add_key_request_any_of.go
 model_add_key_request_any_of_1.go
 model_add_key_request_any_of_2.go
 model_add_key_response.go
+model_add_script_request.go
 model_alibaba_cloud_request.go
 model_alibaba_credentials.go
 model_alibaba_net.go
@@ -249,6 +255,7 @@ model_create_volume_response.go
 model_create_zone_request.go
 model_create_zone_response.go
 model_cron_schedule.go
+model_data_type.go
 model_datapoints.go
 model_datapoints_data.go
 model_datapoints_values_item.go
@@ -290,6 +297,7 @@ model_ibm_cloud_request.go
 model_ibm_credentials.go
 model_image.go
 model_inline_response_200.go
+model_inline_response_200_1.go
 model_inline_script.go
 model_instant_vector.go
 model_interval_schedule.go
@@ -352,6 +360,8 @@ model_range_vector.go
 model_response_metadata.go
 model_rule.go
 model_rule_action.go
+model_run_script_request.go
+model_run_script_response.go
 model_script.go
 model_selector.go
 model_size.go

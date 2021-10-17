@@ -37,6 +37,7 @@ type ApiAddRuleRequest struct {
 	triggerAfter *TriggerAfter
 	actions *[]RuleAction
 	selectors *Selector
+	dataType *DataType
 }
 
 func (r ApiAddRuleRequest) Queries(queries []Query) ApiAddRuleRequest {
@@ -61,6 +62,10 @@ func (r ApiAddRuleRequest) Actions(actions []RuleAction) ApiAddRuleRequest {
 }
 func (r ApiAddRuleRequest) Selectors(selectors Selector) ApiAddRuleRequest {
 	r.selectors = &selectors
+	return r
+}
+func (r ApiAddRuleRequest) DataType(dataType DataType) ApiAddRuleRequest {
+	r.dataType = &dataType
 	return r
 }
 
@@ -123,6 +128,9 @@ func (a *RulesApiService) AddRuleExecute(r ApiAddRuleRequest) (Rule, *_nethttp.R
 	if r.selectors == nil {
 		return localVarReturnValue, nil, reportError("selectors is required and must be specified")
 	}
+	if r.dataType == nil {
+		return localVarReturnValue, nil, reportError("dataType is required and must be specified")
+	}
 
 	{
 		t := *r.queries
@@ -150,6 +158,7 @@ func (a *RulesApiService) AddRuleExecute(r ApiAddRuleRequest) (Rule, *_nethttp.R
 		}
 	}
 	localVarQueryParams.Add("selectors", parameterToString(*r.selectors, ""))
+	localVarQueryParams.Add("data_type", parameterToString(*r.dataType, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -619,11 +628,11 @@ type ApiRenameRuleRequest struct {
 	ctx _context.Context
 	ApiService *RulesApiService
 	rule string
-	action *string
+	name *string
 }
 
-func (r ApiRenameRuleRequest) Action(action string) ApiRenameRuleRequest {
-	r.action = &action
+func (r ApiRenameRuleRequest) Name(name string) ApiRenameRuleRequest {
+	r.name = &name
 	return r
 }
 
@@ -669,11 +678,11 @@ func (a *RulesApiService) RenameRuleExecute(r ApiRenameRuleRequest) (*_nethttp.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.action == nil {
-		return nil, reportError("action is required and must be specified")
+	if r.name == nil {
+		return nil, reportError("name is required and must be specified")
 	}
 
-	localVarQueryParams.Add("action", parameterToString(*r.action, ""))
+	localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
