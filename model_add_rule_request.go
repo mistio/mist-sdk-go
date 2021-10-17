@@ -22,7 +22,7 @@ type AddRuleRequest struct {
 	Frequency Frequency `json:"frequency"`
 	TriggerAfter TriggerAfter `json:"trigger_after"`
 	Actions []RuleAction `json:"actions"`
-	Selectors Selector `json:"selectors"`
+	Selectors *Selector `json:"selectors,omitempty"`
 	DataType DataType `json:"data_type"`
 }
 
@@ -30,14 +30,13 @@ type AddRuleRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddRuleRequest(queries []Query, window Window, frequency Frequency, triggerAfter TriggerAfter, actions []RuleAction, selectors Selector, dataType DataType, ) *AddRuleRequest {
+func NewAddRuleRequest(queries []Query, window Window, frequency Frequency, triggerAfter TriggerAfter, actions []RuleAction, dataType DataType, ) *AddRuleRequest {
 	this := AddRuleRequest{}
 	this.Queries = queries
 	this.Window = window
 	this.Frequency = frequency
 	this.TriggerAfter = triggerAfter
 	this.Actions = actions
-	this.Selectors = selectors
 	this.DataType = dataType
 	return &this
 }
@@ -170,28 +169,36 @@ func (o *AddRuleRequest) SetActions(v []RuleAction) {
 	o.Actions = v
 }
 
-// GetSelectors returns the Selectors field value
+// GetSelectors returns the Selectors field value if set, zero value otherwise.
 func (o *AddRuleRequest) GetSelectors() Selector {
-	if o == nil  {
+	if o == nil || o.Selectors == nil {
 		var ret Selector
 		return ret
 	}
-
-	return o.Selectors
+	return *o.Selectors
 }
 
-// GetSelectorsOk returns a tuple with the Selectors field value
+// GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AddRuleRequest) GetSelectorsOk() (*Selector, bool) {
-	if o == nil  {
+	if o == nil || o.Selectors == nil {
 		return nil, false
 	}
-	return &o.Selectors, true
+	return o.Selectors, true
 }
 
-// SetSelectors sets field value
+// HasSelectors returns a boolean if a field has been set.
+func (o *AddRuleRequest) HasSelectors() bool {
+	if o != nil && o.Selectors != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectors gets a reference to the given Selector and assigns it to the Selectors field.
 func (o *AddRuleRequest) SetSelectors(v Selector) {
-	o.Selectors = v
+	o.Selectors = &v
 }
 
 // GetDataType returns the DataType field value
@@ -235,7 +242,7 @@ func (o AddRuleRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["actions"] = o.Actions
 	}
-	if true {
+	if o.Selectors != nil {
 		toSerialize["selectors"] = o.Selectors
 	}
 	if true {
