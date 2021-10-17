@@ -79,6 +79,7 @@ docs/DockerCloudRequest.md
 docs/DockerCredentials.md
 docs/EditCloudRequest.md
 docs/EditCloudRequestAnyOf.md
+docs/EditRuleRequest.md
 docs/EquinixCloudRequest.md
 docs/EquinixCredentials.md
 docs/EquinixMetalExtra.md
@@ -262,6 +263,7 @@ model_docker_cloud_request.go
 model_docker_credentials.go
 model_edit_cloud_request.go
 model_edit_cloud_request_any_of.go
+model_edit_rule_request.go
 model_equinix_cloud_request.go
 model_equinix_credentials.go
 model_equinix_metal_extra.go

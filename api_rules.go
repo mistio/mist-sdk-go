@@ -17,7 +17,6 @@ import (
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
-	"reflect"
 )
 
 // Linger please
@@ -256,6 +255,132 @@ func (a *RulesApiService) DeleteRuleExecute(r ApiDeleteRuleRequest) (*_nethttp.R
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiEditRuleRequest struct {
+	ctx _context.Context
+	ApiService *RulesApiService
+	rule string
+	editRuleRequest *EditRuleRequest
+}
+
+func (r ApiEditRuleRequest) EditRuleRequest(editRuleRequest EditRuleRequest) ApiEditRuleRequest {
+	r.editRuleRequest = &editRuleRequest
+	return r
+}
+
+func (r ApiEditRuleRequest) Execute() (Rule, *_nethttp.Response, error) {
+	return r.ApiService.EditRuleExecute(r)
+}
+
+/*
+ * EditRule Update rule
+ * Edit a rule given its UUID, EDIT permission required on rule
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param rule
+ * @return ApiEditRuleRequest
+ */
+func (a *RulesApiService) EditRule(ctx _context.Context, rule string) ApiEditRuleRequest {
+	return ApiEditRuleRequest{
+		ApiService: a,
+		ctx: ctx,
+		rule: rule,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return Rule
+ */
+func (a *RulesApiService) EditRuleExecute(r ApiEditRuleRequest) (Rule, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Rule
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RulesApiService.EditRule")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/rules/{rule}"
+	localVarPath = strings.Replace(localVarPath, "{"+"rule"+"}", _neturl.PathEscape(parameterToString(r.rule, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.editRuleRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiGetRuleRequest struct {
@@ -780,187 +905,4 @@ func (a *RulesApiService) ToggleRuleExecute(r ApiToggleRuleRequest) (*_nethttp.R
 	}
 
 	return localVarHTTPResponse, nil
-}
-
-type ApiUpdateRuleRequest struct {
-	ctx _context.Context
-	ApiService *RulesApiService
-	rule string
-	queries *[]Query
-	window *Window
-	frequency *Frequency
-	triggerAfter *TriggerAfter
-	actions *[]RuleAction
-	selectors *Selector
-}
-
-func (r ApiUpdateRuleRequest) Queries(queries []Query) ApiUpdateRuleRequest {
-	r.queries = &queries
-	return r
-}
-func (r ApiUpdateRuleRequest) Window(window Window) ApiUpdateRuleRequest {
-	r.window = &window
-	return r
-}
-func (r ApiUpdateRuleRequest) Frequency(frequency Frequency) ApiUpdateRuleRequest {
-	r.frequency = &frequency
-	return r
-}
-func (r ApiUpdateRuleRequest) TriggerAfter(triggerAfter TriggerAfter) ApiUpdateRuleRequest {
-	r.triggerAfter = &triggerAfter
-	return r
-}
-func (r ApiUpdateRuleRequest) Actions(actions []RuleAction) ApiUpdateRuleRequest {
-	r.actions = &actions
-	return r
-}
-func (r ApiUpdateRuleRequest) Selectors(selectors Selector) ApiUpdateRuleRequest {
-	r.selectors = &selectors
-	return r
-}
-
-func (r ApiUpdateRuleRequest) Execute() (Rule, *_nethttp.Response, error) {
-	return r.ApiService.UpdateRuleExecute(r)
-}
-
-/*
- * UpdateRule Update rule
- * Update a rule given its UUID, EDIT permission required on rule
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param rule
- * @return ApiUpdateRuleRequest
- */
-func (a *RulesApiService) UpdateRule(ctx _context.Context, rule string) ApiUpdateRuleRequest {
-	return ApiUpdateRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		rule: rule,
-	}
-}
-
-/*
- * Execute executes the request
- * @return Rule
- */
-func (a *RulesApiService) UpdateRuleExecute(r ApiUpdateRuleRequest) (Rule, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Rule
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RulesApiService.UpdateRule")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v2/rules/{rule}"
-	localVarPath = strings.Replace(localVarPath, "{"+"rule"+"}", _neturl.PathEscape(parameterToString(r.rule, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	if r.queries != nil {
-		t := *r.queries
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("queries", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("queries", parameterToString(t, "multi"))
-		}
-	}
-	if r.window != nil {
-		localVarQueryParams.Add("window", parameterToString(*r.window, ""))
-	}
-	if r.frequency != nil {
-		localVarQueryParams.Add("frequency", parameterToString(*r.frequency, ""))
-	}
-	if r.triggerAfter != nil {
-		localVarQueryParams.Add("trigger_after", parameterToString(*r.triggerAfter, ""))
-	}
-	if r.actions != nil {
-		t := *r.actions
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("actions", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("actions", parameterToString(t, "multi"))
-		}
-	}
-	if r.selectors != nil {
-		localVarQueryParams.Add("selectors", parameterToString(*r.selectors, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["ApiKeyAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
 }

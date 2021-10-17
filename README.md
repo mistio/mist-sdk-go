@@ -132,11 +132,11 @@ Class | Method | HTTP request | Description
 *OrgsApi* | [**ListOrgs**](docs/OrgsApi.md#listorgs) | **Get** /api/v2/orgs | List orgs
 *RulesApi* | [**AddRule**](docs/RulesApi.md#addrule) | **Post** /api/v2/rules | Add rule
 *RulesApi* | [**DeleteRule**](docs/RulesApi.md#deleterule) | **Delete** /api/v2/rules/{rule} | Delete rule
+*RulesApi* | [**EditRule**](docs/RulesApi.md#editrule) | **Post** /api/v2/rules/{rule} | Update rule
 *RulesApi* | [**GetRule**](docs/RulesApi.md#getrule) | **Get** /api/v2/rules/{rule} | Get rule
 *RulesApi* | [**ListRules**](docs/RulesApi.md#listrules) | **Get** /api/v2/rules | List rules
 *RulesApi* | [**RenameRule**](docs/RulesApi.md#renamerule) | **Patch** /api/v2/rules/{rule} | Rename rule
 *RulesApi* | [**ToggleRule**](docs/RulesApi.md#togglerule) | **Put** /api/v2/rules/{rule} | Toggle rule
-*RulesApi* | [**UpdateRule**](docs/RulesApi.md#updaterule) | **Post** /api/v2/rules/{rule} | Update rule
 *ScriptsApi* | [**DeleteScript**](docs/ScriptsApi.md#deletescript) | **Delete** /api/v2/scripts/{script} | Delete script
 *ScriptsApi* | [**EditScript**](docs/ScriptsApi.md#editscript) | **Put** /api/v2/scripts/{script} | Edit script
 *ScriptsApi* | [**GetScript**](docs/ScriptsApi.md#getscript) | **Get** /api/v2/scripts/{script} | Get script
@@ -212,6 +212,7 @@ Class | Method | HTTP request | Description
  - [DockerCredentials](docs/DockerCredentials.md)
  - [EditCloudRequest](docs/EditCloudRequest.md)
  - [EditCloudRequestAnyOf](docs/EditCloudRequestAnyOf.md)
+ - [EditRuleRequest](docs/EditRuleRequest.md)
  - [EquinixCloudRequest](docs/EquinixCloudRequest.md)
  - [EquinixCredentials](docs/EquinixCredentials.md)
  - [EquinixMetalExtra](docs/EquinixMetalExtra.md)
