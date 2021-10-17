@@ -5944,8 +5944,6 @@ components:
           type: array
         selectors:
           $ref: '#/components/schemas/Selector'
-      required:
-      - rule
       type: object
     EquinixCloudRequest:
       properties:
