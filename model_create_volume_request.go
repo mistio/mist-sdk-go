@@ -21,11 +21,11 @@ type CreateVolumeRequest struct {
 	Name string `json:"name"`
 	Provider *SupportedProviders `json:"provider,omitempty"`
 	// Specify cloud to provision on
-	Cloud *string `json:"cloud,omitempty"`
+	Cloud string `json:"cloud"`
 	// Where to provision e.g. region, datacenter, rack
-	Location *string `json:"location,omitempty"`
+	Location string `json:"location"`
 	// Volume sizing spec
-	Size map[string]interface{} `json:"size"`
+	Size int32 `json:"size"`
 	// Assign tags to provisioned volume
 	Tags *map[string]interface{} `json:"tags,omitempty"`
 	// Configure additional parameters
@@ -43,9 +43,11 @@ type CreateVolumeRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateVolumeRequest(name string, size map[string]interface{}, ) *CreateVolumeRequest {
+func NewCreateVolumeRequest(name string, cloud string, location string, size int32, ) *CreateVolumeRequest {
 	this := CreateVolumeRequest{}
 	this.Name = name
+	this.Cloud = cloud
+	this.Location = location
 	this.Size = size
 	return &this
 }
@@ -114,74 +116,58 @@ func (o *CreateVolumeRequest) SetProvider(v SupportedProviders) {
 	o.Provider = &v
 }
 
-// GetCloud returns the Cloud field value if set, zero value otherwise.
+// GetCloud returns the Cloud field value
 func (o *CreateVolumeRequest) GetCloud() string {
-	if o == nil || o.Cloud == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.Cloud
+
+	return o.Cloud
 }
 
-// GetCloudOk returns a tuple with the Cloud field value if set, nil otherwise
+// GetCloudOk returns a tuple with the Cloud field value
 // and a boolean to check if the value has been set.
 func (o *CreateVolumeRequest) GetCloudOk() (*string, bool) {
-	if o == nil || o.Cloud == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Cloud, true
+	return &o.Cloud, true
 }
 
-// HasCloud returns a boolean if a field has been set.
-func (o *CreateVolumeRequest) HasCloud() bool {
-	if o != nil && o.Cloud != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCloud gets a reference to the given string and assigns it to the Cloud field.
+// SetCloud sets field value
 func (o *CreateVolumeRequest) SetCloud(v string) {
-	o.Cloud = &v
+	o.Cloud = v
 }
 
-// GetLocation returns the Location field value if set, zero value otherwise.
+// GetLocation returns the Location field value
 func (o *CreateVolumeRequest) GetLocation() string {
-	if o == nil || o.Location == nil {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.Location
+
+	return o.Location
 }
 
-// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
+// GetLocationOk returns a tuple with the Location field value
 // and a boolean to check if the value has been set.
 func (o *CreateVolumeRequest) GetLocationOk() (*string, bool) {
-	if o == nil || o.Location == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Location, true
+	return &o.Location, true
 }
 
-// HasLocation returns a boolean if a field has been set.
-func (o *CreateVolumeRequest) HasLocation() bool {
-	if o != nil && o.Location != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLocation gets a reference to the given string and assigns it to the Location field.
+// SetLocation sets field value
 func (o *CreateVolumeRequest) SetLocation(v string) {
-	o.Location = &v
+	o.Location = v
 }
 
 // GetSize returns the Size field value
-func (o *CreateVolumeRequest) GetSize() map[string]interface{} {
+func (o *CreateVolumeRequest) GetSize() int32 {
 	if o == nil  {
-		var ret map[string]interface{}
+		var ret int32
 		return ret
 	}
 
@@ -190,7 +176,7 @@ func (o *CreateVolumeRequest) GetSize() map[string]interface{} {
 
 // GetSizeOk returns a tuple with the Size field value
 // and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetSizeOk() (*map[string]interface{}, bool) {
+func (o *CreateVolumeRequest) GetSizeOk() (*int32, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -198,7 +184,7 @@ func (o *CreateVolumeRequest) GetSizeOk() (*map[string]interface{}, bool) {
 }
 
 // SetSize sets field value
-func (o *CreateVolumeRequest) SetSize(v map[string]interface{}) {
+func (o *CreateVolumeRequest) SetSize(v int32) {
 	o.Size = v
 }
 
@@ -402,10 +388,10 @@ func (o CreateVolumeRequest) MarshalJSON() ([]byte, error) {
 	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
 	}
-	if o.Cloud != nil {
+	if true {
 		toSerialize["cloud"] = o.Cloud
 	}
-	if o.Location != nil {
+	if true {
 		toSerialize["location"] = o.Location
 	}
 	if true {
