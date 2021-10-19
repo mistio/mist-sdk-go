@@ -24,17 +24,17 @@ type CreateMachineRequest struct {
 	Cloud *string `json:"cloud,omitempty"`
 	// Where to provision e.g. region, datacenter, rack
 	Location *string `json:"location,omitempty"`
-	// Machine sizing spec e.g. cpu/ram/flavor
-	Size OneOfobjectstring `json:"size"`
+	// Machine sizing spec e.g. cpu/ram/flavor, not used on Docker, LXD
+	Size *OneOfobjectstring `json:"size,omitempty"`
 	// Operating System image to boot from
 	Image OneOfobjectstring `json:"image"`
 	// Specify network configuration parameters
-	Net *AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNetVSphereNetVultrNet `json:"net,omitempty"`
+	Net *AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetLXDNetOpenstackNetVSphereNetVultrNet `json:"net,omitempty"`
 	// Associate SSH key
 	Key *OneOfobjectstring `json:"key,omitempty"`
 	Disks *CreateMachineRequestDisks `json:"disks,omitempty"`
 	// Configure of attached storage volumes, e.g. cloud disks
-	Volumes *AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray `json:"volumes,omitempty"`
+	Volumes *AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarrayarray `json:"volumes,omitempty"`
 	// Add DNS A Record that points machine's public IP to this Fully Qualified Domain Name. Zone needs to be managed by a configured Cloud DNS provider
 	Fqdn *string `json:"fqdn,omitempty"`
 	// Run this Cloud Init script on first boot
@@ -47,7 +47,7 @@ type CreateMachineRequest struct {
 	Tags *map[string]interface{} `json:"tags,omitempty"`
 	Expiration *Expiration `json:"expiration,omitempty"`
 	// Configure additional parameters
-	Extra *AnyOfAzureExtraEquinixMetalExtraLinodeExtraVSphereExtraVultrExtra `json:"extra,omitempty"`
+	Extra *AnyOfAzureExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra `json:"extra,omitempty"`
 	// Enable monitoring of this machine
 	Monitoring *bool `json:"monitoring,omitempty"`
 	// Provision multiple machines of this type
@@ -63,10 +63,9 @@ type CreateMachineRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateMachineRequest(name string, size OneOfobjectstring, image OneOfobjectstring, ) *CreateMachineRequest {
+func NewCreateMachineRequest(name string, image OneOfobjectstring, ) *CreateMachineRequest {
 	this := CreateMachineRequest{}
 	this.Name = name
-	this.Size = size
 	this.Image = image
 	return &this
 }
@@ -199,28 +198,36 @@ func (o *CreateMachineRequest) SetLocation(v string) {
 	o.Location = &v
 }
 
-// GetSize returns the Size field value
+// GetSize returns the Size field value if set, zero value otherwise.
 func (o *CreateMachineRequest) GetSize() OneOfobjectstring {
-	if o == nil  {
+	if o == nil || o.Size == nil {
 		var ret OneOfobjectstring
 		return ret
 	}
-
-	return o.Size
+	return *o.Size
 }
 
-// GetSizeOk returns a tuple with the Size field value
+// GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateMachineRequest) GetSizeOk() (*OneOfobjectstring, bool) {
-	if o == nil  {
+	if o == nil || o.Size == nil {
 		return nil, false
 	}
-	return &o.Size, true
+	return o.Size, true
 }
 
-// SetSize sets field value
+// HasSize returns a boolean if a field has been set.
+func (o *CreateMachineRequest) HasSize() bool {
+	if o != nil && o.Size != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSize gets a reference to the given OneOfobjectstring and assigns it to the Size field.
 func (o *CreateMachineRequest) SetSize(v OneOfobjectstring) {
-	o.Size = v
+	o.Size = &v
 }
 
 // GetImage returns the Image field value
@@ -248,9 +255,9 @@ func (o *CreateMachineRequest) SetImage(v OneOfobjectstring) {
 }
 
 // GetNet returns the Net field value if set, zero value otherwise.
-func (o *CreateMachineRequest) GetNet() AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNetVSphereNetVultrNet {
+func (o *CreateMachineRequest) GetNet() AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetLXDNetOpenstackNetVSphereNetVultrNet {
 	if o == nil || o.Net == nil {
-		var ret AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNetVSphereNetVultrNet
+		var ret AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetLXDNetOpenstackNetVSphereNetVultrNet
 		return ret
 	}
 	return *o.Net
@@ -258,7 +265,7 @@ func (o *CreateMachineRequest) GetNet() AnyOfAlibabaNetAmazonNetAzureNetEquinixM
 
 // GetNetOk returns a tuple with the Net field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateMachineRequest) GetNetOk() (*AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNetVSphereNetVultrNet, bool) {
+func (o *CreateMachineRequest) GetNetOk() (*AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetLXDNetOpenstackNetVSphereNetVultrNet, bool) {
 	if o == nil || o.Net == nil {
 		return nil, false
 	}
@@ -274,8 +281,8 @@ func (o *CreateMachineRequest) HasNet() bool {
 	return false
 }
 
-// SetNet gets a reference to the given AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNetVSphereNetVultrNet and assigns it to the Net field.
-func (o *CreateMachineRequest) SetNet(v AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetOpenstackNetVSphereNetVultrNet) {
+// SetNet gets a reference to the given AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetLXDNetOpenstackNetVSphereNetVultrNet and assigns it to the Net field.
+func (o *CreateMachineRequest) SetNet(v AnyOfAlibabaNetAmazonNetAzureNetEquinixMetalNetGoogleNetKVMNetLinodeNetLXDNetOpenstackNetVSphereNetVultrNet) {
 	o.Net = &v
 }
 
@@ -344,9 +351,9 @@ func (o *CreateMachineRequest) SetDisks(v CreateMachineRequestDisks) {
 }
 
 // GetVolumes returns the Volumes field value if set, zero value otherwise.
-func (o *CreateMachineRequest) GetVolumes() AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray {
+func (o *CreateMachineRequest) GetVolumes() AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarrayarray {
 	if o == nil || o.Volumes == nil {
-		var ret AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray
+		var ret AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarrayarray
 		return ret
 	}
 	return *o.Volumes
@@ -354,7 +361,7 @@ func (o *CreateMachineRequest) GetVolumes() AnyOfarrayarrayarrayarrayarrayarraya
 
 // GetVolumesOk returns a tuple with the Volumes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateMachineRequest) GetVolumesOk() (*AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray, bool) {
+func (o *CreateMachineRequest) GetVolumesOk() (*AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarrayarray, bool) {
 	if o == nil || o.Volumes == nil {
 		return nil, false
 	}
@@ -370,8 +377,8 @@ func (o *CreateMachineRequest) HasVolumes() bool {
 	return false
 }
 
-// SetVolumes gets a reference to the given AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray and assigns it to the Volumes field.
-func (o *CreateMachineRequest) SetVolumes(v AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarray) {
+// SetVolumes gets a reference to the given AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarrayarray and assigns it to the Volumes field.
+func (o *CreateMachineRequest) SetVolumes(v AnyOfarrayarrayarrayarrayarrayarrayarrayarrayarrayarrayarray) {
 	o.Volumes = &v
 }
 
@@ -568,9 +575,9 @@ func (o *CreateMachineRequest) SetExpiration(v Expiration) {
 }
 
 // GetExtra returns the Extra field value if set, zero value otherwise.
-func (o *CreateMachineRequest) GetExtra() AnyOfAzureExtraEquinixMetalExtraLinodeExtraVSphereExtraVultrExtra {
+func (o *CreateMachineRequest) GetExtra() AnyOfAzureExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra {
 	if o == nil || o.Extra == nil {
-		var ret AnyOfAzureExtraEquinixMetalExtraLinodeExtraVSphereExtraVultrExtra
+		var ret AnyOfAzureExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra
 		return ret
 	}
 	return *o.Extra
@@ -578,7 +585,7 @@ func (o *CreateMachineRequest) GetExtra() AnyOfAzureExtraEquinixMetalExtraLinode
 
 // GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateMachineRequest) GetExtraOk() (*AnyOfAzureExtraEquinixMetalExtraLinodeExtraVSphereExtraVultrExtra, bool) {
+func (o *CreateMachineRequest) GetExtraOk() (*AnyOfAzureExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra, bool) {
 	if o == nil || o.Extra == nil {
 		return nil, false
 	}
@@ -594,8 +601,8 @@ func (o *CreateMachineRequest) HasExtra() bool {
 	return false
 }
 
-// SetExtra gets a reference to the given AnyOfAzureExtraEquinixMetalExtraLinodeExtraVSphereExtraVultrExtra and assigns it to the Extra field.
-func (o *CreateMachineRequest) SetExtra(v AnyOfAzureExtraEquinixMetalExtraLinodeExtraVSphereExtraVultrExtra) {
+// SetExtra gets a reference to the given AnyOfAzureExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra and assigns it to the Extra field.
+func (o *CreateMachineRequest) SetExtra(v AnyOfAzureExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra) {
 	o.Extra = &v
 }
 
@@ -773,7 +780,7 @@ func (o CreateMachineRequest) MarshalJSON() ([]byte, error) {
 	if o.Location != nil {
 		toSerialize["location"] = o.Location
 	}
-	if true {
+	if o.Size != nil {
 		toSerialize["size"] = o.Size
 	}
 	if true {
