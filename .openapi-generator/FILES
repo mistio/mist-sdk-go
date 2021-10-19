@@ -15,6 +15,7 @@ api_orgs.go
 api_rules.go
 api_scripts.go
 api_sizes.go
+api_snapshots.go
 api_users.go
 api_volumes.go
 api_zones.go
@@ -187,6 +188,7 @@ docs/ScriptsApi.md
 docs/Selector.md
 docs/Size.md
 docs/SizesApi.md
+docs/SnapshotsApi.md
 docs/SupportedProviders.md
 docs/Team.md
 docs/TriggerAfter.md

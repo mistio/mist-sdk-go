@@ -2274,7 +2274,7 @@ paths:
         - list_snapshots:machine
       summary: List machine snapshots
       tags:
-      - machines
+      - snapshots
     post:
       description: Create snapshots of target machine
       operationId: create-snapshot
@@ -2313,7 +2313,7 @@ paths:
         - create_snapshots:machine
       summary: Create snapshot
       tags:
-      - machines
+      - snapshots
   /api/v2/machines/{machine}/snapshots/{snapshot}:
     delete:
       description: Remove target machine snapshot
@@ -2357,7 +2357,7 @@ paths:
         - create_snapshots:machine
       summary: Remove snapshot
       tags:
-      - machines
+      - snapshots
     post:
       description: Revert machine to snapshot
       operationId: revert-to-snapshot
@@ -2400,7 +2400,7 @@ paths:
         - revert_to_snapshots:machine
       summary: Revert to snapshot
       tags:
-      - machines
+      - snapshots
   /api/v2/networks:
     get:
       description: List networks owned by the active org. READ permission required

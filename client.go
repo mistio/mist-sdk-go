@@ -75,6 +75,8 @@ type APIClient struct {
 
 	SizesApi *SizesApiService
 
+	SnapshotsApi *SnapshotsApiService
+
 	UsersApi *UsersApiService
 
 	VolumesApi *VolumesApiService
@@ -111,6 +113,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RulesApi = (*RulesApiService)(&c.common)
 	c.ScriptsApi = (*ScriptsApiService)(&c.common)
 	c.SizesApi = (*SizesApiService)(&c.common)
+	c.SnapshotsApi = (*SnapshotsApiService)(&c.common)
 	c.UsersApi = (*UsersApiService)(&c.common)
 	c.VolumesApi = (*VolumesApiService)(&c.common)
 	c.ZonesApi = (*ZonesApiService)(&c.common)
