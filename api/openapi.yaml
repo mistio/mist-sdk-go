@@ -5815,6 +5815,9 @@ components:
         cloud:
           description: Specify cloud to provision on
           type: string
+        domain:
+          description: Specify zone domain (e.g. example.com)
+          type: string
         tags:
           description: Assign tags to provisioned zone
           type: object
