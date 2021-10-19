@@ -17,12 +17,10 @@ import (
 
 // CreateZoneRequest struct for CreateZoneRequest
 type CreateZoneRequest struct {
-	// Specify zone name
+	// Specify zone name/domain (e.g. example.com)
 	Name string `json:"name"`
 	// Specify cloud to provision on
 	Cloud string `json:"cloud"`
-	// Specify zone domain (e.g. example.com)
-	Domain *string `json:"domain,omitempty"`
 	// Assign tags to provisioned zone
 	Tags *map[string]interface{} `json:"tags,omitempty"`
 	// Configure additional parameters
@@ -99,38 +97,6 @@ func (o *CreateZoneRequest) GetCloudOk() (*string, bool) {
 // SetCloud sets field value
 func (o *CreateZoneRequest) SetCloud(v string) {
 	o.Cloud = v
-}
-
-// GetDomain returns the Domain field value if set, zero value otherwise.
-func (o *CreateZoneRequest) GetDomain() string {
-	if o == nil || o.Domain == nil {
-		var ret string
-		return ret
-	}
-	return *o.Domain
-}
-
-// GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateZoneRequest) GetDomainOk() (*string, bool) {
-	if o == nil || o.Domain == nil {
-		return nil, false
-	}
-	return o.Domain, true
-}
-
-// HasDomain returns a boolean if a field has been set.
-func (o *CreateZoneRequest) HasDomain() bool {
-	if o != nil && o.Domain != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDomain gets a reference to the given string and assigns it to the Domain field.
-func (o *CreateZoneRequest) SetDomain(v string) {
-	o.Domain = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -300,9 +266,6 @@ func (o CreateZoneRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["cloud"] = o.Cloud
-	}
-	if o.Domain != nil {
-		toSerialize["domain"] = o.Domain
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
