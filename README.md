@@ -155,6 +155,7 @@ Class | Method | HTTP request | Description
 *VolumesApi* | [**GetVolume**](docs/VolumesApi.md#getvolume) | **Get** /api/v2/volumes/{volume} | Get volume
 *VolumesApi* | [**ListVolumes**](docs/VolumesApi.md#listvolumes) | **Get** /api/v2/volumes | List volumes
 *ZonesApi* | [**CreateZone**](docs/ZonesApi.md#createzone) | **Post** /api/v2/zones | Create zone
+*ZonesApi* | [**DeleteZone**](docs/ZonesApi.md#deletezone) | **Delete** /api/v2/zones/{zone} | Delete zone
 *ZonesApi* | [**EditZone**](docs/ZonesApi.md#editzone) | **Put** /api/v2/zones/{zone} | Edit zone
 *ZonesApi* | [**GetZone**](docs/ZonesApi.md#getzone) | **Get** /api/v2/zones/{zone} | Get zone
 *ZonesApi* | [**ListZones**](docs/ZonesApi.md#listzones) | **Get** /api/v2/zones | List zones
