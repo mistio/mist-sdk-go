@@ -138,10 +138,14 @@ Class | Method | HTTP request | Description
 *RulesApi* | [**ListRules**](docs/RulesApi.md#listrules) | **Get** /api/v2/rules | List rules
 *RulesApi* | [**RenameRule**](docs/RulesApi.md#renamerule) | **Patch** /api/v2/rules/{rule} | Rename rule
 *RulesApi* | [**ToggleRule**](docs/RulesApi.md#togglerule) | **Put** /api/v2/rules/{rule} | Toggle rule
+*ScriptsApi* | [**AddScript**](docs/ScriptsApi.md#addscript) | **Post** /api/v2/scripts | Add script
 *ScriptsApi* | [**DeleteScript**](docs/ScriptsApi.md#deletescript) | **Delete** /api/v2/scripts/{script} | Delete script
+*ScriptsApi* | [**DownloadScript**](docs/ScriptsApi.md#downloadscript) | **Get** /api/v2/scripts/{script}/file | Download script
 *ScriptsApi* | [**EditScript**](docs/ScriptsApi.md#editscript) | **Put** /api/v2/scripts/{script} | Edit script
+*ScriptsApi* | [**GenerateScriptUrl**](docs/ScriptsApi.md#generatescripturl) | **Get** /api/v2/scripts/{script}/url | Generate script url
 *ScriptsApi* | [**GetScript**](docs/ScriptsApi.md#getscript) | **Get** /api/v2/scripts/{script} | Get script
 *ScriptsApi* | [**ListScripts**](docs/ScriptsApi.md#listscripts) | **Get** /api/v2/scripts | List scripts
+*ScriptsApi* | [**RunScript**](docs/ScriptsApi.md#runscript) | **Post** /api/v2/scripts/{script} | Run script
 *SizesApi* | [**GetSize**](docs/SizesApi.md#getsize) | **Get** /api/v2/sizes/{size} | Get size
 *SizesApi* | [**ListSizes**](docs/SizesApi.md#listsizes) | **Get** /api/v2/sizes | List sizes
 *UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **Get** /api/v2/users | List users
@@ -166,6 +170,7 @@ Class | Method | HTTP request | Description
  - [AddKeyRequestAnyOf2](docs/AddKeyRequestAnyOf2.md)
  - [AddKeyResponse](docs/AddKeyResponse.md)
  - [AddRuleRequest](docs/AddRuleRequest.md)
+ - [AddScriptRequest](docs/AddScriptRequest.md)
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)
  - [AlibabaCredentials](docs/AlibabaCredentials.md)
  - [AlibabaNet](docs/AlibabaNet.md)
@@ -240,6 +245,7 @@ Class | Method | HTTP request | Description
  - [IbmCredentials](docs/IbmCredentials.md)
  - [Image](docs/Image.md)
  - [InlineResponse200](docs/InlineResponse200.md)
+ - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineScript](docs/InlineScript.md)
  - [InstantVector](docs/InstantVector.md)
  - [IntervalSchedule](docs/IntervalSchedule.md)
@@ -253,6 +259,9 @@ Class | Method | HTTP request | Description
  - [KubernetesCredentials](docs/KubernetesCredentials.md)
  - [KubevirtCloudRequest](docs/KubevirtCloudRequest.md)
  - [KvmCloudRequest](docs/KvmCloudRequest.md)
+ - [LXDExtra](docs/LXDExtra.md)
+ - [LXDExtraLimits](docs/LXDExtraLimits.md)
+ - [LXDNet](docs/LXDNet.md)
  - [LinodeCloudRequest](docs/LinodeCloudRequest.md)
  - [LinodeCredentials](docs/LinodeCredentials.md)
  - [LinodeExtra](docs/LinodeExtra.md)
@@ -302,6 +311,8 @@ Class | Method | HTTP request | Description
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)
  - [RuleAction](docs/RuleAction.md)
+ - [RunScriptRequest](docs/RunScriptRequest.md)
+ - [RunScriptResponse](docs/RunScriptResponse.md)
  - [Script](docs/Script.md)
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)

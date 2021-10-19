@@ -28,6 +28,7 @@ docs/AddKeyRequestAnyOf1.md
 docs/AddKeyRequestAnyOf2.md
 docs/AddKeyResponse.md
 docs/AddRuleRequest.md
+docs/AddScriptRequest.md
 docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
 docs/AlibabaNet.md
@@ -106,6 +107,7 @@ docs/IbmCredentials.md
 docs/Image.md
 docs/ImagesApi.md
 docs/InlineResponse200.md
+docs/InlineResponse2001.md
 docs/InlineScript.md
 docs/InstantVector.md
 docs/IntervalSchedule.md
@@ -121,6 +123,9 @@ docs/KubernetesCloudRequest.md
 docs/KubernetesCredentials.md
 docs/KubevirtCloudRequest.md
 docs/KvmCloudRequest.md
+docs/LXDExtra.md
+docs/LXDExtraLimits.md
+docs/LXDNet.md
 docs/LinodeCloudRequest.md
 docs/LinodeCredentials.md
 docs/LinodeExtra.md
@@ -175,6 +180,8 @@ docs/ResponseMetadata.md
 docs/Rule.md
 docs/RuleAction.md
 docs/RulesApi.md
+docs/RunScriptRequest.md
+docs/RunScriptResponse.md
 docs/Script.md
 docs/ScriptsApi.md
 docs/Selector.md
@@ -210,6 +217,7 @@ model_add_key_request_any_of_1.go
 model_add_key_request_any_of_2.go
 model_add_key_response.go
 model_add_rule_request.go
+model_add_script_request.go
 model_alibaba_cloud_request.go
 model_alibaba_credentials.go
 model_alibaba_net.go
@@ -284,6 +292,7 @@ model_ibm_cloud_request.go
 model_ibm_credentials.go
 model_image.go
 model_inline_response_200.go
+model_inline_response_200_1.go
 model_inline_script.go
 model_instant_vector.go
 model_interval_schedule.go
@@ -322,6 +331,9 @@ model_location.go
 model_log.go
 model_lxd_cloud_request.go
 model_lxd_credentials.go
+model_lxd_extra.go
+model_lxd_extra_limits.go
+model_lxd_net.go
 model_machine.go
 model_machine_state.go
 model_maxihost_cloud_request.go
@@ -346,6 +358,8 @@ model_range_vector.go
 model_response_metadata.go
 model_rule.go
 model_rule_action.go
+model_run_script_request.go
+model_run_script_response.go
 model_script.go
 model_selector.go
 model_size.go
