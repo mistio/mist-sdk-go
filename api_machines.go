@@ -480,6 +480,125 @@ func (a *MachinesApiService) CreateMachineExecute(r ApiCreateMachineRequest) (Cr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateSnapshotRequest struct {
+	ctx _context.Context
+	ApiService *MachinesApiService
+	machine string
+}
+
+
+func (r ApiCreateSnapshotRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
+	return r.ApiService.CreateSnapshotExecute(r)
+}
+
+/*
+ * CreateSnapshot Create snapshot
+ * Create snapshots of target machine
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param machine
+ * @return ApiCreateSnapshotRequest
+ */
+func (a *MachinesApiService) CreateSnapshot(ctx _context.Context, machine string) ApiCreateSnapshotRequest {
+	return ApiCreateSnapshotRequest{
+		ApiService: a,
+		ctx: ctx,
+		machine: machine,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return map[string]interface{}
+ */
+func (a *MachinesApiService) CreateSnapshotExecute(r ApiCreateSnapshotRequest) (map[string]interface{}, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachinesApiService.CreateSnapshot")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/machines/{machine}/snapshots"
+	localVarPath = strings.Replace(localVarPath, "{"+"machine"+"}", _neturl.PathEscape(parameterToString(r.machine, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDestroyMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
@@ -1233,6 +1352,125 @@ func (a *MachinesApiService) ListMachinesExecute(r ApiListMachinesRequest) (List
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListSnapshotsRequest struct {
+	ctx _context.Context
+	ApiService *MachinesApiService
+	machine string
+}
+
+
+func (r ApiListSnapshotsRequest) Execute() (ListSnapshotsResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListSnapshotsExecute(r)
+}
+
+/*
+ * ListSnapshots List machine snapshots
+ * List snapshots of target machine
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param machine
+ * @return ApiListSnapshotsRequest
+ */
+func (a *MachinesApiService) ListSnapshots(ctx _context.Context, machine string) ApiListSnapshotsRequest {
+	return ApiListSnapshotsRequest{
+		ApiService: a,
+		ctx: ctx,
+		machine: machine,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return ListSnapshotsResponse
+ */
+func (a *MachinesApiService) ListSnapshotsExecute(r ApiListSnapshotsRequest) (ListSnapshotsResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ListSnapshotsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachinesApiService.ListSnapshots")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/machines/{machine}/snapshots"
+	localVarPath = strings.Replace(localVarPath, "{"+"machine"+"}", _neturl.PathEscape(parameterToString(r.machine, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiRebootMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
@@ -1278,6 +1516,118 @@ func (a *MachinesApiService) RebootMachineExecute(r ApiRebootMachineRequest) (*_
 
 	localVarPath := localBasePath + "/api/v2/machines/{machine}/actions/reboot"
 	localVarPath = strings.Replace(localVarPath, "{"+"machine"+"}", _neturl.PathEscape(parameterToString(r.machine, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveSnapshotRequest struct {
+	ctx _context.Context
+	ApiService *MachinesApiService
+	machine string
+	snapshot string
+}
+
+
+func (r ApiRemoveSnapshotRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveSnapshotExecute(r)
+}
+
+/*
+ * RemoveSnapshot Remove snapshot
+ * Remove target machine snapshot
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param machine
+ * @param snapshot
+ * @return ApiRemoveSnapshotRequest
+ */
+func (a *MachinesApiService) RemoveSnapshot(ctx _context.Context, machine string, snapshot string) ApiRemoveSnapshotRequest {
+	return ApiRemoveSnapshotRequest{
+		ApiService: a,
+		ctx: ctx,
+		machine: machine,
+		snapshot: snapshot,
+	}
+}
+
+/*
+ * Execute executes the request
+ */
+func (a *MachinesApiService) RemoveSnapshotExecute(r ApiRemoveSnapshotRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachinesApiService.RemoveSnapshot")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/machines/{machine}/snapshots/{snapshot}"
+	localVarPath = strings.Replace(localVarPath, "{"+"machine"+"}", _neturl.PathEscape(parameterToString(r.machine, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"snapshot"+"}", _neturl.PathEscape(parameterToString(r.snapshot, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1602,6 +1952,118 @@ func (a *MachinesApiService) ResumeMachineExecute(r ApiResumeMachineRequest) (*_
 
 	localVarPath := localBasePath + "/api/v2/machines/{machine}/actions/resume"
 	localVarPath = strings.Replace(localVarPath, "{"+"machine"+"}", _neturl.PathEscape(parameterToString(r.machine, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRevertToSnapshotRequest struct {
+	ctx _context.Context
+	ApiService *MachinesApiService
+	machine string
+	snapshot string
+}
+
+
+func (r ApiRevertToSnapshotRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RevertToSnapshotExecute(r)
+}
+
+/*
+ * RevertToSnapshot Revert to snapshot
+ * Revert machine to snapshot
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param machine
+ * @param snapshot
+ * @return ApiRevertToSnapshotRequest
+ */
+func (a *MachinesApiService) RevertToSnapshot(ctx _context.Context, machine string, snapshot string) ApiRevertToSnapshotRequest {
+	return ApiRevertToSnapshotRequest{
+		ApiService: a,
+		ctx: ctx,
+		machine: machine,
+		snapshot: snapshot,
+	}
+}
+
+/*
+ * Execute executes the request
+ */
+func (a *MachinesApiService) RevertToSnapshotExecute(r ApiRevertToSnapshotRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachinesApiService.RevertToSnapshot")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/machines/{machine}/snapshots/{snapshot}"
+	localVarPath = strings.Replace(localVarPath, "{"+"machine"+"}", _neturl.PathEscape(parameterToString(r.machine, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"snapshot"+"}", _neturl.PathEscape(parameterToString(r.snapshot, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

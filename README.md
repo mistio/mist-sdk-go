@@ -83,7 +83,6 @@ Class | Method | HTTP request | Description
 *CloudsApi* | [**GetCloud**](docs/CloudsApi.md#getcloud) | **Get** /api/v2/clouds/{cloud} | Get cloud
 *CloudsApi* | [**ListClouds**](docs/CloudsApi.md#listclouds) | **Get** /api/v2/clouds | List clouds
 *CloudsApi* | [**RemoveCloud**](docs/CloudsApi.md#removecloud) | **Delete** /api/v2/clouds/{cloud} | Remove cloud
-*CloudsCountApi* | [**GetOrg**](docs/CloudsCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *ClustersApi* | [**CreateCluster**](docs/ClustersApi.md#createcluster) | **Post** /api/v2/clusters | Create cluster
 *ClustersApi* | [**DestroyCluster**](docs/ClustersApi.md#destroycluster) | **Delete** /api/v2/clusters/{cluster} | Destroy cluster
 *ClustersApi* | [**GetCluster**](docs/ClustersApi.md#getcluster) | **Get** /api/v2/clusters/{cluster} | Get cluster
@@ -103,23 +102,25 @@ Class | Method | HTTP request | Description
 *MachinesApi* | [**CloneMachine**](docs/MachinesApi.md#clonemachine) | **Post** /api/v2/machines/{machine}/actions/clone | Clone machine
 *MachinesApi* | [**Console**](docs/MachinesApi.md#console) | **Post** /api/v2/machines/{machine}/actions/console | Open console
 *MachinesApi* | [**CreateMachine**](docs/MachinesApi.md#createmachine) | **Post** /api/v2/machines | Create machine
+*MachinesApi* | [**CreateSnapshot**](docs/MachinesApi.md#createsnapshot) | **Post** /api/v2/machines/{machine}/snapshots | Create snapshot
 *MachinesApi* | [**DestroyMachine**](docs/MachinesApi.md#destroymachine) | **Post** /api/v2/machines/{machine}/actions/destroy | Destroy machine
 *MachinesApi* | [**DisassociateKey**](docs/MachinesApi.md#disassociatekey) | **Delete** /api/v2/machines/{machine}/actions/disassociate-key | Disassociate a key from a machine
 *MachinesApi* | [**EditMachine**](docs/MachinesApi.md#editmachine) | **Put** /api/v2/machines/{machine} | Edit machine
 *MachinesApi* | [**ExposeMachine**](docs/MachinesApi.md#exposemachine) | **Post** /api/v2/machines/{machine}/actions/expose | Expose machine
 *MachinesApi* | [**GetMachine**](docs/MachinesApi.md#getmachine) | **Get** /api/v2/machines/{machine} | Get machine
 *MachinesApi* | [**ListMachines**](docs/MachinesApi.md#listmachines) | **Get** /api/v2/machines | List machines
+*MachinesApi* | [**ListSnapshots**](docs/MachinesApi.md#listsnapshots) | **Get** /api/v2/machines/{machine}/snapshots | List machine snapshots
 *MachinesApi* | [**RebootMachine**](docs/MachinesApi.md#rebootmachine) | **Post** /api/v2/machines/{machine}/actions/reboot | Reboot machine
+*MachinesApi* | [**RemoveSnapshot**](docs/MachinesApi.md#removesnapshot) | **Delete** /api/v2/machines/{machine}/snapshots/{snapshot} | Remove snapshot
 *MachinesApi* | [**RenameMachine**](docs/MachinesApi.md#renamemachine) | **Post** /api/v2/machines/{machine}/actions/rename | Rename machine
 *MachinesApi* | [**ResizeMachine**](docs/MachinesApi.md#resizemachine) | **Post** /api/v2/machines/{machine}/actions/resize | Resize machine
 *MachinesApi* | [**ResumeMachine**](docs/MachinesApi.md#resumemachine) | **Post** /api/v2/machines/{machine}/actions/resume | Resume machine
+*MachinesApi* | [**RevertToSnapshot**](docs/MachinesApi.md#reverttosnapshot) | **Post** /api/v2/machines/{machine}/snapshots/{snapshot} | Revert to snapshot
 *MachinesApi* | [**Ssh**](docs/MachinesApi.md#ssh) | **Post** /api/v2/machines/{machine}/actions/ssh | Open secure shell
 *MachinesApi* | [**StartMachine**](docs/MachinesApi.md#startmachine) | **Post** /api/v2/machines/{machine}/actions/start | Start machine
 *MachinesApi* | [**StopMachine**](docs/MachinesApi.md#stopmachine) | **Post** /api/v2/machines/{machine}/actions/stop | Stop machine
 *MachinesApi* | [**SuspendMachine**](docs/MachinesApi.md#suspendmachine) | **Post** /api/v2/machines/{machine}/actions/suspend | Suspend machine
 *MachinesApi* | [**UndefineMachine**](docs/MachinesApi.md#undefinemachine) | **Post** /api/v2/machines/{machine}/actions/undefine | Undefine machine
-*MembersApi* | [**ListOrgMembers**](docs/MembersApi.md#listorgmembers) | **Get** /api/v2/orgs/{org}/members | List org members
-*NameApi* | [**GetOrg**](docs/NameApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *NetworksApi* | [**CreateNetwork**](docs/NetworksApi.md#createnetwork) | **Post** /api/v2/networks | Create network
 *NetworksApi* | [**DeleteNetwork**](docs/NetworksApi.md#deletenetwork) | **Delete** /api/v2/networks/{network} | Delete network
 *NetworksApi* | [**EditNetwork**](docs/NetworksApi.md#editnetwork) | **Put** /api/v2/networks/{network} | Edit network
@@ -143,12 +144,6 @@ Class | Method | HTTP request | Description
 *ScriptsApi* | [**ListScripts**](docs/ScriptsApi.md#listscripts) | **Get** /api/v2/scripts | List scripts
 *SizesApi* | [**GetSize**](docs/SizesApi.md#getsize) | **Get** /api/v2/sizes/{size} | Get size
 *SizesApi* | [**ListSizes**](docs/SizesApi.md#listsizes) | **Get** /api/v2/sizes | List sizes
-*SnapshotsApi* | [**CreateSnapshot**](docs/SnapshotsApi.md#createsnapshot) | **Post** /api/v2/machines/{machine}/snapshots | Create snapshot
-*SnapshotsApi* | [**ListSnapshots**](docs/SnapshotsApi.md#listsnapshots) | **Get** /api/v2/machines/{machine}/snapshots | List machine snapshots
-*SnapshotsApi* | [**RemoveSnapshot**](docs/SnapshotsApi.md#removesnapshot) | **Delete** /api/v2/machines/{machine}/snapshots/{snapshot} | Remove snapshot
-*SnapshotsApi* | [**RevertToSnapshot**](docs/SnapshotsApi.md#reverttosnapshot) | **Post** /api/v2/machines/{machine}/snapshots/{snapshot} | Revert to snapshot
-*TeamsApi* | [**ListOrgTeams**](docs/TeamsApi.md#listorgteams) | **Get** /api/v2/orgs/{org}/teams | List org teams
-*TotalMachineCountApi* | [**GetOrg**](docs/TotalMachineCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **Get** /api/v2/users | List users
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /api/v2/volumes | Create volume
 *VolumesApi* | [**DeleteVolume**](docs/VolumesApi.md#deletevolume) | **Delete** /api/v2/volumes/{volume} | Delete volume

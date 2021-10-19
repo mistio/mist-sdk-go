@@ -2274,7 +2274,7 @@ paths:
         - list_snapshots:machine
       summary: List machine snapshots
       tags:
-      - snapshots
+      - machines
     post:
       description: Create snapshots of target machine
       operationId: create-snapshot
@@ -2313,7 +2313,7 @@ paths:
         - create_snapshots:machine
       summary: Create snapshot
       tags:
-      - snapshots
+      - machines
   /api/v2/machines/{machine}/snapshots/{snapshot}:
     delete:
       description: Remove target machine snapshot
@@ -2357,7 +2357,7 @@ paths:
         - create_snapshots:machine
       summary: Remove snapshot
       tags:
-      - snapshots
+      - machines
     post:
       description: Revert machine to snapshot
       operationId: revert-to-snapshot
@@ -2400,7 +2400,7 @@ paths:
         - revert_to_snapshots:machine
       summary: Revert to snapshot
       tags:
-      - snapshots
+      - machines
   /api/v2/networks:
     get:
       description: List networks owned by the active org. READ permission required
@@ -2905,9 +2905,6 @@ paths:
       summary: Get Org
       tags:
       - orgs
-      - name
-      - clouds_count
-      - total_machine_count
       x-cli-table-extended:
       - name
       - id
@@ -3003,7 +3000,6 @@ paths:
       summary: List org members
       tags:
       - orgs
-      - members
       x-cli-table-default:
       - email
       x-cli-table-extended:
@@ -3178,7 +3174,6 @@ paths:
       summary: List org teams
       tags:
       - orgs
-      - teams
       x-cli-table-default:
       - name
       - members_count
