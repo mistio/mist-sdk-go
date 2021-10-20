@@ -31,8 +31,13 @@ type ApiCreateSnapshotRequest struct {
 	ctx _context.Context
 	ApiService *SnapshotsApiService
 	machine string
+	name *string
 }
 
+func (r ApiCreateSnapshotRequest) Name(name string) ApiCreateSnapshotRequest {
+	r.name = &name
+	return r
+}
 
 func (r ApiCreateSnapshotRequest) Execute() (map[string]interface{}, *_nethttp.Response, error) {
 	return r.ApiService.CreateSnapshotExecute(r)
@@ -78,7 +83,11 @@ func (a *SnapshotsApiService) CreateSnapshotExecute(r ApiCreateSnapshotRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.name == nil {
+		return localVarReturnValue, nil, reportError("name is required and must be specified")
+	}
 
+	localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
