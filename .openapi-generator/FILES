@@ -84,6 +84,7 @@ docs/EquinixMetalNet.md
 docs/EquinixMetalNetIpAddresses.md
 docs/Expiration.md
 docs/ExpirationNotify.md
+docs/ExposeMachineRequest.md
 docs/Frequency.md
 docs/GetCloudResponse.md
 docs/GetClusterResponse.md
@@ -273,6 +274,7 @@ model_equinix_metal_net.go
 model_equinix_metal_net_ip_addresses.go
 model_expiration.go
 model_expiration_notify.go
+model_expose_machine_request.go
 model_frequency.go
 model_get_cloud_response.go
 model_get_cluster_response.go

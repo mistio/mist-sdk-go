@@ -822,8 +822,13 @@ type ApiExposeMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
+	exposeMachineRequest *ExposeMachineRequest
 }
 
+func (r ApiExposeMachineRequest) ExposeMachineRequest(exposeMachineRequest ExposeMachineRequest) ApiExposeMachineRequest {
+	r.exposeMachineRequest = &exposeMachineRequest
+	return r
+}
 
 func (r ApiExposeMachineRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ExposeMachineExecute(r)
@@ -869,7 +874,7 @@ func (a *MachinesApiService) ExposeMachineExecute(r ApiExposeMachineRequest) (*_
 	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -885,6 +890,8 @@ func (a *MachinesApiService) ExposeMachineExecute(r ApiExposeMachineRequest) (*_
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.exposeMachineRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

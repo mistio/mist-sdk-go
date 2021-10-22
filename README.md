@@ -223,6 +223,7 @@ Class | Method | HTTP request | Description
  - [EquinixMetalNetIpAddresses](docs/EquinixMetalNetIpAddresses.md)
  - [Expiration](docs/Expiration.md)
  - [ExpirationNotify](docs/ExpirationNotify.md)
+ - [ExposeMachineRequest](docs/ExposeMachineRequest.md)
  - [Frequency](docs/Frequency.md)
  - [GetCloudResponse](docs/GetCloudResponse.md)
  - [GetClusterResponse](docs/GetClusterResponse.md)
