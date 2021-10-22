@@ -1468,8 +1468,13 @@ type ApiResizeMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
+	size *string
 }
 
+func (r ApiResizeMachineRequest) Size(size string) ApiResizeMachineRequest {
+	r.size = &size
+	return r
+}
 
 func (r ApiResizeMachineRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ResizeMachineExecute(r)
@@ -1513,7 +1518,11 @@ func (a *MachinesApiService) ResizeMachineExecute(r ApiResizeMachineRequest) (*_
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.size == nil {
+		return nil, reportError("size is required and must be specified")
+	}
 
+	localVarQueryParams.Add("size", parameterToString(*r.size, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
