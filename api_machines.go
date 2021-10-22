@@ -707,11 +707,11 @@ type ApiEditMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
-	name *string
+	editMachineRequest *EditMachineRequest
 }
 
-func (r ApiEditMachineRequest) Name(name string) ApiEditMachineRequest {
-	r.name = &name
+func (r ApiEditMachineRequest) EditMachineRequest(editMachineRequest EditMachineRequest) ApiEditMachineRequest {
+	r.editMachineRequest = &editMachineRequest
 	return r
 }
 
@@ -758,11 +758,8 @@ func (a *MachinesApiService) EditMachineExecute(r ApiEditMachineRequest) (*_neth
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -778,6 +775,8 @@ func (a *MachinesApiService) EditMachineExecute(r ApiEditMachineRequest) (*_neth
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.editMachineRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1345,8 +1344,13 @@ type ApiRenameMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
+	name *string
 }
 
+func (r ApiRenameMachineRequest) Name(name string) ApiRenameMachineRequest {
+	r.name = &name
+	return r
+}
 
 func (r ApiRenameMachineRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RenameMachineExecute(r)
@@ -1390,7 +1394,11 @@ func (a *MachinesApiService) RenameMachineExecute(r ApiRenameMachineRequest) (*_
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.name == nil {
+		return nil, reportError("name is required and must be specified")
+	}
 
+	localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

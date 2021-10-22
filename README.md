@@ -213,6 +213,8 @@ Class | Method | HTTP request | Description
  - [DockerCredentials](docs/DockerCredentials.md)
  - [EditCloudRequest](docs/EditCloudRequest.md)
  - [EditCloudRequestAnyOf](docs/EditCloudRequestAnyOf.md)
+ - [EditMachineRequest](docs/EditMachineRequest.md)
+ - [EditMachineRequestExpiration](docs/EditMachineRequestExpiration.md)
  - [EditRuleRequest](docs/EditRuleRequest.md)
  - [EquinixCloudRequest](docs/EquinixCloudRequest.md)
  - [EquinixCredentials](docs/EquinixCredentials.md)
