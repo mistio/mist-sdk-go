@@ -105,7 +105,6 @@ Class | Method | HTTP request | Description
 *MachinesApi* | [**DestroyMachine**](docs/MachinesApi.md#destroymachine) | **Post** /api/v2/machines/{machine}/actions/destroy | Destroy machine
 *MachinesApi* | [**DisassociateKey**](docs/MachinesApi.md#disassociatekey) | **Delete** /api/v2/machines/{machine}/actions/disassociate-key | Disassociate a key from a machine
 *MachinesApi* | [**EditMachine**](docs/MachinesApi.md#editmachine) | **Put** /api/v2/machines/{machine} | Edit machine
-*MachinesApi* | [**ExposeMachine**](docs/MachinesApi.md#exposemachine) | **Post** /api/v2/machines/{machine}/actions/expose | Expose machine
 *MachinesApi* | [**GetMachine**](docs/MachinesApi.md#getmachine) | **Get** /api/v2/machines/{machine} | Get machine
 *MachinesApi* | [**ListMachines**](docs/MachinesApi.md#listmachines) | **Get** /api/v2/machines | List machines
 *MachinesApi* | [**RebootMachine**](docs/MachinesApi.md#rebootmachine) | **Post** /api/v2/machines/{machine}/actions/reboot | Reboot machine
@@ -223,7 +222,6 @@ Class | Method | HTTP request | Description
  - [EquinixMetalNetIpAddresses](docs/EquinixMetalNetIpAddresses.md)
  - [Expiration](docs/Expiration.md)
  - [ExpirationNotify](docs/ExpirationNotify.md)
- - [ExposeMachineRequest](docs/ExposeMachineRequest.md)
  - [Frequency](docs/Frequency.md)
  - [GetCloudResponse](docs/GetCloudResponse.md)
  - [GetClusterResponse](docs/GetClusterResponse.md)

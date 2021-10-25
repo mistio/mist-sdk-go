@@ -1908,43 +1908,6 @@ paths:
       summary: Disassociate a key from a machine
       tags:
       - machines
-  /api/v2/machines/{machine}/actions/expose:
-    post:
-      description: Expose target machine
-      operationId: expose-machine
-      parameters:
-      - example: example-machine
-        explode: false
-        in: path
-        name: machine
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExposeMachineRequest'
-      responses:
-        "200":
-          description: Machine expose issued successfully
-        "401":
-          description: Authentication failed
-        "403":
-          description: You are not authorized to perform this action
-        "404":
-          description: Machine not found
-        "422":
-          description: Action not supported on target machine
-      security:
-      - ApiKeyAuth:
-        - expose:machine
-      - CookieAuth:
-        - expose:machine
-      summary: Expose machine
-      tags:
-      - machines
   /api/v2/machines/{machine}/actions/reboot:
     post:
       description: Reboot target machine
@@ -2613,7 +2576,7 @@ paths:
         style: form
       responses:
         "200":
-          description: Network delete successfully
+          description: Network deleted successfully
         "401":
           description: Authentication failed
         "403":
@@ -6290,16 +6253,6 @@ components:
       required:
       - action
       - date
-      type: object
-    ExposeMachineRequest:
-      example:
-        port_forwards: '{}'
-      properties:
-        port_forwards:
-          description: Applies only in GigG8 clouds
-          type: object
-      required:
-      - port_forwards
       type: object
     Frequency:
       example:
