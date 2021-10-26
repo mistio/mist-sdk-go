@@ -76,6 +76,9 @@ docs/DigitaloceanCloudRequest.md
 docs/DigitaloceanCredentials.md
 docs/DockerCloudRequest.md
 docs/DockerCredentials.md
+docs/DockerExtra.md
+docs/DockerExtraLimits.md
+docs/DockerNet.md
 docs/EditCloudRequest.md
 docs/EditCloudRequestAnyOf.md
 docs/EquinixCloudRequest.md
@@ -264,6 +267,9 @@ model_digitalocean_cloud_request.go
 model_digitalocean_credentials.go
 model_docker_cloud_request.go
 model_docker_credentials.go
+model_docker_extra.go
+model_docker_extra_limits.go
+model_docker_net.go
 model_edit_cloud_request.go
 model_edit_cloud_request_any_of.go
 model_equinix_cloud_request.go
