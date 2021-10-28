@@ -155,7 +155,7 @@ paths:
       description: Remove target cloud
       operationId: remove-cloud
       parameters:
-      - example: example-cloud
+      - example: my-cloud
         explode: false
         in: path
         name: cloud
@@ -184,7 +184,7 @@ paths:
       description: Get details about target cloud
       operationId: get-cloud
       parameters:
-      - example: example-cloud
+      - example: my-cloud
         explode: false
         in: path
         name: cloud
@@ -268,7 +268,7 @@ paths:
       description: Update target cloud name or credentials
       operationId: edit-cloud
       parameters:
-      - example: example-cloud
+      - example: my-cloud
         explode: false
         in: path
         name: cloud
@@ -459,7 +459,7 @@ paths:
       description: Destroy target clusters
       operationId: destroy-cluster
       parameters:
-      - example: example-cluster
+      - example: my-cluster
         explode: false
         in: path
         name: cluster
@@ -490,7 +490,7 @@ paths:
       description: Get details about target cluster
       operationId: get-cluster
       parameters:
-      - example: example-cluster
+      - example: my-cluster
         explode: false
         in: path
         name: cluster
@@ -701,7 +701,7 @@ paths:
       parameters:
       - examples:
           Filter by cloud name:
-            value: example-cloud
+            value: my-cloud
           Filter by cloud id:
             value: 0194030499e74b02bdf68fa7130fb0b2
           Filter by cloud provider:
@@ -1082,7 +1082,7 @@ paths:
       description: Delete target key
       operationId: delete-key
       parameters:
-      - example: example-key
+      - example: my-key
         explode: false
         in: path
         name: key
@@ -1111,7 +1111,7 @@ paths:
       description: Get details about target key
       operationId: get-key
       parameters:
-      - example: example-key
+      - example: my-key
         explode: false
         in: path
         name: key
@@ -1204,7 +1204,7 @@ paths:
       description: Edit target key
       operationId: edit-key
       parameters:
-      - example: example-key
+      - example: my-key
         explode: false
         in: path
         name: key
@@ -1213,7 +1213,7 @@ paths:
           type: string
         style: simple
       - description: New key name
-        example: renamed-example-key
+        example: my-renamed-key
         explode: true
         in: query
         name: name
@@ -1254,7 +1254,7 @@ paths:
       parameters:
       - examples:
           Filter by cloud name:
-            value: example-cloud
+            value: my-cloud
           Filter by cloud id:
             value: 0194030499e74b02bdf68fa7130fb0b2
           Filter by cloud provider:
@@ -1619,7 +1619,7 @@ paths:
       description: Get details about target machine
       operationId: get-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -1700,7 +1700,7 @@ paths:
       description: Edit target machine
       operationId: edit-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -1735,7 +1735,7 @@ paths:
       description: Associate a key with a machine.
       operationId: associate-key
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -1778,7 +1778,7 @@ paths:
       description: Clone target machine
       operationId: clone-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -1810,7 +1810,7 @@ paths:
       description: Open VNC console on target machine
       operationId: console
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -1842,7 +1842,7 @@ paths:
       description: Destroy target machine
       operationId: destroy-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -1874,7 +1874,7 @@ paths:
       description: Disassociate a key from a machine.
       operationId: disassociate-key
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -1913,7 +1913,7 @@ paths:
       description: Reboot target machine
       operationId: reboot-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -1945,7 +1945,7 @@ paths:
       description: Rename target machine
       operationId: rename-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -1954,7 +1954,7 @@ paths:
           type: string
         style: simple
       - description: New machine name
-        example: renamed-example-machine
+        example: my-renamed-machine
         explode: true
         in: query
         name: name
@@ -1986,7 +1986,7 @@ paths:
       description: Resize target machine
       operationId: resize-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -2026,7 +2026,7 @@ paths:
       description: Resume target machine
       operationId: resume-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -2058,7 +2058,7 @@ paths:
       description: Open secure shell on target machine
       operationId: ssh
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -2095,7 +2095,7 @@ paths:
       description: Start target machine
       operationId: start-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -2127,7 +2127,7 @@ paths:
       description: Stop target machine
       operationId: stop-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -2159,7 +2159,7 @@ paths:
       description: Suspend target machine
       operationId: suspend-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -2191,7 +2191,7 @@ paths:
       description: Undefine target machine
       operationId: undefine-machine
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -2223,7 +2223,7 @@ paths:
       description: List snapshots of target machine
       operationId: list-snapshots
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -2260,7 +2260,7 @@ paths:
       description: Create snapshots of target machine
       operationId: create-snapshot
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -2268,7 +2268,7 @@ paths:
         schema:
           type: string
         style: simple
-      - example: example-snapshot
+      - example: my-snapshot
         explode: true
         in: query
         name: name
@@ -2308,7 +2308,7 @@ paths:
       description: Remove target machine snapshot
       operationId: remove-snapshot
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -2316,7 +2316,7 @@ paths:
         schema:
           type: string
         style: simple
-      - example: example-snapshot
+      - example: my-snapshot
         explode: false
         in: path
         name: snapshot
@@ -2351,7 +2351,7 @@ paths:
       description: Revert machine to snapshot
       operationId: revert-to-snapshot
       parameters:
-      - example: example-machine
+      - example: my-machine
         explode: false
         in: path
         name: machine
@@ -2359,7 +2359,7 @@ paths:
         schema:
           type: string
         style: simple
-      - example: example-snapshot
+      - example: my-snapshot
         explode: false
         in: path
         name: snapshot
@@ -2557,7 +2557,7 @@ paths:
       description: Delete target network
       operationId: delete-network
       parameters:
-      - example: example-network
+      - example: my-network
         explode: false
         in: path
         name: network
@@ -2566,7 +2566,7 @@ paths:
           type: string
         style: simple
       - description: Cloud the target network belongs to
-        example: example-cloud
+        example: my-cloud
         explode: true
         in: query
         name: cloud
@@ -2599,7 +2599,7 @@ paths:
       description: Get details about target network
       operationId: get-network
       parameters:
-      - example: example-network
+      - example: my-network
         explode: false
         in: path
         name: network
@@ -2681,7 +2681,7 @@ paths:
       description: Edit target network
       operationId: edit-network
       parameters:
-      - example: example-network
+      - example: my-network
         explode: false
         in: path
         name: network
@@ -2690,7 +2690,7 @@ paths:
           type: string
         style: simple
       - description: New network name
-        example: renamed-example-network
+        example: my-renamed-network
         explode: true
         in: query
         name: name
@@ -2836,7 +2836,7 @@ paths:
       description: Get details about target org
       operationId: get-org
       parameters:
-      - example: example-org
+      - example: my-org
         explode: false
         in: path
         name: org
@@ -2906,7 +2906,7 @@ paths:
         a member of the org.
       operationId: list-org-members
       parameters:
-      - example: example-org
+      - example: my-org
         explode: false
         in: path
         name: org
@@ -3001,7 +3001,7 @@ paths:
       description: Get details about target member
       operationId: get-member
       parameters:
-      - example: example-org
+      - example: my-org
         explode: false
         in: path
         name: org
@@ -3009,7 +3009,7 @@ paths:
         schema:
           type: string
         style: simple
-      - example: example-member
+      - example: my-member
         explode: false
         in: path
         name: member
@@ -3064,7 +3064,7 @@ paths:
       operationId: list-org-teams
       parameters:
       - description: Organization id
-        example: example-org
+        example: my-org
         explode: false
         in: path
         name: org
@@ -3305,7 +3305,7 @@ paths:
       description: Delete a rule given its UUID.
       operationId: delete-rule
       parameters:
-      - example: example-rule
+      - example: my-rule
         explode: false
         in: path
         name: rule
@@ -3334,7 +3334,7 @@ paths:
       description: Get details about target rule
       operationId: get-rule
       parameters:
-      - example: example-rule
+      - example: my-rule
         explode: false
         in: path
         name: rule
@@ -3406,7 +3406,7 @@ paths:
       description: Rename a rule
       operationId: rename-rule
       parameters:
-      - example: example-rule
+      - example: my-rule
         explode: false
         in: path
         name: rule
@@ -3414,7 +3414,7 @@ paths:
         schema:
           type: string
         style: simple
-      - example: renamed-example-rule
+      - example: my-renamed-rule
         explode: true
         in: query
         name: name
@@ -3443,7 +3443,7 @@ paths:
       description: Edit a rule given its UUID, EDIT permission required on rule
       operationId: edit-rule
       parameters:
-      - example: example-rule
+      - example: my-rule
         explode: false
         in: path
         name: rule
@@ -3483,7 +3483,7 @@ paths:
       description: Enable or disable a rule
       operationId: toggle-rule
       parameters:
-      - example: example-rule
+      - example: my-rule
         explode: false
         in: path
         name: rule
@@ -3528,7 +3528,7 @@ paths:
       - description: Only return results matching search filter
         examples:
           Filter by script name:
-            value: example-script
+            value: my-script
         explode: true
         in: query
         name: search
@@ -3658,7 +3658,7 @@ paths:
       description: Delete target script
       operationId: delete-script
       parameters:
-      - example: example-script
+      - example: my-script
         explode: false
         in: path
         name: script
@@ -3687,7 +3687,7 @@ paths:
       description: Get details about target script
       operationId: get-script
       parameters:
-      - example: example-script
+      - example: my-script
         explode: false
         in: path
         name: script
@@ -3759,7 +3759,7 @@ paths:
       description: Start a script job to run the script.
       operationId: run-script
       parameters:
-      - example: example-script
+      - example: my-script
         explode: false
         in: path
         name: script
@@ -3801,7 +3801,7 @@ paths:
       description: Edit target script
       operationId: edit-script
       parameters:
-      - example: example-script
+      - example: my-script
         explode: false
         in: path
         name: script
@@ -3810,7 +3810,7 @@ paths:
           type: string
         style: simple
       - description: New script name
-        example: renamed-example-script
+        example: my-renamed-script
         explode: true
         in: query
         name: name
@@ -3849,7 +3849,7 @@ paths:
       description: Download script file or archive
       operationId: download-script
       parameters:
-      - example: example-script
+      - example: my-script
         explode: false
         in: path
         name: script
@@ -3879,7 +3879,7 @@ paths:
       description: Generate url for fetching script file
       operationId: generate-script-url
       parameters:
-      - example: example-script
+      - example: my-script
         explode: false
         in: path
         name: script
@@ -3916,7 +3916,7 @@ paths:
       parameters:
       - examples:
           Filter by cloud name:
-            value: example-cloud
+            value: my-cloud
           Filter by cloud id:
             value: 0194030499e74b02bdf68fa7130fb0b2
           Filter by cloud provider:
@@ -4376,7 +4376,7 @@ paths:
       description: Delete target volume
       operationId: delete-volume
       parameters:
-      - example: example-volume
+      - example: my-volume
         explode: false
         in: path
         name: volume
@@ -4409,7 +4409,7 @@ paths:
       description: Get details about target volume
       operationId: get-volume
       parameters:
-      - example: example-volume
+      - example: my-volume
         explode: false
         in: path
         name: volume
@@ -4493,7 +4493,7 @@ paths:
       description: Edit target volume
       operationId: edit-volume
       parameters:
-      - example: example-volume
+      - example: my-volume
         explode: false
         in: path
         name: volume
@@ -4502,7 +4502,7 @@ paths:
           type: string
         style: simple
       - description: New volume name
-        example: renamed-example-volume
+        example: my-renamed-volume
         explode: true
         in: query
         name: name
@@ -4696,7 +4696,7 @@ paths:
       description: Delete target zone
       operationId: delete-zone
       parameters:
-      - example: example-zone
+      - example: my-zone
         explode: false
         in: path
         name: zone
@@ -4729,7 +4729,7 @@ paths:
       description: Get details about target zone
       operationId: get-zone
       parameters:
-      - example: example-zone
+      - example: my-zone
         explode: false
         in: path
         name: zone
@@ -4811,7 +4811,7 @@ paths:
       description: Edit target zone
       operationId: edit-zone
       parameters:
-      - example: example-zone
+      - example: my-zone
         explode: false
         in: path
         name: zone
@@ -4820,7 +4820,7 @@ paths:
           type: string
         style: simple
       - description: New zone name
-        example: renamed-example-zone
+        example: my-renamed-zone
         explode: true
         in: query
         name: name
@@ -4905,7 +4905,7 @@ components:
         - $ref: '#/components/schemas/OpenshiftCloudRequest'
         - $ref: '#/components/schemas/OtherCloudRequest'
       example:
-        name: example-cloud
+        name: my-cloud
         provider: google
         credentials:
           projectId: projectId
@@ -4917,7 +4917,7 @@ components:
       - $ref: '#/components/schemas/AddKeyRequest_anyOf_1'
       - $ref: '#/components/schemas/AddKeyRequest_anyOf_2'
       example:
-        name: example-key
+        name: my-key
         private: |-
           -----BEGIN RSA PRIVATE KEY-----
           MIICXAIBAAKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0FPqri0cb2JZfXJ/DgYSF6vUp wmJG8wVQZKjeGcjDOL5UlsuusFncCzWBQ7RKNUSesmQRMSGkVb1/3j+skZ6UtW+5u09lHNsj6tQ5 1s1SPrCBkedbNf0Tp0GbMJDyR4e9T04ZZwIDAQABAoGAFijko56+qGyN8M0RVyaRAXz++xTqHBLh 3tx4VgMtrQ+WEgCjhoTwo23KMBAuJGSYnRmoBZM3lMfTKevIkAidPExvYCdm5dYq3XToLkkLv5L2 pIIVOFMDG+KESnAFV7l2c+cnzRMW0+b6f8mR1CJzZuxVLL6Q02fvLi55/mbSYxECQQDeAw6fiIQX GukBI4eMZZt4nscy2o12KyYner3VpoeE+Np2q+Z3pvAMd/aNzQ/W9WaI+NRfcxUJrmfPwIGm63il AkEAxCL5HQb2bQr4ByorcMWm/hEP2MZzROV73yF41hPsRC9m66KrheO9HPTJuo3/9s5p+sqGxOlF L0NDt4SkosjgGwJAFklyR1uZ/wPJjj611cdBcztlPdqoxssQGnh85BzCj/u3WqBpE2vjvyyvyI5k X6zk7S0ljKtt2jny2+00VsBerQJBAJGC1Mg5Oydo5NwD6BiROrPxGo2bpTbu/fhrT8ebHkTz2epl U9VQQSQzY1oZMVX8i1m5WUTLPz2yLJIBQVdXqhMCQBGoiuSoSjafUhV7i1cEGpb88h5NBYZzWXGZ 37sJ5QsW+sJyoNde3xH8vdXhzU7eT82D6X/scw9RZz+/6rCJ4p0=
@@ -5021,7 +5021,7 @@ components:
     AddScriptRequest:
       example:
         entrypoint: entrypoint.sh
-        name: example-script
+        name: my-script
         description: description
         exec_type: executable
         script: |-
@@ -5030,7 +5030,7 @@ components:
         location_type: inline
       properties:
         name:
-          example: example-script
+          example: my-script
           type: string
         script:
           example: |-
@@ -5536,10 +5536,10 @@ components:
         - $ref: '#/components/schemas/AmazonClusterRequest'
         - $ref: '#/components/schemas/GoogleClusterRequest'
       example:
-        name: example-cluster
-        cloud: example-cloud
+        name: my-cluster
+        cloud: my-cloud
         provider: google
-        location: example-location
+        location: my-location
     CreateMachineRequest:
       example:
         template: '{}'
@@ -5763,21 +5763,21 @@ components:
       type: object
     CreateNetworkRequest:
       example:
-        cloud: example-cloud
+        cloud: my-cloud
         template: '{}'
         extra: '{}'
-        name: example-network
+        name: my-network
         save: true
         dry: true
         tags: '{}'
       properties:
         name:
           description: Specify network name
-          example: example-network
+          example: my-network
           type: string
         cloud:
           description: Specify cloud to provision on
-          example: example-cloud
+          example: my-cloud
           type: string
         tags:
           description: Assign tags to provisioned network
@@ -5861,8 +5861,8 @@ components:
       type: object
     CreateZoneRequest:
       example:
-        name: example-zone
-        cloud: example-cloud
+        name: my-zone
+        cloud: my-cloud
       properties:
         name:
           description: Specify zone name/domain (e.g. example.com)
@@ -6110,7 +6110,7 @@ components:
           - $ref: '#/components/schemas/OpenshiftCloudRequest'
           - $ref: '#/components/schemas/OtherCloudRequest'
       example:
-        name: renamed-example-cloud
+        name: my-renamed-cloud
     EditCloudRequest_anyOf:
       additionalProperties: false
       properties:
@@ -8360,13 +8360,13 @@ components:
     RunScriptRequest:
       example:
         su: "false"
-        machine: example-machine
+        machine: my-machine
         job_id: ab74e2f0b7ae4999b1e4013e20dac418
         params: -v
         env: EXAMPLE_VAR=123
       properties:
         machine:
-          example: example-machine
+          example: my-machine
           type: string
         params:
           example: -v
