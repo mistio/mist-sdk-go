@@ -22,7 +22,7 @@ type Query struct {
 	// the operator used to compare the computed value with the given threshold 
 	Operator string `json:"operator"`
 	// the value over/under which an alert will be raised
-	Threshold string `json:"threshold"`
+	Threshold float32 `json:"threshold"`
 	// the function to be applied on the computed series. Must be one of: all, any, avg 
 	Aggregation string `json:"aggregation"`
 }
@@ -31,7 +31,7 @@ type Query struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewQuery(target string, operator string, threshold string, aggregation string, ) *Query {
+func NewQuery(target string, operator string, threshold float32, aggregation string, ) *Query {
 	this := Query{}
 	this.Target = target
 	this.Operator = operator
@@ -97,9 +97,9 @@ func (o *Query) SetOperator(v string) {
 }
 
 // GetThreshold returns the Threshold field value
-func (o *Query) GetThreshold() string {
+func (o *Query) GetThreshold() float32 {
 	if o == nil  {
-		var ret string
+		var ret float32
 		return ret
 	}
 
@@ -108,7 +108,7 @@ func (o *Query) GetThreshold() string {
 
 // GetThresholdOk returns a tuple with the Threshold field value
 // and a boolean to check if the value has been set.
-func (o *Query) GetThresholdOk() (*string, bool) {
+func (o *Query) GetThresholdOk() (*float32, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *Query) GetThresholdOk() (*string, bool) {
 }
 
 // SetThreshold sets field value
-func (o *Query) SetThreshold(v string) {
+func (o *Query) SetThreshold(v float32) {
 	o.Threshold = v
 }
 

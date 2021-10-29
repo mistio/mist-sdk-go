@@ -3,7 +3,6 @@
 README.md
 api/openapi.yaml
 api_clouds.go
-api_clouds_count.go
 api_clusters.go
 api_datapoints.go
 api_images.go
@@ -11,16 +10,12 @@ api_jobs.go
 api_keys.go
 api_locations.go
 api_machines.go
-api_members.go
-api_name.go
 api_networks.go
 api_orgs.go
 api_rules.go
 api_scripts.go
 api_sizes.go
 api_snapshots.go
-api_teams.go
-api_total_machine_count.go
 api_users.go
 api_volumes.go
 api_zones.go
@@ -33,6 +28,7 @@ docs/AddKeyRequestAnyOf.md
 docs/AddKeyRequestAnyOf1.md
 docs/AddKeyRequestAnyOf2.md
 docs/AddKeyResponse.md
+docs/AddRuleRequest.md
 docs/AddScriptRequest.md
 docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
@@ -50,7 +46,6 @@ docs/CloudFeatures.md
 docs/CloudSigmaCloudRequest.md
 docs/CloudSigmaCredentials.md
 docs/CloudsApi.md
-docs/CloudsCountApi.md
 docs/Cluster.md
 docs/ClusterProviders.md
 docs/ClustersApi.md
@@ -68,6 +63,7 @@ docs/CreateVolumeResponse.md
 docs/CreateZoneRequest.md
 docs/CreateZoneResponse.md
 docs/CronSchedule.md
+docs/DataType.md
 docs/Datapoints.md
 docs/DatapointsApi.md
 docs/DatapointsData.md
@@ -81,6 +77,9 @@ docs/DockerExtraLimits.md
 docs/DockerNet.md
 docs/EditCloudRequest.md
 docs/EditCloudRequestAnyOf.md
+docs/EditMachineRequest.md
+docs/EditMachineRequestExpiration.md
+docs/EditRuleRequest.md
 docs/EquinixCloudRequest.md
 docs/EquinixCredentials.md
 docs/EquinixMetalExtra.md
@@ -165,8 +164,6 @@ docs/MachinesApi.md
 docs/MaxihostCloudRequest.md
 docs/MaxihostCredentials.md
 docs/Member.md
-docs/MembersApi.md
-docs/NameApi.md
 docs/Network.md
 docs/NetworksApi.md
 docs/OnappCloudRequest.md
@@ -199,8 +196,6 @@ docs/SizesApi.md
 docs/SnapshotsApi.md
 docs/SupportedProviders.md
 docs/Team.md
-docs/TeamsApi.md
-docs/TotalMachineCountApi.md
 docs/TriggerAfter.md
 docs/User.md
 docs/UsersApi.md
@@ -228,6 +223,7 @@ model_add_key_request_any_of.go
 model_add_key_request_any_of_1.go
 model_add_key_request_any_of_2.go
 model_add_key_response.go
+model_add_rule_request.go
 model_add_script_request.go
 model_alibaba_cloud_request.go
 model_alibaba_credentials.go
@@ -260,6 +256,7 @@ model_create_volume_response.go
 model_create_zone_request.go
 model_create_zone_response.go
 model_cron_schedule.go
+model_data_type.go
 model_datapoints.go
 model_datapoints_data.go
 model_datapoints_values_item.go
@@ -272,6 +269,9 @@ model_docker_extra_limits.go
 model_docker_net.go
 model_edit_cloud_request.go
 model_edit_cloud_request_any_of.go
+model_edit_machine_request.go
+model_edit_machine_request_expiration.go
+model_edit_rule_request.go
 model_equinix_cloud_request.go
 model_equinix_credentials.go
 model_equinix_metal_extra.go

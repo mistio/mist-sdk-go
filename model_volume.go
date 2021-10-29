@@ -22,7 +22,7 @@ type Volume struct {
 	Name *string `json:"name,omitempty"`
 	Cloud *string `json:"cloud,omitempty"`
 	Location *string `json:"location,omitempty"`
-	Size *string `json:"size,omitempty"`
+	Size *int32 `json:"size,omitempty"`
 	Tags *map[string]interface{} `json:"tags,omitempty"`
 	CreatedBy *string `json:"created_by,omitempty"`
 	OwnedBy *string `json:"owned_by,omitempty"`
@@ -207,9 +207,9 @@ func (o *Volume) SetLocation(v string) {
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *Volume) GetSize() string {
+func (o *Volume) GetSize() int32 {
 	if o == nil || o.Size == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.Size
@@ -217,7 +217,7 @@ func (o *Volume) GetSize() string {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Volume) GetSizeOk() (*string, bool) {
+func (o *Volume) GetSizeOk() (*int32, bool) {
 	if o == nil || o.Size == nil {
 		return nil, false
 	}
@@ -233,8 +233,8 @@ func (o *Volume) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given string and assigns it to the Size field.
-func (o *Volume) SetSize(v string) {
+// SetSize gets a reference to the given int32 and assigns it to the Size field.
+func (o *Volume) SetSize(v int32) {
 	o.Size = &v
 }
 

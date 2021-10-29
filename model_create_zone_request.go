@@ -17,7 +17,7 @@ import (
 
 // CreateZoneRequest struct for CreateZoneRequest
 type CreateZoneRequest struct {
-	// Specify zone name
+	// Specify zone name/domain (e.g. example.com)
 	Name string `json:"name"`
 	// Specify cloud to provision on
 	Cloud string `json:"cloud"`

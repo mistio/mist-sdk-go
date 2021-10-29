@@ -83,7 +83,6 @@ Class | Method | HTTP request | Description
 *CloudsApi* | [**GetCloud**](docs/CloudsApi.md#getcloud) | **Get** /api/v2/clouds/{cloud} | Get cloud
 *CloudsApi* | [**ListClouds**](docs/CloudsApi.md#listclouds) | **Get** /api/v2/clouds | List clouds
 *CloudsApi* | [**RemoveCloud**](docs/CloudsApi.md#removecloud) | **Delete** /api/v2/clouds/{cloud} | Remove cloud
-*CloudsCountApi* | [**GetOrg**](docs/CloudsCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *ClustersApi* | [**CreateCluster**](docs/ClustersApi.md#createcluster) | **Post** /api/v2/clusters | Create cluster
 *ClustersApi* | [**DestroyCluster**](docs/ClustersApi.md#destroycluster) | **Delete** /api/v2/clusters/{cluster} | Destroy cluster
 *ClustersApi* | [**GetCluster**](docs/ClustersApi.md#getcluster) | **Get** /api/v2/clusters/{cluster} | Get cluster
@@ -106,7 +105,6 @@ Class | Method | HTTP request | Description
 *MachinesApi* | [**DestroyMachine**](docs/MachinesApi.md#destroymachine) | **Post** /api/v2/machines/{machine}/actions/destroy | Destroy machine
 *MachinesApi* | [**DisassociateKey**](docs/MachinesApi.md#disassociatekey) | **Delete** /api/v2/machines/{machine}/actions/disassociate-key | Disassociate a key from a machine
 *MachinesApi* | [**EditMachine**](docs/MachinesApi.md#editmachine) | **Put** /api/v2/machines/{machine} | Edit machine
-*MachinesApi* | [**ExposeMachine**](docs/MachinesApi.md#exposemachine) | **Post** /api/v2/machines/{machine}/actions/expose | Expose machine
 *MachinesApi* | [**GetMachine**](docs/MachinesApi.md#getmachine) | **Get** /api/v2/machines/{machine} | Get machine
 *MachinesApi* | [**ListMachines**](docs/MachinesApi.md#listmachines) | **Get** /api/v2/machines | List machines
 *MachinesApi* | [**RebootMachine**](docs/MachinesApi.md#rebootmachine) | **Post** /api/v2/machines/{machine}/actions/reboot | Reboot machine
@@ -118,9 +116,8 @@ Class | Method | HTTP request | Description
 *MachinesApi* | [**StopMachine**](docs/MachinesApi.md#stopmachine) | **Post** /api/v2/machines/{machine}/actions/stop | Stop machine
 *MachinesApi* | [**SuspendMachine**](docs/MachinesApi.md#suspendmachine) | **Post** /api/v2/machines/{machine}/actions/suspend | Suspend machine
 *MachinesApi* | [**UndefineMachine**](docs/MachinesApi.md#undefinemachine) | **Post** /api/v2/machines/{machine}/actions/undefine | Undefine machine
-*MembersApi* | [**ListOrgMembers**](docs/MembersApi.md#listorgmembers) | **Get** /api/v2/orgs/{org}/members | List org members
-*NameApi* | [**GetOrg**](docs/NameApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *NetworksApi* | [**CreateNetwork**](docs/NetworksApi.md#createnetwork) | **Post** /api/v2/networks | Create network
+*NetworksApi* | [**DeleteNetwork**](docs/NetworksApi.md#deletenetwork) | **Delete** /api/v2/networks/{network} | Delete network
 *NetworksApi* | [**EditNetwork**](docs/NetworksApi.md#editnetwork) | **Put** /api/v2/networks/{network} | Edit network
 *NetworksApi* | [**GetNetwork**](docs/NetworksApi.md#getnetwork) | **Get** /api/v2/networks/{network} | Get network
 *NetworksApi* | [**ListNetworks**](docs/NetworksApi.md#listnetworks) | **Get** /api/v2/networks | List networks
@@ -131,11 +128,11 @@ Class | Method | HTTP request | Description
 *OrgsApi* | [**ListOrgs**](docs/OrgsApi.md#listorgs) | **Get** /api/v2/orgs | List orgs
 *RulesApi* | [**AddRule**](docs/RulesApi.md#addrule) | **Post** /api/v2/rules | Add rule
 *RulesApi* | [**DeleteRule**](docs/RulesApi.md#deleterule) | **Delete** /api/v2/rules/{rule} | Delete rule
+*RulesApi* | [**EditRule**](docs/RulesApi.md#editrule) | **Post** /api/v2/rules/{rule} | Update rule
 *RulesApi* | [**GetRule**](docs/RulesApi.md#getrule) | **Get** /api/v2/rules/{rule} | Get rule
 *RulesApi* | [**ListRules**](docs/RulesApi.md#listrules) | **Get** /api/v2/rules | List rules
 *RulesApi* | [**RenameRule**](docs/RulesApi.md#renamerule) | **Patch** /api/v2/rules/{rule} | Rename rule
 *RulesApi* | [**ToggleRule**](docs/RulesApi.md#togglerule) | **Put** /api/v2/rules/{rule} | Toggle rule
-*RulesApi* | [**UpdateRule**](docs/RulesApi.md#updaterule) | **Post** /api/v2/rules/{rule} | Update rule
 *ScriptsApi* | [**AddScript**](docs/ScriptsApi.md#addscript) | **Post** /api/v2/scripts | Add script
 *ScriptsApi* | [**DeleteScript**](docs/ScriptsApi.md#deletescript) | **Delete** /api/v2/scripts/{script} | Delete script
 *ScriptsApi* | [**DownloadScript**](docs/ScriptsApi.md#downloadscript) | **Get** /api/v2/scripts/{script}/file | Download script
@@ -150,8 +147,6 @@ Class | Method | HTTP request | Description
 *SnapshotsApi* | [**ListSnapshots**](docs/SnapshotsApi.md#listsnapshots) | **Get** /api/v2/machines/{machine}/snapshots | List machine snapshots
 *SnapshotsApi* | [**RemoveSnapshot**](docs/SnapshotsApi.md#removesnapshot) | **Delete** /api/v2/machines/{machine}/snapshots/{snapshot} | Remove snapshot
 *SnapshotsApi* | [**RevertToSnapshot**](docs/SnapshotsApi.md#reverttosnapshot) | **Post** /api/v2/machines/{machine}/snapshots/{snapshot} | Revert to snapshot
-*TeamsApi* | [**ListOrgTeams**](docs/TeamsApi.md#listorgteams) | **Get** /api/v2/orgs/{org}/teams | List org teams
-*TotalMachineCountApi* | [**GetOrg**](docs/TotalMachineCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **Get** /api/v2/users | List users
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /api/v2/volumes | Create volume
 *VolumesApi* | [**DeleteVolume**](docs/VolumesApi.md#deletevolume) | **Delete** /api/v2/volumes/{volume} | Delete volume
@@ -159,6 +154,7 @@ Class | Method | HTTP request | Description
 *VolumesApi* | [**GetVolume**](docs/VolumesApi.md#getvolume) | **Get** /api/v2/volumes/{volume} | Get volume
 *VolumesApi* | [**ListVolumes**](docs/VolumesApi.md#listvolumes) | **Get** /api/v2/volumes | List volumes
 *ZonesApi* | [**CreateZone**](docs/ZonesApi.md#createzone) | **Post** /api/v2/zones | Create zone
+*ZonesApi* | [**DeleteZone**](docs/ZonesApi.md#deletezone) | **Delete** /api/v2/zones/{zone} | Delete zone
 *ZonesApi* | [**EditZone**](docs/ZonesApi.md#editzone) | **Put** /api/v2/zones/{zone} | Edit zone
 *ZonesApi* | [**GetZone**](docs/ZonesApi.md#getzone) | **Get** /api/v2/zones/{zone} | Get zone
 *ZonesApi* | [**ListZones**](docs/ZonesApi.md#listzones) | **Get** /api/v2/zones | List zones
@@ -173,6 +169,7 @@ Class | Method | HTTP request | Description
  - [AddKeyRequestAnyOf1](docs/AddKeyRequestAnyOf1.md)
  - [AddKeyRequestAnyOf2](docs/AddKeyRequestAnyOf2.md)
  - [AddKeyResponse](docs/AddKeyResponse.md)
+ - [AddRuleRequest](docs/AddRuleRequest.md)
  - [AddScriptRequest](docs/AddScriptRequest.md)
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)
  - [AlibabaCredentials](docs/AlibabaCredentials.md)
@@ -205,6 +202,7 @@ Class | Method | HTTP request | Description
  - [CreateZoneRequest](docs/CreateZoneRequest.md)
  - [CreateZoneResponse](docs/CreateZoneResponse.md)
  - [CronSchedule](docs/CronSchedule.md)
+ - [DataType](docs/DataType.md)
  - [Datapoints](docs/Datapoints.md)
  - [DatapointsData](docs/DatapointsData.md)
  - [DatapointsValuesItem](docs/DatapointsValuesItem.md)
@@ -217,6 +215,9 @@ Class | Method | HTTP request | Description
  - [DockerNet](docs/DockerNet.md)
  - [EditCloudRequest](docs/EditCloudRequest.md)
  - [EditCloudRequestAnyOf](docs/EditCloudRequestAnyOf.md)
+ - [EditMachineRequest](docs/EditMachineRequest.md)
+ - [EditMachineRequestExpiration](docs/EditMachineRequestExpiration.md)
+ - [EditRuleRequest](docs/EditRuleRequest.md)
  - [EquinixCloudRequest](docs/EquinixCloudRequest.md)
  - [EquinixCredentials](docs/EquinixCredentials.md)
  - [EquinixMetalExtra](docs/EquinixMetalExtra.md)
