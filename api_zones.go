@@ -261,13 +261,8 @@ type ApiEditZoneRequest struct {
 	ctx _context.Context
 	ApiService *ZonesApiService
 	zone string
-	name *string
 }
 
-func (r ApiEditZoneRequest) Name(name string) ApiEditZoneRequest {
-	r.name = &name
-	return r
-}
 
 func (r ApiEditZoneRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.EditZoneExecute(r)
@@ -312,9 +307,6 @@ func (a *ZonesApiService) EditZoneExecute(r ApiEditZoneRequest) (*_nethttp.Respo
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
