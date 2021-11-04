@@ -1829,6 +1829,8 @@ paths:
           description: Machine not found
         "422":
           description: Action not supported on target machine
+        "501":
+          description: Action not implemented
       security:
       - ApiKeyAuth:
         - console:machine
@@ -2540,6 +2542,8 @@ paths:
           description: Authentication failed
         "403":
           description: You are not authorized to perform this action
+        "501":
+          description: Network support is not available
       security:
       - ApiKeyAuth:
         - create:network
@@ -4355,6 +4359,8 @@ paths:
           description: Authentication failed
         "403":
           description: You are not authorized to perform this action
+        "501":
+          description: Volume support is not available
       security:
       - ApiKeyAuth:
         - create:volume
