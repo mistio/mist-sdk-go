@@ -26,12 +26,18 @@ type CreateVolumeRequest struct {
 	Location string `json:"location"`
 	// Volume sizing spec
 	Size int32 `json:"size"`
+	// GCE-specific
+	ExDiskType *string `json:"ex_disk_type,omitempty"`
+	// EC2-specific
+	ExVolumeType *string `json:"ex_volume_type,omitempty"`
+	// EC2-specific. Needs to be specified if volume_type='io1'
+	ExIops *string `json:"ex_iops,omitempty"`
 	// Assign tags to provisioned volume
 	Tags *map[string]interface{} `json:"tags,omitempty"`
 	// Configure additional parameters
 	Extra *map[string]interface{} `json:"extra,omitempty"`
 	// Provision multiple volumes of this type
-	Quantity *float32 `json:"quantity,omitempty"`
+	Quantity *int32 `json:"quantity,omitempty"`
 	Template *map[string]interface{} `json:"template,omitempty"`
 	// Return provisioning plan and exit without executing it
 	Dry *bool `json:"dry,omitempty"`
@@ -188,6 +194,102 @@ func (o *CreateVolumeRequest) SetSize(v int32) {
 	o.Size = v
 }
 
+// GetExDiskType returns the ExDiskType field value if set, zero value otherwise.
+func (o *CreateVolumeRequest) GetExDiskType() string {
+	if o == nil || o.ExDiskType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExDiskType
+}
+
+// GetExDiskTypeOk returns a tuple with the ExDiskType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVolumeRequest) GetExDiskTypeOk() (*string, bool) {
+	if o == nil || o.ExDiskType == nil {
+		return nil, false
+	}
+	return o.ExDiskType, true
+}
+
+// HasExDiskType returns a boolean if a field has been set.
+func (o *CreateVolumeRequest) HasExDiskType() bool {
+	if o != nil && o.ExDiskType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExDiskType gets a reference to the given string and assigns it to the ExDiskType field.
+func (o *CreateVolumeRequest) SetExDiskType(v string) {
+	o.ExDiskType = &v
+}
+
+// GetExVolumeType returns the ExVolumeType field value if set, zero value otherwise.
+func (o *CreateVolumeRequest) GetExVolumeType() string {
+	if o == nil || o.ExVolumeType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExVolumeType
+}
+
+// GetExVolumeTypeOk returns a tuple with the ExVolumeType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVolumeRequest) GetExVolumeTypeOk() (*string, bool) {
+	if o == nil || o.ExVolumeType == nil {
+		return nil, false
+	}
+	return o.ExVolumeType, true
+}
+
+// HasExVolumeType returns a boolean if a field has been set.
+func (o *CreateVolumeRequest) HasExVolumeType() bool {
+	if o != nil && o.ExVolumeType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExVolumeType gets a reference to the given string and assigns it to the ExVolumeType field.
+func (o *CreateVolumeRequest) SetExVolumeType(v string) {
+	o.ExVolumeType = &v
+}
+
+// GetExIops returns the ExIops field value if set, zero value otherwise.
+func (o *CreateVolumeRequest) GetExIops() string {
+	if o == nil || o.ExIops == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExIops
+}
+
+// GetExIopsOk returns a tuple with the ExIops field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVolumeRequest) GetExIopsOk() (*string, bool) {
+	if o == nil || o.ExIops == nil {
+		return nil, false
+	}
+	return o.ExIops, true
+}
+
+// HasExIops returns a boolean if a field has been set.
+func (o *CreateVolumeRequest) HasExIops() bool {
+	if o != nil && o.ExIops != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExIops gets a reference to the given string and assigns it to the ExIops field.
+func (o *CreateVolumeRequest) SetExIops(v string) {
+	o.ExIops = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *CreateVolumeRequest) GetTags() map[string]interface{} {
 	if o == nil || o.Tags == nil {
@@ -253,9 +355,9 @@ func (o *CreateVolumeRequest) SetExtra(v map[string]interface{}) {
 }
 
 // GetQuantity returns the Quantity field value if set, zero value otherwise.
-func (o *CreateVolumeRequest) GetQuantity() float32 {
+func (o *CreateVolumeRequest) GetQuantity() int32 {
 	if o == nil || o.Quantity == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Quantity
@@ -263,7 +365,7 @@ func (o *CreateVolumeRequest) GetQuantity() float32 {
 
 // GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetQuantityOk() (*float32, bool) {
+func (o *CreateVolumeRequest) GetQuantityOk() (*int32, bool) {
 	if o == nil || o.Quantity == nil {
 		return nil, false
 	}
@@ -279,8 +381,8 @@ func (o *CreateVolumeRequest) HasQuantity() bool {
 	return false
 }
 
-// SetQuantity gets a reference to the given float32 and assigns it to the Quantity field.
-func (o *CreateVolumeRequest) SetQuantity(v float32) {
+// SetQuantity gets a reference to the given int32 and assigns it to the Quantity field.
+func (o *CreateVolumeRequest) SetQuantity(v int32) {
 	o.Quantity = &v
 }
 
@@ -396,6 +498,15 @@ func (o CreateVolumeRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["size"] = o.Size
+	}
+	if o.ExDiskType != nil {
+		toSerialize["ex_disk_type"] = o.ExDiskType
+	}
+	if o.ExVolumeType != nil {
+		toSerialize["ex_volume_type"] = o.ExVolumeType
+	}
+	if o.ExIops != nil {
+		toSerialize["ex_iops"] = o.ExIops
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
