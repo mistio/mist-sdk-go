@@ -23,7 +23,7 @@ type CreateNetworkRequest struct {
 	Cloud string `json:"cloud"`
 	// Assign tags to provisioned network
 	Tags *map[string]interface{} `json:"tags,omitempty"`
-	// Configure additional parameters
+	// Configure additional parameters, e.g. cidr (EC2 network)
 	Extra *map[string]interface{} `json:"extra,omitempty"`
 	Template *map[string]interface{} `json:"template,omitempty"`
 	// Return provisioning plan and exit without executing it
