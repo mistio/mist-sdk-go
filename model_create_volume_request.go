@@ -40,9 +40,9 @@ type CreateVolumeRequest struct {
 	Quantity *int32 `json:"quantity,omitempty"`
 	Template *map[string]interface{} `json:"template,omitempty"`
 	// Return provisioning plan and exit without executing it
-	Dry *string `json:"dry,omitempty"`
+	Dry *bool `json:"dry,omitempty"`
 	// Save provisioning plan as template
-	Save *string `json:"save,omitempty"`
+	Save *bool `json:"save,omitempty"`
 }
 
 // NewCreateVolumeRequest instantiates a new CreateVolumeRequest object
@@ -419,9 +419,9 @@ func (o *CreateVolumeRequest) SetTemplate(v map[string]interface{}) {
 }
 
 // GetDry returns the Dry field value if set, zero value otherwise.
-func (o *CreateVolumeRequest) GetDry() string {
+func (o *CreateVolumeRequest) GetDry() bool {
 	if o == nil || o.Dry == nil {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.Dry
@@ -429,7 +429,7 @@ func (o *CreateVolumeRequest) GetDry() string {
 
 // GetDryOk returns a tuple with the Dry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetDryOk() (*string, bool) {
+func (o *CreateVolumeRequest) GetDryOk() (*bool, bool) {
 	if o == nil || o.Dry == nil {
 		return nil, false
 	}
@@ -445,15 +445,15 @@ func (o *CreateVolumeRequest) HasDry() bool {
 	return false
 }
 
-// SetDry gets a reference to the given string and assigns it to the Dry field.
-func (o *CreateVolumeRequest) SetDry(v string) {
+// SetDry gets a reference to the given bool and assigns it to the Dry field.
+func (o *CreateVolumeRequest) SetDry(v bool) {
 	o.Dry = &v
 }
 
 // GetSave returns the Save field value if set, zero value otherwise.
-func (o *CreateVolumeRequest) GetSave() string {
+func (o *CreateVolumeRequest) GetSave() bool {
 	if o == nil || o.Save == nil {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.Save
@@ -461,7 +461,7 @@ func (o *CreateVolumeRequest) GetSave() string {
 
 // GetSaveOk returns a tuple with the Save field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetSaveOk() (*string, bool) {
+func (o *CreateVolumeRequest) GetSaveOk() (*bool, bool) {
 	if o == nil || o.Save == nil {
 		return nil, false
 	}
@@ -477,8 +477,8 @@ func (o *CreateVolumeRequest) HasSave() bool {
 	return false
 }
 
-// SetSave gets a reference to the given string and assigns it to the Save field.
-func (o *CreateVolumeRequest) SetSave(v string) {
+// SetSave gets a reference to the given bool and assigns it to the Save field.
+func (o *CreateVolumeRequest) SetSave(v bool) {
 	o.Save = &v
 }
 

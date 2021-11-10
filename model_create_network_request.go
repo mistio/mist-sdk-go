@@ -27,9 +27,9 @@ type CreateNetworkRequest struct {
 	Extra *map[string]interface{} `json:"extra,omitempty"`
 	Template *map[string]interface{} `json:"template,omitempty"`
 	// Return provisioning plan and exit without executing it
-	Dry *string `json:"dry,omitempty"`
+	Dry *bool `json:"dry,omitempty"`
 	// Save provisioning plan as template
-	Save *string `json:"save,omitempty"`
+	Save *bool `json:"save,omitempty"`
 }
 
 // NewCreateNetworkRequest instantiates a new CreateNetworkRequest object
@@ -196,9 +196,9 @@ func (o *CreateNetworkRequest) SetTemplate(v map[string]interface{}) {
 }
 
 // GetDry returns the Dry field value if set, zero value otherwise.
-func (o *CreateNetworkRequest) GetDry() string {
+func (o *CreateNetworkRequest) GetDry() bool {
 	if o == nil || o.Dry == nil {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.Dry
@@ -206,7 +206,7 @@ func (o *CreateNetworkRequest) GetDry() string {
 
 // GetDryOk returns a tuple with the Dry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateNetworkRequest) GetDryOk() (*string, bool) {
+func (o *CreateNetworkRequest) GetDryOk() (*bool, bool) {
 	if o == nil || o.Dry == nil {
 		return nil, false
 	}
@@ -222,15 +222,15 @@ func (o *CreateNetworkRequest) HasDry() bool {
 	return false
 }
 
-// SetDry gets a reference to the given string and assigns it to the Dry field.
-func (o *CreateNetworkRequest) SetDry(v string) {
+// SetDry gets a reference to the given bool and assigns it to the Dry field.
+func (o *CreateNetworkRequest) SetDry(v bool) {
 	o.Dry = &v
 }
 
 // GetSave returns the Save field value if set, zero value otherwise.
-func (o *CreateNetworkRequest) GetSave() string {
+func (o *CreateNetworkRequest) GetSave() bool {
 	if o == nil || o.Save == nil {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.Save
@@ -238,7 +238,7 @@ func (o *CreateNetworkRequest) GetSave() string {
 
 // GetSaveOk returns a tuple with the Save field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateNetworkRequest) GetSaveOk() (*string, bool) {
+func (o *CreateNetworkRequest) GetSaveOk() (*bool, bool) {
 	if o == nil || o.Save == nil {
 		return nil, false
 	}
@@ -254,8 +254,8 @@ func (o *CreateNetworkRequest) HasSave() bool {
 	return false
 }
 
-// SetSave gets a reference to the given string and assigns it to the Save field.
-func (o *CreateNetworkRequest) SetSave(v string) {
+// SetSave gets a reference to the given bool and assigns it to the Save field.
+func (o *CreateNetworkRequest) SetSave(v bool) {
 	o.Save = &v
 }
 
