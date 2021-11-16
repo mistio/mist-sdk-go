@@ -146,8 +146,18 @@ type ApiCloneMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
+	name *string
+	runAsync *bool
 }
 
+func (r ApiCloneMachineRequest) Name(name string) ApiCloneMachineRequest {
+	r.name = &name
+	return r
+}
+func (r ApiCloneMachineRequest) RunAsync(runAsync bool) ApiCloneMachineRequest {
+	r.runAsync = &runAsync
+	return r
+}
 
 func (r ApiCloneMachineRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.CloneMachineExecute(r)
@@ -191,7 +201,14 @@ func (a *MachinesApiService) CloneMachineExecute(r ApiCloneMachineRequest) (*_ne
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.name == nil {
+		return nil, reportError("name is required and must be specified")
+	}
 
+	localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	if r.runAsync != nil {
+		localVarQueryParams.Add("run_async", parameterToString(*r.runAsync, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
