@@ -21,7 +21,6 @@ type DockerExtra struct {
 	Environment *map[string]interface{} `json:"environment,omitempty"`
 	// Command to run specified as a string
 	Command *string `json:"command,omitempty"`
-	Limits *DockerExtraLimits `json:"limits,omitempty"`
 }
 
 // NewDockerExtra instantiates a new DockerExtra object
@@ -105,38 +104,6 @@ func (o *DockerExtra) SetCommand(v string) {
 	o.Command = &v
 }
 
-// GetLimits returns the Limits field value if set, zero value otherwise.
-func (o *DockerExtra) GetLimits() DockerExtraLimits {
-	if o == nil || o.Limits == nil {
-		var ret DockerExtraLimits
-		return ret
-	}
-	return *o.Limits
-}
-
-// GetLimitsOk returns a tuple with the Limits field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DockerExtra) GetLimitsOk() (*DockerExtraLimits, bool) {
-	if o == nil || o.Limits == nil {
-		return nil, false
-	}
-	return o.Limits, true
-}
-
-// HasLimits returns a boolean if a field has been set.
-func (o *DockerExtra) HasLimits() bool {
-	if o != nil && o.Limits != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLimits gets a reference to the given DockerExtraLimits and assigns it to the Limits field.
-func (o *DockerExtra) SetLimits(v DockerExtraLimits) {
-	o.Limits = &v
-}
-
 func (o DockerExtra) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Environment != nil {
@@ -144,9 +111,6 @@ func (o DockerExtra) MarshalJSON() ([]byte, error) {
 	}
 	if o.Command != nil {
 		toSerialize["command"] = o.Command
-	}
-	if o.Limits != nil {
-		toSerialize["limits"] = o.Limits
 	}
 	return json.Marshal(toSerialize)
 }

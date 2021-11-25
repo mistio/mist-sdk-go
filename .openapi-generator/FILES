@@ -73,7 +73,6 @@ docs/DigitaloceanCredentials.md
 docs/DockerCloudRequest.md
 docs/DockerCredentials.md
 docs/DockerExtra.md
-docs/DockerExtraLimits.md
 docs/DockerNet.md
 docs/EditCloudRequest.md
 docs/EditCloudRequestAnyOf.md
@@ -130,7 +129,6 @@ docs/KubernetesCredentials.md
 docs/KubevirtCloudRequest.md
 docs/KvmCloudRequest.md
 docs/LXDExtra.md
-docs/LXDExtraLimits.md
 docs/LXDNet.md
 docs/LinodeCloudRequest.md
 docs/LinodeCredentials.md
@@ -265,7 +263,6 @@ model_digitalocean_credentials.go
 model_docker_cloud_request.go
 model_docker_credentials.go
 model_docker_extra.go
-model_docker_extra_limits.go
 model_docker_net.go
 model_edit_cloud_request.go
 model_edit_cloud_request_any_of.go
@@ -344,7 +341,6 @@ model_log.go
 model_lxd_cloud_request.go
 model_lxd_credentials.go
 model_lxd_extra.go
-model_lxd_extra_limits.go
 model_lxd_net.go
 model_machine.go
 model_machine_state.go
