@@ -23,7 +23,7 @@ type CreateMachineRequest struct {
 	// Specify cloud to provision on
 	Cloud *string `json:"cloud,omitempty"`
 	// Where to provision e.g. region, datacenter, rack
-	Location *string `json:"location,omitempty"`
+	Location *OneOfobjectstring `json:"location,omitempty"`
 	// Machine sizing spec e.g. cpu/ram/flavor
 	Size *OneOfobjectstring `json:"size,omitempty"`
 	// Operating System image to boot from
@@ -57,6 +57,8 @@ type CreateMachineRequest struct {
 	Dry *bool `json:"dry,omitempty"`
 	// Save provisioning plan as template
 	Save *bool `json:"save,omitempty"`
+	// Criteria optimization, e.g \"cost\"
+	Optimize *string `json:"optimize,omitempty"`
 }
 
 // NewCreateMachineRequest instantiates a new CreateMachineRequest object
@@ -167,9 +169,9 @@ func (o *CreateMachineRequest) SetCloud(v string) {
 }
 
 // GetLocation returns the Location field value if set, zero value otherwise.
-func (o *CreateMachineRequest) GetLocation() string {
+func (o *CreateMachineRequest) GetLocation() OneOfobjectstring {
 	if o == nil || o.Location == nil {
-		var ret string
+		var ret OneOfobjectstring
 		return ret
 	}
 	return *o.Location
@@ -177,7 +179,7 @@ func (o *CreateMachineRequest) GetLocation() string {
 
 // GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateMachineRequest) GetLocationOk() (*string, bool) {
+func (o *CreateMachineRequest) GetLocationOk() (*OneOfobjectstring, bool) {
 	if o == nil || o.Location == nil {
 		return nil, false
 	}
@@ -193,8 +195,8 @@ func (o *CreateMachineRequest) HasLocation() bool {
 	return false
 }
 
-// SetLocation gets a reference to the given string and assigns it to the Location field.
-func (o *CreateMachineRequest) SetLocation(v string) {
+// SetLocation gets a reference to the given OneOfobjectstring and assigns it to the Location field.
+func (o *CreateMachineRequest) SetLocation(v OneOfobjectstring) {
 	o.Location = &v
 }
 
@@ -766,6 +768,38 @@ func (o *CreateMachineRequest) SetSave(v bool) {
 	o.Save = &v
 }
 
+// GetOptimize returns the Optimize field value if set, zero value otherwise.
+func (o *CreateMachineRequest) GetOptimize() string {
+	if o == nil || o.Optimize == nil {
+		var ret string
+		return ret
+	}
+	return *o.Optimize
+}
+
+// GetOptimizeOk returns a tuple with the Optimize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateMachineRequest) GetOptimizeOk() (*string, bool) {
+	if o == nil || o.Optimize == nil {
+		return nil, false
+	}
+	return o.Optimize, true
+}
+
+// HasOptimize returns a boolean if a field has been set.
+func (o *CreateMachineRequest) HasOptimize() bool {
+	if o != nil && o.Optimize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOptimize gets a reference to the given string and assigns it to the Optimize field.
+func (o *CreateMachineRequest) SetOptimize(v string) {
+	o.Optimize = &v
+}
+
 func (o CreateMachineRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -833,6 +867,9 @@ func (o CreateMachineRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Save != nil {
 		toSerialize["save"] = o.Save
+	}
+	if o.Optimize != nil {
+		toSerialize["optimize"] = o.Optimize
 	}
 	return json.Marshal(toSerialize)
 }
