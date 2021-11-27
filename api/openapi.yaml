@@ -1855,6 +1855,7 @@ paths:
       summary: Open console
       tags:
       - machines
+    x-cli-ignore: true
   /api/v2/machines/{machine}/actions/destroy:
     post:
       description: Destroy target machine
@@ -2851,6 +2852,7 @@ paths:
       - clouds_count
       - teams_count
       - last_active
+    x-cli-ignore: true
   /api/v2/orgs/{org}:
     get:
       description: Get details about target org
@@ -2920,6 +2922,7 @@ paths:
       - clouds_count
       - total_machine_count
       - last_active
+    x-cli-ignore: true
   /api/v2/orgs/{org}/members:
     get:
       description: List org members owned by the requester. The requester must be
@@ -3016,6 +3019,7 @@ paths:
       - id
       - last_login
       - registration_date
+    x-cli-ignore: true
   /api/v2/orgs/{org}/members/{member}:
     get:
       description: Get details about target member
@@ -3078,6 +3082,7 @@ paths:
       - id
       - last_login
       - registration_date
+    x-cli-ignore: true
   /api/v2/orgs/{org}/teams:
     get:
       description: List teams in org.
@@ -3193,6 +3198,7 @@ paths:
       - members
       - description
       - policy
+    x-cli-ignore: true
   /api/v2/rules:
     get:
       description: Return a filtered list of rules
