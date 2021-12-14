@@ -2027,8 +2027,13 @@ type ApiUndefineMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
+	deleteDomainImage *bool
 }
 
+func (r ApiUndefineMachineRequest) DeleteDomainImage(deleteDomainImage bool) ApiUndefineMachineRequest {
+	r.deleteDomainImage = &deleteDomainImage
+	return r
+}
 
 func (r ApiUndefineMachineRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.UndefineMachineExecute(r)
@@ -2073,6 +2078,9 @@ func (a *MachinesApiService) UndefineMachineExecute(r ApiUndefineMachineRequest)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.deleteDomainImage != nil {
+		localVarQueryParams.Add("delete_domain_image", parameterToString(*r.deleteDomainImage, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
