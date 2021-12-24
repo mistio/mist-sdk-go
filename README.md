@@ -79,7 +79,6 @@ All URIs are relative to *https://mist.io*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *CloudsApi* | [**AddCloud**](docs/CloudsApi.md#addcloud) | **Post** /api/v2/clouds | Add cloud
-*CloudsApi* | [**EditCloud**](docs/CloudsApi.md#editcloud) | **Put** /api/v2/clouds/{cloud} | Edit cloud
 *CloudsApi* | [**GetCloud**](docs/CloudsApi.md#getcloud) | **Get** /api/v2/clouds/{cloud} | Get cloud
 *CloudsApi* | [**ListClouds**](docs/CloudsApi.md#listclouds) | **Get** /api/v2/clouds | List clouds
 *CloudsApi* | [**RemoveCloud**](docs/CloudsApi.md#removecloud) | **Delete** /api/v2/clouds/{cloud} | Remove cloud
@@ -101,7 +100,6 @@ Class | Method | HTTP request | Description
 *MachinesApi* | [**AssociateKey**](docs/MachinesApi.md#associatekey) | **Put** /api/v2/machines/{machine}/actions/associate-key | Associate a key with a machine
 *MachinesApi* | [**CloneMachine**](docs/MachinesApi.md#clonemachine) | **Post** /api/v2/machines/{machine}/actions/clone | Clone machine
 *MachinesApi* | [**Console**](docs/MachinesApi.md#console) | **Post** /api/v2/machines/{machine}/actions/console | Open console
-*MachinesApi* | [**CreateMachine**](docs/MachinesApi.md#createmachine) | **Post** /api/v2/machines | Create machine
 *MachinesApi* | [**DestroyMachine**](docs/MachinesApi.md#destroymachine) | **Post** /api/v2/machines/{machine}/actions/destroy | Destroy machine
 *MachinesApi* | [**DisassociateKey**](docs/MachinesApi.md#disassociatekey) | **Delete** /api/v2/machines/{machine}/actions/disassociate-key | Disassociate a key from a machine
 *MachinesApi* | [**EditMachine**](docs/MachinesApi.md#editmachine) | **Put** /api/v2/machines/{machine} | Edit machine
@@ -190,8 +188,6 @@ Class | Method | HTTP request | Description
  - [ClusterProviders](docs/ClusterProviders.md)
  - [CreateClusterRequest](docs/CreateClusterRequest.md)
  - [CreateClusterRequestAllOf](docs/CreateClusterRequestAllOf.md)
- - [CreateMachineRequest](docs/CreateMachineRequest.md)
- - [CreateMachineRequestDisks](docs/CreateMachineRequestDisks.md)
  - [CreateMachineResponse](docs/CreateMachineResponse.md)
  - [CreateMachineResponseOneOf](docs/CreateMachineResponseOneOf.md)
  - [CreateMachineResponseOneOf1](docs/CreateMachineResponseOneOf1.md)
@@ -212,8 +208,6 @@ Class | Method | HTTP request | Description
  - [DockerCredentials](docs/DockerCredentials.md)
  - [DockerExtra](docs/DockerExtra.md)
  - [DockerNet](docs/DockerNet.md)
- - [EditCloudRequest](docs/EditCloudRequest.md)
- - [EditCloudRequestAnyOf](docs/EditCloudRequestAnyOf.md)
  - [EditMachineRequest](docs/EditMachineRequest.md)
  - [EditMachineRequestExpiration](docs/EditMachineRequestExpiration.md)
  - [EditRuleRequest](docs/EditRuleRequest.md)

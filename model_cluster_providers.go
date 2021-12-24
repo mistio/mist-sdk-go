@@ -20,7 +20,7 @@ import (
 type ClusterProviders string
 
 // List of ClusterProviders
-const (
+/*const (
 	AMAZON ClusterProviders = "amazon"
 	AZURE ClusterProviders = "azure"
 	DIGITALOCEAN ClusterProviders = "digitalocean"
@@ -28,7 +28,7 @@ const (
 	KUBERNETES ClusterProviders = "kubernetes"
 	OPENSHIFT ClusterProviders = "openshift"
 	LINODE ClusterProviders = "linode"
-)
+)*/
 
 func (v *ClusterProviders) UnmarshalJSON(src []byte) error {
 	var value string
@@ -37,7 +37,7 @@ func (v *ClusterProviders) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ClusterProviders(value)
-	for _, existing := range []ClusterProviders{ "amazon", "azure", "digitalocean", "google", "kubernetes", "openshift", "linode",   } {
+	for _, existing := range []ClusterProviders{"amazon", "azure", "digitalocean", "google", "kubernetes", "openshift", "linode"} {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -87,4 +87,3 @@ func (v *NullableClusterProviders) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

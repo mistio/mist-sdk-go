@@ -51,8 +51,6 @@ docs/ClusterProviders.md
 docs/ClustersApi.md
 docs/CreateClusterRequest.md
 docs/CreateClusterRequestAllOf.md
-docs/CreateMachineRequest.md
-docs/CreateMachineRequestDisks.md
 docs/CreateMachineResponse.md
 docs/CreateMachineResponseOneOf.md
 docs/CreateMachineResponseOneOf1.md
@@ -74,8 +72,6 @@ docs/DockerCloudRequest.md
 docs/DockerCredentials.md
 docs/DockerExtra.md
 docs/DockerNet.md
-docs/EditCloudRequest.md
-docs/EditCloudRequestAnyOf.md
 docs/EditMachineRequest.md
 docs/EditMachineRequestExpiration.md
 docs/EditRuleRequest.md
@@ -242,8 +238,6 @@ model_cluster.go
 model_cluster_providers.go
 model_create_cluster_request.go
 model_create_cluster_request_all_of.go
-model_create_machine_request.go
-model_create_machine_request_disks.go
 model_create_machine_response.go
 model_create_machine_response_one_of.go
 model_create_machine_response_one_of_1.go
@@ -264,8 +258,6 @@ model_docker_cloud_request.go
 model_docker_credentials.go
 model_docker_extra.go
 model_docker_net.go
-model_edit_cloud_request.go
-model_edit_cloud_request_any_of.go
 model_edit_machine_request.go
 model_edit_machine_request_expiration.go
 model_edit_rule_request.go
