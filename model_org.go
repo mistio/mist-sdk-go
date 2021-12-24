@@ -17,15 +17,15 @@ import (
 
 // Org struct for Org
 type Org struct {
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
 	CloudsCount *string `json:"clouds_count,omitempty"`
-	TeamsCount *string `json:"teams_count,omitempty"`
-	TotalMachineCount *string `json:"total_machine_count,omitempty"`
 	Created *bool `json:"created,omitempty"`
 	EnterprisePlan *map[string]interface{} `json:"enterprise_plan,omitempty"`
-	SelectedPlan *string `json:"selected_plan,omitempty"`
+	Id *string `json:"id,omitempty"`
 	LastActive *string `json:"last_active,omitempty"`
+	Name *string `json:"name,omitempty"`
+	SelectedPlan *string `json:"selected_plan,omitempty"`
+	TeamsCount *string `json:"teams_count,omitempty"`
+	TotalMachineCount *string `json:"total_machine_count,omitempty"`
 }
 
 // NewOrg instantiates a new Org object
@@ -43,70 +43,6 @@ func NewOrg() *Org {
 func NewOrgWithDefaults() *Org {
 	this := Org{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Org) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Org) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Org) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Org) SetId(v string) {
-	o.Id = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Org) GetName() string {
-	if o == nil || o.Name == nil {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Org) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *Org) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Org) SetName(v string) {
-	o.Name = &v
 }
 
 // GetCloudsCount returns the CloudsCount field value if set, zero value otherwise.
@@ -139,70 +75,6 @@ func (o *Org) HasCloudsCount() bool {
 // SetCloudsCount gets a reference to the given string and assigns it to the CloudsCount field.
 func (o *Org) SetCloudsCount(v string) {
 	o.CloudsCount = &v
-}
-
-// GetTeamsCount returns the TeamsCount field value if set, zero value otherwise.
-func (o *Org) GetTeamsCount() string {
-	if o == nil || o.TeamsCount == nil {
-		var ret string
-		return ret
-	}
-	return *o.TeamsCount
-}
-
-// GetTeamsCountOk returns a tuple with the TeamsCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Org) GetTeamsCountOk() (*string, bool) {
-	if o == nil || o.TeamsCount == nil {
-		return nil, false
-	}
-	return o.TeamsCount, true
-}
-
-// HasTeamsCount returns a boolean if a field has been set.
-func (o *Org) HasTeamsCount() bool {
-	if o != nil && o.TeamsCount != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTeamsCount gets a reference to the given string and assigns it to the TeamsCount field.
-func (o *Org) SetTeamsCount(v string) {
-	o.TeamsCount = &v
-}
-
-// GetTotalMachineCount returns the TotalMachineCount field value if set, zero value otherwise.
-func (o *Org) GetTotalMachineCount() string {
-	if o == nil || o.TotalMachineCount == nil {
-		var ret string
-		return ret
-	}
-	return *o.TotalMachineCount
-}
-
-// GetTotalMachineCountOk returns a tuple with the TotalMachineCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Org) GetTotalMachineCountOk() (*string, bool) {
-	if o == nil || o.TotalMachineCount == nil {
-		return nil, false
-	}
-	return o.TotalMachineCount, true
-}
-
-// HasTotalMachineCount returns a boolean if a field has been set.
-func (o *Org) HasTotalMachineCount() bool {
-	if o != nil && o.TotalMachineCount != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalMachineCount gets a reference to the given string and assigns it to the TotalMachineCount field.
-func (o *Org) SetTotalMachineCount(v string) {
-	o.TotalMachineCount = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
@@ -269,36 +141,36 @@ func (o *Org) SetEnterprisePlan(v map[string]interface{}) {
 	o.EnterprisePlan = &v
 }
 
-// GetSelectedPlan returns the SelectedPlan field value if set, zero value otherwise.
-func (o *Org) GetSelectedPlan() string {
-	if o == nil || o.SelectedPlan == nil {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Org) GetId() string {
+	if o == nil || o.Id == nil {
 		var ret string
 		return ret
 	}
-	return *o.SelectedPlan
+	return *o.Id
 }
 
-// GetSelectedPlanOk returns a tuple with the SelectedPlan field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Org) GetSelectedPlanOk() (*string, bool) {
-	if o == nil || o.SelectedPlan == nil {
+func (o *Org) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
 		return nil, false
 	}
-	return o.SelectedPlan, true
+	return o.Id, true
 }
 
-// HasSelectedPlan returns a boolean if a field has been set.
-func (o *Org) HasSelectedPlan() bool {
-	if o != nil && o.SelectedPlan != nil {
+// HasId returns a boolean if a field has been set.
+func (o *Org) HasId() bool {
+	if o != nil && o.Id != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSelectedPlan gets a reference to the given string and assigns it to the SelectedPlan field.
-func (o *Org) SetSelectedPlan(v string) {
-	o.SelectedPlan = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Org) SetId(v string) {
+	o.Id = &v
 }
 
 // GetLastActive returns the LastActive field value if set, zero value otherwise.
@@ -333,22 +205,138 @@ func (o *Org) SetLastActive(v string) {
 	o.LastActive = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *Org) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Org) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *Org) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *Org) SetName(v string) {
+	o.Name = &v
+}
+
+// GetSelectedPlan returns the SelectedPlan field value if set, zero value otherwise.
+func (o *Org) GetSelectedPlan() string {
+	if o == nil || o.SelectedPlan == nil {
+		var ret string
+		return ret
+	}
+	return *o.SelectedPlan
+}
+
+// GetSelectedPlanOk returns a tuple with the SelectedPlan field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Org) GetSelectedPlanOk() (*string, bool) {
+	if o == nil || o.SelectedPlan == nil {
+		return nil, false
+	}
+	return o.SelectedPlan, true
+}
+
+// HasSelectedPlan returns a boolean if a field has been set.
+func (o *Org) HasSelectedPlan() bool {
+	if o != nil && o.SelectedPlan != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectedPlan gets a reference to the given string and assigns it to the SelectedPlan field.
+func (o *Org) SetSelectedPlan(v string) {
+	o.SelectedPlan = &v
+}
+
+// GetTeamsCount returns the TeamsCount field value if set, zero value otherwise.
+func (o *Org) GetTeamsCount() string {
+	if o == nil || o.TeamsCount == nil {
+		var ret string
+		return ret
+	}
+	return *o.TeamsCount
+}
+
+// GetTeamsCountOk returns a tuple with the TeamsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Org) GetTeamsCountOk() (*string, bool) {
+	if o == nil || o.TeamsCount == nil {
+		return nil, false
+	}
+	return o.TeamsCount, true
+}
+
+// HasTeamsCount returns a boolean if a field has been set.
+func (o *Org) HasTeamsCount() bool {
+	if o != nil && o.TeamsCount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTeamsCount gets a reference to the given string and assigns it to the TeamsCount field.
+func (o *Org) SetTeamsCount(v string) {
+	o.TeamsCount = &v
+}
+
+// GetTotalMachineCount returns the TotalMachineCount field value if set, zero value otherwise.
+func (o *Org) GetTotalMachineCount() string {
+	if o == nil || o.TotalMachineCount == nil {
+		var ret string
+		return ret
+	}
+	return *o.TotalMachineCount
+}
+
+// GetTotalMachineCountOk returns a tuple with the TotalMachineCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Org) GetTotalMachineCountOk() (*string, bool) {
+	if o == nil || o.TotalMachineCount == nil {
+		return nil, false
+	}
+	return o.TotalMachineCount, true
+}
+
+// HasTotalMachineCount returns a boolean if a field has been set.
+func (o *Org) HasTotalMachineCount() bool {
+	if o != nil && o.TotalMachineCount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalMachineCount gets a reference to the given string and assigns it to the TotalMachineCount field.
+func (o *Org) SetTotalMachineCount(v string) {
+	o.TotalMachineCount = &v
+}
+
 func (o Org) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
 	if o.CloudsCount != nil {
 		toSerialize["clouds_count"] = o.CloudsCount
-	}
-	if o.TeamsCount != nil {
-		toSerialize["teams_count"] = o.TeamsCount
-	}
-	if o.TotalMachineCount != nil {
-		toSerialize["total_machine_count"] = o.TotalMachineCount
 	}
 	if o.Created != nil {
 		toSerialize["created"] = o.Created
@@ -356,11 +344,23 @@ func (o Org) MarshalJSON() ([]byte, error) {
 	if o.EnterprisePlan != nil {
 		toSerialize["enterprise_plan"] = o.EnterprisePlan
 	}
-	if o.SelectedPlan != nil {
-		toSerialize["selected_plan"] = o.SelectedPlan
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	if o.LastActive != nil {
 		toSerialize["last_active"] = o.LastActive
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
+	if o.SelectedPlan != nil {
+		toSerialize["selected_plan"] = o.SelectedPlan
+	}
+	if o.TeamsCount != nil {
+		toSerialize["teams_count"] = o.TeamsCount
+	}
+	if o.TotalMachineCount != nil {
+		toSerialize["total_machine_count"] = o.TotalMachineCount
 	}
 	return json.Marshal(toSerialize)
 }

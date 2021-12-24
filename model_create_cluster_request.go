@@ -17,19 +17,19 @@ import (
 
 // CreateClusterRequest struct for CreateClusterRequest
 type CreateClusterRequest struct {
-	// The name of the cluster to create
-	Name string `json:"name"`
 	// The cloud the cluster belongs to
 	Cloud string `json:"cloud"`
+	// The name of the cluster to create
+	Name string `json:"name"`
 	Provider string `json:"provider"`
 	// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf
 	RoleArn string `json:"role_arn"`
-	// The VPC associated with the cluster
-	VpcId string `json:"vpc_id"`
-	// The subnets associated with the cluster
-	SubnetIds []string `json:"subnet_ids"`
 	// The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane
 	SecurityGroupIds []string `json:"security_group_ids"`
+	// The subnets associated with the cluster
+	SubnetIds []string `json:"subnet_ids"`
+	// The VPC associated with the cluster
+	VpcId string `json:"vpc_id"`
 	// The name of the location to create the cluster in
 	Location string `json:"location"`
 }
@@ -38,15 +38,15 @@ type CreateClusterRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateClusterRequest(name string, cloud string, provider string, roleArn string, vpcId string, subnetIds []string, securityGroupIds []string, location string, ) *CreateClusterRequest {
+func NewCreateClusterRequest(cloud string, name string, provider string, roleArn string, securityGroupIds []string, subnetIds []string, vpcId string, location string, ) *CreateClusterRequest {
 	this := CreateClusterRequest{}
-	this.Name = name
 	this.Cloud = cloud
+	this.Name = name
 	this.Provider = provider
 	this.RoleArn = roleArn
-	this.VpcId = vpcId
-	this.SubnetIds = subnetIds
 	this.SecurityGroupIds = securityGroupIds
+	this.SubnetIds = subnetIds
+	this.VpcId = vpcId
 	this.Location = location
 	return &this
 }
@@ -57,30 +57,6 @@ func NewCreateClusterRequest(name string, cloud string, provider string, roleArn
 func NewCreateClusterRequestWithDefaults() *CreateClusterRequest {
 	this := CreateClusterRequest{}
 	return &this
-}
-
-// GetName returns the Name field value
-func (o *CreateClusterRequest) GetName() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *CreateClusterRequest) SetName(v string) {
-	o.Name = v
 }
 
 // GetCloud returns the Cloud field value
@@ -105,6 +81,30 @@ func (o *CreateClusterRequest) GetCloudOk() (*string, bool) {
 // SetCloud sets field value
 func (o *CreateClusterRequest) SetCloud(v string) {
 	o.Cloud = v
+}
+
+// GetName returns the Name field value
+func (o *CreateClusterRequest) GetName() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetNameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *CreateClusterRequest) SetName(v string) {
+	o.Name = v
 }
 
 // GetProvider returns the Provider field value
@@ -155,28 +155,28 @@ func (o *CreateClusterRequest) SetRoleArn(v string) {
 	o.RoleArn = v
 }
 
-// GetVpcId returns the VpcId field value
-func (o *CreateClusterRequest) GetVpcId() string {
+// GetSecurityGroupIds returns the SecurityGroupIds field value
+func (o *CreateClusterRequest) GetSecurityGroupIds() []string {
 	if o == nil  {
-		var ret string
+		var ret []string
 		return ret
 	}
 
-	return o.VpcId
+	return o.SecurityGroupIds
 }
 
-// GetVpcIdOk returns a tuple with the VpcId field value
+// GetSecurityGroupIdsOk returns a tuple with the SecurityGroupIds field value
 // and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetVpcIdOk() (*string, bool) {
+func (o *CreateClusterRequest) GetSecurityGroupIdsOk() (*[]string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.VpcId, true
+	return &o.SecurityGroupIds, true
 }
 
-// SetVpcId sets field value
-func (o *CreateClusterRequest) SetVpcId(v string) {
-	o.VpcId = v
+// SetSecurityGroupIds sets field value
+func (o *CreateClusterRequest) SetSecurityGroupIds(v []string) {
+	o.SecurityGroupIds = v
 }
 
 // GetSubnetIds returns the SubnetIds field value
@@ -203,28 +203,28 @@ func (o *CreateClusterRequest) SetSubnetIds(v []string) {
 	o.SubnetIds = v
 }
 
-// GetSecurityGroupIds returns the SecurityGroupIds field value
-func (o *CreateClusterRequest) GetSecurityGroupIds() []string {
+// GetVpcId returns the VpcId field value
+func (o *CreateClusterRequest) GetVpcId() string {
 	if o == nil  {
-		var ret []string
+		var ret string
 		return ret
 	}
 
-	return o.SecurityGroupIds
+	return o.VpcId
 }
 
-// GetSecurityGroupIdsOk returns a tuple with the SecurityGroupIds field value
+// GetVpcIdOk returns a tuple with the VpcId field value
 // and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetSecurityGroupIdsOk() (*[]string, bool) {
+func (o *CreateClusterRequest) GetVpcIdOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.SecurityGroupIds, true
+	return &o.VpcId, true
 }
 
-// SetSecurityGroupIds sets field value
-func (o *CreateClusterRequest) SetSecurityGroupIds(v []string) {
-	o.SecurityGroupIds = v
+// SetVpcId sets field value
+func (o *CreateClusterRequest) SetVpcId(v string) {
+	o.VpcId = v
 }
 
 // GetLocation returns the Location field value
@@ -254,10 +254,10 @@ func (o *CreateClusterRequest) SetLocation(v string) {
 func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["name"] = o.Name
+		toSerialize["cloud"] = o.Cloud
 	}
 	if true {
-		toSerialize["cloud"] = o.Cloud
+		toSerialize["name"] = o.Name
 	}
 	if true {
 		toSerialize["provider"] = o.Provider
@@ -266,13 +266,13 @@ func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["role_arn"] = o.RoleArn
 	}
 	if true {
-		toSerialize["vpc_id"] = o.VpcId
+		toSerialize["security_group_ids"] = o.SecurityGroupIds
 	}
 	if true {
 		toSerialize["subnet_ids"] = o.SubnetIds
 	}
 	if true {
-		toSerialize["security_group_ids"] = o.SecurityGroupIds
+		toSerialize["vpc_id"] = o.VpcId
 	}
 	if true {
 		toSerialize["location"] = o.Location

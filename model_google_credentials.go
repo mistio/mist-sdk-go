@@ -17,23 +17,23 @@ import (
 
 // GoogleCredentials struct for GoogleCredentials
 type GoogleCredentials struct {
-	// The Id of your GCP project
-	ProjectId string `json:"projectId"`
-	// Your GCP private key
-	PrivateKey string `json:"privateKey"`
 	// Your GCP client email
 	Email string `json:"email"`
+	// Your GCP private key
+	PrivateKey string `json:"privateKey"`
+	// The Id of your GCP project
+	ProjectId string `json:"projectId"`
 }
 
 // NewGoogleCredentials instantiates a new GoogleCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleCredentials(projectId string, privateKey string, email string, ) *GoogleCredentials {
+func NewGoogleCredentials(email string, privateKey string, projectId string, ) *GoogleCredentials {
 	this := GoogleCredentials{}
-	this.ProjectId = projectId
-	this.PrivateKey = privateKey
 	this.Email = email
+	this.PrivateKey = privateKey
+	this.ProjectId = projectId
 	return &this
 }
 
@@ -43,54 +43,6 @@ func NewGoogleCredentials(projectId string, privateKey string, email string, ) *
 func NewGoogleCredentialsWithDefaults() *GoogleCredentials {
 	this := GoogleCredentials{}
 	return &this
-}
-
-// GetProjectId returns the ProjectId field value
-func (o *GoogleCredentials) GetProjectId() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.ProjectId
-}
-
-// GetProjectIdOk returns a tuple with the ProjectId field value
-// and a boolean to check if the value has been set.
-func (o *GoogleCredentials) GetProjectIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.ProjectId, true
-}
-
-// SetProjectId sets field value
-func (o *GoogleCredentials) SetProjectId(v string) {
-	o.ProjectId = v
-}
-
-// GetPrivateKey returns the PrivateKey field value
-func (o *GoogleCredentials) GetPrivateKey() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.PrivateKey
-}
-
-// GetPrivateKeyOk returns a tuple with the PrivateKey field value
-// and a boolean to check if the value has been set.
-func (o *GoogleCredentials) GetPrivateKeyOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.PrivateKey, true
-}
-
-// SetPrivateKey sets field value
-func (o *GoogleCredentials) SetPrivateKey(v string) {
-	o.PrivateKey = v
 }
 
 // GetEmail returns the Email field value
@@ -117,16 +69,64 @@ func (o *GoogleCredentials) SetEmail(v string) {
 	o.Email = v
 }
 
+// GetPrivateKey returns the PrivateKey field value
+func (o *GoogleCredentials) GetPrivateKey() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.PrivateKey
+}
+
+// GetPrivateKeyOk returns a tuple with the PrivateKey field value
+// and a boolean to check if the value has been set.
+func (o *GoogleCredentials) GetPrivateKeyOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.PrivateKey, true
+}
+
+// SetPrivateKey sets field value
+func (o *GoogleCredentials) SetPrivateKey(v string) {
+	o.PrivateKey = v
+}
+
+// GetProjectId returns the ProjectId field value
+func (o *GoogleCredentials) GetProjectId() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.ProjectId
+}
+
+// GetProjectIdOk returns a tuple with the ProjectId field value
+// and a boolean to check if the value has been set.
+func (o *GoogleCredentials) GetProjectIdOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.ProjectId, true
+}
+
+// SetProjectId sets field value
+func (o *GoogleCredentials) SetProjectId(v string) {
+	o.ProjectId = v
+}
+
 func (o GoogleCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["projectId"] = o.ProjectId
+		toSerialize["email"] = o.Email
 	}
 	if true {
 		toSerialize["privateKey"] = o.PrivateKey
 	}
 	if true {
-		toSerialize["email"] = o.Email
+		toSerialize["projectId"] = o.ProjectId
 	}
 	return json.Marshal(toSerialize)
 }

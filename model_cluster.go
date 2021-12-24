@@ -17,20 +17,20 @@ import (
 
 // Cluster struct for Cluster
 type Cluster struct {
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
 	Cloud *string `json:"cloud,omitempty"`
+	Config *map[string]interface{} `json:"config,omitempty"`
+	CreatedBy *string `json:"created_by,omitempty"`
+	Credentials *map[string]interface{} `json:"credentials,omitempty"`
+	Extra *map[string]interface{} `json:"extra,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Location *string `json:"location,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OwnedBy *string `json:"owned_by,omitempty"`
 	Provider *ClusterProviders `json:"provider,omitempty"`
-	TotalNodes *int32 `json:"total_nodes,omitempty"`
+	Tags *map[string]interface{} `json:"tags,omitempty"`
 	TotalCpus *int32 `json:"total_cpus,omitempty"`
 	TotalMemory *int32 `json:"total_memory,omitempty"`
-	Location *string `json:"location,omitempty"`
-	Credentials *map[string]interface{} `json:"credentials,omitempty"`
-	Config *map[string]interface{} `json:"config,omitempty"`
-	Tags *map[string]interface{} `json:"tags,omitempty"`
-	CreatedBy *string `json:"created_by,omitempty"`
-	OwnedBy *string `json:"owned_by,omitempty"`
-	Extra *map[string]interface{} `json:"extra,omitempty"`
+	TotalNodes *int32 `json:"total_nodes,omitempty"`
 }
 
 // NewCluster instantiates a new Cluster object
@@ -48,70 +48,6 @@ func NewCluster() *Cluster {
 func NewClusterWithDefaults() *Cluster {
 	this := Cluster{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Cluster) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Cluster) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Cluster) SetId(v string) {
-	o.Id = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Cluster) GetName() string {
-	if o == nil || o.Name == nil {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *Cluster) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Cluster) SetName(v string) {
-	o.Name = &v
 }
 
 // GetCloud returns the Cloud field value if set, zero value otherwise.
@@ -146,6 +82,262 @@ func (o *Cluster) SetCloud(v string) {
 	o.Cloud = &v
 }
 
+// GetConfig returns the Config field value if set, zero value otherwise.
+func (o *Cluster) GetConfig() map[string]interface{} {
+	if o == nil || o.Config == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Config
+}
+
+// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetConfigOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Config == nil {
+		return nil, false
+	}
+	return o.Config, true
+}
+
+// HasConfig returns a boolean if a field has been set.
+func (o *Cluster) HasConfig() bool {
+	if o != nil && o.Config != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
+func (o *Cluster) SetConfig(v map[string]interface{}) {
+	o.Config = &v
+}
+
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *Cluster) GetCreatedBy() string {
+	if o == nil || o.CreatedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetCreatedByOk() (*string, bool) {
+	if o == nil || o.CreatedBy == nil {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *Cluster) HasCreatedBy() bool {
+	if o != nil && o.CreatedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
+func (o *Cluster) SetCreatedBy(v string) {
+	o.CreatedBy = &v
+}
+
+// GetCredentials returns the Credentials field value if set, zero value otherwise.
+func (o *Cluster) GetCredentials() map[string]interface{} {
+	if o == nil || o.Credentials == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Credentials
+}
+
+// GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetCredentialsOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Credentials == nil {
+		return nil, false
+	}
+	return o.Credentials, true
+}
+
+// HasCredentials returns a boolean if a field has been set.
+func (o *Cluster) HasCredentials() bool {
+	if o != nil && o.Credentials != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentials gets a reference to the given map[string]interface{} and assigns it to the Credentials field.
+func (o *Cluster) SetCredentials(v map[string]interface{}) {
+	o.Credentials = &v
+}
+
+// GetExtra returns the Extra field value if set, zero value otherwise.
+func (o *Cluster) GetExtra() map[string]interface{} {
+	if o == nil || o.Extra == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Extra
+}
+
+// GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetExtraOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Extra == nil {
+		return nil, false
+	}
+	return o.Extra, true
+}
+
+// HasExtra returns a boolean if a field has been set.
+func (o *Cluster) HasExtra() bool {
+	if o != nil && o.Extra != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExtra gets a reference to the given map[string]interface{} and assigns it to the Extra field.
+func (o *Cluster) SetExtra(v map[string]interface{}) {
+	o.Extra = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Cluster) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Cluster) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Cluster) SetId(v string) {
+	o.Id = &v
+}
+
+// GetLocation returns the Location field value if set, zero value otherwise.
+func (o *Cluster) GetLocation() string {
+	if o == nil || o.Location == nil {
+		var ret string
+		return ret
+	}
+	return *o.Location
+}
+
+// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetLocationOk() (*string, bool) {
+	if o == nil || o.Location == nil {
+		return nil, false
+	}
+	return o.Location, true
+}
+
+// HasLocation returns a boolean if a field has been set.
+func (o *Cluster) HasLocation() bool {
+	if o != nil && o.Location != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLocation gets a reference to the given string and assigns it to the Location field.
+func (o *Cluster) SetLocation(v string) {
+	o.Location = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *Cluster) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *Cluster) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *Cluster) SetName(v string) {
+	o.Name = &v
+}
+
+// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
+func (o *Cluster) GetOwnedBy() string {
+	if o == nil || o.OwnedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.OwnedBy
+}
+
+// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetOwnedByOk() (*string, bool) {
+	if o == nil || o.OwnedBy == nil {
+		return nil, false
+	}
+	return o.OwnedBy, true
+}
+
+// HasOwnedBy returns a boolean if a field has been set.
+func (o *Cluster) HasOwnedBy() bool {
+	if o != nil && o.OwnedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
+func (o *Cluster) SetOwnedBy(v string) {
+	o.OwnedBy = &v
+}
+
 // GetProvider returns the Provider field value if set, zero value otherwise.
 func (o *Cluster) GetProvider() ClusterProviders {
 	if o == nil || o.Provider == nil {
@@ -178,36 +370,36 @@ func (o *Cluster) SetProvider(v ClusterProviders) {
 	o.Provider = &v
 }
 
-// GetTotalNodes returns the TotalNodes field value if set, zero value otherwise.
-func (o *Cluster) GetTotalNodes() int32 {
-	if o == nil || o.TotalNodes == nil {
-		var ret int32
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *Cluster) GetTags() map[string]interface{} {
+	if o == nil || o.Tags == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.TotalNodes
+	return *o.Tags
 }
 
-// GetTotalNodesOk returns a tuple with the TotalNodes field value if set, nil otherwise
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetTotalNodesOk() (*int32, bool) {
-	if o == nil || o.TotalNodes == nil {
+func (o *Cluster) GetTagsOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Tags == nil {
 		return nil, false
 	}
-	return o.TotalNodes, true
+	return o.Tags, true
 }
 
-// HasTotalNodes returns a boolean if a field has been set.
-func (o *Cluster) HasTotalNodes() bool {
-	if o != nil && o.TotalNodes != nil {
+// HasTags returns a boolean if a field has been set.
+func (o *Cluster) HasTags() bool {
+	if o != nil && o.Tags != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTotalNodes gets a reference to the given int32 and assigns it to the TotalNodes field.
-func (o *Cluster) SetTotalNodes(v int32) {
-	o.TotalNodes = &v
+// SetTags gets a reference to the given map[string]interface{} and assigns it to the Tags field.
+func (o *Cluster) SetTags(v map[string]interface{}) {
+	o.Tags = &v
 }
 
 // GetTotalCpus returns the TotalCpus field value if set, zero value otherwise.
@@ -274,246 +466,72 @@ func (o *Cluster) SetTotalMemory(v int32) {
 	o.TotalMemory = &v
 }
 
-// GetLocation returns the Location field value if set, zero value otherwise.
-func (o *Cluster) GetLocation() string {
-	if o == nil || o.Location == nil {
-		var ret string
+// GetTotalNodes returns the TotalNodes field value if set, zero value otherwise.
+func (o *Cluster) GetTotalNodes() int32 {
+	if o == nil || o.TotalNodes == nil {
+		var ret int32
 		return ret
 	}
-	return *o.Location
+	return *o.TotalNodes
 }
 
-// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
+// GetTotalNodesOk returns a tuple with the TotalNodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetLocationOk() (*string, bool) {
-	if o == nil || o.Location == nil {
+func (o *Cluster) GetTotalNodesOk() (*int32, bool) {
+	if o == nil || o.TotalNodes == nil {
 		return nil, false
 	}
-	return o.Location, true
+	return o.TotalNodes, true
 }
 
-// HasLocation returns a boolean if a field has been set.
-func (o *Cluster) HasLocation() bool {
-	if o != nil && o.Location != nil {
+// HasTotalNodes returns a boolean if a field has been set.
+func (o *Cluster) HasTotalNodes() bool {
+	if o != nil && o.TotalNodes != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetLocation gets a reference to the given string and assigns it to the Location field.
-func (o *Cluster) SetLocation(v string) {
-	o.Location = &v
-}
-
-// GetCredentials returns the Credentials field value if set, zero value otherwise.
-func (o *Cluster) GetCredentials() map[string]interface{} {
-	if o == nil || o.Credentials == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Credentials
-}
-
-// GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetCredentialsOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Credentials == nil {
-		return nil, false
-	}
-	return o.Credentials, true
-}
-
-// HasCredentials returns a boolean if a field has been set.
-func (o *Cluster) HasCredentials() bool {
-	if o != nil && o.Credentials != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCredentials gets a reference to the given map[string]interface{} and assigns it to the Credentials field.
-func (o *Cluster) SetCredentials(v map[string]interface{}) {
-	o.Credentials = &v
-}
-
-// GetConfig returns the Config field value if set, zero value otherwise.
-func (o *Cluster) GetConfig() map[string]interface{} {
-	if o == nil || o.Config == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Config
-}
-
-// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetConfigOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Config == nil {
-		return nil, false
-	}
-	return o.Config, true
-}
-
-// HasConfig returns a boolean if a field has been set.
-func (o *Cluster) HasConfig() bool {
-	if o != nil && o.Config != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
-func (o *Cluster) SetConfig(v map[string]interface{}) {
-	o.Config = &v
-}
-
-// GetTags returns the Tags field value if set, zero value otherwise.
-func (o *Cluster) GetTags() map[string]interface{} {
-	if o == nil || o.Tags == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Tags
-}
-
-// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetTagsOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Tags == nil {
-		return nil, false
-	}
-	return o.Tags, true
-}
-
-// HasTags returns a boolean if a field has been set.
-func (o *Cluster) HasTags() bool {
-	if o != nil && o.Tags != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTags gets a reference to the given map[string]interface{} and assigns it to the Tags field.
-func (o *Cluster) SetTags(v map[string]interface{}) {
-	o.Tags = &v
-}
-
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
-func (o *Cluster) GetCreatedBy() string {
-	if o == nil || o.CreatedBy == nil {
-		var ret string
-		return ret
-	}
-	return *o.CreatedBy
-}
-
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetCreatedByOk() (*string, bool) {
-	if o == nil || o.CreatedBy == nil {
-		return nil, false
-	}
-	return o.CreatedBy, true
-}
-
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *Cluster) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
-func (o *Cluster) SetCreatedBy(v string) {
-	o.CreatedBy = &v
-}
-
-// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
-func (o *Cluster) GetOwnedBy() string {
-	if o == nil || o.OwnedBy == nil {
-		var ret string
-		return ret
-	}
-	return *o.OwnedBy
-}
-
-// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetOwnedByOk() (*string, bool) {
-	if o == nil || o.OwnedBy == nil {
-		return nil, false
-	}
-	return o.OwnedBy, true
-}
-
-// HasOwnedBy returns a boolean if a field has been set.
-func (o *Cluster) HasOwnedBy() bool {
-	if o != nil && o.OwnedBy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
-func (o *Cluster) SetOwnedBy(v string) {
-	o.OwnedBy = &v
-}
-
-// GetExtra returns the Extra field value if set, zero value otherwise.
-func (o *Cluster) GetExtra() map[string]interface{} {
-	if o == nil || o.Extra == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Extra
-}
-
-// GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetExtraOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Extra == nil {
-		return nil, false
-	}
-	return o.Extra, true
-}
-
-// HasExtra returns a boolean if a field has been set.
-func (o *Cluster) HasExtra() bool {
-	if o != nil && o.Extra != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExtra gets a reference to the given map[string]interface{} and assigns it to the Extra field.
-func (o *Cluster) SetExtra(v map[string]interface{}) {
-	o.Extra = &v
+// SetTotalNodes gets a reference to the given int32 and assigns it to the TotalNodes field.
+func (o *Cluster) SetTotalNodes(v int32) {
+	o.TotalNodes = &v
 }
 
 func (o Cluster) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Cloud != nil {
+		toSerialize["cloud"] = o.Cloud
+	}
+	if o.Config != nil {
+		toSerialize["config"] = o.Config
+	}
+	if o.CreatedBy != nil {
+		toSerialize["created_by"] = o.CreatedBy
+	}
+	if o.Credentials != nil {
+		toSerialize["credentials"] = o.Credentials
+	}
+	if o.Extra != nil {
+		toSerialize["extra"] = o.Extra
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.Location != nil {
+		toSerialize["location"] = o.Location
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.Cloud != nil {
-		toSerialize["cloud"] = o.Cloud
+	if o.OwnedBy != nil {
+		toSerialize["owned_by"] = o.OwnedBy
 	}
 	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
 	}
-	if o.TotalNodes != nil {
-		toSerialize["total_nodes"] = o.TotalNodes
+	if o.Tags != nil {
+		toSerialize["tags"] = o.Tags
 	}
 	if o.TotalCpus != nil {
 		toSerialize["total_cpus"] = o.TotalCpus
@@ -521,26 +539,8 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	if o.TotalMemory != nil {
 		toSerialize["total_memory"] = o.TotalMemory
 	}
-	if o.Location != nil {
-		toSerialize["location"] = o.Location
-	}
-	if o.Credentials != nil {
-		toSerialize["credentials"] = o.Credentials
-	}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
-	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
-	}
-	if o.CreatedBy != nil {
-		toSerialize["created_by"] = o.CreatedBy
-	}
-	if o.OwnedBy != nil {
-		toSerialize["owned_by"] = o.OwnedBy
-	}
-	if o.Extra != nil {
-		toSerialize["extra"] = o.Extra
+	if o.TotalNodes != nil {
+		toSerialize["total_nodes"] = o.TotalNodes
 	}
 	return json.Marshal(toSerialize)
 }

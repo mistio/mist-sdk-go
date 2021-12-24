@@ -17,12 +17,12 @@ import (
 
 // Script struct for Script
 type Script struct {
+	CreatedBy *string `json:"created_by,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Tags *map[string]interface{} `json:"tags,omitempty"`
-	CreatedBy *string `json:"created_by,omitempty"`
 	OwnedBy *string `json:"owned_by,omitempty"`
+	Tags *map[string]interface{} `json:"tags,omitempty"`
 }
 
 // NewScript instantiates a new Script object
@@ -40,6 +40,70 @@ func NewScript() *Script {
 func NewScriptWithDefaults() *Script {
 	this := Script{}
 	return &this
+}
+
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *Script) GetCreatedBy() string {
+	if o == nil || o.CreatedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Script) GetCreatedByOk() (*string, bool) {
+	if o == nil || o.CreatedBy == nil {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *Script) HasCreatedBy() bool {
+	if o != nil && o.CreatedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
+func (o *Script) SetCreatedBy(v string) {
+	o.CreatedBy = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *Script) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Script) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *Script) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *Script) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -106,36 +170,36 @@ func (o *Script) SetName(v string) {
 	o.Name = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *Script) GetDescription() string {
-	if o == nil || o.Description == nil {
+// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
+func (o *Script) GetOwnedBy() string {
+	if o == nil || o.OwnedBy == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.OwnedBy
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Script) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+func (o *Script) GetOwnedByOk() (*string, bool) {
+	if o == nil || o.OwnedBy == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.OwnedBy, true
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *Script) HasDescription() bool {
-	if o != nil && o.Description != nil {
+// HasOwnedBy returns a boolean if a field has been set.
+func (o *Script) HasOwnedBy() bool {
+	if o != nil && o.OwnedBy != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *Script) SetDescription(v string) {
-	o.Description = &v
+// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
+func (o *Script) SetOwnedBy(v string) {
+	o.OwnedBy = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -170,89 +234,25 @@ func (o *Script) SetTags(v map[string]interface{}) {
 	o.Tags = &v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
-func (o *Script) GetCreatedBy() string {
-	if o == nil || o.CreatedBy == nil {
-		var ret string
-		return ret
-	}
-	return *o.CreatedBy
-}
-
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Script) GetCreatedByOk() (*string, bool) {
-	if o == nil || o.CreatedBy == nil {
-		return nil, false
-	}
-	return o.CreatedBy, true
-}
-
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *Script) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
-func (o *Script) SetCreatedBy(v string) {
-	o.CreatedBy = &v
-}
-
-// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
-func (o *Script) GetOwnedBy() string {
-	if o == nil || o.OwnedBy == nil {
-		var ret string
-		return ret
-	}
-	return *o.OwnedBy
-}
-
-// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Script) GetOwnedByOk() (*string, bool) {
-	if o == nil || o.OwnedBy == nil {
-		return nil, false
-	}
-	return o.OwnedBy, true
-}
-
-// HasOwnedBy returns a boolean if a field has been set.
-func (o *Script) HasOwnedBy() bool {
-	if o != nil && o.OwnedBy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
-func (o *Script) SetOwnedBy(v string) {
-	o.OwnedBy = &v
-}
-
 func (o Script) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CreatedBy != nil {
+		toSerialize["created_by"] = o.CreatedBy
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
+	if o.OwnedBy != nil {
+		toSerialize["owned_by"] = o.OwnedBy
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
-	}
-	if o.CreatedBy != nil {
-		toSerialize["created_by"] = o.CreatedBy
-	}
-	if o.OwnedBy != nil {
-		toSerialize["owned_by"] = o.OwnedBy
 	}
 	return json.Marshal(toSerialize)
 }

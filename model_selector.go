@@ -17,12 +17,12 @@ import (
 
 // Selector struct for Selector
 type Selector struct {
-	// one of \"machines\" or \"tags\"
-	Type string `json:"type"`
 	// a list of UUIDs in case type is \"machines\"
 	Ids *[]string `json:"ids,omitempty"`
 	// a list of tags in case type is \"tags\"
 	Include *[]string `json:"include,omitempty"`
+	// one of \"machines\" or \"tags\"
+	Type string `json:"type"`
 }
 
 // NewSelector instantiates a new Selector object
@@ -41,30 +41,6 @@ func NewSelector(type_ string, ) *Selector {
 func NewSelectorWithDefaults() *Selector {
 	this := Selector{}
 	return &this
-}
-
-// GetType returns the Type field value
-func (o *Selector) GetType() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *Selector) GetTypeOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *Selector) SetType(v string) {
-	o.Type = v
 }
 
 // GetIds returns the Ids field value if set, zero value otherwise.
@@ -131,16 +107,40 @@ func (o *Selector) SetInclude(v []string) {
 	o.Include = &v
 }
 
+// GetType returns the Type field value
+func (o *Selector) GetType() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *Selector) GetTypeOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *Selector) SetType(v string) {
+	o.Type = v
+}
+
 func (o Selector) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
 	if o.Ids != nil {
 		toSerialize["ids"] = o.Ids
 	}
 	if o.Include != nil {
 		toSerialize["include"] = o.Include
+	}
+	if true {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

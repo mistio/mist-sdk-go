@@ -17,19 +17,19 @@ import (
 
 // VultrCloudRequest struct for VultrCloudRequest
 type VultrCloudRequest struct {
-	Provider string `json:"provider"`
 	Credentials VultrCredentials `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
+	Provider string `json:"provider"`
 }
 
 // NewVultrCloudRequest instantiates a new VultrCloudRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVultrCloudRequest(provider string, credentials VultrCredentials, ) *VultrCloudRequest {
+func NewVultrCloudRequest(credentials VultrCredentials, provider string, ) *VultrCloudRequest {
 	this := VultrCloudRequest{}
-	this.Provider = provider
 	this.Credentials = credentials
+	this.Provider = provider
 	return &this
 }
 
@@ -39,30 +39,6 @@ func NewVultrCloudRequest(provider string, credentials VultrCredentials, ) *Vult
 func NewVultrCloudRequestWithDefaults() *VultrCloudRequest {
 	this := VultrCloudRequest{}
 	return &this
-}
-
-// GetProvider returns the Provider field value
-func (o *VultrCloudRequest) GetProvider() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Provider
-}
-
-// GetProviderOk returns a tuple with the Provider field value
-// and a boolean to check if the value has been set.
-func (o *VultrCloudRequest) GetProviderOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Provider, true
-}
-
-// SetProvider sets field value
-func (o *VultrCloudRequest) SetProvider(v string) {
-	o.Provider = v
 }
 
 // GetCredentials returns the Credentials field value
@@ -121,16 +97,40 @@ func (o *VultrCloudRequest) SetFeatures(v CloudFeatures) {
 	o.Features = &v
 }
 
+// GetProvider returns the Provider field value
+func (o *VultrCloudRequest) GetProvider() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value
+// and a boolean to check if the value has been set.
+func (o *VultrCloudRequest) GetProviderOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Provider, true
+}
+
+// SetProvider sets field value
+func (o *VultrCloudRequest) SetProvider(v string) {
+	o.Provider = v
+}
+
 func (o VultrCloudRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
 	if true {
 		toSerialize["credentials"] = o.Credentials
 	}
 	if o.Features != nil {
 		toSerialize["features"] = o.Features
+	}
+	if true {
+		toSerialize["provider"] = o.Provider
 	}
 	return json.Marshal(toSerialize)
 }

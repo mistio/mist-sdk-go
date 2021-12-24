@@ -17,11 +17,11 @@ import (
 
 // Location struct for Location
 type Location struct {
-	Id *string `json:"id,omitempty"`
-	ExternalId *string `json:"external_id,omitempty"`
-	Name *string `json:"name,omitempty"`
 	Cloud *string `json:"cloud,omitempty"`
+	ExternalId *string `json:"external_id,omitempty"`
 	Extra *map[string]interface{} `json:"extra,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewLocation instantiates a new Location object
@@ -39,102 +39,6 @@ func NewLocation() *Location {
 func NewLocationWithDefaults() *Location {
 	this := Location{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Location) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Location) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Location) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Location) SetId(v string) {
-	o.Id = &v
-}
-
-// GetExternalId returns the ExternalId field value if set, zero value otherwise.
-func (o *Location) GetExternalId() string {
-	if o == nil || o.ExternalId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ExternalId
-}
-
-// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Location) GetExternalIdOk() (*string, bool) {
-	if o == nil || o.ExternalId == nil {
-		return nil, false
-	}
-	return o.ExternalId, true
-}
-
-// HasExternalId returns a boolean if a field has been set.
-func (o *Location) HasExternalId() bool {
-	if o != nil && o.ExternalId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
-func (o *Location) SetExternalId(v string) {
-	o.ExternalId = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Location) GetName() string {
-	if o == nil || o.Name == nil {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Location) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *Location) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Location) SetName(v string) {
-	o.Name = &v
 }
 
 // GetCloud returns the Cloud field value if set, zero value otherwise.
@@ -169,6 +73,38 @@ func (o *Location) SetCloud(v string) {
 	o.Cloud = &v
 }
 
+// GetExternalId returns the ExternalId field value if set, zero value otherwise.
+func (o *Location) GetExternalId() string {
+	if o == nil || o.ExternalId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExternalId
+}
+
+// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Location) GetExternalIdOk() (*string, bool) {
+	if o == nil || o.ExternalId == nil {
+		return nil, false
+	}
+	return o.ExternalId, true
+}
+
+// HasExternalId returns a boolean if a field has been set.
+func (o *Location) HasExternalId() bool {
+	if o != nil && o.ExternalId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
+func (o *Location) SetExternalId(v string) {
+	o.ExternalId = &v
+}
+
 // GetExtra returns the Extra field value if set, zero value otherwise.
 func (o *Location) GetExtra() map[string]interface{} {
 	if o == nil || o.Extra == nil {
@@ -201,22 +137,86 @@ func (o *Location) SetExtra(v map[string]interface{}) {
 	o.Extra = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Location) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Location) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Location) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Location) SetId(v string) {
+	o.Id = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *Location) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Location) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *Location) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *Location) SetName(v string) {
+	o.Name = &v
+}
+
 func (o Location) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	if o.Cloud != nil {
+		toSerialize["cloud"] = o.Cloud
 	}
 	if o.ExternalId != nil {
 		toSerialize["external_id"] = o.ExternalId
 	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Cloud != nil {
-		toSerialize["cloud"] = o.Cloud
-	}
 	if o.Extra != nil {
 		toSerialize["extra"] = o.Extra
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)
 }

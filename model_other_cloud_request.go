@@ -17,19 +17,19 @@ import (
 
 // OtherCloudRequest struct for OtherCloudRequest
 type OtherCloudRequest struct {
-	Provider string `json:"provider"`
 	Credentials map[string]interface{} `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
+	Provider string `json:"provider"`
 }
 
 // NewOtherCloudRequest instantiates a new OtherCloudRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOtherCloudRequest(provider string, credentials map[string]interface{}, ) *OtherCloudRequest {
+func NewOtherCloudRequest(credentials map[string]interface{}, provider string, ) *OtherCloudRequest {
 	this := OtherCloudRequest{}
-	this.Provider = provider
 	this.Credentials = credentials
+	this.Provider = provider
 	return &this
 }
 
@@ -39,30 +39,6 @@ func NewOtherCloudRequest(provider string, credentials map[string]interface{}, )
 func NewOtherCloudRequestWithDefaults() *OtherCloudRequest {
 	this := OtherCloudRequest{}
 	return &this
-}
-
-// GetProvider returns the Provider field value
-func (o *OtherCloudRequest) GetProvider() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Provider
-}
-
-// GetProviderOk returns a tuple with the Provider field value
-// and a boolean to check if the value has been set.
-func (o *OtherCloudRequest) GetProviderOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Provider, true
-}
-
-// SetProvider sets field value
-func (o *OtherCloudRequest) SetProvider(v string) {
-	o.Provider = v
 }
 
 // GetCredentials returns the Credentials field value
@@ -121,16 +97,40 @@ func (o *OtherCloudRequest) SetFeatures(v CloudFeatures) {
 	o.Features = &v
 }
 
+// GetProvider returns the Provider field value
+func (o *OtherCloudRequest) GetProvider() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value
+// and a boolean to check if the value has been set.
+func (o *OtherCloudRequest) GetProviderOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Provider, true
+}
+
+// SetProvider sets field value
+func (o *OtherCloudRequest) SetProvider(v string) {
+	o.Provider = v
+}
+
 func (o OtherCloudRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
 	if true {
 		toSerialize["credentials"] = o.Credentials
 	}
 	if o.Features != nil {
 		toSerialize["features"] = o.Features
+	}
+	if true {
+		toSerialize["provider"] = o.Provider
 	}
 	return json.Marshal(toSerialize)
 }

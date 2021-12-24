@@ -17,12 +17,12 @@ import (
 
 // AddKeyRequestAnyOf struct for AddKeyRequestAnyOf
 type AddKeyRequestAnyOf struct {
+	// The signed public key, when using signed ssh keys
+	Certificate *string `json:"certificate,omitempty"`
 	// The key's name
 	Name string `json:"name"`
 	// The private key
 	Private string `json:"private"`
-	// The signed public key, when using signed ssh keys
-	Certificate *string `json:"certificate,omitempty"`
 }
 
 // NewAddKeyRequestAnyOf instantiates a new AddKeyRequestAnyOf object
@@ -42,6 +42,38 @@ func NewAddKeyRequestAnyOf(name string, private string, ) *AddKeyRequestAnyOf {
 func NewAddKeyRequestAnyOfWithDefaults() *AddKeyRequestAnyOf {
 	this := AddKeyRequestAnyOf{}
 	return &this
+}
+
+// GetCertificate returns the Certificate field value if set, zero value otherwise.
+func (o *AddKeyRequestAnyOf) GetCertificate() string {
+	if o == nil || o.Certificate == nil {
+		var ret string
+		return ret
+	}
+	return *o.Certificate
+}
+
+// GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddKeyRequestAnyOf) GetCertificateOk() (*string, bool) {
+	if o == nil || o.Certificate == nil {
+		return nil, false
+	}
+	return o.Certificate, true
+}
+
+// HasCertificate returns a boolean if a field has been set.
+func (o *AddKeyRequestAnyOf) HasCertificate() bool {
+	if o != nil && o.Certificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificate gets a reference to the given string and assigns it to the Certificate field.
+func (o *AddKeyRequestAnyOf) SetCertificate(v string) {
+	o.Certificate = &v
 }
 
 // GetName returns the Name field value
@@ -92,48 +124,16 @@ func (o *AddKeyRequestAnyOf) SetPrivate(v string) {
 	o.Private = v
 }
 
-// GetCertificate returns the Certificate field value if set, zero value otherwise.
-func (o *AddKeyRequestAnyOf) GetCertificate() string {
-	if o == nil || o.Certificate == nil {
-		var ret string
-		return ret
-	}
-	return *o.Certificate
-}
-
-// GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddKeyRequestAnyOf) GetCertificateOk() (*string, bool) {
-	if o == nil || o.Certificate == nil {
-		return nil, false
-	}
-	return o.Certificate, true
-}
-
-// HasCertificate returns a boolean if a field has been set.
-func (o *AddKeyRequestAnyOf) HasCertificate() bool {
-	if o != nil && o.Certificate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCertificate gets a reference to the given string and assigns it to the Certificate field.
-func (o *AddKeyRequestAnyOf) SetCertificate(v string) {
-	o.Certificate = &v
-}
-
 func (o AddKeyRequestAnyOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Certificate != nil {
+		toSerialize["certificate"] = o.Certificate
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
 	if true {
 		toSerialize["private"] = o.Private
-	}
-	if o.Certificate != nil {
-		toSerialize["certificate"] = o.Certificate
 	}
 	return json.Marshal(toSerialize)
 }

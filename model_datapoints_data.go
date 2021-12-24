@@ -17,8 +17,8 @@ import (
 
 // DatapointsData struct for DatapointsData
 type DatapointsData struct {
-	ResultType *string `json:"resultType,omitempty"`
 	Result *[]Vector `json:"result,omitempty"`
+	ResultType *string `json:"resultType,omitempty"`
 }
 
 // NewDatapointsData instantiates a new DatapointsData object
@@ -36,38 +36,6 @@ func NewDatapointsData() *DatapointsData {
 func NewDatapointsDataWithDefaults() *DatapointsData {
 	this := DatapointsData{}
 	return &this
-}
-
-// GetResultType returns the ResultType field value if set, zero value otherwise.
-func (o *DatapointsData) GetResultType() string {
-	if o == nil || o.ResultType == nil {
-		var ret string
-		return ret
-	}
-	return *o.ResultType
-}
-
-// GetResultTypeOk returns a tuple with the ResultType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DatapointsData) GetResultTypeOk() (*string, bool) {
-	if o == nil || o.ResultType == nil {
-		return nil, false
-	}
-	return o.ResultType, true
-}
-
-// HasResultType returns a boolean if a field has been set.
-func (o *DatapointsData) HasResultType() bool {
-	if o != nil && o.ResultType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResultType gets a reference to the given string and assigns it to the ResultType field.
-func (o *DatapointsData) SetResultType(v string) {
-	o.ResultType = &v
 }
 
 // GetResult returns the Result field value if set, zero value otherwise.
@@ -102,13 +70,45 @@ func (o *DatapointsData) SetResult(v []Vector) {
 	o.Result = &v
 }
 
+// GetResultType returns the ResultType field value if set, zero value otherwise.
+func (o *DatapointsData) GetResultType() string {
+	if o == nil || o.ResultType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ResultType
+}
+
+// GetResultTypeOk returns a tuple with the ResultType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatapointsData) GetResultTypeOk() (*string, bool) {
+	if o == nil || o.ResultType == nil {
+		return nil, false
+	}
+	return o.ResultType, true
+}
+
+// HasResultType returns a boolean if a field has been set.
+func (o *DatapointsData) HasResultType() bool {
+	if o != nil && o.ResultType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResultType gets a reference to the given string and assigns it to the ResultType field.
+func (o *DatapointsData) SetResultType(v string) {
+	o.ResultType = &v
+}
+
 func (o DatapointsData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ResultType != nil {
-		toSerialize["resultType"] = o.ResultType
-	}
 	if o.Result != nil {
 		toSerialize["result"] = o.Result
+	}
+	if o.ResultType != nil {
+		toSerialize["resultType"] = o.ResultType
 	}
 	return json.Marshal(toSerialize)
 }

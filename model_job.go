@@ -17,15 +17,15 @@ import (
 
 // Job struct for Job
 type Job struct {
-	Logs []Log `json:"logs"`
-	Error bool `json:"error"`
-	StartedAt float32 `json:"started_at"`
-	FinishedAt float32 `json:"finished_at"`
-	Org string `json:"org"`
-	MachineId *string `json:"machine_id,omitempty"`
-	JobId string `json:"job_id"`
-	CloudId *string `json:"cloud_id,omitempty"`
 	Action string `json:"action"`
+	CloudId *string `json:"cloud_id,omitempty"`
+	Error bool `json:"error"`
+	FinishedAt float32 `json:"finished_at"`
+	JobId string `json:"job_id"`
+	Logs []Log `json:"logs"`
+	MachineId *string `json:"machine_id,omitempty"`
+	Org string `json:"org"`
+	StartedAt float32 `json:"started_at"`
 	User *string `json:"user,omitempty"`
 }
 
@@ -33,15 +33,15 @@ type Job struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJob(logs []Log, error_ bool, startedAt float32, finishedAt float32, org string, jobId string, action string, ) *Job {
+func NewJob(action string, error_ bool, finishedAt float32, jobId string, logs []Log, org string, startedAt float32, ) *Job {
 	this := Job{}
-	this.Logs = logs
-	this.Error = error_
-	this.StartedAt = startedAt
-	this.FinishedAt = finishedAt
-	this.Org = org
-	this.JobId = jobId
 	this.Action = action
+	this.Error = error_
+	this.FinishedAt = finishedAt
+	this.JobId = jobId
+	this.Logs = logs
+	this.Org = org
+	this.StartedAt = startedAt
 	return &this
 }
 
@@ -53,180 +53,28 @@ func NewJobWithDefaults() *Job {
 	return &this
 }
 
-// GetLogs returns the Logs field value
-func (o *Job) GetLogs() []Log {
-	if o == nil  {
-		var ret []Log
-		return ret
-	}
-
-	return o.Logs
-}
-
-// GetLogsOk returns a tuple with the Logs field value
-// and a boolean to check if the value has been set.
-func (o *Job) GetLogsOk() (*[]Log, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Logs, true
-}
-
-// SetLogs sets field value
-func (o *Job) SetLogs(v []Log) {
-	o.Logs = v
-}
-
-// GetError returns the Error field value
-func (o *Job) GetError() bool {
-	if o == nil  {
-		var ret bool
-		return ret
-	}
-
-	return o.Error
-}
-
-// GetErrorOk returns a tuple with the Error field value
-// and a boolean to check if the value has been set.
-func (o *Job) GetErrorOk() (*bool, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Error, true
-}
-
-// SetError sets field value
-func (o *Job) SetError(v bool) {
-	o.Error = v
-}
-
-// GetStartedAt returns the StartedAt field value
-func (o *Job) GetStartedAt() float32 {
-	if o == nil  {
-		var ret float32
-		return ret
-	}
-
-	return o.StartedAt
-}
-
-// GetStartedAtOk returns a tuple with the StartedAt field value
-// and a boolean to check if the value has been set.
-func (o *Job) GetStartedAtOk() (*float32, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.StartedAt, true
-}
-
-// SetStartedAt sets field value
-func (o *Job) SetStartedAt(v float32) {
-	o.StartedAt = v
-}
-
-// GetFinishedAt returns the FinishedAt field value
-func (o *Job) GetFinishedAt() float32 {
-	if o == nil  {
-		var ret float32
-		return ret
-	}
-
-	return o.FinishedAt
-}
-
-// GetFinishedAtOk returns a tuple with the FinishedAt field value
-// and a boolean to check if the value has been set.
-func (o *Job) GetFinishedAtOk() (*float32, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.FinishedAt, true
-}
-
-// SetFinishedAt sets field value
-func (o *Job) SetFinishedAt(v float32) {
-	o.FinishedAt = v
-}
-
-// GetOrg returns the Org field value
-func (o *Job) GetOrg() string {
+// GetAction returns the Action field value
+func (o *Job) GetAction() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.Org
+	return o.Action
 }
 
-// GetOrgOk returns a tuple with the Org field value
+// GetActionOk returns a tuple with the Action field value
 // and a boolean to check if the value has been set.
-func (o *Job) GetOrgOk() (*string, bool) {
+func (o *Job) GetActionOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Org, true
+	return &o.Action, true
 }
 
-// SetOrg sets field value
-func (o *Job) SetOrg(v string) {
-	o.Org = v
-}
-
-// GetMachineId returns the MachineId field value if set, zero value otherwise.
-func (o *Job) GetMachineId() string {
-	if o == nil || o.MachineId == nil {
-		var ret string
-		return ret
-	}
-	return *o.MachineId
-}
-
-// GetMachineIdOk returns a tuple with the MachineId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Job) GetMachineIdOk() (*string, bool) {
-	if o == nil || o.MachineId == nil {
-		return nil, false
-	}
-	return o.MachineId, true
-}
-
-// HasMachineId returns a boolean if a field has been set.
-func (o *Job) HasMachineId() bool {
-	if o != nil && o.MachineId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMachineId gets a reference to the given string and assigns it to the MachineId field.
-func (o *Job) SetMachineId(v string) {
-	o.MachineId = &v
-}
-
-// GetJobId returns the JobId field value
-func (o *Job) GetJobId() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.JobId
-}
-
-// GetJobIdOk returns a tuple with the JobId field value
-// and a boolean to check if the value has been set.
-func (o *Job) GetJobIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.JobId, true
-}
-
-// SetJobId sets field value
-func (o *Job) SetJobId(v string) {
-	o.JobId = v
+// SetAction sets field value
+func (o *Job) SetAction(v string) {
+	o.Action = v
 }
 
 // GetCloudId returns the CloudId field value if set, zero value otherwise.
@@ -261,28 +109,180 @@ func (o *Job) SetCloudId(v string) {
 	o.CloudId = &v
 }
 
-// GetAction returns the Action field value
-func (o *Job) GetAction() string {
+// GetError returns the Error field value
+func (o *Job) GetError() bool {
+	if o == nil  {
+		var ret bool
+		return ret
+	}
+
+	return o.Error
+}
+
+// GetErrorOk returns a tuple with the Error field value
+// and a boolean to check if the value has been set.
+func (o *Job) GetErrorOk() (*bool, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Error, true
+}
+
+// SetError sets field value
+func (o *Job) SetError(v bool) {
+	o.Error = v
+}
+
+// GetFinishedAt returns the FinishedAt field value
+func (o *Job) GetFinishedAt() float32 {
+	if o == nil  {
+		var ret float32
+		return ret
+	}
+
+	return o.FinishedAt
+}
+
+// GetFinishedAtOk returns a tuple with the FinishedAt field value
+// and a boolean to check if the value has been set.
+func (o *Job) GetFinishedAtOk() (*float32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.FinishedAt, true
+}
+
+// SetFinishedAt sets field value
+func (o *Job) SetFinishedAt(v float32) {
+	o.FinishedAt = v
+}
+
+// GetJobId returns the JobId field value
+func (o *Job) GetJobId() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.Action
+	return o.JobId
 }
 
-// GetActionOk returns a tuple with the Action field value
+// GetJobIdOk returns a tuple with the JobId field value
 // and a boolean to check if the value has been set.
-func (o *Job) GetActionOk() (*string, bool) {
+func (o *Job) GetJobIdOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Action, true
+	return &o.JobId, true
 }
 
-// SetAction sets field value
-func (o *Job) SetAction(v string) {
-	o.Action = v
+// SetJobId sets field value
+func (o *Job) SetJobId(v string) {
+	o.JobId = v
+}
+
+// GetLogs returns the Logs field value
+func (o *Job) GetLogs() []Log {
+	if o == nil  {
+		var ret []Log
+		return ret
+	}
+
+	return o.Logs
+}
+
+// GetLogsOk returns a tuple with the Logs field value
+// and a boolean to check if the value has been set.
+func (o *Job) GetLogsOk() (*[]Log, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Logs, true
+}
+
+// SetLogs sets field value
+func (o *Job) SetLogs(v []Log) {
+	o.Logs = v
+}
+
+// GetMachineId returns the MachineId field value if set, zero value otherwise.
+func (o *Job) GetMachineId() string {
+	if o == nil || o.MachineId == nil {
+		var ret string
+		return ret
+	}
+	return *o.MachineId
+}
+
+// GetMachineIdOk returns a tuple with the MachineId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Job) GetMachineIdOk() (*string, bool) {
+	if o == nil || o.MachineId == nil {
+		return nil, false
+	}
+	return o.MachineId, true
+}
+
+// HasMachineId returns a boolean if a field has been set.
+func (o *Job) HasMachineId() bool {
+	if o != nil && o.MachineId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMachineId gets a reference to the given string and assigns it to the MachineId field.
+func (o *Job) SetMachineId(v string) {
+	o.MachineId = &v
+}
+
+// GetOrg returns the Org field value
+func (o *Job) GetOrg() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Org
+}
+
+// GetOrgOk returns a tuple with the Org field value
+// and a boolean to check if the value has been set.
+func (o *Job) GetOrgOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Org, true
+}
+
+// SetOrg sets field value
+func (o *Job) SetOrg(v string) {
+	o.Org = v
+}
+
+// GetStartedAt returns the StartedAt field value
+func (o *Job) GetStartedAt() float32 {
+	if o == nil  {
+		var ret float32
+		return ret
+	}
+
+	return o.StartedAt
+}
+
+// GetStartedAtOk returns a tuple with the StartedAt field value
+// and a boolean to check if the value has been set.
+func (o *Job) GetStartedAtOk() (*float32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.StartedAt, true
+}
+
+// SetStartedAt sets field value
+func (o *Job) SetStartedAt(v float32) {
+	o.StartedAt = v
 }
 
 // GetUser returns the User field value if set, zero value otherwise.
@@ -320,31 +320,31 @@ func (o *Job) SetUser(v string) {
 func (o Job) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["logs"] = o.Logs
-	}
-	if true {
-		toSerialize["error"] = o.Error
-	}
-	if true {
-		toSerialize["started_at"] = o.StartedAt
-	}
-	if true {
-		toSerialize["finished_at"] = o.FinishedAt
-	}
-	if true {
-		toSerialize["org"] = o.Org
-	}
-	if o.MachineId != nil {
-		toSerialize["machine_id"] = o.MachineId
-	}
-	if true {
-		toSerialize["job_id"] = o.JobId
+		toSerialize["action"] = o.Action
 	}
 	if o.CloudId != nil {
 		toSerialize["cloud_id"] = o.CloudId
 	}
 	if true {
-		toSerialize["action"] = o.Action
+		toSerialize["error"] = o.Error
+	}
+	if true {
+		toSerialize["finished_at"] = o.FinishedAt
+	}
+	if true {
+		toSerialize["job_id"] = o.JobId
+	}
+	if true {
+		toSerialize["logs"] = o.Logs
+	}
+	if o.MachineId != nil {
+		toSerialize["machine_id"] = o.MachineId
+	}
+	if true {
+		toSerialize["org"] = o.Org
+	}
+	if true {
+		toSerialize["started_at"] = o.StartedAt
 	}
 	if o.User != nil {
 		toSerialize["user"] = o.User

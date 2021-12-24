@@ -20,25 +20,25 @@ type AmazonClusterRequest struct {
 	Provider string `json:"provider"`
 	// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf
 	RoleArn string `json:"role_arn"`
-	// The VPC associated with the cluster
-	VpcId string `json:"vpc_id"`
-	// The subnets associated with the cluster
-	SubnetIds []string `json:"subnet_ids"`
 	// The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane
 	SecurityGroupIds []string `json:"security_group_ids"`
+	// The subnets associated with the cluster
+	SubnetIds []string `json:"subnet_ids"`
+	// The VPC associated with the cluster
+	VpcId string `json:"vpc_id"`
 }
 
 // NewAmazonClusterRequest instantiates a new AmazonClusterRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmazonClusterRequest(provider string, roleArn string, vpcId string, subnetIds []string, securityGroupIds []string, ) *AmazonClusterRequest {
+func NewAmazonClusterRequest(provider string, roleArn string, securityGroupIds []string, subnetIds []string, vpcId string, ) *AmazonClusterRequest {
 	this := AmazonClusterRequest{}
 	this.Provider = provider
 	this.RoleArn = roleArn
-	this.VpcId = vpcId
-	this.SubnetIds = subnetIds
 	this.SecurityGroupIds = securityGroupIds
+	this.SubnetIds = subnetIds
+	this.VpcId = vpcId
 	return &this
 }
 
@@ -98,28 +98,28 @@ func (o *AmazonClusterRequest) SetRoleArn(v string) {
 	o.RoleArn = v
 }
 
-// GetVpcId returns the VpcId field value
-func (o *AmazonClusterRequest) GetVpcId() string {
+// GetSecurityGroupIds returns the SecurityGroupIds field value
+func (o *AmazonClusterRequest) GetSecurityGroupIds() []string {
 	if o == nil  {
-		var ret string
+		var ret []string
 		return ret
 	}
 
-	return o.VpcId
+	return o.SecurityGroupIds
 }
 
-// GetVpcIdOk returns a tuple with the VpcId field value
+// GetSecurityGroupIdsOk returns a tuple with the SecurityGroupIds field value
 // and a boolean to check if the value has been set.
-func (o *AmazonClusterRequest) GetVpcIdOk() (*string, bool) {
+func (o *AmazonClusterRequest) GetSecurityGroupIdsOk() (*[]string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.VpcId, true
+	return &o.SecurityGroupIds, true
 }
 
-// SetVpcId sets field value
-func (o *AmazonClusterRequest) SetVpcId(v string) {
-	o.VpcId = v
+// SetSecurityGroupIds sets field value
+func (o *AmazonClusterRequest) SetSecurityGroupIds(v []string) {
+	o.SecurityGroupIds = v
 }
 
 // GetSubnetIds returns the SubnetIds field value
@@ -146,28 +146,28 @@ func (o *AmazonClusterRequest) SetSubnetIds(v []string) {
 	o.SubnetIds = v
 }
 
-// GetSecurityGroupIds returns the SecurityGroupIds field value
-func (o *AmazonClusterRequest) GetSecurityGroupIds() []string {
+// GetVpcId returns the VpcId field value
+func (o *AmazonClusterRequest) GetVpcId() string {
 	if o == nil  {
-		var ret []string
+		var ret string
 		return ret
 	}
 
-	return o.SecurityGroupIds
+	return o.VpcId
 }
 
-// GetSecurityGroupIdsOk returns a tuple with the SecurityGroupIds field value
+// GetVpcIdOk returns a tuple with the VpcId field value
 // and a boolean to check if the value has been set.
-func (o *AmazonClusterRequest) GetSecurityGroupIdsOk() (*[]string, bool) {
+func (o *AmazonClusterRequest) GetVpcIdOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.SecurityGroupIds, true
+	return &o.VpcId, true
 }
 
-// SetSecurityGroupIds sets field value
-func (o *AmazonClusterRequest) SetSecurityGroupIds(v []string) {
-	o.SecurityGroupIds = v
+// SetVpcId sets field value
+func (o *AmazonClusterRequest) SetVpcId(v string) {
+	o.VpcId = v
 }
 
 func (o AmazonClusterRequest) MarshalJSON() ([]byte, error) {
@@ -179,13 +179,13 @@ func (o AmazonClusterRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["role_arn"] = o.RoleArn
 	}
 	if true {
-		toSerialize["vpc_id"] = o.VpcId
+		toSerialize["security_group_ids"] = o.SecurityGroupIds
 	}
 	if true {
 		toSerialize["subnet_ids"] = o.SubnetIds
 	}
 	if true {
-		toSerialize["security_group_ids"] = o.SecurityGroupIds
+		toSerialize["vpc_id"] = o.VpcId
 	}
 	return json.Marshal(toSerialize)
 }

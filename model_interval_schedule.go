@@ -18,25 +18,25 @@ import (
 
 // IntervalSchedule interval schedule
 type IntervalSchedule struct {
-	ScheduleType string `json:"schedule_type"`
 	Every int32 `json:"every"`
-	Period string `json:"period"`
-	// The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z
-	StartAfter *time.Time `json:"start_after,omitempty"`
 	// The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z
 	Expires *time.Time `json:"expires,omitempty"`
 	MaxRunCount *int32 `json:"max_run_count,omitempty"`
+	Period string `json:"period"`
+	ScheduleType string `json:"schedule_type"`
+	// The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z
+	StartAfter *time.Time `json:"start_after,omitempty"`
 }
 
 // NewIntervalSchedule instantiates a new IntervalSchedule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntervalSchedule(scheduleType string, every int32, period string, ) *IntervalSchedule {
+func NewIntervalSchedule(every int32, period string, scheduleType string, ) *IntervalSchedule {
 	this := IntervalSchedule{}
-	this.ScheduleType = scheduleType
 	this.Every = every
 	this.Period = period
+	this.ScheduleType = scheduleType
 	return &this
 }
 
@@ -46,30 +46,6 @@ func NewIntervalSchedule(scheduleType string, every int32, period string, ) *Int
 func NewIntervalScheduleWithDefaults() *IntervalSchedule {
 	this := IntervalSchedule{}
 	return &this
-}
-
-// GetScheduleType returns the ScheduleType field value
-func (o *IntervalSchedule) GetScheduleType() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.ScheduleType
-}
-
-// GetScheduleTypeOk returns a tuple with the ScheduleType field value
-// and a boolean to check if the value has been set.
-func (o *IntervalSchedule) GetScheduleTypeOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.ScheduleType, true
-}
-
-// SetScheduleType sets field value
-func (o *IntervalSchedule) SetScheduleType(v string) {
-	o.ScheduleType = v
 }
 
 // GetEvery returns the Every field value
@@ -94,62 +70,6 @@ func (o *IntervalSchedule) GetEveryOk() (*int32, bool) {
 // SetEvery sets field value
 func (o *IntervalSchedule) SetEvery(v int32) {
 	o.Every = v
-}
-
-// GetPeriod returns the Period field value
-func (o *IntervalSchedule) GetPeriod() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Period
-}
-
-// GetPeriodOk returns a tuple with the Period field value
-// and a boolean to check if the value has been set.
-func (o *IntervalSchedule) GetPeriodOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Period, true
-}
-
-// SetPeriod sets field value
-func (o *IntervalSchedule) SetPeriod(v string) {
-	o.Period = v
-}
-
-// GetStartAfter returns the StartAfter field value if set, zero value otherwise.
-func (o *IntervalSchedule) GetStartAfter() time.Time {
-	if o == nil || o.StartAfter == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.StartAfter
-}
-
-// GetStartAfterOk returns a tuple with the StartAfter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntervalSchedule) GetStartAfterOk() (*time.Time, bool) {
-	if o == nil || o.StartAfter == nil {
-		return nil, false
-	}
-	return o.StartAfter, true
-}
-
-// HasStartAfter returns a boolean if a field has been set.
-func (o *IntervalSchedule) HasStartAfter() bool {
-	if o != nil && o.StartAfter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStartAfter gets a reference to the given time.Time and assigns it to the StartAfter field.
-func (o *IntervalSchedule) SetStartAfter(v time.Time) {
-	o.StartAfter = &v
 }
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
@@ -216,25 +136,105 @@ func (o *IntervalSchedule) SetMaxRunCount(v int32) {
 	o.MaxRunCount = &v
 }
 
+// GetPeriod returns the Period field value
+func (o *IntervalSchedule) GetPeriod() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Period
+}
+
+// GetPeriodOk returns a tuple with the Period field value
+// and a boolean to check if the value has been set.
+func (o *IntervalSchedule) GetPeriodOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Period, true
+}
+
+// SetPeriod sets field value
+func (o *IntervalSchedule) SetPeriod(v string) {
+	o.Period = v
+}
+
+// GetScheduleType returns the ScheduleType field value
+func (o *IntervalSchedule) GetScheduleType() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.ScheduleType
+}
+
+// GetScheduleTypeOk returns a tuple with the ScheduleType field value
+// and a boolean to check if the value has been set.
+func (o *IntervalSchedule) GetScheduleTypeOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.ScheduleType, true
+}
+
+// SetScheduleType sets field value
+func (o *IntervalSchedule) SetScheduleType(v string) {
+	o.ScheduleType = v
+}
+
+// GetStartAfter returns the StartAfter field value if set, zero value otherwise.
+func (o *IntervalSchedule) GetStartAfter() time.Time {
+	if o == nil || o.StartAfter == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.StartAfter
+}
+
+// GetStartAfterOk returns a tuple with the StartAfter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IntervalSchedule) GetStartAfterOk() (*time.Time, bool) {
+	if o == nil || o.StartAfter == nil {
+		return nil, false
+	}
+	return o.StartAfter, true
+}
+
+// HasStartAfter returns a boolean if a field has been set.
+func (o *IntervalSchedule) HasStartAfter() bool {
+	if o != nil && o.StartAfter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStartAfter gets a reference to the given time.Time and assigns it to the StartAfter field.
+func (o *IntervalSchedule) SetStartAfter(v time.Time) {
+	o.StartAfter = &v
+}
+
 func (o IntervalSchedule) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["schedule_type"] = o.ScheduleType
-	}
-	if true {
 		toSerialize["every"] = o.Every
-	}
-	if true {
-		toSerialize["period"] = o.Period
-	}
-	if o.StartAfter != nil {
-		toSerialize["start_after"] = o.StartAfter
 	}
 	if o.Expires != nil {
 		toSerialize["expires"] = o.Expires
 	}
 	if o.MaxRunCount != nil {
 		toSerialize["max_run_count"] = o.MaxRunCount
+	}
+	if true {
+		toSerialize["period"] = o.Period
+	}
+	if true {
+		toSerialize["schedule_type"] = o.ScheduleType
+	}
+	if o.StartAfter != nil {
+		toSerialize["start_after"] = o.StartAfter
 	}
 	return json.Marshal(toSerialize)
 }

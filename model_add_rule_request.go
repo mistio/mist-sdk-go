@@ -17,27 +17,27 @@ import (
 
 // AddRuleRequest struct for AddRuleRequest
 type AddRuleRequest struct {
-	Queries []Query `json:"queries"`
-	Window Window `json:"window"`
-	Frequency Frequency `json:"frequency"`
-	TriggerAfter TriggerAfter `json:"trigger_after"`
 	Actions []RuleAction `json:"actions"`
-	Selectors *Selector `json:"selectors,omitempty"`
 	DataType DataType `json:"data_type"`
+	Frequency Frequency `json:"frequency"`
+	Queries []Query `json:"queries"`
+	Selectors *Selector `json:"selectors,omitempty"`
+	TriggerAfter TriggerAfter `json:"trigger_after"`
+	Window Window `json:"window"`
 }
 
 // NewAddRuleRequest instantiates a new AddRuleRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddRuleRequest(queries []Query, window Window, frequency Frequency, triggerAfter TriggerAfter, actions []RuleAction, dataType DataType, ) *AddRuleRequest {
+func NewAddRuleRequest(actions []RuleAction, dataType DataType, frequency Frequency, queries []Query, triggerAfter TriggerAfter, window Window, ) *AddRuleRequest {
 	this := AddRuleRequest{}
-	this.Queries = queries
-	this.Window = window
-	this.Frequency = frequency
-	this.TriggerAfter = triggerAfter
 	this.Actions = actions
 	this.DataType = dataType
+	this.Frequency = frequency
+	this.Queries = queries
+	this.TriggerAfter = triggerAfter
+	this.Window = window
 	return &this
 }
 
@@ -49,52 +49,52 @@ func NewAddRuleRequestWithDefaults() *AddRuleRequest {
 	return &this
 }
 
-// GetQueries returns the Queries field value
-func (o *AddRuleRequest) GetQueries() []Query {
+// GetActions returns the Actions field value
+func (o *AddRuleRequest) GetActions() []RuleAction {
 	if o == nil  {
-		var ret []Query
+		var ret []RuleAction
 		return ret
 	}
 
-	return o.Queries
+	return o.Actions
 }
 
-// GetQueriesOk returns a tuple with the Queries field value
+// GetActionsOk returns a tuple with the Actions field value
 // and a boolean to check if the value has been set.
-func (o *AddRuleRequest) GetQueriesOk() (*[]Query, bool) {
+func (o *AddRuleRequest) GetActionsOk() (*[]RuleAction, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Queries, true
+	return &o.Actions, true
 }
 
-// SetQueries sets field value
-func (o *AddRuleRequest) SetQueries(v []Query) {
-	o.Queries = v
+// SetActions sets field value
+func (o *AddRuleRequest) SetActions(v []RuleAction) {
+	o.Actions = v
 }
 
-// GetWindow returns the Window field value
-func (o *AddRuleRequest) GetWindow() Window {
+// GetDataType returns the DataType field value
+func (o *AddRuleRequest) GetDataType() DataType {
 	if o == nil  {
-		var ret Window
+		var ret DataType
 		return ret
 	}
 
-	return o.Window
+	return o.DataType
 }
 
-// GetWindowOk returns a tuple with the Window field value
+// GetDataTypeOk returns a tuple with the DataType field value
 // and a boolean to check if the value has been set.
-func (o *AddRuleRequest) GetWindowOk() (*Window, bool) {
+func (o *AddRuleRequest) GetDataTypeOk() (*DataType, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.Window, true
+	return &o.DataType, true
 }
 
-// SetWindow sets field value
-func (o *AddRuleRequest) SetWindow(v Window) {
-	o.Window = v
+// SetDataType sets field value
+func (o *AddRuleRequest) SetDataType(v DataType) {
+	o.DataType = v
 }
 
 // GetFrequency returns the Frequency field value
@@ -121,52 +121,28 @@ func (o *AddRuleRequest) SetFrequency(v Frequency) {
 	o.Frequency = v
 }
 
-// GetTriggerAfter returns the TriggerAfter field value
-func (o *AddRuleRequest) GetTriggerAfter() TriggerAfter {
+// GetQueries returns the Queries field value
+func (o *AddRuleRequest) GetQueries() []Query {
 	if o == nil  {
-		var ret TriggerAfter
+		var ret []Query
 		return ret
 	}
 
-	return o.TriggerAfter
+	return o.Queries
 }
 
-// GetTriggerAfterOk returns a tuple with the TriggerAfter field value
+// GetQueriesOk returns a tuple with the Queries field value
 // and a boolean to check if the value has been set.
-func (o *AddRuleRequest) GetTriggerAfterOk() (*TriggerAfter, bool) {
+func (o *AddRuleRequest) GetQueriesOk() (*[]Query, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.TriggerAfter, true
+	return &o.Queries, true
 }
 
-// SetTriggerAfter sets field value
-func (o *AddRuleRequest) SetTriggerAfter(v TriggerAfter) {
-	o.TriggerAfter = v
-}
-
-// GetActions returns the Actions field value
-func (o *AddRuleRequest) GetActions() []RuleAction {
-	if o == nil  {
-		var ret []RuleAction
-		return ret
-	}
-
-	return o.Actions
-}
-
-// GetActionsOk returns a tuple with the Actions field value
-// and a boolean to check if the value has been set.
-func (o *AddRuleRequest) GetActionsOk() (*[]RuleAction, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Actions, true
-}
-
-// SetActions sets field value
-func (o *AddRuleRequest) SetActions(v []RuleAction) {
-	o.Actions = v
+// SetQueries sets field value
+func (o *AddRuleRequest) SetQueries(v []Query) {
+	o.Queries = v
 }
 
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
@@ -201,52 +177,76 @@ func (o *AddRuleRequest) SetSelectors(v Selector) {
 	o.Selectors = &v
 }
 
-// GetDataType returns the DataType field value
-func (o *AddRuleRequest) GetDataType() DataType {
+// GetTriggerAfter returns the TriggerAfter field value
+func (o *AddRuleRequest) GetTriggerAfter() TriggerAfter {
 	if o == nil  {
-		var ret DataType
+		var ret TriggerAfter
 		return ret
 	}
 
-	return o.DataType
+	return o.TriggerAfter
 }
 
-// GetDataTypeOk returns a tuple with the DataType field value
+// GetTriggerAfterOk returns a tuple with the TriggerAfter field value
 // and a boolean to check if the value has been set.
-func (o *AddRuleRequest) GetDataTypeOk() (*DataType, bool) {
+func (o *AddRuleRequest) GetTriggerAfterOk() (*TriggerAfter, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.DataType, true
+	return &o.TriggerAfter, true
 }
 
-// SetDataType sets field value
-func (o *AddRuleRequest) SetDataType(v DataType) {
-	o.DataType = v
+// SetTriggerAfter sets field value
+func (o *AddRuleRequest) SetTriggerAfter(v TriggerAfter) {
+	o.TriggerAfter = v
+}
+
+// GetWindow returns the Window field value
+func (o *AddRuleRequest) GetWindow() Window {
+	if o == nil  {
+		var ret Window
+		return ret
+	}
+
+	return o.Window
+}
+
+// GetWindowOk returns a tuple with the Window field value
+// and a boolean to check if the value has been set.
+func (o *AddRuleRequest) GetWindowOk() (*Window, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Window, true
+}
+
+// SetWindow sets field value
+func (o *AddRuleRequest) SetWindow(v Window) {
+	o.Window = v
 }
 
 func (o AddRuleRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["queries"] = o.Queries
+		toSerialize["actions"] = o.Actions
 	}
 	if true {
-		toSerialize["window"] = o.Window
+		toSerialize["data_type"] = o.DataType
 	}
 	if true {
 		toSerialize["frequency"] = o.Frequency
 	}
 	if true {
-		toSerialize["trigger_after"] = o.TriggerAfter
-	}
-	if true {
-		toSerialize["actions"] = o.Actions
+		toSerialize["queries"] = o.Queries
 	}
 	if o.Selectors != nil {
 		toSerialize["selectors"] = o.Selectors
 	}
 	if true {
-		toSerialize["data_type"] = o.DataType
+		toSerialize["trigger_after"] = o.TriggerAfter
+	}
+	if true {
+		toSerialize["window"] = o.Window
 	}
 	return json.Marshal(toSerialize)
 }

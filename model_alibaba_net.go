@@ -19,10 +19,10 @@ import (
 type AlibabaNet struct {
 	// Name or ID of an existing network to associate the machine with. If not provided, one existing network will be selected.
 	Network *string `json:"network,omitempty"`
-	// Name or ID of an existing or new subnet(switch) to launch the machine into. If not provided a default 'mistio' subnet will be created.
-	Subnet *string `json:"subnet,omitempty"`
 	// Name of the security group to assign to the machine. If not provided a default 'mistio' security group will be created.
 	SecurityGroup *string `json:"security_group,omitempty"`
+	// Name or ID of an existing or new subnet(switch) to launch the machine into. If not provided a default 'mistio' subnet will be created.
+	Subnet *string `json:"subnet,omitempty"`
 }
 
 // NewAlibabaNet instantiates a new AlibabaNet object
@@ -74,38 +74,6 @@ func (o *AlibabaNet) SetNetwork(v string) {
 	o.Network = &v
 }
 
-// GetSubnet returns the Subnet field value if set, zero value otherwise.
-func (o *AlibabaNet) GetSubnet() string {
-	if o == nil || o.Subnet == nil {
-		var ret string
-		return ret
-	}
-	return *o.Subnet
-}
-
-// GetSubnetOk returns a tuple with the Subnet field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AlibabaNet) GetSubnetOk() (*string, bool) {
-	if o == nil || o.Subnet == nil {
-		return nil, false
-	}
-	return o.Subnet, true
-}
-
-// HasSubnet returns a boolean if a field has been set.
-func (o *AlibabaNet) HasSubnet() bool {
-	if o != nil && o.Subnet != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSubnet gets a reference to the given string and assigns it to the Subnet field.
-func (o *AlibabaNet) SetSubnet(v string) {
-	o.Subnet = &v
-}
-
 // GetSecurityGroup returns the SecurityGroup field value if set, zero value otherwise.
 func (o *AlibabaNet) GetSecurityGroup() string {
 	if o == nil || o.SecurityGroup == nil {
@@ -138,16 +106,48 @@ func (o *AlibabaNet) SetSecurityGroup(v string) {
 	o.SecurityGroup = &v
 }
 
+// GetSubnet returns the Subnet field value if set, zero value otherwise.
+func (o *AlibabaNet) GetSubnet() string {
+	if o == nil || o.Subnet == nil {
+		var ret string
+		return ret
+	}
+	return *o.Subnet
+}
+
+// GetSubnetOk returns a tuple with the Subnet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlibabaNet) GetSubnetOk() (*string, bool) {
+	if o == nil || o.Subnet == nil {
+		return nil, false
+	}
+	return o.Subnet, true
+}
+
+// HasSubnet returns a boolean if a field has been set.
+func (o *AlibabaNet) HasSubnet() bool {
+	if o != nil && o.Subnet != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubnet gets a reference to the given string and assigns it to the Subnet field.
+func (o *AlibabaNet) SetSubnet(v string) {
+	o.Subnet = &v
+}
+
 func (o AlibabaNet) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Network != nil {
 		toSerialize["network"] = o.Network
 	}
-	if o.Subnet != nil {
-		toSerialize["subnet"] = o.Subnet
-	}
 	if o.SecurityGroup != nil {
 		toSerialize["security_group"] = o.SecurityGroup
+	}
+	if o.Subnet != nil {
+		toSerialize["subnet"] = o.Subnet
 	}
 	return json.Marshal(toSerialize)
 }

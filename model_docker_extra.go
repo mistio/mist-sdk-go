@@ -17,10 +17,10 @@ import (
 
 // DockerExtra struct for DockerExtra
 type DockerExtra struct {
-	// Key, value pairs of environment variables to set inside the container
-	Environment *map[string]interface{} `json:"environment,omitempty"`
 	// Command to run specified as a string
 	Command *string `json:"command,omitempty"`
+	// Key, value pairs of environment variables to set inside the container
+	Environment *map[string]interface{} `json:"environment,omitempty"`
 }
 
 // NewDockerExtra instantiates a new DockerExtra object
@@ -38,38 +38,6 @@ func NewDockerExtra() *DockerExtra {
 func NewDockerExtraWithDefaults() *DockerExtra {
 	this := DockerExtra{}
 	return &this
-}
-
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *DockerExtra) GetEnvironment() map[string]interface{} {
-	if o == nil || o.Environment == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Environment
-}
-
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DockerExtra) GetEnvironmentOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Environment == nil {
-		return nil, false
-	}
-	return o.Environment, true
-}
-
-// HasEnvironment returns a boolean if a field has been set.
-func (o *DockerExtra) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnvironment gets a reference to the given map[string]interface{} and assigns it to the Environment field.
-func (o *DockerExtra) SetEnvironment(v map[string]interface{}) {
-	o.Environment = &v
 }
 
 // GetCommand returns the Command field value if set, zero value otherwise.
@@ -104,13 +72,45 @@ func (o *DockerExtra) SetCommand(v string) {
 	o.Command = &v
 }
 
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *DockerExtra) GetEnvironment() map[string]interface{} {
+	if o == nil || o.Environment == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DockerExtra) GetEnvironmentOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Environment == nil {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *DockerExtra) HasEnvironment() bool {
+	if o != nil && o.Environment != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given map[string]interface{} and assigns it to the Environment field.
+func (o *DockerExtra) SetEnvironment(v map[string]interface{}) {
+	o.Environment = &v
+}
+
 func (o DockerExtra) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Environment != nil {
-		toSerialize["environment"] = o.Environment
-	}
 	if o.Command != nil {
 		toSerialize["command"] = o.Command
+	}
+	if o.Environment != nil {
+		toSerialize["environment"] = o.Environment
 	}
 	return json.Marshal(toSerialize)
 }

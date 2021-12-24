@@ -17,26 +17,26 @@ import (
 
 // Query struct for Query
 type Query struct {
-	// the metric's name, e.g. \"load.shortterm\"
-	Target string `json:"target"`
-	// the operator used to compare the computed value with the given threshold 
-	Operator string `json:"operator"`
-	// the value over/under which an alert will be raised
-	Threshold float32 `json:"threshold"`
 	// the function to be applied on the computed series. Must be one of: all, any, avg 
 	Aggregation string `json:"aggregation"`
+	// the operator used to compare the computed value with the given threshold 
+	Operator string `json:"operator"`
+	// the metric's name, e.g. \"load.shortterm\"
+	Target string `json:"target"`
+	// the value over/under which an alert will be raised
+	Threshold float32 `json:"threshold"`
 }
 
 // NewQuery instantiates a new Query object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewQuery(target string, operator string, threshold float32, aggregation string, ) *Query {
+func NewQuery(aggregation string, operator string, target string, threshold float32, ) *Query {
 	this := Query{}
-	this.Target = target
-	this.Operator = operator
-	this.Threshold = threshold
 	this.Aggregation = aggregation
+	this.Operator = operator
+	this.Target = target
+	this.Threshold = threshold
 	return &this
 }
 
@@ -46,78 +46,6 @@ func NewQuery(target string, operator string, threshold float32, aggregation str
 func NewQueryWithDefaults() *Query {
 	this := Query{}
 	return &this
-}
-
-// GetTarget returns the Target field value
-func (o *Query) GetTarget() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Target
-}
-
-// GetTargetOk returns a tuple with the Target field value
-// and a boolean to check if the value has been set.
-func (o *Query) GetTargetOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Target, true
-}
-
-// SetTarget sets field value
-func (o *Query) SetTarget(v string) {
-	o.Target = v
-}
-
-// GetOperator returns the Operator field value
-func (o *Query) GetOperator() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Operator
-}
-
-// GetOperatorOk returns a tuple with the Operator field value
-// and a boolean to check if the value has been set.
-func (o *Query) GetOperatorOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Operator, true
-}
-
-// SetOperator sets field value
-func (o *Query) SetOperator(v string) {
-	o.Operator = v
-}
-
-// GetThreshold returns the Threshold field value
-func (o *Query) GetThreshold() float32 {
-	if o == nil  {
-		var ret float32
-		return ret
-	}
-
-	return o.Threshold
-}
-
-// GetThresholdOk returns a tuple with the Threshold field value
-// and a boolean to check if the value has been set.
-func (o *Query) GetThresholdOk() (*float32, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Threshold, true
-}
-
-// SetThreshold sets field value
-func (o *Query) SetThreshold(v float32) {
-	o.Threshold = v
 }
 
 // GetAggregation returns the Aggregation field value
@@ -144,19 +72,91 @@ func (o *Query) SetAggregation(v string) {
 	o.Aggregation = v
 }
 
+// GetOperator returns the Operator field value
+func (o *Query) GetOperator() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Operator
+}
+
+// GetOperatorOk returns a tuple with the Operator field value
+// and a boolean to check if the value has been set.
+func (o *Query) GetOperatorOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Operator, true
+}
+
+// SetOperator sets field value
+func (o *Query) SetOperator(v string) {
+	o.Operator = v
+}
+
+// GetTarget returns the Target field value
+func (o *Query) GetTarget() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value
+// and a boolean to check if the value has been set.
+func (o *Query) GetTargetOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Target, true
+}
+
+// SetTarget sets field value
+func (o *Query) SetTarget(v string) {
+	o.Target = v
+}
+
+// GetThreshold returns the Threshold field value
+func (o *Query) GetThreshold() float32 {
+	if o == nil  {
+		var ret float32
+		return ret
+	}
+
+	return o.Threshold
+}
+
+// GetThresholdOk returns a tuple with the Threshold field value
+// and a boolean to check if the value has been set.
+func (o *Query) GetThresholdOk() (*float32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Threshold, true
+}
+
+// SetThreshold sets field value
+func (o *Query) SetThreshold(v float32) {
+	o.Threshold = v
+}
+
 func (o Query) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["target"] = o.Target
+		toSerialize["aggregation"] = o.Aggregation
 	}
 	if true {
 		toSerialize["operator"] = o.Operator
 	}
 	if true {
-		toSerialize["threshold"] = o.Threshold
+		toSerialize["target"] = o.Target
 	}
 	if true {
-		toSerialize["aggregation"] = o.Aggregation
+		toSerialize["threshold"] = o.Threshold
 	}
 	return json.Marshal(toSerialize)
 }

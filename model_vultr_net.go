@@ -17,12 +17,12 @@ import (
 
 // VultrNet struct for VultrNet
 type VultrNet struct {
-	// An array of network names or IDs to attach to this machine, invalid for \"Bare Metal\" machines
-	Networks *[]string `json:"networks,omitempty"`
-	// Enable IPv6, defaults to false
-	Ipv6 *bool `json:"ipv6,omitempty"`
 	// The hostname to use when deploying this machine, defaults to machine name
 	Hostname *string `json:"hostname,omitempty"`
+	// Enable IPv6, defaults to false
+	Ipv6 *bool `json:"ipv6,omitempty"`
+	// An array of network names or IDs to attach to this machine, invalid for \"Bare Metal\" machines
+	Networks *[]string `json:"networks,omitempty"`
 }
 
 // NewVultrNet instantiates a new VultrNet object
@@ -40,70 +40,6 @@ func NewVultrNet() *VultrNet {
 func NewVultrNetWithDefaults() *VultrNet {
 	this := VultrNet{}
 	return &this
-}
-
-// GetNetworks returns the Networks field value if set, zero value otherwise.
-func (o *VultrNet) GetNetworks() []string {
-	if o == nil || o.Networks == nil {
-		var ret []string
-		return ret
-	}
-	return *o.Networks
-}
-
-// GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VultrNet) GetNetworksOk() (*[]string, bool) {
-	if o == nil || o.Networks == nil {
-		return nil, false
-	}
-	return o.Networks, true
-}
-
-// HasNetworks returns a boolean if a field has been set.
-func (o *VultrNet) HasNetworks() bool {
-	if o != nil && o.Networks != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNetworks gets a reference to the given []string and assigns it to the Networks field.
-func (o *VultrNet) SetNetworks(v []string) {
-	o.Networks = &v
-}
-
-// GetIpv6 returns the Ipv6 field value if set, zero value otherwise.
-func (o *VultrNet) GetIpv6() bool {
-	if o == nil || o.Ipv6 == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Ipv6
-}
-
-// GetIpv6Ok returns a tuple with the Ipv6 field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VultrNet) GetIpv6Ok() (*bool, bool) {
-	if o == nil || o.Ipv6 == nil {
-		return nil, false
-	}
-	return o.Ipv6, true
-}
-
-// HasIpv6 returns a boolean if a field has been set.
-func (o *VultrNet) HasIpv6() bool {
-	if o != nil && o.Ipv6 != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIpv6 gets a reference to the given bool and assigns it to the Ipv6 field.
-func (o *VultrNet) SetIpv6(v bool) {
-	o.Ipv6 = &v
 }
 
 // GetHostname returns the Hostname field value if set, zero value otherwise.
@@ -138,16 +74,80 @@ func (o *VultrNet) SetHostname(v string) {
 	o.Hostname = &v
 }
 
+// GetIpv6 returns the Ipv6 field value if set, zero value otherwise.
+func (o *VultrNet) GetIpv6() bool {
+	if o == nil || o.Ipv6 == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Ipv6
+}
+
+// GetIpv6Ok returns a tuple with the Ipv6 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VultrNet) GetIpv6Ok() (*bool, bool) {
+	if o == nil || o.Ipv6 == nil {
+		return nil, false
+	}
+	return o.Ipv6, true
+}
+
+// HasIpv6 returns a boolean if a field has been set.
+func (o *VultrNet) HasIpv6() bool {
+	if o != nil && o.Ipv6 != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIpv6 gets a reference to the given bool and assigns it to the Ipv6 field.
+func (o *VultrNet) SetIpv6(v bool) {
+	o.Ipv6 = &v
+}
+
+// GetNetworks returns the Networks field value if set, zero value otherwise.
+func (o *VultrNet) GetNetworks() []string {
+	if o == nil || o.Networks == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Networks
+}
+
+// GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VultrNet) GetNetworksOk() (*[]string, bool) {
+	if o == nil || o.Networks == nil {
+		return nil, false
+	}
+	return o.Networks, true
+}
+
+// HasNetworks returns a boolean if a field has been set.
+func (o *VultrNet) HasNetworks() bool {
+	if o != nil && o.Networks != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworks gets a reference to the given []string and assigns it to the Networks field.
+func (o *VultrNet) SetNetworks(v []string) {
+	o.Networks = &v
+}
+
 func (o VultrNet) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Networks != nil {
-		toSerialize["networks"] = o.Networks
+	if o.Hostname != nil {
+		toSerialize["hostname"] = o.Hostname
 	}
 	if o.Ipv6 != nil {
 		toSerialize["ipv6"] = o.Ipv6
 	}
-	if o.Hostname != nil {
-		toSerialize["hostname"] = o.Hostname
+	if o.Networks != nil {
+		toSerialize["networks"] = o.Networks
 	}
 	return json.Marshal(toSerialize)
 }

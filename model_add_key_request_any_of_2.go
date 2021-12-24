@@ -17,20 +17,20 @@ import (
 
 // AddKeyRequestAnyOf2 struct for AddKeyRequestAnyOf2
 type AddKeyRequestAnyOf2 struct {
-	// Generate a keypair instead of providing one
-	Generate bool `json:"generate"`
 	// Return generated key without actually adding it
 	Dry bool `json:"dry"`
+	// Generate a keypair instead of providing one
+	Generate bool `json:"generate"`
 }
 
 // NewAddKeyRequestAnyOf2 instantiates a new AddKeyRequestAnyOf2 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddKeyRequestAnyOf2(generate bool, dry bool, ) *AddKeyRequestAnyOf2 {
+func NewAddKeyRequestAnyOf2(dry bool, generate bool, ) *AddKeyRequestAnyOf2 {
 	this := AddKeyRequestAnyOf2{}
-	this.Generate = generate
 	this.Dry = dry
+	this.Generate = generate
 	return &this
 }
 
@@ -40,30 +40,6 @@ func NewAddKeyRequestAnyOf2(generate bool, dry bool, ) *AddKeyRequestAnyOf2 {
 func NewAddKeyRequestAnyOf2WithDefaults() *AddKeyRequestAnyOf2 {
 	this := AddKeyRequestAnyOf2{}
 	return &this
-}
-
-// GetGenerate returns the Generate field value
-func (o *AddKeyRequestAnyOf2) GetGenerate() bool {
-	if o == nil  {
-		var ret bool
-		return ret
-	}
-
-	return o.Generate
-}
-
-// GetGenerateOk returns a tuple with the Generate field value
-// and a boolean to check if the value has been set.
-func (o *AddKeyRequestAnyOf2) GetGenerateOk() (*bool, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Generate, true
-}
-
-// SetGenerate sets field value
-func (o *AddKeyRequestAnyOf2) SetGenerate(v bool) {
-	o.Generate = v
 }
 
 // GetDry returns the Dry field value
@@ -90,13 +66,37 @@ func (o *AddKeyRequestAnyOf2) SetDry(v bool) {
 	o.Dry = v
 }
 
+// GetGenerate returns the Generate field value
+func (o *AddKeyRequestAnyOf2) GetGenerate() bool {
+	if o == nil  {
+		var ret bool
+		return ret
+	}
+
+	return o.Generate
+}
+
+// GetGenerateOk returns a tuple with the Generate field value
+// and a boolean to check if the value has been set.
+func (o *AddKeyRequestAnyOf2) GetGenerateOk() (*bool, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Generate, true
+}
+
+// SetGenerate sets field value
+func (o *AddKeyRequestAnyOf2) SetGenerate(v bool) {
+	o.Generate = v
+}
+
 func (o AddKeyRequestAnyOf2) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["generate"] = o.Generate
+		toSerialize["dry"] = o.Dry
 	}
 	if true {
-		toSerialize["dry"] = o.Dry
+		toSerialize["generate"] = o.Generate
 	}
 	return json.Marshal(toSerialize)
 }

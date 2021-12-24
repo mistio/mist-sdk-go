@@ -17,12 +17,12 @@ import (
 
 // KVMNetNetworks struct for KVMNetNetworks
 type KVMNetNetworks struct {
-	// Name or ID of the network, if only this field is provided a dynamic IP address will be assigned
-	Network string `json:"network"`
-	// The IPv4 address to statically assign to the interface
-	Ip *string `json:"ip,omitempty"`
 	// The IPv4 address for the default Gateway
 	Gateway *string `json:"gateway,omitempty"`
+	// The IPv4 address to statically assign to the interface
+	Ip *string `json:"ip,omitempty"`
+	// Name or ID of the network, if only this field is provided a dynamic IP address will be assigned
+	Network string `json:"network"`
 	// The primary interface, which will be assigned a routing rule for the default GW
 	Primary *string `json:"primary,omitempty"`
 }
@@ -45,28 +45,36 @@ func NewKVMNetNetworksWithDefaults() *KVMNetNetworks {
 	return &this
 }
 
-// GetNetwork returns the Network field value
-func (o *KVMNetNetworks) GetNetwork() string {
-	if o == nil  {
+// GetGateway returns the Gateway field value if set, zero value otherwise.
+func (o *KVMNetNetworks) GetGateway() string {
+	if o == nil || o.Gateway == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Network
+	return *o.Gateway
 }
 
-// GetNetworkOk returns a tuple with the Network field value
+// GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KVMNetNetworks) GetNetworkOk() (*string, bool) {
-	if o == nil  {
+func (o *KVMNetNetworks) GetGatewayOk() (*string, bool) {
+	if o == nil || o.Gateway == nil {
 		return nil, false
 	}
-	return &o.Network, true
+	return o.Gateway, true
 }
 
-// SetNetwork sets field value
-func (o *KVMNetNetworks) SetNetwork(v string) {
-	o.Network = v
+// HasGateway returns a boolean if a field has been set.
+func (o *KVMNetNetworks) HasGateway() bool {
+	if o != nil && o.Gateway != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGateway gets a reference to the given string and assigns it to the Gateway field.
+func (o *KVMNetNetworks) SetGateway(v string) {
+	o.Gateway = &v
 }
 
 // GetIp returns the Ip field value if set, zero value otherwise.
@@ -101,36 +109,28 @@ func (o *KVMNetNetworks) SetIp(v string) {
 	o.Ip = &v
 }
 
-// GetGateway returns the Gateway field value if set, zero value otherwise.
-func (o *KVMNetNetworks) GetGateway() string {
-	if o == nil || o.Gateway == nil {
+// GetNetwork returns the Network field value
+func (o *KVMNetNetworks) GetNetwork() string {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.Gateway
+
+	return o.Network
 }
 
-// GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
+// GetNetworkOk returns a tuple with the Network field value
 // and a boolean to check if the value has been set.
-func (o *KVMNetNetworks) GetGatewayOk() (*string, bool) {
-	if o == nil || o.Gateway == nil {
+func (o *KVMNetNetworks) GetNetworkOk() (*string, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Gateway, true
+	return &o.Network, true
 }
 
-// HasGateway returns a boolean if a field has been set.
-func (o *KVMNetNetworks) HasGateway() bool {
-	if o != nil && o.Gateway != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGateway gets a reference to the given string and assigns it to the Gateway field.
-func (o *KVMNetNetworks) SetGateway(v string) {
-	o.Gateway = &v
+// SetNetwork sets field value
+func (o *KVMNetNetworks) SetNetwork(v string) {
+	o.Network = v
 }
 
 // GetPrimary returns the Primary field value if set, zero value otherwise.
@@ -167,14 +167,14 @@ func (o *KVMNetNetworks) SetPrimary(v string) {
 
 func (o KVMNetNetworks) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["network"] = o.Network
+	if o.Gateway != nil {
+		toSerialize["gateway"] = o.Gateway
 	}
 	if o.Ip != nil {
 		toSerialize["ip"] = o.Ip
 	}
-	if o.Gateway != nil {
-		toSerialize["gateway"] = o.Gateway
+	if true {
+		toSerialize["network"] = o.Network
 	}
 	if o.Primary != nil {
 		toSerialize["primary"] = o.Primary

@@ -17,10 +17,10 @@ import (
 
 // VSphereExtra struct for VSphereExtra
 type VSphereExtra struct {
-	// Name or ID of the Vsphere folder to place the machine into. Required for Vsphere 6.7
-	Folder *string `json:"folder,omitempty"`
 	// Name or ID of a VSphere datastore
 	Datastore *string `json:"datastore,omitempty"`
+	// Name or ID of the Vsphere folder to place the machine into. Required for Vsphere 6.7
+	Folder *string `json:"folder,omitempty"`
 }
 
 // NewVSphereExtra instantiates a new VSphereExtra object
@@ -38,38 +38,6 @@ func NewVSphereExtra() *VSphereExtra {
 func NewVSphereExtraWithDefaults() *VSphereExtra {
 	this := VSphereExtra{}
 	return &this
-}
-
-// GetFolder returns the Folder field value if set, zero value otherwise.
-func (o *VSphereExtra) GetFolder() string {
-	if o == nil || o.Folder == nil {
-		var ret string
-		return ret
-	}
-	return *o.Folder
-}
-
-// GetFolderOk returns a tuple with the Folder field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VSphereExtra) GetFolderOk() (*string, bool) {
-	if o == nil || o.Folder == nil {
-		return nil, false
-	}
-	return o.Folder, true
-}
-
-// HasFolder returns a boolean if a field has been set.
-func (o *VSphereExtra) HasFolder() bool {
-	if o != nil && o.Folder != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFolder gets a reference to the given string and assigns it to the Folder field.
-func (o *VSphereExtra) SetFolder(v string) {
-	o.Folder = &v
 }
 
 // GetDatastore returns the Datastore field value if set, zero value otherwise.
@@ -104,13 +72,45 @@ func (o *VSphereExtra) SetDatastore(v string) {
 	o.Datastore = &v
 }
 
+// GetFolder returns the Folder field value if set, zero value otherwise.
+func (o *VSphereExtra) GetFolder() string {
+	if o == nil || o.Folder == nil {
+		var ret string
+		return ret
+	}
+	return *o.Folder
+}
+
+// GetFolderOk returns a tuple with the Folder field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VSphereExtra) GetFolderOk() (*string, bool) {
+	if o == nil || o.Folder == nil {
+		return nil, false
+	}
+	return o.Folder, true
+}
+
+// HasFolder returns a boolean if a field has been set.
+func (o *VSphereExtra) HasFolder() bool {
+	if o != nil && o.Folder != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFolder gets a reference to the given string and assigns it to the Folder field.
+func (o *VSphereExtra) SetFolder(v string) {
+	o.Folder = &v
+}
+
 func (o VSphereExtra) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Folder != nil {
-		toSerialize["folder"] = o.Folder
-	}
 	if o.Datastore != nil {
 		toSerialize["datastore"] = o.Datastore
+	}
+	if o.Folder != nil {
+		toSerialize["folder"] = o.Folder
 	}
 	return json.Marshal(toSerialize)
 }

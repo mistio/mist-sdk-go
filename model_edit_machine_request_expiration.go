@@ -17,9 +17,9 @@ import (
 
 // EditMachineRequestExpiration struct for EditMachineRequestExpiration
 type EditMachineRequestExpiration struct {
+	Action string `json:"action"`
 	// format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	Date string `json:"date"`
-	Action string `json:"action"`
 	// seconds before the expiration date to be notified
 	Notify *int32 `json:"notify,omitempty"`
 }
@@ -28,10 +28,10 @@ type EditMachineRequestExpiration struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditMachineRequestExpiration(date string, action string, ) *EditMachineRequestExpiration {
+func NewEditMachineRequestExpiration(action string, date string, ) *EditMachineRequestExpiration {
 	this := EditMachineRequestExpiration{}
-	this.Date = date
 	this.Action = action
+	this.Date = date
 	return &this
 }
 
@@ -41,30 +41,6 @@ func NewEditMachineRequestExpiration(date string, action string, ) *EditMachineR
 func NewEditMachineRequestExpirationWithDefaults() *EditMachineRequestExpiration {
 	this := EditMachineRequestExpiration{}
 	return &this
-}
-
-// GetDate returns the Date field value
-func (o *EditMachineRequestExpiration) GetDate() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Date
-}
-
-// GetDateOk returns a tuple with the Date field value
-// and a boolean to check if the value has been set.
-func (o *EditMachineRequestExpiration) GetDateOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Date, true
-}
-
-// SetDate sets field value
-func (o *EditMachineRequestExpiration) SetDate(v string) {
-	o.Date = v
 }
 
 // GetAction returns the Action field value
@@ -89,6 +65,30 @@ func (o *EditMachineRequestExpiration) GetActionOk() (*string, bool) {
 // SetAction sets field value
 func (o *EditMachineRequestExpiration) SetAction(v string) {
 	o.Action = v
+}
+
+// GetDate returns the Date field value
+func (o *EditMachineRequestExpiration) GetDate() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Date
+}
+
+// GetDateOk returns a tuple with the Date field value
+// and a boolean to check if the value has been set.
+func (o *EditMachineRequestExpiration) GetDateOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Date, true
+}
+
+// SetDate sets field value
+func (o *EditMachineRequestExpiration) SetDate(v string) {
+	o.Date = v
 }
 
 // GetNotify returns the Notify field value if set, zero value otherwise.
@@ -126,10 +126,10 @@ func (o *EditMachineRequestExpiration) SetNotify(v int32) {
 func (o EditMachineRequestExpiration) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["date"] = o.Date
+		toSerialize["action"] = o.Action
 	}
 	if true {
-		toSerialize["action"] = o.Action
+		toSerialize["date"] = o.Date
 	}
 	if o.Notify != nil {
 		toSerialize["notify"] = o.Notify

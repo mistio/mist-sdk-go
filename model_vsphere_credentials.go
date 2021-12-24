@@ -17,25 +17,25 @@ import (
 
 // VsphereCredentials struct for VsphereCredentials
 type VsphereCredentials struct {
-	// Your vSphere/vCenter host
-	Host string `json:"host"`
-	// Your username
-	Username string `json:"username"`
-	// Your password
-	Password string `json:"password"`
 	// CA certificate
 	CaCertFile *string `json:"ca_cert_file,omitempty"`
+	// Your vSphere/vCenter host
+	Host string `json:"host"`
+	// Your password
+	Password string `json:"password"`
+	// Your username
+	Username string `json:"username"`
 }
 
 // NewVsphereCredentials instantiates a new VsphereCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVsphereCredentials(host string, username string, password string, ) *VsphereCredentials {
+func NewVsphereCredentials(host string, password string, username string, ) *VsphereCredentials {
 	this := VsphereCredentials{}
 	this.Host = host
-	this.Username = username
 	this.Password = password
+	this.Username = username
 	return &this
 }
 
@@ -45,78 +45,6 @@ func NewVsphereCredentials(host string, username string, password string, ) *Vsp
 func NewVsphereCredentialsWithDefaults() *VsphereCredentials {
 	this := VsphereCredentials{}
 	return &this
-}
-
-// GetHost returns the Host field value
-func (o *VsphereCredentials) GetHost() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Host
-}
-
-// GetHostOk returns a tuple with the Host field value
-// and a boolean to check if the value has been set.
-func (o *VsphereCredentials) GetHostOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Host, true
-}
-
-// SetHost sets field value
-func (o *VsphereCredentials) SetHost(v string) {
-	o.Host = v
-}
-
-// GetUsername returns the Username field value
-func (o *VsphereCredentials) GetUsername() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value
-// and a boolean to check if the value has been set.
-func (o *VsphereCredentials) GetUsernameOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Username, true
-}
-
-// SetUsername sets field value
-func (o *VsphereCredentials) SetUsername(v string) {
-	o.Username = v
-}
-
-// GetPassword returns the Password field value
-func (o *VsphereCredentials) GetPassword() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value
-// and a boolean to check if the value has been set.
-func (o *VsphereCredentials) GetPasswordOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Password, true
-}
-
-// SetPassword sets field value
-func (o *VsphereCredentials) SetPassword(v string) {
-	o.Password = v
 }
 
 // GetCaCertFile returns the CaCertFile field value if set, zero value otherwise.
@@ -151,19 +79,91 @@ func (o *VsphereCredentials) SetCaCertFile(v string) {
 	o.CaCertFile = &v
 }
 
+// GetHost returns the Host field value
+func (o *VsphereCredentials) GetHost() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Host
+}
+
+// GetHostOk returns a tuple with the Host field value
+// and a boolean to check if the value has been set.
+func (o *VsphereCredentials) GetHostOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Host, true
+}
+
+// SetHost sets field value
+func (o *VsphereCredentials) SetHost(v string) {
+	o.Host = v
+}
+
+// GetPassword returns the Password field value
+func (o *VsphereCredentials) GetPassword() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value
+// and a boolean to check if the value has been set.
+func (o *VsphereCredentials) GetPasswordOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Password, true
+}
+
+// SetPassword sets field value
+func (o *VsphereCredentials) SetPassword(v string) {
+	o.Password = v
+}
+
+// GetUsername returns the Username field value
+func (o *VsphereCredentials) GetUsername() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value
+// and a boolean to check if the value has been set.
+func (o *VsphereCredentials) GetUsernameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Username, true
+}
+
+// SetUsername sets field value
+func (o *VsphereCredentials) SetUsername(v string) {
+	o.Username = v
+}
+
 func (o VsphereCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CaCertFile != nil {
+		toSerialize["ca_cert_file"] = o.CaCertFile
+	}
 	if true {
 		toSerialize["host"] = o.Host
 	}
 	if true {
-		toSerialize["username"] = o.Username
-	}
-	if true {
 		toSerialize["password"] = o.Password
 	}
-	if o.CaCertFile != nil {
-		toSerialize["ca_cert_file"] = o.CaCertFile
+	if true {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

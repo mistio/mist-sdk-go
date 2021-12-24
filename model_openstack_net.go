@@ -17,12 +17,12 @@ import (
 
 // OpenstackNet struct for OpenstackNet
 type OpenstackNet struct {
-	// Name or Openstack UUID of the security groups to assign to the machine
-	SecurityGroups *[]string `json:"security_groups,omitempty"`
-	// Name or ID of the networks to launch the machine into. Required parameter when there are multiple networks defined for the tenant
-	Networks *[]string `json:"networks,omitempty"`
 	// Assign a floating IP to the machine, defaults to True for Openstack and False for Vexxhost
 	AssociateFloatingIp *bool `json:"associate_floating_ip,omitempty"`
+	// Name or ID of the networks to launch the machine into. Required parameter when there are multiple networks defined for the tenant
+	Networks *[]string `json:"networks,omitempty"`
+	// Name or Openstack UUID of the security groups to assign to the machine
+	SecurityGroups *[]string `json:"security_groups,omitempty"`
 }
 
 // NewOpenstackNet instantiates a new OpenstackNet object
@@ -40,70 +40,6 @@ func NewOpenstackNet() *OpenstackNet {
 func NewOpenstackNetWithDefaults() *OpenstackNet {
 	this := OpenstackNet{}
 	return &this
-}
-
-// GetSecurityGroups returns the SecurityGroups field value if set, zero value otherwise.
-func (o *OpenstackNet) GetSecurityGroups() []string {
-	if o == nil || o.SecurityGroups == nil {
-		var ret []string
-		return ret
-	}
-	return *o.SecurityGroups
-}
-
-// GetSecurityGroupsOk returns a tuple with the SecurityGroups field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpenstackNet) GetSecurityGroupsOk() (*[]string, bool) {
-	if o == nil || o.SecurityGroups == nil {
-		return nil, false
-	}
-	return o.SecurityGroups, true
-}
-
-// HasSecurityGroups returns a boolean if a field has been set.
-func (o *OpenstackNet) HasSecurityGroups() bool {
-	if o != nil && o.SecurityGroups != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSecurityGroups gets a reference to the given []string and assigns it to the SecurityGroups field.
-func (o *OpenstackNet) SetSecurityGroups(v []string) {
-	o.SecurityGroups = &v
-}
-
-// GetNetworks returns the Networks field value if set, zero value otherwise.
-func (o *OpenstackNet) GetNetworks() []string {
-	if o == nil || o.Networks == nil {
-		var ret []string
-		return ret
-	}
-	return *o.Networks
-}
-
-// GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpenstackNet) GetNetworksOk() (*[]string, bool) {
-	if o == nil || o.Networks == nil {
-		return nil, false
-	}
-	return o.Networks, true
-}
-
-// HasNetworks returns a boolean if a field has been set.
-func (o *OpenstackNet) HasNetworks() bool {
-	if o != nil && o.Networks != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNetworks gets a reference to the given []string and assigns it to the Networks field.
-func (o *OpenstackNet) SetNetworks(v []string) {
-	o.Networks = &v
 }
 
 // GetAssociateFloatingIp returns the AssociateFloatingIp field value if set, zero value otherwise.
@@ -138,16 +74,80 @@ func (o *OpenstackNet) SetAssociateFloatingIp(v bool) {
 	o.AssociateFloatingIp = &v
 }
 
+// GetNetworks returns the Networks field value if set, zero value otherwise.
+func (o *OpenstackNet) GetNetworks() []string {
+	if o == nil || o.Networks == nil {
+		var ret []string
+		return ret
+	}
+	return *o.Networks
+}
+
+// GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenstackNet) GetNetworksOk() (*[]string, bool) {
+	if o == nil || o.Networks == nil {
+		return nil, false
+	}
+	return o.Networks, true
+}
+
+// HasNetworks returns a boolean if a field has been set.
+func (o *OpenstackNet) HasNetworks() bool {
+	if o != nil && o.Networks != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworks gets a reference to the given []string and assigns it to the Networks field.
+func (o *OpenstackNet) SetNetworks(v []string) {
+	o.Networks = &v
+}
+
+// GetSecurityGroups returns the SecurityGroups field value if set, zero value otherwise.
+func (o *OpenstackNet) GetSecurityGroups() []string {
+	if o == nil || o.SecurityGroups == nil {
+		var ret []string
+		return ret
+	}
+	return *o.SecurityGroups
+}
+
+// GetSecurityGroupsOk returns a tuple with the SecurityGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenstackNet) GetSecurityGroupsOk() (*[]string, bool) {
+	if o == nil || o.SecurityGroups == nil {
+		return nil, false
+	}
+	return o.SecurityGroups, true
+}
+
+// HasSecurityGroups returns a boolean if a field has been set.
+func (o *OpenstackNet) HasSecurityGroups() bool {
+	if o != nil && o.SecurityGroups != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityGroups gets a reference to the given []string and assigns it to the SecurityGroups field.
+func (o *OpenstackNet) SetSecurityGroups(v []string) {
+	o.SecurityGroups = &v
+}
+
 func (o OpenstackNet) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SecurityGroups != nil {
-		toSerialize["security_groups"] = o.SecurityGroups
+	if o.AssociateFloatingIp != nil {
+		toSerialize["associate_floating_ip"] = o.AssociateFloatingIp
 	}
 	if o.Networks != nil {
 		toSerialize["networks"] = o.Networks
 	}
-	if o.AssociateFloatingIp != nil {
-		toSerialize["associate_floating_ip"] = o.AssociateFloatingIp
+	if o.SecurityGroups != nil {
+		toSerialize["security_groups"] = o.SecurityGroups
 	}
 	return json.Marshal(toSerialize)
 }

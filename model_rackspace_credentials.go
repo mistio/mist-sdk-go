@@ -17,24 +17,24 @@ import (
 
 // RackspaceCredentials struct for RackspaceCredentials
 type RackspaceCredentials struct {
-	Provider *string `json:"provider,omitempty"`
-	// Your Rackspace Cloud username
-	Username string `json:"username"`
 	// Your Rackspace Cloud API key
 	Apikey string `json:"apikey"`
+	Provider *string `json:"provider,omitempty"`
 	// Your Rackspace Cloud region
 	Region string `json:"region"`
+	// Your Rackspace Cloud username
+	Username string `json:"username"`
 }
 
 // NewRackspaceCredentials instantiates a new RackspaceCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRackspaceCredentials(username string, apikey string, region string, ) *RackspaceCredentials {
+func NewRackspaceCredentials(apikey string, region string, username string, ) *RackspaceCredentials {
 	this := RackspaceCredentials{}
-	this.Username = username
 	this.Apikey = apikey
 	this.Region = region
+	this.Username = username
 	return &this
 }
 
@@ -44,6 +44,30 @@ func NewRackspaceCredentials(username string, apikey string, region string, ) *R
 func NewRackspaceCredentialsWithDefaults() *RackspaceCredentials {
 	this := RackspaceCredentials{}
 	return &this
+}
+
+// GetApikey returns the Apikey field value
+func (o *RackspaceCredentials) GetApikey() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Apikey
+}
+
+// GetApikeyOk returns a tuple with the Apikey field value
+// and a boolean to check if the value has been set.
+func (o *RackspaceCredentials) GetApikeyOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Apikey, true
+}
+
+// SetApikey sets field value
+func (o *RackspaceCredentials) SetApikey(v string) {
+	o.Apikey = v
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
@@ -78,54 +102,6 @@ func (o *RackspaceCredentials) SetProvider(v string) {
 	o.Provider = &v
 }
 
-// GetUsername returns the Username field value
-func (o *RackspaceCredentials) GetUsername() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value
-// and a boolean to check if the value has been set.
-func (o *RackspaceCredentials) GetUsernameOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Username, true
-}
-
-// SetUsername sets field value
-func (o *RackspaceCredentials) SetUsername(v string) {
-	o.Username = v
-}
-
-// GetApikey returns the Apikey field value
-func (o *RackspaceCredentials) GetApikey() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Apikey
-}
-
-// GetApikeyOk returns a tuple with the Apikey field value
-// and a boolean to check if the value has been set.
-func (o *RackspaceCredentials) GetApikeyOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Apikey, true
-}
-
-// SetApikey sets field value
-func (o *RackspaceCredentials) SetApikey(v string) {
-	o.Apikey = v
-}
-
 // GetRegion returns the Region field value
 func (o *RackspaceCredentials) GetRegion() string {
 	if o == nil  {
@@ -150,19 +126,43 @@ func (o *RackspaceCredentials) SetRegion(v string) {
 	o.Region = v
 }
 
+// GetUsername returns the Username field value
+func (o *RackspaceCredentials) GetUsername() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value
+// and a boolean to check if the value has been set.
+func (o *RackspaceCredentials) GetUsernameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Username, true
+}
+
+// SetUsername sets field value
+func (o *RackspaceCredentials) SetUsername(v string) {
+	o.Username = v
+}
+
 func (o RackspaceCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["apikey"] = o.Apikey
+	}
 	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
 	}
 	if true {
-		toSerialize["username"] = o.Username
-	}
-	if true {
-		toSerialize["apikey"] = o.Apikey
-	}
-	if true {
 		toSerialize["region"] = o.Region
+	}
+	if true {
+		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

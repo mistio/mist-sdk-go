@@ -17,9 +17,9 @@ import (
 
 // PostDeployScript struct for PostDeployScript
 type PostDeployScript struct {
+	Params *string `json:"params,omitempty"`
 	// Name or ID of the script to run
 	Script string `json:"script"`
-	Params *string `json:"params,omitempty"`
 }
 
 // NewPostDeployScript instantiates a new PostDeployScript object
@@ -38,30 +38,6 @@ func NewPostDeployScript(script string, ) *PostDeployScript {
 func NewPostDeployScriptWithDefaults() *PostDeployScript {
 	this := PostDeployScript{}
 	return &this
-}
-
-// GetScript returns the Script field value
-func (o *PostDeployScript) GetScript() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Script
-}
-
-// GetScriptOk returns a tuple with the Script field value
-// and a boolean to check if the value has been set.
-func (o *PostDeployScript) GetScriptOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Script, true
-}
-
-// SetScript sets field value
-func (o *PostDeployScript) SetScript(v string) {
-	o.Script = v
 }
 
 // GetParams returns the Params field value if set, zero value otherwise.
@@ -96,13 +72,37 @@ func (o *PostDeployScript) SetParams(v string) {
 	o.Params = &v
 }
 
+// GetScript returns the Script field value
+func (o *PostDeployScript) GetScript() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Script
+}
+
+// GetScriptOk returns a tuple with the Script field value
+// and a boolean to check if the value has been set.
+func (o *PostDeployScript) GetScriptOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Script, true
+}
+
+// SetScript sets field value
+func (o *PostDeployScript) SetScript(v string) {
+	o.Script = v
+}
+
 func (o PostDeployScript) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["script"] = o.Script
-	}
 	if o.Params != nil {
 		toSerialize["params"] = o.Params
+	}
+	if true {
+		toSerialize["script"] = o.Script
 	}
 	return json.Marshal(toSerialize)
 }
