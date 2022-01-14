@@ -31,6 +31,12 @@ type Cluster struct {
 	CreatedBy *string `json:"created_by,omitempty"`
 	OwnedBy *string `json:"owned_by,omitempty"`
 	Extra *map[string]interface{} `json:"extra,omitempty"`
+	ExternalId *string `json:"external_id,omitempty"`
+	Owner *string `json:"owner,omitempty"`
+	State *string `json:"state,omitempty"`
+	LastSeen *string `json:"last_seen,omitempty"`
+	MissingSince *string `json:"missing_since,omitempty"`
+	Created *string `json:"created,omitempty"`
 }
 
 // NewCluster instantiates a new Cluster object
@@ -498,6 +504,198 @@ func (o *Cluster) SetExtra(v map[string]interface{}) {
 	o.Extra = &v
 }
 
+// GetExternalId returns the ExternalId field value if set, zero value otherwise.
+func (o *Cluster) GetExternalId() string {
+	if o == nil || o.ExternalId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExternalId
+}
+
+// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetExternalIdOk() (*string, bool) {
+	if o == nil || o.ExternalId == nil {
+		return nil, false
+	}
+	return o.ExternalId, true
+}
+
+// HasExternalId returns a boolean if a field has been set.
+func (o *Cluster) HasExternalId() bool {
+	if o != nil && o.ExternalId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
+func (o *Cluster) SetExternalId(v string) {
+	o.ExternalId = &v
+}
+
+// GetOwner returns the Owner field value if set, zero value otherwise.
+func (o *Cluster) GetOwner() string {
+	if o == nil || o.Owner == nil {
+		var ret string
+		return ret
+	}
+	return *o.Owner
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetOwnerOk() (*string, bool) {
+	if o == nil || o.Owner == nil {
+		return nil, false
+	}
+	return o.Owner, true
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *Cluster) HasOwner() bool {
+	if o != nil && o.Owner != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given string and assigns it to the Owner field.
+func (o *Cluster) SetOwner(v string) {
+	o.Owner = &v
+}
+
+// GetState returns the State field value if set, zero value otherwise.
+func (o *Cluster) GetState() string {
+	if o == nil || o.State == nil {
+		var ret string
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetStateOk() (*string, bool) {
+	if o == nil || o.State == nil {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *Cluster) HasState() bool {
+	if o != nil && o.State != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *Cluster) SetState(v string) {
+	o.State = &v
+}
+
+// GetLastSeen returns the LastSeen field value if set, zero value otherwise.
+func (o *Cluster) GetLastSeen() string {
+	if o == nil || o.LastSeen == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastSeen
+}
+
+// GetLastSeenOk returns a tuple with the LastSeen field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetLastSeenOk() (*string, bool) {
+	if o == nil || o.LastSeen == nil {
+		return nil, false
+	}
+	return o.LastSeen, true
+}
+
+// HasLastSeen returns a boolean if a field has been set.
+func (o *Cluster) HasLastSeen() bool {
+	if o != nil && o.LastSeen != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSeen gets a reference to the given string and assigns it to the LastSeen field.
+func (o *Cluster) SetLastSeen(v string) {
+	o.LastSeen = &v
+}
+
+// GetMissingSince returns the MissingSince field value if set, zero value otherwise.
+func (o *Cluster) GetMissingSince() string {
+	if o == nil || o.MissingSince == nil {
+		var ret string
+		return ret
+	}
+	return *o.MissingSince
+}
+
+// GetMissingSinceOk returns a tuple with the MissingSince field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetMissingSinceOk() (*string, bool) {
+	if o == nil || o.MissingSince == nil {
+		return nil, false
+	}
+	return o.MissingSince, true
+}
+
+// HasMissingSince returns a boolean if a field has been set.
+func (o *Cluster) HasMissingSince() bool {
+	if o != nil && o.MissingSince != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMissingSince gets a reference to the given string and assigns it to the MissingSince field.
+func (o *Cluster) SetMissingSince(v string) {
+	o.MissingSince = &v
+}
+
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *Cluster) GetCreated() string {
+	if o == nil || o.Created == nil {
+		var ret string
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetCreatedOk() (*string, bool) {
+	if o == nil || o.Created == nil {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *Cluster) HasCreated() bool {
+	if o != nil && o.Created != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given string and assigns it to the Created field.
+func (o *Cluster) SetCreated(v string) {
+	o.Created = &v
+}
+
 func (o Cluster) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -541,6 +739,24 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	}
 	if o.Extra != nil {
 		toSerialize["extra"] = o.Extra
+	}
+	if o.ExternalId != nil {
+		toSerialize["external_id"] = o.ExternalId
+	}
+	if o.Owner != nil {
+		toSerialize["owner"] = o.Owner
+	}
+	if o.State != nil {
+		toSerialize["state"] = o.State
+	}
+	if o.LastSeen != nil {
+		toSerialize["last_seen"] = o.LastSeen
+	}
+	if o.MissingSince != nil {
+		toSerialize["missing_since"] = o.MissingSince
+	}
+	if o.Created != nil {
+		toSerialize["created"] = o.Created
 	}
 	return json.Marshal(toSerialize)
 }
