@@ -17,11 +17,11 @@ import (
 
 // Team struct for Team
 type Team struct {
-	Description *string `json:"description,omitempty"`
 	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Members *[]Member `json:"members,omitempty"`
 	MembersCount *string `json:"members_count,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Policy *map[string]interface{} `json:"policy,omitempty"`
 }
 
@@ -40,38 +40,6 @@ func NewTeam() *Team {
 func NewTeamWithDefaults() *Team {
 	this := Team{}
 	return &this
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *Team) GetDescription() string {
-	if o == nil || o.Description == nil {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Team) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *Team) HasDescription() bool {
-	if o != nil && o.Description != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *Team) SetDescription(v string) {
-	o.Description = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -104,6 +72,38 @@ func (o *Team) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Team) SetId(v string) {
 	o.Id = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *Team) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Team) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *Team) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *Team) SetName(v string) {
+	o.Name = &v
 }
 
 // GetMembers returns the Members field value if set, zero value otherwise.
@@ -170,36 +170,36 @@ func (o *Team) SetMembersCount(v string) {
 	o.MembersCount = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Team) GetName() string {
-	if o == nil || o.Name == nil {
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *Team) GetDescription() string {
+	if o == nil || o.Description == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Description
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Team) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+func (o *Team) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Description, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Team) HasName() bool {
-	if o != nil && o.Name != nil {
+// HasDescription returns a boolean if a field has been set.
+func (o *Team) HasDescription() bool {
+	if o != nil && o.Description != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Team) SetName(v string) {
-	o.Name = &v
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *Team) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetPolicy returns the Policy field value if set, zero value otherwise.
@@ -236,11 +236,11 @@ func (o *Team) SetPolicy(v map[string]interface{}) {
 
 func (o Team) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
 	if o.Members != nil {
 		toSerialize["members"] = o.Members
@@ -248,8 +248,8 @@ func (o Team) MarshalJSON() ([]byte, error) {
 	if o.MembersCount != nil {
 		toSerialize["members_count"] = o.MembersCount
 	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Policy != nil {
 		toSerialize["policy"] = o.Policy

@@ -17,16 +17,16 @@ import (
 
 // Image struct for Image
 type Image struct {
-	Cloud *string `json:"cloud,omitempty"`
-	CreatedBy *string `json:"created_by,omitempty"`
-	ExternalId *string `json:"external_id,omitempty"`
-	Extra *map[string]interface{} `json:"extra,omitempty"`
 	Id *string `json:"id,omitempty"`
+	ExternalId *string `json:"external_id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	OsType *string `json:"os_type,omitempty"`
-	OwnedBy *string `json:"owned_by,omitempty"`
+	Cloud *string `json:"cloud,omitempty"`
 	Starred *bool `json:"starred,omitempty"`
+	OsType *string `json:"os_type,omitempty"`
 	Tags *map[string]interface{} `json:"tags,omitempty"`
+	CreatedBy *string `json:"created_by,omitempty"`
+	OwnedBy *string `json:"owned_by,omitempty"`
+	Extra *map[string]interface{} `json:"extra,omitempty"`
 }
 
 // NewImage instantiates a new Image object
@@ -44,134 +44,6 @@ func NewImage() *Image {
 func NewImageWithDefaults() *Image {
 	this := Image{}
 	return &this
-}
-
-// GetCloud returns the Cloud field value if set, zero value otherwise.
-func (o *Image) GetCloud() string {
-	if o == nil || o.Cloud == nil {
-		var ret string
-		return ret
-	}
-	return *o.Cloud
-}
-
-// GetCloudOk returns a tuple with the Cloud field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Image) GetCloudOk() (*string, bool) {
-	if o == nil || o.Cloud == nil {
-		return nil, false
-	}
-	return o.Cloud, true
-}
-
-// HasCloud returns a boolean if a field has been set.
-func (o *Image) HasCloud() bool {
-	if o != nil && o.Cloud != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCloud gets a reference to the given string and assigns it to the Cloud field.
-func (o *Image) SetCloud(v string) {
-	o.Cloud = &v
-}
-
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
-func (o *Image) GetCreatedBy() string {
-	if o == nil || o.CreatedBy == nil {
-		var ret string
-		return ret
-	}
-	return *o.CreatedBy
-}
-
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Image) GetCreatedByOk() (*string, bool) {
-	if o == nil || o.CreatedBy == nil {
-		return nil, false
-	}
-	return o.CreatedBy, true
-}
-
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *Image) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
-func (o *Image) SetCreatedBy(v string) {
-	o.CreatedBy = &v
-}
-
-// GetExternalId returns the ExternalId field value if set, zero value otherwise.
-func (o *Image) GetExternalId() string {
-	if o == nil || o.ExternalId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ExternalId
-}
-
-// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Image) GetExternalIdOk() (*string, bool) {
-	if o == nil || o.ExternalId == nil {
-		return nil, false
-	}
-	return o.ExternalId, true
-}
-
-// HasExternalId returns a boolean if a field has been set.
-func (o *Image) HasExternalId() bool {
-	if o != nil && o.ExternalId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
-func (o *Image) SetExternalId(v string) {
-	o.ExternalId = &v
-}
-
-// GetExtra returns the Extra field value if set, zero value otherwise.
-func (o *Image) GetExtra() map[string]interface{} {
-	if o == nil || o.Extra == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Extra
-}
-
-// GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Image) GetExtraOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Extra == nil {
-		return nil, false
-	}
-	return o.Extra, true
-}
-
-// HasExtra returns a boolean if a field has been set.
-func (o *Image) HasExtra() bool {
-	if o != nil && o.Extra != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExtra gets a reference to the given map[string]interface{} and assigns it to the Extra field.
-func (o *Image) SetExtra(v map[string]interface{}) {
-	o.Extra = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -206,6 +78,38 @@ func (o *Image) SetId(v string) {
 	o.Id = &v
 }
 
+// GetExternalId returns the ExternalId field value if set, zero value otherwise.
+func (o *Image) GetExternalId() string {
+	if o == nil || o.ExternalId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExternalId
+}
+
+// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Image) GetExternalIdOk() (*string, bool) {
+	if o == nil || o.ExternalId == nil {
+		return nil, false
+	}
+	return o.ExternalId, true
+}
+
+// HasExternalId returns a boolean if a field has been set.
+func (o *Image) HasExternalId() bool {
+	if o != nil && o.ExternalId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
+func (o *Image) SetExternalId(v string) {
+	o.ExternalId = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Image) GetName() string {
 	if o == nil || o.Name == nil {
@@ -238,68 +142,36 @@ func (o *Image) SetName(v string) {
 	o.Name = &v
 }
 
-// GetOsType returns the OsType field value if set, zero value otherwise.
-func (o *Image) GetOsType() string {
-	if o == nil || o.OsType == nil {
+// GetCloud returns the Cloud field value if set, zero value otherwise.
+func (o *Image) GetCloud() string {
+	if o == nil || o.Cloud == nil {
 		var ret string
 		return ret
 	}
-	return *o.OsType
+	return *o.Cloud
 }
 
-// GetOsTypeOk returns a tuple with the OsType field value if set, nil otherwise
+// GetCloudOk returns a tuple with the Cloud field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Image) GetOsTypeOk() (*string, bool) {
-	if o == nil || o.OsType == nil {
+func (o *Image) GetCloudOk() (*string, bool) {
+	if o == nil || o.Cloud == nil {
 		return nil, false
 	}
-	return o.OsType, true
+	return o.Cloud, true
 }
 
-// HasOsType returns a boolean if a field has been set.
-func (o *Image) HasOsType() bool {
-	if o != nil && o.OsType != nil {
+// HasCloud returns a boolean if a field has been set.
+func (o *Image) HasCloud() bool {
+	if o != nil && o.Cloud != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetOsType gets a reference to the given string and assigns it to the OsType field.
-func (o *Image) SetOsType(v string) {
-	o.OsType = &v
-}
-
-// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
-func (o *Image) GetOwnedBy() string {
-	if o == nil || o.OwnedBy == nil {
-		var ret string
-		return ret
-	}
-	return *o.OwnedBy
-}
-
-// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Image) GetOwnedByOk() (*string, bool) {
-	if o == nil || o.OwnedBy == nil {
-		return nil, false
-	}
-	return o.OwnedBy, true
-}
-
-// HasOwnedBy returns a boolean if a field has been set.
-func (o *Image) HasOwnedBy() bool {
-	if o != nil && o.OwnedBy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
-func (o *Image) SetOwnedBy(v string) {
-	o.OwnedBy = &v
+// SetCloud gets a reference to the given string and assigns it to the Cloud field.
+func (o *Image) SetCloud(v string) {
+	o.Cloud = &v
 }
 
 // GetStarred returns the Starred field value if set, zero value otherwise.
@@ -334,6 +206,38 @@ func (o *Image) SetStarred(v bool) {
 	o.Starred = &v
 }
 
+// GetOsType returns the OsType field value if set, zero value otherwise.
+func (o *Image) GetOsType() string {
+	if o == nil || o.OsType == nil {
+		var ret string
+		return ret
+	}
+	return *o.OsType
+}
+
+// GetOsTypeOk returns a tuple with the OsType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Image) GetOsTypeOk() (*string, bool) {
+	if o == nil || o.OsType == nil {
+		return nil, false
+	}
+	return o.OsType, true
+}
+
+// HasOsType returns a boolean if a field has been set.
+func (o *Image) HasOsType() bool {
+	if o != nil && o.OsType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOsType gets a reference to the given string and assigns it to the OsType field.
+func (o *Image) SetOsType(v string) {
+	o.OsType = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *Image) GetTags() map[string]interface{} {
 	if o == nil || o.Tags == nil {
@@ -366,37 +270,133 @@ func (o *Image) SetTags(v map[string]interface{}) {
 	o.Tags = &v
 }
 
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *Image) GetCreatedBy() string {
+	if o == nil || o.CreatedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Image) GetCreatedByOk() (*string, bool) {
+	if o == nil || o.CreatedBy == nil {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *Image) HasCreatedBy() bool {
+	if o != nil && o.CreatedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
+func (o *Image) SetCreatedBy(v string) {
+	o.CreatedBy = &v
+}
+
+// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
+func (o *Image) GetOwnedBy() string {
+	if o == nil || o.OwnedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.OwnedBy
+}
+
+// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Image) GetOwnedByOk() (*string, bool) {
+	if o == nil || o.OwnedBy == nil {
+		return nil, false
+	}
+	return o.OwnedBy, true
+}
+
+// HasOwnedBy returns a boolean if a field has been set.
+func (o *Image) HasOwnedBy() bool {
+	if o != nil && o.OwnedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
+func (o *Image) SetOwnedBy(v string) {
+	o.OwnedBy = &v
+}
+
+// GetExtra returns the Extra field value if set, zero value otherwise.
+func (o *Image) GetExtra() map[string]interface{} {
+	if o == nil || o.Extra == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Extra
+}
+
+// GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Image) GetExtraOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Extra == nil {
+		return nil, false
+	}
+	return o.Extra, true
+}
+
+// HasExtra returns a boolean if a field has been set.
+func (o *Image) HasExtra() bool {
+	if o != nil && o.Extra != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExtra gets a reference to the given map[string]interface{} and assigns it to the Extra field.
+func (o *Image) SetExtra(v map[string]interface{}) {
+	o.Extra = &v
+}
+
 func (o Image) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Cloud != nil {
-		toSerialize["cloud"] = o.Cloud
-	}
-	if o.CreatedBy != nil {
-		toSerialize["created_by"] = o.CreatedBy
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	if o.ExternalId != nil {
 		toSerialize["external_id"] = o.ExternalId
 	}
-	if o.Extra != nil {
-		toSerialize["extra"] = o.Extra
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.OsType != nil {
-		toSerialize["os_type"] = o.OsType
-	}
-	if o.OwnedBy != nil {
-		toSerialize["owned_by"] = o.OwnedBy
+	if o.Cloud != nil {
+		toSerialize["cloud"] = o.Cloud
 	}
 	if o.Starred != nil {
 		toSerialize["starred"] = o.Starred
 	}
+	if o.OsType != nil {
+		toSerialize["os_type"] = o.OsType
+	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
+	}
+	if o.CreatedBy != nil {
+		toSerialize["created_by"] = o.CreatedBy
+	}
+	if o.OwnedBy != nil {
+		toSerialize["owned_by"] = o.OwnedBy
+	}
+	if o.Extra != nil {
+		toSerialize["extra"] = o.Extra
 	}
 	return json.Marshal(toSerialize)
 }

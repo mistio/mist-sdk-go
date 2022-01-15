@@ -17,11 +17,11 @@ import (
 
 // RunScriptRequest struct for RunScriptRequest
 type RunScriptRequest struct {
-	Env *string `json:"env,omitempty"`
-	JobId *string `json:"job_id,omitempty"`
 	Machine string `json:"machine"`
 	Params *string `json:"params,omitempty"`
 	Su *string `json:"su,omitempty"`
+	Env *string `json:"env,omitempty"`
+	JobId *string `json:"job_id,omitempty"`
 }
 
 // NewRunScriptRequest instantiates a new RunScriptRequest object
@@ -40,70 +40,6 @@ func NewRunScriptRequest(machine string, ) *RunScriptRequest {
 func NewRunScriptRequestWithDefaults() *RunScriptRequest {
 	this := RunScriptRequest{}
 	return &this
-}
-
-// GetEnv returns the Env field value if set, zero value otherwise.
-func (o *RunScriptRequest) GetEnv() string {
-	if o == nil || o.Env == nil {
-		var ret string
-		return ret
-	}
-	return *o.Env
-}
-
-// GetEnvOk returns a tuple with the Env field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RunScriptRequest) GetEnvOk() (*string, bool) {
-	if o == nil || o.Env == nil {
-		return nil, false
-	}
-	return o.Env, true
-}
-
-// HasEnv returns a boolean if a field has been set.
-func (o *RunScriptRequest) HasEnv() bool {
-	if o != nil && o.Env != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnv gets a reference to the given string and assigns it to the Env field.
-func (o *RunScriptRequest) SetEnv(v string) {
-	o.Env = &v
-}
-
-// GetJobId returns the JobId field value if set, zero value otherwise.
-func (o *RunScriptRequest) GetJobId() string {
-	if o == nil || o.JobId == nil {
-		var ret string
-		return ret
-	}
-	return *o.JobId
-}
-
-// GetJobIdOk returns a tuple with the JobId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RunScriptRequest) GetJobIdOk() (*string, bool) {
-	if o == nil || o.JobId == nil {
-		return nil, false
-	}
-	return o.JobId, true
-}
-
-// HasJobId returns a boolean if a field has been set.
-func (o *RunScriptRequest) HasJobId() bool {
-	if o != nil && o.JobId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetJobId gets a reference to the given string and assigns it to the JobId field.
-func (o *RunScriptRequest) SetJobId(v string) {
-	o.JobId = &v
 }
 
 // GetMachine returns the Machine field value
@@ -194,14 +130,72 @@ func (o *RunScriptRequest) SetSu(v string) {
 	o.Su = &v
 }
 
+// GetEnv returns the Env field value if set, zero value otherwise.
+func (o *RunScriptRequest) GetEnv() string {
+	if o == nil || o.Env == nil {
+		var ret string
+		return ret
+	}
+	return *o.Env
+}
+
+// GetEnvOk returns a tuple with the Env field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RunScriptRequest) GetEnvOk() (*string, bool) {
+	if o == nil || o.Env == nil {
+		return nil, false
+	}
+	return o.Env, true
+}
+
+// HasEnv returns a boolean if a field has been set.
+func (o *RunScriptRequest) HasEnv() bool {
+	if o != nil && o.Env != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnv gets a reference to the given string and assigns it to the Env field.
+func (o *RunScriptRequest) SetEnv(v string) {
+	o.Env = &v
+}
+
+// GetJobId returns the JobId field value if set, zero value otherwise.
+func (o *RunScriptRequest) GetJobId() string {
+	if o == nil || o.JobId == nil {
+		var ret string
+		return ret
+	}
+	return *o.JobId
+}
+
+// GetJobIdOk returns a tuple with the JobId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RunScriptRequest) GetJobIdOk() (*string, bool) {
+	if o == nil || o.JobId == nil {
+		return nil, false
+	}
+	return o.JobId, true
+}
+
+// HasJobId returns a boolean if a field has been set.
+func (o *RunScriptRequest) HasJobId() bool {
+	if o != nil && o.JobId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJobId gets a reference to the given string and assigns it to the JobId field.
+func (o *RunScriptRequest) SetJobId(v string) {
+	o.JobId = &v
+}
+
 func (o RunScriptRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Env != nil {
-		toSerialize["env"] = o.Env
-	}
-	if o.JobId != nil {
-		toSerialize["job_id"] = o.JobId
-	}
 	if true {
 		toSerialize["machine"] = o.Machine
 	}
@@ -210,6 +204,12 @@ func (o RunScriptRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Su != nil {
 		toSerialize["su"] = o.Su
+	}
+	if o.Env != nil {
+		toSerialize["env"] = o.Env
+	}
+	if o.JobId != nil {
+		toSerialize["job_id"] = o.JobId
 	}
 	return json.Marshal(toSerialize)
 }

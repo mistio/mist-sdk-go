@@ -17,15 +17,15 @@ import (
 
 // Rule struct for Rule
 type Rule struct {
-	Actions *map[string]interface{} `json:"actions,omitempty"`
-	DataType *string `json:"data_type,omitempty"`
-	Disabled *string `json:"disabled,omitempty"`
-	Frequency *map[string]interface{} `json:"frequency,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Queries *map[string]interface{} `json:"queries,omitempty"`
-	TriggeredAfter *map[string]interface{} `json:"triggered_after,omitempty"`
 	Window *map[string]interface{} `json:"window,omitempty"`
+	Frequency *map[string]interface{} `json:"frequency,omitempty"`
+	TriggeredAfter *map[string]interface{} `json:"triggered_after,omitempty"`
+	Actions *map[string]interface{} `json:"actions,omitempty"`
+	Disabled *string `json:"disabled,omitempty"`
+	DataType *string `json:"data_type,omitempty"`
 }
 
 // NewRule instantiates a new Rule object
@@ -43,134 +43,6 @@ func NewRule() *Rule {
 func NewRuleWithDefaults() *Rule {
 	this := Rule{}
 	return &this
-}
-
-// GetActions returns the Actions field value if set, zero value otherwise.
-func (o *Rule) GetActions() map[string]interface{} {
-	if o == nil || o.Actions == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Actions
-}
-
-// GetActionsOk returns a tuple with the Actions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Rule) GetActionsOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Actions == nil {
-		return nil, false
-	}
-	return o.Actions, true
-}
-
-// HasActions returns a boolean if a field has been set.
-func (o *Rule) HasActions() bool {
-	if o != nil && o.Actions != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetActions gets a reference to the given map[string]interface{} and assigns it to the Actions field.
-func (o *Rule) SetActions(v map[string]interface{}) {
-	o.Actions = &v
-}
-
-// GetDataType returns the DataType field value if set, zero value otherwise.
-func (o *Rule) GetDataType() string {
-	if o == nil || o.DataType == nil {
-		var ret string
-		return ret
-	}
-	return *o.DataType
-}
-
-// GetDataTypeOk returns a tuple with the DataType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Rule) GetDataTypeOk() (*string, bool) {
-	if o == nil || o.DataType == nil {
-		return nil, false
-	}
-	return o.DataType, true
-}
-
-// HasDataType returns a boolean if a field has been set.
-func (o *Rule) HasDataType() bool {
-	if o != nil && o.DataType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDataType gets a reference to the given string and assigns it to the DataType field.
-func (o *Rule) SetDataType(v string) {
-	o.DataType = &v
-}
-
-// GetDisabled returns the Disabled field value if set, zero value otherwise.
-func (o *Rule) GetDisabled() string {
-	if o == nil || o.Disabled == nil {
-		var ret string
-		return ret
-	}
-	return *o.Disabled
-}
-
-// GetDisabledOk returns a tuple with the Disabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Rule) GetDisabledOk() (*string, bool) {
-	if o == nil || o.Disabled == nil {
-		return nil, false
-	}
-	return o.Disabled, true
-}
-
-// HasDisabled returns a boolean if a field has been set.
-func (o *Rule) HasDisabled() bool {
-	if o != nil && o.Disabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDisabled gets a reference to the given string and assigns it to the Disabled field.
-func (o *Rule) SetDisabled(v string) {
-	o.Disabled = &v
-}
-
-// GetFrequency returns the Frequency field value if set, zero value otherwise.
-func (o *Rule) GetFrequency() map[string]interface{} {
-	if o == nil || o.Frequency == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Frequency
-}
-
-// GetFrequencyOk returns a tuple with the Frequency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Rule) GetFrequencyOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Frequency == nil {
-		return nil, false
-	}
-	return o.Frequency, true
-}
-
-// HasFrequency returns a boolean if a field has been set.
-func (o *Rule) HasFrequency() bool {
-	if o != nil && o.Frequency != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFrequency gets a reference to the given map[string]interface{} and assigns it to the Frequency field.
-func (o *Rule) SetFrequency(v map[string]interface{}) {
-	o.Frequency = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -269,38 +141,6 @@ func (o *Rule) SetQueries(v map[string]interface{}) {
 	o.Queries = &v
 }
 
-// GetTriggeredAfter returns the TriggeredAfter field value if set, zero value otherwise.
-func (o *Rule) GetTriggeredAfter() map[string]interface{} {
-	if o == nil || o.TriggeredAfter == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.TriggeredAfter
-}
-
-// GetTriggeredAfterOk returns a tuple with the TriggeredAfter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Rule) GetTriggeredAfterOk() (*map[string]interface{}, bool) {
-	if o == nil || o.TriggeredAfter == nil {
-		return nil, false
-	}
-	return o.TriggeredAfter, true
-}
-
-// HasTriggeredAfter returns a boolean if a field has been set.
-func (o *Rule) HasTriggeredAfter() bool {
-	if o != nil && o.TriggeredAfter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTriggeredAfter gets a reference to the given map[string]interface{} and assigns it to the TriggeredAfter field.
-func (o *Rule) SetTriggeredAfter(v map[string]interface{}) {
-	o.TriggeredAfter = &v
-}
-
 // GetWindow returns the Window field value if set, zero value otherwise.
 func (o *Rule) GetWindow() map[string]interface{} {
 	if o == nil || o.Window == nil {
@@ -333,20 +173,168 @@ func (o *Rule) SetWindow(v map[string]interface{}) {
 	o.Window = &v
 }
 
+// GetFrequency returns the Frequency field value if set, zero value otherwise.
+func (o *Rule) GetFrequency() map[string]interface{} {
+	if o == nil || o.Frequency == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Frequency
+}
+
+// GetFrequencyOk returns a tuple with the Frequency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Rule) GetFrequencyOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Frequency == nil {
+		return nil, false
+	}
+	return o.Frequency, true
+}
+
+// HasFrequency returns a boolean if a field has been set.
+func (o *Rule) HasFrequency() bool {
+	if o != nil && o.Frequency != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFrequency gets a reference to the given map[string]interface{} and assigns it to the Frequency field.
+func (o *Rule) SetFrequency(v map[string]interface{}) {
+	o.Frequency = &v
+}
+
+// GetTriggeredAfter returns the TriggeredAfter field value if set, zero value otherwise.
+func (o *Rule) GetTriggeredAfter() map[string]interface{} {
+	if o == nil || o.TriggeredAfter == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.TriggeredAfter
+}
+
+// GetTriggeredAfterOk returns a tuple with the TriggeredAfter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Rule) GetTriggeredAfterOk() (*map[string]interface{}, bool) {
+	if o == nil || o.TriggeredAfter == nil {
+		return nil, false
+	}
+	return o.TriggeredAfter, true
+}
+
+// HasTriggeredAfter returns a boolean if a field has been set.
+func (o *Rule) HasTriggeredAfter() bool {
+	if o != nil && o.TriggeredAfter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTriggeredAfter gets a reference to the given map[string]interface{} and assigns it to the TriggeredAfter field.
+func (o *Rule) SetTriggeredAfter(v map[string]interface{}) {
+	o.TriggeredAfter = &v
+}
+
+// GetActions returns the Actions field value if set, zero value otherwise.
+func (o *Rule) GetActions() map[string]interface{} {
+	if o == nil || o.Actions == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Actions
+}
+
+// GetActionsOk returns a tuple with the Actions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Rule) GetActionsOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Actions == nil {
+		return nil, false
+	}
+	return o.Actions, true
+}
+
+// HasActions returns a boolean if a field has been set.
+func (o *Rule) HasActions() bool {
+	if o != nil && o.Actions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActions gets a reference to the given map[string]interface{} and assigns it to the Actions field.
+func (o *Rule) SetActions(v map[string]interface{}) {
+	o.Actions = &v
+}
+
+// GetDisabled returns the Disabled field value if set, zero value otherwise.
+func (o *Rule) GetDisabled() string {
+	if o == nil || o.Disabled == nil {
+		var ret string
+		return ret
+	}
+	return *o.Disabled
+}
+
+// GetDisabledOk returns a tuple with the Disabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Rule) GetDisabledOk() (*string, bool) {
+	if o == nil || o.Disabled == nil {
+		return nil, false
+	}
+	return o.Disabled, true
+}
+
+// HasDisabled returns a boolean if a field has been set.
+func (o *Rule) HasDisabled() bool {
+	if o != nil && o.Disabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisabled gets a reference to the given string and assigns it to the Disabled field.
+func (o *Rule) SetDisabled(v string) {
+	o.Disabled = &v
+}
+
+// GetDataType returns the DataType field value if set, zero value otherwise.
+func (o *Rule) GetDataType() string {
+	if o == nil || o.DataType == nil {
+		var ret string
+		return ret
+	}
+	return *o.DataType
+}
+
+// GetDataTypeOk returns a tuple with the DataType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Rule) GetDataTypeOk() (*string, bool) {
+	if o == nil || o.DataType == nil {
+		return nil, false
+	}
+	return o.DataType, true
+}
+
+// HasDataType returns a boolean if a field has been set.
+func (o *Rule) HasDataType() bool {
+	if o != nil && o.DataType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDataType gets a reference to the given string and assigns it to the DataType field.
+func (o *Rule) SetDataType(v string) {
+	o.DataType = &v
+}
+
 func (o Rule) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Actions != nil {
-		toSerialize["actions"] = o.Actions
-	}
-	if o.DataType != nil {
-		toSerialize["data_type"] = o.DataType
-	}
-	if o.Disabled != nil {
-		toSerialize["disabled"] = o.Disabled
-	}
-	if o.Frequency != nil {
-		toSerialize["frequency"] = o.Frequency
-	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
@@ -356,11 +344,23 @@ func (o Rule) MarshalJSON() ([]byte, error) {
 	if o.Queries != nil {
 		toSerialize["queries"] = o.Queries
 	}
+	if o.Window != nil {
+		toSerialize["window"] = o.Window
+	}
+	if o.Frequency != nil {
+		toSerialize["frequency"] = o.Frequency
+	}
 	if o.TriggeredAfter != nil {
 		toSerialize["triggered_after"] = o.TriggeredAfter
 	}
-	if o.Window != nil {
-		toSerialize["window"] = o.Window
+	if o.Actions != nil {
+		toSerialize["actions"] = o.Actions
+	}
+	if o.Disabled != nil {
+		toSerialize["disabled"] = o.Disabled
+	}
+	if o.DataType != nil {
+		toSerialize["data_type"] = o.DataType
 	}
 	return json.Marshal(toSerialize)
 }

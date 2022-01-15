@@ -17,13 +17,13 @@ import (
 
 // Zone struct for Zone
 type Zone struct {
-	Cloud *string `json:"cloud,omitempty"`
-	CreatedBy *string `json:"created_by,omitempty"`
-	ExternalId *string `json:"external_id,omitempty"`
 	Id *string `json:"id,omitempty"`
+	ExternalId *string `json:"external_id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	OwnedBy *string `json:"owned_by,omitempty"`
+	Cloud *string `json:"cloud,omitempty"`
 	Tags *map[string]interface{} `json:"tags,omitempty"`
+	CreatedBy *string `json:"created_by,omitempty"`
+	OwnedBy *string `json:"owned_by,omitempty"`
 }
 
 // NewZone instantiates a new Zone object
@@ -41,102 +41,6 @@ func NewZone() *Zone {
 func NewZoneWithDefaults() *Zone {
 	this := Zone{}
 	return &this
-}
-
-// GetCloud returns the Cloud field value if set, zero value otherwise.
-func (o *Zone) GetCloud() string {
-	if o == nil || o.Cloud == nil {
-		var ret string
-		return ret
-	}
-	return *o.Cloud
-}
-
-// GetCloudOk returns a tuple with the Cloud field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Zone) GetCloudOk() (*string, bool) {
-	if o == nil || o.Cloud == nil {
-		return nil, false
-	}
-	return o.Cloud, true
-}
-
-// HasCloud returns a boolean if a field has been set.
-func (o *Zone) HasCloud() bool {
-	if o != nil && o.Cloud != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCloud gets a reference to the given string and assigns it to the Cloud field.
-func (o *Zone) SetCloud(v string) {
-	o.Cloud = &v
-}
-
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
-func (o *Zone) GetCreatedBy() string {
-	if o == nil || o.CreatedBy == nil {
-		var ret string
-		return ret
-	}
-	return *o.CreatedBy
-}
-
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Zone) GetCreatedByOk() (*string, bool) {
-	if o == nil || o.CreatedBy == nil {
-		return nil, false
-	}
-	return o.CreatedBy, true
-}
-
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *Zone) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
-func (o *Zone) SetCreatedBy(v string) {
-	o.CreatedBy = &v
-}
-
-// GetExternalId returns the ExternalId field value if set, zero value otherwise.
-func (o *Zone) GetExternalId() string {
-	if o == nil || o.ExternalId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ExternalId
-}
-
-// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Zone) GetExternalIdOk() (*string, bool) {
-	if o == nil || o.ExternalId == nil {
-		return nil, false
-	}
-	return o.ExternalId, true
-}
-
-// HasExternalId returns a boolean if a field has been set.
-func (o *Zone) HasExternalId() bool {
-	if o != nil && o.ExternalId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
-func (o *Zone) SetExternalId(v string) {
-	o.ExternalId = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -171,6 +75,38 @@ func (o *Zone) SetId(v string) {
 	o.Id = &v
 }
 
+// GetExternalId returns the ExternalId field value if set, zero value otherwise.
+func (o *Zone) GetExternalId() string {
+	if o == nil || o.ExternalId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExternalId
+}
+
+// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Zone) GetExternalIdOk() (*string, bool) {
+	if o == nil || o.ExternalId == nil {
+		return nil, false
+	}
+	return o.ExternalId, true
+}
+
+// HasExternalId returns a boolean if a field has been set.
+func (o *Zone) HasExternalId() bool {
+	if o != nil && o.ExternalId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
+func (o *Zone) SetExternalId(v string) {
+	o.ExternalId = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Zone) GetName() string {
 	if o == nil || o.Name == nil {
@@ -203,36 +139,36 @@ func (o *Zone) SetName(v string) {
 	o.Name = &v
 }
 
-// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
-func (o *Zone) GetOwnedBy() string {
-	if o == nil || o.OwnedBy == nil {
+// GetCloud returns the Cloud field value if set, zero value otherwise.
+func (o *Zone) GetCloud() string {
+	if o == nil || o.Cloud == nil {
 		var ret string
 		return ret
 	}
-	return *o.OwnedBy
+	return *o.Cloud
 }
 
-// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
+// GetCloudOk returns a tuple with the Cloud field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Zone) GetOwnedByOk() (*string, bool) {
-	if o == nil || o.OwnedBy == nil {
+func (o *Zone) GetCloudOk() (*string, bool) {
+	if o == nil || o.Cloud == nil {
 		return nil, false
 	}
-	return o.OwnedBy, true
+	return o.Cloud, true
 }
 
-// HasOwnedBy returns a boolean if a field has been set.
-func (o *Zone) HasOwnedBy() bool {
-	if o != nil && o.OwnedBy != nil {
+// HasCloud returns a boolean if a field has been set.
+func (o *Zone) HasCloud() bool {
+	if o != nil && o.Cloud != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
-func (o *Zone) SetOwnedBy(v string) {
-	o.OwnedBy = &v
+// SetCloud gets a reference to the given string and assigns it to the Cloud field.
+func (o *Zone) SetCloud(v string) {
+	o.Cloud = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -267,28 +203,92 @@ func (o *Zone) SetTags(v map[string]interface{}) {
 	o.Tags = &v
 }
 
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *Zone) GetCreatedBy() string {
+	if o == nil || o.CreatedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Zone) GetCreatedByOk() (*string, bool) {
+	if o == nil || o.CreatedBy == nil {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *Zone) HasCreatedBy() bool {
+	if o != nil && o.CreatedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
+func (o *Zone) SetCreatedBy(v string) {
+	o.CreatedBy = &v
+}
+
+// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
+func (o *Zone) GetOwnedBy() string {
+	if o == nil || o.OwnedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.OwnedBy
+}
+
+// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Zone) GetOwnedByOk() (*string, bool) {
+	if o == nil || o.OwnedBy == nil {
+		return nil, false
+	}
+	return o.OwnedBy, true
+}
+
+// HasOwnedBy returns a boolean if a field has been set.
+func (o *Zone) HasOwnedBy() bool {
+	if o != nil && o.OwnedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
+func (o *Zone) SetOwnedBy(v string) {
+	o.OwnedBy = &v
+}
+
 func (o Zone) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Cloud != nil {
-		toSerialize["cloud"] = o.Cloud
-	}
-	if o.CreatedBy != nil {
-		toSerialize["created_by"] = o.CreatedBy
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	if o.ExternalId != nil {
 		toSerialize["external_id"] = o.ExternalId
 	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.OwnedBy != nil {
-		toSerialize["owned_by"] = o.OwnedBy
+	if o.Cloud != nil {
+		toSerialize["cloud"] = o.Cloud
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
+	}
+	if o.CreatedBy != nil {
+		toSerialize["created_by"] = o.CreatedBy
+	}
+	if o.OwnedBy != nil {
+		toSerialize["owned_by"] = o.OwnedBy
 	}
 	return json.Marshal(toSerialize)
 }

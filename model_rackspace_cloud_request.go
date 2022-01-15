@@ -17,19 +17,19 @@ import (
 
 // RackspaceCloudRequest struct for RackspaceCloudRequest
 type RackspaceCloudRequest struct {
+	Provider string `json:"provider"`
 	Credentials RackspaceCredentials `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
-	Provider string `json:"provider"`
 }
 
 // NewRackspaceCloudRequest instantiates a new RackspaceCloudRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRackspaceCloudRequest(credentials RackspaceCredentials, provider string, ) *RackspaceCloudRequest {
+func NewRackspaceCloudRequest(provider string, credentials RackspaceCredentials, ) *RackspaceCloudRequest {
 	this := RackspaceCloudRequest{}
-	this.Credentials = credentials
 	this.Provider = provider
+	this.Credentials = credentials
 	return &this
 }
 
@@ -39,6 +39,30 @@ func NewRackspaceCloudRequest(credentials RackspaceCredentials, provider string,
 func NewRackspaceCloudRequestWithDefaults() *RackspaceCloudRequest {
 	this := RackspaceCloudRequest{}
 	return &this
+}
+
+// GetProvider returns the Provider field value
+func (o *RackspaceCloudRequest) GetProvider() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value
+// and a boolean to check if the value has been set.
+func (o *RackspaceCloudRequest) GetProviderOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Provider, true
+}
+
+// SetProvider sets field value
+func (o *RackspaceCloudRequest) SetProvider(v string) {
+	o.Provider = v
 }
 
 // GetCredentials returns the Credentials field value
@@ -97,40 +121,16 @@ func (o *RackspaceCloudRequest) SetFeatures(v CloudFeatures) {
 	o.Features = &v
 }
 
-// GetProvider returns the Provider field value
-func (o *RackspaceCloudRequest) GetProvider() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Provider
-}
-
-// GetProviderOk returns a tuple with the Provider field value
-// and a boolean to check if the value has been set.
-func (o *RackspaceCloudRequest) GetProviderOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Provider, true
-}
-
-// SetProvider sets field value
-func (o *RackspaceCloudRequest) SetProvider(v string) {
-	o.Provider = v
-}
-
 func (o RackspaceCloudRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["provider"] = o.Provider
+	}
 	if true {
 		toSerialize["credentials"] = o.Credentials
 	}
 	if o.Features != nil {
 		toSerialize["features"] = o.Features
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
 	}
 	return json.Marshal(toSerialize)
 }

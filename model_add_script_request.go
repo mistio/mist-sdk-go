@@ -17,24 +17,24 @@ import (
 
 // AddScriptRequest struct for AddScriptRequest
 type AddScriptRequest struct {
-	Description *string `json:"description,omitempty"`
-	Entrypoint *string `json:"entrypoint,omitempty"`
-	ExecType string `json:"exec_type"`
-	LocationType string `json:"location_type"`
 	Name string `json:"name"`
 	Script string `json:"script"`
+	LocationType string `json:"location_type"`
+	Entrypoint *string `json:"entrypoint,omitempty"`
+	ExecType string `json:"exec_type"`
+	Description *string `json:"description,omitempty"`
 }
 
 // NewAddScriptRequest instantiates a new AddScriptRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddScriptRequest(execType string, locationType string, name string, script string, ) *AddScriptRequest {
+func NewAddScriptRequest(name string, script string, locationType string, execType string, ) *AddScriptRequest {
 	this := AddScriptRequest{}
-	this.ExecType = execType
-	this.LocationType = locationType
 	this.Name = name
 	this.Script = script
+	this.LocationType = locationType
+	this.ExecType = execType
 	return &this
 }
 
@@ -46,36 +46,76 @@ func NewAddScriptRequestWithDefaults() *AddScriptRequest {
 	return &this
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *AddScriptRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+// GetName returns the Name field value
+func (o *AddScriptRequest) GetName() string {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.Description
+
+	return o.Name
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *AddScriptRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+func (o *AddScriptRequest) GetNameOk() (*string, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Description, true
+	return &o.Name, true
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *AddScriptRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
-		return true
+// SetName sets field value
+func (o *AddScriptRequest) SetName(v string) {
+	o.Name = v
+}
+
+// GetScript returns the Script field value
+func (o *AddScriptRequest) GetScript() string {
+	if o == nil  {
+		var ret string
+		return ret
 	}
 
-	return false
+	return o.Script
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *AddScriptRequest) SetDescription(v string) {
-	o.Description = &v
+// GetScriptOk returns a tuple with the Script field value
+// and a boolean to check if the value has been set.
+func (o *AddScriptRequest) GetScriptOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Script, true
+}
+
+// SetScript sets field value
+func (o *AddScriptRequest) SetScript(v string) {
+	o.Script = v
+}
+
+// GetLocationType returns the LocationType field value
+func (o *AddScriptRequest) GetLocationType() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.LocationType
+}
+
+// GetLocationTypeOk returns a tuple with the LocationType field value
+// and a boolean to check if the value has been set.
+func (o *AddScriptRequest) GetLocationTypeOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.LocationType, true
+}
+
+// SetLocationType sets field value
+func (o *AddScriptRequest) SetLocationType(v string) {
+	o.LocationType = v
 }
 
 // GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
@@ -134,82 +174,48 @@ func (o *AddScriptRequest) SetExecType(v string) {
 	o.ExecType = v
 }
 
-// GetLocationType returns the LocationType field value
-func (o *AddScriptRequest) GetLocationType() string {
-	if o == nil  {
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *AddScriptRequest) GetDescription() string {
+	if o == nil || o.Description == nil {
 		var ret string
 		return ret
 	}
-
-	return o.LocationType
+	return *o.Description
 }
 
-// GetLocationTypeOk returns a tuple with the LocationType field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddScriptRequest) GetLocationTypeOk() (*string, bool) {
-	if o == nil  {
+func (o *AddScriptRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
 		return nil, false
 	}
-	return &o.LocationType, true
+	return o.Description, true
 }
 
-// SetLocationType sets field value
-func (o *AddScriptRequest) SetLocationType(v string) {
-	o.LocationType = v
-}
-
-// GetName returns the Name field value
-func (o *AddScriptRequest) GetName() string {
-	if o == nil  {
-		var ret string
-		return ret
+// HasDescription returns a boolean if a field has been set.
+func (o *AddScriptRequest) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
 	}
 
-	return o.Name
+	return false
 }
 
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *AddScriptRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *AddScriptRequest) SetName(v string) {
-	o.Name = v
-}
-
-// GetScript returns the Script field value
-func (o *AddScriptRequest) GetScript() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Script
-}
-
-// GetScriptOk returns a tuple with the Script field value
-// and a boolean to check if the value has been set.
-func (o *AddScriptRequest) GetScriptOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Script, true
-}
-
-// SetScript sets field value
-func (o *AddScriptRequest) SetScript(v string) {
-	o.Script = v
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *AddScriptRequest) SetDescription(v string) {
+	o.Description = &v
 }
 
 func (o AddScriptRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
+	if true {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["script"] = o.Script
+	}
+	if true {
+		toSerialize["location_type"] = o.LocationType
 	}
 	if o.Entrypoint != nil {
 		toSerialize["entrypoint"] = o.Entrypoint
@@ -217,14 +223,8 @@ func (o AddScriptRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["exec_type"] = o.ExecType
 	}
-	if true {
-		toSerialize["location_type"] = o.LocationType
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["script"] = o.Script
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	return json.Marshal(toSerialize)
 }

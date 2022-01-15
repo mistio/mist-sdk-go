@@ -17,14 +17,14 @@ import (
 
 // AzureExtra struct for AzureExtra
 type AzureExtra struct {
-	// The machine password. Only used on Microsoft images
-	Password *string `json:"password,omitempty"`
 	// A new or existing resource group. If not provided a `mist` resource group will be used.
 	ResourceGroup *string `json:"resource_group,omitempty"`
 	// Specifies the storage account type for the OS disk. Defaults to `StandardSSD_LRS`
 	StorageAccountType *string `json:"storage_account_type,omitempty"`
 	// The machine username. Defaults to azureuser
 	User *string `json:"user,omitempty"`
+	// The machine password. Only used on Microsoft images
+	Password *string `json:"password,omitempty"`
 }
 
 // NewAzureExtra instantiates a new AzureExtra object
@@ -42,38 +42,6 @@ func NewAzureExtra() *AzureExtra {
 func NewAzureExtraWithDefaults() *AzureExtra {
 	this := AzureExtra{}
 	return &this
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *AzureExtra) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AzureExtra) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *AzureExtra) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *AzureExtra) SetPassword(v string) {
-	o.Password = &v
 }
 
 // GetResourceGroup returns the ResourceGroup field value if set, zero value otherwise.
@@ -172,11 +140,40 @@ func (o *AzureExtra) SetUser(v string) {
 	o.User = &v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *AzureExtra) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureExtra) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *AzureExtra) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *AzureExtra) SetPassword(v string) {
+	o.Password = &v
+}
+
 func (o AzureExtra) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if o.ResourceGroup != nil {
 		toSerialize["resource_group"] = o.ResourceGroup
 	}
@@ -185,6 +182,9 @@ func (o AzureExtra) MarshalJSON() ([]byte, error) {
 	}
 	if o.User != nil {
 		toSerialize["user"] = o.User
+	}
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	return json.Marshal(toSerialize)
 }

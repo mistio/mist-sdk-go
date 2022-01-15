@@ -17,19 +17,19 @@ import (
 
 // KvmCloudRequest struct for KvmCloudRequest
 type KvmCloudRequest struct {
+	Provider string `json:"provider"`
 	Credentials map[string]interface{} `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
-	Provider string `json:"provider"`
 }
 
 // NewKvmCloudRequest instantiates a new KvmCloudRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKvmCloudRequest(credentials map[string]interface{}, provider string, ) *KvmCloudRequest {
+func NewKvmCloudRequest(provider string, credentials map[string]interface{}, ) *KvmCloudRequest {
 	this := KvmCloudRequest{}
-	this.Credentials = credentials
 	this.Provider = provider
+	this.Credentials = credentials
 	return &this
 }
 
@@ -39,6 +39,30 @@ func NewKvmCloudRequest(credentials map[string]interface{}, provider string, ) *
 func NewKvmCloudRequestWithDefaults() *KvmCloudRequest {
 	this := KvmCloudRequest{}
 	return &this
+}
+
+// GetProvider returns the Provider field value
+func (o *KvmCloudRequest) GetProvider() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value
+// and a boolean to check if the value has been set.
+func (o *KvmCloudRequest) GetProviderOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Provider, true
+}
+
+// SetProvider sets field value
+func (o *KvmCloudRequest) SetProvider(v string) {
+	o.Provider = v
 }
 
 // GetCredentials returns the Credentials field value
@@ -97,40 +121,16 @@ func (o *KvmCloudRequest) SetFeatures(v CloudFeatures) {
 	o.Features = &v
 }
 
-// GetProvider returns the Provider field value
-func (o *KvmCloudRequest) GetProvider() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Provider
-}
-
-// GetProviderOk returns a tuple with the Provider field value
-// and a boolean to check if the value has been set.
-func (o *KvmCloudRequest) GetProviderOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Provider, true
-}
-
-// SetProvider sets field value
-func (o *KvmCloudRequest) SetProvider(v string) {
-	o.Provider = v
-}
-
 func (o KvmCloudRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["provider"] = o.Provider
+	}
 	if true {
 		toSerialize["credentials"] = o.Credentials
 	}
 	if o.Features != nil {
 		toSerialize["features"] = o.Features
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
 	}
 	return json.Marshal(toSerialize)
 }

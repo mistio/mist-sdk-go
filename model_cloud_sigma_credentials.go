@@ -17,23 +17,23 @@ import (
 
 // CloudSigmaCredentials struct for CloudSigmaCredentials
 type CloudSigmaCredentials struct {
+	// Your CloudSigma username
+	Username string `json:"username"`
 	// Your CloudSigma password
 	Password string `json:"password"`
 	// Your CloudSigma region
 	Region string `json:"region"`
-	// Your CloudSigma username
-	Username string `json:"username"`
 }
 
 // NewCloudSigmaCredentials instantiates a new CloudSigmaCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudSigmaCredentials(password string, region string, username string, ) *CloudSigmaCredentials {
+func NewCloudSigmaCredentials(username string, password string, region string, ) *CloudSigmaCredentials {
 	this := CloudSigmaCredentials{}
+	this.Username = username
 	this.Password = password
 	this.Region = region
-	this.Username = username
 	return &this
 }
 
@@ -43,6 +43,30 @@ func NewCloudSigmaCredentials(password string, region string, username string, )
 func NewCloudSigmaCredentialsWithDefaults() *CloudSigmaCredentials {
 	this := CloudSigmaCredentials{}
 	return &this
+}
+
+// GetUsername returns the Username field value
+func (o *CloudSigmaCredentials) GetUsername() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value
+// and a boolean to check if the value has been set.
+func (o *CloudSigmaCredentials) GetUsernameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Username, true
+}
+
+// SetUsername sets field value
+func (o *CloudSigmaCredentials) SetUsername(v string) {
+	o.Username = v
 }
 
 // GetPassword returns the Password field value
@@ -93,40 +117,16 @@ func (o *CloudSigmaCredentials) SetRegion(v string) {
 	o.Region = v
 }
 
-// GetUsername returns the Username field value
-func (o *CloudSigmaCredentials) GetUsername() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value
-// and a boolean to check if the value has been set.
-func (o *CloudSigmaCredentials) GetUsernameOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Username, true
-}
-
-// SetUsername sets field value
-func (o *CloudSigmaCredentials) SetUsername(v string) {
-	o.Username = v
-}
-
 func (o CloudSigmaCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["username"] = o.Username
+	}
 	if true {
 		toSerialize["password"] = o.Password
 	}
 	if true {
 		toSerialize["region"] = o.Region
-	}
-	if true {
-		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)
 }

@@ -17,43 +17,43 @@ import (
 
 // CreateVolumeRequest struct for CreateVolumeRequest
 type CreateVolumeRequest struct {
-	// Specify cloud to provision on
-	Cloud string `json:"cloud"`
-	// Return provisioning plan and exit without executing it
-	Dry *bool `json:"dry,omitempty"`
-	// GCE-specific
-	ExDiskType *string `json:"ex_disk_type,omitempty"`
-	// EC2-specific. Needs to be specified if volume_type='io1'
-	ExIops *string `json:"ex_iops,omitempty"`
-	// EC2-specific
-	ExVolumeType *string `json:"ex_volume_type,omitempty"`
-	// Configure additional parameters
-	Extra *map[string]interface{} `json:"extra,omitempty"`
-	// Where to provision e.g. region, datacenter, rack
-	Location string `json:"location"`
 	// Specify volume name
 	Name string `json:"name"`
 	Provider *SupportedProviders `json:"provider,omitempty"`
-	// Provision multiple volumes of this type
-	Quantity *int32 `json:"quantity,omitempty"`
-	// Save provisioning plan as template
-	Save *bool `json:"save,omitempty"`
+	// Specify cloud to provision on
+	Cloud string `json:"cloud"`
+	// Where to provision e.g. region, datacenter, rack
+	Location string `json:"location"`
 	// Volume sizing spec
 	Size int32 `json:"size"`
+	// GCE-specific
+	ExDiskType *string `json:"ex_disk_type,omitempty"`
+	// EC2-specific
+	ExVolumeType *string `json:"ex_volume_type,omitempty"`
+	// EC2-specific. Needs to be specified if volume_type='io1'
+	ExIops *string `json:"ex_iops,omitempty"`
 	// Assign tags to provisioned volume
 	Tags *map[string]interface{} `json:"tags,omitempty"`
+	// Configure additional parameters
+	Extra *map[string]interface{} `json:"extra,omitempty"`
+	// Provision multiple volumes of this type
+	Quantity *int32 `json:"quantity,omitempty"`
 	Template *map[string]interface{} `json:"template,omitempty"`
+	// Return provisioning plan and exit without executing it
+	Dry *bool `json:"dry,omitempty"`
+	// Save provisioning plan as template
+	Save *bool `json:"save,omitempty"`
 }
 
 // NewCreateVolumeRequest instantiates a new CreateVolumeRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateVolumeRequest(cloud string, location string, name string, size int32, ) *CreateVolumeRequest {
+func NewCreateVolumeRequest(name string, cloud string, location string, size int32, ) *CreateVolumeRequest {
 	this := CreateVolumeRequest{}
+	this.Name = name
 	this.Cloud = cloud
 	this.Location = location
-	this.Name = name
 	this.Size = size
 	return &this
 }
@@ -64,214 +64,6 @@ func NewCreateVolumeRequest(cloud string, location string, name string, size int
 func NewCreateVolumeRequestWithDefaults() *CreateVolumeRequest {
 	this := CreateVolumeRequest{}
 	return &this
-}
-
-// GetCloud returns the Cloud field value
-func (o *CreateVolumeRequest) GetCloud() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Cloud
-}
-
-// GetCloudOk returns a tuple with the Cloud field value
-// and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetCloudOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Cloud, true
-}
-
-// SetCloud sets field value
-func (o *CreateVolumeRequest) SetCloud(v string) {
-	o.Cloud = v
-}
-
-// GetDry returns the Dry field value if set, zero value otherwise.
-func (o *CreateVolumeRequest) GetDry() bool {
-	if o == nil || o.Dry == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Dry
-}
-
-// GetDryOk returns a tuple with the Dry field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetDryOk() (*bool, bool) {
-	if o == nil || o.Dry == nil {
-		return nil, false
-	}
-	return o.Dry, true
-}
-
-// HasDry returns a boolean if a field has been set.
-func (o *CreateVolumeRequest) HasDry() bool {
-	if o != nil && o.Dry != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDry gets a reference to the given bool and assigns it to the Dry field.
-func (o *CreateVolumeRequest) SetDry(v bool) {
-	o.Dry = &v
-}
-
-// GetExDiskType returns the ExDiskType field value if set, zero value otherwise.
-func (o *CreateVolumeRequest) GetExDiskType() string {
-	if o == nil || o.ExDiskType == nil {
-		var ret string
-		return ret
-	}
-	return *o.ExDiskType
-}
-
-// GetExDiskTypeOk returns a tuple with the ExDiskType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetExDiskTypeOk() (*string, bool) {
-	if o == nil || o.ExDiskType == nil {
-		return nil, false
-	}
-	return o.ExDiskType, true
-}
-
-// HasExDiskType returns a boolean if a field has been set.
-func (o *CreateVolumeRequest) HasExDiskType() bool {
-	if o != nil && o.ExDiskType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExDiskType gets a reference to the given string and assigns it to the ExDiskType field.
-func (o *CreateVolumeRequest) SetExDiskType(v string) {
-	o.ExDiskType = &v
-}
-
-// GetExIops returns the ExIops field value if set, zero value otherwise.
-func (o *CreateVolumeRequest) GetExIops() string {
-	if o == nil || o.ExIops == nil {
-		var ret string
-		return ret
-	}
-	return *o.ExIops
-}
-
-// GetExIopsOk returns a tuple with the ExIops field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetExIopsOk() (*string, bool) {
-	if o == nil || o.ExIops == nil {
-		return nil, false
-	}
-	return o.ExIops, true
-}
-
-// HasExIops returns a boolean if a field has been set.
-func (o *CreateVolumeRequest) HasExIops() bool {
-	if o != nil && o.ExIops != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExIops gets a reference to the given string and assigns it to the ExIops field.
-func (o *CreateVolumeRequest) SetExIops(v string) {
-	o.ExIops = &v
-}
-
-// GetExVolumeType returns the ExVolumeType field value if set, zero value otherwise.
-func (o *CreateVolumeRequest) GetExVolumeType() string {
-	if o == nil || o.ExVolumeType == nil {
-		var ret string
-		return ret
-	}
-	return *o.ExVolumeType
-}
-
-// GetExVolumeTypeOk returns a tuple with the ExVolumeType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetExVolumeTypeOk() (*string, bool) {
-	if o == nil || o.ExVolumeType == nil {
-		return nil, false
-	}
-	return o.ExVolumeType, true
-}
-
-// HasExVolumeType returns a boolean if a field has been set.
-func (o *CreateVolumeRequest) HasExVolumeType() bool {
-	if o != nil && o.ExVolumeType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExVolumeType gets a reference to the given string and assigns it to the ExVolumeType field.
-func (o *CreateVolumeRequest) SetExVolumeType(v string) {
-	o.ExVolumeType = &v
-}
-
-// GetExtra returns the Extra field value if set, zero value otherwise.
-func (o *CreateVolumeRequest) GetExtra() map[string]interface{} {
-	if o == nil || o.Extra == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Extra
-}
-
-// GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetExtraOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Extra == nil {
-		return nil, false
-	}
-	return o.Extra, true
-}
-
-// HasExtra returns a boolean if a field has been set.
-func (o *CreateVolumeRequest) HasExtra() bool {
-	if o != nil && o.Extra != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExtra gets a reference to the given map[string]interface{} and assigns it to the Extra field.
-func (o *CreateVolumeRequest) SetExtra(v map[string]interface{}) {
-	o.Extra = &v
-}
-
-// GetLocation returns the Location field value
-func (o *CreateVolumeRequest) GetLocation() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Location
-}
-
-// GetLocationOk returns a tuple with the Location field value
-// and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetLocationOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Location, true
-}
-
-// SetLocation sets field value
-func (o *CreateVolumeRequest) SetLocation(v string) {
-	o.Location = v
 }
 
 // GetName returns the Name field value
@@ -330,68 +122,52 @@ func (o *CreateVolumeRequest) SetProvider(v SupportedProviders) {
 	o.Provider = &v
 }
 
-// GetQuantity returns the Quantity field value if set, zero value otherwise.
-func (o *CreateVolumeRequest) GetQuantity() int32 {
-	if o == nil || o.Quantity == nil {
-		var ret int32
+// GetCloud returns the Cloud field value
+func (o *CreateVolumeRequest) GetCloud() string {
+	if o == nil  {
+		var ret string
 		return ret
 	}
-	return *o.Quantity
+
+	return o.Cloud
 }
 
-// GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
+// GetCloudOk returns a tuple with the Cloud field value
 // and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetQuantityOk() (*int32, bool) {
-	if o == nil || o.Quantity == nil {
+func (o *CreateVolumeRequest) GetCloudOk() (*string, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Quantity, true
+	return &o.Cloud, true
 }
 
-// HasQuantity returns a boolean if a field has been set.
-func (o *CreateVolumeRequest) HasQuantity() bool {
-	if o != nil && o.Quantity != nil {
-		return true
-	}
-
-	return false
+// SetCloud sets field value
+func (o *CreateVolumeRequest) SetCloud(v string) {
+	o.Cloud = v
 }
 
-// SetQuantity gets a reference to the given int32 and assigns it to the Quantity field.
-func (o *CreateVolumeRequest) SetQuantity(v int32) {
-	o.Quantity = &v
-}
-
-// GetSave returns the Save field value if set, zero value otherwise.
-func (o *CreateVolumeRequest) GetSave() bool {
-	if o == nil || o.Save == nil {
-		var ret bool
+// GetLocation returns the Location field value
+func (o *CreateVolumeRequest) GetLocation() string {
+	if o == nil  {
+		var ret string
 		return ret
 	}
-	return *o.Save
+
+	return o.Location
 }
 
-// GetSaveOk returns a tuple with the Save field value if set, nil otherwise
+// GetLocationOk returns a tuple with the Location field value
 // and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetSaveOk() (*bool, bool) {
-	if o == nil || o.Save == nil {
+func (o *CreateVolumeRequest) GetLocationOk() (*string, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Save, true
+	return &o.Location, true
 }
 
-// HasSave returns a boolean if a field has been set.
-func (o *CreateVolumeRequest) HasSave() bool {
-	if o != nil && o.Save != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSave gets a reference to the given bool and assigns it to the Save field.
-func (o *CreateVolumeRequest) SetSave(v bool) {
-	o.Save = &v
+// SetLocation sets field value
+func (o *CreateVolumeRequest) SetLocation(v string) {
+	o.Location = v
 }
 
 // GetSize returns the Size field value
@@ -416,6 +192,102 @@ func (o *CreateVolumeRequest) GetSizeOk() (*int32, bool) {
 // SetSize sets field value
 func (o *CreateVolumeRequest) SetSize(v int32) {
 	o.Size = v
+}
+
+// GetExDiskType returns the ExDiskType field value if set, zero value otherwise.
+func (o *CreateVolumeRequest) GetExDiskType() string {
+	if o == nil || o.ExDiskType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExDiskType
+}
+
+// GetExDiskTypeOk returns a tuple with the ExDiskType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVolumeRequest) GetExDiskTypeOk() (*string, bool) {
+	if o == nil || o.ExDiskType == nil {
+		return nil, false
+	}
+	return o.ExDiskType, true
+}
+
+// HasExDiskType returns a boolean if a field has been set.
+func (o *CreateVolumeRequest) HasExDiskType() bool {
+	if o != nil && o.ExDiskType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExDiskType gets a reference to the given string and assigns it to the ExDiskType field.
+func (o *CreateVolumeRequest) SetExDiskType(v string) {
+	o.ExDiskType = &v
+}
+
+// GetExVolumeType returns the ExVolumeType field value if set, zero value otherwise.
+func (o *CreateVolumeRequest) GetExVolumeType() string {
+	if o == nil || o.ExVolumeType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExVolumeType
+}
+
+// GetExVolumeTypeOk returns a tuple with the ExVolumeType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVolumeRequest) GetExVolumeTypeOk() (*string, bool) {
+	if o == nil || o.ExVolumeType == nil {
+		return nil, false
+	}
+	return o.ExVolumeType, true
+}
+
+// HasExVolumeType returns a boolean if a field has been set.
+func (o *CreateVolumeRequest) HasExVolumeType() bool {
+	if o != nil && o.ExVolumeType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExVolumeType gets a reference to the given string and assigns it to the ExVolumeType field.
+func (o *CreateVolumeRequest) SetExVolumeType(v string) {
+	o.ExVolumeType = &v
+}
+
+// GetExIops returns the ExIops field value if set, zero value otherwise.
+func (o *CreateVolumeRequest) GetExIops() string {
+	if o == nil || o.ExIops == nil {
+		var ret string
+		return ret
+	}
+	return *o.ExIops
+}
+
+// GetExIopsOk returns a tuple with the ExIops field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVolumeRequest) GetExIopsOk() (*string, bool) {
+	if o == nil || o.ExIops == nil {
+		return nil, false
+	}
+	return o.ExIops, true
+}
+
+// HasExIops returns a boolean if a field has been set.
+func (o *CreateVolumeRequest) HasExIops() bool {
+	if o != nil && o.ExIops != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExIops gets a reference to the given string and assigns it to the ExIops field.
+func (o *CreateVolumeRequest) SetExIops(v string) {
+	o.ExIops = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -450,6 +322,70 @@ func (o *CreateVolumeRequest) SetTags(v map[string]interface{}) {
 	o.Tags = &v
 }
 
+// GetExtra returns the Extra field value if set, zero value otherwise.
+func (o *CreateVolumeRequest) GetExtra() map[string]interface{} {
+	if o == nil || o.Extra == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Extra
+}
+
+// GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVolumeRequest) GetExtraOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Extra == nil {
+		return nil, false
+	}
+	return o.Extra, true
+}
+
+// HasExtra returns a boolean if a field has been set.
+func (o *CreateVolumeRequest) HasExtra() bool {
+	if o != nil && o.Extra != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExtra gets a reference to the given map[string]interface{} and assigns it to the Extra field.
+func (o *CreateVolumeRequest) SetExtra(v map[string]interface{}) {
+	o.Extra = &v
+}
+
+// GetQuantity returns the Quantity field value if set, zero value otherwise.
+func (o *CreateVolumeRequest) GetQuantity() int32 {
+	if o == nil || o.Quantity == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Quantity
+}
+
+// GetQuantityOk returns a tuple with the Quantity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVolumeRequest) GetQuantityOk() (*int32, bool) {
+	if o == nil || o.Quantity == nil {
+		return nil, false
+	}
+	return o.Quantity, true
+}
+
+// HasQuantity returns a boolean if a field has been set.
+func (o *CreateVolumeRequest) HasQuantity() bool {
+	if o != nil && o.Quantity != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetQuantity gets a reference to the given int32 and assigns it to the Quantity field.
+func (o *CreateVolumeRequest) SetQuantity(v int32) {
+	o.Quantity = &v
+}
+
 // GetTemplate returns the Template field value if set, zero value otherwise.
 func (o *CreateVolumeRequest) GetTemplate() map[string]interface{} {
 	if o == nil || o.Template == nil {
@@ -482,49 +418,113 @@ func (o *CreateVolumeRequest) SetTemplate(v map[string]interface{}) {
 	o.Template = &v
 }
 
+// GetDry returns the Dry field value if set, zero value otherwise.
+func (o *CreateVolumeRequest) GetDry() bool {
+	if o == nil || o.Dry == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Dry
+}
+
+// GetDryOk returns a tuple with the Dry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVolumeRequest) GetDryOk() (*bool, bool) {
+	if o == nil || o.Dry == nil {
+		return nil, false
+	}
+	return o.Dry, true
+}
+
+// HasDry returns a boolean if a field has been set.
+func (o *CreateVolumeRequest) HasDry() bool {
+	if o != nil && o.Dry != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDry gets a reference to the given bool and assigns it to the Dry field.
+func (o *CreateVolumeRequest) SetDry(v bool) {
+	o.Dry = &v
+}
+
+// GetSave returns the Save field value if set, zero value otherwise.
+func (o *CreateVolumeRequest) GetSave() bool {
+	if o == nil || o.Save == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Save
+}
+
+// GetSaveOk returns a tuple with the Save field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVolumeRequest) GetSaveOk() (*bool, bool) {
+	if o == nil || o.Save == nil {
+		return nil, false
+	}
+	return o.Save, true
+}
+
+// HasSave returns a boolean if a field has been set.
+func (o *CreateVolumeRequest) HasSave() bool {
+	if o != nil && o.Save != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSave gets a reference to the given bool and assigns it to the Save field.
+func (o *CreateVolumeRequest) SetSave(v bool) {
+	o.Save = &v
+}
+
 func (o CreateVolumeRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["cloud"] = o.Cloud
-	}
-	if o.Dry != nil {
-		toSerialize["dry"] = o.Dry
-	}
-	if o.ExDiskType != nil {
-		toSerialize["ex_disk_type"] = o.ExDiskType
-	}
-	if o.ExIops != nil {
-		toSerialize["ex_iops"] = o.ExIops
-	}
-	if o.ExVolumeType != nil {
-		toSerialize["ex_volume_type"] = o.ExVolumeType
-	}
-	if o.Extra != nil {
-		toSerialize["extra"] = o.Extra
-	}
-	if true {
-		toSerialize["location"] = o.Location
-	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
 	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
 	}
-	if o.Quantity != nil {
-		toSerialize["quantity"] = o.Quantity
+	if true {
+		toSerialize["cloud"] = o.Cloud
 	}
-	if o.Save != nil {
-		toSerialize["save"] = o.Save
+	if true {
+		toSerialize["location"] = o.Location
 	}
 	if true {
 		toSerialize["size"] = o.Size
 	}
+	if o.ExDiskType != nil {
+		toSerialize["ex_disk_type"] = o.ExDiskType
+	}
+	if o.ExVolumeType != nil {
+		toSerialize["ex_volume_type"] = o.ExVolumeType
+	}
+	if o.ExIops != nil {
+		toSerialize["ex_iops"] = o.ExIops
+	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
 	}
+	if o.Extra != nil {
+		toSerialize["extra"] = o.Extra
+	}
+	if o.Quantity != nil {
+		toSerialize["quantity"] = o.Quantity
+	}
 	if o.Template != nil {
 		toSerialize["template"] = o.Template
+	}
+	if o.Dry != nil {
+		toSerialize["dry"] = o.Dry
+	}
+	if o.Save != nil {
+		toSerialize["save"] = o.Save
 	}
 	return json.Marshal(toSerialize)
 }

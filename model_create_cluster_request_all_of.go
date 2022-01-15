@@ -17,10 +17,10 @@ import (
 
 // CreateClusterRequestAllOf struct for CreateClusterRequestAllOf
 type CreateClusterRequestAllOf struct {
-	// The cloud the cluster belongs to
-	Cloud string `json:"cloud"`
 	// The name of the cluster to create
 	Name string `json:"name"`
+	// The cloud the cluster belongs to
+	Cloud string `json:"cloud"`
 	Provider ClusterProviders `json:"provider"`
 }
 
@@ -28,10 +28,10 @@ type CreateClusterRequestAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateClusterRequestAllOf(cloud string, name string, provider ClusterProviders, ) *CreateClusterRequestAllOf {
+func NewCreateClusterRequestAllOf(name string, cloud string, provider ClusterProviders, ) *CreateClusterRequestAllOf {
 	this := CreateClusterRequestAllOf{}
-	this.Cloud = cloud
 	this.Name = name
+	this.Cloud = cloud
 	this.Provider = provider
 	return &this
 }
@@ -42,30 +42,6 @@ func NewCreateClusterRequestAllOf(cloud string, name string, provider ClusterPro
 func NewCreateClusterRequestAllOfWithDefaults() *CreateClusterRequestAllOf {
 	this := CreateClusterRequestAllOf{}
 	return &this
-}
-
-// GetCloud returns the Cloud field value
-func (o *CreateClusterRequestAllOf) GetCloud() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Cloud
-}
-
-// GetCloudOk returns a tuple with the Cloud field value
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequestAllOf) GetCloudOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Cloud, true
-}
-
-// SetCloud sets field value
-func (o *CreateClusterRequestAllOf) SetCloud(v string) {
-	o.Cloud = v
 }
 
 // GetName returns the Name field value
@@ -90,6 +66,30 @@ func (o *CreateClusterRequestAllOf) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateClusterRequestAllOf) SetName(v string) {
 	o.Name = v
+}
+
+// GetCloud returns the Cloud field value
+func (o *CreateClusterRequestAllOf) GetCloud() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Cloud
+}
+
+// GetCloudOk returns a tuple with the Cloud field value
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequestAllOf) GetCloudOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Cloud, true
+}
+
+// SetCloud sets field value
+func (o *CreateClusterRequestAllOf) SetCloud(v string) {
+	o.Cloud = v
 }
 
 // GetProvider returns the Provider field value
@@ -119,10 +119,10 @@ func (o *CreateClusterRequestAllOf) SetProvider(v ClusterProviders) {
 func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["cloud"] = o.Cloud
+		toSerialize["name"] = o.Name
 	}
 	if true {
-		toSerialize["name"] = o.Name
+		toSerialize["cloud"] = o.Cloud
 	}
 	if true {
 		toSerialize["provider"] = o.Provider

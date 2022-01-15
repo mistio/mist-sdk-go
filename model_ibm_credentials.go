@@ -17,11 +17,11 @@ import (
 
 // IbmCredentials struct for IbmCredentials
 type IbmCredentials struct {
-	// Your IBM Cloud API key
-	Apikey string `json:"apikey"`
 	Provider *string `json:"provider,omitempty"`
 	// Your IBM Cloud username
 	Username *string `json:"username,omitempty"`
+	// Your IBM Cloud API key
+	Apikey string `json:"apikey"`
 }
 
 // NewIbmCredentials instantiates a new IbmCredentials object
@@ -40,30 +40,6 @@ func NewIbmCredentials(apikey string, ) *IbmCredentials {
 func NewIbmCredentialsWithDefaults() *IbmCredentials {
 	this := IbmCredentials{}
 	return &this
-}
-
-// GetApikey returns the Apikey field value
-func (o *IbmCredentials) GetApikey() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Apikey
-}
-
-// GetApikeyOk returns a tuple with the Apikey field value
-// and a boolean to check if the value has been set.
-func (o *IbmCredentials) GetApikeyOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Apikey, true
-}
-
-// SetApikey sets field value
-func (o *IbmCredentials) SetApikey(v string) {
-	o.Apikey = v
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
@@ -130,16 +106,40 @@ func (o *IbmCredentials) SetUsername(v string) {
 	o.Username = &v
 }
 
+// GetApikey returns the Apikey field value
+func (o *IbmCredentials) GetApikey() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Apikey
+}
+
+// GetApikeyOk returns a tuple with the Apikey field value
+// and a boolean to check if the value has been set.
+func (o *IbmCredentials) GetApikeyOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Apikey, true
+}
+
+// SetApikey sets field value
+func (o *IbmCredentials) SetApikey(v string) {
+	o.Apikey = v
+}
+
 func (o IbmCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["apikey"] = o.Apikey
-	}
 	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username
+	}
+	if true {
+		toSerialize["apikey"] = o.Apikey
 	}
 	return json.Marshal(toSerialize)
 }

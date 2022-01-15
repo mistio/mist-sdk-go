@@ -17,9 +17,9 @@ import (
 
 // EditMachineRequestExpiration struct for EditMachineRequestExpiration
 type EditMachineRequestExpiration struct {
-	Action string `json:"action"`
 	// format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	Date string `json:"date"`
+	Action string `json:"action"`
 	// seconds before the expiration date to be notified
 	Notify *int32 `json:"notify,omitempty"`
 }
@@ -28,10 +28,10 @@ type EditMachineRequestExpiration struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditMachineRequestExpiration(action string, date string, ) *EditMachineRequestExpiration {
+func NewEditMachineRequestExpiration(date string, action string, ) *EditMachineRequestExpiration {
 	this := EditMachineRequestExpiration{}
-	this.Action = action
 	this.Date = date
+	this.Action = action
 	return &this
 }
 
@@ -41,30 +41,6 @@ func NewEditMachineRequestExpiration(action string, date string, ) *EditMachineR
 func NewEditMachineRequestExpirationWithDefaults() *EditMachineRequestExpiration {
 	this := EditMachineRequestExpiration{}
 	return &this
-}
-
-// GetAction returns the Action field value
-func (o *EditMachineRequestExpiration) GetAction() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Action
-}
-
-// GetActionOk returns a tuple with the Action field value
-// and a boolean to check if the value has been set.
-func (o *EditMachineRequestExpiration) GetActionOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Action, true
-}
-
-// SetAction sets field value
-func (o *EditMachineRequestExpiration) SetAction(v string) {
-	o.Action = v
 }
 
 // GetDate returns the Date field value
@@ -89,6 +65,30 @@ func (o *EditMachineRequestExpiration) GetDateOk() (*string, bool) {
 // SetDate sets field value
 func (o *EditMachineRequestExpiration) SetDate(v string) {
 	o.Date = v
+}
+
+// GetAction returns the Action field value
+func (o *EditMachineRequestExpiration) GetAction() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Action
+}
+
+// GetActionOk returns a tuple with the Action field value
+// and a boolean to check if the value has been set.
+func (o *EditMachineRequestExpiration) GetActionOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Action, true
+}
+
+// SetAction sets field value
+func (o *EditMachineRequestExpiration) SetAction(v string) {
+	o.Action = v
 }
 
 // GetNotify returns the Notify field value if set, zero value otherwise.
@@ -126,10 +126,10 @@ func (o *EditMachineRequestExpiration) SetNotify(v int32) {
 func (o EditMachineRequestExpiration) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["action"] = o.Action
+		toSerialize["date"] = o.Date
 	}
 	if true {
-		toSerialize["date"] = o.Date
+		toSerialize["action"] = o.Action
 	}
 	if o.Notify != nil {
 		toSerialize["notify"] = o.Notify

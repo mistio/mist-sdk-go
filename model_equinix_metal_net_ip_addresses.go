@@ -19,21 +19,21 @@ import (
 type EquinixMetalNetIpAddresses struct {
 	// Address Family for IP Address(IPv4, IPv6)
 	AddressFamily int32 `json:"address_family"`
-	// Cidr Size for the IP Block created. Valid values depend on the operating system being provisioned. (28..32 for IPv4 addresses, 124..127 for IPv6 addresses)
-	Cidr int32 `json:"cidr"`
 	// Address Type for IP Address
 	Public bool `json:"public"`
+	// Cidr Size for the IP Block created. Valid values depend on the operating system being provisioned. (28..32 for IPv4 addresses, 124..127 for IPv6 addresses)
+	Cidr int32 `json:"cidr"`
 }
 
 // NewEquinixMetalNetIpAddresses instantiates a new EquinixMetalNetIpAddresses object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEquinixMetalNetIpAddresses(addressFamily int32, cidr int32, public bool, ) *EquinixMetalNetIpAddresses {
+func NewEquinixMetalNetIpAddresses(addressFamily int32, public bool, cidr int32, ) *EquinixMetalNetIpAddresses {
 	this := EquinixMetalNetIpAddresses{}
 	this.AddressFamily = addressFamily
-	this.Cidr = cidr
 	this.Public = public
+	this.Cidr = cidr
 	return &this
 }
 
@@ -69,30 +69,6 @@ func (o *EquinixMetalNetIpAddresses) SetAddressFamily(v int32) {
 	o.AddressFamily = v
 }
 
-// GetCidr returns the Cidr field value
-func (o *EquinixMetalNetIpAddresses) GetCidr() int32 {
-	if o == nil  {
-		var ret int32
-		return ret
-	}
-
-	return o.Cidr
-}
-
-// GetCidrOk returns a tuple with the Cidr field value
-// and a boolean to check if the value has been set.
-func (o *EquinixMetalNetIpAddresses) GetCidrOk() (*int32, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Cidr, true
-}
-
-// SetCidr sets field value
-func (o *EquinixMetalNetIpAddresses) SetCidr(v int32) {
-	o.Cidr = v
-}
-
 // GetPublic returns the Public field value
 func (o *EquinixMetalNetIpAddresses) GetPublic() bool {
 	if o == nil  {
@@ -117,16 +93,40 @@ func (o *EquinixMetalNetIpAddresses) SetPublic(v bool) {
 	o.Public = v
 }
 
+// GetCidr returns the Cidr field value
+func (o *EquinixMetalNetIpAddresses) GetCidr() int32 {
+	if o == nil  {
+		var ret int32
+		return ret
+	}
+
+	return o.Cidr
+}
+
+// GetCidrOk returns a tuple with the Cidr field value
+// and a boolean to check if the value has been set.
+func (o *EquinixMetalNetIpAddresses) GetCidrOk() (*int32, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Cidr, true
+}
+
+// SetCidr sets field value
+func (o *EquinixMetalNetIpAddresses) SetCidr(v int32) {
+	o.Cidr = v
+}
+
 func (o EquinixMetalNetIpAddresses) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["address_family"] = o.AddressFamily
 	}
 	if true {
-		toSerialize["cidr"] = o.Cidr
+		toSerialize["public"] = o.Public
 	}
 	if true {
-		toSerialize["public"] = o.Public
+		toSerialize["cidr"] = o.Cidr
 	}
 	return json.Marshal(toSerialize)
 }

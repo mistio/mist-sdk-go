@@ -17,19 +17,19 @@ import (
 
 // DockerCloudRequest struct for DockerCloudRequest
 type DockerCloudRequest struct {
+	Provider string `json:"provider"`
 	Credentials DockerCredentials `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
-	Provider string `json:"provider"`
 }
 
 // NewDockerCloudRequest instantiates a new DockerCloudRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDockerCloudRequest(credentials DockerCredentials, provider string, ) *DockerCloudRequest {
+func NewDockerCloudRequest(provider string, credentials DockerCredentials, ) *DockerCloudRequest {
 	this := DockerCloudRequest{}
-	this.Credentials = credentials
 	this.Provider = provider
+	this.Credentials = credentials
 	return &this
 }
 
@@ -39,6 +39,30 @@ func NewDockerCloudRequest(credentials DockerCredentials, provider string, ) *Do
 func NewDockerCloudRequestWithDefaults() *DockerCloudRequest {
 	this := DockerCloudRequest{}
 	return &this
+}
+
+// GetProvider returns the Provider field value
+func (o *DockerCloudRequest) GetProvider() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value
+// and a boolean to check if the value has been set.
+func (o *DockerCloudRequest) GetProviderOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Provider, true
+}
+
+// SetProvider sets field value
+func (o *DockerCloudRequest) SetProvider(v string) {
+	o.Provider = v
 }
 
 // GetCredentials returns the Credentials field value
@@ -97,40 +121,16 @@ func (o *DockerCloudRequest) SetFeatures(v CloudFeatures) {
 	o.Features = &v
 }
 
-// GetProvider returns the Provider field value
-func (o *DockerCloudRequest) GetProvider() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Provider
-}
-
-// GetProviderOk returns a tuple with the Provider field value
-// and a boolean to check if the value has been set.
-func (o *DockerCloudRequest) GetProviderOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Provider, true
-}
-
-// SetProvider sets field value
-func (o *DockerCloudRequest) SetProvider(v string) {
-	o.Provider = v
-}
-
 func (o DockerCloudRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["provider"] = o.Provider
+	}
 	if true {
 		toSerialize["credentials"] = o.Credentials
 	}
 	if o.Features != nil {
 		toSerialize["features"] = o.Features
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
 	}
 	return json.Marshal(toSerialize)
 }

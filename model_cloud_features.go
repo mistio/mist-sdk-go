@@ -19,10 +19,10 @@ import (
 type CloudFeatures struct {
 	// Enable compute services
 	Compute *bool `json:"compute,omitempty"`
-	// Enable container services
-	Container *bool `json:"container,omitempty"`
 	// Enable DNS services
 	Dns *bool `json:"dns,omitempty"`
+	// Enable container services
+	Container *bool `json:"container,omitempty"`
 }
 
 // NewCloudFeatures instantiates a new CloudFeatures object
@@ -33,10 +33,10 @@ func NewCloudFeatures() *CloudFeatures {
 	this := CloudFeatures{}
 	var compute bool = true
 	this.Compute = &compute
-	var container bool = false
-	this.Container = &container
 	var dns bool = false
 	this.Dns = &dns
+	var container bool = false
+	this.Container = &container
 	return &this
 }
 
@@ -47,10 +47,10 @@ func NewCloudFeaturesWithDefaults() *CloudFeatures {
 	this := CloudFeatures{}
 	var compute bool = true
 	this.Compute = &compute
-	var container bool = false
-	this.Container = &container
 	var dns bool = false
 	this.Dns = &dns
+	var container bool = false
+	this.Container = &container
 	return &this
 }
 
@@ -86,38 +86,6 @@ func (o *CloudFeatures) SetCompute(v bool) {
 	o.Compute = &v
 }
 
-// GetContainer returns the Container field value if set, zero value otherwise.
-func (o *CloudFeatures) GetContainer() bool {
-	if o == nil || o.Container == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Container
-}
-
-// GetContainerOk returns a tuple with the Container field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CloudFeatures) GetContainerOk() (*bool, bool) {
-	if o == nil || o.Container == nil {
-		return nil, false
-	}
-	return o.Container, true
-}
-
-// HasContainer returns a boolean if a field has been set.
-func (o *CloudFeatures) HasContainer() bool {
-	if o != nil && o.Container != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetContainer gets a reference to the given bool and assigns it to the Container field.
-func (o *CloudFeatures) SetContainer(v bool) {
-	o.Container = &v
-}
-
 // GetDns returns the Dns field value if set, zero value otherwise.
 func (o *CloudFeatures) GetDns() bool {
 	if o == nil || o.Dns == nil {
@@ -150,16 +118,48 @@ func (o *CloudFeatures) SetDns(v bool) {
 	o.Dns = &v
 }
 
+// GetContainer returns the Container field value if set, zero value otherwise.
+func (o *CloudFeatures) GetContainer() bool {
+	if o == nil || o.Container == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Container
+}
+
+// GetContainerOk returns a tuple with the Container field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudFeatures) GetContainerOk() (*bool, bool) {
+	if o == nil || o.Container == nil {
+		return nil, false
+	}
+	return o.Container, true
+}
+
+// HasContainer returns a boolean if a field has been set.
+func (o *CloudFeatures) HasContainer() bool {
+	if o != nil && o.Container != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetContainer gets a reference to the given bool and assigns it to the Container field.
+func (o *CloudFeatures) SetContainer(v bool) {
+	o.Container = &v
+}
+
 func (o CloudFeatures) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Compute != nil {
 		toSerialize["compute"] = o.Compute
 	}
-	if o.Container != nil {
-		toSerialize["container"] = o.Container
-	}
 	if o.Dns != nil {
 		toSerialize["dns"] = o.Dns
+	}
+	if o.Container != nil {
+		toSerialize["container"] = o.Container
 	}
 	return json.Marshal(toSerialize)
 }

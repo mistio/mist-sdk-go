@@ -17,26 +17,26 @@ import (
 
 // AzureCredentials struct for AzureCredentials
 type AzureCredentials struct {
+	// Your Azure tenant ID
+	TenantId string `json:"tenantId"`
+	// Your Azure subscription ID
+	SubscriptionId string `json:"subscriptionId"`
 	// Your Azure key
 	Key string `json:"key"`
 	// Your Azure secret
 	Secret string `json:"secret"`
-	// Your Azure subscription ID
-	SubscriptionId string `json:"subscriptionId"`
-	// Your Azure tenant ID
-	TenantId string `json:"tenantId"`
 }
 
 // NewAzureCredentials instantiates a new AzureCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureCredentials(key string, secret string, subscriptionId string, tenantId string, ) *AzureCredentials {
+func NewAzureCredentials(tenantId string, subscriptionId string, key string, secret string, ) *AzureCredentials {
 	this := AzureCredentials{}
+	this.TenantId = tenantId
+	this.SubscriptionId = subscriptionId
 	this.Key = key
 	this.Secret = secret
-	this.SubscriptionId = subscriptionId
-	this.TenantId = tenantId
 	return &this
 }
 
@@ -46,6 +46,54 @@ func NewAzureCredentials(key string, secret string, subscriptionId string, tenan
 func NewAzureCredentialsWithDefaults() *AzureCredentials {
 	this := AzureCredentials{}
 	return &this
+}
+
+// GetTenantId returns the TenantId field value
+func (o *AzureCredentials) GetTenantId() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value
+// and a boolean to check if the value has been set.
+func (o *AzureCredentials) GetTenantIdOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.TenantId, true
+}
+
+// SetTenantId sets field value
+func (o *AzureCredentials) SetTenantId(v string) {
+	o.TenantId = v
+}
+
+// GetSubscriptionId returns the SubscriptionId field value
+func (o *AzureCredentials) GetSubscriptionId() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.SubscriptionId
+}
+
+// GetSubscriptionIdOk returns a tuple with the SubscriptionId field value
+// and a boolean to check if the value has been set.
+func (o *AzureCredentials) GetSubscriptionIdOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.SubscriptionId, true
+}
+
+// SetSubscriptionId sets field value
+func (o *AzureCredentials) SetSubscriptionId(v string) {
+	o.SubscriptionId = v
 }
 
 // GetKey returns the Key field value
@@ -96,67 +144,19 @@ func (o *AzureCredentials) SetSecret(v string) {
 	o.Secret = v
 }
 
-// GetSubscriptionId returns the SubscriptionId field value
-func (o *AzureCredentials) GetSubscriptionId() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.SubscriptionId
-}
-
-// GetSubscriptionIdOk returns a tuple with the SubscriptionId field value
-// and a boolean to check if the value has been set.
-func (o *AzureCredentials) GetSubscriptionIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.SubscriptionId, true
-}
-
-// SetSubscriptionId sets field value
-func (o *AzureCredentials) SetSubscriptionId(v string) {
-	o.SubscriptionId = v
-}
-
-// GetTenantId returns the TenantId field value
-func (o *AzureCredentials) GetTenantId() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.TenantId
-}
-
-// GetTenantIdOk returns a tuple with the TenantId field value
-// and a boolean to check if the value has been set.
-func (o *AzureCredentials) GetTenantIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.TenantId, true
-}
-
-// SetTenantId sets field value
-func (o *AzureCredentials) SetTenantId(v string) {
-	o.TenantId = v
-}
-
 func (o AzureCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["key"] = o.Key
-	}
-	if true {
-		toSerialize["secret"] = o.Secret
+		toSerialize["tenantId"] = o.TenantId
 	}
 	if true {
 		toSerialize["subscriptionId"] = o.SubscriptionId
 	}
 	if true {
-		toSerialize["tenantId"] = o.TenantId
+		toSerialize["key"] = o.Key
+	}
+	if true {
+		toSerialize["secret"] = o.Secret
 	}
 	return json.Marshal(toSerialize)
 }

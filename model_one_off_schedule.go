@@ -18,19 +18,19 @@ import (
 
 // OneOffSchedule one_off schedule
 type OneOffSchedule struct {
+	ScheduleType string `json:"schedule_type"`
 	// When one_off schedule should run, e.g 2021-09-22T18:19:28Z
 	Datetime time.Time `json:"datetime"`
-	ScheduleType string `json:"schedule_type"`
 }
 
 // NewOneOffSchedule instantiates a new OneOffSchedule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOneOffSchedule(datetime time.Time, scheduleType string, ) *OneOffSchedule {
+func NewOneOffSchedule(scheduleType string, datetime time.Time, ) *OneOffSchedule {
 	this := OneOffSchedule{}
-	this.Datetime = datetime
 	this.ScheduleType = scheduleType
+	this.Datetime = datetime
 	return &this
 }
 
@@ -40,30 +40,6 @@ func NewOneOffSchedule(datetime time.Time, scheduleType string, ) *OneOffSchedul
 func NewOneOffScheduleWithDefaults() *OneOffSchedule {
 	this := OneOffSchedule{}
 	return &this
-}
-
-// GetDatetime returns the Datetime field value
-func (o *OneOffSchedule) GetDatetime() time.Time {
-	if o == nil  {
-		var ret time.Time
-		return ret
-	}
-
-	return o.Datetime
-}
-
-// GetDatetimeOk returns a tuple with the Datetime field value
-// and a boolean to check if the value has been set.
-func (o *OneOffSchedule) GetDatetimeOk() (*time.Time, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Datetime, true
-}
-
-// SetDatetime sets field value
-func (o *OneOffSchedule) SetDatetime(v time.Time) {
-	o.Datetime = v
 }
 
 // GetScheduleType returns the ScheduleType field value
@@ -90,13 +66,37 @@ func (o *OneOffSchedule) SetScheduleType(v string) {
 	o.ScheduleType = v
 }
 
+// GetDatetime returns the Datetime field value
+func (o *OneOffSchedule) GetDatetime() time.Time {
+	if o == nil  {
+		var ret time.Time
+		return ret
+	}
+
+	return o.Datetime
+}
+
+// GetDatetimeOk returns a tuple with the Datetime field value
+// and a boolean to check if the value has been set.
+func (o *OneOffSchedule) GetDatetimeOk() (*time.Time, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Datetime, true
+}
+
+// SetDatetime sets field value
+func (o *OneOffSchedule) SetDatetime(v time.Time) {
+	o.Datetime = v
+}
+
 func (o OneOffSchedule) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["datetime"] = o.Datetime
+		toSerialize["schedule_type"] = o.ScheduleType
 	}
 	if true {
-		toSerialize["schedule_type"] = o.ScheduleType
+		toSerialize["datetime"] = o.Datetime
 	}
 	return json.Marshal(toSerialize)
 }

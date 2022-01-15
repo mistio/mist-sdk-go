@@ -18,31 +18,31 @@ import (
 
 // CronSchedule crontab schedule
 type CronSchedule struct {
-	DayOfMonth string `json:"day_of_month"`
-	DayOfWeek string `json:"day_of_week"`
-	// The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z
-	Expires *time.Time `json:"expires,omitempty"`
-	Hour string `json:"hour"`
-	MaxRunCount *int32 `json:"max_run_count,omitempty"`
-	Minute string `json:"minute"`
-	MonthOfYear string `json:"month_of_year"`
 	ScheduleType string `json:"schedule_type"`
+	Minute string `json:"minute"`
+	Hour string `json:"hour"`
+	DayOfMonth string `json:"day_of_month"`
+	MonthOfYear string `json:"month_of_year"`
+	DayOfWeek string `json:"day_of_week"`
 	// The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z
 	StartAfter *time.Time `json:"start_after,omitempty"`
+	// The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z
+	Expires *time.Time `json:"expires,omitempty"`
+	MaxRunCount *int32 `json:"max_run_count,omitempty"`
 }
 
 // NewCronSchedule instantiates a new CronSchedule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCronSchedule(dayOfMonth string, dayOfWeek string, hour string, minute string, monthOfYear string, scheduleType string, ) *CronSchedule {
+func NewCronSchedule(scheduleType string, minute string, hour string, dayOfMonth string, monthOfYear string, dayOfWeek string, ) *CronSchedule {
 	this := CronSchedule{}
-	this.DayOfMonth = dayOfMonth
-	this.DayOfWeek = dayOfWeek
-	this.Hour = hour
-	this.Minute = minute
-	this.MonthOfYear = monthOfYear
 	this.ScheduleType = scheduleType
+	this.Minute = minute
+	this.Hour = hour
+	this.DayOfMonth = dayOfMonth
+	this.MonthOfYear = monthOfYear
+	this.DayOfWeek = dayOfWeek
 	return &this
 }
 
@@ -54,140 +54,28 @@ func NewCronScheduleWithDefaults() *CronSchedule {
 	return &this
 }
 
-// GetDayOfMonth returns the DayOfMonth field value
-func (o *CronSchedule) GetDayOfMonth() string {
+// GetScheduleType returns the ScheduleType field value
+func (o *CronSchedule) GetScheduleType() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.DayOfMonth
+	return o.ScheduleType
 }
 
-// GetDayOfMonthOk returns a tuple with the DayOfMonth field value
+// GetScheduleTypeOk returns a tuple with the ScheduleType field value
 // and a boolean to check if the value has been set.
-func (o *CronSchedule) GetDayOfMonthOk() (*string, bool) {
+func (o *CronSchedule) GetScheduleTypeOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.DayOfMonth, true
+	return &o.ScheduleType, true
 }
 
-// SetDayOfMonth sets field value
-func (o *CronSchedule) SetDayOfMonth(v string) {
-	o.DayOfMonth = v
-}
-
-// GetDayOfWeek returns the DayOfWeek field value
-func (o *CronSchedule) GetDayOfWeek() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.DayOfWeek
-}
-
-// GetDayOfWeekOk returns a tuple with the DayOfWeek field value
-// and a boolean to check if the value has been set.
-func (o *CronSchedule) GetDayOfWeekOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.DayOfWeek, true
-}
-
-// SetDayOfWeek sets field value
-func (o *CronSchedule) SetDayOfWeek(v string) {
-	o.DayOfWeek = v
-}
-
-// GetExpires returns the Expires field value if set, zero value otherwise.
-func (o *CronSchedule) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.Expires
-}
-
-// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CronSchedule) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
-		return nil, false
-	}
-	return o.Expires, true
-}
-
-// HasExpires returns a boolean if a field has been set.
-func (o *CronSchedule) HasExpires() bool {
-	if o != nil && o.Expires != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
-func (o *CronSchedule) SetExpires(v time.Time) {
-	o.Expires = &v
-}
-
-// GetHour returns the Hour field value
-func (o *CronSchedule) GetHour() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Hour
-}
-
-// GetHourOk returns a tuple with the Hour field value
-// and a boolean to check if the value has been set.
-func (o *CronSchedule) GetHourOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Hour, true
-}
-
-// SetHour sets field value
-func (o *CronSchedule) SetHour(v string) {
-	o.Hour = v
-}
-
-// GetMaxRunCount returns the MaxRunCount field value if set, zero value otherwise.
-func (o *CronSchedule) GetMaxRunCount() int32 {
-	if o == nil || o.MaxRunCount == nil {
-		var ret int32
-		return ret
-	}
-	return *o.MaxRunCount
-}
-
-// GetMaxRunCountOk returns a tuple with the MaxRunCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CronSchedule) GetMaxRunCountOk() (*int32, bool) {
-	if o == nil || o.MaxRunCount == nil {
-		return nil, false
-	}
-	return o.MaxRunCount, true
-}
-
-// HasMaxRunCount returns a boolean if a field has been set.
-func (o *CronSchedule) HasMaxRunCount() bool {
-	if o != nil && o.MaxRunCount != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxRunCount gets a reference to the given int32 and assigns it to the MaxRunCount field.
-func (o *CronSchedule) SetMaxRunCount(v int32) {
-	o.MaxRunCount = &v
+// SetScheduleType sets field value
+func (o *CronSchedule) SetScheduleType(v string) {
+	o.ScheduleType = v
 }
 
 // GetMinute returns the Minute field value
@@ -214,6 +102,54 @@ func (o *CronSchedule) SetMinute(v string) {
 	o.Minute = v
 }
 
+// GetHour returns the Hour field value
+func (o *CronSchedule) GetHour() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Hour
+}
+
+// GetHourOk returns a tuple with the Hour field value
+// and a boolean to check if the value has been set.
+func (o *CronSchedule) GetHourOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Hour, true
+}
+
+// SetHour sets field value
+func (o *CronSchedule) SetHour(v string) {
+	o.Hour = v
+}
+
+// GetDayOfMonth returns the DayOfMonth field value
+func (o *CronSchedule) GetDayOfMonth() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.DayOfMonth
+}
+
+// GetDayOfMonthOk returns a tuple with the DayOfMonth field value
+// and a boolean to check if the value has been set.
+func (o *CronSchedule) GetDayOfMonthOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.DayOfMonth, true
+}
+
+// SetDayOfMonth sets field value
+func (o *CronSchedule) SetDayOfMonth(v string) {
+	o.DayOfMonth = v
+}
+
 // GetMonthOfYear returns the MonthOfYear field value
 func (o *CronSchedule) GetMonthOfYear() string {
 	if o == nil  {
@@ -238,28 +174,28 @@ func (o *CronSchedule) SetMonthOfYear(v string) {
 	o.MonthOfYear = v
 }
 
-// GetScheduleType returns the ScheduleType field value
-func (o *CronSchedule) GetScheduleType() string {
+// GetDayOfWeek returns the DayOfWeek field value
+func (o *CronSchedule) GetDayOfWeek() string {
 	if o == nil  {
 		var ret string
 		return ret
 	}
 
-	return o.ScheduleType
+	return o.DayOfWeek
 }
 
-// GetScheduleTypeOk returns a tuple with the ScheduleType field value
+// GetDayOfWeekOk returns a tuple with the DayOfWeek field value
 // and a boolean to check if the value has been set.
-func (o *CronSchedule) GetScheduleTypeOk() (*string, bool) {
+func (o *CronSchedule) GetDayOfWeekOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.ScheduleType, true
+	return &o.DayOfWeek, true
 }
 
-// SetScheduleType sets field value
-func (o *CronSchedule) SetScheduleType(v string) {
-	o.ScheduleType = v
+// SetDayOfWeek sets field value
+func (o *CronSchedule) SetDayOfWeek(v string) {
+	o.DayOfWeek = v
 }
 
 // GetStartAfter returns the StartAfter field value if set, zero value otherwise.
@@ -294,34 +230,98 @@ func (o *CronSchedule) SetStartAfter(v time.Time) {
 	o.StartAfter = &v
 }
 
+// GetExpires returns the Expires field value if set, zero value otherwise.
+func (o *CronSchedule) GetExpires() time.Time {
+	if o == nil || o.Expires == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.Expires
+}
+
+// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CronSchedule) GetExpiresOk() (*time.Time, bool) {
+	if o == nil || o.Expires == nil {
+		return nil, false
+	}
+	return o.Expires, true
+}
+
+// HasExpires returns a boolean if a field has been set.
+func (o *CronSchedule) HasExpires() bool {
+	if o != nil && o.Expires != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
+func (o *CronSchedule) SetExpires(v time.Time) {
+	o.Expires = &v
+}
+
+// GetMaxRunCount returns the MaxRunCount field value if set, zero value otherwise.
+func (o *CronSchedule) GetMaxRunCount() int32 {
+	if o == nil || o.MaxRunCount == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MaxRunCount
+}
+
+// GetMaxRunCountOk returns a tuple with the MaxRunCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CronSchedule) GetMaxRunCountOk() (*int32, bool) {
+	if o == nil || o.MaxRunCount == nil {
+		return nil, false
+	}
+	return o.MaxRunCount, true
+}
+
+// HasMaxRunCount returns a boolean if a field has been set.
+func (o *CronSchedule) HasMaxRunCount() bool {
+	if o != nil && o.MaxRunCount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxRunCount gets a reference to the given int32 and assigns it to the MaxRunCount field.
+func (o *CronSchedule) SetMaxRunCount(v int32) {
+	o.MaxRunCount = &v
+}
+
 func (o CronSchedule) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["day_of_month"] = o.DayOfMonth
-	}
-	if true {
-		toSerialize["day_of_week"] = o.DayOfWeek
-	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
-	}
-	if true {
-		toSerialize["hour"] = o.Hour
-	}
-	if o.MaxRunCount != nil {
-		toSerialize["max_run_count"] = o.MaxRunCount
+		toSerialize["schedule_type"] = o.ScheduleType
 	}
 	if true {
 		toSerialize["minute"] = o.Minute
 	}
 	if true {
+		toSerialize["hour"] = o.Hour
+	}
+	if true {
+		toSerialize["day_of_month"] = o.DayOfMonth
+	}
+	if true {
 		toSerialize["month_of_year"] = o.MonthOfYear
 	}
 	if true {
-		toSerialize["schedule_type"] = o.ScheduleType
+		toSerialize["day_of_week"] = o.DayOfWeek
 	}
 	if o.StartAfter != nil {
 		toSerialize["start_after"] = o.StartAfter
+	}
+	if o.Expires != nil {
+		toSerialize["expires"] = o.Expires
+	}
+	if o.MaxRunCount != nil {
+		toSerialize["max_run_count"] = o.MaxRunCount
 	}
 	return json.Marshal(toSerialize)
 }

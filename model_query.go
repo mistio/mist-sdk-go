@@ -17,26 +17,26 @@ import (
 
 // Query struct for Query
 type Query struct {
-	// the function to be applied on the computed series. Must be one of: all, any, avg 
-	Aggregation string `json:"aggregation"`
-	// the operator used to compare the computed value with the given threshold 
-	Operator string `json:"operator"`
 	// the metric's name, e.g. \"load.shortterm\"
 	Target string `json:"target"`
+	// the operator used to compare the computed value with the given threshold 
+	Operator string `json:"operator"`
 	// the value over/under which an alert will be raised
 	Threshold float32 `json:"threshold"`
+	// the function to be applied on the computed series. Must be one of: all, any, avg 
+	Aggregation string `json:"aggregation"`
 }
 
 // NewQuery instantiates a new Query object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewQuery(aggregation string, operator string, target string, threshold float32, ) *Query {
+func NewQuery(target string, operator string, threshold float32, aggregation string, ) *Query {
 	this := Query{}
-	this.Aggregation = aggregation
-	this.Operator = operator
 	this.Target = target
+	this.Operator = operator
 	this.Threshold = threshold
+	this.Aggregation = aggregation
 	return &this
 }
 
@@ -46,54 +46,6 @@ func NewQuery(aggregation string, operator string, target string, threshold floa
 func NewQueryWithDefaults() *Query {
 	this := Query{}
 	return &this
-}
-
-// GetAggregation returns the Aggregation field value
-func (o *Query) GetAggregation() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Aggregation
-}
-
-// GetAggregationOk returns a tuple with the Aggregation field value
-// and a boolean to check if the value has been set.
-func (o *Query) GetAggregationOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Aggregation, true
-}
-
-// SetAggregation sets field value
-func (o *Query) SetAggregation(v string) {
-	o.Aggregation = v
-}
-
-// GetOperator returns the Operator field value
-func (o *Query) GetOperator() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Operator
-}
-
-// GetOperatorOk returns a tuple with the Operator field value
-// and a boolean to check if the value has been set.
-func (o *Query) GetOperatorOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Operator, true
-}
-
-// SetOperator sets field value
-func (o *Query) SetOperator(v string) {
-	o.Operator = v
 }
 
 // GetTarget returns the Target field value
@@ -120,6 +72,30 @@ func (o *Query) SetTarget(v string) {
 	o.Target = v
 }
 
+// GetOperator returns the Operator field value
+func (o *Query) GetOperator() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Operator
+}
+
+// GetOperatorOk returns a tuple with the Operator field value
+// and a boolean to check if the value has been set.
+func (o *Query) GetOperatorOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Operator, true
+}
+
+// SetOperator sets field value
+func (o *Query) SetOperator(v string) {
+	o.Operator = v
+}
+
 // GetThreshold returns the Threshold field value
 func (o *Query) GetThreshold() float32 {
 	if o == nil  {
@@ -144,19 +120,43 @@ func (o *Query) SetThreshold(v float32) {
 	o.Threshold = v
 }
 
+// GetAggregation returns the Aggregation field value
+func (o *Query) GetAggregation() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Aggregation
+}
+
+// GetAggregationOk returns a tuple with the Aggregation field value
+// and a boolean to check if the value has been set.
+func (o *Query) GetAggregationOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Aggregation, true
+}
+
+// SetAggregation sets field value
+func (o *Query) SetAggregation(v string) {
+	o.Aggregation = v
+}
+
 func (o Query) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["aggregation"] = o.Aggregation
+		toSerialize["target"] = o.Target
 	}
 	if true {
 		toSerialize["operator"] = o.Operator
 	}
 	if true {
-		toSerialize["target"] = o.Target
+		toSerialize["threshold"] = o.Threshold
 	}
 	if true {
-		toSerialize["threshold"] = o.Threshold
+		toSerialize["aggregation"] = o.Aggregation
 	}
 	return json.Marshal(toSerialize)
 }

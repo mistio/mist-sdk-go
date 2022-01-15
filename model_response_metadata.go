@@ -17,14 +17,14 @@ import (
 
 // ResponseMetadata struct for ResponseMetadata
 type ResponseMetadata struct {
+	// Total items matching the query
+	Total *int32 `json:"total,omitempty"`
 	// Number of items in response
 	Returned *int32 `json:"returned,omitempty"`
 	// Sort order of results
 	Sort *string `json:"sort,omitempty"`
 	// Index of first response item in total matching items
 	Start *int32 `json:"start,omitempty"`
-	// Total items matching the query
-	Total *int32 `json:"total,omitempty"`
 }
 
 // NewResponseMetadata instantiates a new ResponseMetadata object
@@ -42,6 +42,38 @@ func NewResponseMetadata() *ResponseMetadata {
 func NewResponseMetadataWithDefaults() *ResponseMetadata {
 	this := ResponseMetadata{}
 	return &this
+}
+
+// GetTotal returns the Total field value if set, zero value otherwise.
+func (o *ResponseMetadata) GetTotal() int32 {
+	if o == nil || o.Total == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Total
+}
+
+// GetTotalOk returns a tuple with the Total field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResponseMetadata) GetTotalOk() (*int32, bool) {
+	if o == nil || o.Total == nil {
+		return nil, false
+	}
+	return o.Total, true
+}
+
+// HasTotal returns a boolean if a field has been set.
+func (o *ResponseMetadata) HasTotal() bool {
+	if o != nil && o.Total != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTotal gets a reference to the given int32 and assigns it to the Total field.
+func (o *ResponseMetadata) SetTotal(v int32) {
+	o.Total = &v
 }
 
 // GetReturned returns the Returned field value if set, zero value otherwise.
@@ -140,40 +172,11 @@ func (o *ResponseMetadata) SetStart(v int32) {
 	o.Start = &v
 }
 
-// GetTotal returns the Total field value if set, zero value otherwise.
-func (o *ResponseMetadata) GetTotal() int32 {
-	if o == nil || o.Total == nil {
-		var ret int32
-		return ret
-	}
-	return *o.Total
-}
-
-// GetTotalOk returns a tuple with the Total field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResponseMetadata) GetTotalOk() (*int32, bool) {
-	if o == nil || o.Total == nil {
-		return nil, false
-	}
-	return o.Total, true
-}
-
-// HasTotal returns a boolean if a field has been set.
-func (o *ResponseMetadata) HasTotal() bool {
-	if o != nil && o.Total != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTotal gets a reference to the given int32 and assigns it to the Total field.
-func (o *ResponseMetadata) SetTotal(v int32) {
-	o.Total = &v
-}
-
 func (o ResponseMetadata) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Total != nil {
+		toSerialize["total"] = o.Total
+	}
 	if o.Returned != nil {
 		toSerialize["returned"] = o.Returned
 	}
@@ -182,9 +185,6 @@ func (o ResponseMetadata) MarshalJSON() ([]byte, error) {
 	}
 	if o.Start != nil {
 		toSerialize["start"] = o.Start
-	}
-	if o.Total != nil {
-		toSerialize["total"] = o.Total
 	}
 	return json.Marshal(toSerialize)
 }

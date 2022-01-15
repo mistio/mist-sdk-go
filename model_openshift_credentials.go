@@ -19,24 +19,24 @@ import (
 type OpenshiftCredentials struct {
 	// Your OpenShift API host
 	Host string `json:"host"`
-	// Your OpenShift API password
-	Password string `json:"password"`
 	// Your OpenShift API port
 	Port string `json:"port"`
 	// Your OpenShift API username
 	Username string `json:"username"`
+	// Your OpenShift API password
+	Password string `json:"password"`
 }
 
 // NewOpenshiftCredentials instantiates a new OpenshiftCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenshiftCredentials(host string, password string, port string, username string, ) *OpenshiftCredentials {
+func NewOpenshiftCredentials(host string, port string, username string, password string, ) *OpenshiftCredentials {
 	this := OpenshiftCredentials{}
 	this.Host = host
-	this.Password = password
 	this.Port = port
 	this.Username = username
+	this.Password = password
 	return &this
 }
 
@@ -70,30 +70,6 @@ func (o *OpenshiftCredentials) GetHostOk() (*string, bool) {
 // SetHost sets field value
 func (o *OpenshiftCredentials) SetHost(v string) {
 	o.Host = v
-}
-
-// GetPassword returns the Password field value
-func (o *OpenshiftCredentials) GetPassword() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value
-// and a boolean to check if the value has been set.
-func (o *OpenshiftCredentials) GetPasswordOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Password, true
-}
-
-// SetPassword sets field value
-func (o *OpenshiftCredentials) SetPassword(v string) {
-	o.Password = v
 }
 
 // GetPort returns the Port field value
@@ -144,19 +120,43 @@ func (o *OpenshiftCredentials) SetUsername(v string) {
 	o.Username = v
 }
 
+// GetPassword returns the Password field value
+func (o *OpenshiftCredentials) GetPassword() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value
+// and a boolean to check if the value has been set.
+func (o *OpenshiftCredentials) GetPasswordOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Password, true
+}
+
+// SetPassword sets field value
+func (o *OpenshiftCredentials) SetPassword(v string) {
+	o.Password = v
+}
+
 func (o OpenshiftCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["host"] = o.Host
 	}
 	if true {
-		toSerialize["password"] = o.Password
-	}
-	if true {
 		toSerialize["port"] = o.Port
 	}
 	if true {
 		toSerialize["username"] = o.Username
+	}
+	if true {
+		toSerialize["password"] = o.Password
 	}
 	return json.Marshal(toSerialize)
 }

@@ -17,8 +17,8 @@ import (
 
 // DatapointsData struct for DatapointsData
 type DatapointsData struct {
-	Result *[]Vector `json:"result,omitempty"`
 	ResultType *string `json:"resultType,omitempty"`
+	Result *[]Vector `json:"result,omitempty"`
 }
 
 // NewDatapointsData instantiates a new DatapointsData object
@@ -36,38 +36,6 @@ func NewDatapointsData() *DatapointsData {
 func NewDatapointsDataWithDefaults() *DatapointsData {
 	this := DatapointsData{}
 	return &this
-}
-
-// GetResult returns the Result field value if set, zero value otherwise.
-func (o *DatapointsData) GetResult() []Vector {
-	if o == nil || o.Result == nil {
-		var ret []Vector
-		return ret
-	}
-	return *o.Result
-}
-
-// GetResultOk returns a tuple with the Result field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DatapointsData) GetResultOk() (*[]Vector, bool) {
-	if o == nil || o.Result == nil {
-		return nil, false
-	}
-	return o.Result, true
-}
-
-// HasResult returns a boolean if a field has been set.
-func (o *DatapointsData) HasResult() bool {
-	if o != nil && o.Result != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResult gets a reference to the given []Vector and assigns it to the Result field.
-func (o *DatapointsData) SetResult(v []Vector) {
-	o.Result = &v
 }
 
 // GetResultType returns the ResultType field value if set, zero value otherwise.
@@ -102,13 +70,45 @@ func (o *DatapointsData) SetResultType(v string) {
 	o.ResultType = &v
 }
 
+// GetResult returns the Result field value if set, zero value otherwise.
+func (o *DatapointsData) GetResult() []Vector {
+	if o == nil || o.Result == nil {
+		var ret []Vector
+		return ret
+	}
+	return *o.Result
+}
+
+// GetResultOk returns a tuple with the Result field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatapointsData) GetResultOk() (*[]Vector, bool) {
+	if o == nil || o.Result == nil {
+		return nil, false
+	}
+	return o.Result, true
+}
+
+// HasResult returns a boolean if a field has been set.
+func (o *DatapointsData) HasResult() bool {
+	if o != nil && o.Result != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResult gets a reference to the given []Vector and assigns it to the Result field.
+func (o *DatapointsData) SetResult(v []Vector) {
+	o.Result = &v
+}
+
 func (o DatapointsData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Result != nil {
-		toSerialize["result"] = o.Result
-	}
 	if o.ResultType != nil {
 		toSerialize["resultType"] = o.ResultType
+	}
+	if o.Result != nil {
+		toSerialize["result"] = o.Result
 	}
 	return json.Marshal(toSerialize)
 }

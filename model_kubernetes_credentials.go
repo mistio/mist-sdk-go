@@ -19,22 +19,22 @@ import (
 type KubernetesCredentials struct {
 	// Your Kubernetes API host
 	Host string `json:"host"`
-	// Your Kubernetes API password
-	Password *string `json:"password,omitempty"`
 	// Your Kubernetes API port
 	Port string `json:"port"`
-	// Show all containers, including stopped
-	ShowAll *bool `json:"showAll,omitempty"`
-	// Your TLS CA certifcate
-	TlsCaCert *string `json:"tlsCaCert,omitempty"`
-	// Your TLS auth certificate
-	TlsCert *string `json:"tlsCert,omitempty"`
-	// Your TLS auth key
-	TlsKey *string `json:"tlsKey,omitempty"`
-	// Your Kubernetes API bearer token
-	Token *string `json:"token,omitempty"`
 	// Your Kubernetes API username
 	Username *string `json:"username,omitempty"`
+	// Your Kubernetes API password
+	Password *string `json:"password,omitempty"`
+	// Your Kubernetes API bearer token
+	Token *string `json:"token,omitempty"`
+	// Your TLS auth key
+	TlsKey *string `json:"tlsKey,omitempty"`
+	// Your TLS auth certificate
+	TlsCert *string `json:"tlsCert,omitempty"`
+	// Your TLS CA certifcate
+	TlsCaCert *string `json:"tlsCaCert,omitempty"`
+	// Show all containers, including stopped
+	ShowAll *bool `json:"showAll,omitempty"`
 }
 
 // NewKubernetesCredentials instantiates a new KubernetesCredentials object
@@ -80,38 +80,6 @@ func (o *KubernetesCredentials) SetHost(v string) {
 	o.Host = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *KubernetesCredentials) GetPassword() string {
-	if o == nil || o.Password == nil {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KubernetesCredentials) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *KubernetesCredentials) HasPassword() bool {
-	if o != nil && o.Password != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *KubernetesCredentials) SetPassword(v string) {
-	o.Password = &v
-}
-
 // GetPort returns the Port field value
 func (o *KubernetesCredentials) GetPort() string {
 	if o == nil  {
@@ -134,166 +102,6 @@ func (o *KubernetesCredentials) GetPortOk() (*string, bool) {
 // SetPort sets field value
 func (o *KubernetesCredentials) SetPort(v string) {
 	o.Port = v
-}
-
-// GetShowAll returns the ShowAll field value if set, zero value otherwise.
-func (o *KubernetesCredentials) GetShowAll() bool {
-	if o == nil || o.ShowAll == nil {
-		var ret bool
-		return ret
-	}
-	return *o.ShowAll
-}
-
-// GetShowAllOk returns a tuple with the ShowAll field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KubernetesCredentials) GetShowAllOk() (*bool, bool) {
-	if o == nil || o.ShowAll == nil {
-		return nil, false
-	}
-	return o.ShowAll, true
-}
-
-// HasShowAll returns a boolean if a field has been set.
-func (o *KubernetesCredentials) HasShowAll() bool {
-	if o != nil && o.ShowAll != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetShowAll gets a reference to the given bool and assigns it to the ShowAll field.
-func (o *KubernetesCredentials) SetShowAll(v bool) {
-	o.ShowAll = &v
-}
-
-// GetTlsCaCert returns the TlsCaCert field value if set, zero value otherwise.
-func (o *KubernetesCredentials) GetTlsCaCert() string {
-	if o == nil || o.TlsCaCert == nil {
-		var ret string
-		return ret
-	}
-	return *o.TlsCaCert
-}
-
-// GetTlsCaCertOk returns a tuple with the TlsCaCert field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KubernetesCredentials) GetTlsCaCertOk() (*string, bool) {
-	if o == nil || o.TlsCaCert == nil {
-		return nil, false
-	}
-	return o.TlsCaCert, true
-}
-
-// HasTlsCaCert returns a boolean if a field has been set.
-func (o *KubernetesCredentials) HasTlsCaCert() bool {
-	if o != nil && o.TlsCaCert != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTlsCaCert gets a reference to the given string and assigns it to the TlsCaCert field.
-func (o *KubernetesCredentials) SetTlsCaCert(v string) {
-	o.TlsCaCert = &v
-}
-
-// GetTlsCert returns the TlsCert field value if set, zero value otherwise.
-func (o *KubernetesCredentials) GetTlsCert() string {
-	if o == nil || o.TlsCert == nil {
-		var ret string
-		return ret
-	}
-	return *o.TlsCert
-}
-
-// GetTlsCertOk returns a tuple with the TlsCert field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KubernetesCredentials) GetTlsCertOk() (*string, bool) {
-	if o == nil || o.TlsCert == nil {
-		return nil, false
-	}
-	return o.TlsCert, true
-}
-
-// HasTlsCert returns a boolean if a field has been set.
-func (o *KubernetesCredentials) HasTlsCert() bool {
-	if o != nil && o.TlsCert != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTlsCert gets a reference to the given string and assigns it to the TlsCert field.
-func (o *KubernetesCredentials) SetTlsCert(v string) {
-	o.TlsCert = &v
-}
-
-// GetTlsKey returns the TlsKey field value if set, zero value otherwise.
-func (o *KubernetesCredentials) GetTlsKey() string {
-	if o == nil || o.TlsKey == nil {
-		var ret string
-		return ret
-	}
-	return *o.TlsKey
-}
-
-// GetTlsKeyOk returns a tuple with the TlsKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KubernetesCredentials) GetTlsKeyOk() (*string, bool) {
-	if o == nil || o.TlsKey == nil {
-		return nil, false
-	}
-	return o.TlsKey, true
-}
-
-// HasTlsKey returns a boolean if a field has been set.
-func (o *KubernetesCredentials) HasTlsKey() bool {
-	if o != nil && o.TlsKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTlsKey gets a reference to the given string and assigns it to the TlsKey field.
-func (o *KubernetesCredentials) SetTlsKey(v string) {
-	o.TlsKey = &v
-}
-
-// GetToken returns the Token field value if set, zero value otherwise.
-func (o *KubernetesCredentials) GetToken() string {
-	if o == nil || o.Token == nil {
-		var ret string
-		return ret
-	}
-	return *o.Token
-}
-
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KubernetesCredentials) GetTokenOk() (*string, bool) {
-	if o == nil || o.Token == nil {
-		return nil, false
-	}
-	return o.Token, true
-}
-
-// HasToken returns a boolean if a field has been set.
-func (o *KubernetesCredentials) HasToken() bool {
-	if o != nil && o.Token != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *KubernetesCredentials) SetToken(v string) {
-	o.Token = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise.
@@ -328,34 +136,226 @@ func (o *KubernetesCredentials) SetUsername(v string) {
 	o.Username = &v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *KubernetesCredentials) GetPassword() string {
+	if o == nil || o.Password == nil {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KubernetesCredentials) GetPasswordOk() (*string, bool) {
+	if o == nil || o.Password == nil {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *KubernetesCredentials) HasPassword() bool {
+	if o != nil && o.Password != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *KubernetesCredentials) SetPassword(v string) {
+	o.Password = &v
+}
+
+// GetToken returns the Token field value if set, zero value otherwise.
+func (o *KubernetesCredentials) GetToken() string {
+	if o == nil || o.Token == nil {
+		var ret string
+		return ret
+	}
+	return *o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KubernetesCredentials) GetTokenOk() (*string, bool) {
+	if o == nil || o.Token == nil {
+		return nil, false
+	}
+	return o.Token, true
+}
+
+// HasToken returns a boolean if a field has been set.
+func (o *KubernetesCredentials) HasToken() bool {
+	if o != nil && o.Token != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *KubernetesCredentials) SetToken(v string) {
+	o.Token = &v
+}
+
+// GetTlsKey returns the TlsKey field value if set, zero value otherwise.
+func (o *KubernetesCredentials) GetTlsKey() string {
+	if o == nil || o.TlsKey == nil {
+		var ret string
+		return ret
+	}
+	return *o.TlsKey
+}
+
+// GetTlsKeyOk returns a tuple with the TlsKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KubernetesCredentials) GetTlsKeyOk() (*string, bool) {
+	if o == nil || o.TlsKey == nil {
+		return nil, false
+	}
+	return o.TlsKey, true
+}
+
+// HasTlsKey returns a boolean if a field has been set.
+func (o *KubernetesCredentials) HasTlsKey() bool {
+	if o != nil && o.TlsKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsKey gets a reference to the given string and assigns it to the TlsKey field.
+func (o *KubernetesCredentials) SetTlsKey(v string) {
+	o.TlsKey = &v
+}
+
+// GetTlsCert returns the TlsCert field value if set, zero value otherwise.
+func (o *KubernetesCredentials) GetTlsCert() string {
+	if o == nil || o.TlsCert == nil {
+		var ret string
+		return ret
+	}
+	return *o.TlsCert
+}
+
+// GetTlsCertOk returns a tuple with the TlsCert field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KubernetesCredentials) GetTlsCertOk() (*string, bool) {
+	if o == nil || o.TlsCert == nil {
+		return nil, false
+	}
+	return o.TlsCert, true
+}
+
+// HasTlsCert returns a boolean if a field has been set.
+func (o *KubernetesCredentials) HasTlsCert() bool {
+	if o != nil && o.TlsCert != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsCert gets a reference to the given string and assigns it to the TlsCert field.
+func (o *KubernetesCredentials) SetTlsCert(v string) {
+	o.TlsCert = &v
+}
+
+// GetTlsCaCert returns the TlsCaCert field value if set, zero value otherwise.
+func (o *KubernetesCredentials) GetTlsCaCert() string {
+	if o == nil || o.TlsCaCert == nil {
+		var ret string
+		return ret
+	}
+	return *o.TlsCaCert
+}
+
+// GetTlsCaCertOk returns a tuple with the TlsCaCert field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KubernetesCredentials) GetTlsCaCertOk() (*string, bool) {
+	if o == nil || o.TlsCaCert == nil {
+		return nil, false
+	}
+	return o.TlsCaCert, true
+}
+
+// HasTlsCaCert returns a boolean if a field has been set.
+func (o *KubernetesCredentials) HasTlsCaCert() bool {
+	if o != nil && o.TlsCaCert != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsCaCert gets a reference to the given string and assigns it to the TlsCaCert field.
+func (o *KubernetesCredentials) SetTlsCaCert(v string) {
+	o.TlsCaCert = &v
+}
+
+// GetShowAll returns the ShowAll field value if set, zero value otherwise.
+func (o *KubernetesCredentials) GetShowAll() bool {
+	if o == nil || o.ShowAll == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ShowAll
+}
+
+// GetShowAllOk returns a tuple with the ShowAll field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KubernetesCredentials) GetShowAllOk() (*bool, bool) {
+	if o == nil || o.ShowAll == nil {
+		return nil, false
+	}
+	return o.ShowAll, true
+}
+
+// HasShowAll returns a boolean if a field has been set.
+func (o *KubernetesCredentials) HasShowAll() bool {
+	if o != nil && o.ShowAll != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetShowAll gets a reference to the given bool and assigns it to the ShowAll field.
+func (o *KubernetesCredentials) SetShowAll(v bool) {
+	o.ShowAll = &v
+}
+
 func (o KubernetesCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["host"] = o.Host
 	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
 	if true {
 		toSerialize["port"] = o.Port
 	}
-	if o.ShowAll != nil {
-		toSerialize["showAll"] = o.ShowAll
+	if o.Username != nil {
+		toSerialize["username"] = o.Username
 	}
-	if o.TlsCaCert != nil {
-		toSerialize["tlsCaCert"] = o.TlsCaCert
-	}
-	if o.TlsCert != nil {
-		toSerialize["tlsCert"] = o.TlsCert
-	}
-	if o.TlsKey != nil {
-		toSerialize["tlsKey"] = o.TlsKey
+	if o.Password != nil {
+		toSerialize["password"] = o.Password
 	}
 	if o.Token != nil {
 		toSerialize["token"] = o.Token
 	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
+	if o.TlsKey != nil {
+		toSerialize["tlsKey"] = o.TlsKey
+	}
+	if o.TlsCert != nil {
+		toSerialize["tlsCert"] = o.TlsCert
+	}
+	if o.TlsCaCert != nil {
+		toSerialize["tlsCaCert"] = o.TlsCaCert
+	}
+	if o.ShowAll != nil {
+		toSerialize["showAll"] = o.ShowAll
 	}
 	return json.Marshal(toSerialize)
 }

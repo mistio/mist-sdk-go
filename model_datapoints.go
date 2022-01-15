@@ -17,8 +17,8 @@ import (
 
 // Datapoints struct for Datapoints
 type Datapoints struct {
-	Data *DatapointsData `json:"data,omitempty"`
 	Status *string `json:"status,omitempty"`
+	Data *DatapointsData `json:"data,omitempty"`
 }
 
 // NewDatapoints instantiates a new Datapoints object
@@ -36,38 +36,6 @@ func NewDatapoints() *Datapoints {
 func NewDatapointsWithDefaults() *Datapoints {
 	this := Datapoints{}
 	return &this
-}
-
-// GetData returns the Data field value if set, zero value otherwise.
-func (o *Datapoints) GetData() DatapointsData {
-	if o == nil || o.Data == nil {
-		var ret DatapointsData
-		return ret
-	}
-	return *o.Data
-}
-
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Datapoints) GetDataOk() (*DatapointsData, bool) {
-	if o == nil || o.Data == nil {
-		return nil, false
-	}
-	return o.Data, true
-}
-
-// HasData returns a boolean if a field has been set.
-func (o *Datapoints) HasData() bool {
-	if o != nil && o.Data != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given DatapointsData and assigns it to the Data field.
-func (o *Datapoints) SetData(v DatapointsData) {
-	o.Data = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -102,13 +70,45 @@ func (o *Datapoints) SetStatus(v string) {
 	o.Status = &v
 }
 
+// GetData returns the Data field value if set, zero value otherwise.
+func (o *Datapoints) GetData() DatapointsData {
+	if o == nil || o.Data == nil {
+		var ret DatapointsData
+		return ret
+	}
+	return *o.Data
+}
+
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Datapoints) GetDataOk() (*DatapointsData, bool) {
+	if o == nil || o.Data == nil {
+		return nil, false
+	}
+	return o.Data, true
+}
+
+// HasData returns a boolean if a field has been set.
+func (o *Datapoints) HasData() bool {
+	if o != nil && o.Data != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given DatapointsData and assigns it to the Data field.
+func (o *Datapoints) SetData(v DatapointsData) {
+	o.Data = &v
+}
+
 func (o Datapoints) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
-		toSerialize["data"] = o.Data
-	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
+	}
+	if o.Data != nil {
+		toSerialize["data"] = o.Data
 	}
 	return json.Marshal(toSerialize)
 }

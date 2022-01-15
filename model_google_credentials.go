@@ -17,23 +17,23 @@ import (
 
 // GoogleCredentials struct for GoogleCredentials
 type GoogleCredentials struct {
-	// Your GCP client email
-	Email string `json:"email"`
-	// Your GCP private key
-	PrivateKey string `json:"privateKey"`
 	// The Id of your GCP project
 	ProjectId string `json:"projectId"`
+	// Your GCP private key
+	PrivateKey string `json:"privateKey"`
+	// Your GCP client email
+	Email string `json:"email"`
 }
 
 // NewGoogleCredentials instantiates a new GoogleCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleCredentials(email string, privateKey string, projectId string, ) *GoogleCredentials {
+func NewGoogleCredentials(projectId string, privateKey string, email string, ) *GoogleCredentials {
 	this := GoogleCredentials{}
-	this.Email = email
-	this.PrivateKey = privateKey
 	this.ProjectId = projectId
+	this.PrivateKey = privateKey
+	this.Email = email
 	return &this
 }
 
@@ -43,54 +43,6 @@ func NewGoogleCredentials(email string, privateKey string, projectId string, ) *
 func NewGoogleCredentialsWithDefaults() *GoogleCredentials {
 	this := GoogleCredentials{}
 	return &this
-}
-
-// GetEmail returns the Email field value
-func (o *GoogleCredentials) GetEmail() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Email
-}
-
-// GetEmailOk returns a tuple with the Email field value
-// and a boolean to check if the value has been set.
-func (o *GoogleCredentials) GetEmailOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Email, true
-}
-
-// SetEmail sets field value
-func (o *GoogleCredentials) SetEmail(v string) {
-	o.Email = v
-}
-
-// GetPrivateKey returns the PrivateKey field value
-func (o *GoogleCredentials) GetPrivateKey() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.PrivateKey
-}
-
-// GetPrivateKeyOk returns a tuple with the PrivateKey field value
-// and a boolean to check if the value has been set.
-func (o *GoogleCredentials) GetPrivateKeyOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.PrivateKey, true
-}
-
-// SetPrivateKey sets field value
-func (o *GoogleCredentials) SetPrivateKey(v string) {
-	o.PrivateKey = v
 }
 
 // GetProjectId returns the ProjectId field value
@@ -117,16 +69,64 @@ func (o *GoogleCredentials) SetProjectId(v string) {
 	o.ProjectId = v
 }
 
+// GetPrivateKey returns the PrivateKey field value
+func (o *GoogleCredentials) GetPrivateKey() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.PrivateKey
+}
+
+// GetPrivateKeyOk returns a tuple with the PrivateKey field value
+// and a boolean to check if the value has been set.
+func (o *GoogleCredentials) GetPrivateKeyOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.PrivateKey, true
+}
+
+// SetPrivateKey sets field value
+func (o *GoogleCredentials) SetPrivateKey(v string) {
+	o.PrivateKey = v
+}
+
+// GetEmail returns the Email field value
+func (o *GoogleCredentials) GetEmail() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Email
+}
+
+// GetEmailOk returns a tuple with the Email field value
+// and a boolean to check if the value has been set.
+func (o *GoogleCredentials) GetEmailOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Email, true
+}
+
+// SetEmail sets field value
+func (o *GoogleCredentials) SetEmail(v string) {
+	o.Email = v
+}
+
 func (o GoogleCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["email"] = o.Email
+		toSerialize["projectId"] = o.ProjectId
 	}
 	if true {
 		toSerialize["privateKey"] = o.PrivateKey
 	}
 	if true {
-		toSerialize["projectId"] = o.ProjectId
+		toSerialize["email"] = o.Email
 	}
 	return json.Marshal(toSerialize)
 }

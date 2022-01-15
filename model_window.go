@@ -17,24 +17,24 @@ import (
 
 // Window struct for Window
 type Window struct {
-	// units of time, e.g. \"seconds\"
-	Period string `json:"period"`
 	// a positive integer denoting the start of the search window in terms of \"now() - start\" 
 	Start int32 `json:"start"`
 	// a positive integer, where stop < start, denoting the end of the search window. Defaults to now 
 	Stop *int32 `json:"stop,omitempty"`
+	// units of time, e.g. \"seconds\"
+	Period string `json:"period"`
 }
 
 // NewWindow instantiates a new Window object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWindow(period string, start int32, ) *Window {
+func NewWindow(start int32, period string, ) *Window {
 	this := Window{}
-	this.Period = period
 	this.Start = start
 	var stop int32 = 0
 	this.Stop = &stop
+	this.Period = period
 	return &this
 }
 
@@ -46,30 +46,6 @@ func NewWindowWithDefaults() *Window {
 	var stop int32 = 0
 	this.Stop = &stop
 	return &this
-}
-
-// GetPeriod returns the Period field value
-func (o *Window) GetPeriod() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Period
-}
-
-// GetPeriodOk returns a tuple with the Period field value
-// and a boolean to check if the value has been set.
-func (o *Window) GetPeriodOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Period, true
-}
-
-// SetPeriod sets field value
-func (o *Window) SetPeriod(v string) {
-	o.Period = v
 }
 
 // GetStart returns the Start field value
@@ -128,16 +104,40 @@ func (o *Window) SetStop(v int32) {
 	o.Stop = &v
 }
 
+// GetPeriod returns the Period field value
+func (o *Window) GetPeriod() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Period
+}
+
+// GetPeriodOk returns a tuple with the Period field value
+// and a boolean to check if the value has been set.
+func (o *Window) GetPeriodOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Period, true
+}
+
+// SetPeriod sets field value
+func (o *Window) SetPeriod(v string) {
+	o.Period = v
+}
+
 func (o Window) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["period"] = o.Period
-	}
 	if true {
 		toSerialize["start"] = o.Start
 	}
 	if o.Stop != nil {
 		toSerialize["stop"] = o.Stop
+	}
+	if true {
+		toSerialize["period"] = o.Period
 	}
 	return json.Marshal(toSerialize)
 }

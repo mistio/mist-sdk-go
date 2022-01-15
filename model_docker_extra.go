@@ -17,10 +17,10 @@ import (
 
 // DockerExtra struct for DockerExtra
 type DockerExtra struct {
-	// Command to run specified as a string
-	Command *string `json:"command,omitempty"`
 	// Key, value pairs of environment variables to set inside the container
 	Environment *map[string]interface{} `json:"environment,omitempty"`
+	// Command to run specified as a string
+	Command *string `json:"command,omitempty"`
 }
 
 // NewDockerExtra instantiates a new DockerExtra object
@@ -38,38 +38,6 @@ func NewDockerExtra() *DockerExtra {
 func NewDockerExtraWithDefaults() *DockerExtra {
 	this := DockerExtra{}
 	return &this
-}
-
-// GetCommand returns the Command field value if set, zero value otherwise.
-func (o *DockerExtra) GetCommand() string {
-	if o == nil || o.Command == nil {
-		var ret string
-		return ret
-	}
-	return *o.Command
-}
-
-// GetCommandOk returns a tuple with the Command field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DockerExtra) GetCommandOk() (*string, bool) {
-	if o == nil || o.Command == nil {
-		return nil, false
-	}
-	return o.Command, true
-}
-
-// HasCommand returns a boolean if a field has been set.
-func (o *DockerExtra) HasCommand() bool {
-	if o != nil && o.Command != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCommand gets a reference to the given string and assigns it to the Command field.
-func (o *DockerExtra) SetCommand(v string) {
-	o.Command = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -104,13 +72,45 @@ func (o *DockerExtra) SetEnvironment(v map[string]interface{}) {
 	o.Environment = &v
 }
 
+// GetCommand returns the Command field value if set, zero value otherwise.
+func (o *DockerExtra) GetCommand() string {
+	if o == nil || o.Command == nil {
+		var ret string
+		return ret
+	}
+	return *o.Command
+}
+
+// GetCommandOk returns a tuple with the Command field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DockerExtra) GetCommandOk() (*string, bool) {
+	if o == nil || o.Command == nil {
+		return nil, false
+	}
+	return o.Command, true
+}
+
+// HasCommand returns a boolean if a field has been set.
+func (o *DockerExtra) HasCommand() bool {
+	if o != nil && o.Command != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCommand gets a reference to the given string and assigns it to the Command field.
+func (o *DockerExtra) SetCommand(v string) {
+	o.Command = &v
+}
+
 func (o DockerExtra) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Command != nil {
-		toSerialize["command"] = o.Command
-	}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
+	}
+	if o.Command != nil {
+		toSerialize["command"] = o.Command
 	}
 	return json.Marshal(toSerialize)
 }

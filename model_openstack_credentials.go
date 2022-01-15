@@ -18,23 +18,23 @@ import (
 // OpenstackCredentials struct for OpenstackCredentials
 type OpenstackCredentials struct {
 	AuthUrl string `json:"authUrl"`
-	ComputeEndpoint *string `json:"computeEndpoint,omitempty"`
-	Domain *string `json:"domain,omitempty"`
-	Password string `json:"password"`
-	Region *string `json:"region,omitempty"`
-	Tenant *string `json:"tenant,omitempty"`
 	User string `json:"user"`
+	Password string `json:"password"`
+	Tenant *string `json:"tenant,omitempty"`
+	Domain *string `json:"domain,omitempty"`
+	Region *string `json:"region,omitempty"`
+	ComputeEndpoint *string `json:"computeEndpoint,omitempty"`
 }
 
 // NewOpenstackCredentials instantiates a new OpenstackCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenstackCredentials(authUrl string, password string, user string, ) *OpenstackCredentials {
+func NewOpenstackCredentials(authUrl string, user string, password string, ) *OpenstackCredentials {
 	this := OpenstackCredentials{}
 	this.AuthUrl = authUrl
-	this.Password = password
 	this.User = user
+	this.Password = password
 	return &this
 }
 
@@ -70,68 +70,28 @@ func (o *OpenstackCredentials) SetAuthUrl(v string) {
 	o.AuthUrl = v
 }
 
-// GetComputeEndpoint returns the ComputeEndpoint field value if set, zero value otherwise.
-func (o *OpenstackCredentials) GetComputeEndpoint() string {
-	if o == nil || o.ComputeEndpoint == nil {
+// GetUser returns the User field value
+func (o *OpenstackCredentials) GetUser() string {
+	if o == nil  {
 		var ret string
 		return ret
 	}
-	return *o.ComputeEndpoint
+
+	return o.User
 }
 
-// GetComputeEndpointOk returns a tuple with the ComputeEndpoint field value if set, nil otherwise
+// GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *OpenstackCredentials) GetComputeEndpointOk() (*string, bool) {
-	if o == nil || o.ComputeEndpoint == nil {
+func (o *OpenstackCredentials) GetUserOk() (*string, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.ComputeEndpoint, true
+	return &o.User, true
 }
 
-// HasComputeEndpoint returns a boolean if a field has been set.
-func (o *OpenstackCredentials) HasComputeEndpoint() bool {
-	if o != nil && o.ComputeEndpoint != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetComputeEndpoint gets a reference to the given string and assigns it to the ComputeEndpoint field.
-func (o *OpenstackCredentials) SetComputeEndpoint(v string) {
-	o.ComputeEndpoint = &v
-}
-
-// GetDomain returns the Domain field value if set, zero value otherwise.
-func (o *OpenstackCredentials) GetDomain() string {
-	if o == nil || o.Domain == nil {
-		var ret string
-		return ret
-	}
-	return *o.Domain
-}
-
-// GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpenstackCredentials) GetDomainOk() (*string, bool) {
-	if o == nil || o.Domain == nil {
-		return nil, false
-	}
-	return o.Domain, true
-}
-
-// HasDomain returns a boolean if a field has been set.
-func (o *OpenstackCredentials) HasDomain() bool {
-	if o != nil && o.Domain != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDomain gets a reference to the given string and assigns it to the Domain field.
-func (o *OpenstackCredentials) SetDomain(v string) {
-	o.Domain = &v
+// SetUser sets field value
+func (o *OpenstackCredentials) SetUser(v string) {
+	o.User = v
 }
 
 // GetPassword returns the Password field value
@@ -156,38 +116,6 @@ func (o *OpenstackCredentials) GetPasswordOk() (*string, bool) {
 // SetPassword sets field value
 func (o *OpenstackCredentials) SetPassword(v string) {
 	o.Password = v
-}
-
-// GetRegion returns the Region field value if set, zero value otherwise.
-func (o *OpenstackCredentials) GetRegion() string {
-	if o == nil || o.Region == nil {
-		var ret string
-		return ret
-	}
-	return *o.Region
-}
-
-// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpenstackCredentials) GetRegionOk() (*string, bool) {
-	if o == nil || o.Region == nil {
-		return nil, false
-	}
-	return o.Region, true
-}
-
-// HasRegion returns a boolean if a field has been set.
-func (o *OpenstackCredentials) HasRegion() bool {
-	if o != nil && o.Region != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRegion gets a reference to the given string and assigns it to the Region field.
-func (o *OpenstackCredentials) SetRegion(v string) {
-	o.Region = &v
 }
 
 // GetTenant returns the Tenant field value if set, zero value otherwise.
@@ -222,28 +150,100 @@ func (o *OpenstackCredentials) SetTenant(v string) {
 	o.Tenant = &v
 }
 
-// GetUser returns the User field value
-func (o *OpenstackCredentials) GetUser() string {
-	if o == nil  {
+// GetDomain returns the Domain field value if set, zero value otherwise.
+func (o *OpenstackCredentials) GetDomain() string {
+	if o == nil || o.Domain == nil {
 		var ret string
 		return ret
 	}
-
-	return o.User
+	return *o.Domain
 }
 
-// GetUserOk returns a tuple with the User field value
+// GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OpenstackCredentials) GetUserOk() (*string, bool) {
-	if o == nil  {
+func (o *OpenstackCredentials) GetDomainOk() (*string, bool) {
+	if o == nil || o.Domain == nil {
 		return nil, false
 	}
-	return &o.User, true
+	return o.Domain, true
 }
 
-// SetUser sets field value
-func (o *OpenstackCredentials) SetUser(v string) {
-	o.User = v
+// HasDomain returns a boolean if a field has been set.
+func (o *OpenstackCredentials) HasDomain() bool {
+	if o != nil && o.Domain != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDomain gets a reference to the given string and assigns it to the Domain field.
+func (o *OpenstackCredentials) SetDomain(v string) {
+	o.Domain = &v
+}
+
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *OpenstackCredentials) GetRegion() string {
+	if o == nil || o.Region == nil {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenstackCredentials) GetRegionOk() (*string, bool) {
+	if o == nil || o.Region == nil {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *OpenstackCredentials) HasRegion() bool {
+	if o != nil && o.Region != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *OpenstackCredentials) SetRegion(v string) {
+	o.Region = &v
+}
+
+// GetComputeEndpoint returns the ComputeEndpoint field value if set, zero value otherwise.
+func (o *OpenstackCredentials) GetComputeEndpoint() string {
+	if o == nil || o.ComputeEndpoint == nil {
+		var ret string
+		return ret
+	}
+	return *o.ComputeEndpoint
+}
+
+// GetComputeEndpointOk returns a tuple with the ComputeEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenstackCredentials) GetComputeEndpointOk() (*string, bool) {
+	if o == nil || o.ComputeEndpoint == nil {
+		return nil, false
+	}
+	return o.ComputeEndpoint, true
+}
+
+// HasComputeEndpoint returns a boolean if a field has been set.
+func (o *OpenstackCredentials) HasComputeEndpoint() bool {
+	if o != nil && o.ComputeEndpoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetComputeEndpoint gets a reference to the given string and assigns it to the ComputeEndpoint field.
+func (o *OpenstackCredentials) SetComputeEndpoint(v string) {
+	o.ComputeEndpoint = &v
 }
 
 func (o OpenstackCredentials) MarshalJSON() ([]byte, error) {
@@ -251,23 +251,23 @@ func (o OpenstackCredentials) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["authUrl"] = o.AuthUrl
 	}
-	if o.ComputeEndpoint != nil {
-		toSerialize["computeEndpoint"] = o.ComputeEndpoint
-	}
-	if o.Domain != nil {
-		toSerialize["domain"] = o.Domain
+	if true {
+		toSerialize["user"] = o.User
 	}
 	if true {
 		toSerialize["password"] = o.Password
 	}
-	if o.Region != nil {
-		toSerialize["region"] = o.Region
-	}
 	if o.Tenant != nil {
 		toSerialize["tenant"] = o.Tenant
 	}
-	if true {
-		toSerialize["user"] = o.User
+	if o.Domain != nil {
+		toSerialize["domain"] = o.Domain
+	}
+	if o.Region != nil {
+		toSerialize["region"] = o.Region
+	}
+	if o.ComputeEndpoint != nil {
+		toSerialize["computeEndpoint"] = o.ComputeEndpoint
 	}
 	return json.Marshal(toSerialize)
 }

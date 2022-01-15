@@ -17,12 +17,12 @@ import (
 
 // EditRuleRequest struct for EditRuleRequest
 type EditRuleRequest struct {
-	Actions *[]RuleAction `json:"actions,omitempty"`
-	Frequency *Frequency `json:"frequency,omitempty"`
 	Queries *[]Query `json:"queries,omitempty"`
-	Selectors *Selector `json:"selectors,omitempty"`
-	TriggerAfter *TriggerAfter `json:"trigger_after,omitempty"`
 	Window *Window `json:"window,omitempty"`
+	Frequency *Frequency `json:"frequency,omitempty"`
+	TriggerAfter *TriggerAfter `json:"trigger_after,omitempty"`
+	Actions *[]RuleAction `json:"actions,omitempty"`
+	Selectors *Selector `json:"selectors,omitempty"`
 }
 
 // NewEditRuleRequest instantiates a new EditRuleRequest object
@@ -40,70 +40,6 @@ func NewEditRuleRequest() *EditRuleRequest {
 func NewEditRuleRequestWithDefaults() *EditRuleRequest {
 	this := EditRuleRequest{}
 	return &this
-}
-
-// GetActions returns the Actions field value if set, zero value otherwise.
-func (o *EditRuleRequest) GetActions() []RuleAction {
-	if o == nil || o.Actions == nil {
-		var ret []RuleAction
-		return ret
-	}
-	return *o.Actions
-}
-
-// GetActionsOk returns a tuple with the Actions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EditRuleRequest) GetActionsOk() (*[]RuleAction, bool) {
-	if o == nil || o.Actions == nil {
-		return nil, false
-	}
-	return o.Actions, true
-}
-
-// HasActions returns a boolean if a field has been set.
-func (o *EditRuleRequest) HasActions() bool {
-	if o != nil && o.Actions != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetActions gets a reference to the given []RuleAction and assigns it to the Actions field.
-func (o *EditRuleRequest) SetActions(v []RuleAction) {
-	o.Actions = &v
-}
-
-// GetFrequency returns the Frequency field value if set, zero value otherwise.
-func (o *EditRuleRequest) GetFrequency() Frequency {
-	if o == nil || o.Frequency == nil {
-		var ret Frequency
-		return ret
-	}
-	return *o.Frequency
-}
-
-// GetFrequencyOk returns a tuple with the Frequency field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EditRuleRequest) GetFrequencyOk() (*Frequency, bool) {
-	if o == nil || o.Frequency == nil {
-		return nil, false
-	}
-	return o.Frequency, true
-}
-
-// HasFrequency returns a boolean if a field has been set.
-func (o *EditRuleRequest) HasFrequency() bool {
-	if o != nil && o.Frequency != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFrequency gets a reference to the given Frequency and assigns it to the Frequency field.
-func (o *EditRuleRequest) SetFrequency(v Frequency) {
-	o.Frequency = &v
 }
 
 // GetQueries returns the Queries field value if set, zero value otherwise.
@@ -138,36 +74,68 @@ func (o *EditRuleRequest) SetQueries(v []Query) {
 	o.Queries = &v
 }
 
-// GetSelectors returns the Selectors field value if set, zero value otherwise.
-func (o *EditRuleRequest) GetSelectors() Selector {
-	if o == nil || o.Selectors == nil {
-		var ret Selector
+// GetWindow returns the Window field value if set, zero value otherwise.
+func (o *EditRuleRequest) GetWindow() Window {
+	if o == nil || o.Window == nil {
+		var ret Window
 		return ret
 	}
-	return *o.Selectors
+	return *o.Window
 }
 
-// GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
+// GetWindowOk returns a tuple with the Window field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EditRuleRequest) GetSelectorsOk() (*Selector, bool) {
-	if o == nil || o.Selectors == nil {
+func (o *EditRuleRequest) GetWindowOk() (*Window, bool) {
+	if o == nil || o.Window == nil {
 		return nil, false
 	}
-	return o.Selectors, true
+	return o.Window, true
 }
 
-// HasSelectors returns a boolean if a field has been set.
-func (o *EditRuleRequest) HasSelectors() bool {
-	if o != nil && o.Selectors != nil {
+// HasWindow returns a boolean if a field has been set.
+func (o *EditRuleRequest) HasWindow() bool {
+	if o != nil && o.Window != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSelectors gets a reference to the given Selector and assigns it to the Selectors field.
-func (o *EditRuleRequest) SetSelectors(v Selector) {
-	o.Selectors = &v
+// SetWindow gets a reference to the given Window and assigns it to the Window field.
+func (o *EditRuleRequest) SetWindow(v Window) {
+	o.Window = &v
+}
+
+// GetFrequency returns the Frequency field value if set, zero value otherwise.
+func (o *EditRuleRequest) GetFrequency() Frequency {
+	if o == nil || o.Frequency == nil {
+		var ret Frequency
+		return ret
+	}
+	return *o.Frequency
+}
+
+// GetFrequencyOk returns a tuple with the Frequency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EditRuleRequest) GetFrequencyOk() (*Frequency, bool) {
+	if o == nil || o.Frequency == nil {
+		return nil, false
+	}
+	return o.Frequency, true
+}
+
+// HasFrequency returns a boolean if a field has been set.
+func (o *EditRuleRequest) HasFrequency() bool {
+	if o != nil && o.Frequency != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFrequency gets a reference to the given Frequency and assigns it to the Frequency field.
+func (o *EditRuleRequest) SetFrequency(v Frequency) {
+	o.Frequency = &v
 }
 
 // GetTriggerAfter returns the TriggerAfter field value if set, zero value otherwise.
@@ -202,57 +170,89 @@ func (o *EditRuleRequest) SetTriggerAfter(v TriggerAfter) {
 	o.TriggerAfter = &v
 }
 
-// GetWindow returns the Window field value if set, zero value otherwise.
-func (o *EditRuleRequest) GetWindow() Window {
-	if o == nil || o.Window == nil {
-		var ret Window
+// GetActions returns the Actions field value if set, zero value otherwise.
+func (o *EditRuleRequest) GetActions() []RuleAction {
+	if o == nil || o.Actions == nil {
+		var ret []RuleAction
 		return ret
 	}
-	return *o.Window
+	return *o.Actions
 }
 
-// GetWindowOk returns a tuple with the Window field value if set, nil otherwise
+// GetActionsOk returns a tuple with the Actions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EditRuleRequest) GetWindowOk() (*Window, bool) {
-	if o == nil || o.Window == nil {
+func (o *EditRuleRequest) GetActionsOk() (*[]RuleAction, bool) {
+	if o == nil || o.Actions == nil {
 		return nil, false
 	}
-	return o.Window, true
+	return o.Actions, true
 }
 
-// HasWindow returns a boolean if a field has been set.
-func (o *EditRuleRequest) HasWindow() bool {
-	if o != nil && o.Window != nil {
+// HasActions returns a boolean if a field has been set.
+func (o *EditRuleRequest) HasActions() bool {
+	if o != nil && o.Actions != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetWindow gets a reference to the given Window and assigns it to the Window field.
-func (o *EditRuleRequest) SetWindow(v Window) {
-	o.Window = &v
+// SetActions gets a reference to the given []RuleAction and assigns it to the Actions field.
+func (o *EditRuleRequest) SetActions(v []RuleAction) {
+	o.Actions = &v
+}
+
+// GetSelectors returns the Selectors field value if set, zero value otherwise.
+func (o *EditRuleRequest) GetSelectors() Selector {
+	if o == nil || o.Selectors == nil {
+		var ret Selector
+		return ret
+	}
+	return *o.Selectors
+}
+
+// GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EditRuleRequest) GetSelectorsOk() (*Selector, bool) {
+	if o == nil || o.Selectors == nil {
+		return nil, false
+	}
+	return o.Selectors, true
+}
+
+// HasSelectors returns a boolean if a field has been set.
+func (o *EditRuleRequest) HasSelectors() bool {
+	if o != nil && o.Selectors != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectors gets a reference to the given Selector and assigns it to the Selectors field.
+func (o *EditRuleRequest) SetSelectors(v Selector) {
+	o.Selectors = &v
 }
 
 func (o EditRuleRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Actions != nil {
-		toSerialize["actions"] = o.Actions
+	if o.Queries != nil {
+		toSerialize["queries"] = o.Queries
+	}
+	if o.Window != nil {
+		toSerialize["window"] = o.Window
 	}
 	if o.Frequency != nil {
 		toSerialize["frequency"] = o.Frequency
 	}
-	if o.Queries != nil {
-		toSerialize["queries"] = o.Queries
-	}
-	if o.Selectors != nil {
-		toSerialize["selectors"] = o.Selectors
-	}
 	if o.TriggerAfter != nil {
 		toSerialize["trigger_after"] = o.TriggerAfter
 	}
-	if o.Window != nil {
-		toSerialize["window"] = o.Window
+	if o.Actions != nil {
+		toSerialize["actions"] = o.Actions
+	}
+	if o.Selectors != nil {
+		toSerialize["selectors"] = o.Selectors
 	}
 	return json.Marshal(toSerialize)
 }

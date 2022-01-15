@@ -17,19 +17,19 @@ import (
 
 // AmazonCloudRequest struct for AmazonCloudRequest
 type AmazonCloudRequest struct {
+	Provider string `json:"provider"`
 	Credentials AmazonCredentials `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
-	Provider string `json:"provider"`
 }
 
 // NewAmazonCloudRequest instantiates a new AmazonCloudRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmazonCloudRequest(credentials AmazonCredentials, provider string, ) *AmazonCloudRequest {
+func NewAmazonCloudRequest(provider string, credentials AmazonCredentials, ) *AmazonCloudRequest {
 	this := AmazonCloudRequest{}
-	this.Credentials = credentials
 	this.Provider = provider
+	this.Credentials = credentials
 	return &this
 }
 
@@ -39,6 +39,30 @@ func NewAmazonCloudRequest(credentials AmazonCredentials, provider string, ) *Am
 func NewAmazonCloudRequestWithDefaults() *AmazonCloudRequest {
 	this := AmazonCloudRequest{}
 	return &this
+}
+
+// GetProvider returns the Provider field value
+func (o *AmazonCloudRequest) GetProvider() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value
+// and a boolean to check if the value has been set.
+func (o *AmazonCloudRequest) GetProviderOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Provider, true
+}
+
+// SetProvider sets field value
+func (o *AmazonCloudRequest) SetProvider(v string) {
+	o.Provider = v
 }
 
 // GetCredentials returns the Credentials field value
@@ -97,40 +121,16 @@ func (o *AmazonCloudRequest) SetFeatures(v CloudFeatures) {
 	o.Features = &v
 }
 
-// GetProvider returns the Provider field value
-func (o *AmazonCloudRequest) GetProvider() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Provider
-}
-
-// GetProviderOk returns a tuple with the Provider field value
-// and a boolean to check if the value has been set.
-func (o *AmazonCloudRequest) GetProviderOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Provider, true
-}
-
-// SetProvider sets field value
-func (o *AmazonCloudRequest) SetProvider(v string) {
-	o.Provider = v
-}
-
 func (o AmazonCloudRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["provider"] = o.Provider
+	}
 	if true {
 		toSerialize["credentials"] = o.Credentials
 	}
 	if o.Features != nil {
 		toSerialize["features"] = o.Features
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
 	}
 	return json.Marshal(toSerialize)
 }

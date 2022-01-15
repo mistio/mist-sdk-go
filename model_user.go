@@ -18,12 +18,12 @@ import (
 // User struct for User
 type User struct {
 	Email *string `json:"email,omitempty"`
-	FirstName *string `json:"first_name,omitempty"`
 	Id *string `json:"id,omitempty"`
-	LastLogin *string `json:"last_login,omitempty"`
+	FirstName *string `json:"first_name,omitempty"`
 	LastName *string `json:"last_name,omitempty"`
-	RegistrationDate *string `json:"registration_date,omitempty"`
+	LastLogin *string `json:"last_login,omitempty"`
 	Username *string `json:"username,omitempty"`
+	RegistrationDate *string `json:"registration_date,omitempty"`
 }
 
 // NewUser instantiates a new User object
@@ -75,38 +75,6 @@ func (o *User) SetEmail(v string) {
 	o.Email = &v
 }
 
-// GetFirstName returns the FirstName field value if set, zero value otherwise.
-func (o *User) GetFirstName() string {
-	if o == nil || o.FirstName == nil {
-		var ret string
-		return ret
-	}
-	return *o.FirstName
-}
-
-// GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *User) GetFirstNameOk() (*string, bool) {
-	if o == nil || o.FirstName == nil {
-		return nil, false
-	}
-	return o.FirstName, true
-}
-
-// HasFirstName returns a boolean if a field has been set.
-func (o *User) HasFirstName() bool {
-	if o != nil && o.FirstName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFirstName gets a reference to the given string and assigns it to the FirstName field.
-func (o *User) SetFirstName(v string) {
-	o.FirstName = &v
-}
-
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *User) GetId() string {
 	if o == nil || o.Id == nil {
@@ -139,36 +107,36 @@ func (o *User) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLastLogin returns the LastLogin field value if set, zero value otherwise.
-func (o *User) GetLastLogin() string {
-	if o == nil || o.LastLogin == nil {
+// GetFirstName returns the FirstName field value if set, zero value otherwise.
+func (o *User) GetFirstName() string {
+	if o == nil || o.FirstName == nil {
 		var ret string
 		return ret
 	}
-	return *o.LastLogin
+	return *o.FirstName
 }
 
-// GetLastLoginOk returns a tuple with the LastLogin field value if set, nil otherwise
+// GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetLastLoginOk() (*string, bool) {
-	if o == nil || o.LastLogin == nil {
+func (o *User) GetFirstNameOk() (*string, bool) {
+	if o == nil || o.FirstName == nil {
 		return nil, false
 	}
-	return o.LastLogin, true
+	return o.FirstName, true
 }
 
-// HasLastLogin returns a boolean if a field has been set.
-func (o *User) HasLastLogin() bool {
-	if o != nil && o.LastLogin != nil {
+// HasFirstName returns a boolean if a field has been set.
+func (o *User) HasFirstName() bool {
+	if o != nil && o.FirstName != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetLastLogin gets a reference to the given string and assigns it to the LastLogin field.
-func (o *User) SetLastLogin(v string) {
-	o.LastLogin = &v
+// SetFirstName gets a reference to the given string and assigns it to the FirstName field.
+func (o *User) SetFirstName(v string) {
+	o.FirstName = &v
 }
 
 // GetLastName returns the LastName field value if set, zero value otherwise.
@@ -203,36 +171,36 @@ func (o *User) SetLastName(v string) {
 	o.LastName = &v
 }
 
-// GetRegistrationDate returns the RegistrationDate field value if set, zero value otherwise.
-func (o *User) GetRegistrationDate() string {
-	if o == nil || o.RegistrationDate == nil {
+// GetLastLogin returns the LastLogin field value if set, zero value otherwise.
+func (o *User) GetLastLogin() string {
+	if o == nil || o.LastLogin == nil {
 		var ret string
 		return ret
 	}
-	return *o.RegistrationDate
+	return *o.LastLogin
 }
 
-// GetRegistrationDateOk returns a tuple with the RegistrationDate field value if set, nil otherwise
+// GetLastLoginOk returns a tuple with the LastLogin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetRegistrationDateOk() (*string, bool) {
-	if o == nil || o.RegistrationDate == nil {
+func (o *User) GetLastLoginOk() (*string, bool) {
+	if o == nil || o.LastLogin == nil {
 		return nil, false
 	}
-	return o.RegistrationDate, true
+	return o.LastLogin, true
 }
 
-// HasRegistrationDate returns a boolean if a field has been set.
-func (o *User) HasRegistrationDate() bool {
-	if o != nil && o.RegistrationDate != nil {
+// HasLastLogin returns a boolean if a field has been set.
+func (o *User) HasLastLogin() bool {
+	if o != nil && o.LastLogin != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetRegistrationDate gets a reference to the given string and assigns it to the RegistrationDate field.
-func (o *User) SetRegistrationDate(v string) {
-	o.RegistrationDate = &v
+// SetLastLogin gets a reference to the given string and assigns it to the LastLogin field.
+func (o *User) SetLastLogin(v string) {
+	o.LastLogin = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise.
@@ -267,28 +235,60 @@ func (o *User) SetUsername(v string) {
 	o.Username = &v
 }
 
+// GetRegistrationDate returns the RegistrationDate field value if set, zero value otherwise.
+func (o *User) GetRegistrationDate() string {
+	if o == nil || o.RegistrationDate == nil {
+		var ret string
+		return ret
+	}
+	return *o.RegistrationDate
+}
+
+// GetRegistrationDateOk returns a tuple with the RegistrationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetRegistrationDateOk() (*string, bool) {
+	if o == nil || o.RegistrationDate == nil {
+		return nil, false
+	}
+	return o.RegistrationDate, true
+}
+
+// HasRegistrationDate returns a boolean if a field has been set.
+func (o *User) HasRegistrationDate() bool {
+	if o != nil && o.RegistrationDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRegistrationDate gets a reference to the given string and assigns it to the RegistrationDate field.
+func (o *User) SetRegistrationDate(v string) {
+	o.RegistrationDate = &v
+}
+
 func (o User) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Email != nil {
 		toSerialize["email"] = o.Email
 	}
-	if o.FirstName != nil {
-		toSerialize["first_name"] = o.FirstName
-	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if o.LastLogin != nil {
-		toSerialize["last_login"] = o.LastLogin
+	if o.FirstName != nil {
+		toSerialize["first_name"] = o.FirstName
 	}
 	if o.LastName != nil {
 		toSerialize["last_name"] = o.LastName
 	}
-	if o.RegistrationDate != nil {
-		toSerialize["registration_date"] = o.RegistrationDate
+	if o.LastLogin != nil {
+		toSerialize["last_login"] = o.LastLogin
 	}
 	if o.Username != nil {
 		toSerialize["username"] = o.Username
+	}
+	if o.RegistrationDate != nil {
+		toSerialize["registration_date"] = o.RegistrationDate
 	}
 	return json.Marshal(toSerialize)
 }

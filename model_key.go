@@ -17,13 +17,13 @@ import (
 
 // Key struct for Key
 type Key struct {
-	Config *map[string]interface{} `json:"config,omitempty"`
-	CreatedBy *string `json:"created_by,omitempty"`
-	Default *bool `json:"default,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	OwnedBy *string `json:"owned_by,omitempty"`
+	Config *map[string]interface{} `json:"config,omitempty"`
 	Tags *map[string]interface{} `json:"tags,omitempty"`
+	CreatedBy *string `json:"created_by,omitempty"`
+	OwnedBy *string `json:"owned_by,omitempty"`
+	Default *bool `json:"default,omitempty"`
 	Type *string `json:"type,omitempty"`
 }
 
@@ -42,102 +42,6 @@ func NewKey() *Key {
 func NewKeyWithDefaults() *Key {
 	this := Key{}
 	return &this
-}
-
-// GetConfig returns the Config field value if set, zero value otherwise.
-func (o *Key) GetConfig() map[string]interface{} {
-	if o == nil || o.Config == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.Config
-}
-
-// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Key) GetConfigOk() (*map[string]interface{}, bool) {
-	if o == nil || o.Config == nil {
-		return nil, false
-	}
-	return o.Config, true
-}
-
-// HasConfig returns a boolean if a field has been set.
-func (o *Key) HasConfig() bool {
-	if o != nil && o.Config != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
-func (o *Key) SetConfig(v map[string]interface{}) {
-	o.Config = &v
-}
-
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
-func (o *Key) GetCreatedBy() string {
-	if o == nil || o.CreatedBy == nil {
-		var ret string
-		return ret
-	}
-	return *o.CreatedBy
-}
-
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Key) GetCreatedByOk() (*string, bool) {
-	if o == nil || o.CreatedBy == nil {
-		return nil, false
-	}
-	return o.CreatedBy, true
-}
-
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *Key) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
-func (o *Key) SetCreatedBy(v string) {
-	o.CreatedBy = &v
-}
-
-// GetDefault returns the Default field value if set, zero value otherwise.
-func (o *Key) GetDefault() bool {
-	if o == nil || o.Default == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Default
-}
-
-// GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Key) GetDefaultOk() (*bool, bool) {
-	if o == nil || o.Default == nil {
-		return nil, false
-	}
-	return o.Default, true
-}
-
-// HasDefault returns a boolean if a field has been set.
-func (o *Key) HasDefault() bool {
-	if o != nil && o.Default != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDefault gets a reference to the given bool and assigns it to the Default field.
-func (o *Key) SetDefault(v bool) {
-	o.Default = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -204,36 +108,36 @@ func (o *Key) SetName(v string) {
 	o.Name = &v
 }
 
-// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
-func (o *Key) GetOwnedBy() string {
-	if o == nil || o.OwnedBy == nil {
-		var ret string
+// GetConfig returns the Config field value if set, zero value otherwise.
+func (o *Key) GetConfig() map[string]interface{} {
+	if o == nil || o.Config == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.OwnedBy
+	return *o.Config
 }
 
-// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
+// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Key) GetOwnedByOk() (*string, bool) {
-	if o == nil || o.OwnedBy == nil {
+func (o *Key) GetConfigOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Config == nil {
 		return nil, false
 	}
-	return o.OwnedBy, true
+	return o.Config, true
 }
 
-// HasOwnedBy returns a boolean if a field has been set.
-func (o *Key) HasOwnedBy() bool {
-	if o != nil && o.OwnedBy != nil {
+// HasConfig returns a boolean if a field has been set.
+func (o *Key) HasConfig() bool {
+	if o != nil && o.Config != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
-func (o *Key) SetOwnedBy(v string) {
-	o.OwnedBy = &v
+// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
+func (o *Key) SetConfig(v map[string]interface{}) {
+	o.Config = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -266,6 +170,102 @@ func (o *Key) HasTags() bool {
 // SetTags gets a reference to the given map[string]interface{} and assigns it to the Tags field.
 func (o *Key) SetTags(v map[string]interface{}) {
 	o.Tags = &v
+}
+
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *Key) GetCreatedBy() string {
+	if o == nil || o.CreatedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Key) GetCreatedByOk() (*string, bool) {
+	if o == nil || o.CreatedBy == nil {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *Key) HasCreatedBy() bool {
+	if o != nil && o.CreatedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
+func (o *Key) SetCreatedBy(v string) {
+	o.CreatedBy = &v
+}
+
+// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
+func (o *Key) GetOwnedBy() string {
+	if o == nil || o.OwnedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.OwnedBy
+}
+
+// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Key) GetOwnedByOk() (*string, bool) {
+	if o == nil || o.OwnedBy == nil {
+		return nil, false
+	}
+	return o.OwnedBy, true
+}
+
+// HasOwnedBy returns a boolean if a field has been set.
+func (o *Key) HasOwnedBy() bool {
+	if o != nil && o.OwnedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
+func (o *Key) SetOwnedBy(v string) {
+	o.OwnedBy = &v
+}
+
+// GetDefault returns the Default field value if set, zero value otherwise.
+func (o *Key) GetDefault() bool {
+	if o == nil || o.Default == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Default
+}
+
+// GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Key) GetDefaultOk() (*bool, bool) {
+	if o == nil || o.Default == nil {
+		return nil, false
+	}
+	return o.Default, true
+}
+
+// HasDefault returns a boolean if a field has been set.
+func (o *Key) HasDefault() bool {
+	if o != nil && o.Default != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefault gets a reference to the given bool and assigns it to the Default field.
+func (o *Key) SetDefault(v bool) {
+	o.Default = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -302,26 +302,26 @@ func (o *Key) SetType(v string) {
 
 func (o Key) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
-	}
-	if o.CreatedBy != nil {
-		toSerialize["created_by"] = o.CreatedBy
-	}
-	if o.Default != nil {
-		toSerialize["default"] = o.Default
-	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.OwnedBy != nil {
-		toSerialize["owned_by"] = o.OwnedBy
+	if o.Config != nil {
+		toSerialize["config"] = o.Config
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
+	}
+	if o.CreatedBy != nil {
+		toSerialize["created_by"] = o.CreatedBy
+	}
+	if o.OwnedBy != nil {
+		toSerialize["owned_by"] = o.OwnedBy
+	}
+	if o.Default != nil {
+		toSerialize["default"] = o.Default
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type

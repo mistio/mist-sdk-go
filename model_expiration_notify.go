@@ -17,18 +17,18 @@ import (
 
 // ExpirationNotify Notify user before machine expiration
 type ExpirationNotify struct {
-	Period string `json:"period"`
 	Value int32 `json:"value"`
+	Period string `json:"period"`
 }
 
 // NewExpirationNotify instantiates a new ExpirationNotify object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExpirationNotify(period string, value int32, ) *ExpirationNotify {
+func NewExpirationNotify(value int32, period string, ) *ExpirationNotify {
 	this := ExpirationNotify{}
-	this.Period = period
 	this.Value = value
+	this.Period = period
 	return &this
 }
 
@@ -38,30 +38,6 @@ func NewExpirationNotify(period string, value int32, ) *ExpirationNotify {
 func NewExpirationNotifyWithDefaults() *ExpirationNotify {
 	this := ExpirationNotify{}
 	return &this
-}
-
-// GetPeriod returns the Period field value
-func (o *ExpirationNotify) GetPeriod() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Period
-}
-
-// GetPeriodOk returns a tuple with the Period field value
-// and a boolean to check if the value has been set.
-func (o *ExpirationNotify) GetPeriodOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Period, true
-}
-
-// SetPeriod sets field value
-func (o *ExpirationNotify) SetPeriod(v string) {
-	o.Period = v
 }
 
 // GetValue returns the Value field value
@@ -88,13 +64,37 @@ func (o *ExpirationNotify) SetValue(v int32) {
 	o.Value = v
 }
 
+// GetPeriod returns the Period field value
+func (o *ExpirationNotify) GetPeriod() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Period
+}
+
+// GetPeriodOk returns a tuple with the Period field value
+// and a boolean to check if the value has been set.
+func (o *ExpirationNotify) GetPeriodOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Period, true
+}
+
+// SetPeriod sets field value
+func (o *ExpirationNotify) SetPeriod(v string) {
+	o.Period = v
+}
+
 func (o ExpirationNotify) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["period"] = o.Period
+		toSerialize["value"] = o.Value
 	}
 	if true {
-		toSerialize["value"] = o.Value
+		toSerialize["period"] = o.Period
 	}
 	return json.Marshal(toSerialize)
 }

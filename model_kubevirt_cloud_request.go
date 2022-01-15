@@ -17,19 +17,19 @@ import (
 
 // KubevirtCloudRequest struct for KubevirtCloudRequest
 type KubevirtCloudRequest struct {
+	Provider string `json:"provider"`
 	Credentials KubernetesCredentials `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
-	Provider string `json:"provider"`
 }
 
 // NewKubevirtCloudRequest instantiates a new KubevirtCloudRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubevirtCloudRequest(credentials KubernetesCredentials, provider string, ) *KubevirtCloudRequest {
+func NewKubevirtCloudRequest(provider string, credentials KubernetesCredentials, ) *KubevirtCloudRequest {
 	this := KubevirtCloudRequest{}
-	this.Credentials = credentials
 	this.Provider = provider
+	this.Credentials = credentials
 	return &this
 }
 
@@ -39,6 +39,30 @@ func NewKubevirtCloudRequest(credentials KubernetesCredentials, provider string,
 func NewKubevirtCloudRequestWithDefaults() *KubevirtCloudRequest {
 	this := KubevirtCloudRequest{}
 	return &this
+}
+
+// GetProvider returns the Provider field value
+func (o *KubevirtCloudRequest) GetProvider() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value
+// and a boolean to check if the value has been set.
+func (o *KubevirtCloudRequest) GetProviderOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Provider, true
+}
+
+// SetProvider sets field value
+func (o *KubevirtCloudRequest) SetProvider(v string) {
+	o.Provider = v
 }
 
 // GetCredentials returns the Credentials field value
@@ -97,40 +121,16 @@ func (o *KubevirtCloudRequest) SetFeatures(v CloudFeatures) {
 	o.Features = &v
 }
 
-// GetProvider returns the Provider field value
-func (o *KubevirtCloudRequest) GetProvider() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Provider
-}
-
-// GetProviderOk returns a tuple with the Provider field value
-// and a boolean to check if the value has been set.
-func (o *KubevirtCloudRequest) GetProviderOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Provider, true
-}
-
-// SetProvider sets field value
-func (o *KubevirtCloudRequest) SetProvider(v string) {
-	o.Provider = v
-}
-
 func (o KubevirtCloudRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["provider"] = o.Provider
+	}
 	if true {
 		toSerialize["credentials"] = o.Credentials
 	}
 	if o.Features != nil {
 		toSerialize["features"] = o.Features
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
 	}
 	return json.Marshal(toSerialize)
 }

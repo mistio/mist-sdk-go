@@ -17,10 +17,10 @@ import (
 
 // OnappCredentials struct for OnappCredentials
 type OnappCredentials struct {
-	Apikey string `json:"apikey"`
 	AuthUrl *string `json:"authUrl,omitempty"`
-	Host string `json:"host"`
 	Username string `json:"username"`
+	Apikey string `json:"apikey"`
+	Host string `json:"host"`
 	Verify *bool `json:"verify,omitempty"`
 }
 
@@ -28,11 +28,11 @@ type OnappCredentials struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOnappCredentials(apikey string, host string, username string, ) *OnappCredentials {
+func NewOnappCredentials(username string, apikey string, host string, ) *OnappCredentials {
 	this := OnappCredentials{}
+	this.Username = username
 	this.Apikey = apikey
 	this.Host = host
-	this.Username = username
 	return &this
 }
 
@@ -42,30 +42,6 @@ func NewOnappCredentials(apikey string, host string, username string, ) *OnappCr
 func NewOnappCredentialsWithDefaults() *OnappCredentials {
 	this := OnappCredentials{}
 	return &this
-}
-
-// GetApikey returns the Apikey field value
-func (o *OnappCredentials) GetApikey() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Apikey
-}
-
-// GetApikeyOk returns a tuple with the Apikey field value
-// and a boolean to check if the value has been set.
-func (o *OnappCredentials) GetApikeyOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Apikey, true
-}
-
-// SetApikey sets field value
-func (o *OnappCredentials) SetApikey(v string) {
-	o.Apikey = v
 }
 
 // GetAuthUrl returns the AuthUrl field value if set, zero value otherwise.
@@ -100,30 +76,6 @@ func (o *OnappCredentials) SetAuthUrl(v string) {
 	o.AuthUrl = &v
 }
 
-// GetHost returns the Host field value
-func (o *OnappCredentials) GetHost() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Host
-}
-
-// GetHostOk returns a tuple with the Host field value
-// and a boolean to check if the value has been set.
-func (o *OnappCredentials) GetHostOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Host, true
-}
-
-// SetHost sets field value
-func (o *OnappCredentials) SetHost(v string) {
-	o.Host = v
-}
-
 // GetUsername returns the Username field value
 func (o *OnappCredentials) GetUsername() string {
 	if o == nil  {
@@ -146,6 +98,54 @@ func (o *OnappCredentials) GetUsernameOk() (*string, bool) {
 // SetUsername sets field value
 func (o *OnappCredentials) SetUsername(v string) {
 	o.Username = v
+}
+
+// GetApikey returns the Apikey field value
+func (o *OnappCredentials) GetApikey() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Apikey
+}
+
+// GetApikeyOk returns a tuple with the Apikey field value
+// and a boolean to check if the value has been set.
+func (o *OnappCredentials) GetApikeyOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Apikey, true
+}
+
+// SetApikey sets field value
+func (o *OnappCredentials) SetApikey(v string) {
+	o.Apikey = v
+}
+
+// GetHost returns the Host field value
+func (o *OnappCredentials) GetHost() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Host
+}
+
+// GetHostOk returns a tuple with the Host field value
+// and a boolean to check if the value has been set.
+func (o *OnappCredentials) GetHostOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Host, true
+}
+
+// SetHost sets field value
+func (o *OnappCredentials) SetHost(v string) {
+	o.Host = v
 }
 
 // GetVerify returns the Verify field value if set, zero value otherwise.
@@ -182,17 +182,17 @@ func (o *OnappCredentials) SetVerify(v bool) {
 
 func (o OnappCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["apikey"] = o.Apikey
-	}
 	if o.AuthUrl != nil {
 		toSerialize["authUrl"] = o.AuthUrl
 	}
 	if true {
-		toSerialize["host"] = o.Host
+		toSerialize["username"] = o.Username
 	}
 	if true {
-		toSerialize["username"] = o.Username
+		toSerialize["apikey"] = o.Apikey
+	}
+	if true {
+		toSerialize["host"] = o.Host
 	}
 	if o.Verify != nil {
 		toSerialize["verify"] = o.Verify

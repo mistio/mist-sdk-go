@@ -17,16 +17,21 @@ import (
 
 // Volume struct for Volume
 type Volume struct {
-	Cloud *string `json:"cloud,omitempty"`
-	CreatedBy *string `json:"created_by,omitempty"`
-	Default *bool `json:"default,omitempty"`
-	ExternalId *string `json:"external_id,omitempty"`
 	Id *string `json:"id,omitempty"`
-	Location *string `json:"location,omitempty"`
+	ExternalId *string `json:"external_id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	OwnedBy *string `json:"owned_by,omitempty"`
-	Size *int32 `json:"size,omitempty"`
+	Cloud *string `json:"cloud,omitempty"`
+	Location *string `json:"location,omitempty"`
+	Size *string `json:"size,omitempty"`
 	Tags *map[string]interface{} `json:"tags,omitempty"`
+	CreatedBy *string `json:"created_by,omitempty"`
+	OwnedBy *string `json:"owned_by,omitempty"`
+	Default *bool `json:"default,omitempty"`
+	Actions *map[string]interface{} `json:"actions,omitempty"`
+	AttachedTo *[]string `json:"attached_to,omitempty"`
+	Extra *map[string]interface{} `json:"extra,omitempty"`
+	LastSeen *string `json:"last_seen,omitempty"`
+	MissingSince *string `json:"missing_since,omitempty"`
 }
 
 // NewVolume instantiates a new Volume object
@@ -44,134 +49,6 @@ func NewVolume() *Volume {
 func NewVolumeWithDefaults() *Volume {
 	this := Volume{}
 	return &this
-}
-
-// GetCloud returns the Cloud field value if set, zero value otherwise.
-func (o *Volume) GetCloud() string {
-	if o == nil || o.Cloud == nil {
-		var ret string
-		return ret
-	}
-	return *o.Cloud
-}
-
-// GetCloudOk returns a tuple with the Cloud field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Volume) GetCloudOk() (*string, bool) {
-	if o == nil || o.Cloud == nil {
-		return nil, false
-	}
-	return o.Cloud, true
-}
-
-// HasCloud returns a boolean if a field has been set.
-func (o *Volume) HasCloud() bool {
-	if o != nil && o.Cloud != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCloud gets a reference to the given string and assigns it to the Cloud field.
-func (o *Volume) SetCloud(v string) {
-	o.Cloud = &v
-}
-
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
-func (o *Volume) GetCreatedBy() string {
-	if o == nil || o.CreatedBy == nil {
-		var ret string
-		return ret
-	}
-	return *o.CreatedBy
-}
-
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Volume) GetCreatedByOk() (*string, bool) {
-	if o == nil || o.CreatedBy == nil {
-		return nil, false
-	}
-	return o.CreatedBy, true
-}
-
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *Volume) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
-func (o *Volume) SetCreatedBy(v string) {
-	o.CreatedBy = &v
-}
-
-// GetDefault returns the Default field value if set, zero value otherwise.
-func (o *Volume) GetDefault() bool {
-	if o == nil || o.Default == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Default
-}
-
-// GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Volume) GetDefaultOk() (*bool, bool) {
-	if o == nil || o.Default == nil {
-		return nil, false
-	}
-	return o.Default, true
-}
-
-// HasDefault returns a boolean if a field has been set.
-func (o *Volume) HasDefault() bool {
-	if o != nil && o.Default != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDefault gets a reference to the given bool and assigns it to the Default field.
-func (o *Volume) SetDefault(v bool) {
-	o.Default = &v
-}
-
-// GetExternalId returns the ExternalId field value if set, zero value otherwise.
-func (o *Volume) GetExternalId() string {
-	if o == nil || o.ExternalId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ExternalId
-}
-
-// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Volume) GetExternalIdOk() (*string, bool) {
-	if o == nil || o.ExternalId == nil {
-		return nil, false
-	}
-	return o.ExternalId, true
-}
-
-// HasExternalId returns a boolean if a field has been set.
-func (o *Volume) HasExternalId() bool {
-	if o != nil && o.ExternalId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
-func (o *Volume) SetExternalId(v string) {
-	o.ExternalId = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -206,36 +83,36 @@ func (o *Volume) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLocation returns the Location field value if set, zero value otherwise.
-func (o *Volume) GetLocation() string {
-	if o == nil || o.Location == nil {
+// GetExternalId returns the ExternalId field value if set, zero value otherwise.
+func (o *Volume) GetExternalId() string {
+	if o == nil || o.ExternalId == nil {
 		var ret string
 		return ret
 	}
-	return *o.Location
+	return *o.ExternalId
 }
 
-// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
+// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Volume) GetLocationOk() (*string, bool) {
-	if o == nil || o.Location == nil {
+func (o *Volume) GetExternalIdOk() (*string, bool) {
+	if o == nil || o.ExternalId == nil {
 		return nil, false
 	}
-	return o.Location, true
+	return o.ExternalId, true
 }
 
-// HasLocation returns a boolean if a field has been set.
-func (o *Volume) HasLocation() bool {
-	if o != nil && o.Location != nil {
+// HasExternalId returns a boolean if a field has been set.
+func (o *Volume) HasExternalId() bool {
+	if o != nil && o.ExternalId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetLocation gets a reference to the given string and assigns it to the Location field.
-func (o *Volume) SetLocation(v string) {
-	o.Location = &v
+// SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
+func (o *Volume) SetExternalId(v string) {
+	o.ExternalId = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -270,42 +147,74 @@ func (o *Volume) SetName(v string) {
 	o.Name = &v
 }
 
-// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
-func (o *Volume) GetOwnedBy() string {
-	if o == nil || o.OwnedBy == nil {
+// GetCloud returns the Cloud field value if set, zero value otherwise.
+func (o *Volume) GetCloud() string {
+	if o == nil || o.Cloud == nil {
 		var ret string
 		return ret
 	}
-	return *o.OwnedBy
+	return *o.Cloud
 }
 
-// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
+// GetCloudOk returns a tuple with the Cloud field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Volume) GetOwnedByOk() (*string, bool) {
-	if o == nil || o.OwnedBy == nil {
+func (o *Volume) GetCloudOk() (*string, bool) {
+	if o == nil || o.Cloud == nil {
 		return nil, false
 	}
-	return o.OwnedBy, true
+	return o.Cloud, true
 }
 
-// HasOwnedBy returns a boolean if a field has been set.
-func (o *Volume) HasOwnedBy() bool {
-	if o != nil && o.OwnedBy != nil {
+// HasCloud returns a boolean if a field has been set.
+func (o *Volume) HasCloud() bool {
+	if o != nil && o.Cloud != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
-func (o *Volume) SetOwnedBy(v string) {
-	o.OwnedBy = &v
+// SetCloud gets a reference to the given string and assigns it to the Cloud field.
+func (o *Volume) SetCloud(v string) {
+	o.Cloud = &v
+}
+
+// GetLocation returns the Location field value if set, zero value otherwise.
+func (o *Volume) GetLocation() string {
+	if o == nil || o.Location == nil {
+		var ret string
+		return ret
+	}
+	return *o.Location
+}
+
+// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Volume) GetLocationOk() (*string, bool) {
+	if o == nil || o.Location == nil {
+		return nil, false
+	}
+	return o.Location, true
+}
+
+// HasLocation returns a boolean if a field has been set.
+func (o *Volume) HasLocation() bool {
+	if o != nil && o.Location != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLocation gets a reference to the given string and assigns it to the Location field.
+func (o *Volume) SetLocation(v string) {
+	o.Location = &v
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *Volume) GetSize() int32 {
+func (o *Volume) GetSize() string {
 	if o == nil || o.Size == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 	return *o.Size
@@ -313,7 +222,7 @@ func (o *Volume) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Volume) GetSizeOk() (*int32, bool) {
+func (o *Volume) GetSizeOk() (*string, bool) {
 	if o == nil || o.Size == nil {
 		return nil, false
 	}
@@ -329,8 +238,8 @@ func (o *Volume) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given int32 and assigns it to the Size field.
-func (o *Volume) SetSize(v int32) {
+// SetSize gets a reference to the given string and assigns it to the Size field.
+func (o *Volume) SetSize(v string) {
 	o.Size = &v
 }
 
@@ -366,37 +275,308 @@ func (o *Volume) SetTags(v map[string]interface{}) {
 	o.Tags = &v
 }
 
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *Volume) GetCreatedBy() string {
+	if o == nil || o.CreatedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Volume) GetCreatedByOk() (*string, bool) {
+	if o == nil || o.CreatedBy == nil {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *Volume) HasCreatedBy() bool {
+	if o != nil && o.CreatedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
+func (o *Volume) SetCreatedBy(v string) {
+	o.CreatedBy = &v
+}
+
+// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
+func (o *Volume) GetOwnedBy() string {
+	if o == nil || o.OwnedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.OwnedBy
+}
+
+// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Volume) GetOwnedByOk() (*string, bool) {
+	if o == nil || o.OwnedBy == nil {
+		return nil, false
+	}
+	return o.OwnedBy, true
+}
+
+// HasOwnedBy returns a boolean if a field has been set.
+func (o *Volume) HasOwnedBy() bool {
+	if o != nil && o.OwnedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
+func (o *Volume) SetOwnedBy(v string) {
+	o.OwnedBy = &v
+}
+
+// GetDefault returns the Default field value if set, zero value otherwise.
+func (o *Volume) GetDefault() bool {
+	if o == nil || o.Default == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Default
+}
+
+// GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Volume) GetDefaultOk() (*bool, bool) {
+	if o == nil || o.Default == nil {
+		return nil, false
+	}
+	return o.Default, true
+}
+
+// HasDefault returns a boolean if a field has been set.
+func (o *Volume) HasDefault() bool {
+	if o != nil && o.Default != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefault gets a reference to the given bool and assigns it to the Default field.
+func (o *Volume) SetDefault(v bool) {
+	o.Default = &v
+}
+
+// GetActions returns the Actions field value if set, zero value otherwise.
+func (o *Volume) GetActions() map[string]interface{} {
+	if o == nil || o.Actions == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Actions
+}
+
+// GetActionsOk returns a tuple with the Actions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Volume) GetActionsOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Actions == nil {
+		return nil, false
+	}
+	return o.Actions, true
+}
+
+// HasActions returns a boolean if a field has been set.
+func (o *Volume) HasActions() bool {
+	if o != nil && o.Actions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActions gets a reference to the given map[string]interface{} and assigns it to the Actions field.
+func (o *Volume) SetActions(v map[string]interface{}) {
+	o.Actions = &v
+}
+
+// GetAttachedTo returns the AttachedTo field value if set, zero value otherwise.
+func (o *Volume) GetAttachedTo() []string {
+	if o == nil || o.AttachedTo == nil {
+		var ret []string
+		return ret
+	}
+	return *o.AttachedTo
+}
+
+// GetAttachedToOk returns a tuple with the AttachedTo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Volume) GetAttachedToOk() (*[]string, bool) {
+	if o == nil || o.AttachedTo == nil {
+		return nil, false
+	}
+	return o.AttachedTo, true
+}
+
+// HasAttachedTo returns a boolean if a field has been set.
+func (o *Volume) HasAttachedTo() bool {
+	if o != nil && o.AttachedTo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAttachedTo gets a reference to the given []string and assigns it to the AttachedTo field.
+func (o *Volume) SetAttachedTo(v []string) {
+	o.AttachedTo = &v
+}
+
+// GetExtra returns the Extra field value if set, zero value otherwise.
+func (o *Volume) GetExtra() map[string]interface{} {
+	if o == nil || o.Extra == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.Extra
+}
+
+// GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Volume) GetExtraOk() (*map[string]interface{}, bool) {
+	if o == nil || o.Extra == nil {
+		return nil, false
+	}
+	return o.Extra, true
+}
+
+// HasExtra returns a boolean if a field has been set.
+func (o *Volume) HasExtra() bool {
+	if o != nil && o.Extra != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExtra gets a reference to the given map[string]interface{} and assigns it to the Extra field.
+func (o *Volume) SetExtra(v map[string]interface{}) {
+	o.Extra = &v
+}
+
+// GetLastSeen returns the LastSeen field value if set, zero value otherwise.
+func (o *Volume) GetLastSeen() string {
+	if o == nil || o.LastSeen == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastSeen
+}
+
+// GetLastSeenOk returns a tuple with the LastSeen field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Volume) GetLastSeenOk() (*string, bool) {
+	if o == nil || o.LastSeen == nil {
+		return nil, false
+	}
+	return o.LastSeen, true
+}
+
+// HasLastSeen returns a boolean if a field has been set.
+func (o *Volume) HasLastSeen() bool {
+	if o != nil && o.LastSeen != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSeen gets a reference to the given string and assigns it to the LastSeen field.
+func (o *Volume) SetLastSeen(v string) {
+	o.LastSeen = &v
+}
+
+// GetMissingSince returns the MissingSince field value if set, zero value otherwise.
+func (o *Volume) GetMissingSince() string {
+	if o == nil || o.MissingSince == nil {
+		var ret string
+		return ret
+	}
+	return *o.MissingSince
+}
+
+// GetMissingSinceOk returns a tuple with the MissingSince field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Volume) GetMissingSinceOk() (*string, bool) {
+	if o == nil || o.MissingSince == nil {
+		return nil, false
+	}
+	return o.MissingSince, true
+}
+
+// HasMissingSince returns a boolean if a field has been set.
+func (o *Volume) HasMissingSince() bool {
+	if o != nil && o.MissingSince != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMissingSince gets a reference to the given string and assigns it to the MissingSince field.
+func (o *Volume) SetMissingSince(v string) {
+	o.MissingSince = &v
+}
+
 func (o Volume) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Cloud != nil {
-		toSerialize["cloud"] = o.Cloud
-	}
-	if o.CreatedBy != nil {
-		toSerialize["created_by"] = o.CreatedBy
-	}
-	if o.Default != nil {
-		toSerialize["default"] = o.Default
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	if o.ExternalId != nil {
 		toSerialize["external_id"] = o.ExternalId
 	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Location != nil {
-		toSerialize["location"] = o.Location
-	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.OwnedBy != nil {
-		toSerialize["owned_by"] = o.OwnedBy
+	if o.Cloud != nil {
+		toSerialize["cloud"] = o.Cloud
+	}
+	if o.Location != nil {
+		toSerialize["location"] = o.Location
 	}
 	if o.Size != nil {
 		toSerialize["size"] = o.Size
 	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
+	}
+	if o.CreatedBy != nil {
+		toSerialize["created_by"] = o.CreatedBy
+	}
+	if o.OwnedBy != nil {
+		toSerialize["owned_by"] = o.OwnedBy
+	}
+	if o.Default != nil {
+		toSerialize["default"] = o.Default
+	}
+	if o.Actions != nil {
+		toSerialize["actions"] = o.Actions
+	}
+	if o.AttachedTo != nil {
+		toSerialize["attached_to"] = o.AttachedTo
+	}
+	if o.Extra != nil {
+		toSerialize["extra"] = o.Extra
+	}
+	if o.LastSeen != nil {
+		toSerialize["last_seen"] = o.LastSeen
+	}
+	if o.MissingSince != nil {
+		toSerialize["missing_since"] = o.MissingSince
 	}
 	return json.Marshal(toSerialize)
 }
