@@ -22,7 +22,7 @@ type KeyMachineAssociation struct {
 	// Name or ID of the machine
 	Machine *string `json:"machine,omitempty"`
 	// Last used time
-	LastUsed *string `json:"last_used,omitempty"`
+	LastUsed *int32 `json:"last_used,omitempty"`
 	// SSH port
 	Port *int32 `json:"port,omitempty"`
 	// SSH user
@@ -111,9 +111,9 @@ func (o *KeyMachineAssociation) SetMachine(v string) {
 }
 
 // GetLastUsed returns the LastUsed field value if set, zero value otherwise.
-func (o *KeyMachineAssociation) GetLastUsed() string {
+func (o *KeyMachineAssociation) GetLastUsed() int32 {
 	if o == nil || o.LastUsed == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.LastUsed
@@ -121,7 +121,7 @@ func (o *KeyMachineAssociation) GetLastUsed() string {
 
 // GetLastUsedOk returns a tuple with the LastUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KeyMachineAssociation) GetLastUsedOk() (*string, bool) {
+func (o *KeyMachineAssociation) GetLastUsedOk() (*int32, bool) {
 	if o == nil || o.LastUsed == nil {
 		return nil, false
 	}
@@ -137,8 +137,8 @@ func (o *KeyMachineAssociation) HasLastUsed() bool {
 	return false
 }
 
-// SetLastUsed gets a reference to the given string and assigns it to the LastUsed field.
-func (o *KeyMachineAssociation) SetLastUsed(v string) {
+// SetLastUsed gets a reference to the given int32 and assigns it to the LastUsed field.
+func (o *KeyMachineAssociation) SetLastUsed(v int32) {
 	o.LastUsed = &v
 }
 
