@@ -19,7 +19,7 @@ import (
 type Cloud struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Provider *SupportedProviders `json:"provider,omitempty"`
+	Provider *string `json:"provider,omitempty"`
 	Config *map[string]interface{} `json:"config,omitempty"`
 	Features *CloudFeatures `json:"features,omitempty"`
 	Tags *map[string]interface{} `json:"tags,omitempty"`
@@ -109,9 +109,9 @@ func (o *Cloud) SetName(v string) {
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
-func (o *Cloud) GetProvider() SupportedProviders {
+func (o *Cloud) GetProvider() string {
 	if o == nil || o.Provider == nil {
-		var ret SupportedProviders
+		var ret string
 		return ret
 	}
 	return *o.Provider
@@ -119,7 +119,7 @@ func (o *Cloud) GetProvider() SupportedProviders {
 
 // GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cloud) GetProviderOk() (*SupportedProviders, bool) {
+func (o *Cloud) GetProviderOk() (*string, bool) {
 	if o == nil || o.Provider == nil {
 		return nil, false
 	}
@@ -135,8 +135,8 @@ func (o *Cloud) HasProvider() bool {
 	return false
 }
 
-// SetProvider gets a reference to the given SupportedProviders and assigns it to the Provider field.
-func (o *Cloud) SetProvider(v SupportedProviders) {
+// SetProvider gets a reference to the given string and assigns it to the Provider field.
+func (o *Cloud) SetProvider(v string) {
 	o.Provider = &v
 }
 
