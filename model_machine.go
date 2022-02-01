@@ -17,39 +17,40 @@ import (
 
 // Machine struct for Machine
 type Machine struct {
-	Id *string `json:"id,omitempty"`
-	ExternalId *string `json:"external_id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Cloud *string `json:"cloud,omitempty"`
-	Tags *map[string]interface{} `json:"tags,omitempty"`
-	CreatedBy *string `json:"created_by,omitempty"`
-	OwnedBy *string `json:"owned_by,omitempty"`
-	Default *bool `json:"default,omitempty"`
-	State *MachineState `json:"state,omitempty"`
-	Actions *map[string]interface{} `json:"actions,omitempty"`
-	Cores *int32 `json:"cores,omitempty"`
-	Cost *map[string]interface{} `json:"cost,omitempty"`
-	Created *string `json:"created,omitempty"`
-	Expiration *string `json:"expiration,omitempty"`
-	Extra *map[string]interface{} `json:"extra,omitempty"`
-	Hostname *string `json:"hostname,omitempty"`
-	Image *string `json:"image,omitempty"`
-	KeyAssociations *[]KeyMachineAssociation `json:"key_associations,omitempty"`
-	LastSeen *string `json:"last_seen,omitempty"`
-	Location *string `json:"location,omitempty"`
-	MissingSince *string `json:"missing_since,omitempty"`
-	Monitoring *string `json:"monitoring,omitempty"`
-	Network *string `json:"network,omitempty"`
-	OsType *string `json:"os_type,omitempty"`
-	Parent *string `json:"parent,omitempty"`
-	Ports *map[string]interface{} `json:"ports,omitempty"`
-	PrivateIps *[]string `json:"private_ips,omitempty"`
-	Probe *map[string]interface{} `json:"probe,omitempty"`
-	PublicIps *[]string `json:"public_ips,omitempty"`
-	Size *string `json:"size,omitempty"`
-	Subnet *string `json:"subnet,omitempty"`
-	Type *string `json:"type,omitempty"`
-	UnreachableSince *string `json:"unreachable_since,omitempty"`
+	Id               *string                  `json:"id,omitempty"`
+	ExternalId       *string                  `json:"external_id,omitempty"`
+	Name             *string                  `json:"name,omitempty"`
+	Cloud            *string                  `json:"cloud,omitempty"`
+	Tags             *map[string]interface{}  `json:"tags,omitempty"`
+	CreatedBy        *string                  `json:"created_by,omitempty"`
+	OwnedBy          *string                  `json:"owned_by,omitempty"`
+	Default          *bool                    `json:"default,omitempty"`
+	State            *MachineState            `json:"state,omitempty"`
+	Actions          *map[string]interface{}  `json:"actions,omitempty"`
+	Cluster          *string                  `json:"cluster,omitempty"`
+	Cores            *int32                   `json:"cores,omitempty"`
+	Cost             *map[string]interface{}  `json:"cost,omitempty"`
+	Created          *string                  `json:"created,omitempty"`
+	Expiration       *string                  `json:"expiration,omitempty"`
+	Extra            *map[string]interface{}  `json:"extra,omitempty"`
+	Hostname         *string                  `json:"hostname,omitempty"`
+	Image            *string                  `json:"image,omitempty"`
+	KeyAssociations  *[]KeyMachineAssociation `json:"key_associations,omitempty"`
+	LastSeen         *string                  `json:"last_seen,omitempty"`
+	Location         *string                  `json:"location,omitempty"`
+	MissingSince     *string                  `json:"missing_since,omitempty"`
+	Monitoring       *string                  `json:"monitoring,omitempty"`
+	Network          *string                  `json:"network,omitempty"`
+	OsType           *string                  `json:"os_type,omitempty"`
+	Parent           *string                  `json:"parent,omitempty"`
+	Ports            *map[string]interface{}  `json:"ports,omitempty"`
+	PrivateIps       *[]string                `json:"private_ips,omitempty"`
+	Probe            *map[string]interface{}  `json:"probe,omitempty"`
+	PublicIps        *[]string                `json:"public_ips,omitempty"`
+	Size             *string                  `json:"size,omitempty"`
+	Subnet           *string                  `json:"subnet,omitempty"`
+	Type             *string                  `json:"type,omitempty"`
+	UnreachableSince *string                  `json:"unreachable_since,omitempty"`
 }
 
 // NewMachine instantiates a new Machine object
@@ -387,6 +388,38 @@ func (o *Machine) HasActions() bool {
 // SetActions gets a reference to the given map[string]interface{} and assigns it to the Actions field.
 func (o *Machine) SetActions(v map[string]interface{}) {
 	o.Actions = &v
+}
+
+// GetCluster returns the Cluster field value if set, zero value otherwise.
+func (o *Machine) GetCluster() string {
+	if o == nil || o.Cluster == nil {
+		var ret string
+		return ret
+	}
+	return *o.Cluster
+}
+
+// GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Machine) GetClusterOk() (*string, bool) {
+	if o == nil || o.Cluster == nil {
+		return nil, false
+	}
+	return o.Cluster, true
+}
+
+// HasCluster returns a boolean if a field has been set.
+func (o *Machine) HasCluster() bool {
+	if o != nil && o.Cluster != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCluster gets a reference to the given string and assigns it to the Cluster field.
+func (o *Machine) SetCluster(v string) {
+	o.Cluster = &v
 }
 
 // GetCores returns the Cores field value if set, zero value otherwise.
@@ -1157,6 +1190,9 @@ func (o Machine) MarshalJSON() ([]byte, error) {
 	if o.Actions != nil {
 		toSerialize["actions"] = o.Actions
 	}
+	if o.Cluster != nil {
+		toSerialize["cluster"] = o.Cluster
+	}
 	if o.Cores != nil {
 		toSerialize["cores"] = o.Cores
 	}
@@ -1264,5 +1300,3 @@ func (v *NullableMachine) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
