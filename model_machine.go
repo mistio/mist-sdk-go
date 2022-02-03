@@ -27,6 +27,7 @@ type Machine struct {
 	Default *bool `json:"default,omitempty"`
 	State *MachineState `json:"state,omitempty"`
 	Actions *map[string]interface{} `json:"actions,omitempty"`
+	Cluster *string `json:"cluster,omitempty"`
 	Cores *int32 `json:"cores,omitempty"`
 	Cost *map[string]interface{} `json:"cost,omitempty"`
 	Created *string `json:"created,omitempty"`
@@ -387,6 +388,38 @@ func (o *Machine) HasActions() bool {
 // SetActions gets a reference to the given map[string]interface{} and assigns it to the Actions field.
 func (o *Machine) SetActions(v map[string]interface{}) {
 	o.Actions = &v
+}
+
+// GetCluster returns the Cluster field value if set, zero value otherwise.
+func (o *Machine) GetCluster() string {
+	if o == nil || o.Cluster == nil {
+		var ret string
+		return ret
+	}
+	return *o.Cluster
+}
+
+// GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Machine) GetClusterOk() (*string, bool) {
+	if o == nil || o.Cluster == nil {
+		return nil, false
+	}
+	return o.Cluster, true
+}
+
+// HasCluster returns a boolean if a field has been set.
+func (o *Machine) HasCluster() bool {
+	if o != nil && o.Cluster != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCluster gets a reference to the given string and assigns it to the Cluster field.
+func (o *Machine) SetCluster(v string) {
+	o.Cluster = &v
 }
 
 // GetCores returns the Cores field value if set, zero value otherwise.
@@ -1156,6 +1189,9 @@ func (o Machine) MarshalJSON() ([]byte, error) {
 	}
 	if o.Actions != nil {
 		toSerialize["actions"] = o.Actions
+	}
+	if o.Cluster != nil {
+		toSerialize["cluster"] = o.Cluster
 	}
 	if o.Cores != nil {
 		toSerialize["cores"] = o.Cores
