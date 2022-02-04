@@ -100,6 +100,7 @@ Class | Method | HTTP request | Description
 *MachinesApi* | [**AssociateKey**](docs/MachinesApi.md#associatekey) | **Put** /api/v2/machines/{machine}/actions/associate-key | Associate a key with a machine
 *MachinesApi* | [**CloneMachine**](docs/MachinesApi.md#clonemachine) | **Post** /api/v2/machines/{machine}/actions/clone | Clone machine
 *MachinesApi* | [**Console**](docs/MachinesApi.md#console) | **Post** /api/v2/machines/{machine}/actions/console | Open console
+*MachinesApi* | [**CreateMachine**](docs/MachinesApi.md#createmachine) | **Post** /api/v2/machines | Create machine
 *MachinesApi* | [**DestroyMachine**](docs/MachinesApi.md#destroymachine) | **Post** /api/v2/machines/{machine}/actions/destroy | Destroy machine
 *MachinesApi* | [**DisassociateKey**](docs/MachinesApi.md#disassociatekey) | **Delete** /api/v2/machines/{machine}/actions/disassociate-key | Disassociate a key from a machine
 *MachinesApi* | [**EditMachine**](docs/MachinesApi.md#editmachine) | **Put** /api/v2/machines/{machine} | Edit machine
@@ -188,6 +189,8 @@ Class | Method | HTTP request | Description
  - [ClusterProviders](docs/ClusterProviders.md)
  - [CreateClusterRequest](docs/CreateClusterRequest.md)
  - [CreateClusterRequestAllOf](docs/CreateClusterRequestAllOf.md)
+ - [CreateMachineRequest](docs/CreateMachineRequest.md)
+ - [CreateMachineRequestDisks](docs/CreateMachineRequestDisks.md)
  - [CreateMachineResponse](docs/CreateMachineResponse.md)
  - [CreateMachineResponseOneOf](docs/CreateMachineResponseOneOf.md)
  - [CreateMachineResponseOneOf1](docs/CreateMachineResponseOneOf1.md)
