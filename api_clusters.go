@@ -252,6 +252,7 @@ type ApiGetClusterRequest struct {
 	cluster string
 	only *string
 	deref *string
+	credentials *bool
 }
 
 func (r ApiGetClusterRequest) Only(only string) ApiGetClusterRequest {
@@ -260,6 +261,10 @@ func (r ApiGetClusterRequest) Only(only string) ApiGetClusterRequest {
 }
 func (r ApiGetClusterRequest) Deref(deref string) ApiGetClusterRequest {
 	r.deref = &deref
+	return r
+}
+func (r ApiGetClusterRequest) Credentials(credentials bool) ApiGetClusterRequest {
+	r.credentials = &credentials
 	return r
 }
 
@@ -313,6 +318,9 @@ func (a *ClustersApiService) GetClusterExecute(r ApiGetClusterRequest) (GetClust
 	}
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
+	}
+	if r.credentials != nil {
+		localVarQueryParams.Add("credentials", parameterToString(*r.credentials, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
