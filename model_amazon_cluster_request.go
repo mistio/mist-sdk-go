@@ -22,12 +22,12 @@ type AmazonClusterRequest struct {
 	Name string `json:"name"`
 	// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf
 	RoleArn string `json:"role_arn"`
-	// The VPC associated with the cluster
-	VpcId string `json:"vpc_id"`
-	// The subnets associated with the cluster
-	SubnetIds []string `json:"subnet_ids"`
+	// Name or ID of the network to be associated with the cluster. If not given the default network will be selected
+	Network *string `json:"network,omitempty"`
+	// IDs of the subnets to be associated with the cluster. At least 2 subnets in different availability zones are required, if not given the default subnets will be used
+	Subnets *[]string `json:"subnets,omitempty"`
 	// The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane
-	SecurityGroupIds []string `json:"security_group_ids"`
+	SecurityGroups *[]string `json:"security_groups,omitempty"`
 	// The initial number of nodes to provision for the nodegroup. Defaults to 2
 	DesiredNodes *float32 `json:"desired_nodes,omitempty"`
 	// The Amazon Resource Name (ARN) of the IAM role to associate with the node group
@@ -42,14 +42,11 @@ type AmazonClusterRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmazonClusterRequest(provider string, name string, roleArn string, vpcId string, subnetIds []string, securityGroupIds []string, ) *AmazonClusterRequest {
+func NewAmazonClusterRequest(provider string, name string, roleArn string, ) *AmazonClusterRequest {
 	this := AmazonClusterRequest{}
 	this.Provider = provider
 	this.Name = name
 	this.RoleArn = roleArn
-	this.VpcId = vpcId
-	this.SubnetIds = subnetIds
-	this.SecurityGroupIds = securityGroupIds
 	return &this
 }
 
@@ -133,76 +130,100 @@ func (o *AmazonClusterRequest) SetRoleArn(v string) {
 	o.RoleArn = v
 }
 
-// GetVpcId returns the VpcId field value
-func (o *AmazonClusterRequest) GetVpcId() string {
-	if o == nil  {
+// GetNetwork returns the Network field value if set, zero value otherwise.
+func (o *AmazonClusterRequest) GetNetwork() string {
+	if o == nil || o.Network == nil {
 		var ret string
 		return ret
 	}
-
-	return o.VpcId
+	return *o.Network
 }
 
-// GetVpcIdOk returns a tuple with the VpcId field value
+// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AmazonClusterRequest) GetVpcIdOk() (*string, bool) {
-	if o == nil  {
+func (o *AmazonClusterRequest) GetNetworkOk() (*string, bool) {
+	if o == nil || o.Network == nil {
 		return nil, false
 	}
-	return &o.VpcId, true
+	return o.Network, true
 }
 
-// SetVpcId sets field value
-func (o *AmazonClusterRequest) SetVpcId(v string) {
-	o.VpcId = v
+// HasNetwork returns a boolean if a field has been set.
+func (o *AmazonClusterRequest) HasNetwork() bool {
+	if o != nil && o.Network != nil {
+		return true
+	}
+
+	return false
 }
 
-// GetSubnetIds returns the SubnetIds field value
-func (o *AmazonClusterRequest) GetSubnetIds() []string {
-	if o == nil  {
+// SetNetwork gets a reference to the given string and assigns it to the Network field.
+func (o *AmazonClusterRequest) SetNetwork(v string) {
+	o.Network = &v
+}
+
+// GetSubnets returns the Subnets field value if set, zero value otherwise.
+func (o *AmazonClusterRequest) GetSubnets() []string {
+	if o == nil || o.Subnets == nil {
 		var ret []string
 		return ret
 	}
-
-	return o.SubnetIds
+	return *o.Subnets
 }
 
-// GetSubnetIdsOk returns a tuple with the SubnetIds field value
+// GetSubnetsOk returns a tuple with the Subnets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AmazonClusterRequest) GetSubnetIdsOk() (*[]string, bool) {
-	if o == nil  {
+func (o *AmazonClusterRequest) GetSubnetsOk() (*[]string, bool) {
+	if o == nil || o.Subnets == nil {
 		return nil, false
 	}
-	return &o.SubnetIds, true
+	return o.Subnets, true
 }
 
-// SetSubnetIds sets field value
-func (o *AmazonClusterRequest) SetSubnetIds(v []string) {
-	o.SubnetIds = v
+// HasSubnets returns a boolean if a field has been set.
+func (o *AmazonClusterRequest) HasSubnets() bool {
+	if o != nil && o.Subnets != nil {
+		return true
+	}
+
+	return false
 }
 
-// GetSecurityGroupIds returns the SecurityGroupIds field value
-func (o *AmazonClusterRequest) GetSecurityGroupIds() []string {
-	if o == nil  {
+// SetSubnets gets a reference to the given []string and assigns it to the Subnets field.
+func (o *AmazonClusterRequest) SetSubnets(v []string) {
+	o.Subnets = &v
+}
+
+// GetSecurityGroups returns the SecurityGroups field value if set, zero value otherwise.
+func (o *AmazonClusterRequest) GetSecurityGroups() []string {
+	if o == nil || o.SecurityGroups == nil {
 		var ret []string
 		return ret
 	}
-
-	return o.SecurityGroupIds
+	return *o.SecurityGroups
 }
 
-// GetSecurityGroupIdsOk returns a tuple with the SecurityGroupIds field value
+// GetSecurityGroupsOk returns a tuple with the SecurityGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AmazonClusterRequest) GetSecurityGroupIdsOk() (*[]string, bool) {
-	if o == nil  {
+func (o *AmazonClusterRequest) GetSecurityGroupsOk() (*[]string, bool) {
+	if o == nil || o.SecurityGroups == nil {
 		return nil, false
 	}
-	return &o.SecurityGroupIds, true
+	return o.SecurityGroups, true
 }
 
-// SetSecurityGroupIds sets field value
-func (o *AmazonClusterRequest) SetSecurityGroupIds(v []string) {
-	o.SecurityGroupIds = v
+// HasSecurityGroups returns a boolean if a field has been set.
+func (o *AmazonClusterRequest) HasSecurityGroups() bool {
+	if o != nil && o.SecurityGroups != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityGroups gets a reference to the given []string and assigns it to the SecurityGroups field.
+func (o *AmazonClusterRequest) SetSecurityGroups(v []string) {
+	o.SecurityGroups = &v
 }
 
 // GetDesiredNodes returns the DesiredNodes field value if set, zero value otherwise.
@@ -344,14 +365,14 @@ func (o AmazonClusterRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["role_arn"] = o.RoleArn
 	}
-	if true {
-		toSerialize["vpc_id"] = o.VpcId
+	if o.Network != nil {
+		toSerialize["network"] = o.Network
 	}
-	if true {
-		toSerialize["subnet_ids"] = o.SubnetIds
+	if o.Subnets != nil {
+		toSerialize["subnets"] = o.Subnets
 	}
-	if true {
-		toSerialize["security_group_ids"] = o.SecurityGroupIds
+	if o.SecurityGroups != nil {
+		toSerialize["security_groups"] = o.SecurityGroups
 	}
 	if o.DesiredNodes != nil {
 		toSerialize["desired_nodes"] = o.DesiredNodes
