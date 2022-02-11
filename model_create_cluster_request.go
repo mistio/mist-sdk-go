@@ -17,7 +17,7 @@ import (
 
 // CreateClusterRequest struct for CreateClusterRequest
 type CreateClusterRequest struct {
-	// The name of the cluster to create
+	// The cluster's name
 	Name string `json:"name"`
 	// The cloud the cluster belongs to
 	Cloud string `json:"cloud"`
@@ -30,6 +30,14 @@ type CreateClusterRequest struct {
 	SubnetIds []string `json:"subnet_ids"`
 	// The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane
 	SecurityGroupIds []string `json:"security_group_ids"`
+	// The initial number of nodes to provision for the nodegroup. Defaults to 2
+	DesiredNodes *float32 `json:"desired_nodes,omitempty"`
+	// The Amazon Resource Name (ARN) of the IAM role to associate with the node group
+	NodegroupRoleArn *string `json:"nodegroup_role_arn,omitempty"`
+	// Name or ID of size to use for the nodes. If not provided, the t3.medium size will be used
+	NodegroupSize *string `json:"nodegroup_size,omitempty"`
+	// The disk size for the nodegroup. Defaults to 20 GBs
+	NodegroupDiskSize *float32 `json:"nodegroup_disk_size,omitempty"`
 	// The name of the location to create the cluster in
 	Location string `json:"location"`
 }
@@ -227,6 +235,134 @@ func (o *CreateClusterRequest) SetSecurityGroupIds(v []string) {
 	o.SecurityGroupIds = v
 }
 
+// GetDesiredNodes returns the DesiredNodes field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetDesiredNodes() float32 {
+	if o == nil || o.DesiredNodes == nil {
+		var ret float32
+		return ret
+	}
+	return *o.DesiredNodes
+}
+
+// GetDesiredNodesOk returns a tuple with the DesiredNodes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetDesiredNodesOk() (*float32, bool) {
+	if o == nil || o.DesiredNodes == nil {
+		return nil, false
+	}
+	return o.DesiredNodes, true
+}
+
+// HasDesiredNodes returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasDesiredNodes() bool {
+	if o != nil && o.DesiredNodes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDesiredNodes gets a reference to the given float32 and assigns it to the DesiredNodes field.
+func (o *CreateClusterRequest) SetDesiredNodes(v float32) {
+	o.DesiredNodes = &v
+}
+
+// GetNodegroupRoleArn returns the NodegroupRoleArn field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetNodegroupRoleArn() string {
+	if o == nil || o.NodegroupRoleArn == nil {
+		var ret string
+		return ret
+	}
+	return *o.NodegroupRoleArn
+}
+
+// GetNodegroupRoleArnOk returns a tuple with the NodegroupRoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetNodegroupRoleArnOk() (*string, bool) {
+	if o == nil || o.NodegroupRoleArn == nil {
+		return nil, false
+	}
+	return o.NodegroupRoleArn, true
+}
+
+// HasNodegroupRoleArn returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasNodegroupRoleArn() bool {
+	if o != nil && o.NodegroupRoleArn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodegroupRoleArn gets a reference to the given string and assigns it to the NodegroupRoleArn field.
+func (o *CreateClusterRequest) SetNodegroupRoleArn(v string) {
+	o.NodegroupRoleArn = &v
+}
+
+// GetNodegroupSize returns the NodegroupSize field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetNodegroupSize() string {
+	if o == nil || o.NodegroupSize == nil {
+		var ret string
+		return ret
+	}
+	return *o.NodegroupSize
+}
+
+// GetNodegroupSizeOk returns a tuple with the NodegroupSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetNodegroupSizeOk() (*string, bool) {
+	if o == nil || o.NodegroupSize == nil {
+		return nil, false
+	}
+	return o.NodegroupSize, true
+}
+
+// HasNodegroupSize returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasNodegroupSize() bool {
+	if o != nil && o.NodegroupSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodegroupSize gets a reference to the given string and assigns it to the NodegroupSize field.
+func (o *CreateClusterRequest) SetNodegroupSize(v string) {
+	o.NodegroupSize = &v
+}
+
+// GetNodegroupDiskSize returns the NodegroupDiskSize field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetNodegroupDiskSize() float32 {
+	if o == nil || o.NodegroupDiskSize == nil {
+		var ret float32
+		return ret
+	}
+	return *o.NodegroupDiskSize
+}
+
+// GetNodegroupDiskSizeOk returns a tuple with the NodegroupDiskSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetNodegroupDiskSizeOk() (*float32, bool) {
+	if o == nil || o.NodegroupDiskSize == nil {
+		return nil, false
+	}
+	return o.NodegroupDiskSize, true
+}
+
+// HasNodegroupDiskSize returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasNodegroupDiskSize() bool {
+	if o != nil && o.NodegroupDiskSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodegroupDiskSize gets a reference to the given float32 and assigns it to the NodegroupDiskSize field.
+func (o *CreateClusterRequest) SetNodegroupDiskSize(v float32) {
+	o.NodegroupDiskSize = &v
+}
+
 // GetLocation returns the Location field value
 func (o *CreateClusterRequest) GetLocation() string {
 	if o == nil  {
@@ -273,6 +409,18 @@ func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["security_group_ids"] = o.SecurityGroupIds
+	}
+	if o.DesiredNodes != nil {
+		toSerialize["desired_nodes"] = o.DesiredNodes
+	}
+	if o.NodegroupRoleArn != nil {
+		toSerialize["nodegroup_role_arn"] = o.NodegroupRoleArn
+	}
+	if o.NodegroupSize != nil {
+		toSerialize["nodegroup_size"] = o.NodegroupSize
+	}
+	if o.NodegroupDiskSize != nil {
+		toSerialize["nodegroup_disk_size"] = o.NodegroupDiskSize
 	}
 	if true {
 		toSerialize["location"] = o.Location
