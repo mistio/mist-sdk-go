@@ -17,7 +17,7 @@ import (
 
 // CreateClusterRequest struct for CreateClusterRequest
 type CreateClusterRequest struct {
-	// The cluster's name
+	// The name of the cluster to create
 	Name string `json:"name"`
 	// The cloud the cluster belongs to
 	Cloud string `json:"cloud"`

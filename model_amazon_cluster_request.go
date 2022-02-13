@@ -18,8 +18,6 @@ import (
 // AmazonClusterRequest struct for AmazonClusterRequest
 type AmazonClusterRequest struct {
 	Provider string `json:"provider"`
-	// The cluster's name
-	Name string `json:"name"`
 	// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf
 	RoleArn string `json:"role_arn"`
 	// Name or ID of the network to be associated with the cluster. If not given the default network will be selected
@@ -42,10 +40,9 @@ type AmazonClusterRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmazonClusterRequest(provider string, name string, roleArn string, ) *AmazonClusterRequest {
+func NewAmazonClusterRequest(provider string, roleArn string, ) *AmazonClusterRequest {
 	this := AmazonClusterRequest{}
 	this.Provider = provider
-	this.Name = name
 	this.RoleArn = roleArn
 	return &this
 }
@@ -80,30 +77,6 @@ func (o *AmazonClusterRequest) GetProviderOk() (*string, bool) {
 // SetProvider sets field value
 func (o *AmazonClusterRequest) SetProvider(v string) {
 	o.Provider = v
-}
-
-// GetName returns the Name field value
-func (o *AmazonClusterRequest) GetName() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *AmazonClusterRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *AmazonClusterRequest) SetName(v string) {
-	o.Name = v
 }
 
 // GetRoleArn returns the RoleArn field value
@@ -358,9 +331,6 @@ func (o AmazonClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["provider"] = o.Provider
-	}
-	if true {
-		toSerialize["name"] = o.Name
 	}
 	if true {
 		toSerialize["role_arn"] = o.RoleArn
