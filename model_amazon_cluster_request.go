@@ -28,7 +28,7 @@ type AmazonClusterRequest struct {
 	SecurityGroups *[]string `json:"security_groups,omitempty"`
 	// The initial number of nodes to provision for the nodegroup. Defaults to 2
 	DesiredNodes *float32 `json:"desired_nodes,omitempty"`
-	// The Amazon Resource Name (ARN) of the IAM role to associate with the node group
+	// The Amazon Resource Name (ARN) of the IAM role to associate with the node group. Required in order to create a cluster nodegroup
 	NodegroupRoleArn *string `json:"nodegroup_role_arn,omitempty"`
 	// Name or ID of size to use for the nodes. If not provided, the t3.medium size will be used
 	NodegroupSize *string `json:"nodegroup_size,omitempty"`
