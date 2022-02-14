@@ -173,6 +173,7 @@ docs/OpenstackCloudRequest.md
 docs/OpenstackCredentials.md
 docs/OpenstackNet.md
 docs/Org.md
+docs/OrgResourcesCount.md
 docs/OrgsApi.md
 docs/OtherCloudRequest.md
 docs/PostDeployScript.md
@@ -357,6 +358,7 @@ model_openstack_cloud_request.go
 model_openstack_credentials.go
 model_openstack_net.go
 model_org.go
+model_org_resources_count.go
 model_other_cloud_request.go
 model_post_deploy_script.go
 model_query.go
