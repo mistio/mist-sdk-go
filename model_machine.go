@@ -28,7 +28,7 @@ type Machine struct {
 	State *MachineState `json:"state,omitempty"`
 	Actions *map[string]interface{} `json:"actions,omitempty"`
 	Cluster *string `json:"cluster,omitempty"`
-	Cores *int32 `json:"cores,omitempty"`
+	Cores *float32 `json:"cores,omitempty"`
 	Cost *map[string]interface{} `json:"cost,omitempty"`
 	Created *string `json:"created,omitempty"`
 	Expiration *string `json:"expiration,omitempty"`
@@ -423,9 +423,9 @@ func (o *Machine) SetCluster(v string) {
 }
 
 // GetCores returns the Cores field value if set, zero value otherwise.
-func (o *Machine) GetCores() int32 {
+func (o *Machine) GetCores() float32 {
 	if o == nil || o.Cores == nil {
-		var ret int32
+		var ret float32
 		return ret
 	}
 	return *o.Cores
@@ -433,7 +433,7 @@ func (o *Machine) GetCores() int32 {
 
 // GetCoresOk returns a tuple with the Cores field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Machine) GetCoresOk() (*int32, bool) {
+func (o *Machine) GetCoresOk() (*float32, bool) {
 	if o == nil || o.Cores == nil {
 		return nil, false
 	}
@@ -449,8 +449,8 @@ func (o *Machine) HasCores() bool {
 	return false
 }
 
-// SetCores gets a reference to the given int32 and assigns it to the Cores field.
-func (o *Machine) SetCores(v int32) {
+// SetCores gets a reference to the given float32 and assigns it to the Cores field.
+func (o *Machine) SetCores(v float32) {
 	o.Cores = &v
 }
 

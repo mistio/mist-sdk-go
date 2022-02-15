@@ -27,6 +27,8 @@ type KeyMachineAssociation struct {
 	Port *int32 `json:"port,omitempty"`
 	// SSH user
 	User *string `json:"user,omitempty"`
+	// Indicates if the SSH user has sudo privileges
+	Sudo *bool `json:"sudo,omitempty"`
 }
 
 // NewKeyMachineAssociation instantiates a new KeyMachineAssociation object
@@ -206,6 +208,38 @@ func (o *KeyMachineAssociation) SetUser(v string) {
 	o.User = &v
 }
 
+// GetSudo returns the Sudo field value if set, zero value otherwise.
+func (o *KeyMachineAssociation) GetSudo() bool {
+	if o == nil || o.Sudo == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Sudo
+}
+
+// GetSudoOk returns a tuple with the Sudo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KeyMachineAssociation) GetSudoOk() (*bool, bool) {
+	if o == nil || o.Sudo == nil {
+		return nil, false
+	}
+	return o.Sudo, true
+}
+
+// HasSudo returns a boolean if a field has been set.
+func (o *KeyMachineAssociation) HasSudo() bool {
+	if o != nil && o.Sudo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSudo gets a reference to the given bool and assigns it to the Sudo field.
+func (o *KeyMachineAssociation) SetSudo(v bool) {
+	o.Sudo = &v
+}
+
 func (o KeyMachineAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Key != nil {
@@ -222,6 +256,9 @@ func (o KeyMachineAssociation) MarshalJSON() ([]byte, error) {
 	}
 	if o.User != nil {
 		toSerialize["user"] = o.User
+	}
+	if o.Sudo != nil {
+		toSerialize["sudo"] = o.Sudo
 	}
 	return json.Marshal(toSerialize)
 }

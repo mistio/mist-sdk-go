@@ -6607,7 +6607,7 @@ components:
           cloud: cloud
           default: true
           hostname: hostname
-          cores: 0
+          cores: 0.8008281904610115
           missing_since: missing_since
           extra: '{}'
           id: id
@@ -6635,11 +6635,13 @@ components:
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
         meta:
@@ -7130,6 +7132,7 @@ components:
         port: 1
         machine: machine
         last_used: 6
+        sudo: true
         user: user
         key: key
       properties:
@@ -7148,6 +7151,9 @@ components:
         user:
           description: SSH user
           type: string
+        sudo:
+          description: Indicates if the SSH user has sudo privileges
+          type: boolean
       type: object
     KeyMachineDisassociation:
       example:
@@ -7558,7 +7564,7 @@ components:
           cloud: cloud
           default: true
           hostname: hostname
-          cores: 0
+          cores: 0.8008281904610115
           missing_since: missing_since
           extra: '{}'
           id: id
@@ -7586,11 +7592,13 @@ components:
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
         - cluster: cluster
@@ -7605,7 +7613,7 @@ components:
           cloud: cloud
           default: true
           hostname: hostname
-          cores: 0
+          cores: 0.8008281904610115
           missing_since: missing_since
           extra: '{}'
           id: id
@@ -7633,11 +7641,13 @@ components:
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
         meta:
@@ -8115,7 +8125,7 @@ components:
         cloud: cloud
         default: true
         hostname: hostname
-        cores: 0
+        cores: 0.8008281904610115
         missing_since: missing_since
         extra: '{}'
         id: id
@@ -8143,11 +8153,13 @@ components:
         - port: 1
           machine: machine
           last_used: 6
+          sudo: true
           user: user
           key: key
         - port: 1
           machine: machine
           last_used: 6
+          sudo: true
           user: user
           key: key
       properties:
@@ -8174,7 +8186,7 @@ components:
         cluster:
           type: string
         cores:
-          type: integer
+          type: number
         cost:
           type: object
         created:
