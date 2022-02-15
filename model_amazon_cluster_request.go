@@ -20,25 +20,30 @@ type AmazonClusterRequest struct {
 	Provider string `json:"provider"`
 	// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf
 	RoleArn string `json:"role_arn"`
-	// The VPC associated with the cluster
-	VpcId string `json:"vpc_id"`
-	// The subnets associated with the cluster
-	SubnetIds []string `json:"subnet_ids"`
+	// Name or ID of the network to be associated with the cluster. If not given the default network will be selected
+	Network *string `json:"network,omitempty"`
+	// IDs of the subnets to be associated with the cluster. At least 2 subnets in different availability zones are required, if not given the default subnets will be used
+	Subnets *[]string `json:"subnets,omitempty"`
 	// The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane
-	SecurityGroupIds []string `json:"security_group_ids"`
+	SecurityGroups *[]string `json:"security_groups,omitempty"`
+	// The initial number of nodes to provision for the nodegroup. Defaults to 2
+	DesiredNodes *float32 `json:"desired_nodes,omitempty"`
+	// The Amazon Resource Name (ARN) of the IAM role to associate with the node group. Required in order to create a cluster nodegroup
+	NodegroupRoleArn *string `json:"nodegroup_role_arn,omitempty"`
+	// Name or ID of size to use for the nodes. If not provided, the t3.medium size will be used
+	NodegroupSize *string `json:"nodegroup_size,omitempty"`
+	// The disk size for the nodegroup. Defaults to 20 GBs
+	NodegroupDiskSize *float32 `json:"nodegroup_disk_size,omitempty"`
 }
 
 // NewAmazonClusterRequest instantiates a new AmazonClusterRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmazonClusterRequest(provider string, roleArn string, vpcId string, subnetIds []string, securityGroupIds []string, ) *AmazonClusterRequest {
+func NewAmazonClusterRequest(provider string, roleArn string, ) *AmazonClusterRequest {
 	this := AmazonClusterRequest{}
 	this.Provider = provider
 	this.RoleArn = roleArn
-	this.VpcId = vpcId
-	this.SubnetIds = subnetIds
-	this.SecurityGroupIds = securityGroupIds
 	return &this
 }
 
@@ -98,76 +103,228 @@ func (o *AmazonClusterRequest) SetRoleArn(v string) {
 	o.RoleArn = v
 }
 
-// GetVpcId returns the VpcId field value
-func (o *AmazonClusterRequest) GetVpcId() string {
-	if o == nil  {
+// GetNetwork returns the Network field value if set, zero value otherwise.
+func (o *AmazonClusterRequest) GetNetwork() string {
+	if o == nil || o.Network == nil {
 		var ret string
 		return ret
 	}
-
-	return o.VpcId
+	return *o.Network
 }
 
-// GetVpcIdOk returns a tuple with the VpcId field value
+// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AmazonClusterRequest) GetVpcIdOk() (*string, bool) {
-	if o == nil  {
+func (o *AmazonClusterRequest) GetNetworkOk() (*string, bool) {
+	if o == nil || o.Network == nil {
 		return nil, false
 	}
-	return &o.VpcId, true
+	return o.Network, true
 }
 
-// SetVpcId sets field value
-func (o *AmazonClusterRequest) SetVpcId(v string) {
-	o.VpcId = v
+// HasNetwork returns a boolean if a field has been set.
+func (o *AmazonClusterRequest) HasNetwork() bool {
+	if o != nil && o.Network != nil {
+		return true
+	}
+
+	return false
 }
 
-// GetSubnetIds returns the SubnetIds field value
-func (o *AmazonClusterRequest) GetSubnetIds() []string {
-	if o == nil  {
+// SetNetwork gets a reference to the given string and assigns it to the Network field.
+func (o *AmazonClusterRequest) SetNetwork(v string) {
+	o.Network = &v
+}
+
+// GetSubnets returns the Subnets field value if set, zero value otherwise.
+func (o *AmazonClusterRequest) GetSubnets() []string {
+	if o == nil || o.Subnets == nil {
 		var ret []string
 		return ret
 	}
-
-	return o.SubnetIds
+	return *o.Subnets
 }
 
-// GetSubnetIdsOk returns a tuple with the SubnetIds field value
+// GetSubnetsOk returns a tuple with the Subnets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AmazonClusterRequest) GetSubnetIdsOk() (*[]string, bool) {
-	if o == nil  {
+func (o *AmazonClusterRequest) GetSubnetsOk() (*[]string, bool) {
+	if o == nil || o.Subnets == nil {
 		return nil, false
 	}
-	return &o.SubnetIds, true
+	return o.Subnets, true
 }
 
-// SetSubnetIds sets field value
-func (o *AmazonClusterRequest) SetSubnetIds(v []string) {
-	o.SubnetIds = v
+// HasSubnets returns a boolean if a field has been set.
+func (o *AmazonClusterRequest) HasSubnets() bool {
+	if o != nil && o.Subnets != nil {
+		return true
+	}
+
+	return false
 }
 
-// GetSecurityGroupIds returns the SecurityGroupIds field value
-func (o *AmazonClusterRequest) GetSecurityGroupIds() []string {
-	if o == nil  {
+// SetSubnets gets a reference to the given []string and assigns it to the Subnets field.
+func (o *AmazonClusterRequest) SetSubnets(v []string) {
+	o.Subnets = &v
+}
+
+// GetSecurityGroups returns the SecurityGroups field value if set, zero value otherwise.
+func (o *AmazonClusterRequest) GetSecurityGroups() []string {
+	if o == nil || o.SecurityGroups == nil {
 		var ret []string
 		return ret
 	}
-
-	return o.SecurityGroupIds
+	return *o.SecurityGroups
 }
 
-// GetSecurityGroupIdsOk returns a tuple with the SecurityGroupIds field value
+// GetSecurityGroupsOk returns a tuple with the SecurityGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AmazonClusterRequest) GetSecurityGroupIdsOk() (*[]string, bool) {
-	if o == nil  {
+func (o *AmazonClusterRequest) GetSecurityGroupsOk() (*[]string, bool) {
+	if o == nil || o.SecurityGroups == nil {
 		return nil, false
 	}
-	return &o.SecurityGroupIds, true
+	return o.SecurityGroups, true
 }
 
-// SetSecurityGroupIds sets field value
-func (o *AmazonClusterRequest) SetSecurityGroupIds(v []string) {
-	o.SecurityGroupIds = v
+// HasSecurityGroups returns a boolean if a field has been set.
+func (o *AmazonClusterRequest) HasSecurityGroups() bool {
+	if o != nil && o.SecurityGroups != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityGroups gets a reference to the given []string and assigns it to the SecurityGroups field.
+func (o *AmazonClusterRequest) SetSecurityGroups(v []string) {
+	o.SecurityGroups = &v
+}
+
+// GetDesiredNodes returns the DesiredNodes field value if set, zero value otherwise.
+func (o *AmazonClusterRequest) GetDesiredNodes() float32 {
+	if o == nil || o.DesiredNodes == nil {
+		var ret float32
+		return ret
+	}
+	return *o.DesiredNodes
+}
+
+// GetDesiredNodesOk returns a tuple with the DesiredNodes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AmazonClusterRequest) GetDesiredNodesOk() (*float32, bool) {
+	if o == nil || o.DesiredNodes == nil {
+		return nil, false
+	}
+	return o.DesiredNodes, true
+}
+
+// HasDesiredNodes returns a boolean if a field has been set.
+func (o *AmazonClusterRequest) HasDesiredNodes() bool {
+	if o != nil && o.DesiredNodes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDesiredNodes gets a reference to the given float32 and assigns it to the DesiredNodes field.
+func (o *AmazonClusterRequest) SetDesiredNodes(v float32) {
+	o.DesiredNodes = &v
+}
+
+// GetNodegroupRoleArn returns the NodegroupRoleArn field value if set, zero value otherwise.
+func (o *AmazonClusterRequest) GetNodegroupRoleArn() string {
+	if o == nil || o.NodegroupRoleArn == nil {
+		var ret string
+		return ret
+	}
+	return *o.NodegroupRoleArn
+}
+
+// GetNodegroupRoleArnOk returns a tuple with the NodegroupRoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AmazonClusterRequest) GetNodegroupRoleArnOk() (*string, bool) {
+	if o == nil || o.NodegroupRoleArn == nil {
+		return nil, false
+	}
+	return o.NodegroupRoleArn, true
+}
+
+// HasNodegroupRoleArn returns a boolean if a field has been set.
+func (o *AmazonClusterRequest) HasNodegroupRoleArn() bool {
+	if o != nil && o.NodegroupRoleArn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodegroupRoleArn gets a reference to the given string and assigns it to the NodegroupRoleArn field.
+func (o *AmazonClusterRequest) SetNodegroupRoleArn(v string) {
+	o.NodegroupRoleArn = &v
+}
+
+// GetNodegroupSize returns the NodegroupSize field value if set, zero value otherwise.
+func (o *AmazonClusterRequest) GetNodegroupSize() string {
+	if o == nil || o.NodegroupSize == nil {
+		var ret string
+		return ret
+	}
+	return *o.NodegroupSize
+}
+
+// GetNodegroupSizeOk returns a tuple with the NodegroupSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AmazonClusterRequest) GetNodegroupSizeOk() (*string, bool) {
+	if o == nil || o.NodegroupSize == nil {
+		return nil, false
+	}
+	return o.NodegroupSize, true
+}
+
+// HasNodegroupSize returns a boolean if a field has been set.
+func (o *AmazonClusterRequest) HasNodegroupSize() bool {
+	if o != nil && o.NodegroupSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodegroupSize gets a reference to the given string and assigns it to the NodegroupSize field.
+func (o *AmazonClusterRequest) SetNodegroupSize(v string) {
+	o.NodegroupSize = &v
+}
+
+// GetNodegroupDiskSize returns the NodegroupDiskSize field value if set, zero value otherwise.
+func (o *AmazonClusterRequest) GetNodegroupDiskSize() float32 {
+	if o == nil || o.NodegroupDiskSize == nil {
+		var ret float32
+		return ret
+	}
+	return *o.NodegroupDiskSize
+}
+
+// GetNodegroupDiskSizeOk returns a tuple with the NodegroupDiskSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AmazonClusterRequest) GetNodegroupDiskSizeOk() (*float32, bool) {
+	if o == nil || o.NodegroupDiskSize == nil {
+		return nil, false
+	}
+	return o.NodegroupDiskSize, true
+}
+
+// HasNodegroupDiskSize returns a boolean if a field has been set.
+func (o *AmazonClusterRequest) HasNodegroupDiskSize() bool {
+	if o != nil && o.NodegroupDiskSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodegroupDiskSize gets a reference to the given float32 and assigns it to the NodegroupDiskSize field.
+func (o *AmazonClusterRequest) SetNodegroupDiskSize(v float32) {
+	o.NodegroupDiskSize = &v
 }
 
 func (o AmazonClusterRequest) MarshalJSON() ([]byte, error) {
@@ -178,14 +335,26 @@ func (o AmazonClusterRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["role_arn"] = o.RoleArn
 	}
-	if true {
-		toSerialize["vpc_id"] = o.VpcId
+	if o.Network != nil {
+		toSerialize["network"] = o.Network
 	}
-	if true {
-		toSerialize["subnet_ids"] = o.SubnetIds
+	if o.Subnets != nil {
+		toSerialize["subnets"] = o.Subnets
 	}
-	if true {
-		toSerialize["security_group_ids"] = o.SecurityGroupIds
+	if o.SecurityGroups != nil {
+		toSerialize["security_groups"] = o.SecurityGroups
+	}
+	if o.DesiredNodes != nil {
+		toSerialize["desired_nodes"] = o.DesiredNodes
+	}
+	if o.NodegroupRoleArn != nil {
+		toSerialize["nodegroup_role_arn"] = o.NodegroupRoleArn
+	}
+	if o.NodegroupSize != nil {
+		toSerialize["nodegroup_size"] = o.NodegroupSize
+	}
+	if o.NodegroupDiskSize != nil {
+		toSerialize["nodegroup_disk_size"] = o.NodegroupDiskSize
 	}
 	return json.Marshal(toSerialize)
 }

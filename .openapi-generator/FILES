@@ -51,6 +51,7 @@ docs/ClusterProviders.md
 docs/ClustersApi.md
 docs/CreateClusterRequest.md
 docs/CreateClusterRequestAllOf.md
+docs/CreateClusterResponse.md
 docs/CreateMachineRequest.md
 docs/CreateMachineRequestDisks.md
 docs/CreateMachineResponse.md
@@ -240,6 +241,7 @@ model_cluster.go
 model_cluster_providers.go
 model_create_cluster_request.go
 model_create_cluster_request_all_of.go
+model_create_cluster_response.go
 model_create_machine_request.go
 model_create_machine_request_disks.go
 model_create_machine_response.go

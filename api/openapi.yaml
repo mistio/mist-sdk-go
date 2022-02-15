@@ -403,7 +403,11 @@ paths:
               $ref: '#/components/schemas/CreateClusterRequest'
       responses:
         "200":
-          description: Cluster creation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateClusterResponse'
+          description: Cluster creation started
         "401":
           description: Authentication failed
         "403":
@@ -494,6 +498,17 @@ paths:
         schema:
           default: auto
           type: string
+        style: form
+      - description: Return the cluster's credentials. Requires READ_CREDENTIALS permission
+          on cluster.
+        example: true
+        explode: true
+        in: query
+        name: credentials
+        required: false
+        schema:
+          default: false
+          type: boolean
         style: form
       responses:
         "200":
@@ -5163,27 +5178,42 @@ components:
             permissions for the Kubernetes control plane to make calls to AWS API
             operations on your behalf
           type: string
-        vpc_id:
-          description: The VPC associated with the cluster
+        network:
+          description: Name or ID of the network to be associated with the cluster.
+            If not given the default network will be selected
           type: string
-        subnet_ids:
-          description: The subnets associated with the cluster
+        subnets:
+          description: IDs of the subnets to be associated with the cluster. At least
+            2 subnets in different availability zones are required, if not given the
+            default subnets will be used
           items:
             type: string
           type: array
-        security_group_ids:
+        security_groups:
           description: The security groups associated with the cross-account elastic
             network interfaces that are used to allow communication between your nodes
             and the Kubernetes control plane
           items:
             type: string
           type: array
+        desired_nodes:
+          description: The initial number of nodes to provision for the nodegroup.
+            Defaults to 2
+          type: number
+        nodegroup_role_arn:
+          description: The Amazon Resource Name (ARN) of the IAM role to associate
+            with the node group. Required in order to create a cluster nodegroup
+          type: string
+        nodegroup_size:
+          description: Name or ID of size to use for the nodes. If not provided, the
+            t3.medium size will be used
+          type: string
+        nodegroup_disk_size:
+          description: The disk size for the nodegroup. Defaults to 20 GBs
+          type: number
       required:
       - provider
       - role_arn
-      - security_group_ids
-      - subnet_ids
-      - vpc_id
       type: object
     AmazonCredentials:
       properties:
@@ -5551,6 +5581,13 @@ components:
         cloud: my-cloud
         provider: google
         location: my-location
+    CreateClusterResponse:
+      example:
+        jobId: jobId
+      properties:
+        jobId:
+          type: string
+      type: object
     CreateMachineRequest:
       example:
         template: '{}'
@@ -6390,7 +6427,7 @@ components:
           cloud: cloud
           default: true
           hostname: hostname
-          cores: 0
+          cores: 0.8008281904610115
           missing_since: missing_since
           extra: '{}'
           id: id
@@ -6418,11 +6455,13 @@ components:
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
         meta:
@@ -6913,6 +6952,7 @@ components:
         port: 1
         machine: machine
         last_used: 6
+        sudo: true
         user: user
         key: key
       properties:
@@ -6931,6 +6971,9 @@ components:
         user:
           description: SSH user
           type: string
+        sudo:
+          description: Indicates if the SSH user has sudo privileges
+          type: boolean
       type: object
     KeyMachineDisassociation:
       example:
@@ -7342,7 +7385,7 @@ components:
           cloud: cloud
           default: true
           hostname: hostname
-          cores: 0
+          cores: 0.8008281904610115
           missing_since: missing_since
           extra: '{}'
           id: id
@@ -7370,11 +7413,13 @@ components:
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
         - parent: parent
@@ -7388,7 +7433,7 @@ components:
           cloud: cloud
           default: true
           hostname: hostname
-          cores: 0
+          cores: 0.8008281904610115
           missing_since: missing_since
           extra: '{}'
           id: id
@@ -7416,11 +7461,13 @@ components:
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
         meta:
@@ -7897,7 +7944,7 @@ components:
         cloud: cloud
         default: true
         hostname: hostname
-        cores: 0
+        cores: 0.8008281904610115
         missing_since: missing_since
         extra: '{}'
         id: id
@@ -7925,11 +7972,13 @@ components:
         - port: 1
           machine: machine
           last_used: 6
+          sudo: true
           user: user
           key: key
         - port: 1
           machine: machine
           last_used: 6
+          sudo: true
           user: user
           key: key
       properties:
@@ -7954,7 +8003,7 @@ components:
         actions:
           type: object
         cores:
-          type: integer
+          type: number
         cost:
           type: object
         created:
@@ -8020,6 +8069,11 @@ components:
       - paused
       - reconfiguring
       - unknown
+      - updating
+      - migrating
+      - normal
+      - succeeded
+      - failed
       type: string
     MaxihostCloudRequest:
       properties:
