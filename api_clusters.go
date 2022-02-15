@@ -38,7 +38,7 @@ func (r ApiCreateClusterRequest) CreateClusterRequest(createClusterRequest Creat
 	return r
 }
 
-func (r ApiCreateClusterRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiCreateClusterRequest) Execute() (CreateClusterResponse, *_nethttp.Response, error) {
 	return r.ApiService.CreateClusterExecute(r)
 }
 
@@ -57,19 +57,21 @@ func (a *ClustersApiService) CreateCluster(ctx _context.Context) ApiCreateCluste
 
 /*
  * Execute executes the request
+ * @return CreateClusterResponse
  */
-func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*_nethttp.Response, error) {
+func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (CreateClusterResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  CreateClusterResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.CreateCluster")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/v2/clusters"
@@ -88,7 +90,7 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*_
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -113,18 +115,18 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*_
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -132,10 +134,19 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*_
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiDestroyClusterRequest struct {
