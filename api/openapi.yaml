@@ -437,7 +437,11 @@ paths:
               $ref: '#/components/schemas/CreateClusterRequest'
       responses:
         "200":
-          description: Cluster creation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateClusterResponse'
+          description: Cluster creation started
         "401":
           description: Authentication failed
         "403":
@@ -5610,6 +5614,13 @@ components:
         cloud: my-cloud
         provider: google
         location: my-location
+    CreateClusterResponse:
+      example:
+        jobId: jobId
+      properties:
+        jobId:
+          type: string
+      type: object
     CreateMachineRequest:
       example:
         template: '{}'
