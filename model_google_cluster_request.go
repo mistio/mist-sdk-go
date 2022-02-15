@@ -18,8 +18,18 @@ import (
 // GoogleClusterRequest struct for GoogleClusterRequest
 type GoogleClusterRequest struct {
 	Provider string `json:"provider"`
-	// The name of the location to create the cluster in
+	// Name or ID of the location to create the cluster in
 	Location string `json:"location"`
+	// The number of nodes to provision for the nodepool. Defaults to 3
+	DesiredNodes *float32 `json:"desired_nodes,omitempty"`
+	// Name or ID of size to use for the nodes. If not provided, the e2-medium size will be used
+	NodepoolSize *string `json:"nodepool_size,omitempty"`
+	// Size of the disk attached to each node, specified in GB. Defaults to 100 GBs
+	NodepoolDiskSize *float32 `json:"nodepool_disk_size,omitempty"`
+	// Type of the disk attached to each node. Defaults to pd-standard
+	NodepoolDiskType *string `json:"nodepool_disk_type,omitempty"`
+	// Whether the nodes are created as preemptible machines. Defaults to false
+	Preemptible *bool `json:"preemptible,omitempty"`
 }
 
 // NewGoogleClusterRequest instantiates a new GoogleClusterRequest object
@@ -89,6 +99,166 @@ func (o *GoogleClusterRequest) SetLocation(v string) {
 	o.Location = v
 }
 
+// GetDesiredNodes returns the DesiredNodes field value if set, zero value otherwise.
+func (o *GoogleClusterRequest) GetDesiredNodes() float32 {
+	if o == nil || o.DesiredNodes == nil {
+		var ret float32
+		return ret
+	}
+	return *o.DesiredNodes
+}
+
+// GetDesiredNodesOk returns a tuple with the DesiredNodes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleClusterRequest) GetDesiredNodesOk() (*float32, bool) {
+	if o == nil || o.DesiredNodes == nil {
+		return nil, false
+	}
+	return o.DesiredNodes, true
+}
+
+// HasDesiredNodes returns a boolean if a field has been set.
+func (o *GoogleClusterRequest) HasDesiredNodes() bool {
+	if o != nil && o.DesiredNodes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDesiredNodes gets a reference to the given float32 and assigns it to the DesiredNodes field.
+func (o *GoogleClusterRequest) SetDesiredNodes(v float32) {
+	o.DesiredNodes = &v
+}
+
+// GetNodepoolSize returns the NodepoolSize field value if set, zero value otherwise.
+func (o *GoogleClusterRequest) GetNodepoolSize() string {
+	if o == nil || o.NodepoolSize == nil {
+		var ret string
+		return ret
+	}
+	return *o.NodepoolSize
+}
+
+// GetNodepoolSizeOk returns a tuple with the NodepoolSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleClusterRequest) GetNodepoolSizeOk() (*string, bool) {
+	if o == nil || o.NodepoolSize == nil {
+		return nil, false
+	}
+	return o.NodepoolSize, true
+}
+
+// HasNodepoolSize returns a boolean if a field has been set.
+func (o *GoogleClusterRequest) HasNodepoolSize() bool {
+	if o != nil && o.NodepoolSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodepoolSize gets a reference to the given string and assigns it to the NodepoolSize field.
+func (o *GoogleClusterRequest) SetNodepoolSize(v string) {
+	o.NodepoolSize = &v
+}
+
+// GetNodepoolDiskSize returns the NodepoolDiskSize field value if set, zero value otherwise.
+func (o *GoogleClusterRequest) GetNodepoolDiskSize() float32 {
+	if o == nil || o.NodepoolDiskSize == nil {
+		var ret float32
+		return ret
+	}
+	return *o.NodepoolDiskSize
+}
+
+// GetNodepoolDiskSizeOk returns a tuple with the NodepoolDiskSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleClusterRequest) GetNodepoolDiskSizeOk() (*float32, bool) {
+	if o == nil || o.NodepoolDiskSize == nil {
+		return nil, false
+	}
+	return o.NodepoolDiskSize, true
+}
+
+// HasNodepoolDiskSize returns a boolean if a field has been set.
+func (o *GoogleClusterRequest) HasNodepoolDiskSize() bool {
+	if o != nil && o.NodepoolDiskSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodepoolDiskSize gets a reference to the given float32 and assigns it to the NodepoolDiskSize field.
+func (o *GoogleClusterRequest) SetNodepoolDiskSize(v float32) {
+	o.NodepoolDiskSize = &v
+}
+
+// GetNodepoolDiskType returns the NodepoolDiskType field value if set, zero value otherwise.
+func (o *GoogleClusterRequest) GetNodepoolDiskType() string {
+	if o == nil || o.NodepoolDiskType == nil {
+		var ret string
+		return ret
+	}
+	return *o.NodepoolDiskType
+}
+
+// GetNodepoolDiskTypeOk returns a tuple with the NodepoolDiskType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleClusterRequest) GetNodepoolDiskTypeOk() (*string, bool) {
+	if o == nil || o.NodepoolDiskType == nil {
+		return nil, false
+	}
+	return o.NodepoolDiskType, true
+}
+
+// HasNodepoolDiskType returns a boolean if a field has been set.
+func (o *GoogleClusterRequest) HasNodepoolDiskType() bool {
+	if o != nil && o.NodepoolDiskType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodepoolDiskType gets a reference to the given string and assigns it to the NodepoolDiskType field.
+func (o *GoogleClusterRequest) SetNodepoolDiskType(v string) {
+	o.NodepoolDiskType = &v
+}
+
+// GetPreemptible returns the Preemptible field value if set, zero value otherwise.
+func (o *GoogleClusterRequest) GetPreemptible() bool {
+	if o == nil || o.Preemptible == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Preemptible
+}
+
+// GetPreemptibleOk returns a tuple with the Preemptible field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleClusterRequest) GetPreemptibleOk() (*bool, bool) {
+	if o == nil || o.Preemptible == nil {
+		return nil, false
+	}
+	return o.Preemptible, true
+}
+
+// HasPreemptible returns a boolean if a field has been set.
+func (o *GoogleClusterRequest) HasPreemptible() bool {
+	if o != nil && o.Preemptible != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPreemptible gets a reference to the given bool and assigns it to the Preemptible field.
+func (o *GoogleClusterRequest) SetPreemptible(v bool) {
+	o.Preemptible = &v
+}
+
 func (o GoogleClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -96,6 +266,21 @@ func (o GoogleClusterRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["location"] = o.Location
+	}
+	if o.DesiredNodes != nil {
+		toSerialize["desired_nodes"] = o.DesiredNodes
+	}
+	if o.NodepoolSize != nil {
+		toSerialize["nodepool_size"] = o.NodepoolSize
+	}
+	if o.NodepoolDiskSize != nil {
+		toSerialize["nodepool_disk_size"] = o.NodepoolDiskSize
+	}
+	if o.NodepoolDiskType != nil {
+		toSerialize["nodepool_disk_type"] = o.NodepoolDiskType
+	}
+	if o.Preemptible != nil {
+		toSerialize["preemptible"] = o.Preemptible
 	}
 	return json.Marshal(toSerialize)
 }
