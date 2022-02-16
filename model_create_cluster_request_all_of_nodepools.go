@@ -18,11 +18,11 @@ import (
 // CreateClusterRequestAllOfNodepools struct for CreateClusterRequestAllOfNodepools
 type CreateClusterRequestAllOfNodepools struct {
 	// The number of nodes to provision for the cluster. Defaults to 2
-	Nodes *float32 `json:"nodes,omitempty"`
+	Nodes *int32 `json:"nodes,omitempty"`
 	// Name or ID of size to use for the nodes. If not provided, the t3.medium(EKS) or e2-medium(GKE) size will be used
 	Size *string `json:"size,omitempty"`
 	// Size of the disk attached to each node, specified in GB.
-	DiskSize *float32 `json:"disk_size,omitempty"`
+	DiskSize *int32 `json:"disk_size,omitempty"`
 	// Amazon specific parameter.The Amazon Resource Name (ARN) of the IAM role to associate with the nodes. Required in order to create a cluster nodepool
 	RoleArn *string `json:"role_arn,omitempty"`
 	// Google specific parameter.Type of the disk attached to each node. Defaults to pd-standard
@@ -37,9 +37,9 @@ type CreateClusterRequestAllOfNodepools struct {
 // will change when the set of required properties is changed
 func NewCreateClusterRequestAllOfNodepools() *CreateClusterRequestAllOfNodepools {
 	this := CreateClusterRequestAllOfNodepools{}
-	var nodes float32 = 2
+	var nodes int32 = 2
 	this.Nodes = &nodes
-	var diskSize float32 = 20
+	var diskSize int32 = 20
 	this.DiskSize = &diskSize
 	return &this
 }
@@ -49,17 +49,17 @@ func NewCreateClusterRequestAllOfNodepools() *CreateClusterRequestAllOfNodepools
 // but it doesn't guarantee that properties required by API are set
 func NewCreateClusterRequestAllOfNodepoolsWithDefaults() *CreateClusterRequestAllOfNodepools {
 	this := CreateClusterRequestAllOfNodepools{}
-	var nodes float32 = 2
+	var nodes int32 = 2
 	this.Nodes = &nodes
-	var diskSize float32 = 20
+	var diskSize int32 = 20
 	this.DiskSize = &diskSize
 	return &this
 }
 
 // GetNodes returns the Nodes field value if set, zero value otherwise.
-func (o *CreateClusterRequestAllOfNodepools) GetNodes() float32 {
+func (o *CreateClusterRequestAllOfNodepools) GetNodes() int32 {
 	if o == nil || o.Nodes == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Nodes
@@ -67,7 +67,7 @@ func (o *CreateClusterRequestAllOfNodepools) GetNodes() float32 {
 
 // GetNodesOk returns a tuple with the Nodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateClusterRequestAllOfNodepools) GetNodesOk() (*float32, bool) {
+func (o *CreateClusterRequestAllOfNodepools) GetNodesOk() (*int32, bool) {
 	if o == nil || o.Nodes == nil {
 		return nil, false
 	}
@@ -83,8 +83,8 @@ func (o *CreateClusterRequestAllOfNodepools) HasNodes() bool {
 	return false
 }
 
-// SetNodes gets a reference to the given float32 and assigns it to the Nodes field.
-func (o *CreateClusterRequestAllOfNodepools) SetNodes(v float32) {
+// SetNodes gets a reference to the given int32 and assigns it to the Nodes field.
+func (o *CreateClusterRequestAllOfNodepools) SetNodes(v int32) {
 	o.Nodes = &v
 }
 
@@ -121,9 +121,9 @@ func (o *CreateClusterRequestAllOfNodepools) SetSize(v string) {
 }
 
 // GetDiskSize returns the DiskSize field value if set, zero value otherwise.
-func (o *CreateClusterRequestAllOfNodepools) GetDiskSize() float32 {
+func (o *CreateClusterRequestAllOfNodepools) GetDiskSize() int32 {
 	if o == nil || o.DiskSize == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.DiskSize
@@ -131,7 +131,7 @@ func (o *CreateClusterRequestAllOfNodepools) GetDiskSize() float32 {
 
 // GetDiskSizeOk returns a tuple with the DiskSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateClusterRequestAllOfNodepools) GetDiskSizeOk() (*float32, bool) {
+func (o *CreateClusterRequestAllOfNodepools) GetDiskSizeOk() (*int32, bool) {
 	if o == nil || o.DiskSize == nil {
 		return nil, false
 	}
@@ -147,8 +147,8 @@ func (o *CreateClusterRequestAllOfNodepools) HasDiskSize() bool {
 	return false
 }
 
-// SetDiskSize gets a reference to the given float32 and assigns it to the DiskSize field.
-func (o *CreateClusterRequestAllOfNodepools) SetDiskSize(v float32) {
+// SetDiskSize gets a reference to the given int32 and assigns it to the DiskSize field.
+func (o *CreateClusterRequestAllOfNodepools) SetDiskSize(v int32) {
 	o.DiskSize = &v
 }
 
