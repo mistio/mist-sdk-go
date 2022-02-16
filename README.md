@@ -190,6 +190,7 @@ Class | Method | HTTP request | Description
  - [ClusterProviders](docs/ClusterProviders.md)
  - [CreateClusterRequest](docs/CreateClusterRequest.md)
  - [CreateClusterRequestAllOf](docs/CreateClusterRequestAllOf.md)
+ - [CreateClusterRequestAllOfNodepools](docs/CreateClusterRequestAllOfNodepools.md)
  - [CreateClusterResponse](docs/CreateClusterResponse.md)
  - [CreateMachineRequest](docs/CreateMachineRequest.md)
  - [CreateMachineRequestDisks](docs/CreateMachineRequestDisks.md)

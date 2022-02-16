@@ -20,8 +20,9 @@ type CreateClusterRequest struct {
 	// The name of the cluster to create
 	Name string `json:"name"`
 	// The cloud the cluster belongs to
-	Cloud string `json:"cloud"`
-	Provider string `json:"provider"`
+	Cloud *string `json:"cloud,omitempty"`
+	Provider *ClusterProviders `json:"provider,omitempty"`
+	Nodepools *[]CreateClusterRequestAllOfNodepools `json:"nodepools,omitempty"`
 	// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf
 	RoleArn string `json:"role_arn"`
 	// Name or ID of the network to be associated with the cluster. If not given the default network will be selected
@@ -30,35 +31,17 @@ type CreateClusterRequest struct {
 	Subnets *[]string `json:"subnets,omitempty"`
 	// The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane
 	SecurityGroups *[]string `json:"security_groups,omitempty"`
-	// The number of nodes to provision for the nodepool. Defaults to 3
-	DesiredNodes *float32 `json:"desired_nodes,omitempty"`
-	// The Amazon Resource Name (ARN) of the IAM role to associate with the node group. Required in order to create a cluster nodegroup
-	NodegroupRoleArn *string `json:"nodegroup_role_arn,omitempty"`
-	// Name or ID of size to use for the nodes. If not provided, the t3.medium size will be used
-	NodegroupSize *string `json:"nodegroup_size,omitempty"`
-	// The disk size for the nodegroup. Defaults to 20 GBs
-	NodegroupDiskSize *float32 `json:"nodegroup_disk_size,omitempty"`
 	// Name or ID of the location to create the cluster in
 	Location string `json:"location"`
-	// Name or ID of size to use for the nodes. If not provided, the e2-medium size will be used
-	NodepoolSize *string `json:"nodepool_size,omitempty"`
-	// Size of the disk attached to each node, specified in GB. Defaults to 100 GBs
-	NodepoolDiskSize *float32 `json:"nodepool_disk_size,omitempty"`
-	// Type of the disk attached to each node. Defaults to pd-standard
-	NodepoolDiskType *string `json:"nodepool_disk_type,omitempty"`
-	// Whether the nodes are created as preemptible machines. Defaults to false
-	Preemptible *bool `json:"preemptible,omitempty"`
 }
 
 // NewCreateClusterRequest instantiates a new CreateClusterRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateClusterRequest(name string, cloud string, provider string, roleArn string, location string, ) *CreateClusterRequest {
+func NewCreateClusterRequest(name string, roleArn string, location string, ) *CreateClusterRequest {
 	this := CreateClusterRequest{}
 	this.Name = name
-	this.Cloud = cloud
-	this.Provider = provider
 	this.RoleArn = roleArn
 	this.Location = location
 	return &this
@@ -96,52 +79,100 @@ func (o *CreateClusterRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetCloud returns the Cloud field value
+// GetCloud returns the Cloud field value if set, zero value otherwise.
 func (o *CreateClusterRequest) GetCloud() string {
-	if o == nil  {
+	if o == nil || o.Cloud == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Cloud
+	return *o.Cloud
 }
 
-// GetCloudOk returns a tuple with the Cloud field value
+// GetCloudOk returns a tuple with the Cloud field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateClusterRequest) GetCloudOk() (*string, bool) {
-	if o == nil  {
+	if o == nil || o.Cloud == nil {
 		return nil, false
 	}
-	return &o.Cloud, true
+	return o.Cloud, true
 }
 
-// SetCloud sets field value
+// HasCloud returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasCloud() bool {
+	if o != nil && o.Cloud != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCloud gets a reference to the given string and assigns it to the Cloud field.
 func (o *CreateClusterRequest) SetCloud(v string) {
-	o.Cloud = v
+	o.Cloud = &v
 }
 
-// GetProvider returns the Provider field value
-func (o *CreateClusterRequest) GetProvider() string {
-	if o == nil  {
-		var ret string
+// GetProvider returns the Provider field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetProvider() ClusterProviders {
+	if o == nil || o.Provider == nil {
+		var ret ClusterProviders
 		return ret
 	}
-
-	return o.Provider
+	return *o.Provider
 }
 
-// GetProviderOk returns a tuple with the Provider field value
+// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetProviderOk() (*string, bool) {
-	if o == nil  {
+func (o *CreateClusterRequest) GetProviderOk() (*ClusterProviders, bool) {
+	if o == nil || o.Provider == nil {
 		return nil, false
 	}
-	return &o.Provider, true
+	return o.Provider, true
 }
 
-// SetProvider sets field value
-func (o *CreateClusterRequest) SetProvider(v string) {
-	o.Provider = v
+// HasProvider returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasProvider() bool {
+	if o != nil && o.Provider != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProvider gets a reference to the given ClusterProviders and assigns it to the Provider field.
+func (o *CreateClusterRequest) SetProvider(v ClusterProviders) {
+	o.Provider = &v
+}
+
+// GetNodepools returns the Nodepools field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetNodepools() []CreateClusterRequestAllOfNodepools {
+	if o == nil || o.Nodepools == nil {
+		var ret []CreateClusterRequestAllOfNodepools
+		return ret
+	}
+	return *o.Nodepools
+}
+
+// GetNodepoolsOk returns a tuple with the Nodepools field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetNodepoolsOk() (*[]CreateClusterRequestAllOfNodepools, bool) {
+	if o == nil || o.Nodepools == nil {
+		return nil, false
+	}
+	return o.Nodepools, true
+}
+
+// HasNodepools returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasNodepools() bool {
+	if o != nil && o.Nodepools != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodepools gets a reference to the given []CreateClusterRequestAllOfNodepools and assigns it to the Nodepools field.
+func (o *CreateClusterRequest) SetNodepools(v []CreateClusterRequestAllOfNodepools) {
+	o.Nodepools = &v
 }
 
 // GetRoleArn returns the RoleArn field value
@@ -264,134 +295,6 @@ func (o *CreateClusterRequest) SetSecurityGroups(v []string) {
 	o.SecurityGroups = &v
 }
 
-// GetDesiredNodes returns the DesiredNodes field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetDesiredNodes() float32 {
-	if o == nil || o.DesiredNodes == nil {
-		var ret float32
-		return ret
-	}
-	return *o.DesiredNodes
-}
-
-// GetDesiredNodesOk returns a tuple with the DesiredNodes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetDesiredNodesOk() (*float32, bool) {
-	if o == nil || o.DesiredNodes == nil {
-		return nil, false
-	}
-	return o.DesiredNodes, true
-}
-
-// HasDesiredNodes returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasDesiredNodes() bool {
-	if o != nil && o.DesiredNodes != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDesiredNodes gets a reference to the given float32 and assigns it to the DesiredNodes field.
-func (o *CreateClusterRequest) SetDesiredNodes(v float32) {
-	o.DesiredNodes = &v
-}
-
-// GetNodegroupRoleArn returns the NodegroupRoleArn field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetNodegroupRoleArn() string {
-	if o == nil || o.NodegroupRoleArn == nil {
-		var ret string
-		return ret
-	}
-	return *o.NodegroupRoleArn
-}
-
-// GetNodegroupRoleArnOk returns a tuple with the NodegroupRoleArn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetNodegroupRoleArnOk() (*string, bool) {
-	if o == nil || o.NodegroupRoleArn == nil {
-		return nil, false
-	}
-	return o.NodegroupRoleArn, true
-}
-
-// HasNodegroupRoleArn returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasNodegroupRoleArn() bool {
-	if o != nil && o.NodegroupRoleArn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNodegroupRoleArn gets a reference to the given string and assigns it to the NodegroupRoleArn field.
-func (o *CreateClusterRequest) SetNodegroupRoleArn(v string) {
-	o.NodegroupRoleArn = &v
-}
-
-// GetNodegroupSize returns the NodegroupSize field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetNodegroupSize() string {
-	if o == nil || o.NodegroupSize == nil {
-		var ret string
-		return ret
-	}
-	return *o.NodegroupSize
-}
-
-// GetNodegroupSizeOk returns a tuple with the NodegroupSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetNodegroupSizeOk() (*string, bool) {
-	if o == nil || o.NodegroupSize == nil {
-		return nil, false
-	}
-	return o.NodegroupSize, true
-}
-
-// HasNodegroupSize returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasNodegroupSize() bool {
-	if o != nil && o.NodegroupSize != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNodegroupSize gets a reference to the given string and assigns it to the NodegroupSize field.
-func (o *CreateClusterRequest) SetNodegroupSize(v string) {
-	o.NodegroupSize = &v
-}
-
-// GetNodegroupDiskSize returns the NodegroupDiskSize field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetNodegroupDiskSize() float32 {
-	if o == nil || o.NodegroupDiskSize == nil {
-		var ret float32
-		return ret
-	}
-	return *o.NodegroupDiskSize
-}
-
-// GetNodegroupDiskSizeOk returns a tuple with the NodegroupDiskSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetNodegroupDiskSizeOk() (*float32, bool) {
-	if o == nil || o.NodegroupDiskSize == nil {
-		return nil, false
-	}
-	return o.NodegroupDiskSize, true
-}
-
-// HasNodegroupDiskSize returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasNodegroupDiskSize() bool {
-	if o != nil && o.NodegroupDiskSize != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNodegroupDiskSize gets a reference to the given float32 and assigns it to the NodegroupDiskSize field.
-func (o *CreateClusterRequest) SetNodegroupDiskSize(v float32) {
-	o.NodegroupDiskSize = &v
-}
-
 // GetLocation returns the Location field value
 func (o *CreateClusterRequest) GetLocation() string {
 	if o == nil  {
@@ -416,144 +319,19 @@ func (o *CreateClusterRequest) SetLocation(v string) {
 	o.Location = v
 }
 
-// GetNodepoolSize returns the NodepoolSize field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetNodepoolSize() string {
-	if o == nil || o.NodepoolSize == nil {
-		var ret string
-		return ret
-	}
-	return *o.NodepoolSize
-}
-
-// GetNodepoolSizeOk returns a tuple with the NodepoolSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetNodepoolSizeOk() (*string, bool) {
-	if o == nil || o.NodepoolSize == nil {
-		return nil, false
-	}
-	return o.NodepoolSize, true
-}
-
-// HasNodepoolSize returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasNodepoolSize() bool {
-	if o != nil && o.NodepoolSize != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNodepoolSize gets a reference to the given string and assigns it to the NodepoolSize field.
-func (o *CreateClusterRequest) SetNodepoolSize(v string) {
-	o.NodepoolSize = &v
-}
-
-// GetNodepoolDiskSize returns the NodepoolDiskSize field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetNodepoolDiskSize() float32 {
-	if o == nil || o.NodepoolDiskSize == nil {
-		var ret float32
-		return ret
-	}
-	return *o.NodepoolDiskSize
-}
-
-// GetNodepoolDiskSizeOk returns a tuple with the NodepoolDiskSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetNodepoolDiskSizeOk() (*float32, bool) {
-	if o == nil || o.NodepoolDiskSize == nil {
-		return nil, false
-	}
-	return o.NodepoolDiskSize, true
-}
-
-// HasNodepoolDiskSize returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasNodepoolDiskSize() bool {
-	if o != nil && o.NodepoolDiskSize != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNodepoolDiskSize gets a reference to the given float32 and assigns it to the NodepoolDiskSize field.
-func (o *CreateClusterRequest) SetNodepoolDiskSize(v float32) {
-	o.NodepoolDiskSize = &v
-}
-
-// GetNodepoolDiskType returns the NodepoolDiskType field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetNodepoolDiskType() string {
-	if o == nil || o.NodepoolDiskType == nil {
-		var ret string
-		return ret
-	}
-	return *o.NodepoolDiskType
-}
-
-// GetNodepoolDiskTypeOk returns a tuple with the NodepoolDiskType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetNodepoolDiskTypeOk() (*string, bool) {
-	if o == nil || o.NodepoolDiskType == nil {
-		return nil, false
-	}
-	return o.NodepoolDiskType, true
-}
-
-// HasNodepoolDiskType returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasNodepoolDiskType() bool {
-	if o != nil && o.NodepoolDiskType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNodepoolDiskType gets a reference to the given string and assigns it to the NodepoolDiskType field.
-func (o *CreateClusterRequest) SetNodepoolDiskType(v string) {
-	o.NodepoolDiskType = &v
-}
-
-// GetPreemptible returns the Preemptible field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetPreemptible() bool {
-	if o == nil || o.Preemptible == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Preemptible
-}
-
-// GetPreemptibleOk returns a tuple with the Preemptible field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetPreemptibleOk() (*bool, bool) {
-	if o == nil || o.Preemptible == nil {
-		return nil, false
-	}
-	return o.Preemptible, true
-}
-
-// HasPreemptible returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasPreemptible() bool {
-	if o != nil && o.Preemptible != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPreemptible gets a reference to the given bool and assigns it to the Preemptible field.
-func (o *CreateClusterRequest) SetPreemptible(v bool) {
-	o.Preemptible = &v
-}
-
 func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
+	if o.Cloud != nil {
 		toSerialize["cloud"] = o.Cloud
 	}
-	if true {
+	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
+	}
+	if o.Nodepools != nil {
+		toSerialize["nodepools"] = o.Nodepools
 	}
 	if true {
 		toSerialize["role_arn"] = o.RoleArn
@@ -567,32 +345,8 @@ func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 	if o.SecurityGroups != nil {
 		toSerialize["security_groups"] = o.SecurityGroups
 	}
-	if o.DesiredNodes != nil {
-		toSerialize["desired_nodes"] = o.DesiredNodes
-	}
-	if o.NodegroupRoleArn != nil {
-		toSerialize["nodegroup_role_arn"] = o.NodegroupRoleArn
-	}
-	if o.NodegroupSize != nil {
-		toSerialize["nodegroup_size"] = o.NodegroupSize
-	}
-	if o.NodegroupDiskSize != nil {
-		toSerialize["nodegroup_disk_size"] = o.NodegroupDiskSize
-	}
 	if true {
 		toSerialize["location"] = o.Location
-	}
-	if o.NodepoolSize != nil {
-		toSerialize["nodepool_size"] = o.NodepoolSize
-	}
-	if o.NodepoolDiskSize != nil {
-		toSerialize["nodepool_disk_size"] = o.NodepoolDiskSize
-	}
-	if o.NodepoolDiskType != nil {
-		toSerialize["nodepool_disk_type"] = o.NodepoolDiskType
-	}
-	if o.Preemptible != nil {
-		toSerialize["preemptible"] = o.Preemptible
 	}
 	return json.Marshal(toSerialize)
 }
