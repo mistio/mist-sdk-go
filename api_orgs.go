@@ -162,10 +162,15 @@ type ApiGetOrgRequest struct {
 	ctx _context.Context
 	ApiService *OrgsApiService
 	org string
+	resourcesCount *bool
 	only *string
 	deref *string
 }
 
+func (r ApiGetOrgRequest) ResourcesCount(resourcesCount bool) ApiGetOrgRequest {
+	r.resourcesCount = &resourcesCount
+	return r
+}
 func (r ApiGetOrgRequest) Only(only string) ApiGetOrgRequest {
 	r.only = &only
 	return r
@@ -220,6 +225,9 @@ func (a *OrgsApiService) GetOrgExecute(r ApiGetOrgRequest) (GetOrgResponse, *_ne
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.resourcesCount != nil {
+		localVarQueryParams.Add("resources_count", parameterToString(*r.resourcesCount, ""))
+	}
 	if r.only != nil {
 		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
 	}

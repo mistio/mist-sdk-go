@@ -17,7 +17,7 @@ import (
 
 // CreateClusterResponse struct for CreateClusterResponse
 type CreateClusterResponse struct {
-	Id *string `json:"id,omitempty"`
+	JobId *string `json:"jobId,omitempty"`
 }
 
 // NewCreateClusterResponse instantiates a new CreateClusterResponse object
@@ -37,42 +37,42 @@ func NewCreateClusterResponseWithDefaults() *CreateClusterResponse {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *CreateClusterResponse) GetId() string {
-	if o == nil || o.Id == nil {
+// GetJobId returns the JobId field value if set, zero value otherwise.
+func (o *CreateClusterResponse) GetJobId() string {
+	if o == nil || o.JobId == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.JobId
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetJobIdOk returns a tuple with the JobId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateClusterResponse) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+func (o *CreateClusterResponse) GetJobIdOk() (*string, bool) {
+	if o == nil || o.JobId == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.JobId, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *CreateClusterResponse) HasId() bool {
-	if o != nil && o.Id != nil {
+// HasJobId returns a boolean if a field has been set.
+func (o *CreateClusterResponse) HasJobId() bool {
+	if o != nil && o.JobId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *CreateClusterResponse) SetId(v string) {
-	o.Id = &v
+// SetJobId gets a reference to the given string and assigns it to the JobId field.
+func (o *CreateClusterResponse) SetJobId(v string) {
+	o.JobId = &v
 }
 
 func (o CreateClusterResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	if o.JobId != nil {
+		toSerialize["jobId"] = o.JobId
 	}
 	return json.Marshal(toSerialize)
 }

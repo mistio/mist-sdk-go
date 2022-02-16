@@ -19,7 +19,6 @@ import (
 type GetOrgResponse struct {
 	Data *Org `json:"data,omitempty"`
 	Meta *ResponseMetadata `json:"meta,omitempty"`
-	ResourcesCount *OrgResourcesCount `json:"resources_count,omitempty"`
 }
 
 // NewGetOrgResponse instantiates a new GetOrgResponse object
@@ -103,38 +102,6 @@ func (o *GetOrgResponse) SetMeta(v ResponseMetadata) {
 	o.Meta = &v
 }
 
-// GetResourcesCount returns the ResourcesCount field value if set, zero value otherwise.
-func (o *GetOrgResponse) GetResourcesCount() OrgResourcesCount {
-	if o == nil || o.ResourcesCount == nil {
-		var ret OrgResourcesCount
-		return ret
-	}
-	return *o.ResourcesCount
-}
-
-// GetResourcesCountOk returns a tuple with the ResourcesCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetOrgResponse) GetResourcesCountOk() (*OrgResourcesCount, bool) {
-	if o == nil || o.ResourcesCount == nil {
-		return nil, false
-	}
-	return o.ResourcesCount, true
-}
-
-// HasResourcesCount returns a boolean if a field has been set.
-func (o *GetOrgResponse) HasResourcesCount() bool {
-	if o != nil && o.ResourcesCount != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResourcesCount gets a reference to the given OrgResourcesCount and assigns it to the ResourcesCount field.
-func (o *GetOrgResponse) SetResourcesCount(v OrgResourcesCount) {
-	o.ResourcesCount = &v
-}
-
 func (o GetOrgResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
@@ -142,9 +109,6 @@ func (o GetOrgResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.Meta != nil {
 		toSerialize["meta"] = o.Meta
-	}
-	if o.ResourcesCount != nil {
-		toSerialize["resources_count"] = o.ResourcesCount
 	}
 	return json.Marshal(toSerialize)
 }

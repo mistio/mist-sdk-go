@@ -30,7 +30,7 @@ type CreateClusterRequest struct {
 	Subnets *[]string `json:"subnets,omitempty"`
 	// The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane
 	SecurityGroups *[]string `json:"security_groups,omitempty"`
-	// The initial number of nodes to provision for the nodegroup. Defaults to 2
+	// The number of nodes to provision for the nodepool. Defaults to 3
 	DesiredNodes *float32 `json:"desired_nodes,omitempty"`
 	// The Amazon Resource Name (ARN) of the IAM role to associate with the node group. Required in order to create a cluster nodegroup
 	NodegroupRoleArn *string `json:"nodegroup_role_arn,omitempty"`
@@ -38,8 +38,16 @@ type CreateClusterRequest struct {
 	NodegroupSize *string `json:"nodegroup_size,omitempty"`
 	// The disk size for the nodegroup. Defaults to 20 GBs
 	NodegroupDiskSize *float32 `json:"nodegroup_disk_size,omitempty"`
-	// The name of the location to create the cluster in
+	// Name or ID of the location to create the cluster in
 	Location string `json:"location"`
+	// Name or ID of size to use for the nodes. If not provided, the e2-medium size will be used
+	NodepoolSize *string `json:"nodepool_size,omitempty"`
+	// Size of the disk attached to each node, specified in GB. Defaults to 100 GBs
+	NodepoolDiskSize *float32 `json:"nodepool_disk_size,omitempty"`
+	// Type of the disk attached to each node. Defaults to pd-standard
+	NodepoolDiskType *string `json:"nodepool_disk_type,omitempty"`
+	// Whether the nodes are created as preemptible machines. Defaults to false
+	Preemptible *bool `json:"preemptible,omitempty"`
 }
 
 // NewCreateClusterRequest instantiates a new CreateClusterRequest object
@@ -408,6 +416,134 @@ func (o *CreateClusterRequest) SetLocation(v string) {
 	o.Location = v
 }
 
+// GetNodepoolSize returns the NodepoolSize field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetNodepoolSize() string {
+	if o == nil || o.NodepoolSize == nil {
+		var ret string
+		return ret
+	}
+	return *o.NodepoolSize
+}
+
+// GetNodepoolSizeOk returns a tuple with the NodepoolSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetNodepoolSizeOk() (*string, bool) {
+	if o == nil || o.NodepoolSize == nil {
+		return nil, false
+	}
+	return o.NodepoolSize, true
+}
+
+// HasNodepoolSize returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasNodepoolSize() bool {
+	if o != nil && o.NodepoolSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodepoolSize gets a reference to the given string and assigns it to the NodepoolSize field.
+func (o *CreateClusterRequest) SetNodepoolSize(v string) {
+	o.NodepoolSize = &v
+}
+
+// GetNodepoolDiskSize returns the NodepoolDiskSize field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetNodepoolDiskSize() float32 {
+	if o == nil || o.NodepoolDiskSize == nil {
+		var ret float32
+		return ret
+	}
+	return *o.NodepoolDiskSize
+}
+
+// GetNodepoolDiskSizeOk returns a tuple with the NodepoolDiskSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetNodepoolDiskSizeOk() (*float32, bool) {
+	if o == nil || o.NodepoolDiskSize == nil {
+		return nil, false
+	}
+	return o.NodepoolDiskSize, true
+}
+
+// HasNodepoolDiskSize returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasNodepoolDiskSize() bool {
+	if o != nil && o.NodepoolDiskSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodepoolDiskSize gets a reference to the given float32 and assigns it to the NodepoolDiskSize field.
+func (o *CreateClusterRequest) SetNodepoolDiskSize(v float32) {
+	o.NodepoolDiskSize = &v
+}
+
+// GetNodepoolDiskType returns the NodepoolDiskType field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetNodepoolDiskType() string {
+	if o == nil || o.NodepoolDiskType == nil {
+		var ret string
+		return ret
+	}
+	return *o.NodepoolDiskType
+}
+
+// GetNodepoolDiskTypeOk returns a tuple with the NodepoolDiskType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetNodepoolDiskTypeOk() (*string, bool) {
+	if o == nil || o.NodepoolDiskType == nil {
+		return nil, false
+	}
+	return o.NodepoolDiskType, true
+}
+
+// HasNodepoolDiskType returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasNodepoolDiskType() bool {
+	if o != nil && o.NodepoolDiskType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNodepoolDiskType gets a reference to the given string and assigns it to the NodepoolDiskType field.
+func (o *CreateClusterRequest) SetNodepoolDiskType(v string) {
+	o.NodepoolDiskType = &v
+}
+
+// GetPreemptible returns the Preemptible field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetPreemptible() bool {
+	if o == nil || o.Preemptible == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Preemptible
+}
+
+// GetPreemptibleOk returns a tuple with the Preemptible field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetPreemptibleOk() (*bool, bool) {
+	if o == nil || o.Preemptible == nil {
+		return nil, false
+	}
+	return o.Preemptible, true
+}
+
+// HasPreemptible returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasPreemptible() bool {
+	if o != nil && o.Preemptible != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPreemptible gets a reference to the given bool and assigns it to the Preemptible field.
+func (o *CreateClusterRequest) SetPreemptible(v bool) {
+	o.Preemptible = &v
+}
+
 func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -445,6 +581,18 @@ func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["location"] = o.Location
+	}
+	if o.NodepoolSize != nil {
+		toSerialize["nodepool_size"] = o.NodepoolSize
+	}
+	if o.NodepoolDiskSize != nil {
+		toSerialize["nodepool_disk_size"] = o.NodepoolDiskSize
+	}
+	if o.NodepoolDiskType != nil {
+		toSerialize["nodepool_disk_type"] = o.NodepoolDiskType
+	}
+	if o.Preemptible != nil {
+		toSerialize["preemptible"] = o.Preemptible
 	}
 	return json.Marshal(toSerialize)
 }

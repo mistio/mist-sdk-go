@@ -437,7 +437,11 @@ paths:
               $ref: '#/components/schemas/CreateClusterRequest'
       responses:
         "200":
-          description: Cluster creation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateClusterResponse'
+          description: Cluster creation started
         "401":
           description: Authentication failed
         "403":
@@ -2884,6 +2888,16 @@ paths:
         schema:
           type: string
         style: simple
+      - description: Return total number for each, visible to caller, not missing,
+          resource
+        explode: true
+        in: query
+        name: resources_count
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       - description: Only return these fields
         examples:
           Only return id:
@@ -5610,6 +5624,13 @@ components:
         cloud: my-cloud
         provider: google
         location: my-location
+    CreateClusterResponse:
+      example:
+        jobId: jobId
+      properties:
+        jobId:
+          type: string
+      type: object
     CreateMachineRequest:
       example:
         template: '{}'
@@ -6607,7 +6628,7 @@ components:
           cloud: cloud
           default: true
           hostname: hostname
-          cores: 0
+          cores: 0.8008281904610115
           missing_since: missing_since
           extra: '{}'
           id: id
@@ -6635,11 +6656,13 @@ components:
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
         meta:
@@ -6708,21 +6731,6 @@ components:
           last_active: last_active
           clouds_count: clouds_count
           teams_count: teams_count
-        resources_count:
-          machines_count: 1
-          images_count: 3
-          rules_count: 1
-          tunnels_count: 4
-          volumes_count: 5
-          buckets_count: 5
-          templates_count: 2
-          zones_count: 7
-          keys_count: 9
-          clouds_count: 0
-          clusters_count: 6
-          networks_count: 2
-          schedules_count: 7
-          teams_count: 1
         meta:
           total: 0
           start: 1
@@ -6733,8 +6741,6 @@ components:
           $ref: '#/components/schemas/Org'
         meta:
           $ref: '#/components/schemas/ResponseMetadata'
-        resources_count:
-          $ref: '#/components/schemas/OrgResourcesCount'
       type: object
     GetRuleResponse:
       example:
@@ -6871,8 +6877,27 @@ components:
           - google
           type: string
         location:
-          description: The name of the location to create the cluster in
+          description: Name or ID of the location to create the cluster in
           type: string
+        desired_nodes:
+          description: The number of nodes to provision for the nodepool. Defaults
+            to 3
+          type: number
+        nodepool_size:
+          description: Name or ID of size to use for the nodes. If not provided, the
+            e2-medium size will be used
+          type: string
+        nodepool_disk_size:
+          description: Size of the disk attached to each node, specified in GB. Defaults
+            to 100 GBs
+          type: number
+        nodepool_disk_type:
+          description: Type of the disk attached to each node. Defaults to pd-standard
+          type: string
+        preemptible:
+          description: Whether the nodes are created as preemptible machines. Defaults
+            to false
+          type: boolean
       required:
       - location
       - provider
@@ -7147,6 +7172,7 @@ components:
         port: 1
         machine: machine
         last_used: 6
+        sudo: true
         user: user
         key: key
       properties:
@@ -7165,6 +7191,9 @@ components:
         user:
           description: SSH user
           type: string
+        sudo:
+          description: Indicates if the SSH user has sudo privileges
+          type: boolean
       type: object
     KeyMachineDisassociation:
       example:
@@ -7575,7 +7604,7 @@ components:
           cloud: cloud
           default: true
           hostname: hostname
-          cores: 0
+          cores: 0.8008281904610115
           missing_since: missing_since
           extra: '{}'
           id: id
@@ -7603,11 +7632,13 @@ components:
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
         - cluster: cluster
@@ -7622,7 +7653,7 @@ components:
           cloud: cloud
           default: true
           hostname: hostname
-          cores: 0
+          cores: 0.8008281904610115
           missing_since: missing_since
           extra: '{}'
           id: id
@@ -7650,11 +7681,13 @@ components:
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
           - port: 1
             machine: machine
             last_used: 6
+            sudo: true
             user: user
             key: key
         meta:
@@ -8132,7 +8165,7 @@ components:
         cloud: cloud
         default: true
         hostname: hostname
-        cores: 0
+        cores: 0.8008281904610115
         missing_since: missing_since
         extra: '{}'
         id: id
@@ -8160,11 +8193,13 @@ components:
         - port: 1
           machine: machine
           last_used: 6
+          sudo: true
           user: user
           key: key
         - port: 1
           machine: machine
           last_used: 6
+          sudo: true
           user: user
           key: key
       properties:
@@ -8191,7 +8226,7 @@ components:
         cluster:
           type: string
         cores:
-          type: integer
+          type: number
         cost:
           type: object
         created:
@@ -8257,6 +8292,11 @@ components:
       - paused
       - reconfiguring
       - unknown
+      - updating
+      - migrating
+      - normal
+      - succeeded
+      - failed
       type: string
     MaxihostCloudRequest:
       properties:
@@ -8534,52 +8574,6 @@ components:
           type: string
         last_active:
           type: string
-      type: object
-    OrgResourcesCount:
-      example:
-        machines_count: 1
-        images_count: 3
-        rules_count: 1
-        tunnels_count: 4
-        volumes_count: 5
-        buckets_count: 5
-        templates_count: 2
-        zones_count: 7
-        keys_count: 9
-        clouds_count: 0
-        clusters_count: 6
-        networks_count: 2
-        schedules_count: 7
-        teams_count: 1
-      properties:
-        clouds_count:
-          type: integer
-        clusters_count:
-          type: integer
-        machines_count:
-          type: integer
-        volumes_count:
-          type: integer
-        buckets_count:
-          type: integer
-        networks_count:
-          type: integer
-        zones_count:
-          type: integer
-        keys_count:
-          type: integer
-        images_count:
-          type: integer
-        templates_count:
-          type: integer
-        tunnels_count:
-          type: integer
-        schedules_count:
-          type: integer
-        rules_count:
-          type: integer
-        teams_count:
-          type: integer
       type: object
     OtherCloudRequest:
       properties:

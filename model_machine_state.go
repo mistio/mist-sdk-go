@@ -33,6 +33,11 @@ const (
 	PAUSED MachineState = "paused"
 	RECONFIGURING MachineState = "reconfiguring"
 	UNKNOWN MachineState = "unknown"
+	UPDATING MachineState = "updating"
+	MIGRATING MachineState = "migrating"
+	NORMAL MachineState = "normal"
+	SUCCEEDED MachineState = "succeeded"
+	FAILED MachineState = "failed"
 )
 
 func (v *MachineState) UnmarshalJSON(src []byte) error {
@@ -42,7 +47,7 @@ func (v *MachineState) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := MachineState(value)
-	for _, existing := range []MachineState{ "running", "starting", "stopping", "stopped", "pending", "suspended", "terminated", "error", "rebooting", "paused", "reconfiguring", "unknown",   } {
+	for _, existing := range []MachineState{ "running", "starting", "stopping", "stopped", "pending", "suspended", "terminated", "error", "rebooting", "paused", "reconfiguring", "unknown", "updating", "migrating", "normal", "succeeded", "failed",   } {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
