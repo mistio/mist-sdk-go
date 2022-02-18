@@ -26,6 +26,7 @@ type Org struct {
 	EnterprisePlan *map[string]interface{} `json:"enterprise_plan,omitempty"`
 	SelectedPlan *string `json:"selected_plan,omitempty"`
 	LastActive *string `json:"last_active,omitempty"`
+	Resources *OrgResourcesSummary `json:"resources,omitempty"`
 }
 
 // NewOrg instantiates a new Org object
@@ -333,6 +334,38 @@ func (o *Org) SetLastActive(v string) {
 	o.LastActive = &v
 }
 
+// GetResources returns the Resources field value if set, zero value otherwise.
+func (o *Org) GetResources() OrgResourcesSummary {
+	if o == nil || o.Resources == nil {
+		var ret OrgResourcesSummary
+		return ret
+	}
+	return *o.Resources
+}
+
+// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Org) GetResourcesOk() (*OrgResourcesSummary, bool) {
+	if o == nil || o.Resources == nil {
+		return nil, false
+	}
+	return o.Resources, true
+}
+
+// HasResources returns a boolean if a field has been set.
+func (o *Org) HasResources() bool {
+	if o != nil && o.Resources != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResources gets a reference to the given OrgResourcesSummary and assigns it to the Resources field.
+func (o *Org) SetResources(v OrgResourcesSummary) {
+	o.Resources = &v
+}
+
 func (o Org) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -361,6 +394,9 @@ func (o Org) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastActive != nil {
 		toSerialize["last_active"] = o.LastActive
+	}
+	if o.Resources != nil {
+		toSerialize["resources"] = o.Resources
 	}
 	return json.Marshal(toSerialize)
 }

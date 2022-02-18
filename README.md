@@ -306,6 +306,8 @@ Class | Method | HTTP request | Description
  - [OpenstackCredentials](docs/OpenstackCredentials.md)
  - [OpenstackNet](docs/OpenstackNet.md)
  - [Org](docs/Org.md)
+ - [OrgResourcesSummary](docs/OrgResourcesSummary.md)
+ - [OrgResourcesSummaryKeys](docs/OrgResourcesSummaryKeys.md)
  - [OtherCloudRequest](docs/OtherCloudRequest.md)
  - [PostDeployScript](docs/PostDeployScript.md)
  - [Query](docs/Query.md)
