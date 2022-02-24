@@ -390,6 +390,38 @@ func (o *Machine) SetActions(v map[string]interface{}) {
 	o.Actions = &v
 }
 
+// GetCluster returns the Cluster field value if set, zero value otherwise.
+func (o *Machine) GetCluster() string {
+	if o == nil || o.Cluster == nil {
+		var ret string
+		return ret
+	}
+	return *o.Cluster
+}
+
+// GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Machine) GetClusterOk() (*string, bool) {
+	if o == nil || o.Cluster == nil {
+		return nil, false
+	}
+	return o.Cluster, true
+}
+
+// HasCluster returns a boolean if a field has been set.
+func (o *Machine) HasCluster() bool {
+	if o != nil && o.Cluster != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCluster gets a reference to the given string and assigns it to the Cluster field.
+func (o *Machine) SetCluster(v string) {
+	o.Cluster = &v
+}
+
 // GetCores returns the Cores field value if set, zero value otherwise.
 func (o *Machine) GetCores() float32 {
 	if o == nil || o.Cores == nil {
