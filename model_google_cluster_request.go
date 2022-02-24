@@ -17,8 +17,7 @@ import (
 
 // GoogleClusterRequest struct for GoogleClusterRequest
 type GoogleClusterRequest struct {
-	Provider string `json:"provider"`
-	// The name of the location to create the cluster in
+	// Name or ID of the location to create the cluster in
 	Location string `json:"location"`
 }
 
@@ -26,9 +25,8 @@ type GoogleClusterRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleClusterRequest(provider string, location string, ) *GoogleClusterRequest {
+func NewGoogleClusterRequest(location string, ) *GoogleClusterRequest {
 	this := GoogleClusterRequest{}
-	this.Provider = provider
 	this.Location = location
 	return &this
 }
@@ -39,30 +37,6 @@ func NewGoogleClusterRequest(provider string, location string, ) *GoogleClusterR
 func NewGoogleClusterRequestWithDefaults() *GoogleClusterRequest {
 	this := GoogleClusterRequest{}
 	return &this
-}
-
-// GetProvider returns the Provider field value
-func (o *GoogleClusterRequest) GetProvider() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Provider
-}
-
-// GetProviderOk returns a tuple with the Provider field value
-// and a boolean to check if the value has been set.
-func (o *GoogleClusterRequest) GetProviderOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Provider, true
-}
-
-// SetProvider sets field value
-func (o *GoogleClusterRequest) SetProvider(v string) {
-	o.Provider = v
 }
 
 // GetLocation returns the Location field value
@@ -91,9 +65,6 @@ func (o *GoogleClusterRequest) SetLocation(v string) {
 
 func (o GoogleClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
 	if true {
 		toSerialize["location"] = o.Location
 	}
