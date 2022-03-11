@@ -245,6 +245,8 @@ Class | Method | HTTP request | Description
  - [GetZoneResponse](docs/GetZoneResponse.md)
  - [GoogleCloudRequest](docs/GoogleCloudRequest.md)
  - [GoogleCredentials](docs/GoogleCredentials.md)
+ - [GoogleExtra](docs/GoogleExtra.md)
+ - [GoogleExtraServiceAccount](docs/GoogleExtraServiceAccount.md)
  - [GoogleNet](docs/GoogleNet.md)
  - [IbmCloudRequest](docs/IbmCloudRequest.md)
  - [IbmCredentials](docs/IbmCredentials.md)

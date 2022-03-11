@@ -107,6 +107,8 @@ docs/GetVolumeResponse.md
 docs/GetZoneResponse.md
 docs/GoogleCloudRequest.md
 docs/GoogleCredentials.md
+docs/GoogleExtra.md
+docs/GoogleExtraServiceAccount.md
 docs/GoogleNet.md
 docs/IbmCloudRequest.md
 docs/IbmCredentials.md
@@ -298,6 +300,8 @@ model_get_volume_response.go
 model_get_zone_response.go
 model_google_cloud_request.go
 model_google_credentials.go
+model_google_extra.go
+model_google_extra_service_account.go
 model_google_net.go
 model_ibm_cloud_request.go
 model_ibm_credentials.go
