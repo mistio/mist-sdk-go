@@ -22,28 +22,18 @@ type CreateClusterRequest struct {
 	// The cloud the cluster belongs to
 	Cloud *string `json:"cloud,omitempty"`
 	Provider *ClusterProviders `json:"provider,omitempty"`
+	// Google specific parameter(Required).Name or ID of the location to create the cluster in
+	Location *string `json:"location,omitempty"`
 	Nodepools *[]CreateClusterRequestAllOfNodepools `json:"nodepools,omitempty"`
-	// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf
-	RoleArn string `json:"role_arn"`
-	// Name or ID of the network to be associated with the cluster. If not given the default network will be selected
-	Network *string `json:"network,omitempty"`
-	// IDs of the subnets to be associated with the cluster. At least 2 subnets in different availability zones are required, if not given the default subnets will be used
-	Subnets *[]string `json:"subnets,omitempty"`
-	// The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane
-	SecurityGroups *[]string `json:"security_groups,omitempty"`
-	// Name or ID of the location to create the cluster in
-	Location string `json:"location"`
 }
 
 // NewCreateClusterRequest instantiates a new CreateClusterRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateClusterRequest(name string, roleArn string, location string, ) *CreateClusterRequest {
+func NewCreateClusterRequest(name string, ) *CreateClusterRequest {
 	this := CreateClusterRequest{}
 	this.Name = name
-	this.RoleArn = roleArn
-	this.Location = location
 	return &this
 }
 
@@ -143,6 +133,38 @@ func (o *CreateClusterRequest) SetProvider(v ClusterProviders) {
 	o.Provider = &v
 }
 
+// GetLocation returns the Location field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetLocation() string {
+	if o == nil || o.Location == nil {
+		var ret string
+		return ret
+	}
+	return *o.Location
+}
+
+// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequest) GetLocationOk() (*string, bool) {
+	if o == nil || o.Location == nil {
+		return nil, false
+	}
+	return o.Location, true
+}
+
+// HasLocation returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasLocation() bool {
+	if o != nil && o.Location != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLocation gets a reference to the given string and assigns it to the Location field.
+func (o *CreateClusterRequest) SetLocation(v string) {
+	o.Location = &v
+}
+
 // GetNodepools returns the Nodepools field value if set, zero value otherwise.
 func (o *CreateClusterRequest) GetNodepools() []CreateClusterRequestAllOfNodepools {
 	if o == nil || o.Nodepools == nil {
@@ -175,150 +197,6 @@ func (o *CreateClusterRequest) SetNodepools(v []CreateClusterRequestAllOfNodepoo
 	o.Nodepools = &v
 }
 
-// GetRoleArn returns the RoleArn field value
-func (o *CreateClusterRequest) GetRoleArn() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.RoleArn
-}
-
-// GetRoleArnOk returns a tuple with the RoleArn field value
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetRoleArnOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.RoleArn, true
-}
-
-// SetRoleArn sets field value
-func (o *CreateClusterRequest) SetRoleArn(v string) {
-	o.RoleArn = v
-}
-
-// GetNetwork returns the Network field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetNetwork() string {
-	if o == nil || o.Network == nil {
-		var ret string
-		return ret
-	}
-	return *o.Network
-}
-
-// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetNetworkOk() (*string, bool) {
-	if o == nil || o.Network == nil {
-		return nil, false
-	}
-	return o.Network, true
-}
-
-// HasNetwork returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasNetwork() bool {
-	if o != nil && o.Network != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNetwork gets a reference to the given string and assigns it to the Network field.
-func (o *CreateClusterRequest) SetNetwork(v string) {
-	o.Network = &v
-}
-
-// GetSubnets returns the Subnets field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetSubnets() []string {
-	if o == nil || o.Subnets == nil {
-		var ret []string
-		return ret
-	}
-	return *o.Subnets
-}
-
-// GetSubnetsOk returns a tuple with the Subnets field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetSubnetsOk() (*[]string, bool) {
-	if o == nil || o.Subnets == nil {
-		return nil, false
-	}
-	return o.Subnets, true
-}
-
-// HasSubnets returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasSubnets() bool {
-	if o != nil && o.Subnets != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSubnets gets a reference to the given []string and assigns it to the Subnets field.
-func (o *CreateClusterRequest) SetSubnets(v []string) {
-	o.Subnets = &v
-}
-
-// GetSecurityGroups returns the SecurityGroups field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetSecurityGroups() []string {
-	if o == nil || o.SecurityGroups == nil {
-		var ret []string
-		return ret
-	}
-	return *o.SecurityGroups
-}
-
-// GetSecurityGroupsOk returns a tuple with the SecurityGroups field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetSecurityGroupsOk() (*[]string, bool) {
-	if o == nil || o.SecurityGroups == nil {
-		return nil, false
-	}
-	return o.SecurityGroups, true
-}
-
-// HasSecurityGroups returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasSecurityGroups() bool {
-	if o != nil && o.SecurityGroups != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSecurityGroups gets a reference to the given []string and assigns it to the SecurityGroups field.
-func (o *CreateClusterRequest) SetSecurityGroups(v []string) {
-	o.SecurityGroups = &v
-}
-
-// GetLocation returns the Location field value
-func (o *CreateClusterRequest) GetLocation() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Location
-}
-
-// GetLocationOk returns a tuple with the Location field value
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetLocationOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Location, true
-}
-
-// SetLocation sets field value
-func (o *CreateClusterRequest) SetLocation(v string) {
-	o.Location = v
-}
-
 func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -330,23 +208,11 @@ func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
 	}
+	if o.Location != nil {
+		toSerialize["location"] = o.Location
+	}
 	if o.Nodepools != nil {
 		toSerialize["nodepools"] = o.Nodepools
-	}
-	if true {
-		toSerialize["role_arn"] = o.RoleArn
-	}
-	if o.Network != nil {
-		toSerialize["network"] = o.Network
-	}
-	if o.Subnets != nil {
-		toSerialize["subnets"] = o.Subnets
-	}
-	if o.SecurityGroups != nil {
-		toSerialize["security_groups"] = o.SecurityGroups
-	}
-	if true {
-		toSerialize["location"] = o.Location
 	}
 	return json.Marshal(toSerialize)
 }
