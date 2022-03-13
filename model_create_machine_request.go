@@ -47,7 +47,7 @@ type CreateMachineRequest struct {
 	Tags *map[string]interface{} `json:"tags,omitempty"`
 	Expiration *Expiration `json:"expiration,omitempty"`
 	// Configure additional parameters
-	Extra *AnyOfAzureExtraDockerExtraEquinixMetalExtraGoogleExtraLinodeExtraLXDExtraVSphereExtraVultrExtra `json:"extra,omitempty"`
+	Extra *AnyOfAzureExtraDockerExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra `json:"extra,omitempty"`
 	// Enable monitoring of this machine
 	Monitoring *bool `json:"monitoring,omitempty"`
 	// Provision multiple machines of this type
@@ -577,9 +577,9 @@ func (o *CreateMachineRequest) SetExpiration(v Expiration) {
 }
 
 // GetExtra returns the Extra field value if set, zero value otherwise.
-func (o *CreateMachineRequest) GetExtra() AnyOfAzureExtraDockerExtraEquinixMetalExtraGoogleExtraLinodeExtraLXDExtraVSphereExtraVultrExtra {
+func (o *CreateMachineRequest) GetExtra() AnyOfAzureExtraDockerExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra {
 	if o == nil || o.Extra == nil {
-		var ret AnyOfAzureExtraDockerExtraEquinixMetalExtraGoogleExtraLinodeExtraLXDExtraVSphereExtraVultrExtra
+		var ret AnyOfAzureExtraDockerExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra
 		return ret
 	}
 	return *o.Extra
@@ -587,7 +587,7 @@ func (o *CreateMachineRequest) GetExtra() AnyOfAzureExtraDockerExtraEquinixMetal
 
 // GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateMachineRequest) GetExtraOk() (*AnyOfAzureExtraDockerExtraEquinixMetalExtraGoogleExtraLinodeExtraLXDExtraVSphereExtraVultrExtra, bool) {
+func (o *CreateMachineRequest) GetExtraOk() (*AnyOfAzureExtraDockerExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra, bool) {
 	if o == nil || o.Extra == nil {
 		return nil, false
 	}
@@ -603,8 +603,8 @@ func (o *CreateMachineRequest) HasExtra() bool {
 	return false
 }
 
-// SetExtra gets a reference to the given AnyOfAzureExtraDockerExtraEquinixMetalExtraGoogleExtraLinodeExtraLXDExtraVSphereExtraVultrExtra and assigns it to the Extra field.
-func (o *CreateMachineRequest) SetExtra(v AnyOfAzureExtraDockerExtraEquinixMetalExtraGoogleExtraLinodeExtraLXDExtraVSphereExtraVultrExtra) {
+// SetExtra gets a reference to the given AnyOfAzureExtraDockerExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra and assigns it to the Extra field.
+func (o *CreateMachineRequest) SetExtra(v AnyOfAzureExtraDockerExtraEquinixMetalExtraLinodeExtraLXDExtraVSphereExtraVultrExtra) {
 	o.Extra = &v
 }
 

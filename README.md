@@ -133,6 +133,11 @@ Class | Method | HTTP request | Description
 *RulesApi* | [**ListRules**](docs/RulesApi.md#listrules) | **Get** /api/v2/rules | List rules
 *RulesApi* | [**RenameRule**](docs/RulesApi.md#renamerule) | **Patch** /api/v2/rules/{rule} | Rename rule
 *RulesApi* | [**ToggleRule**](docs/RulesApi.md#togglerule) | **Put** /api/v2/rules/{rule} | Toggle rule
+*SchedulesApi* | [**AddSchedule**](docs/SchedulesApi.md#addschedule) | **Post** /api/v2/schedules | Add schedule
+*SchedulesApi* | [**DeleteSchedule**](docs/SchedulesApi.md#deleteschedule) | **Delete** /api/v2/schedules/{schedule} | Delete schedule
+*SchedulesApi* | [**EditSchedule**](docs/SchedulesApi.md#editschedule) | **Patch** /api/v2/schedules/{schedule} | Edit schedule
+*SchedulesApi* | [**GetSchedule**](docs/SchedulesApi.md#getschedule) | **Get** /api/v2/schedules/{schedule} | Get schedule
+*SchedulesApi* | [**ListSchedules**](docs/SchedulesApi.md#listschedules) | **Get** /api/v2/schedules | List schedules
 *ScriptsApi* | [**AddScript**](docs/ScriptsApi.md#addscript) | **Post** /api/v2/scripts | Add script
 *ScriptsApi* | [**DeleteScript**](docs/ScriptsApi.md#deletescript) | **Delete** /api/v2/scripts/{script} | Delete script
 *ScriptsApi* | [**DownloadScript**](docs/ScriptsApi.md#downloadscript) | **Get** /api/v2/scripts/{script}/file | Download script
@@ -170,11 +175,13 @@ Class | Method | HTTP request | Description
  - [AddKeyRequestAnyOf2](docs/AddKeyRequestAnyOf2.md)
  - [AddKeyResponse](docs/AddKeyResponse.md)
  - [AddRuleRequest](docs/AddRuleRequest.md)
+ - [AddScheduleRequest](docs/AddScheduleRequest.md)
  - [AddScriptRequest](docs/AddScriptRequest.md)
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)
  - [AlibabaCredentials](docs/AlibabaCredentials.md)
  - [AlibabaNet](docs/AlibabaNet.md)
  - [AmazonCloudRequest](docs/AmazonCloudRequest.md)
+ - [AmazonClusterRequest](docs/AmazonClusterRequest.md)
  - [AmazonCredentials](docs/AmazonCredentials.md)
  - [AmazonNet](docs/AmazonNet.md)
  - [AzureCloudRequest](docs/AzureCloudRequest.md)
@@ -207,7 +214,6 @@ Class | Method | HTTP request | Description
  - [Datapoints](docs/Datapoints.md)
  - [DatapointsData](docs/DatapointsData.md)
  - [DatapointsValuesItem](docs/DatapointsValuesItem.md)
- - [DestroyClusterResponse](docs/DestroyClusterResponse.md)
  - [DigitaloceanCloudRequest](docs/DigitaloceanCloudRequest.md)
  - [DigitaloceanCredentials](docs/DigitaloceanCredentials.md)
  - [DockerCloudRequest](docs/DockerCloudRequest.md)
@@ -239,14 +245,14 @@ Class | Method | HTTP request | Description
  - [GetOrgMemberResponse](docs/GetOrgMemberResponse.md)
  - [GetOrgResponse](docs/GetOrgResponse.md)
  - [GetRuleResponse](docs/GetRuleResponse.md)
+ - [GetScheduleResponse](docs/GetScheduleResponse.md)
  - [GetScriptResponse](docs/GetScriptResponse.md)
  - [GetSizeResponse](docs/GetSizeResponse.md)
  - [GetVolumeResponse](docs/GetVolumeResponse.md)
  - [GetZoneResponse](docs/GetZoneResponse.md)
  - [GoogleCloudRequest](docs/GoogleCloudRequest.md)
+ - [GoogleClusterRequest](docs/GoogleClusterRequest.md)
  - [GoogleCredentials](docs/GoogleCredentials.md)
- - [GoogleExtra](docs/GoogleExtra.md)
- - [GoogleExtraServiceAccount](docs/GoogleExtraServiceAccount.md)
  - [GoogleNet](docs/GoogleNet.md)
  - [IbmCloudRequest](docs/IbmCloudRequest.md)
  - [IbmCredentials](docs/IbmCredentials.md)
@@ -283,6 +289,7 @@ Class | Method | HTTP request | Description
  - [ListOrgTeamsResponse](docs/ListOrgTeamsResponse.md)
  - [ListOrgsResponse](docs/ListOrgsResponse.md)
  - [ListRulesResponse](docs/ListRulesResponse.md)
+ - [ListSchedulesResponse](docs/ListSchedulesResponse.md)
  - [ListScriptsResponse](docs/ListScriptsResponse.md)
  - [ListSizesResponse](docs/ListSizesResponse.md)
  - [ListSnapshotsResponse](docs/ListSnapshotsResponse.md)
@@ -319,6 +326,7 @@ Class | Method | HTTP request | Description
  - [RuleAction](docs/RuleAction.md)
  - [RunScriptRequest](docs/RunScriptRequest.md)
  - [RunScriptResponse](docs/RunScriptResponse.md)
+ - [Schedule](docs/Schedule.md)
  - [Script](docs/Script.md)
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)

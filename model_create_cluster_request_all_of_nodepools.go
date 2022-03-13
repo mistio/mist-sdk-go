@@ -19,11 +19,13 @@ import (
 type CreateClusterRequestAllOfNodepools struct {
 	// The number of nodes to provision for the cluster. Defaults to 2
 	Nodes *int32 `json:"nodes,omitempty"`
-	// Name or ID of size to use for the nodes. If not provided, the t3.medium(EKS), e2-medium(GKE) size will be used
+	// Name or ID of size to use for the nodes. If not provided, the t3.medium(EKS) or e2-medium(GKE) size will be used
 	Size *string `json:"size,omitempty"`
 	// Size of the disk attached to each node, specified in GB.
 	DiskSize *int32 `json:"disk_size,omitempty"`
-	// Type of the disk attached to each node. Defaults to pd-standard(GKE), gp3(EKS)
+	// Amazon specific parameter.The Amazon Resource Name (ARN) of the IAM role to associate with the nodes. Required in order to create a cluster nodepool
+	RoleArn *string `json:"role_arn,omitempty"`
+	// Google specific parameter.Type of the disk attached to each node. Defaults to pd-standard
 	DiskType *string `json:"disk_type,omitempty"`
 	// Google specific parameter.Whether the nodes are created as preemptible machines. Defaults to false
 	Preemptible *bool `json:"preemptible,omitempty"`
@@ -150,6 +152,38 @@ func (o *CreateClusterRequestAllOfNodepools) SetDiskSize(v int32) {
 	o.DiskSize = &v
 }
 
+// GetRoleArn returns the RoleArn field value if set, zero value otherwise.
+func (o *CreateClusterRequestAllOfNodepools) GetRoleArn() string {
+	if o == nil || o.RoleArn == nil {
+		var ret string
+		return ret
+	}
+	return *o.RoleArn
+}
+
+// GetRoleArnOk returns a tuple with the RoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequestAllOfNodepools) GetRoleArnOk() (*string, bool) {
+	if o == nil || o.RoleArn == nil {
+		return nil, false
+	}
+	return o.RoleArn, true
+}
+
+// HasRoleArn returns a boolean if a field has been set.
+func (o *CreateClusterRequestAllOfNodepools) HasRoleArn() bool {
+	if o != nil && o.RoleArn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleArn gets a reference to the given string and assigns it to the RoleArn field.
+func (o *CreateClusterRequestAllOfNodepools) SetRoleArn(v string) {
+	o.RoleArn = &v
+}
+
 // GetDiskType returns the DiskType field value if set, zero value otherwise.
 func (o *CreateClusterRequestAllOfNodepools) GetDiskType() string {
 	if o == nil || o.DiskType == nil {
@@ -224,6 +258,9 @@ func (o CreateClusterRequestAllOfNodepools) MarshalJSON() ([]byte, error) {
 	}
 	if o.DiskSize != nil {
 		toSerialize["disk_size"] = o.DiskSize
+	}
+	if o.RoleArn != nil {
+		toSerialize["role_arn"] = o.RoleArn
 	}
 	if o.DiskType != nil {
 		toSerialize["disk_type"] = o.DiskType

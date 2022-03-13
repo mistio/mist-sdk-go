@@ -24,32 +24,32 @@ var (
 	_ _context.Context
 )
 
-// ClustersApiService ClustersApi service
-type ClustersApiService service
+// SchedulesApiService SchedulesApi service
+type SchedulesApiService service
 
-type ApiCreateClusterRequest struct {
+type ApiAddScheduleRequest struct {
 	ctx _context.Context
-	ApiService *ClustersApiService
-	createClusterRequest *CreateClusterRequest
+	ApiService *SchedulesApiService
+	addScheduleRequest *AddScheduleRequest
 }
 
-func (r ApiCreateClusterRequest) CreateClusterRequest(createClusterRequest CreateClusterRequest) ApiCreateClusterRequest {
-	r.createClusterRequest = &createClusterRequest
+func (r ApiAddScheduleRequest) AddScheduleRequest(addScheduleRequest AddScheduleRequest) ApiAddScheduleRequest {
+	r.addScheduleRequest = &addScheduleRequest
 	return r
 }
 
-func (r ApiCreateClusterRequest) Execute() (CreateClusterResponse, *_nethttp.Response, error) {
-	return r.ApiService.CreateClusterExecute(r)
+func (r ApiAddScheduleRequest) Execute() (InlineResponse200, *_nethttp.Response, error) {
+	return r.ApiService.AddScheduleExecute(r)
 }
 
 /*
- * CreateCluster Create cluster
- * Create a new cluster and return the cluster's id
+ * AddSchedule Add schedule
+ * Add schedule to user schedules
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiCreateClusterRequest
+ * @return ApiAddScheduleRequest
  */
-func (a *ClustersApiService) CreateCluster(ctx _context.Context) ApiCreateClusterRequest {
-	return ApiCreateClusterRequest{
+func (a *SchedulesApiService) AddSchedule(ctx _context.Context) ApiAddScheduleRequest {
+	return ApiAddScheduleRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,24 +57,24 @@ func (a *ClustersApiService) CreateCluster(ctx _context.Context) ApiCreateCluste
 
 /*
  * Execute executes the request
- * @return CreateClusterResponse
+ * @return InlineResponse200
  */
-func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (CreateClusterResponse, *_nethttp.Response, error) {
+func (a *SchedulesApiService) AddScheduleExecute(r ApiAddScheduleRequest) (InlineResponse200, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  CreateClusterResponse
+		localVarReturnValue  InlineResponse200
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.CreateCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SchedulesApiService.AddSchedule")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/clusters"
+	localVarPath := localBasePath + "/api/v2/schedules"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -98,7 +98,7 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (Cr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createClusterRequest
+	localVarPostBody = r.addScheduleRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -149,36 +149,36 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (Cr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyClusterRequest struct {
+type ApiDeleteScheduleRequest struct {
 	ctx _context.Context
-	ApiService *ClustersApiService
-	cluster string
+	ApiService *SchedulesApiService
+	schedule string
 }
 
 
-func (r ApiDestroyClusterRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.DestroyClusterExecute(r)
+func (r ApiDeleteScheduleRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteScheduleExecute(r)
 }
 
 /*
- * DestroyCluster Destroy cluster
- * Destroy target clusters
+ * DeleteSchedule Delete schedule
+ * Delete target schedule
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param cluster
- * @return ApiDestroyClusterRequest
+ * @param schedule
+ * @return ApiDeleteScheduleRequest
  */
-func (a *ClustersApiService) DestroyCluster(ctx _context.Context, cluster string) ApiDestroyClusterRequest {
-	return ApiDestroyClusterRequest{
+func (a *SchedulesApiService) DeleteSchedule(ctx _context.Context, schedule string) ApiDeleteScheduleRequest {
+	return ApiDeleteScheduleRequest{
 		ApiService: a,
 		ctx: ctx,
-		cluster: cluster,
+		schedule: schedule,
 	}
 }
 
 /*
  * Execute executes the request
  */
-func (a *ClustersApiService) DestroyClusterExecute(r ApiDestroyClusterRequest) (*_nethttp.Response, error) {
+func (a *SchedulesApiService) DeleteScheduleExecute(r ApiDeleteScheduleRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -187,13 +187,13 @@ func (a *ClustersApiService) DestroyClusterExecute(r ApiDestroyClusterRequest) (
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.DestroyCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SchedulesApiService.DeleteSchedule")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/clusters/{cluster}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster"+"}", _neturl.PathEscape(parameterToString(r.cluster, "")), -1)
+	localVarPath := localBasePath + "/api/v2/schedules/{schedule}"
+	localVarPath = strings.Replace(localVarPath, "{"+"schedule"+"}", _neturl.PathEscape(parameterToString(r.schedule, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -257,68 +257,187 @@ func (a *ClustersApiService) DestroyClusterExecute(r ApiDestroyClusterRequest) (
 	return localVarHTTPResponse, nil
 }
 
-type ApiGetClusterRequest struct {
+type ApiEditScheduleRequest struct {
 	ctx _context.Context
-	ApiService *ClustersApiService
-	cluster string
-	only *string
-	deref *string
-	credentials *bool
+	ApiService *SchedulesApiService
+	schedule string
+	name *string
+	description *string
 }
 
-func (r ApiGetClusterRequest) Only(only string) ApiGetClusterRequest {
-	r.only = &only
+func (r ApiEditScheduleRequest) Name(name string) ApiEditScheduleRequest {
+	r.name = &name
 	return r
 }
-func (r ApiGetClusterRequest) Deref(deref string) ApiGetClusterRequest {
-	r.deref = &deref
-	return r
-}
-func (r ApiGetClusterRequest) Credentials(credentials bool) ApiGetClusterRequest {
-	r.credentials = &credentials
+func (r ApiEditScheduleRequest) Description(description string) ApiEditScheduleRequest {
+	r.description = &description
 	return r
 }
 
-func (r ApiGetClusterRequest) Execute() (GetClusterResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetClusterExecute(r)
+func (r ApiEditScheduleRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.EditScheduleExecute(r)
 }
 
 /*
- * GetCluster Get cluster
- * Get details about target cluster
+ * EditSchedule Edit schedule
+ * Edit target schedule
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param cluster
- * @return ApiGetClusterRequest
+ * @param schedule
+ * @return ApiEditScheduleRequest
  */
-func (a *ClustersApiService) GetCluster(ctx _context.Context, cluster string) ApiGetClusterRequest {
-	return ApiGetClusterRequest{
+func (a *SchedulesApiService) EditSchedule(ctx _context.Context, schedule string) ApiEditScheduleRequest {
+	return ApiEditScheduleRequest{
 		ApiService: a,
 		ctx: ctx,
-		cluster: cluster,
+		schedule: schedule,
 	}
 }
 
 /*
  * Execute executes the request
- * @return GetClusterResponse
  */
-func (a *ClustersApiService) GetClusterExecute(r ApiGetClusterRequest) (GetClusterResponse, *_nethttp.Response, error) {
+func (a *SchedulesApiService) EditScheduleExecute(r ApiEditScheduleRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPatch
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SchedulesApiService.EditSchedule")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/schedules/{schedule}"
+	localVarPath = strings.Replace(localVarPath, "{"+"schedule"+"}", _neturl.PathEscape(parameterToString(r.schedule, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.name != nil {
+		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	}
+	if r.description != nil {
+		localVarQueryParams.Add("description", parameterToString(*r.description, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetScheduleRequest struct {
+	ctx _context.Context
+	ApiService *SchedulesApiService
+	schedule string
+	only *string
+	deref *string
+}
+
+func (r ApiGetScheduleRequest) Only(only string) ApiGetScheduleRequest {
+	r.only = &only
+	return r
+}
+func (r ApiGetScheduleRequest) Deref(deref string) ApiGetScheduleRequest {
+	r.deref = &deref
+	return r
+}
+
+func (r ApiGetScheduleRequest) Execute() (GetScheduleResponse, *_nethttp.Response, error) {
+	return r.ApiService.GetScheduleExecute(r)
+}
+
+/*
+ * GetSchedule Get schedule
+ * Get details about target schedule
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param schedule
+ * @return ApiGetScheduleRequest
+ */
+func (a *SchedulesApiService) GetSchedule(ctx _context.Context, schedule string) ApiGetScheduleRequest {
+	return ApiGetScheduleRequest{
+		ApiService: a,
+		ctx: ctx,
+		schedule: schedule,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return GetScheduleResponse
+ */
+func (a *SchedulesApiService) GetScheduleExecute(r ApiGetScheduleRequest) (GetScheduleResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  GetClusterResponse
+		localVarReturnValue  GetScheduleResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SchedulesApiService.GetSchedule")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/clusters/{cluster}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster"+"}", _neturl.PathEscape(parameterToString(r.cluster, "")), -1)
+	localVarPath := localBasePath + "/api/v2/schedules/{schedule}"
+	localVarPath = strings.Replace(localVarPath, "{"+"schedule"+"}", _neturl.PathEscape(parameterToString(r.schedule, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -329,9 +448,6 @@ func (a *ClustersApiService) GetClusterExecute(r ApiGetClusterRequest) (GetClust
 	}
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
-	}
-	if r.credentials != nil {
-		localVarQueryParams.Add("credentials", parameterToString(*r.credentials, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -400,10 +516,9 @@ func (a *ClustersApiService) GetClusterExecute(r ApiGetClusterRequest) (GetClust
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListClustersRequest struct {
+type ApiListSchedulesRequest struct {
 	ctx _context.Context
-	ApiService *ClustersApiService
-	cloud *string
+	ApiService *SchedulesApiService
 	search *string
 	sort *string
 	start *string
@@ -412,47 +527,43 @@ type ApiListClustersRequest struct {
 	deref *string
 }
 
-func (r ApiListClustersRequest) Cloud(cloud string) ApiListClustersRequest {
-	r.cloud = &cloud
-	return r
-}
-func (r ApiListClustersRequest) Search(search string) ApiListClustersRequest {
+func (r ApiListSchedulesRequest) Search(search string) ApiListSchedulesRequest {
 	r.search = &search
 	return r
 }
-func (r ApiListClustersRequest) Sort(sort string) ApiListClustersRequest {
+func (r ApiListSchedulesRequest) Sort(sort string) ApiListSchedulesRequest {
 	r.sort = &sort
 	return r
 }
-func (r ApiListClustersRequest) Start(start string) ApiListClustersRequest {
+func (r ApiListSchedulesRequest) Start(start string) ApiListSchedulesRequest {
 	r.start = &start
 	return r
 }
-func (r ApiListClustersRequest) Limit(limit int32) ApiListClustersRequest {
+func (r ApiListSchedulesRequest) Limit(limit int32) ApiListSchedulesRequest {
 	r.limit = &limit
 	return r
 }
-func (r ApiListClustersRequest) Only(only string) ApiListClustersRequest {
+func (r ApiListSchedulesRequest) Only(only string) ApiListSchedulesRequest {
 	r.only = &only
 	return r
 }
-func (r ApiListClustersRequest) Deref(deref string) ApiListClustersRequest {
+func (r ApiListSchedulesRequest) Deref(deref string) ApiListSchedulesRequest {
 	r.deref = &deref
 	return r
 }
 
-func (r ApiListClustersRequest) Execute() (ListClustersResponse, *_nethttp.Response, error) {
-	return r.ApiService.ListClustersExecute(r)
+func (r ApiListSchedulesRequest) Execute() (ListSchedulesResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListSchedulesExecute(r)
 }
 
 /*
- * ListClusters List clusters
- * List clusters
+ * ListSchedules List schedules
+ * List schedules owned by the active org. READ permission required on schedules.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiListClustersRequest
+ * @return ApiListSchedulesRequest
  */
-func (a *ClustersApiService) ListClusters(ctx _context.Context) ApiListClustersRequest {
-	return ApiListClustersRequest{
+func (a *SchedulesApiService) ListSchedules(ctx _context.Context) ApiListSchedulesRequest {
+	return ApiListSchedulesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -460,32 +571,29 @@ func (a *ClustersApiService) ListClusters(ctx _context.Context) ApiListClustersR
 
 /*
  * Execute executes the request
- * @return ListClustersResponse
+ * @return ListSchedulesResponse
  */
-func (a *ClustersApiService) ListClustersExecute(r ApiListClustersRequest) (ListClustersResponse, *_nethttp.Response, error) {
+func (a *SchedulesApiService) ListSchedulesExecute(r ApiListSchedulesRequest) (ListSchedulesResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ListClustersResponse
+		localVarReturnValue  ListSchedulesResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListClusters")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SchedulesApiService.ListSchedules")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/clusters"
+	localVarPath := localBasePath + "/api/v2/schedules"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if r.cloud != nil {
-		localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
-	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}

@@ -22,8 +22,6 @@ type CreateClusterRequestAllOf struct {
 	// The cloud the cluster belongs to
 	Cloud *string `json:"cloud,omitempty"`
 	Provider *ClusterProviders `json:"provider,omitempty"`
-	// Google specific parameter(Required).Name or ID of the location to create the cluster in
-	Location *string `json:"location,omitempty"`
 	Nodepools *[]CreateClusterRequestAllOfNodepools `json:"nodepools,omitempty"`
 }
 
@@ -133,38 +131,6 @@ func (o *CreateClusterRequestAllOf) SetProvider(v ClusterProviders) {
 	o.Provider = &v
 }
 
-// GetLocation returns the Location field value if set, zero value otherwise.
-func (o *CreateClusterRequestAllOf) GetLocation() string {
-	if o == nil || o.Location == nil {
-		var ret string
-		return ret
-	}
-	return *o.Location
-}
-
-// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateClusterRequestAllOf) GetLocationOk() (*string, bool) {
-	if o == nil || o.Location == nil {
-		return nil, false
-	}
-	return o.Location, true
-}
-
-// HasLocation returns a boolean if a field has been set.
-func (o *CreateClusterRequestAllOf) HasLocation() bool {
-	if o != nil && o.Location != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLocation gets a reference to the given string and assigns it to the Location field.
-func (o *CreateClusterRequestAllOf) SetLocation(v string) {
-	o.Location = &v
-}
-
 // GetNodepools returns the Nodepools field value if set, zero value otherwise.
 func (o *CreateClusterRequestAllOf) GetNodepools() []CreateClusterRequestAllOfNodepools {
 	if o == nil || o.Nodepools == nil {
@@ -207,9 +173,6 @@ func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Provider != nil {
 		toSerialize["provider"] = o.Provider
-	}
-	if o.Location != nil {
-		toSerialize["location"] = o.Location
 	}
 	if o.Nodepools != nil {
 		toSerialize["nodepools"] = o.Nodepools
