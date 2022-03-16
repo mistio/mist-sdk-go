@@ -261,16 +261,11 @@ type ApiEditScheduleRequest struct {
 	ctx _context.Context
 	ApiService *SchedulesApiService
 	schedule string
-	name *string
-	description *string
+	editScheduleRequest *EditScheduleRequest
 }
 
-func (r ApiEditScheduleRequest) Name(name string) ApiEditScheduleRequest {
-	r.name = &name
-	return r
-}
-func (r ApiEditScheduleRequest) Description(description string) ApiEditScheduleRequest {
-	r.description = &description
+func (r ApiEditScheduleRequest) EditScheduleRequest(editScheduleRequest EditScheduleRequest) ApiEditScheduleRequest {
+	r.editScheduleRequest = &editScheduleRequest
 	return r
 }
 
@@ -317,14 +312,8 @@ func (a *SchedulesApiService) EditScheduleExecute(r ApiEditScheduleRequest) (*_n
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
-	}
-	if r.description != nil {
-		localVarQueryParams.Add("description", parameterToString(*r.description, ""))
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -340,6 +329,8 @@ func (a *SchedulesApiService) EditScheduleExecute(r ApiEditScheduleRequest) (*_n
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.editScheduleRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

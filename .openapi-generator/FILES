@@ -83,6 +83,7 @@ docs/EditCloudRequestAnyOf.md
 docs/EditMachineRequest.md
 docs/EditMachineRequestExpiration.md
 docs/EditRuleRequest.md
+docs/EditScheduleRequest.md
 docs/EquinixCloudRequest.md
 docs/EquinixCredentials.md
 docs/EquinixMetalExtra.md
@@ -280,6 +281,7 @@ model_edit_cloud_request_any_of.go
 model_edit_machine_request.go
 model_edit_machine_request_expiration.go
 model_edit_rule_request.go
+model_edit_schedule_request.go
 model_equinix_cloud_request.go
 model_equinix_credentials.go
 model_equinix_metal_extra.go

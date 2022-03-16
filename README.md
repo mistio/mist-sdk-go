@@ -225,6 +225,7 @@ Class | Method | HTTP request | Description
  - [EditMachineRequest](docs/EditMachineRequest.md)
  - [EditMachineRequestExpiration](docs/EditMachineRequestExpiration.md)
  - [EditRuleRequest](docs/EditRuleRequest.md)
+ - [EditScheduleRequest](docs/EditScheduleRequest.md)
  - [EquinixCloudRequest](docs/EquinixCloudRequest.md)
  - [EquinixCredentials](docs/EquinixCredentials.md)
  - [EquinixMetalExtra](docs/EquinixMetalExtra.md)
