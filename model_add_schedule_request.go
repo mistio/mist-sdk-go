@@ -22,9 +22,7 @@ type AddScheduleRequest struct {
 	TaskEnabled *bool `json:"task_enabled,omitempty"`
 	Action string `json:"action"`
 	Params *string `json:"params,omitempty"`
-	ResourceType *string `json:"resource_type,omitempty"`
-	// IDs of resources related to schedule
-	Selectors []string `json:"selectors"`
+	Selectors *Selector `json:"selectors,omitempty"`
 	ScheduleType *string `json:"schedule_type,omitempty"`
 	// format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	ScheduleEntry *string `json:"schedule_entry,omitempty"`
@@ -37,11 +35,10 @@ type AddScheduleRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddScheduleRequest(name string, action string, selectors []string, ) *AddScheduleRequest {
+func NewAddScheduleRequest(name string, action string, ) *AddScheduleRequest {
 	this := AddScheduleRequest{}
 	this.Name = name
 	this.Action = action
-	this.Selectors = selectors
 	return &this
 }
 
@@ -197,60 +194,36 @@ func (o *AddScheduleRequest) SetParams(v string) {
 	o.Params = &v
 }
 
-// GetResourceType returns the ResourceType field value if set, zero value otherwise.
-func (o *AddScheduleRequest) GetResourceType() string {
-	if o == nil || o.ResourceType == nil {
-		var ret string
+// GetSelectors returns the Selectors field value if set, zero value otherwise.
+func (o *AddScheduleRequest) GetSelectors() Selector {
+	if o == nil || o.Selectors == nil {
+		var ret Selector
 		return ret
 	}
-	return *o.ResourceType
+	return *o.Selectors
 }
 
-// GetResourceTypeOk returns a tuple with the ResourceType field value if set, nil otherwise
+// GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddScheduleRequest) GetResourceTypeOk() (*string, bool) {
-	if o == nil || o.ResourceType == nil {
+func (o *AddScheduleRequest) GetSelectorsOk() (*Selector, bool) {
+	if o == nil || o.Selectors == nil {
 		return nil, false
 	}
-	return o.ResourceType, true
+	return o.Selectors, true
 }
 
-// HasResourceType returns a boolean if a field has been set.
-func (o *AddScheduleRequest) HasResourceType() bool {
-	if o != nil && o.ResourceType != nil {
+// HasSelectors returns a boolean if a field has been set.
+func (o *AddScheduleRequest) HasSelectors() bool {
+	if o != nil && o.Selectors != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
-func (o *AddScheduleRequest) SetResourceType(v string) {
-	o.ResourceType = &v
-}
-
-// GetSelectors returns the Selectors field value
-func (o *AddScheduleRequest) GetSelectors() []string {
-	if o == nil  {
-		var ret []string
-		return ret
-	}
-
-	return o.Selectors
-}
-
-// GetSelectorsOk returns a tuple with the Selectors field value
-// and a boolean to check if the value has been set.
-func (o *AddScheduleRequest) GetSelectorsOk() (*[]string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Selectors, true
-}
-
-// SetSelectors sets field value
-func (o *AddScheduleRequest) SetSelectors(v []string) {
-	o.Selectors = v
+// SetSelectors gets a reference to the given Selector and assigns it to the Selectors field.
+func (o *AddScheduleRequest) SetSelectors(v Selector) {
+	o.Selectors = &v
 }
 
 // GetScheduleType returns the ScheduleType field value if set, zero value otherwise.
@@ -398,10 +371,7 @@ func (o AddScheduleRequest) MarshalJSON() ([]byte, error) {
 	if o.Params != nil {
 		toSerialize["params"] = o.Params
 	}
-	if o.ResourceType != nil {
-		toSerialize["resource_type"] = o.ResourceType
-	}
-	if true {
+	if o.Selectors != nil {
 		toSerialize["selectors"] = o.Selectors
 	}
 	if o.ScheduleType != nil {
