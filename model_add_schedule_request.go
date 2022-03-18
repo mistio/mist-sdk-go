@@ -22,7 +22,7 @@ type AddScheduleRequest struct {
 	TaskEnabled *bool `json:"task_enabled,omitempty"`
 	Action string `json:"action"`
 	Params *string `json:"params,omitempty"`
-	Selectors *Selector `json:"selectors,omitempty"`
+	Selectors *[]Selector `json:"selectors,omitempty"`
 	ScheduleType *string `json:"schedule_type,omitempty"`
 	// format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	ScheduleEntry *string `json:"schedule_entry,omitempty"`
@@ -195,9 +195,9 @@ func (o *AddScheduleRequest) SetParams(v string) {
 }
 
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
-func (o *AddScheduleRequest) GetSelectors() Selector {
+func (o *AddScheduleRequest) GetSelectors() []Selector {
 	if o == nil || o.Selectors == nil {
-		var ret Selector
+		var ret []Selector
 		return ret
 	}
 	return *o.Selectors
@@ -205,7 +205,7 @@ func (o *AddScheduleRequest) GetSelectors() Selector {
 
 // GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddScheduleRequest) GetSelectorsOk() (*Selector, bool) {
+func (o *AddScheduleRequest) GetSelectorsOk() (*[]Selector, bool) {
 	if o == nil || o.Selectors == nil {
 		return nil, false
 	}
@@ -221,8 +221,8 @@ func (o *AddScheduleRequest) HasSelectors() bool {
 	return false
 }
 
-// SetSelectors gets a reference to the given Selector and assigns it to the Selectors field.
-func (o *AddScheduleRequest) SetSelectors(v Selector) {
+// SetSelectors gets a reference to the given []Selector and assigns it to the Selectors field.
+func (o *AddScheduleRequest) SetSelectors(v []Selector) {
 	o.Selectors = &v
 }
 
