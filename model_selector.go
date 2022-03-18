@@ -17,9 +17,9 @@ import (
 
 // Selector struct for Selector
 type Selector struct {
-	// one of \"machines\" or \"tags\"
+	// one of \"machines\", \"volumes\", \"clusters\", \"networks\" or \"tags\"
 	Type string `json:"type"`
-	// a list of UUIDs in case type is \"machines\"
+	// a list of UUIDs in case type is resource like \"machines\", \"volumes\", \"clusters\" or \"networks\"
 	Ids *[]string `json:"ids,omitempty"`
 	// a list of tags in case type is \"tags\"
 	Include *[]string `json:"include,omitempty"`
