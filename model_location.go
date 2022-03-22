@@ -22,6 +22,13 @@ type Location struct {
 	Name *string `json:"name,omitempty"`
 	Cloud *string `json:"cloud,omitempty"`
 	Extra *map[string]interface{} `json:"extra,omitempty"`
+	Parent *string `json:"parent,omitempty"`
+	LocationType *string `json:"location_type,omitempty"`
+	Country *string `json:"country,omitempty"`
+	AvailableSizes *map[string]interface{} `json:"available_sizes,omitempty"`
+	AvailableImages *map[string]interface{} `json:"available_images,omitempty"`
+	OwnedBy *string `json:"owned_by,omitempty"`
+	CreatedBy *string `json:"created_by,omitempty"`
 }
 
 // NewLocation instantiates a new Location object
@@ -201,6 +208,230 @@ func (o *Location) SetExtra(v map[string]interface{}) {
 	o.Extra = &v
 }
 
+// GetParent returns the Parent field value if set, zero value otherwise.
+func (o *Location) GetParent() string {
+	if o == nil || o.Parent == nil {
+		var ret string
+		return ret
+	}
+	return *o.Parent
+}
+
+// GetParentOk returns a tuple with the Parent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Location) GetParentOk() (*string, bool) {
+	if o == nil || o.Parent == nil {
+		return nil, false
+	}
+	return o.Parent, true
+}
+
+// HasParent returns a boolean if a field has been set.
+func (o *Location) HasParent() bool {
+	if o != nil && o.Parent != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetParent gets a reference to the given string and assigns it to the Parent field.
+func (o *Location) SetParent(v string) {
+	o.Parent = &v
+}
+
+// GetLocationType returns the LocationType field value if set, zero value otherwise.
+func (o *Location) GetLocationType() string {
+	if o == nil || o.LocationType == nil {
+		var ret string
+		return ret
+	}
+	return *o.LocationType
+}
+
+// GetLocationTypeOk returns a tuple with the LocationType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Location) GetLocationTypeOk() (*string, bool) {
+	if o == nil || o.LocationType == nil {
+		return nil, false
+	}
+	return o.LocationType, true
+}
+
+// HasLocationType returns a boolean if a field has been set.
+func (o *Location) HasLocationType() bool {
+	if o != nil && o.LocationType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLocationType gets a reference to the given string and assigns it to the LocationType field.
+func (o *Location) SetLocationType(v string) {
+	o.LocationType = &v
+}
+
+// GetCountry returns the Country field value if set, zero value otherwise.
+func (o *Location) GetCountry() string {
+	if o == nil || o.Country == nil {
+		var ret string
+		return ret
+	}
+	return *o.Country
+}
+
+// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Location) GetCountryOk() (*string, bool) {
+	if o == nil || o.Country == nil {
+		return nil, false
+	}
+	return o.Country, true
+}
+
+// HasCountry returns a boolean if a field has been set.
+func (o *Location) HasCountry() bool {
+	if o != nil && o.Country != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCountry gets a reference to the given string and assigns it to the Country field.
+func (o *Location) SetCountry(v string) {
+	o.Country = &v
+}
+
+// GetAvailableSizes returns the AvailableSizes field value if set, zero value otherwise.
+func (o *Location) GetAvailableSizes() map[string]interface{} {
+	if o == nil || o.AvailableSizes == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.AvailableSizes
+}
+
+// GetAvailableSizesOk returns a tuple with the AvailableSizes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Location) GetAvailableSizesOk() (*map[string]interface{}, bool) {
+	if o == nil || o.AvailableSizes == nil {
+		return nil, false
+	}
+	return o.AvailableSizes, true
+}
+
+// HasAvailableSizes returns a boolean if a field has been set.
+func (o *Location) HasAvailableSizes() bool {
+	if o != nil && o.AvailableSizes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailableSizes gets a reference to the given map[string]interface{} and assigns it to the AvailableSizes field.
+func (o *Location) SetAvailableSizes(v map[string]interface{}) {
+	o.AvailableSizes = &v
+}
+
+// GetAvailableImages returns the AvailableImages field value if set, zero value otherwise.
+func (o *Location) GetAvailableImages() map[string]interface{} {
+	if o == nil || o.AvailableImages == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return *o.AvailableImages
+}
+
+// GetAvailableImagesOk returns a tuple with the AvailableImages field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Location) GetAvailableImagesOk() (*map[string]interface{}, bool) {
+	if o == nil || o.AvailableImages == nil {
+		return nil, false
+	}
+	return o.AvailableImages, true
+}
+
+// HasAvailableImages returns a boolean if a field has been set.
+func (o *Location) HasAvailableImages() bool {
+	if o != nil && o.AvailableImages != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailableImages gets a reference to the given map[string]interface{} and assigns it to the AvailableImages field.
+func (o *Location) SetAvailableImages(v map[string]interface{}) {
+	o.AvailableImages = &v
+}
+
+// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
+func (o *Location) GetOwnedBy() string {
+	if o == nil || o.OwnedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.OwnedBy
+}
+
+// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Location) GetOwnedByOk() (*string, bool) {
+	if o == nil || o.OwnedBy == nil {
+		return nil, false
+	}
+	return o.OwnedBy, true
+}
+
+// HasOwnedBy returns a boolean if a field has been set.
+func (o *Location) HasOwnedBy() bool {
+	if o != nil && o.OwnedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
+func (o *Location) SetOwnedBy(v string) {
+	o.OwnedBy = &v
+}
+
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+func (o *Location) GetCreatedBy() string {
+	if o == nil || o.CreatedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Location) GetCreatedByOk() (*string, bool) {
+	if o == nil || o.CreatedBy == nil {
+		return nil, false
+	}
+	return o.CreatedBy, true
+}
+
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *Location) HasCreatedBy() bool {
+	if o != nil && o.CreatedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
+func (o *Location) SetCreatedBy(v string) {
+	o.CreatedBy = &v
+}
+
 func (o Location) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -217,6 +448,27 @@ func (o Location) MarshalJSON() ([]byte, error) {
 	}
 	if o.Extra != nil {
 		toSerialize["extra"] = o.Extra
+	}
+	if o.Parent != nil {
+		toSerialize["parent"] = o.Parent
+	}
+	if o.LocationType != nil {
+		toSerialize["location_type"] = o.LocationType
+	}
+	if o.Country != nil {
+		toSerialize["country"] = o.Country
+	}
+	if o.AvailableSizes != nil {
+		toSerialize["available_sizes"] = o.AvailableSizes
+	}
+	if o.AvailableImages != nil {
+		toSerialize["available_images"] = o.AvailableImages
+	}
+	if o.OwnedBy != nil {
+		toSerialize["owned_by"] = o.OwnedBy
+	}
+	if o.CreatedBy != nil {
+		toSerialize["created_by"] = o.CreatedBy
 	}
 	return json.Marshal(toSerialize)
 }
