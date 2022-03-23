@@ -79,11 +79,10 @@ All URIs are relative to *https://mist.io*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *CloudsApi* | [**AddCloud**](docs/CloudsApi.md#addcloud) | **Post** /api/v2/clouds | Add cloud
-*CloudsApi* | [**DeleteCloud**](docs/CloudsApi.md#deletecloud) | **Delete** /api/v2/clouds/{cloud} | Delete cloud
 *CloudsApi* | [**EditCloud**](docs/CloudsApi.md#editcloud) | **Put** /api/v2/clouds/{cloud} | Edit cloud
 *CloudsApi* | [**GetCloud**](docs/CloudsApi.md#getcloud) | **Get** /api/v2/clouds/{cloud} | Get cloud
 *CloudsApi* | [**ListClouds**](docs/CloudsApi.md#listclouds) | **Get** /api/v2/clouds | List clouds
-*CloudsCountApi* | [**GetOrg**](docs/CloudsCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
+*CloudsApi* | [**RemoveCloud**](docs/CloudsApi.md#removecloud) | **Delete** /api/v2/clouds/{cloud} | Remove cloud
 *ClustersApi* | [**CreateCluster**](docs/ClustersApi.md#createcluster) | **Post** /api/v2/clusters | Create cluster
 *ClustersApi* | [**DestroyCluster**](docs/ClustersApi.md#destroycluster) | **Delete** /api/v2/clusters/{cluster} | Destroy cluster
 *ClustersApi* | [**GetCluster**](docs/ClustersApi.md#getcluster) | **Get** /api/v2/clusters/{cluster} | Get cluster
@@ -106,7 +105,6 @@ Class | Method | HTTP request | Description
 *MachinesApi* | [**DestroyMachine**](docs/MachinesApi.md#destroymachine) | **Post** /api/v2/machines/{machine}/actions/destroy | Destroy machine
 *MachinesApi* | [**DisassociateKey**](docs/MachinesApi.md#disassociatekey) | **Delete** /api/v2/machines/{machine}/actions/disassociate-key | Disassociate a key from a machine
 *MachinesApi* | [**EditMachine**](docs/MachinesApi.md#editmachine) | **Put** /api/v2/machines/{machine} | Edit machine
-*MachinesApi* | [**ExposeMachine**](docs/MachinesApi.md#exposemachine) | **Post** /api/v2/machines/{machine}/actions/expose | Expose machine
 *MachinesApi* | [**GetMachine**](docs/MachinesApi.md#getmachine) | **Get** /api/v2/machines/{machine} | Get machine
 *MachinesApi* | [**ListMachines**](docs/MachinesApi.md#listmachines) | **Get** /api/v2/machines | List machines
 *MachinesApi* | [**RebootMachine**](docs/MachinesApi.md#rebootmachine) | **Post** /api/v2/machines/{machine}/actions/reboot | Reboot machine
@@ -118,9 +116,8 @@ Class | Method | HTTP request | Description
 *MachinesApi* | [**StopMachine**](docs/MachinesApi.md#stopmachine) | **Post** /api/v2/machines/{machine}/actions/stop | Stop machine
 *MachinesApi* | [**SuspendMachine**](docs/MachinesApi.md#suspendmachine) | **Post** /api/v2/machines/{machine}/actions/suspend | Suspend machine
 *MachinesApi* | [**UndefineMachine**](docs/MachinesApi.md#undefinemachine) | **Post** /api/v2/machines/{machine}/actions/undefine | Undefine machine
-*MembersApi* | [**ListOrgMembers**](docs/MembersApi.md#listorgmembers) | **Get** /api/v2/orgs/{org}/members | List org members
-*NameApi* | [**GetOrg**](docs/NameApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *NetworksApi* | [**CreateNetwork**](docs/NetworksApi.md#createnetwork) | **Post** /api/v2/networks | Create network
+*NetworksApi* | [**DeleteNetwork**](docs/NetworksApi.md#deletenetwork) | **Delete** /api/v2/networks/{network} | Delete network
 *NetworksApi* | [**EditNetwork**](docs/NetworksApi.md#editnetwork) | **Put** /api/v2/networks/{network} | Edit network
 *NetworksApi* | [**GetNetwork**](docs/NetworksApi.md#getnetwork) | **Get** /api/v2/networks/{network} | Get network
 *NetworksApi* | [**ListNetworks**](docs/NetworksApi.md#listnetworks) | **Get** /api/v2/networks | List networks
@@ -131,15 +128,19 @@ Class | Method | HTTP request | Description
 *OrgsApi* | [**ListOrgs**](docs/OrgsApi.md#listorgs) | **Get** /api/v2/orgs | List orgs
 *RulesApi* | [**AddRule**](docs/RulesApi.md#addrule) | **Post** /api/v2/rules | Add rule
 *RulesApi* | [**DeleteRule**](docs/RulesApi.md#deleterule) | **Delete** /api/v2/rules/{rule} | Delete rule
+*RulesApi* | [**EditRule**](docs/RulesApi.md#editrule) | **Post** /api/v2/rules/{rule} | Update rule
 *RulesApi* | [**GetRule**](docs/RulesApi.md#getrule) | **Get** /api/v2/rules/{rule} | Get rule
 *RulesApi* | [**ListRules**](docs/RulesApi.md#listrules) | **Get** /api/v2/rules | List rules
 *RulesApi* | [**RenameRule**](docs/RulesApi.md#renamerule) | **Patch** /api/v2/rules/{rule} | Rename rule
 *RulesApi* | [**ToggleRule**](docs/RulesApi.md#togglerule) | **Put** /api/v2/rules/{rule} | Toggle rule
-*RulesApi* | [**UpdateRule**](docs/RulesApi.md#updaterule) | **Post** /api/v2/rules/{rule} | Update rule
+*ScriptsApi* | [**AddScript**](docs/ScriptsApi.md#addscript) | **Post** /api/v2/scripts | Add script
 *ScriptsApi* | [**DeleteScript**](docs/ScriptsApi.md#deletescript) | **Delete** /api/v2/scripts/{script} | Delete script
+*ScriptsApi* | [**DownloadScript**](docs/ScriptsApi.md#downloadscript) | **Get** /api/v2/scripts/{script}/file | Download script
 *ScriptsApi* | [**EditScript**](docs/ScriptsApi.md#editscript) | **Put** /api/v2/scripts/{script} | Edit script
+*ScriptsApi* | [**GenerateScriptUrl**](docs/ScriptsApi.md#generatescripturl) | **Get** /api/v2/scripts/{script}/url | Generate script url
 *ScriptsApi* | [**GetScript**](docs/ScriptsApi.md#getscript) | **Get** /api/v2/scripts/{script} | Get script
 *ScriptsApi* | [**ListScripts**](docs/ScriptsApi.md#listscripts) | **Get** /api/v2/scripts | List scripts
+*ScriptsApi* | [**RunScript**](docs/ScriptsApi.md#runscript) | **Post** /api/v2/scripts/{script} | Run script
 *SecretsApi* | [**CreateSecret**](docs/SecretsApi.md#createsecret) | **Post** /api/v2/secrets | Create secret
 *SecretsApi* | [**DeleteSecret**](docs/SecretsApi.md#deletesecret) | **Delete** /api/v2/secrets/{secret} | Delete secret
 *SecretsApi* | [**EditSecret**](docs/SecretsApi.md#editsecret) | **Put** /api/v2/secrets/{secret} | Edit secret
@@ -151,8 +152,6 @@ Class | Method | HTTP request | Description
 *SnapshotsApi* | [**ListSnapshots**](docs/SnapshotsApi.md#listsnapshots) | **Get** /api/v2/machines/{machine}/snapshots | List machine snapshots
 *SnapshotsApi* | [**RemoveSnapshot**](docs/SnapshotsApi.md#removesnapshot) | **Delete** /api/v2/machines/{machine}/snapshots/{snapshot} | Remove snapshot
 *SnapshotsApi* | [**RevertToSnapshot**](docs/SnapshotsApi.md#reverttosnapshot) | **Post** /api/v2/machines/{machine}/snapshots/{snapshot} | Revert to snapshot
-*TeamsApi* | [**ListOrgTeams**](docs/TeamsApi.md#listorgteams) | **Get** /api/v2/orgs/{org}/teams | List org teams
-*TotalMachineCountApi* | [**GetOrg**](docs/TotalMachineCountApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **Get** /api/v2/users | List users
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /api/v2/volumes | Create volume
 *VolumesApi* | [**DeleteVolume**](docs/VolumesApi.md#deletevolume) | **Delete** /api/v2/volumes/{volume} | Delete volume
@@ -160,6 +159,7 @@ Class | Method | HTTP request | Description
 *VolumesApi* | [**GetVolume**](docs/VolumesApi.md#getvolume) | **Get** /api/v2/volumes/{volume} | Get volume
 *VolumesApi* | [**ListVolumes**](docs/VolumesApi.md#listvolumes) | **Get** /api/v2/volumes | List volumes
 *ZonesApi* | [**CreateZone**](docs/ZonesApi.md#createzone) | **Post** /api/v2/zones | Create zone
+*ZonesApi* | [**DeleteZone**](docs/ZonesApi.md#deletezone) | **Delete** /api/v2/zones/{zone} | Delete zone
 *ZonesApi* | [**EditZone**](docs/ZonesApi.md#editzone) | **Put** /api/v2/zones/{zone} | Edit zone
 *ZonesApi* | [**GetZone**](docs/ZonesApi.md#getzone) | **Get** /api/v2/zones/{zone} | Get zone
 *ZonesApi* | [**ListZones**](docs/ZonesApi.md#listzones) | **Get** /api/v2/zones | List zones
@@ -174,10 +174,12 @@ Class | Method | HTTP request | Description
  - [AddKeyRequestAnyOf1](docs/AddKeyRequestAnyOf1.md)
  - [AddKeyRequestAnyOf2](docs/AddKeyRequestAnyOf2.md)
  - [AddKeyResponse](docs/AddKeyResponse.md)
+ - [AddRuleRequest](docs/AddRuleRequest.md)
+ - [AddScriptRequest](docs/AddScriptRequest.md)
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)
  - [AlibabaCredentials](docs/AlibabaCredentials.md)
+ - [AlibabaNet](docs/AlibabaNet.md)
  - [AmazonCloudRequest](docs/AmazonCloudRequest.md)
- - [AmazonClusterRequest](docs/AmazonClusterRequest.md)
  - [AmazonCredentials](docs/AmazonCredentials.md)
  - [AmazonNet](docs/AmazonNet.md)
  - [AzureCloudRequest](docs/AzureCloudRequest.md)
@@ -192,6 +194,8 @@ Class | Method | HTTP request | Description
  - [ClusterProviders](docs/ClusterProviders.md)
  - [CreateClusterRequest](docs/CreateClusterRequest.md)
  - [CreateClusterRequestAllOf](docs/CreateClusterRequestAllOf.md)
+ - [CreateClusterRequestAllOfNodepools](docs/CreateClusterRequestAllOfNodepools.md)
+ - [CreateClusterResponse](docs/CreateClusterResponse.md)
  - [CreateMachineRequest](docs/CreateMachineRequest.md)
  - [CreateMachineRequestDisks](docs/CreateMachineRequestDisks.md)
  - [CreateMachineResponse](docs/CreateMachineResponse.md)
@@ -205,15 +209,22 @@ Class | Method | HTTP request | Description
  - [CreateZoneRequest](docs/CreateZoneRequest.md)
  - [CreateZoneResponse](docs/CreateZoneResponse.md)
  - [CronSchedule](docs/CronSchedule.md)
+ - [DataType](docs/DataType.md)
  - [Datapoints](docs/Datapoints.md)
  - [DatapointsData](docs/DatapointsData.md)
  - [DatapointsValuesItem](docs/DatapointsValuesItem.md)
+ - [DestroyClusterResponse](docs/DestroyClusterResponse.md)
  - [DigitaloceanCloudRequest](docs/DigitaloceanCloudRequest.md)
  - [DigitaloceanCredentials](docs/DigitaloceanCredentials.md)
  - [DockerCloudRequest](docs/DockerCloudRequest.md)
  - [DockerCredentials](docs/DockerCredentials.md)
+ - [DockerExtra](docs/DockerExtra.md)
+ - [DockerNet](docs/DockerNet.md)
  - [EditCloudRequest](docs/EditCloudRequest.md)
  - [EditCloudRequestAnyOf](docs/EditCloudRequestAnyOf.md)
+ - [EditMachineRequest](docs/EditMachineRequest.md)
+ - [EditMachineRequestExpiration](docs/EditMachineRequestExpiration.md)
+ - [EditRuleRequest](docs/EditRuleRequest.md)
  - [EditSecretRequest](docs/EditSecretRequest.md)
  - [EquinixCloudRequest](docs/EquinixCloudRequest.md)
  - [EquinixCredentials](docs/EquinixCredentials.md)
@@ -241,13 +252,15 @@ Class | Method | HTTP request | Description
  - [GetVolumeResponse](docs/GetVolumeResponse.md)
  - [GetZoneResponse](docs/GetZoneResponse.md)
  - [GoogleCloudRequest](docs/GoogleCloudRequest.md)
- - [GoogleClusterRequest](docs/GoogleClusterRequest.md)
  - [GoogleCredentials](docs/GoogleCredentials.md)
+ - [GoogleExtra](docs/GoogleExtra.md)
+ - [GoogleExtraServiceAccount](docs/GoogleExtraServiceAccount.md)
  - [GoogleNet](docs/GoogleNet.md)
  - [IbmCloudRequest](docs/IbmCloudRequest.md)
  - [IbmCredentials](docs/IbmCredentials.md)
  - [Image](docs/Image.md)
  - [InlineResponse200](docs/InlineResponse200.md)
+ - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineScript](docs/InlineScript.md)
  - [InstantVector](docs/InstantVector.md)
  - [IntervalSchedule](docs/IntervalSchedule.md)
@@ -261,6 +274,8 @@ Class | Method | HTTP request | Description
  - [KubernetesCredentials](docs/KubernetesCredentials.md)
  - [KubevirtCloudRequest](docs/KubevirtCloudRequest.md)
  - [KvmCloudRequest](docs/KvmCloudRequest.md)
+ - [LXDExtra](docs/LXDExtra.md)
+ - [LXDNet](docs/LXDNet.md)
  - [LinodeCloudRequest](docs/LinodeCloudRequest.md)
  - [LinodeCredentials](docs/LinodeCredentials.md)
  - [LinodeExtra](docs/LinodeExtra.md)
@@ -300,6 +315,7 @@ Class | Method | HTTP request | Description
  - [OpenshiftCredentials](docs/OpenshiftCredentials.md)
  - [OpenstackCloudRequest](docs/OpenstackCloudRequest.md)
  - [OpenstackCredentials](docs/OpenstackCredentials.md)
+ - [OpenstackNet](docs/OpenstackNet.md)
  - [Org](docs/Org.md)
  - [OtherCloudRequest](docs/OtherCloudRequest.md)
  - [PostDeployScript](docs/PostDeployScript.md)
@@ -310,6 +326,8 @@ Class | Method | HTTP request | Description
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)
  - [RuleAction](docs/RuleAction.md)
+ - [RunScriptRequest](docs/RunScriptRequest.md)
+ - [RunScriptResponse](docs/RunScriptResponse.md)
  - [Script](docs/Script.md)
  - [Secret](docs/Secret.md)
  - [Selector](docs/Selector.md)
@@ -318,14 +336,16 @@ Class | Method | HTTP request | Description
  - [Team](docs/Team.md)
  - [TriggerAfter](docs/TriggerAfter.md)
  - [User](docs/User.md)
- - [VcloudCloudRequest](docs/VcloudCloudRequest.md)
- - [VcloudCredentials](docs/VcloudCredentials.md)
+ - [VSphereExtra](docs/VSphereExtra.md)
+ - [VSphereNet](docs/VSphereNet.md)
  - [Vector](docs/Vector.md)
  - [Volume](docs/Volume.md)
  - [VsphereCloudRequest](docs/VsphereCloudRequest.md)
  - [VsphereCredentials](docs/VsphereCredentials.md)
  - [VultrCloudRequest](docs/VultrCloudRequest.md)
  - [VultrCredentials](docs/VultrCredentials.md)
+ - [VultrExtra](docs/VultrExtra.md)
+ - [VultrNet](docs/VultrNet.md)
  - [Window](docs/Window.md)
  - [Zone](docs/Zone.md)
 

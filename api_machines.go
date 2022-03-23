@@ -146,8 +146,18 @@ type ApiCloneMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
+	name *string
+	runAsync *bool
 }
 
+func (r ApiCloneMachineRequest) Name(name string) ApiCloneMachineRequest {
+	r.name = &name
+	return r
+}
+func (r ApiCloneMachineRequest) RunAsync(runAsync bool) ApiCloneMachineRequest {
+	r.runAsync = &runAsync
+	return r
+}
 
 func (r ApiCloneMachineRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.CloneMachineExecute(r)
@@ -191,7 +201,14 @@ func (a *MachinesApiService) CloneMachineExecute(r ApiCloneMachineRequest) (*_ne
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.name == nil {
+		return nil, reportError("name is required and must be specified")
+	}
 
+	localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+	if r.runAsync != nil {
+		localVarQueryParams.Add("run_async", parameterToString(*r.runAsync, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -707,11 +724,11 @@ type ApiEditMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
-	name *string
+	editMachineRequest *EditMachineRequest
 }
 
-func (r ApiEditMachineRequest) Name(name string) ApiEditMachineRequest {
-	r.name = &name
+func (r ApiEditMachineRequest) EditMachineRequest(editMachineRequest EditMachineRequest) ApiEditMachineRequest {
+	r.editMachineRequest = &editMachineRequest
 	return r
 }
 
@@ -758,11 +775,8 @@ func (a *MachinesApiService) EditMachineExecute(r ApiEditMachineRequest) (*_neth
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -778,114 +792,8 @@ func (a *MachinesApiService) EditMachineExecute(r ApiEditMachineRequest) (*_neth
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["ApiKeyAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiExposeMachineRequest struct {
-	ctx _context.Context
-	ApiService *MachinesApiService
-	machine string
-}
-
-
-func (r ApiExposeMachineRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.ExposeMachineExecute(r)
-}
-
-/*
- * ExposeMachine Expose machine
- * Expose target machine
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param machine
- * @return ApiExposeMachineRequest
- */
-func (a *MachinesApiService) ExposeMachine(ctx _context.Context, machine string) ApiExposeMachineRequest {
-	return ApiExposeMachineRequest{
-		ApiService: a,
-		ctx: ctx,
-		machine: machine,
-	}
-}
-
-/*
- * Execute executes the request
- */
-func (a *MachinesApiService) ExposeMachineExecute(r ApiExposeMachineRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MachinesApiService.ExposeMachine")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v2/machines/{machine}/actions/expose"
-	localVarPath = strings.Replace(localVarPath, "{"+"machine"+"}", _neturl.PathEscape(parameterToString(r.machine, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
+	// body params
+	localVarPostBody = r.editMachineRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1345,8 +1253,13 @@ type ApiRenameMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
+	name *string
 }
 
+func (r ApiRenameMachineRequest) Name(name string) ApiRenameMachineRequest {
+	r.name = &name
+	return r
+}
 
 func (r ApiRenameMachineRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RenameMachineExecute(r)
@@ -1390,7 +1303,11 @@ func (a *MachinesApiService) RenameMachineExecute(r ApiRenameMachineRequest) (*_
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.name == nil {
+		return nil, reportError("name is required and must be specified")
+	}
 
+	localVarQueryParams.Add("name", parameterToString(*r.name, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1453,8 +1370,13 @@ type ApiResizeMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
+	size *string
 }
 
+func (r ApiResizeMachineRequest) Size(size string) ApiResizeMachineRequest {
+	r.size = &size
+	return r
+}
 
 func (r ApiResizeMachineRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.ResizeMachineExecute(r)
@@ -1498,7 +1420,11 @@ func (a *MachinesApiService) ResizeMachineExecute(r ApiResizeMachineRequest) (*_
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.size == nil {
+		return nil, reportError("size is required and must be specified")
+	}
 
+	localVarQueryParams.Add("size", parameterToString(*r.size, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2101,8 +2027,13 @@ type ApiUndefineMachineRequest struct {
 	ctx _context.Context
 	ApiService *MachinesApiService
 	machine string
+	deleteDomainImage *bool
 }
 
+func (r ApiUndefineMachineRequest) DeleteDomainImage(deleteDomainImage bool) ApiUndefineMachineRequest {
+	r.deleteDomainImage = &deleteDomainImage
+	return r
+}
 
 func (r ApiUndefineMachineRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.UndefineMachineExecute(r)
@@ -2147,6 +2078,9 @@ func (a *MachinesApiService) UndefineMachineExecute(r ApiUndefineMachineRequest)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.deleteDomainImage != nil {
+		localVarQueryParams.Add("delete_domain_image", parameterToString(*r.deleteDomainImage, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -152,10 +152,11 @@ paths:
       - clouds
   /api/v2/clouds/{cloud}:
     delete:
-      description: Delete target cloud
-      operationId: delete-cloud
+      description: Remove target cloud
+      operationId: remove-cloud
       parameters:
-      - explode: false
+      - example: my-cloud
+        explode: false
         in: path
         name: cloud
         required: true
@@ -164,7 +165,7 @@ paths:
         style: simple
       responses:
         "200":
-          description: Cloud deleted successfully
+          description: Cloud removed successfully
         "401":
           description: Authentication failed
         "403":
@@ -173,17 +174,18 @@ paths:
           description: Cloud not found
       security:
       - ApiKeyAuth:
-        - delete:cloud
+        - remove:cloud
       - CookieAuth:
-        - delete:cloud
-      summary: Delete cloud
+        - remove:cloud
+      summary: Remove cloud
       tags:
       - clouds
     get:
       description: Get details about target cloud
       operationId: get-cloud
       parameters:
-      - explode: false
+      - example: my-cloud
+        explode: false
         in: path
         name: cloud
         required: true
@@ -266,7 +268,8 @@ paths:
       description: Update target cloud name or credentials
       operationId: edit-cloud
       parameters:
-      - explode: false
+      - example: my-cloud
+        explode: false
         in: path
         name: cloud
         required: true
@@ -434,7 +437,11 @@ paths:
               $ref: '#/components/schemas/CreateClusterRequest'
       responses:
         "200":
-          description: Cluster creation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateClusterResponse'
+          description: Cluster creation started
         "401":
           description: Authentication failed
         "403":
@@ -456,7 +463,8 @@ paths:
       description: Destroy target clusters
       operationId: destroy-cluster
       parameters:
-      - explode: false
+      - example: my-cluster
+        explode: false
         in: path
         name: cluster
         required: true
@@ -465,6 +473,10 @@ paths:
         style: simple
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DestroyClusterResponse'
           description: Cluster destruction successful
         "401":
           description: Authentication failed
@@ -486,7 +498,8 @@ paths:
       description: Get details about target cluster
       operationId: get-cluster
       parameters:
-      - explode: false
+      - example: my-cluster
+        explode: false
         in: path
         name: cluster
         required: true
@@ -523,6 +536,17 @@ paths:
         schema:
           default: auto
           type: string
+        style: form
+      - description: Return the cluster's credentials. Requires READ_CREDENTIALS permission
+          on cluster.
+        example: true
+        explode: true
+        in: query
+        name: credentials
+        required: false
+        schema:
+          default: false
+          type: boolean
         style: form
       responses:
         "200":
@@ -567,49 +591,94 @@ paths:
       description: Get datapoints for a specific query
       operationId: get-datapoints
       parameters:
-      - explode: true
+      - examples:
+          Query system_load1:
+            value: system_load1
+          Query net_bytes_sent:
+            value: rate(net_bytes_sent{interface="eth0", machine_id="1234"})
+        explode: true
         in: query
         name: query
         required: true
         schema:
           type: string
         style: form
-      - explode: true
+      - examples:
+          Example string:
+            value: cluster=east1,production
+          Example dictionary:
+            value:
+              cluster: east1
+              production: ""
+        explode: true
         in: query
         name: tags
         required: false
         schema:
           type: string
         style: form
-      - explode: true
+      - examples:
+          Filter by machine type:
+            value: state:running
+        explode: true
         in: query
         name: search
         required: false
         schema:
           type: string
         style: form
-      - explode: true
+      - examples:
+          Unix timestamp:
+            value: 1633096171
+          RFC3339:
+            value: 2019-10-12T07:20:50.52Z
+        explode: true
         in: query
         name: start
         required: false
         schema:
           type: string
         style: form
-      - explode: true
+      - examples:
+          Unix timestamp:
+            value: 1633096171
+          RFC3339:
+            value: 2019-10-12T07:20:50.52Z
+        explode: true
         in: query
         name: end
         required: false
         schema:
           type: string
         style: form
-      - explode: true
+      - examples:
+          "5 seconds (float)":
+            value: 5.0
+          "5 seconds (duration format)":
+            value: 5s
+          "1 minute":
+            value: 1m
+          "2 hours":
+            value: 2h
+          "20 days":
+            value: 20d
+          "4 weeks":
+            value: 4w
+          "1 year":
+            value: 1y
+        explode: true
         in: query
         name: step
         required: false
         schema:
           type: string
         style: form
-      - explode: true
+      - examples:
+          Unix timestamp:
+            value: 1633096171
+          RFC3339:
+            value: 2019-10-12T07:20:50.52Z
+        explode: true
         in: query
         name: time
         required: false
@@ -650,10 +719,10 @@ paths:
       operationId: list-images
       parameters:
       - examples:
+          Filter by cloud name:
+            value: my-cloud
           Filter by cloud id:
             value: 0194030499e74b02bdf68fa7130fb0b2
-          Filter by cloud name:
-            value: OSP10-new
           Filter by cloud provider:
             value: provider:digitalocean
         explode: true
@@ -779,7 +848,8 @@ paths:
       description: Get details about target image
       operationId: get-image
       parameters:
-      - explode: false
+      - example: ubuntu-1604-xenial-v20210928
+        explode: false
         in: path
         name: image
         required: true
@@ -861,7 +931,8 @@ paths:
       description: "null"
       operationId: get-job
       parameters:
-      - explode: false
+      - example: ab74e2f0b7ae4999b1e4013e20dac418
+        explode: false
         in: path
         name: job_id
         required: true
@@ -897,8 +968,8 @@ paths:
       parameters:
       - description: Only return results matching search filter
         examples:
-          Filter by key type:
-            value: type:ssh
+          Filter by owner:
+            value: owned_by:csk@mist.io
         explode: true
         in: query
         name: search
@@ -1030,7 +1101,8 @@ paths:
       description: Delete target key
       operationId: delete-key
       parameters:
-      - explode: false
+      - example: my-key
+        explode: false
         in: path
         name: key
         required: true
@@ -1058,7 +1130,8 @@ paths:
       description: Get details about target key
       operationId: get-key
       parameters:
-      - explode: false
+      - example: my-key
+        explode: false
         in: path
         name: key
         required: true
@@ -1150,7 +1223,8 @@ paths:
       description: Edit target key
       operationId: edit-key
       parameters:
-      - explode: false
+      - example: my-key
+        explode: false
         in: path
         name: key
         required: true
@@ -1158,6 +1232,7 @@ paths:
           type: string
         style: simple
       - description: New key name
+        example: my-renamed-key
         explode: true
         in: query
         name: name
@@ -1197,10 +1272,10 @@ paths:
       operationId: list-locations
       parameters:
       - examples:
+          Filter by cloud name:
+            value: my-cloud
           Filter by cloud id:
             value: 0194030499e74b02bdf68fa7130fb0b2
-          Filter by cloud name:
-            value: OSP10-new
           Filter by cloud provider:
             value: provider:digitalocean
         explode: true
@@ -1315,7 +1390,8 @@ paths:
       description: Get details about target location
       operationId: get-location
       parameters:
-      - explode: false
+      - example: us-central1-a
+        explode: false
         in: path
         name: location
         required: true
@@ -1520,6 +1596,80 @@ paths:
       requestBody:
         content:
           application/json:
+            examples:
+              NoCloudSpecifiedMachine:
+                summary: Provision a machine without defining a specific cloud
+                value:
+                  name: TestMachine
+                  image: Ubuntu
+                  size:
+                    cpu: 1
+                    memory: 1024
+                  key: TestKey
+                  monitoring: true
+                  dry: false
+              SelectedCloudMachine:
+                summary: Provision a machine in a specific cloud
+                value:
+                  cloud: 6a760c7690dc4ac9913ce9b109aa900c
+                  name: testmachine
+                  image: Ubuntu
+                  size:
+                    cpu: 2
+                    memory: 2048
+                  dry: false
+              AmazonExampleMachine:
+                summary: Provision a machine in one of your Amazon clouds
+                value:
+                  provider: amazon
+                  name: awsmachine
+                  image: Ubuntu
+                  size: t3.micro
+                  dry: false
+              GoogleExampleMachine:
+                summary: Provision a machine in one of your Google clouds
+                value:
+                  provider: google
+                  name: gcemachine
+                  image: Ubuntu
+                  size: e2-medium
+                  dry: false
+              AzureExampleMachine:
+                summary: Provision a machine in one of your Azure clouds
+                value:
+                  provider: azure
+                  name: azuremachine
+                  image: Ubuntu
+                  size: Standard_D4s_v5
+                  dry: false
+              FullExample:
+                summary: Provision 2 machines with monitoring, schedules, expiration
+                  and provisioning scripts
+                value:
+                  cloud: GCE
+                  name: testmachine
+                  image: Ubuntu
+                  size:
+                    cpu: 2
+                    memory: 2048
+                  location: us-east1-b
+                  key: TestKey
+                  monitoring: true
+                  quantity: 2
+                  expiration:
+                    action: destroy
+                    date: 2025-08-30T18:24:15Z
+                  scripts:
+                  - inline: |-
+                      #!/bin/bash
+                       touch ~/inline.txt
+                  - script: test123
+                  schedules:
+                  - schedule_type: one_off
+                    datetime: 2023-09-22T18:19:28Z
+                    script:
+                      script: test123
+                  dry: false
             schema:
               $ref: '#/components/schemas/CreateMachineRequest'
       responses:
@@ -1562,7 +1712,8 @@ paths:
       description: Get details about target machine
       operationId: get-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -1642,21 +1793,19 @@ paths:
       description: Edit target machine
       operationId: edit-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
         schema:
           type: string
         style: simple
-      - description: New machine name
-        explode: true
-        in: query
-        name: name
-        required: false
-        schema:
-          type: string
-        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditMachineRequest'
       responses:
         "200":
           description: Machine successfully updated
@@ -1679,7 +1828,8 @@ paths:
       description: Associate a key with a machine.
       operationId: associate-key
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -1721,13 +1871,30 @@ paths:
       description: Clone target machine
       operationId: clone-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
         schema:
           type: string
         style: simple
+      - example: my-machine-clone
+        explode: true
+        in: query
+        name: name
+        required: true
+        schema:
+          type: string
+        style: form
+      - example: false
+        explode: true
+        in: query
+        name: run_async
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           description: Machine clone issued successfully
@@ -1752,7 +1919,8 @@ paths:
       description: Open VNC console on target machine
       operationId: console
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -1770,6 +1938,8 @@ paths:
           description: Machine not found
         "422":
           description: Action not supported on target machine
+        "501":
+          description: Action not implemented
       security:
       - ApiKeyAuth:
         - console:machine
@@ -1778,12 +1948,14 @@ paths:
       summary: Open console
       tags:
       - machines
+    x-cli-ignore: true
   /api/v2/machines/{machine}/actions/destroy:
     post:
       description: Destroy target machine
       operationId: destroy-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -1814,7 +1986,8 @@ paths:
       description: Disassociate a key from a machine.
       operationId: disassociate-key
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -1847,43 +2020,13 @@ paths:
       summary: Disassociate a key from a machine
       tags:
       - machines
-  /api/v2/machines/{machine}/actions/expose:
-    post:
-      description: Expose target machine
-      operationId: expose-machine
-      parameters:
-      - explode: false
-        in: path
-        name: machine
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          description: Machine expose issued successfully
-        "401":
-          description: Authentication failed
-        "403":
-          description: You are not authorized to perform this action
-        "404":
-          description: Machine not found
-        "422":
-          description: Action not supported on target machine
-      security:
-      - ApiKeyAuth:
-        - expose:machine
-      - CookieAuth:
-        - expose:machine
-      summary: Expose machine
-      tags:
-      - machines
   /api/v2/machines/{machine}/actions/reboot:
     post:
       description: Reboot target machine
       operationId: reboot-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -1914,13 +2057,23 @@ paths:
       description: Rename target machine
       operationId: rename-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
         schema:
           type: string
         style: simple
+      - description: New machine name
+        example: my-renamed-machine
+        explode: true
+        in: query
+        name: name
+        required: true
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           description: Machine renamed successfully
@@ -1945,13 +2098,22 @@ paths:
       description: Resize target machine
       operationId: resize-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
         schema:
           type: string
         style: simple
+      - example: 9417745961a84bffbf6419e5of68faa5
+        explode: true
+        in: query
+        name: size
+        required: true
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           description: Machine resize issued successfully
@@ -1976,7 +2138,8 @@ paths:
       description: Resume target machine
       operationId: resume-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -2007,7 +2170,8 @@ paths:
       description: Open secure shell on target machine
       operationId: ssh
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -2043,7 +2207,8 @@ paths:
       description: Start target machine
       operationId: start-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -2074,7 +2239,8 @@ paths:
       description: Stop target machine
       operationId: stop-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -2105,7 +2271,8 @@ paths:
       description: Suspend target machine
       operationId: suspend-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -2136,13 +2303,21 @@ paths:
       description: Undefine target machine
       operationId: undefine-machine
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
         schema:
           type: string
         style: simple
+      - explode: true
+        in: query
+        name: delete_domain_image
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           description: Machine undefine issued successfully
@@ -2167,7 +2342,8 @@ paths:
       description: List snapshots of target machine
       operationId: list-snapshots
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
@@ -2203,13 +2379,22 @@ paths:
       description: Create snapshots of target machine
       operationId: create-snapshot
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
         schema:
           type: string
         style: simple
+      - example: my-snapshot
+        explode: true
+        in: query
+        name: name
+        required: true
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -2242,14 +2427,16 @@ paths:
       description: Remove target machine snapshot
       operationId: remove-snapshot
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
         schema:
           type: string
         style: simple
-      - explode: false
+      - example: my-snapshot
+        explode: false
         in: path
         name: snapshot
         required: true
@@ -2283,14 +2470,16 @@ paths:
       description: Revert machine to snapshot
       operationId: revert-to-snapshot
       parameters:
-      - explode: false
+      - example: my-machine
+        explode: false
         in: path
         name: machine
         required: true
         schema:
           type: string
         style: simple
-      - explode: false
+      - example: my-snapshot
+        explode: false
         in: path
         name: snapshot
         required: true
@@ -2470,6 +2659,8 @@ paths:
           description: Authentication failed
         "403":
           description: You are not authorized to perform this action
+        "501":
+          description: Network support is not available
       security:
       - ApiKeyAuth:
         - create:network
@@ -2483,11 +2674,54 @@ paths:
       tags:
       - networks
   /api/v2/networks/{network}:
+    delete:
+      description: Delete target network
+      operationId: delete-network
+      parameters:
+      - example: my-network
+        explode: false
+        in: path
+        name: network
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Cloud the target network belongs to
+        example: my-cloud
+        explode: true
+        in: query
+        name: cloud
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          description: Network deleted successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Network not found
+      security:
+      - ApiKeyAuth:
+        - read:cloud
+        - read:network
+        - remove:network
+      - CookieAuth:
+        - read:cloud
+        - read:network
+        - remove:network
+      summary: Delete network
+      tags:
+      - networks
     get:
       description: Get details about target network
       operationId: get-network
       parameters:
-      - explode: false
+      - example: my-network
+        explode: false
         in: path
         name: network
         required: true
@@ -2568,7 +2802,8 @@ paths:
       description: Edit target network
       operationId: edit-network
       parameters:
-      - explode: false
+      - example: my-network
+        explode: false
         in: path
         name: network
         required: true
@@ -2576,6 +2811,7 @@ paths:
           type: string
         style: simple
       - description: New network name
+        example: my-renamed-network
         explode: true
         in: query
         name: name
@@ -2607,6 +2843,7 @@ paths:
       operationId: list-orgs
       parameters:
       - description: Return all existing organizations
+        example: true
         explode: true
         in: query
         name: allorgs
@@ -2715,12 +2952,14 @@ paths:
       - clouds_count
       - teams_count
       - last_active
+    x-cli-ignore: true
   /api/v2/orgs/{org}:
     get:
       description: Get details about target org
       operationId: get-org
       parameters:
-      - explode: false
+      - example: my-org
+        explode: false
         in: path
         name: org
         required: true
@@ -2777,22 +3016,21 @@ paths:
       summary: Get Org
       tags:
       - orgs
-      - name
-      - clouds_count
-      - total_machine_count
       x-cli-table-extended:
       - name
       - id
       - clouds_count
       - total_machine_count
       - last_active
+    x-cli-ignore: true
   /api/v2/orgs/{org}/members:
     get:
       description: List org members owned by the requester. The requester must be
         a member of the org.
       operationId: list-org-members
       parameters:
-      - explode: false
+      - example: my-org
+        explode: false
         in: path
         name: org
         required: true
@@ -2874,7 +3112,6 @@ paths:
       summary: List org members
       tags:
       - orgs
-      - members
       x-cli-table-default:
       - email
       x-cli-table-extended:
@@ -2882,19 +3119,22 @@ paths:
       - id
       - last_login
       - registration_date
+    x-cli-ignore: true
   /api/v2/orgs/{org}/members/{member}:
     get:
       description: Get details about target member
       operationId: get-member
       parameters:
-      - explode: false
+      - example: my-org
+        explode: false
         in: path
         name: org
         required: true
         schema:
           type: string
         style: simple
-      - explode: false
+      - example: my-member
+        explode: false
         in: path
         name: member
         required: true
@@ -2942,12 +3182,14 @@ paths:
       - id
       - last_login
       - registration_date
+    x-cli-ignore: true
   /api/v2/orgs/{org}/teams:
     get:
       description: List teams in org.
       operationId: list-org-teams
       parameters:
       - description: Organization id
+        example: my-org
         explode: false
         in: path
         name: org
@@ -3046,7 +3288,6 @@ paths:
       summary: List org teams
       tags:
       - orgs
-      - teams
       x-cli-table-default:
       - name
       - members_count
@@ -3057,6 +3298,7 @@ paths:
       - members
       - description
       - policy
+    x-cli-ignore: true
   /api/v2/rules:
     get:
       description: Return a filtered list of rules
@@ -3160,49 +3402,11 @@ paths:
       description: Add a new rule, READ permission required on target resource, ADD
         permission required on Rule
       operationId: add-rule
-      parameters:
-      - explode: true
-        in: query
-        name: queries
-        required: true
-        schema:
-          $ref: '#/components/schemas/Queries'
-        style: form
-      - explode: true
-        in: query
-        name: window
-        required: true
-        schema:
-          $ref: '#/components/schemas/Window'
-        style: form
-      - explode: true
-        in: query
-        name: frequency
-        required: true
-        schema:
-          $ref: '#/components/schemas/Frequency'
-        style: form
-      - explode: true
-        in: query
-        name: trigger_after
-        required: true
-        schema:
-          $ref: '#/components/schemas/TriggerAfter'
-        style: form
-      - explode: true
-        in: query
-        name: actions
-        required: true
-        schema:
-          $ref: '#/components/schemas/RuleActions'
-        style: form
-      - explode: true
-        in: query
-        name: selectors
-        required: true
-        schema:
-          $ref: '#/components/schemas/Selector'
-        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddRuleRequest'
       responses:
         "200":
           content:
@@ -3227,7 +3431,8 @@ paths:
       description: Delete a rule given its UUID.
       operationId: delete-rule
       parameters:
-      - explode: false
+      - example: my-rule
+        explode: false
         in: path
         name: rule
         required: true
@@ -3255,7 +3460,8 @@ paths:
       description: Get details about target rule
       operationId: get-rule
       parameters:
-      - explode: false
+      - example: my-rule
+        explode: false
         in: path
         name: rule
         required: true
@@ -3326,16 +3532,18 @@ paths:
       description: Rename a rule
       operationId: rename-rule
       parameters:
-      - explode: false
+      - example: my-rule
+        explode: false
         in: path
         name: rule
         required: true
         schema:
           type: string
         style: simple
-      - explode: true
+      - example: my-renamed-rule
+        explode: true
         in: query
-        name: action
+        name: name
         required: true
         schema:
           type: string
@@ -3358,58 +3566,22 @@ paths:
       tags:
       - rules
     post:
-      description: Update a rule given its UUID, EDIT permission required on rule
-      operationId: update-rule
+      description: Edit a rule given its UUID, EDIT permission required on rule
+      operationId: edit-rule
       parameters:
-      - explode: true
-        in: query
-        name: queries
-        required: false
-        schema:
-          $ref: '#/components/schemas/Queries'
-        style: form
-      - explode: true
-        in: query
-        name: window
-        required: false
-        schema:
-          $ref: '#/components/schemas/Window'
-        style: form
-      - explode: true
-        in: query
-        name: frequency
-        required: false
-        schema:
-          $ref: '#/components/schemas/Frequency'
-        style: form
-      - explode: true
-        in: query
-        name: trigger_after
-        required: false
-        schema:
-          $ref: '#/components/schemas/TriggerAfter'
-        style: form
-      - explode: true
-        in: query
-        name: actions
-        required: false
-        schema:
-          $ref: '#/components/schemas/RuleActions'
-        style: form
-      - explode: true
-        in: query
-        name: selectors
-        required: false
-        schema:
-          $ref: '#/components/schemas/Selector'
-        style: form
-      - explode: false
+      - example: my-rule
+        explode: false
         in: path
         name: rule
         required: true
         schema:
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditRuleRequest'
       responses:
         "200":
           content:
@@ -3437,18 +3609,23 @@ paths:
       description: Enable or disable a rule
       operationId: toggle-rule
       parameters:
-      - explode: false
+      - example: my-rule
+        explode: false
         in: path
         name: rule
         required: true
         schema:
           type: string
         style: simple
-      - explode: true
+      - example: disable
+        explode: true
         in: query
         name: action
         required: true
         schema:
+          enum:
+          - enable
+          - disable
           type: string
         style: form
       responses:
@@ -3477,7 +3654,7 @@ paths:
       - description: Only return results matching search filter
         examples:
           Filter by script name:
-            value: install-tensorflow
+            value: my-script
         explode: true
         in: query
         name: search
@@ -3575,12 +3752,40 @@ paths:
       - tags
       - owned_by
       - created_by
+    post:
+      description: Add script to user scripts
+      operationId: add-script
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddScriptRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: Script added succesfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - add:script
+      - CookieAuth:
+        - add:script
+      summary: Add script
+      tags:
+      - scripts
   /api/v2/scripts/{script}:
     delete:
       description: Delete target script
       operationId: delete-script
       parameters:
-      - explode: false
+      - example: my-script
+        explode: false
         in: path
         name: script
         required: true
@@ -3608,7 +3813,8 @@ paths:
       description: Get details about target script
       operationId: get-script
       parameters:
-      - explode: false
+      - example: my-script
+        explode: false
         in: path
         name: script
         required: true
@@ -3675,11 +3881,54 @@ paths:
       - tags
       - owned_by
       - created_by
+    post:
+      description: Start a script job to run the script.
+      operationId: run-script
+      parameters:
+      - example: my-script
+        explode: false
+        in: path
+        name: script
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunScriptRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunScriptResponse'
+          description: Run script job started successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Script not found
+      security:
+      - ApiKeyAuth:
+        - read:cloud
+        - run_script:machine
+        - run:script
+      - CookieAuth:
+        - read:cloud
+        - run_script:machine
+        - run:script
+      summary: Run script
+      tags:
+      - scripts
     put:
       description: Edit target script
       operationId: edit-script
       parameters:
-      - explode: false
+      - example: my-script
+        explode: false
         in: path
         name: script
         required: true
@@ -3687,6 +3936,7 @@ paths:
           type: string
         style: simple
       - description: New script name
+        example: my-renamed-script
         explode: true
         in: query
         name: name
@@ -3695,6 +3945,7 @@ paths:
           type: string
         style: form
       - description: New script description
+        example: description
         explode: true
         in: query
         name: description
@@ -3717,6 +3968,70 @@ paths:
       - CookieAuth:
         - edit:script
       summary: Edit script
+      tags:
+      - scripts
+  /api/v2/scripts/{script}/file:
+    get:
+      description: Download script file or archive
+      operationId: download-script
+      parameters:
+      - example: my-script
+        explode: false
+        in: path
+        name: script
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: Script downloaded successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Script not found
+      summary: Download script
+      tags:
+      - scripts
+  /api/v2/scripts/{script}/url:
+    get:
+      description: Generate url for fetching script file
+      operationId: generate-script-url
+      parameters:
+      - example: my-script
+        explode: false
+        in: path
+        name: script
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+          description: Script url generated successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Script not found
+      security:
+      - ApiKeyAuth:
+        - read:script
+      - CookieAuth:
+        - read:script
+      summary: Generate script url
       tags:
       - scripts
   /api/v2/secrets:
@@ -3956,10 +4271,10 @@ paths:
       operationId: list-sizes
       parameters:
       - examples:
+          Filter by cloud name:
+            value: my-cloud
           Filter by cloud id:
             value: 0194030499e74b02bdf68fa7130fb0b2
-          Filter by cloud name:
-            value: OSP10-new
           Filter by cloud provider:
             value: provider:digitalocean
         explode: true
@@ -4074,7 +4389,8 @@ paths:
       description: Get details about target size
       operationId: get-size
       parameters:
-      - explode: false
+      - example: n2-highcpu-2 (2 vCPUs 2 GB RAM)
+        explode: false
         in: path
         name: size
         required: true
@@ -4395,6 +4711,8 @@ paths:
           description: Authentication failed
         "403":
           description: You are not authorized to perform this action
+        "501":
+          description: Volume support is not available
       security:
       - ApiKeyAuth:
         - create:volume
@@ -4416,7 +4734,8 @@ paths:
       description: Delete target volume
       operationId: delete-volume
       parameters:
-      - explode: false
+      - example: my-volume
+        explode: false
         in: path
         name: volume
         required: true
@@ -4448,7 +4767,8 @@ paths:
       description: Get details about target volume
       operationId: get-volume
       parameters:
-      - explode: false
+      - example: my-volume
+        explode: false
         in: path
         name: volume
         required: true
@@ -4531,7 +4851,8 @@ paths:
       description: Edit target volume
       operationId: edit-volume
       parameters:
-      - explode: false
+      - example: my-volume
+        explode: false
         in: path
         name: volume
         required: true
@@ -4539,6 +4860,7 @@ paths:
           type: string
         style: simple
       - description: New volume name
+        example: my-renamed-volume
         explode: true
         in: query
         name: name
@@ -4728,11 +5050,45 @@ paths:
       tags:
       - zones
   /api/v2/zones/{zone}:
+    delete:
+      description: Delete target zone
+      operationId: delete-zone
+      parameters:
+      - example: my-zone
+        explode: false
+        in: path
+        name: zone
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Zone successfully deleted
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Zone not found
+      security:
+      - ApiKeyAuth:
+        - read:zone
+        - delete:zone
+        - read:cloud
+      - CookieAuth:
+        - read:zone
+        - delete:zone
+        - read:cloud
+      summary: Delete zone
+      tags:
+      - zones
     get:
       description: Get details about target zone
       operationId: get-zone
       parameters:
-      - explode: false
+      - example: my-zone
+        explode: false
         in: path
         name: zone
         required: true
@@ -4813,21 +5169,14 @@ paths:
       description: Edit target zone
       operationId: edit-zone
       parameters:
-      - explode: false
+      - example: my-zone
+        explode: false
         in: path
         name: zone
         required: true
         schema:
           type: string
         style: simple
-      - description: New zone name
-        explode: true
-        in: query
-        name: name
-        required: false
-        schema:
-          type: string
-        style: form
       responses:
         "200":
           description: Zone successfully updated
@@ -4873,7 +5222,6 @@ components:
             openstack: '#/components/schemas/OpenstackCloudRequest'
             onapp: '#/components/schemas/OnappCloudRequest'
             vsphere: '#/components/schemas/VsphereCloudRequest'
-            vcloud: '#/components/schemas/VcloudCloudRequest'
             kvm: '#/components/schemas/KvmCloudRequest'
             lxd: '#/components/schemas/LxdCloudRequest'
             docker: '#/components/schemas/DockerCloudRequest'
@@ -4898,7 +5246,6 @@ components:
         - $ref: '#/components/schemas/OpenstackCloudRequest'
         - $ref: '#/components/schemas/OnappCloudRequest'
         - $ref: '#/components/schemas/VsphereCloudRequest'
-        - $ref: '#/components/schemas/VcloudCloudRequest'
         - $ref: '#/components/schemas/KvmCloudRequest'
         - $ref: '#/components/schemas/LxdCloudRequest'
         - $ref: '#/components/schemas/DockerCloudRequest'
@@ -4906,11 +5253,24 @@ components:
         - $ref: '#/components/schemas/KubevirtCloudRequest'
         - $ref: '#/components/schemas/OpenshiftCloudRequest'
         - $ref: '#/components/schemas/OtherCloudRequest'
+      example:
+        name: my-cloud
+        provider: google
+        credentials:
+          projectId: projectId
+          privateKey: privateKey
+          email: email
     AddKeyRequest:
       anyOf:
       - $ref: '#/components/schemas/AddKeyRequest_anyOf'
       - $ref: '#/components/schemas/AddKeyRequest_anyOf_1'
       - $ref: '#/components/schemas/AddKeyRequest_anyOf_2'
+      example:
+        name: my-key
+        private: |-
+          -----BEGIN RSA PRIVATE KEY-----
+          MIICXAIBAAKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0FPqri0cb2JZfXJ/DgYSF6vUp wmJG8wVQZKjeGcjDOL5UlsuusFncCzWBQ7RKNUSesmQRMSGkVb1/3j+skZ6UtW+5u09lHNsj6tQ5 1s1SPrCBkedbNf0Tp0GbMJDyR4e9T04ZZwIDAQABAoGAFijko56+qGyN8M0RVyaRAXz++xTqHBLh 3tx4VgMtrQ+WEgCjhoTwo23KMBAuJGSYnRmoBZM3lMfTKevIkAidPExvYCdm5dYq3XToLkkLv5L2 pIIVOFMDG+KESnAFV7l2c+cnzRMW0+b6f8mR1CJzZuxVLL6Q02fvLi55/mbSYxECQQDeAw6fiIQX GukBI4eMZZt4nscy2o12KyYner3VpoeE+Np2q+Z3pvAMd/aNzQ/W9WaI+NRfcxUJrmfPwIGm63il AkEAxCL5HQb2bQr4ByorcMWm/hEP2MZzROV73yF41hPsRC9m66KrheO9HPTJuo3/9s5p+sqGxOlF L0NDt4SkosjgGwJAFklyR1uZ/wPJjj611cdBcztlPdqoxssQGnh85BzCj/u3WqBpE2vjvyyvyI5k X6zk7S0ljKtt2jny2+00VsBerQJBAJGC1Mg5Oydo5NwD6BiROrPxGo2bpTbu/fhrT8ebHkTz2epl U9VQQSQzY1oZMVX8i1m5WUTLPz2yLJIBQVdXqhMCQBGoiuSoSjafUhV7i1cEGpb88h5NBYZzWXGZ 37sJ5QsW+sJyoNde3xH8vdXhzU7eT82D6X/scw9RZz+/6rCJ4p0=
+          -----END RSA PRIVATE KEY-----
       type: object
     AddKeyResponse:
       example:
@@ -4924,6 +5284,131 @@ components:
           type: string
         public:
           type: string
+      type: object
+    AddRuleRequest:
+      example:
+        trigger_after:
+          period: period
+          offset: 5
+        data_type: logs
+        window:
+          period: period
+          stop: 1
+          start: 6
+        selectors:
+          include:
+          - include
+          - include
+          ids:
+          - ids
+          - ids
+          type: machines
+        queries:
+        - threshold: 0.8008281904610115
+          aggregation: aggregation
+          operator: operator
+          target: target
+        - threshold: 0.8008281904610115
+          aggregation: aggregation
+          operator: operator
+          target: target
+        actions:
+        - emails:
+          - emails
+          - emails
+          teams:
+          - teams
+          - teams
+          action: action
+          type: type
+          users:
+          - users
+          - users
+          command: command
+        - emails:
+          - emails
+          - emails
+          teams:
+          - teams
+          - teams
+          action: action
+          type: type
+          users:
+          - users
+          - users
+          command: command
+        frequency:
+          period: period
+          every: 5
+      properties:
+        queries:
+          items:
+            $ref: '#/components/schemas/Query'
+          type: array
+        window:
+          $ref: '#/components/schemas/Window'
+        frequency:
+          $ref: '#/components/schemas/Frequency'
+        trigger_after:
+          $ref: '#/components/schemas/TriggerAfter'
+        actions:
+          items:
+            $ref: '#/components/schemas/RuleAction'
+          type: array
+        selectors:
+          $ref: '#/components/schemas/Selector'
+        data_type:
+          $ref: '#/components/schemas/DataType'
+      required:
+      - actions
+      - data_type
+      - frequency
+      - queries
+      - trigger_after
+      - window
+      type: object
+    AddScriptRequest:
+      example:
+        entrypoint: entrypoint.sh
+        name: my-script
+        description: description
+        exec_type: executable
+        script: |-
+          #!/usr/bin/env bash
+          echo Hello, World!
+        location_type: inline
+      properties:
+        name:
+          example: my-script
+          type: string
+        script:
+          example: |-
+            #!/usr/bin/env bash
+            echo Hello, World!
+          type: string
+        location_type:
+          enum:
+          - inline
+          - github
+          - url
+          example: inline
+          type: string
+        entrypoint:
+          example: entrypoint.sh
+          type: string
+        exec_type:
+          enum:
+          - executable
+          - ansible
+          example: executable
+          type: string
+        description:
+          type: string
+      required:
+      - exec_type
+      - location_type
+      - name
+      - script
       type: object
     AlibabaCloudRequest:
       properties:
@@ -4955,6 +5440,61 @@ components:
       - apisecret
       - region
       type: object
+    AlibabaNet:
+      properties:
+        network:
+          description: Name or ID of an existing network to associate the machine
+            with. If not provided, one existing network will be selected.
+          type: string
+        subnet:
+          description: Name or ID of an existing or new subnet(switch) to launch the
+            machine into. If not provided a default 'mistio' subnet will be created.
+          type: string
+        security_group:
+          description: Name of the security group to assign to the machine. If not
+            provided a default 'mistio' security group will be created.
+          type: string
+      title: Alibaba net parameter
+      type: object
+    AlibabaVolumes:
+      items:
+        oneOf:
+        - properties:
+            volume:
+              description: Name or ID of an existing volume to attach
+              type: string
+            delete_on_termination:
+              description: Delete the volume when the machine is deleted. Defaults
+                to false
+              type: boolean
+          required:
+          - volume
+        - properties:
+            name:
+              description: Name of the volume to be created
+              type: string
+            size:
+              description: Size of the volume in GBs. The minimum size depends on
+                the volume type
+              type: integer
+            delete_on_termination:
+              description: Delete the volume when the machine is deleted. Defaults
+                to false
+              type: boolean
+            type:
+              description: Type of the volume to create, defaults to 'cloud'
+              enum:
+              - cloud
+              - cloud_efficiency
+              - cloud_ssd
+              - cloud_essd
+              type: string
+          required:
+          - name
+          - size
+        type: object
+      title: Alibaba volumes parameter
+      type: array
     AmazonCloudRequest:
       properties:
         provider:
@@ -4968,39 +5508,6 @@ components:
       required:
       - credentials
       - provider
-      type: object
-    AmazonClusterRequest:
-      properties:
-        provider:
-          enum:
-          - amazon
-          type: string
-        role_arn:
-          description: The Amazon Resource Name (ARN) of the IAM role that provides
-            permissions for the Kubernetes control plane to make calls to AWS API
-            operations on your behalf
-          type: string
-        vpc_id:
-          description: The VPC associated with the cluster
-          type: string
-        subnet_ids:
-          description: The subnets associated with the cluster
-          items:
-            type: string
-          type: array
-        security_group_ids:
-          description: The security groups associated with the cross-account elastic
-            network interfaces that are used to allow communication between your nodes
-            and the Kubernetes control plane
-          items:
-            type: string
-          type: array
-      required:
-      - provider
-      - role_arn
-      - security_group_ids
-      - subnet_ids
-      - vpc_id
       type: object
     AmazonCredentials:
       properties:
@@ -5254,19 +5761,49 @@ components:
       - region
       - username
       type: object
+    CloudSigmaVolumes:
+      items:
+        oneOf:
+        - properties:
+            volume:
+              description: Name or ID of an existing volume to attach
+              type: string
+          required:
+          - volume
+        - properties:
+            name:
+              description: Name of the volume to be created
+              type: string
+            size:
+              description: Size of the volume in GBs
+              minimum: 1
+              type: integer
+          required:
+          - name
+          - size
+        type: object
+      title: CloudSigma volumes parameter
+      type: array
     Cluster:
       example:
+        owner: owner
+        last_seen: last_seen
+        credentials: '{}'
+        created: created
         total_cpus: 6
         owned_by: owned_by
+        external_id: external_id
         created_by: created_by
         tags: '{}'
         cloud: cloud
         total_memory: 1
+        missing_since: missing_since
         extra: '{}'
         name: name
         total_nodes: 0
         location: location
         id: id
+        state: state
         config: '{}'
       properties:
         id:
@@ -5285,6 +5822,8 @@ components:
           type: integer
         location:
           type: string
+        credentials:
+          type: object
         config:
           type: object
         tags:
@@ -5295,6 +5834,18 @@ components:
           type: string
         extra:
           type: object
+        external_id:
+          type: string
+        owner:
+          type: string
+        state:
+          type: string
+        last_seen:
+          type: string
+        missing_since:
+          type: string
+        created:
+          type: string
       type: object
     ClusterProviders:
       description: The cloud provider of the cluster
@@ -5310,18 +5861,22 @@ components:
     CreateClusterRequest:
       allOf:
       - $ref: '#/components/schemas/CreateClusterRequest_allOf'
-      - discriminator:
-          mapping:
-            amazon: '#/components/schemas/AmazonClusterRequest'
-            google: '#/components/schemas/GoogleClusterRequest'
-          propertyName: provider
-        oneOf:
-        - $ref: '#/components/schemas/AmazonClusterRequest'
-        - $ref: '#/components/schemas/GoogleClusterRequest'
+      example:
+        name: my-cluster
+        cloud: my-cloud
+        provider: google
+        location: my-location
+    CreateClusterResponse:
+      example:
+        jobId: jobId
+      properties:
+        jobId:
+          type: string
+      type: object
     CreateMachineRequest:
       example:
         template: '{}'
-        image: ""
+        image: Debian
         quantity: 1.4658129805029452
         disks:
           disk_size: 0
@@ -5334,13 +5889,14 @@ components:
         monitoring: true
         tags: '{}'
         cloud: cloud
-        size: ""
+        size: m1.small
+        optimize: optimize
         schedules:
         - ""
         - ""
         extra: ""
-        name: name
-        location: location
+        name: DB mirror
+        location: ""
         expiration:
           date: 2000-01-23T04:56:07.000+00:00
           action: stop
@@ -5356,6 +5912,7 @@ components:
       properties:
         name:
           description: Specify machine name
+          example: DB mirror
           type: string
         provider:
           $ref: '#/components/schemas/SupportedProviders'
@@ -5364,23 +5921,42 @@ components:
           type: string
         location:
           description: Where to provision e.g. region, datacenter, rack
-          type: string
-        size:
-          description: Machine sizing spec e.g. cpu/ram/flavor
           oneOf:
           - properties:
-              cpus:
-                description: Number of cpu cores. Mutually exclusive with 'size'
-                minimum: 1
-                type: integer
-              ram:
-                description: Ram size in MBs. Mutually exclusive with 'size'
-                minimum: 256
-                type: integer
-              size:
-                description: Name or ID of the size to select for this machine. Mutually
-                  exclusive with 'cpus' and 'ram'
+              prefer:
                 type: string
+            type: object
+          - type: string
+        size:
+          description: Machine sizing spec e.g. cpu/ram/flavor
+          example: m1.small
+          oneOf:
+          - properties:
+              cpu:
+                description: Number of cpu cores. On container based providers this
+                  value will be used as the cpu limit. Mutually exclusive with 'search'
+                type: number
+              memory:
+                description: Memory size in MBs. On container based providers this
+                  value will be used as the memory limit. Mutually exclusive with
+                  'search'
+                type: integer
+              search:
+                description: Name or ID of the size to select for this machine. Mutually
+                  exclusive with 'cpu' and 'memory'
+                type: string
+              prefer:
+                description: Optional properties to be used if applicable.
+                properties:
+                  cpu_shares:
+                    description: Docker specific parameter. An integer value representing
+                      this container's relative CPU weight versus other containers
+                    type: integer
+                  prefix:
+                    description: A size name prefix. Used only on providers with standard
+                      sizes
+                    type: string
+                type: object
               accelerators:
                 description: Google specific parameter
                 properties:
@@ -5390,7 +5966,7 @@ components:
                     type: string
                   accelerator_count:
                     description: The number of the accelerator cards exposed to this
-                      instance
+                      machine
                     type: integer
                 type: object
             type: object
@@ -5398,18 +5974,25 @@ components:
             type: string
         image:
           description: Operating System image to boot from
+          example: Debian
           oneOf:
           - type: object
           - description: Name or ID of the image to boot from
             type: string
         net:
           anyOf:
+          - $ref: '#/components/schemas/AlibabaNet'
           - $ref: '#/components/schemas/AmazonNet'
           - $ref: '#/components/schemas/AzureNet'
+          - $ref: '#/components/schemas/DockerNet'
           - $ref: '#/components/schemas/EquinixMetalNet'
           - $ref: '#/components/schemas/GoogleNet'
           - $ref: '#/components/schemas/KVMNet'
           - $ref: '#/components/schemas/LinodeNet'
+          - $ref: '#/components/schemas/LXDNet'
+          - $ref: '#/components/schemas/OpenstackNet'
+          - $ref: '#/components/schemas/VSphereNet'
+          - $ref: '#/components/schemas/VultrNet'
           description: Specify network configuration parameters
         key:
           description: Associate SSH key
@@ -5428,12 +6011,16 @@ components:
           $ref: '#/components/schemas/CreateMachineRequest_disks'
         volumes:
           anyOf:
+          - $ref: '#/components/schemas/AlibabaVolumes'
           - $ref: '#/components/schemas/AmazonVolumes'
           - $ref: '#/components/schemas/AzureVolumes'
+          - $ref: '#/components/schemas/CloudSigmaVolumes'
           - $ref: '#/components/schemas/DigitalOceanVolumes'
-          - $ref: '#/components/schemas/EquinixMetalVolumes'
           - $ref: '#/components/schemas/GoogleVolumes'
           - $ref: '#/components/schemas/LinodeVolumes'
+          - $ref: '#/components/schemas/LXDVolumes'
+          - $ref: '#/components/schemas/OpenstackVolumes'
+          - $ref: '#/components/schemas/VultrVolumes'
           description: Configure of attached storage volumes, e.g. cloud disks
         fqdn:
           description: Add DNS A Record that points machine's public IP to this Fully
@@ -5496,8 +6083,13 @@ components:
         extra:
           anyOf:
           - $ref: '#/components/schemas/AzureExtra'
+          - $ref: '#/components/schemas/DockerExtra'
           - $ref: '#/components/schemas/EquinixMetalExtra'
+          - $ref: '#/components/schemas/GoogleExtra'
           - $ref: '#/components/schemas/LinodeExtra'
+          - $ref: '#/components/schemas/LXDExtra'
+          - $ref: '#/components/schemas/VSphereExtra'
+          - $ref: '#/components/schemas/VultrExtra'
           description: Configure additional parameters
         monitoring:
           description: Enable monitoring of this machine
@@ -5513,10 +6105,12 @@ components:
         save:
           description: Save provisioning plan as template
           type: boolean
+        optimize:
+          description: Criteria optimization, e.g "cost"
+          type: string
       required:
       - image
       - name
-      - size
       type: object
     CreateMachineResponse:
       oneOf:
@@ -5525,25 +6119,27 @@ components:
       type: object
     CreateNetworkRequest:
       example:
-        cloud: cloud
+        cloud: my-cloud
         template: '{}'
         extra: '{}'
-        name: name
+        name: my-network
         save: true
         dry: true
         tags: '{}'
       properties:
         name:
           description: Specify network name
+          example: my-network
           type: string
         cloud:
           description: Specify cloud to provision on
+          example: my-cloud
           type: string
         tags:
           description: Assign tags to provisioned network
           type: object
         extra:
-          description: Configure additional parameters
+          description: Configure additional parameters, e.g. cidr (EC2 network)
           type: object
         template:
           type: object
@@ -5581,31 +6177,58 @@ components:
       type: object
     CreateVolumeRequest:
       example:
-        cloud: cloud
         template: '{}'
-        quantity: 0.8008281904610115
-        size: '{}'
-        extra: '{}'
-        name: name
+        quantity: 0
+        ex_disk_type: pd-standard
+        ex_volume_type: standard
         save: true
-        location: location
         dry: true
         tags: '{}'
+        cloud: my-cloud
+        ex_iops: ex_iops
+        size: 1
+        extra: '{}'
+        name: my-volume
+        location: us-central1-a
       properties:
         name:
           description: Specify volume name
+          example: my-volume
           type: string
         provider:
           $ref: '#/components/schemas/SupportedProviders'
         cloud:
           description: Specify cloud to provision on
+          example: my-cloud
           type: string
         location:
           description: Where to provision e.g. region, datacenter, rack
+          example: us-central1-a
           type: string
         size:
           description: Volume sizing spec
-          type: object
+          example: 1
+          type: integer
+        ex_disk_type:
+          description: GCE-specific
+          enum:
+          - pd-standard
+          - pd-ssd
+          example: pd-standard
+          type: string
+        ex_volume_type:
+          description: EC2-specific
+          enum:
+          - standard
+          - io1
+          - gp2
+          - sc1
+          - st1
+          example: standard
+          type: string
+        ex_iops:
+          description: EC2-specific. Needs to be specified if volume_type='io1'
+          type: string
         tags:
           description: Assign tags to provisioned volume
           type: object
@@ -5614,7 +6237,7 @@ components:
           type: object
         quantity:
           description: Provision multiple volumes of this type
-          type: number
+          type: integer
         template:
           type: object
         dry:
@@ -5624,6 +6247,8 @@ components:
           description: Save provisioning plan as template
           type: boolean
       required:
+      - cloud
+      - location
       - name
       - size
       type: object
@@ -5634,16 +6259,11 @@ components:
       type: object
     CreateZoneRequest:
       example:
-        cloud: cloud
-        template: '{}'
-        extra: '{}'
-        name: name
-        save: true
-        dry: true
-        tags: '{}'
+        name: my-zone
+        cloud: my-cloud
       properties:
         name:
-          description: Specify zone name
+          description: Specify zone name/domain (e.g. example.com)
           type: string
         cloud:
           description: Specify cloud to provision on
@@ -5708,6 +6328,12 @@ components:
       - schedule_type
       title: Cron
       type: object
+    DataType:
+      enum:
+      - metrics
+      - logs
+      example: logs
+      type: string
     Datapoints:
       example:
         data:
@@ -5730,6 +6356,19 @@ components:
       items:
         $ref: '#/components/schemas/DatapointsValuesItem'
       type: array
+    DestroyClusterResponse:
+      example:
+        cloud: cloud
+        jobId: jobId
+        cluster: cluster
+      properties:
+        jobId:
+          type: string
+        cloud:
+          type: string
+        cluster:
+          type: string
+      type: object
     DigitalOceanVolumes:
       items:
         oneOf:
@@ -5824,6 +6463,24 @@ components:
       - host
       - port
       type: object
+    DockerExtra:
+      properties:
+        environment:
+          description: Key, value pairs of environment variables to set inside the
+            container
+          type: object
+        command:
+          description: Command to run specified as a string
+          type: string
+      title: Docker extra parameter
+      type: object
+    DockerNet:
+      properties:
+        port_bindings:
+          description: ContainerPort,HostPort pairs. For example "80"/"80", "123/udp"/"123"
+          type: object
+      title: Docker net parameter
+      type: object
     EditCloudRequest:
       anyOf:
       - $ref: '#/components/schemas/EditCloudRequest_anyOf'
@@ -5850,7 +6507,6 @@ components:
               openstack: '#/components/schemas/OpenstackCloudRequest'
               onapp: '#/components/schemas/OnappCloudRequest'
               vsphere: '#/components/schemas/VsphereCloudRequest'
-              vcloud: '#/components/schemas/VcloudCloudRequest'
               kvm: '#/components/schemas/KvmCloudRequest'
               lxd: '#/components/schemas/LxdCloudRequest'
               docker: '#/components/schemas/DockerCloudRequest'
@@ -5875,7 +6531,6 @@ components:
           - $ref: '#/components/schemas/OpenstackCloudRequest'
           - $ref: '#/components/schemas/OnappCloudRequest'
           - $ref: '#/components/schemas/VsphereCloudRequest'
-          - $ref: '#/components/schemas/VcloudCloudRequest'
           - $ref: '#/components/schemas/KvmCloudRequest'
           - $ref: '#/components/schemas/LxdCloudRequest'
           - $ref: '#/components/schemas/DockerCloudRequest'
@@ -5883,6 +6538,8 @@ components:
           - $ref: '#/components/schemas/KubevirtCloudRequest'
           - $ref: '#/components/schemas/OpenshiftCloudRequest'
           - $ref: '#/components/schemas/OtherCloudRequest'
+      example:
+        name: my-renamed-cloud
     EditCloudRequest_anyOf:
       additionalProperties: false
       properties:
@@ -5891,6 +6548,88 @@ components:
           type: string
       required:
       - name
+      type: object
+    EditMachineRequest:
+      example:
+        expiration:
+          date: date
+          action: stop
+          notify: 0
+      properties:
+        expiration:
+          $ref: '#/components/schemas/EditMachineRequest_expiration'
+      type: object
+    EditRuleRequest:
+      example:
+        trigger_after:
+          period: period
+          offset: 5
+        window:
+          period: period
+          stop: 1
+          start: 6
+        selectors:
+          include:
+          - include
+          - include
+          ids:
+          - ids
+          - ids
+          type: machines
+        queries:
+        - threshold: 0.8008281904610115
+          aggregation: aggregation
+          operator: operator
+          target: target
+        - threshold: 0.8008281904610115
+          aggregation: aggregation
+          operator: operator
+          target: target
+        actions:
+        - emails:
+          - emails
+          - emails
+          teams:
+          - teams
+          - teams
+          action: action
+          type: type
+          users:
+          - users
+          - users
+          command: command
+        - emails:
+          - emails
+          - emails
+          teams:
+          - teams
+          - teams
+          action: action
+          type: type
+          users:
+          - users
+          - users
+          command: command
+        frequency:
+          period: period
+          every: 5
+      properties:
+        queries:
+          items:
+            $ref: '#/components/schemas/Query'
+          type: array
+        window:
+          $ref: '#/components/schemas/Window'
+        frequency:
+          $ref: '#/components/schemas/Frequency'
+        trigger_after:
+          $ref: '#/components/schemas/TriggerAfter'
+        actions:
+          items:
+            $ref: '#/components/schemas/RuleAction'
+          type: array
+        selectors:
+          $ref: '#/components/schemas/Selector'
       type: object
     EditSecretRequest:
       example:
@@ -5942,31 +6681,6 @@ components:
           type: array
       title: Equnix Metal net parameter
       type: object
-    EquinixMetalVolumes:
-      items:
-        oneOf:
-        - properties:
-            volume:
-              description: Name or ID of the volume to attach
-              type: string
-          required:
-          - volume
-        - properties:
-            size:
-              description: Size of the volume to be created
-              minimum: 100
-              type: integer
-            plan:
-              description: Type of volume to create, defaults to standard
-              enum:
-              - standard
-              - performance
-              type: string
-          required:
-          - size
-        type: object
-      title: Equnix Metal volumes parameter
-      type: array
     Expiration:
       example:
         date: 2000-01-23T04:56:07.000+00:00
@@ -5994,6 +6708,9 @@ components:
       - date
       type: object
     Frequency:
+      example:
+        period: period
+        every: 5
       properties:
         every:
           description: |
@@ -6033,17 +6750,24 @@ components:
     GetClusterResponse:
       example:
         data:
+          owner: owner
+          last_seen: last_seen
+          credentials: '{}'
+          created: created
           total_cpus: 6
           owned_by: owned_by
+          external_id: external_id
           created_by: created_by
           tags: '{}'
           cloud: cloud
           total_memory: 1
+          missing_since: missing_since
           extra: '{}'
           name: name
           total_nodes: 0
           location: location
           id: id
+          state: state
           config: '{}'
         meta:
           total: 0
@@ -6154,10 +6878,17 @@ components:
       example:
         data:
           cloud: cloud
+          parent: parent
+          country: country
+          available_sizes: '{}'
           extra: '{}'
           name: name
           external_id: external_id
+          owned_by: owned_by
           id: id
+          available_images: '{}'
+          created_by: created_by
+          location_type: location_type
         meta:
           total: 0
           start: 1
@@ -6172,14 +6903,55 @@ components:
     GetMachineResponse:
       example:
         data:
+          cluster: cluster
+          parent: parent
+          subnet: subnet
+          last_seen: last_seen
+          external_id: external_id
+          ports: '{}'
+          type: type
+          unreachable_since: unreachable_since
+          network: network
           cloud: cloud
           default: true
-          name: name
-          external_id: external_id
-          owned_by: owned_by
+          hostname: hostname
+          cores: 0.8008281904610115
+          missing_since: missing_since
+          extra: '{}'
           id: id
+          public_ips:
+          - public_ips
+          - public_ips
+          image: image
+          cost: '{}'
+          created: created
+          owned_by: owned_by
+          monitoring: monitoring
           created_by: created_by
           tags: '{}'
+          probe: '{}'
+          size: size
+          os_type: os_type
+          name: name
+          private_ips:
+          - private_ips
+          - private_ips
+          expiration: expiration
+          location: location
+          actions: '{}'
+          key_associations:
+          - port: 1
+            machine: machine
+            last_used: 6
+            sudo: true
+            user: user
+            key: key
+          - port: 1
+            machine: machine
+            last_used: 6
+            sudo: true
+            user: user
+            key: key
         meta:
           total: 0
           start: 1
@@ -6341,16 +7113,23 @@ components:
     GetVolumeResponse:
       example:
         data:
+          last_seen: last_seen
+          external_id: external_id
+          owned_by: owned_by
+          created_by: created_by
+          tags: '{}'
           cloud: cloud
           default: true
           size: size
+          attached_to:
+          - attached_to
+          - attached_to
+          missing_since: missing_since
+          extra: '{}'
           name: name
-          external_id: external_id
           location: location
-          owned_by: owned_by
           id: id
-          created_by: created_by
-          tags: '{}'
+          actions: '{}'
         meta:
           total: 0
           start: 1
@@ -6397,19 +7176,6 @@ components:
       - credentials
       - provider
       type: object
-    GoogleClusterRequest:
-      properties:
-        provider:
-          enum:
-          - google
-          type: string
-        location:
-          description: The name of the location to create the cluster in
-          type: string
-      required:
-      - location
-      - provider
-      type: object
     GoogleCredentials:
       properties:
         projectId:
@@ -6418,9 +7184,19 @@ components:
         privateKey:
           description: Your GCP private key
           type: string
+        email:
+          description: Your GCP client email
+          type: string
       required:
+      - email
       - privateKey
       - projectId
+      type: object
+    GoogleExtra:
+      properties:
+        service_account:
+          $ref: '#/components/schemas/GoogleExtra_service_account'
+      title: Google extra parameter
       type: object
     GoogleNet:
       properties:
@@ -6673,19 +7449,31 @@ components:
       type: object
     KeyMachineAssociation:
       example:
-        port: 0
+        port: 1
+        machine: machine
+        last_used: 6
+        sudo: true
         user: user
         key: key
       properties:
         key:
-          description: Name or ID of the SSH key to associate
+          description: Name or ID of the SSH key
           type: string
+        machine:
+          description: Name or ID of the machine
+          type: string
+        last_used:
+          description: Last used time
+          type: integer
         port:
           description: SSH port
           type: integer
         user:
           description: SSH user
           type: string
+        sudo:
+          description: Indicates if the SSH user has sudo privileges
+          type: boolean
       type: object
     KeyMachineDisassociation:
       example:
@@ -6772,6 +7560,69 @@ components:
       type: object
     KvmCredentials:
       type: object
+    LXDExtra:
+      properties:
+        ephemeral:
+          description: Whether to destroy the container on shutdown, defaults to False
+          type: boolean
+      title: LXD extra parameter
+      type: object
+    LXDNet:
+      properties:
+        networks:
+          description: An array of network names or IDs to launch the container into
+          items:
+            type: string
+          type: array
+      title: LXD net parameter
+      type: object
+    LXDVolumes:
+      items:
+        oneOf:
+        - properties:
+            volume:
+              description: Name or ID of an existing storage volume to attach
+              type: string
+            path:
+              description: Path in the container the storage volume will be attached.
+                e.g. /opt/mydata
+              type: string
+          required:
+          - path
+          - volume
+        - properties:
+            name:
+              description: Name of the storage volume that will be created
+              type: string
+            size:
+              description: Size of the storage volume in GBs
+              type: integer
+            path:
+              description: Path in the container the storage volume will be attached.
+                e.g. /opt/mydata
+              type: string
+            pool:
+              description: The storage pool to create the volume into. If not given
+                the default storage pool will be selected
+              type: string
+            filesystem:
+              description: Filesystem of the storage volume, defaults to "ext4"
+              type: string
+            mount_options:
+              description: Mount options for block devices,  defaults to "discard"
+              type: string
+            security_shifted:
+              description: Whether to enable id shifting overlay (allows attach by
+                multiple isolated instances). Only supported on LXD version 3.16 and
+                up
+              type: boolean
+          required:
+          - name
+          - path
+          - size
+        type: object
+      title: LXD volumes parameter
+      type: array
     LinodeCloudRequest:
       properties:
         provider:
@@ -6873,29 +7724,43 @@ components:
     ListClustersResponse:
       example:
         data:
-        - total_cpus: 6
+        - owner: owner
+          last_seen: last_seen
+          credentials: '{}'
+          created: created
+          total_cpus: 6
           owned_by: owned_by
+          external_id: external_id
           created_by: created_by
           tags: '{}'
           cloud: cloud
           total_memory: 1
+          missing_since: missing_since
           extra: '{}'
           name: name
           total_nodes: 0
           location: location
           id: id
+          state: state
           config: '{}'
-        - total_cpus: 6
+        - owner: owner
+          last_seen: last_seen
+          credentials: '{}'
+          created: created
+          total_cpus: 6
           owned_by: owned_by
+          external_id: external_id
           created_by: created_by
           tags: '{}'
           cloud: cloud
           total_memory: 1
+          missing_since: missing_since
           extra: '{}'
           name: name
           total_nodes: 0
           location: location
           id: id
+          state: state
           config: '{}'
         meta:
           total: 0
@@ -6982,15 +7847,29 @@ components:
       example:
         data:
         - cloud: cloud
+          parent: parent
+          country: country
+          available_sizes: '{}'
           extra: '{}'
           name: name
           external_id: external_id
+          owned_by: owned_by
           id: id
+          available_images: '{}'
+          created_by: created_by
+          location_type: location_type
         - cloud: cloud
+          parent: parent
+          country: country
+          available_sizes: '{}'
           extra: '{}'
           name: name
           external_id: external_id
+          owned_by: owned_by
           id: id
+          available_images: '{}'
+          created_by: created_by
+          location_type: location_type
         meta:
           total: 0
           start: 1
@@ -7007,22 +7886,104 @@ components:
     ListMachinesResponse:
       example:
         data:
-        - cloud: cloud
-          default: true
-          name: name
+        - cluster: cluster
+          parent: parent
+          subnet: subnet
+          last_seen: last_seen
           external_id: external_id
-          owned_by: owned_by
+          ports: '{}'
+          type: type
+          unreachable_since: unreachable_since
+          network: network
+          cloud: cloud
+          default: true
+          hostname: hostname
+          cores: 0.8008281904610115
+          missing_since: missing_since
+          extra: '{}'
           id: id
+          public_ips:
+          - public_ips
+          - public_ips
+          image: image
+          cost: '{}'
+          created: created
+          owned_by: owned_by
+          monitoring: monitoring
           created_by: created_by
           tags: '{}'
-        - cloud: cloud
-          default: true
+          probe: '{}'
+          size: size
+          os_type: os_type
           name: name
+          private_ips:
+          - private_ips
+          - private_ips
+          expiration: expiration
+          location: location
+          actions: '{}'
+          key_associations:
+          - port: 1
+            machine: machine
+            last_used: 6
+            sudo: true
+            user: user
+            key: key
+          - port: 1
+            machine: machine
+            last_used: 6
+            sudo: true
+            user: user
+            key: key
+        - cluster: cluster
+          parent: parent
+          subnet: subnet
+          last_seen: last_seen
           external_id: external_id
-          owned_by: owned_by
+          ports: '{}'
+          type: type
+          unreachable_since: unreachable_since
+          network: network
+          cloud: cloud
+          default: true
+          hostname: hostname
+          cores: 0.8008281904610115
+          missing_since: missing_since
+          extra: '{}'
           id: id
+          public_ips:
+          - public_ips
+          - public_ips
+          image: image
+          cost: '{}'
+          created: created
+          owned_by: owned_by
+          monitoring: monitoring
           created_by: created_by
           tags: '{}'
+          probe: '{}'
+          size: size
+          os_type: os_type
+          name: name
+          private_ips:
+          - private_ips
+          - private_ips
+          expiration: expiration
+          location: location
+          actions: '{}'
+          key_associations:
+          - port: 1
+            machine: machine
+            last_used: 6
+            sudo: true
+            user: user
+            key: key
+          - port: 1
+            machine: machine
+            last_used: 6
+            sudo: true
+            user: user
+            key: key
         meta:
           total: 0
           start: 1
@@ -7357,26 +8318,40 @@ components:
     ListVolumesResponse:
       example:
         data:
-        - cloud: cloud
-          default: true
-          size: size
-          name: name
+        - last_seen: last_seen
           external_id: external_id
-          location: location
           owned_by: owned_by
-          id: id
           created_by: created_by
           tags: '{}'
-        - cloud: cloud
+          cloud: cloud
           default: true
           size: size
+          attached_to:
+          - attached_to
+          - attached_to
+          missing_since: missing_since
+          extra: '{}'
           name: name
-          external_id: external_id
           location: location
-          owned_by: owned_by
           id: id
+          actions: '{}'
+        - last_seen: last_seen
+          external_id: external_id
+          owned_by: owned_by
           created_by: created_by
           tags: '{}'
+          cloud: cloud
+          default: true
+          size: size
+          attached_to:
+          - attached_to
+          - attached_to
+          missing_since: missing_since
+          extra: '{}'
+          name: name
+          location: location
+          id: id
+          actions: '{}'
         meta:
           total: 0
           start: 1
@@ -7423,10 +8398,17 @@ components:
     Location:
       example:
         cloud: cloud
+        parent: parent
+        country: country
+        available_sizes: '{}'
         extra: '{}'
         name: name
         external_id: external_id
+        owned_by: owned_by
         id: id
+        available_images: '{}'
+        created_by: created_by
+        location_type: location_type
       properties:
         id:
           type: string
@@ -7438,6 +8420,20 @@ components:
           type: string
         extra:
           type: object
+        parent:
+          type: string
+        location_type:
+          type: string
+        country:
+          type: string
+        available_sizes:
+          type: object
+        available_images:
+          type: object
+        owned_by:
+          type: string
+        created_by:
+          type: string
       type: object
     Log:
       example:
@@ -7498,14 +8494,55 @@ components:
       type: object
     Machine:
       example:
+        cluster: cluster
+        parent: parent
+        subnet: subnet
+        last_seen: last_seen
+        external_id: external_id
+        ports: '{}'
+        type: type
+        unreachable_since: unreachable_since
+        network: network
         cloud: cloud
         default: true
-        name: name
-        external_id: external_id
-        owned_by: owned_by
+        hostname: hostname
+        cores: 0.8008281904610115
+        missing_since: missing_since
+        extra: '{}'
         id: id
+        public_ips:
+        - public_ips
+        - public_ips
+        image: image
+        cost: '{}'
+        created: created
+        owned_by: owned_by
+        monitoring: monitoring
         created_by: created_by
         tags: '{}'
+        probe: '{}'
+        size: size
+        os_type: os_type
+        name: name
+        private_ips:
+        - private_ips
+        - private_ips
+        expiration: expiration
+        location: location
+        actions: '{}'
+        key_associations:
+        - port: 1
+          machine: machine
+          last_used: 6
+          sudo: true
+          user: user
+          key: key
+        - port: 1
+          machine: machine
+          last_used: 6
+          sudo: true
+          user: user
+          key: key
       properties:
         id:
           type: string
@@ -7525,6 +8562,62 @@ components:
           type: boolean
         state:
           $ref: '#/components/schemas/MachineState'
+        actions:
+          type: object
+        cluster:
+          type: string
+        cores:
+          type: number
+        cost:
+          type: object
+        created:
+          type: string
+        expiration:
+          type: string
+        extra:
+          type: object
+        hostname:
+          type: string
+        image:
+          type: string
+        key_associations:
+          items:
+            $ref: '#/components/schemas/KeyMachineAssociation'
+          type: array
+        last_seen:
+          type: string
+        location:
+          type: string
+        missing_since:
+          type: string
+        monitoring:
+          type: string
+        network:
+          type: string
+        os_type:
+          type: string
+        parent:
+          type: string
+        ports:
+          type: object
+        private_ips:
+          items:
+            type: string
+          type: array
+        probe:
+          type: object
+        public_ips:
+          items:
+            type: string
+          type: array
+        size:
+          type: string
+        subnet:
+          type: string
+        type:
+          type: string
+        unreachable_since:
+          type: string
       type: object
     MachineState:
       enum:
@@ -7540,6 +8633,11 @@ components:
       - paused
       - reconfiguring
       - unknown
+      - updating
+      - migrating
+      - normal
+      - succeeded
+      - failed
       type: string
     MaxihostCloudRequest:
       properties:
@@ -7732,6 +8830,61 @@ components:
       - password
       - user
       type: object
+    OpenstackNet:
+      properties:
+        security_groups:
+          description: Name or Openstack UUID of the security groups to assign to
+            the machine
+          items:
+            type: string
+          type: array
+        networks:
+          description: Name or ID of the networks to launch the machine into. Required
+            parameter when there are multiple networks defined for the tenant
+          items:
+            type: string
+          type: array
+        associate_floating_ip:
+          description: Assign a floating IP to the machine, defaults to True for Openstack
+            and False for Vexxhost
+          type: boolean
+      title: Openstack & Vexxhost net parameter
+      type: object
+    OpenstackVolumes:
+      items:
+        oneOf:
+        - properties:
+            volume:
+              description: Name or ID of an existing volume to attach
+              type: string
+            boot:
+              description: Use as boot volume, up to one volume can be used as boot.
+                Defaults to false
+              type: boolean
+            delete_on_termination:
+              description: Delete the volume when the machine is deleted. Defaults
+                to false
+              type: boolean
+          required:
+          - volume
+        - properties:
+            size:
+              description: Size of the volume to be created
+              minimum: 1
+              type: integer
+            boot:
+              description: Use as boot volume, up to one volume can be used as boot.
+                Defaults to false
+              type: boolean
+            delete_on_termination:
+              description: Delete the  volume when the machine is deleted. Defaults
+                to false
+              type: boolean
+          required:
+          - size
+        type: object
+      title: Openstack & Vexxhost volumes parameter
+      type: array
     Org:
       example:
         enterprise_plan: '{}'
@@ -7794,6 +8947,11 @@ components:
         $ref: '#/components/schemas/Query'
       type: array
     Query:
+      example:
+        threshold: 0.8008281904610115
+        aggregation: aggregation
+        operator: operator
+        target: target
       properties:
         target:
           description: the metric's name, e.g. "load.shortterm"
@@ -7805,7 +8963,7 @@ components:
           type: string
         threshold:
           description: the value over/under which an alert will be raised
-          type: string
+          type: number
         aggregation:
           description: |
             the function to be applied on the computed series. Must be one
@@ -7912,6 +9070,19 @@ components:
           type: string
       type: object
     RuleAction:
+      example:
+        emails:
+        - emails
+        - emails
+        teams:
+        - teams
+        - teams
+        action: action
+        type: type
+        users:
+        - users
+        - users
+        command: command
       properties:
         type:
           description: |
@@ -7953,6 +9124,42 @@ components:
       items:
         $ref: '#/components/schemas/RuleAction'
       type: array
+    RunScriptRequest:
+      example:
+        su: "false"
+        machine: my-machine
+        job_id: ab74e2f0b7ae4999b1e4013e20dac418
+        params: -v
+        env: EXAMPLE_VAR=123
+      properties:
+        machine:
+          example: my-machine
+          type: string
+        params:
+          example: -v
+          type: string
+        su:
+          enum:
+          - "true"
+          - "false"
+          example: "false"
+          type: string
+        env:
+          example: EXAMPLE_VAR=123
+          type: string
+        job_id:
+          example: ab74e2f0b7ae4999b1e4013e20dac418
+          type: string
+      required:
+      - machine
+      type: object
+    RunScriptResponse:
+      example:
+        job_id: job_id
+      properties:
+        job_id:
+          type: string
+      type: object
     Script:
       example:
         name: name
@@ -7995,9 +9202,20 @@ components:
           type: string
       type: object
     Selector:
+      example:
+        include:
+        - include
+        - include
+        ids:
+        - ids
+        - ids
+        type: machines
       properties:
         type:
           description: one of "machines" or "tags"
+          enum:
+          - machines
+          - tags
           type: string
         ids:
           description: a list of UUIDs in case type is "machines"
@@ -8054,7 +9272,7 @@ components:
       - openstack
       - onapp
       - vsphere
-      - vcloud
+      - vexxhost
       - kvm
       - lxd
       - docker
@@ -8104,6 +9322,9 @@ components:
           type: object
       type: object
     TriggerAfter:
+      example:
+        period: period
+        offset: 5
       properties:
         offset:
           description: a positive integer denoting the tolerance period
@@ -8140,39 +9361,23 @@ components:
         registration_date:
           type: string
       type: object
-    VcloudCloudRequest:
+    VSphereExtra:
       properties:
-        provider:
-          enum:
-          - vcloud
+        folder:
+          description: Name or ID of the Vsphere folder to place the machine into.
+            Required for Vsphere 6.7
           type: string
-        credentials:
-          $ref: '#/components/schemas/VcloudCredentials'
-        features:
-          $ref: '#/components/schemas/CloudFeatures'
-      required:
-      - credentials
-      - provider
+        datastore:
+          description: Name or ID of a VSphere datastore
+          type: string
+      title: VSphere extra parameter
       type: object
-    VcloudCredentials:
+    VSphereNet:
       properties:
-        host:
-          description: Your vCloud host
+        network:
+          description: Name or ID of the network to launch the machine into
           type: string
-        port:
-          description: Your vCloud port
-          type: string
-        username:
-          description: Your vCloud username
-          type: string
-        password:
-          description: Your vCloud password
-          type: string
-      required:
-      - host
-      - password
-      - port
-      - username
+      title: VSphere net parameter
       type: object
     Vector:
       oneOf:
@@ -8181,16 +9386,23 @@ components:
       type: object
     Volume:
       example:
+        last_seen: last_seen
+        external_id: external_id
+        owned_by: owned_by
+        created_by: created_by
+        tags: '{}'
         cloud: cloud
         default: true
         size: size
+        attached_to:
+        - attached_to
+        - attached_to
+        missing_since: missing_since
+        extra: '{}'
         name: name
-        external_id: external_id
         location: location
-        owned_by: owned_by
         id: id
-        created_by: created_by
-        tags: '{}'
+        actions: '{}'
       properties:
         id:
           type: string
@@ -8212,6 +9424,18 @@ components:
           type: string
         default:
           type: boolean
+        actions:
+          type: object
+        attached_to:
+          items:
+            type: string
+          type: array
+        extra:
+          type: object
+        last_seen:
+          type: string
+        missing_since:
+          type: string
       type: object
     VsphereCloudRequest:
       properties:
@@ -8268,7 +9492,64 @@ components:
       required:
       - apikey
       type: object
+    VultrExtra:
+      properties:
+        backups:
+          description: Enable automatic backups for the machine, invalid for "Bare
+            Metal" & "Dedicated Cloud" size types. There is an additional charge depending
+            on the size selected
+          type: boolean
+        ddos_protection:
+          description: Enable DDoS protection, invalid for "Bare Metal" size type.
+            There is an additional charge depending on the type of the size selected
+          type: boolean
+      title: Vultr extra parameter
+      type: object
+    VultrNet:
+      properties:
+        networks:
+          description: An array of network names or IDs to attach to this machine,
+            invalid for "Bare Metal" machines
+          items:
+            type: string
+          type: array
+        ipv6:
+          description: Enable IPv6, defaults to false
+          type: boolean
+        hostname:
+          description: The hostname to use when deploying this machine, defaults to
+            machine name
+          type: string
+      title: Vultr net parameter
+      type: object
+    VultrVolumes:
+      items:
+        oneOf:
+        - properties:
+            volume:
+              description: Name or ID of an existing volume to attach
+              type: string
+          required:
+          - volume
+        - properties:
+            name:
+              description: Name of the volume to be created
+              type: string
+            size:
+              description: Size of the volume in GBs
+              minimum: 10
+              type: integer
+          required:
+          - name
+          - size
+        type: object
+      title: Vultr volumes parameter
+      type: array
     Window:
+      example:
+        period: period
+        stop: 1
+        start: 6
       properties:
         start:
           description: |
@@ -8318,6 +9599,13 @@ components:
         id: id
       properties:
         id:
+          type: string
+      type: object
+    inline_response_200_1:
+      example:
+        url: url
+      properties:
+        url:
           type: string
       type: object
     AddCloudRequest_allOf:
@@ -8370,6 +9658,30 @@ components:
       required:
       - dry
       - generate
+    CreateClusterRequest_allOf_nodepools:
+      properties:
+        nodes:
+          default: 2
+          description: The number of nodes to provision for the cluster. Defaults
+            to 2
+          type: integer
+        size:
+          description: Name or ID of size to use for the nodes. If not provided, the
+            t3.medium(EKS), e2-medium(GKE) size will be used
+          type: string
+        disk_size:
+          default: 20
+          description: Size of the disk attached to each node, specified in GB.
+          type: integer
+        disk_type:
+          description: Type of the disk attached to each node. Defaults to pd-standard(GKE),
+            gp3(EKS)
+          type: string
+        preemptible:
+          description: Google specific parameter.Whether the nodes are created as
+            preemptible machines. Defaults to false
+          type: boolean
+      type: object
     CreateClusterRequest_allOf:
       properties:
         name:
@@ -8380,10 +9692,16 @@ components:
           type: string
         provider:
           $ref: '#/components/schemas/ClusterProviders'
+        location:
+          description: Google specific parameter(Required).Name or ID of the location
+            to create the cluster in
+          type: string
+        nodepools:
+          items:
+            $ref: '#/components/schemas/CreateClusterRequest_allOf_nodepools'
+          type: array
       required:
-      - cloud
       - name
-      - provider
       type: object
     CreateMachineRequest_disks:
       description: Configure local disks
@@ -8392,8 +9710,7 @@ components:
         disk_path: disk_path
       properties:
         disk_size:
-          description: KVM specific parameter. The VM's size will be the size of the
-            image plus the number in GBs provided here
+          description: KVM, CloudSigma specific parameter
           type: integer
         disk_path:
           description: KVM specific parameter. Where the VM disk file will be created
@@ -8422,6 +9739,27 @@ components:
           items:
             $ref: '#/components/schemas/Vector'
           type: array
+      type: object
+    EditMachineRequest_expiration:
+      example:
+        date: date
+        action: stop
+        notify: 0
+      properties:
+        date:
+          description: format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
+          type: string
+        action:
+          enum:
+          - stop
+          - destroy
+          type: string
+        notify:
+          description: seconds before the expiration date to be notified
+          type: integer
+      required:
+      - action
+      - date
       type: object
     EquinixMetalNet_ip_addresses:
       properties:
@@ -8462,6 +9800,17 @@ components:
       required:
       - period
       - value
+      type: object
+    GoogleExtra_service_account:
+      properties:
+        email:
+          description: The email address of the service account.
+          type: string
+        scopes:
+          description: A list of scopes to be made available for this machine.
+          items:
+            type: string
+          type: array
       type: object
     KVMNet_networks:
       properties:

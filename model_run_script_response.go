@@ -15,30 +15,30 @@ import (
 	"encoding/json"
 )
 
-// CreateClusterResponse struct for CreateClusterResponse
-type CreateClusterResponse struct {
-	JobId *string `json:"jobId,omitempty"`
+// RunScriptResponse struct for RunScriptResponse
+type RunScriptResponse struct {
+	JobId *string `json:"job_id,omitempty"`
 }
 
-// NewCreateClusterResponse instantiates a new CreateClusterResponse object
+// NewRunScriptResponse instantiates a new RunScriptResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateClusterResponse() *CreateClusterResponse {
-	this := CreateClusterResponse{}
+func NewRunScriptResponse() *RunScriptResponse {
+	this := RunScriptResponse{}
 	return &this
 }
 
-// NewCreateClusterResponseWithDefaults instantiates a new CreateClusterResponse object
+// NewRunScriptResponseWithDefaults instantiates a new RunScriptResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateClusterResponseWithDefaults() *CreateClusterResponse {
-	this := CreateClusterResponse{}
+func NewRunScriptResponseWithDefaults() *RunScriptResponse {
+	this := RunScriptResponse{}
 	return &this
 }
 
 // GetJobId returns the JobId field value if set, zero value otherwise.
-func (o *CreateClusterResponse) GetJobId() string {
+func (o *RunScriptResponse) GetJobId() string {
 	if o == nil || o.JobId == nil {
 		var ret string
 		return ret
@@ -48,7 +48,7 @@ func (o *CreateClusterResponse) GetJobId() string {
 
 // GetJobIdOk returns a tuple with the JobId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateClusterResponse) GetJobIdOk() (*string, bool) {
+func (o *RunScriptResponse) GetJobIdOk() (*string, bool) {
 	if o == nil || o.JobId == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *CreateClusterResponse) GetJobIdOk() (*string, bool) {
 }
 
 // HasJobId returns a boolean if a field has been set.
-func (o *CreateClusterResponse) HasJobId() bool {
+func (o *RunScriptResponse) HasJobId() bool {
 	if o != nil && o.JobId != nil {
 		return true
 	}
@@ -65,50 +65,50 @@ func (o *CreateClusterResponse) HasJobId() bool {
 }
 
 // SetJobId gets a reference to the given string and assigns it to the JobId field.
-func (o *CreateClusterResponse) SetJobId(v string) {
+func (o *RunScriptResponse) SetJobId(v string) {
 	o.JobId = &v
 }
 
-func (o CreateClusterResponse) MarshalJSON() ([]byte, error) {
+func (o RunScriptResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.JobId != nil {
-		toSerialize["jobId"] = o.JobId
+		toSerialize["job_id"] = o.JobId
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableCreateClusterResponse struct {
-	value *CreateClusterResponse
+type NullableRunScriptResponse struct {
+	value *RunScriptResponse
 	isSet bool
 }
 
-func (v NullableCreateClusterResponse) Get() *CreateClusterResponse {
+func (v NullableRunScriptResponse) Get() *RunScriptResponse {
 	return v.value
 }
 
-func (v *NullableCreateClusterResponse) Set(val *CreateClusterResponse) {
+func (v *NullableRunScriptResponse) Set(val *RunScriptResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateClusterResponse) IsSet() bool {
+func (v NullableRunScriptResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateClusterResponse) Unset() {
+func (v *NullableRunScriptResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateClusterResponse(val *CreateClusterResponse) *NullableCreateClusterResponse {
-	return &NullableCreateClusterResponse{value: val, isSet: true}
+func NewNullableRunScriptResponse(val *RunScriptResponse) *NullableRunScriptResponse {
+	return &NullableRunScriptResponse{value: val, isSet: true}
 }
 
-func (v NullableCreateClusterResponse) MarshalJSON() ([]byte, error) {
+func (v NullableRunScriptResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateClusterResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableRunScriptResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

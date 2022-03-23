@@ -17,12 +17,18 @@ import (
 
 // KeyMachineAssociation struct for KeyMachineAssociation
 type KeyMachineAssociation struct {
-	// Name or ID of the SSH key to associate
+	// Name or ID of the SSH key
 	Key *string `json:"key,omitempty"`
+	// Name or ID of the machine
+	Machine *string `json:"machine,omitempty"`
+	// Last used time
+	LastUsed *int32 `json:"last_used,omitempty"`
 	// SSH port
 	Port *int32 `json:"port,omitempty"`
 	// SSH user
 	User *string `json:"user,omitempty"`
+	// Indicates if the SSH user has sudo privileges
+	Sudo *bool `json:"sudo,omitempty"`
 }
 
 // NewKeyMachineAssociation instantiates a new KeyMachineAssociation object
@@ -72,6 +78,70 @@ func (o *KeyMachineAssociation) HasKey() bool {
 // SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *KeyMachineAssociation) SetKey(v string) {
 	o.Key = &v
+}
+
+// GetMachine returns the Machine field value if set, zero value otherwise.
+func (o *KeyMachineAssociation) GetMachine() string {
+	if o == nil || o.Machine == nil {
+		var ret string
+		return ret
+	}
+	return *o.Machine
+}
+
+// GetMachineOk returns a tuple with the Machine field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KeyMachineAssociation) GetMachineOk() (*string, bool) {
+	if o == nil || o.Machine == nil {
+		return nil, false
+	}
+	return o.Machine, true
+}
+
+// HasMachine returns a boolean if a field has been set.
+func (o *KeyMachineAssociation) HasMachine() bool {
+	if o != nil && o.Machine != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMachine gets a reference to the given string and assigns it to the Machine field.
+func (o *KeyMachineAssociation) SetMachine(v string) {
+	o.Machine = &v
+}
+
+// GetLastUsed returns the LastUsed field value if set, zero value otherwise.
+func (o *KeyMachineAssociation) GetLastUsed() int32 {
+	if o == nil || o.LastUsed == nil {
+		var ret int32
+		return ret
+	}
+	return *o.LastUsed
+}
+
+// GetLastUsedOk returns a tuple with the LastUsed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KeyMachineAssociation) GetLastUsedOk() (*int32, bool) {
+	if o == nil || o.LastUsed == nil {
+		return nil, false
+	}
+	return o.LastUsed, true
+}
+
+// HasLastUsed returns a boolean if a field has been set.
+func (o *KeyMachineAssociation) HasLastUsed() bool {
+	if o != nil && o.LastUsed != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUsed gets a reference to the given int32 and assigns it to the LastUsed field.
+func (o *KeyMachineAssociation) SetLastUsed(v int32) {
+	o.LastUsed = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
@@ -138,16 +208,57 @@ func (o *KeyMachineAssociation) SetUser(v string) {
 	o.User = &v
 }
 
+// GetSudo returns the Sudo field value if set, zero value otherwise.
+func (o *KeyMachineAssociation) GetSudo() bool {
+	if o == nil || o.Sudo == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Sudo
+}
+
+// GetSudoOk returns a tuple with the Sudo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KeyMachineAssociation) GetSudoOk() (*bool, bool) {
+	if o == nil || o.Sudo == nil {
+		return nil, false
+	}
+	return o.Sudo, true
+}
+
+// HasSudo returns a boolean if a field has been set.
+func (o *KeyMachineAssociation) HasSudo() bool {
+	if o != nil && o.Sudo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSudo gets a reference to the given bool and assigns it to the Sudo field.
+func (o *KeyMachineAssociation) SetSudo(v bool) {
+	o.Sudo = &v
+}
+
 func (o KeyMachineAssociation) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Key != nil {
 		toSerialize["key"] = o.Key
+	}
+	if o.Machine != nil {
+		toSerialize["machine"] = o.Machine
+	}
+	if o.LastUsed != nil {
+		toSerialize["last_used"] = o.LastUsed
 	}
 	if o.Port != nil {
 		toSerialize["port"] = o.Port
 	}
 	if o.User != nil {
 		toSerialize["user"] = o.User
+	}
+	if o.Sudo != nil {
+		toSerialize["sudo"] = o.Sudo
 	}
 	return json.Marshal(toSerialize)
 }
