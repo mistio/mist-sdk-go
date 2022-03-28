@@ -17,7 +17,9 @@ import (
 
 // EditScheduleRequest struct for EditScheduleRequest
 type EditScheduleRequest struct {
+	// The name of the schedule that is about to be edited
 	Name *string `json:"name,omitempty"`
+	// The description of the schedule that is about to be edited
 	Description *string `json:"description,omitempty"`
 }
 

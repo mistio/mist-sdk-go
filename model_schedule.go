@@ -17,20 +17,34 @@ import (
 
 // Schedule struct for Schedule
 type Schedule struct {
+	// The id of the schedule
 	Id *string `json:"id,omitempty"`
+	// The name of the schedule
 	Name *string `json:"name,omitempty"`
+	// The description of the schedule
 	Description *string `json:"description,omitempty"`
+	// The tags related to the schedule
 	Tags *map[string]interface{} `json:"tags,omitempty"`
+	// Schedule status (enabled, disabled)
 	TaskEnabled *bool `json:"task_enabled,omitempty"`
+	// The action that a schedule performs on a resource
 	Action *string `json:"action,omitempty"`
+	// Schedule parameters
 	Params *string `json:"params,omitempty"`
+	// The type of the resource that schedule is applied on
 	ResourceType *string `json:"resource_type,omitempty"`
 	Selectors *[]Selector `json:"selectors,omitempty"`
+	// The type of the schedule
 	ScheduleType *string `json:"schedule_type,omitempty"`
+	// The date that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	ScheduleEntry *string `json:"schedule_entry,omitempty"`
+	// The date after that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	StartAfter *string `json:"start_after,omitempty"`
+	// Decides if the schedule runs immediately of not
 	RunImmediately *bool `json:"run_immediately,omitempty"`
+	// The name of user that created the schedule
 	CreatedBy *string `json:"created_by,omitempty"`
+	// The name of user that owns the schedule
 	OwnedBy *string `json:"owned_by,omitempty"`
 }
 

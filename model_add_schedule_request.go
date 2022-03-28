@@ -17,18 +17,26 @@ import (
 
 // AddScheduleRequest struct for AddScheduleRequest
 type AddScheduleRequest struct {
+	// The name of the schedule
 	Name string `json:"name"`
+	// The description of the schedule
 	Description *string `json:"description,omitempty"`
+	// Schedule status (enabled, disabled)
 	TaskEnabled *bool `json:"task_enabled,omitempty"`
+	// The action that a schedule performs on a resource
 	Action string `json:"action"`
+	// Schedule parameters
 	Params *string `json:"params,omitempty"`
+	// The type of the resource that schedule is applied on
 	ResourceType *string `json:"resource_type,omitempty"`
 	Selectors *[]Selector `json:"selectors,omitempty"`
+	// The type of the schedule
 	ScheduleType *string `json:"schedule_type,omitempty"`
-	// format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
+	// The date that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	ScheduleEntry *string `json:"schedule_entry,omitempty"`
-	// format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
+	// The date after that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	StartAfter *string `json:"start_after,omitempty"`
+	// Decides if the schedule runs immediately of not
 	RunImmediately *bool `json:"run_immediately,omitempty"`
 }
 
