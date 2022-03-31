@@ -44,7 +44,9 @@ func (r ApiCreateZoneRequest) Execute() (CreateZoneResponse, *_nethttp.Response,
 
 /*
  * CreateZone Create zone
- * Creates one or more zones on the specified cloud. If async is true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on zone.
+ * Creates one or more zones on the specified cloud. If async is true, a jobId will be returned.
+READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on zone.
+
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @return ApiCreateZoneRequest
  */

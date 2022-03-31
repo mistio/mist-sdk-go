@@ -50,6 +50,7 @@ docs/ClusterProviders.md
 docs/ClustersApi.md
 docs/CreateClusterRequest.md
 docs/CreateClusterRequestAllOf.md
+docs/CreateClusterRequestAllOfHelmCharts.md
 docs/CreateClusterRequestAllOfNodepools.md
 docs/CreateClusterResponse.md
 docs/CreateMachineRequest.md
@@ -244,6 +245,7 @@ model_cluster.go
 model_cluster_providers.go
 model_create_cluster_request.go
 model_create_cluster_request_all_of.go
+model_create_cluster_request_all_of_helm_charts.go
 model_create_cluster_request_all_of_nodepools.go
 model_create_cluster_response.go
 model_create_machine_request.go

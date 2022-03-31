@@ -25,6 +25,7 @@ type CreateClusterRequestAllOf struct {
 	// Google specific parameter(Required).Name or ID of the location to create the cluster in
 	Location *string `json:"location,omitempty"`
 	Nodepools *[]CreateClusterRequestAllOfNodepools `json:"nodepools,omitempty"`
+	HelmCharts *[]CreateClusterRequestAllOfHelmCharts `json:"helm_charts,omitempty"`
 }
 
 // NewCreateClusterRequestAllOf instantiates a new CreateClusterRequestAllOf object
@@ -197,6 +198,38 @@ func (o *CreateClusterRequestAllOf) SetNodepools(v []CreateClusterRequestAllOfNo
 	o.Nodepools = &v
 }
 
+// GetHelmCharts returns the HelmCharts field value if set, zero value otherwise.
+func (o *CreateClusterRequestAllOf) GetHelmCharts() []CreateClusterRequestAllOfHelmCharts {
+	if o == nil || o.HelmCharts == nil {
+		var ret []CreateClusterRequestAllOfHelmCharts
+		return ret
+	}
+	return *o.HelmCharts
+}
+
+// GetHelmChartsOk returns a tuple with the HelmCharts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequestAllOf) GetHelmChartsOk() (*[]CreateClusterRequestAllOfHelmCharts, bool) {
+	if o == nil || o.HelmCharts == nil {
+		return nil, false
+	}
+	return o.HelmCharts, true
+}
+
+// HasHelmCharts returns a boolean if a field has been set.
+func (o *CreateClusterRequestAllOf) HasHelmCharts() bool {
+	if o != nil && o.HelmCharts != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHelmCharts gets a reference to the given []CreateClusterRequestAllOfHelmCharts and assigns it to the HelmCharts field.
+func (o *CreateClusterRequestAllOf) SetHelmCharts(v []CreateClusterRequestAllOfHelmCharts) {
+	o.HelmCharts = &v
+}
+
 func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -213,6 +246,9 @@ func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Nodepools != nil {
 		toSerialize["nodepools"] = o.Nodepools
+	}
+	if o.HelmCharts != nil {
+		toSerialize["helm_charts"] = o.HelmCharts
 	}
 	return json.Marshal(toSerialize)
 }
