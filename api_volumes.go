@@ -17,6 +17,7 @@ import (
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
+	"time"
 )
 
 // Linger please
@@ -44,7 +45,10 @@ func (r ApiCreateVolumeRequest) Execute() (CreateVolumeResponse, *_nethttp.Respo
 
 /*
  * CreateVolume Create volume
- * Creates one or more volumes on the specified cloud. If async is true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location. CREATE_RESOURCES permission required on location. CREATE permission required on volume.
+ * Creates one or more volumes on the specified cloud. If async is true, a jobId will be returned.
+READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location.
+CREATE_RESOURCES permission required on location. CREATE permission required on volume.
+
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @return ApiCreateVolumeRequest
  */
@@ -518,6 +522,7 @@ type ApiListVolumesRequest struct {
 	limit *int32
 	only *string
 	deref *string
+	at *time.Time
 }
 
 func (r ApiListVolumesRequest) Cloud(cloud string) ApiListVolumesRequest {
@@ -546,6 +551,10 @@ func (r ApiListVolumesRequest) Only(only string) ApiListVolumesRequest {
 }
 func (r ApiListVolumesRequest) Deref(deref string) ApiListVolumesRequest {
 	r.deref = &deref
+	return r
+}
+func (r ApiListVolumesRequest) At(at time.Time) ApiListVolumesRequest {
+	r.at = &at
 	return r
 }
 
@@ -611,6 +620,9 @@ func (a *VolumesApiService) ListVolumesExecute(r ApiListVolumesRequest) (ListVol
 	}
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
+	}
+	if r.at != nil {
+		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

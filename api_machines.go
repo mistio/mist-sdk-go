@@ -17,6 +17,7 @@ import (
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
+	"time"
 )
 
 // Linger please
@@ -392,7 +393,10 @@ func (r ApiCreateMachineRequest) Execute() (CreateMachineResponse, *_nethttp.Res
 
 /*
  * CreateMachine Create machine
- * Creates one or more machines on the specified cloud. If async is true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location. CREATE_RESOURCES permission required on location. CREATE permission required on machine. RUN permission required on script. READ permission required on key.
+ * Creates one or more machines on the specified cloud. If async is true, a jobId will be returned.
+READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location.
+CREATE_RESOURCES permission required on location. CREATE permission required on machine. RUN permission required on script. READ permission required on key.
+
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @return ApiCreateMachineRequest
  */
@@ -980,6 +984,7 @@ type ApiListMachinesRequest struct {
 	limit *int32
 	only *string
 	deref *string
+	at *time.Time
 }
 
 func (r ApiListMachinesRequest) Cloud(cloud string) ApiListMachinesRequest {
@@ -1008,6 +1013,10 @@ func (r ApiListMachinesRequest) Only(only string) ApiListMachinesRequest {
 }
 func (r ApiListMachinesRequest) Deref(deref string) ApiListMachinesRequest {
 	r.deref = &deref
+	return r
+}
+func (r ApiListMachinesRequest) At(at time.Time) ApiListMachinesRequest {
+	r.at = &at
 	return r
 }
 
@@ -1073,6 +1082,9 @@ func (a *MachinesApiService) ListMachinesExecute(r ApiListMachinesRequest) (List
 	}
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
+	}
+	if r.at != nil {
+		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

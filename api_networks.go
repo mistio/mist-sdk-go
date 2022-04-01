@@ -17,6 +17,7 @@ import (
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
+	"time"
 )
 
 // Linger please
@@ -44,7 +45,9 @@ func (r ApiCreateNetworkRequest) Execute() (CreateNetworkResponse, *_nethttp.Res
 
 /*
  * CreateNetwork Create network
- * Creates one or more networks on the specified cloud. If async is true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on network.
+ * Creates one or more networks on the specified cloud. If async is true, a jobId will be returned.
+READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on network.
+
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @return ApiCreateNetworkRequest
  */
@@ -527,6 +530,7 @@ type ApiListNetworksRequest struct {
 	limit *int32
 	only *string
 	deref *string
+	at *time.Time
 }
 
 func (r ApiListNetworksRequest) Cloud(cloud string) ApiListNetworksRequest {
@@ -555,6 +559,10 @@ func (r ApiListNetworksRequest) Only(only string) ApiListNetworksRequest {
 }
 func (r ApiListNetworksRequest) Deref(deref string) ApiListNetworksRequest {
 	r.deref = &deref
+	return r
+}
+func (r ApiListNetworksRequest) At(at time.Time) ApiListNetworksRequest {
+	r.at = &at
 	return r
 }
 
@@ -620,6 +628,9 @@ func (a *NetworksApiService) ListNetworksExecute(r ApiListNetworksRequest) (List
 	}
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
+	}
+	if r.at != nil {
+		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
