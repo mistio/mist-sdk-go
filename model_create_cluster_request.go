@@ -25,7 +25,7 @@ type CreateClusterRequest struct {
 	// Google specific parameter(Required).Name or ID of the location to create the cluster in
 	Location *string `json:"location,omitempty"`
 	Nodepools *[]CreateClusterRequestAllOfNodepools `json:"nodepools,omitempty"`
-	HelmCharts *[]CreateClusterRequestAllOfHelmCharts `json:"helm_charts,omitempty"`
+	Templates *[]map[string]interface{} `json:"templates,omitempty"`
 }
 
 // NewCreateClusterRequest instantiates a new CreateClusterRequest object
@@ -198,36 +198,36 @@ func (o *CreateClusterRequest) SetNodepools(v []CreateClusterRequestAllOfNodepoo
 	o.Nodepools = &v
 }
 
-// GetHelmCharts returns the HelmCharts field value if set, zero value otherwise.
-func (o *CreateClusterRequest) GetHelmCharts() []CreateClusterRequestAllOfHelmCharts {
-	if o == nil || o.HelmCharts == nil {
-		var ret []CreateClusterRequestAllOfHelmCharts
+// GetTemplates returns the Templates field value if set, zero value otherwise.
+func (o *CreateClusterRequest) GetTemplates() []map[string]interface{} {
+	if o == nil || o.Templates == nil {
+		var ret []map[string]interface{}
 		return ret
 	}
-	return *o.HelmCharts
+	return *o.Templates
 }
 
-// GetHelmChartsOk returns a tuple with the HelmCharts field value if set, nil otherwise
+// GetTemplatesOk returns a tuple with the Templates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateClusterRequest) GetHelmChartsOk() (*[]CreateClusterRequestAllOfHelmCharts, bool) {
-	if o == nil || o.HelmCharts == nil {
+func (o *CreateClusterRequest) GetTemplatesOk() (*[]map[string]interface{}, bool) {
+	if o == nil || o.Templates == nil {
 		return nil, false
 	}
-	return o.HelmCharts, true
+	return o.Templates, true
 }
 
-// HasHelmCharts returns a boolean if a field has been set.
-func (o *CreateClusterRequest) HasHelmCharts() bool {
-	if o != nil && o.HelmCharts != nil {
+// HasTemplates returns a boolean if a field has been set.
+func (o *CreateClusterRequest) HasTemplates() bool {
+	if o != nil && o.Templates != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetHelmCharts gets a reference to the given []CreateClusterRequestAllOfHelmCharts and assigns it to the HelmCharts field.
-func (o *CreateClusterRequest) SetHelmCharts(v []CreateClusterRequestAllOfHelmCharts) {
-	o.HelmCharts = &v
+// SetTemplates gets a reference to the given []map[string]interface{} and assigns it to the Templates field.
+func (o *CreateClusterRequest) SetTemplates(v []map[string]interface{}) {
+	o.Templates = &v
 }
 
 func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
@@ -247,8 +247,8 @@ func (o CreateClusterRequest) MarshalJSON() ([]byte, error) {
 	if o.Nodepools != nil {
 		toSerialize["nodepools"] = o.Nodepools
 	}
-	if o.HelmCharts != nil {
-		toSerialize["helm_charts"] = o.HelmCharts
+	if o.Templates != nil {
+		toSerialize["templates"] = o.Templates
 	}
 	return json.Marshal(toSerialize)
 }

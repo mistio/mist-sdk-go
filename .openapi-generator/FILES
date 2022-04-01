@@ -50,7 +50,6 @@ docs/ClusterProviders.md
 docs/ClustersApi.md
 docs/CreateClusterRequest.md
 docs/CreateClusterRequestAllOf.md
-docs/CreateClusterRequestAllOfHelmCharts.md
 docs/CreateClusterRequestAllOfNodepools.md
 docs/CreateClusterResponse.md
 docs/CreateMachineRequest.md
@@ -111,6 +110,7 @@ docs/GoogleCredentials.md
 docs/GoogleExtra.md
 docs/GoogleExtraServiceAccount.md
 docs/GoogleNet.md
+docs/HelmChart.md
 docs/IbmCloudRequest.md
 docs/IbmCredentials.md
 docs/Image.md
@@ -130,6 +130,7 @@ docs/KeyMachineDisassociation.md
 docs/KeysApi.md
 docs/KubernetesCloudRequest.md
 docs/KubernetesCredentials.md
+docs/KubernetesManifest.md
 docs/KubevirtCloudRequest.md
 docs/KvmCloudRequest.md
 docs/LXDExtra.md
@@ -245,7 +246,6 @@ model_cluster.go
 model_cluster_providers.go
 model_create_cluster_request.go
 model_create_cluster_request_all_of.go
-model_create_cluster_request_all_of_helm_charts.go
 model_create_cluster_request_all_of_nodepools.go
 model_create_cluster_response.go
 model_create_machine_request.go
@@ -305,6 +305,7 @@ model_google_credentials.go
 model_google_extra.go
 model_google_extra_service_account.go
 model_google_net.go
+model_helm_chart.go
 model_ibm_cloud_request.go
 model_ibm_credentials.go
 model_image.go
@@ -319,6 +320,7 @@ model_key_machine_association.go
 model_key_machine_disassociation.go
 model_kubernetes_cloud_request.go
 model_kubernetes_credentials.go
+model_kubernetes_manifest.go
 model_kubevirt_cloud_request.go
 model_kvm_cloud_request.go
 model_kvm_net.go
