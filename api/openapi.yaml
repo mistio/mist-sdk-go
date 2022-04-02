@@ -92,6 +92,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -389,6 +402,19 @@ paths:
         required: false
         schema:
           default: auto
+          type: string
+        style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -806,6 +832,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1036,6 +1075,19 @@ paths:
         required: false
         schema:
           default: auto
+          type: string
+        style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -1357,6 +1409,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1548,6 +1613,19 @@ paths:
         required: false
         schema:
           default: auto
+          type: string
+        style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -2596,6 +2674,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -2916,6 +3007,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3084,6 +3188,19 @@ paths:
         name: only
         required: false
         schema:
+          type: string
+        style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -3262,6 +3379,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3355,6 +3485,19 @@ paths:
         name: only
         required: false
         schema:
+          type: string
+        style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -3714,6 +3857,19 @@ paths:
         required: false
         schema:
           default: auto
+          type: string
+        style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -4349,6 +4505,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -4524,6 +4693,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -4641,6 +4823,19 @@ paths:
         name: deref
         required: false
         schema:
+          type: string
+        style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -4974,6 +5169,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -5192,7 +5400,21 @@ components:
   examples: {}
   headers: {}
   links: {}
-  parameters: {}
+  parameters:
+    atParam:
+      description: Limit results by specific datetime. Return resources created before
+        or at, or deleted after or at, given datetime.
+      examples:
+        Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+          value: 2021-07-21T17:32:28Z
+      explode: true
+      in: query
+      name: at
+      required: false
+      schema:
+        format: date-time
+        type: string
+      style: form
   requestBodies: {}
   responses: {}
   schemas:
