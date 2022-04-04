@@ -1553,11 +1553,10 @@ paths:
       - owned_by
       - created_by
     post:
-      description: Creates one or more machines on the specified cloud. If async is
-        true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES
-        permission required on cloud. READ permission required on location. CREATE_RESOURCES
-        permission required on location. CREATE permission required on machine. RUN
-        permission required on script. READ permission required on key.
+      description: |
+        Creates one or more machines on the specified cloud. If async is true, a jobId will be returned.
+        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location.
+        CREATE_RESOURCES permission required on location. CREATE permission required on machine. RUN permission required on script. READ permission required on key.
       operationId: create-machine
       requestBody:
         content:
@@ -1573,7 +1572,6 @@ paths:
                     memory: 1024
                   key: TestKey
                   monitoring: true
-                  dry: false
               SelectedCloudMachine:
                 summary: Provision a machine in a specific cloud
                 value:
@@ -1583,7 +1581,6 @@ paths:
                   size:
                     cpu: 2
                     memory: 2048
-                  dry: false
               AmazonExampleMachine:
                 summary: Provision a machine in one of your Amazon clouds
                 value:
@@ -1591,7 +1588,6 @@ paths:
                   name: awsmachine
                   image: Ubuntu
                   size: t3.micro
-                  dry: false
               GoogleExampleMachine:
                 summary: Provision a machine in one of your Google clouds
                 value:
@@ -1599,7 +1595,6 @@ paths:
                   name: gcemachine
                   image: Ubuntu
                   size: e2-medium
-                  dry: false
               AzureExampleMachine:
                 summary: Provision a machine in one of your Azure clouds
                 value:
@@ -1607,7 +1602,6 @@ paths:
                   name: azuremachine
                   image: Ubuntu
                   size: Standard_D4s_v5
-                  dry: false
               FullExample:
                 summary: Provision 2 machines with monitoring, schedules, expiration
                   and provisioning scripts
@@ -1635,7 +1629,6 @@ paths:
                     datetime: 2023-09-22T18:19:28Z
                     script:
                       script: test123
-                  dry: false
             schema:
               $ref: '#/components/schemas/CreateMachineRequest'
       responses:
@@ -2605,9 +2598,9 @@ paths:
       - owned_by
       - created_by
     post:
-      description: Creates one or more networks on the specified cloud. If async is
-        true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES
-        permission required on cloud. CREATE permission required on network.
+      description: |
+        Creates one or more networks on the specified cloud. If async is true, a jobId will be returned.
+        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on network.
       operationId: create-network
       requestBody:
         content:
@@ -4426,10 +4419,10 @@ paths:
       - owned_by
       - created_by
     post:
-      description: Creates one or more volumes on the specified cloud. If async is
-        true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES
-        permission required on cloud. READ permission required on location. CREATE_RESOURCES
-        permission required on location. CREATE permission required on volume.
+      description: |
+        Creates one or more volumes on the specified cloud. If async is true, a jobId will be returned.
+        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location.
+        CREATE_RESOURCES permission required on location. CREATE permission required on volume.
       operationId: create-volume
       requestBody:
         content:
@@ -4753,9 +4746,9 @@ paths:
       - owned_by
       - created_by
     post:
-      description: Creates one or more zones on the specified cloud. If async is true,
-        a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES
-        permission required on cloud. CREATE permission required on zone.
+      description: |
+        Creates one or more zones on the specified cloud. If async is true, a jobId will be returned.
+        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on zone.
       operationId: create-zone
       requestBody:
         content:
@@ -5600,9 +5593,8 @@ components:
       - $ref: '#/components/schemas/CreateClusterRequest_allOf'
       example:
         name: my-cluster
-        cloud: my-cloud
         provider: google
-        location: my-location
+        location: europe-west2-b
     CreateClusterResponse:
       example:
         jobId: jobId
@@ -6789,6 +6781,34 @@ components:
         type: object
       title: Google volumes parameter
       type: array
+    HelmChart:
+      properties:
+        type:
+          enum:
+          - helm
+          type: string
+        repo_url:
+          description: The url of the Helm repository
+          type: string
+        chart_name:
+          type: string
+        release_name:
+          type: string
+        namespace:
+          description: The namespace to install the release on
+          type: string
+        values:
+          description: The contents of a Helm values.yaml file
+          type: string
+        version:
+          description: A version constraint for the chart
+          type: string
+      required:
+      - chart_name
+      - release_name
+      - repo_url
+      - type
+      type: object
     IbmCloudRequest:
       properties:
         provider:
@@ -7073,6 +7093,15 @@ components:
       required:
       - host
       - port
+      type: object
+    KubernetesManifest:
+      properties:
+        type:
+          enum:
+          - manifest
+          type: string
+      required:
+      - type
       type: object
     KubevirtCloudRequest:
       properties:
@@ -9195,6 +9224,27 @@ components:
         nodepools:
           items:
             $ref: '#/components/schemas/CreateClusterRequest_allOf_nodepools'
+          type: array
+        templates:
+          items:
+            allOf:
+            - properties:
+                type:
+                  enum:
+                  - helm
+                  - manifest
+                  type: string
+              required:
+              - type
+              type: object
+            - discriminator:
+                mapping:
+                  helm: '#/components/schemas/HelmChart'
+                  manifest: '#/components/schemas/KubernetesManifest'
+                propertyName: type
+              oneOf:
+              - $ref: '#/components/schemas/HelmChart'
+              - $ref: '#/components/schemas/KubernetesManifest'
           type: array
       required:
       - name

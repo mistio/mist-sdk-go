@@ -25,6 +25,7 @@ type CreateClusterRequestAllOf struct {
 	// Google specific parameter(Required).Name or ID of the location to create the cluster in
 	Location *string `json:"location,omitempty"`
 	Nodepools *[]CreateClusterRequestAllOfNodepools `json:"nodepools,omitempty"`
+	Templates *[]map[string]interface{} `json:"templates,omitempty"`
 }
 
 // NewCreateClusterRequestAllOf instantiates a new CreateClusterRequestAllOf object
@@ -197,6 +198,38 @@ func (o *CreateClusterRequestAllOf) SetNodepools(v []CreateClusterRequestAllOfNo
 	o.Nodepools = &v
 }
 
+// GetTemplates returns the Templates field value if set, zero value otherwise.
+func (o *CreateClusterRequestAllOf) GetTemplates() []map[string]interface{} {
+	if o == nil || o.Templates == nil {
+		var ret []map[string]interface{}
+		return ret
+	}
+	return *o.Templates
+}
+
+// GetTemplatesOk returns a tuple with the Templates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequestAllOf) GetTemplatesOk() (*[]map[string]interface{}, bool) {
+	if o == nil || o.Templates == nil {
+		return nil, false
+	}
+	return o.Templates, true
+}
+
+// HasTemplates returns a boolean if a field has been set.
+func (o *CreateClusterRequestAllOf) HasTemplates() bool {
+	if o != nil && o.Templates != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTemplates gets a reference to the given []map[string]interface{} and assigns it to the Templates field.
+func (o *CreateClusterRequestAllOf) SetTemplates(v []map[string]interface{}) {
+	o.Templates = &v
+}
+
 func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -213,6 +246,9 @@ func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Nodepools != nil {
 		toSerialize["nodepools"] = o.Nodepools
+	}
+	if o.Templates != nil {
+		toSerialize["templates"] = o.Templates
 	}
 	return json.Marshal(toSerialize)
 }
