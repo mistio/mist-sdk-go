@@ -45,7 +45,10 @@ func (r ApiCreateVolumeRequest) Execute() (CreateVolumeResponse, *_nethttp.Respo
 
 /*
  * CreateVolume Create volume
- * Creates one or more volumes on the specified cloud. If async is true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location. CREATE_RESOURCES permission required on location. CREATE permission required on volume.
+ * Creates one or more volumes on the specified cloud. If async is true, a jobId will be returned.
+READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location.
+CREATE_RESOURCES permission required on location. CREATE permission required on volume.
+
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @return ApiCreateVolumeRequest
  */

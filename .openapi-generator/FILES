@@ -34,7 +34,6 @@ docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
 docs/AlibabaNet.md
 docs/AmazonCloudRequest.md
-docs/AmazonClusterRequest.md
 docs/AmazonCredentials.md
 docs/AmazonNet.md
 docs/AzureCloudRequest.md
@@ -70,6 +69,7 @@ docs/Datapoints.md
 docs/DatapointsApi.md
 docs/DatapointsData.md
 docs/DatapointsValuesItem.md
+docs/DestroyClusterResponse.md
 docs/DigitaloceanCloudRequest.md
 docs/DigitaloceanCredentials.md
 docs/DockerCloudRequest.md
@@ -104,9 +104,11 @@ docs/GetSizeResponse.md
 docs/GetVolumeResponse.md
 docs/GetZoneResponse.md
 docs/GoogleCloudRequest.md
-docs/GoogleClusterRequest.md
 docs/GoogleCredentials.md
+docs/GoogleExtra.md
+docs/GoogleExtraServiceAccount.md
 docs/GoogleNet.md
+docs/HelmChart.md
 docs/IbmCloudRequest.md
 docs/IbmCredentials.md
 docs/Image.md
@@ -126,6 +128,7 @@ docs/KeyMachineDisassociation.md
 docs/KeysApi.md
 docs/KubernetesCloudRequest.md
 docs/KubernetesCredentials.md
+docs/KubernetesManifest.md
 docs/KubevirtCloudRequest.md
 docs/KvmCloudRequest.md
 docs/LXDExtra.md
@@ -227,7 +230,6 @@ model_alibaba_cloud_request.go
 model_alibaba_credentials.go
 model_alibaba_net.go
 model_amazon_cloud_request.go
-model_amazon_cluster_request.go
 model_amazon_credentials.go
 model_amazon_net.go
 model_azure_cloud_request.go
@@ -260,6 +262,7 @@ model_data_type.go
 model_datapoints.go
 model_datapoints_data.go
 model_datapoints_values_item.go
+model_destroy_cluster_response.go
 model_digitalocean_cloud_request.go
 model_digitalocean_credentials.go
 model_docker_cloud_request.go
@@ -294,9 +297,11 @@ model_get_size_response.go
 model_get_volume_response.go
 model_get_zone_response.go
 model_google_cloud_request.go
-model_google_cluster_request.go
 model_google_credentials.go
+model_google_extra.go
+model_google_extra_service_account.go
 model_google_net.go
+model_helm_chart.go
 model_ibm_cloud_request.go
 model_ibm_credentials.go
 model_image.go
@@ -311,6 +316,7 @@ model_key_machine_association.go
 model_key_machine_disassociation.go
 model_kubernetes_cloud_request.go
 model_kubernetes_credentials.go
+model_kubernetes_manifest.go
 model_kubevirt_cloud_request.go
 model_kvm_cloud_request.go
 model_kvm_net.go

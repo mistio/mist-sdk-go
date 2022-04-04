@@ -45,7 +45,9 @@ func (r ApiCreateNetworkRequest) Execute() (CreateNetworkResponse, *_nethttp.Res
 
 /*
  * CreateNetwork Create network
- * Creates one or more networks on the specified cloud. If async is true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on network.
+ * Creates one or more networks on the specified cloud. If async is true, a jobId will be returned.
+READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on network.
+
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @return ApiCreateNetworkRequest
  */
