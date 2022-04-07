@@ -20,7 +20,7 @@ type AgeSelector struct {
 	// age type
 	Type *string `json:"type,omitempty"`
 	// an integer value that represents the minutes passed from the creation of the resource
-	Minutes *int `json:"minutes,omitempty"`
+	Minutes *int32 `json:"minutes,omitempty"`
 }
 
 // NewAgeSelector instantiates a new AgeSelector object
@@ -73,9 +73,9 @@ func (o *AgeSelector) SetType(v string) {
 }
 
 // GetMinutes returns the Minutes field value if set, zero value otherwise.
-func (o *AgeSelector) GetMinutes() int {
+func (o *AgeSelector) GetMinutes() int32 {
 	if o == nil || o.Minutes == nil {
-		var ret int
+		var ret int32
 		return ret
 	}
 	return *o.Minutes
@@ -83,7 +83,7 @@ func (o *AgeSelector) GetMinutes() int {
 
 // GetMinutesOk returns a tuple with the Minutes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AgeSelector) GetMinutesOk() (*int, bool) {
+func (o *AgeSelector) GetMinutesOk() (*int32, bool) {
 	if o == nil || o.Minutes == nil {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *AgeSelector) HasMinutes() bool {
 	return false
 }
 
-// SetMinutes gets a reference to the given int and assigns it to the Minutes field.
-func (o *AgeSelector) SetMinutes(v int) {
+// SetMinutes gets a reference to the given int32 and assigns it to the Minutes field.
+func (o *AgeSelector) SetMinutes(v int32) {
 	o.Minutes = &v
 }
 
