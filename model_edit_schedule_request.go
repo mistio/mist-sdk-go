@@ -22,14 +22,14 @@ type EditScheduleRequest struct {
 	// The description of the schedule that is about to be edited
 	Description *string `json:"description,omitempty"`
 	// Schedule status (enabled, disabled)
-	TaskEnabled *bool `json:"task_enabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// Edit the action that a schedule performs on a resource
 	Action *string `json:"action,omitempty"`
 	// Edit schedule parameters
 	Params *string `json:"params,omitempty"`
 	Selectors *[]map[string]interface{} `json:"selectors,omitempty"`
 	// Edit the type of the schedule
-	ScheduleType *string `json:"schedule_type,omitempty"`
+	Type *string `json:"type,omitempty"`
 	// Edit the date that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	ScheduleEntry *string `json:"schedule_entry,omitempty"`
 	// Edit the date after that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
@@ -119,36 +119,36 @@ func (o *EditScheduleRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetTaskEnabled returns the TaskEnabled field value if set, zero value otherwise.
-func (o *EditScheduleRequest) GetTaskEnabled() bool {
-	if o == nil || o.TaskEnabled == nil {
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *EditScheduleRequest) GetEnabled() bool {
+	if o == nil || o.Enabled == nil {
 		var ret bool
 		return ret
 	}
-	return *o.TaskEnabled
+	return *o.Enabled
 }
 
-// GetTaskEnabledOk returns a tuple with the TaskEnabled field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EditScheduleRequest) GetTaskEnabledOk() (*bool, bool) {
-	if o == nil || o.TaskEnabled == nil {
+func (o *EditScheduleRequest) GetEnabledOk() (*bool, bool) {
+	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
-	return o.TaskEnabled, true
+	return o.Enabled, true
 }
 
-// HasTaskEnabled returns a boolean if a field has been set.
-func (o *EditScheduleRequest) HasTaskEnabled() bool {
-	if o != nil && o.TaskEnabled != nil {
+// HasEnabled returns a boolean if a field has been set.
+func (o *EditScheduleRequest) HasEnabled() bool {
+	if o != nil && o.Enabled != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTaskEnabled gets a reference to the given bool and assigns it to the TaskEnabled field.
-func (o *EditScheduleRequest) SetTaskEnabled(v bool) {
-	o.TaskEnabled = &v
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *EditScheduleRequest) SetEnabled(v bool) {
+	o.Enabled = &v
 }
 
 // GetAction returns the Action field value if set, zero value otherwise.
@@ -247,36 +247,36 @@ func (o *EditScheduleRequest) SetSelectors(v []map[string]interface{}) {
 	o.Selectors = &v
 }
 
-// GetScheduleType returns the ScheduleType field value if set, zero value otherwise.
-func (o *EditScheduleRequest) GetScheduleType() string {
-	if o == nil || o.ScheduleType == nil {
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *EditScheduleRequest) GetType() string {
+	if o == nil || o.Type == nil {
 		var ret string
 		return ret
 	}
-	return *o.ScheduleType
+	return *o.Type
 }
 
-// GetScheduleTypeOk returns a tuple with the ScheduleType field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EditScheduleRequest) GetScheduleTypeOk() (*string, bool) {
-	if o == nil || o.ScheduleType == nil {
+func (o *EditScheduleRequest) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
 		return nil, false
 	}
-	return o.ScheduleType, true
+	return o.Type, true
 }
 
-// HasScheduleType returns a boolean if a field has been set.
-func (o *EditScheduleRequest) HasScheduleType() bool {
-	if o != nil && o.ScheduleType != nil {
+// HasType returns a boolean if a field has been set.
+func (o *EditScheduleRequest) HasType() bool {
+	if o != nil && o.Type != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetScheduleType gets a reference to the given string and assigns it to the ScheduleType field.
-func (o *EditScheduleRequest) SetScheduleType(v string) {
-	o.ScheduleType = &v
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *EditScheduleRequest) SetType(v string) {
+	o.Type = &v
 }
 
 // GetScheduleEntry returns the ScheduleEntry field value if set, zero value otherwise.
@@ -383,8 +383,8 @@ func (o EditScheduleRequest) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	if o.TaskEnabled != nil {
-		toSerialize["task_enabled"] = o.TaskEnabled
+	if o.Enabled != nil {
+		toSerialize["enabled"] = o.Enabled
 	}
 	if o.Action != nil {
 		toSerialize["action"] = o.Action
@@ -395,8 +395,8 @@ func (o EditScheduleRequest) MarshalJSON() ([]byte, error) {
 	if o.Selectors != nil {
 		toSerialize["selectors"] = o.Selectors
 	}
-	if o.ScheduleType != nil {
-		toSerialize["schedule_type"] = o.ScheduleType
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	if o.ScheduleEntry != nil {
 		toSerialize["schedule_entry"] = o.ScheduleEntry
