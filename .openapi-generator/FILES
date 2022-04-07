@@ -32,6 +32,7 @@ docs/AddKeyResponse.md
 docs/AddRuleRequest.md
 docs/AddScheduleRequest.md
 docs/AddScriptRequest.md
+docs/AgeSelector.md
 docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
 docs/AlibabaNet.md
@@ -91,6 +92,7 @@ docs/EquinixMetalNet.md
 docs/EquinixMetalNetIpAddresses.md
 docs/Expiration.md
 docs/ExpirationNotify.md
+docs/FieldSelector.md
 docs/Frequency.md
 docs/GetCloudResponse.md
 docs/GetClusterResponse.md
@@ -187,6 +189,7 @@ docs/Query.md
 docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
 docs/RangeVector.md
+docs/ResourceSelector.md
 docs/ResponseMetadata.md
 docs/Rule.md
 docs/RuleAction.md
@@ -197,11 +200,11 @@ docs/Schedule.md
 docs/SchedulesApi.md
 docs/Script.md
 docs/ScriptsApi.md
-docs/Selector.md
 docs/Size.md
 docs/SizesApi.md
 docs/SnapshotsApi.md
 docs/SupportedProviders.md
+docs/TaggingSelector.md
 docs/Team.md
 docs/TriggerAfter.md
 docs/User.md
@@ -233,6 +236,7 @@ model_add_key_response.go
 model_add_rule_request.go
 model_add_schedule_request.go
 model_add_script_request.go
+model_age_selector.go
 model_alibaba_cloud_request.go
 model_alibaba_credentials.go
 model_alibaba_net.go
@@ -289,6 +293,7 @@ model_equinix_metal_net.go
 model_equinix_metal_net_ip_addresses.go
 model_expiration.go
 model_expiration_notify.go
+model_field_selector.go
 model_frequency.go
 model_get_cloud_response.go
 model_get_cluster_response.go
@@ -378,6 +383,7 @@ model_query.go
 model_rackspace_cloud_request.go
 model_rackspace_credentials.go
 model_range_vector.go
+model_resource_selector.go
 model_response_metadata.go
 model_rule.go
 model_rule_action.go
@@ -385,9 +391,9 @@ model_run_script_request.go
 model_run_script_response.go
 model_schedule.go
 model_script.go
-model_selector.go
 model_size.go
 model_supported_providers.go
+model_tagging_selector.go
 model_team.go
 model_trigger_after.go
 model_user.go

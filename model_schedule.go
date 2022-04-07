@@ -31,9 +31,7 @@ type Schedule struct {
 	Action *string `json:"action,omitempty"`
 	// Schedule parameters
 	Params *string `json:"params,omitempty"`
-	// The type of the resource that schedule is applied on
-	ResourceType *string `json:"resource_type,omitempty"`
-	Selectors *[]Selector `json:"selectors,omitempty"`
+	Selectors *[]OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector `json:"selectors,omitempty"`
 	// The type of the schedule
 	ScheduleType *string `json:"schedule_type,omitempty"`
 	// The date that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
@@ -289,42 +287,10 @@ func (o *Schedule) SetParams(v string) {
 	o.Params = &v
 }
 
-// GetResourceType returns the ResourceType field value if set, zero value otherwise.
-func (o *Schedule) GetResourceType() string {
-	if o == nil || o.ResourceType == nil {
-		var ret string
-		return ret
-	}
-	return *o.ResourceType
-}
-
-// GetResourceTypeOk returns a tuple with the ResourceType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Schedule) GetResourceTypeOk() (*string, bool) {
-	if o == nil || o.ResourceType == nil {
-		return nil, false
-	}
-	return o.ResourceType, true
-}
-
-// HasResourceType returns a boolean if a field has been set.
-func (o *Schedule) HasResourceType() bool {
-	if o != nil && o.ResourceType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
-func (o *Schedule) SetResourceType(v string) {
-	o.ResourceType = &v
-}
-
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
-func (o *Schedule) GetSelectors() []Selector {
+func (o *Schedule) GetSelectors() []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector {
 	if o == nil || o.Selectors == nil {
-		var ret []Selector
+		var ret []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector
 		return ret
 	}
 	return *o.Selectors
@@ -332,7 +298,7 @@ func (o *Schedule) GetSelectors() []Selector {
 
 // GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Schedule) GetSelectorsOk() (*[]Selector, bool) {
+func (o *Schedule) GetSelectorsOk() (*[]OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector, bool) {
 	if o == nil || o.Selectors == nil {
 		return nil, false
 	}
@@ -348,8 +314,8 @@ func (o *Schedule) HasSelectors() bool {
 	return false
 }
 
-// SetSelectors gets a reference to the given []Selector and assigns it to the Selectors field.
-func (o *Schedule) SetSelectors(v []Selector) {
+// SetSelectors gets a reference to the given []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector and assigns it to the Selectors field.
+func (o *Schedule) SetSelectors(v []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector) {
 	o.Selectors = &v
 }
 
@@ -567,9 +533,6 @@ func (o Schedule) MarshalJSON() ([]byte, error) {
 	}
 	if o.Params != nil {
 		toSerialize["params"] = o.Params
-	}
-	if o.ResourceType != nil {
-		toSerialize["resource_type"] = o.ResourceType
 	}
 	if o.Selectors != nil {
 		toSerialize["selectors"] = o.Selectors
