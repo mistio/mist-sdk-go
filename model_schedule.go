@@ -31,7 +31,7 @@ type Schedule struct {
 	Action *string `json:"action,omitempty"`
 	// Schedule parameters
 	Params *string `json:"params,omitempty"`
-	Selectors *[]OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector `json:"selectors,omitempty"`
+	Selectors *[]map[string]interface{} `json:"selectors,omitempty"`
 	// The type of the schedule
 	ScheduleType *string `json:"schedule_type,omitempty"`
 	// The date that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
@@ -288,9 +288,9 @@ func (o *Schedule) SetParams(v string) {
 }
 
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
-func (o *Schedule) GetSelectors() []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector {
+func (o *Schedule) GetSelectors() []map[string]interface{} {
 	if o == nil || o.Selectors == nil {
-		var ret []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector
+		var ret []map[string]interface{}
 		return ret
 	}
 	return *o.Selectors
@@ -298,7 +298,7 @@ func (o *Schedule) GetSelectors() []OneOfResourceSelectorFieldSelectorTaggingSel
 
 // GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Schedule) GetSelectorsOk() (*[]OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector, bool) {
+func (o *Schedule) GetSelectorsOk() (*[]map[string]interface{}, bool) {
 	if o == nil || o.Selectors == nil {
 		return nil, false
 	}
@@ -314,8 +314,8 @@ func (o *Schedule) HasSelectors() bool {
 	return false
 }
 
-// SetSelectors gets a reference to the given []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector and assigns it to the Selectors field.
-func (o *Schedule) SetSelectors(v []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector) {
+// SetSelectors gets a reference to the given []map[string]interface{} and assigns it to the Selectors field.
+func (o *Schedule) SetSelectors(v []map[string]interface{}) {
 	o.Selectors = &v
 }
 

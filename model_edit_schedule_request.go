@@ -27,7 +27,7 @@ type EditScheduleRequest struct {
 	Action *string `json:"action,omitempty"`
 	// Edit schedule parameters
 	Params *string `json:"params,omitempty"`
-	Selectors *[]OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector `json:"selectors,omitempty"`
+	Selectors *[]map[string]interface{} `json:"selectors,omitempty"`
 	// Edit the type of the schedule
 	ScheduleType *string `json:"schedule_type,omitempty"`
 	// Edit the date that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
@@ -216,9 +216,9 @@ func (o *EditScheduleRequest) SetParams(v string) {
 }
 
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
-func (o *EditScheduleRequest) GetSelectors() []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector {
+func (o *EditScheduleRequest) GetSelectors() []map[string]interface{} {
 	if o == nil || o.Selectors == nil {
-		var ret []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector
+		var ret []map[string]interface{}
 		return ret
 	}
 	return *o.Selectors
@@ -226,7 +226,7 @@ func (o *EditScheduleRequest) GetSelectors() []OneOfResourceSelectorFieldSelecto
 
 // GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EditScheduleRequest) GetSelectorsOk() (*[]OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector, bool) {
+func (o *EditScheduleRequest) GetSelectorsOk() (*[]map[string]interface{}, bool) {
 	if o == nil || o.Selectors == nil {
 		return nil, false
 	}
@@ -242,8 +242,8 @@ func (o *EditScheduleRequest) HasSelectors() bool {
 	return false
 }
 
-// SetSelectors gets a reference to the given []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector and assigns it to the Selectors field.
-func (o *EditScheduleRequest) SetSelectors(v []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector) {
+// SetSelectors gets a reference to the given []map[string]interface{} and assigns it to the Selectors field.
+func (o *EditScheduleRequest) SetSelectors(v []map[string]interface{}) {
 	o.Selectors = &v
 }
 

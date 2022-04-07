@@ -27,7 +27,7 @@ type AddScheduleRequest struct {
 	Action string `json:"action"`
 	// Schedule parameters
 	Params *string `json:"params,omitempty"`
-	Selectors *[]OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector `json:"selectors,omitempty"`
+	Selectors *[]map[string]interface{} `json:"selectors,omitempty"`
 	// The type of the schedule
 	ScheduleType *string `json:"schedule_type,omitempty"`
 	// The date that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
@@ -202,9 +202,9 @@ func (o *AddScheduleRequest) SetParams(v string) {
 }
 
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
-func (o *AddScheduleRequest) GetSelectors() []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector {
+func (o *AddScheduleRequest) GetSelectors() []map[string]interface{} {
 	if o == nil || o.Selectors == nil {
-		var ret []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector
+		var ret []map[string]interface{}
 		return ret
 	}
 	return *o.Selectors
@@ -212,7 +212,7 @@ func (o *AddScheduleRequest) GetSelectors() []OneOfResourceSelectorFieldSelector
 
 // GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddScheduleRequest) GetSelectorsOk() (*[]OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector, bool) {
+func (o *AddScheduleRequest) GetSelectorsOk() (*[]map[string]interface{}, bool) {
 	if o == nil || o.Selectors == nil {
 		return nil, false
 	}
@@ -228,8 +228,8 @@ func (o *AddScheduleRequest) HasSelectors() bool {
 	return false
 }
 
-// SetSelectors gets a reference to the given []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector and assigns it to the Selectors field.
-func (o *AddScheduleRequest) SetSelectors(v []OneOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector) {
+// SetSelectors gets a reference to the given []map[string]interface{} and assigns it to the Selectors field.
+func (o *AddScheduleRequest) SetSelectors(v []map[string]interface{}) {
 	o.Selectors = &v
 }
 
