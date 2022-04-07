@@ -19,7 +19,7 @@ import (
 type AgeSelector struct {
 	// age type
 	Type *string `json:"type,omitempty"`
-	// an integer value that represents the minutes passed from the creation of the resource
+	// an integer that represents the minutes passed from the creation of the resource
 	Minutes *int32 `json:"minutes,omitempty"`
 }
 
