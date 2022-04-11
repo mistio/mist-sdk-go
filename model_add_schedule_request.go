@@ -25,11 +25,13 @@ type AddScheduleRequest struct {
 	Enabled *bool `json:"enabled,omitempty"`
 	// The action that a schedule performs on a resource
 	Action string `json:"action"`
+	// The id of the script that schedule is about to run
+	ScriptId *string `json:"script_id,omitempty"`
 	// Schedule parameters
 	Params *string `json:"params,omitempty"`
 	Selectors *[]map[string]interface{} `json:"selectors,omitempty"`
 	// The type of the schedule
-	Type *string `json:"type,omitempty"`
+	ScheduleType *string `json:"schedule_type,omitempty"`
 	// The date that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	ScheduleEntry *string `json:"schedule_entry,omitempty"`
 	// The date after that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
@@ -169,6 +171,38 @@ func (o *AddScheduleRequest) SetAction(v string) {
 	o.Action = v
 }
 
+// GetScriptId returns the ScriptId field value if set, zero value otherwise.
+func (o *AddScheduleRequest) GetScriptId() string {
+	if o == nil || o.ScriptId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ScriptId
+}
+
+// GetScriptIdOk returns a tuple with the ScriptId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddScheduleRequest) GetScriptIdOk() (*string, bool) {
+	if o == nil || o.ScriptId == nil {
+		return nil, false
+	}
+	return o.ScriptId, true
+}
+
+// HasScriptId returns a boolean if a field has been set.
+func (o *AddScheduleRequest) HasScriptId() bool {
+	if o != nil && o.ScriptId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScriptId gets a reference to the given string and assigns it to the ScriptId field.
+func (o *AddScheduleRequest) SetScriptId(v string) {
+	o.ScriptId = &v
+}
+
 // GetParams returns the Params field value if set, zero value otherwise.
 func (o *AddScheduleRequest) GetParams() string {
 	if o == nil || o.Params == nil {
@@ -233,36 +267,36 @@ func (o *AddScheduleRequest) SetSelectors(v []map[string]interface{}) {
 	o.Selectors = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *AddScheduleRequest) GetType() string {
-	if o == nil || o.Type == nil {
+// GetScheduleType returns the ScheduleType field value if set, zero value otherwise.
+func (o *AddScheduleRequest) GetScheduleType() string {
+	if o == nil || o.ScheduleType == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.ScheduleType
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetScheduleTypeOk returns a tuple with the ScheduleType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddScheduleRequest) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+func (o *AddScheduleRequest) GetScheduleTypeOk() (*string, bool) {
+	if o == nil || o.ScheduleType == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.ScheduleType, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *AddScheduleRequest) HasType() bool {
-	if o != nil && o.Type != nil {
+// HasScheduleType returns a boolean if a field has been set.
+func (o *AddScheduleRequest) HasScheduleType() bool {
+	if o != nil && o.ScheduleType != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *AddScheduleRequest) SetType(v string) {
-	o.Type = &v
+// SetScheduleType gets a reference to the given string and assigns it to the ScheduleType field.
+func (o *AddScheduleRequest) SetScheduleType(v string) {
+	o.ScheduleType = &v
 }
 
 // GetScheduleEntry returns the ScheduleEntry field value if set, zero value otherwise.
@@ -375,14 +409,17 @@ func (o AddScheduleRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["action"] = o.Action
 	}
+	if o.ScriptId != nil {
+		toSerialize["script_id"] = o.ScriptId
+	}
 	if o.Params != nil {
 		toSerialize["params"] = o.Params
 	}
 	if o.Selectors != nil {
 		toSerialize["selectors"] = o.Selectors
 	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	if o.ScheduleType != nil {
+		toSerialize["schedule_type"] = o.ScheduleType
 	}
 	if o.ScheduleEntry != nil {
 		toSerialize["schedule_entry"] = o.ScheduleEntry
