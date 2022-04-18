@@ -152,6 +152,134 @@ func (a *NetworksApiService) CreateNetworkExecute(r ApiCreateNetworkRequest) (Cr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateSubnetRequest struct {
+	ctx _context.Context
+	ApiService *NetworksApiService
+	network string
+	createSubnetRequest *CreateSubnetRequest
+}
+
+func (r ApiCreateSubnetRequest) CreateSubnetRequest(createSubnetRequest CreateSubnetRequest) ApiCreateSubnetRequest {
+	r.createSubnetRequest = &createSubnetRequest
+	return r
+}
+
+func (r ApiCreateSubnetRequest) Execute() (CreateNetworkResponse, *_nethttp.Response, error) {
+	return r.ApiService.CreateSubnetExecute(r)
+}
+
+/*
+ * CreateSubnet Create subnet
+ * Creates one or more subnets on the specified network. If async is true, a jobId will be returned.
+READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on network.
+
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param network
+ * @return ApiCreateSubnetRequest
+ */
+func (a *NetworksApiService) CreateSubnet(ctx _context.Context, network string) ApiCreateSubnetRequest {
+	return ApiCreateSubnetRequest{
+		ApiService: a,
+		ctx: ctx,
+		network: network,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return CreateNetworkResponse
+ */
+func (a *NetworksApiService) CreateSubnetExecute(r ApiCreateSubnetRequest) (CreateNetworkResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  CreateNetworkResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworksApiService.CreateSubnet")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/networks/{network}/subnets"
+	localVarPath = strings.Replace(localVarPath, "{"+"network"+"}", _neturl.PathEscape(parameterToString(r.network, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.createSubnetRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDeleteNetworkRequest struct {
 	ctx _context.Context
 	ApiService *NetworksApiService
@@ -202,6 +330,127 @@ func (a *NetworksApiService) DeleteNetworkExecute(r ApiDeleteNetworkRequest) (*_
 
 	localVarPath := localBasePath + "/api/v2/networks/{network}"
 	localVarPath = strings.Replace(localVarPath, "{"+"network"+"}", _neturl.PathEscape(parameterToString(r.network, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.cloud == nil {
+		return nil, reportError("cloud is required and must be specified")
+	}
+
+	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteSubnetRequest struct {
+	ctx _context.Context
+	ApiService *NetworksApiService
+	network string
+	subnet string
+	cloud *string
+}
+
+func (r ApiDeleteSubnetRequest) Cloud(cloud string) ApiDeleteSubnetRequest {
+	r.cloud = &cloud
+	return r
+}
+
+func (r ApiDeleteSubnetRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteSubnetExecute(r)
+}
+
+/*
+ * DeleteSubnet Delete subnet
+ * Delete target subnet
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param network
+ * @param subnet
+ * @return ApiDeleteSubnetRequest
+ */
+func (a *NetworksApiService) DeleteSubnet(ctx _context.Context, network string, subnet string) ApiDeleteSubnetRequest {
+	return ApiDeleteSubnetRequest{
+		ApiService: a,
+		ctx: ctx,
+		network: network,
+		subnet: subnet,
+	}
+}
+
+/*
+ * Execute executes the request
+ */
+func (a *NetworksApiService) DeleteSubnetExecute(r ApiDeleteSubnetRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworksApiService.DeleteSubnet")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/networks/{network}/subnets/{subnet}"
+	localVarPath = strings.Replace(localVarPath, "{"+"network"+"}", _neturl.PathEscape(parameterToString(r.network, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subnet"+"}", _neturl.PathEscape(parameterToString(r.subnet, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

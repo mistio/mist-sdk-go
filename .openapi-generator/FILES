@@ -34,13 +34,16 @@ docs/AddScriptRequest.md
 docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
 docs/AlibabaNet.md
+docs/AlibabaSubnetRequest.md
 docs/AmazonCloudRequest.md
 docs/AmazonCredentials.md
 docs/AmazonNet.md
+docs/AmazonSubnetRequest.md
 docs/AzureCloudRequest.md
 docs/AzureCredentials.md
 docs/AzureExtra.md
 docs/AzureNet.md
+docs/AzureSubnetRequest.md
 docs/Cloud.md
 docs/CloudFeatures.md
 docs/CloudSigmaCloudRequest.md
@@ -61,6 +64,8 @@ docs/CreateMachineResponseOneOf1.md
 docs/CreateNetworkRequest.md
 docs/CreateNetworkResponse.md
 docs/CreateSecretRequest.md
+docs/CreateSubnetRequest.md
+docs/CreateSubnetRequestAllOf.md
 docs/CreateVolumeRequest.md
 docs/CreateVolumeResponse.md
 docs/CreateZoneRequest.md
@@ -115,6 +120,7 @@ docs/GoogleCredentials.md
 docs/GoogleExtra.md
 docs/GoogleExtraServiceAccount.md
 docs/GoogleNet.md
+docs/GoogleSubnetRequest.md
 docs/HelmChart.md
 docs/IbmCloudRequest.md
 docs/IbmCredentials.md
@@ -179,6 +185,7 @@ docs/NetworksApi.md
 docs/OnappCloudRequest.md
 docs/OnappCredentials.md
 docs/OneOffSchedule.md
+docs/OpenStackSubnetRequest.md
 docs/OpenshiftCloudRequest.md
 docs/OpenshiftCredentials.md
 docs/OpenstackCloudRequest.md
@@ -208,6 +215,7 @@ docs/SizesApi.md
 docs/SnapshotsApi.md
 docs/Subnet.md
 docs/SupportedProviders.md
+docs/SupportedSubnetProviders.md
 docs/Team.md
 docs/TriggerAfter.md
 docs/User.md
@@ -215,6 +223,7 @@ docs/UsersApi.md
 docs/VSphereExtra.md
 docs/VSphereNet.md
 docs/Vector.md
+docs/VexxhostSubnetRequest.md
 docs/Volume.md
 docs/VolumesApi.md
 docs/VsphereCloudRequest.md
@@ -241,13 +250,16 @@ model_add_script_request.go
 model_alibaba_cloud_request.go
 model_alibaba_credentials.go
 model_alibaba_net.go
+model_alibaba_subnet_request.go
 model_amazon_cloud_request.go
 model_amazon_credentials.go
 model_amazon_net.go
+model_amazon_subnet_request.go
 model_azure_cloud_request.go
 model_azure_credentials.go
 model_azure_extra.go
 model_azure_net.go
+model_azure_subnet_request.go
 model_cloud.go
 model_cloud_features.go
 model_cloud_sigma_cloud_request.go
@@ -266,6 +278,8 @@ model_create_machine_response_one_of_1.go
 model_create_network_request.go
 model_create_network_response.go
 model_create_secret_request.go
+model_create_subnet_request.go
+model_create_subnet_request_all_of.go
 model_create_volume_request.go
 model_create_volume_response.go
 model_create_zone_request.go
@@ -319,6 +333,7 @@ model_google_credentials.go
 model_google_extra.go
 model_google_extra_service_account.go
 model_google_net.go
+model_google_subnet_request.go
 model_helm_chart.go
 model_ibm_cloud_request.go
 model_ibm_credentials.go
@@ -377,6 +392,7 @@ model_network.go
 model_onapp_cloud_request.go
 model_onapp_credentials.go
 model_one_off_schedule.go
+model_open_stack_subnet_request.go
 model_openshift_cloud_request.go
 model_openshift_credentials.go
 model_openstack_cloud_request.go
@@ -400,12 +416,14 @@ model_selector.go
 model_size.go
 model_subnet.go
 model_supported_providers.go
+model_supported_subnet_providers.go
 model_team.go
 model_trigger_after.go
 model_user.go
 model_v_sphere_extra.go
 model_v_sphere_net.go
 model_vector.go
+model_vexxhost_subnet_request.go
 model_volume.go
 model_vsphere_cloud_request.go
 model_vsphere_credentials.go

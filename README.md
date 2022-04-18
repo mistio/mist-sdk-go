@@ -117,7 +117,9 @@ Class | Method | HTTP request | Description
 *MachinesApi* | [**SuspendMachine**](docs/MachinesApi.md#suspendmachine) | **Post** /api/v2/machines/{machine}/actions/suspend | Suspend machine
 *MachinesApi* | [**UndefineMachine**](docs/MachinesApi.md#undefinemachine) | **Post** /api/v2/machines/{machine}/actions/undefine | Undefine machine
 *NetworksApi* | [**CreateNetwork**](docs/NetworksApi.md#createnetwork) | **Post** /api/v2/networks | Create network
+*NetworksApi* | [**CreateSubnet**](docs/NetworksApi.md#createsubnet) | **Post** /api/v2/networks/{network}/subnets | Create subnet
 *NetworksApi* | [**DeleteNetwork**](docs/NetworksApi.md#deletenetwork) | **Delete** /api/v2/networks/{network} | Delete network
+*NetworksApi* | [**DeleteSubnet**](docs/NetworksApi.md#deletesubnet) | **Delete** /api/v2/networks/{network}/subnets/{subnet} | Delete subnet
 *NetworksApi* | [**EditNetwork**](docs/NetworksApi.md#editnetwork) | **Put** /api/v2/networks/{network} | Edit network
 *NetworksApi* | [**GetNetwork**](docs/NetworksApi.md#getnetwork) | **Get** /api/v2/networks/{network} | Get network
 *NetworksApi* | [**GetSubnet**](docs/NetworksApi.md#getsubnet) | **Get** /api/v2/networks/{network}/subnets/{subnet} | Get subnet
@@ -181,13 +183,16 @@ Class | Method | HTTP request | Description
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)
  - [AlibabaCredentials](docs/AlibabaCredentials.md)
  - [AlibabaNet](docs/AlibabaNet.md)
+ - [AlibabaSubnetRequest](docs/AlibabaSubnetRequest.md)
  - [AmazonCloudRequest](docs/AmazonCloudRequest.md)
  - [AmazonCredentials](docs/AmazonCredentials.md)
  - [AmazonNet](docs/AmazonNet.md)
+ - [AmazonSubnetRequest](docs/AmazonSubnetRequest.md)
  - [AzureCloudRequest](docs/AzureCloudRequest.md)
  - [AzureCredentials](docs/AzureCredentials.md)
  - [AzureExtra](docs/AzureExtra.md)
  - [AzureNet](docs/AzureNet.md)
+ - [AzureSubnetRequest](docs/AzureSubnetRequest.md)
  - [Cloud](docs/Cloud.md)
  - [CloudFeatures](docs/CloudFeatures.md)
  - [CloudSigmaCloudRequest](docs/CloudSigmaCloudRequest.md)
@@ -206,6 +211,8 @@ Class | Method | HTTP request | Description
  - [CreateNetworkRequest](docs/CreateNetworkRequest.md)
  - [CreateNetworkResponse](docs/CreateNetworkResponse.md)
  - [CreateSecretRequest](docs/CreateSecretRequest.md)
+ - [CreateSubnetRequest](docs/CreateSubnetRequest.md)
+ - [CreateSubnetRequestAllOf](docs/CreateSubnetRequestAllOf.md)
  - [CreateVolumeRequest](docs/CreateVolumeRequest.md)
  - [CreateVolumeResponse](docs/CreateVolumeResponse.md)
  - [CreateZoneRequest](docs/CreateZoneRequest.md)
@@ -259,6 +266,7 @@ Class | Method | HTTP request | Description
  - [GoogleExtra](docs/GoogleExtra.md)
  - [GoogleExtraServiceAccount](docs/GoogleExtraServiceAccount.md)
  - [GoogleNet](docs/GoogleNet.md)
+ - [GoogleSubnetRequest](docs/GoogleSubnetRequest.md)
  - [HelmChart](docs/HelmChart.md)
  - [IbmCloudRequest](docs/IbmCloudRequest.md)
  - [IbmCredentials](docs/IbmCredentials.md)
@@ -317,6 +325,7 @@ Class | Method | HTTP request | Description
  - [OnappCloudRequest](docs/OnappCloudRequest.md)
  - [OnappCredentials](docs/OnappCredentials.md)
  - [OneOffSchedule](docs/OneOffSchedule.md)
+ - [OpenStackSubnetRequest](docs/OpenStackSubnetRequest.md)
  - [OpenshiftCloudRequest](docs/OpenshiftCloudRequest.md)
  - [OpenshiftCredentials](docs/OpenshiftCredentials.md)
  - [OpenstackCloudRequest](docs/OpenstackCloudRequest.md)
@@ -340,12 +349,14 @@ Class | Method | HTTP request | Description
  - [Size](docs/Size.md)
  - [Subnet](docs/Subnet.md)
  - [SupportedProviders](docs/SupportedProviders.md)
+ - [SupportedSubnetProviders](docs/SupportedSubnetProviders.md)
  - [Team](docs/Team.md)
  - [TriggerAfter](docs/TriggerAfter.md)
  - [User](docs/User.md)
  - [VSphereExtra](docs/VSphereExtra.md)
  - [VSphereNet](docs/VSphereNet.md)
  - [Vector](docs/Vector.md)
+ - [VexxhostSubnetRequest](docs/VexxhostSubnetRequest.md)
  - [Volume](docs/Volume.md)
  - [VsphereCloudRequest](docs/VsphereCloudRequest.md)
  - [VsphereCredentials](docs/VsphereCredentials.md)
