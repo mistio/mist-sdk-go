@@ -73,11 +73,11 @@ type APIClient struct {
 
 	ScriptsApi *ScriptsApiService
 
+	SecretsApi *SecretsApiService
+
 	SizesApi *SizesApiService
 
 	SnapshotsApi *SnapshotsApiService
-
-	TagsApi *TagsApiService
 
 	UsersApi *UsersApiService
 
@@ -114,9 +114,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrgsApi = (*OrgsApiService)(&c.common)
 	c.RulesApi = (*RulesApiService)(&c.common)
 	c.ScriptsApi = (*ScriptsApiService)(&c.common)
+	c.SecretsApi = (*SecretsApiService)(&c.common)
 	c.SizesApi = (*SizesApiService)(&c.common)
 	c.SnapshotsApi = (*SnapshotsApiService)(&c.common)
-	c.TagsApi = (*TagsApiService)(&c.common)
 	c.UsersApi = (*UsersApiService)(&c.common)
 	c.VolumesApi = (*VolumesApiService)(&c.common)
 	c.ZonesApi = (*ZonesApiService)(&c.common)
