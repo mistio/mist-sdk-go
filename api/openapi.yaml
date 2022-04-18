@@ -2829,6 +2829,236 @@ paths:
       summary: Edit network
       tags:
       - networks
+  /api/v2/networks/{network}/subnets:
+    get:
+      description: List subnets owned by the active org. READ permission required
+        on network & cloud.
+      operationId: list-subnets
+      parameters:
+      - example: my-network
+        explode: false
+        in: path
+        name: network
+        required: true
+        schema:
+          type: string
+        style: simple
+      - examples:
+          Filter by cloud id:
+            value: 0194030499e74b02bdf68fa7130fb0b2
+          Filter by cloud name:
+            value: OSP10-new
+          Filter by cloud provider:
+            value: provider:digitalocean
+        explode: true
+        in: query
+        name: cloud
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Only return results matching search filter
+        examples:
+          Filter by network name:
+            value: cinet3
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Order results by
+        examples:
+          Sort by name, descending:
+            value: -name
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Start results from index or id
+        examples:
+          Start from the 50th result:
+            value: "50"
+          Start from item with id xyz:
+            value: xyz
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Limit number of results, 1000 max
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Only return these fields
+        examples:
+          Only return id:
+            value: id
+          Return id, name & owned_by:
+            value: id,name,owned_by
+        explode: true
+        in: query
+        name: only
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Dereference foreign keys
+        examples:
+          '(default) Automatically replace all foreign key ids with referenced resource name ':
+            value: auto
+          Do not dereference anything, just return ids:
+            value: none
+          Dereference cloud id to cloud provider:
+            value: cloud:provider
+          Dereference cloud by provider, creator by email, owner by name:
+            value: cloud:provider, creator:email, owned_by:name
+        explode: true
+        in: query
+        name: deref
+        required: false
+        schema:
+          default: auto
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSubnetsResponse'
+          description: List subnets response
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - read:network
+        - read:cloud
+      - CookieAuth:
+        - read:network
+        - read:cloud
+      summary: List subnets
+      tags:
+      - networks
+      x-cli-table-default:
+      - name
+      - cloud
+      - network
+      - machines
+      - tags
+      x-cli-table-extended:
+      - id
+      - name
+      - cloud
+      - external_id
+      - machines
+      - tags
+      - owned_by
+      - created_by
+  /api/v2/networks/{network}/subnets/{subnet}:
+    get:
+      description: Get details about target subnet
+      operationId: get-subnet
+      parameters:
+      - example: my-network
+        explode: false
+        in: path
+        name: network
+        required: true
+        schema:
+          type: string
+        style: simple
+      - example: my-subnet
+        explode: false
+        in: path
+        name: subnet
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Only return these fields
+        examples:
+          Only return id:
+            value: id
+          Return id, name & owned_by:
+            value: id,name,owned_by
+        explode: true
+        in: query
+        name: only
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Dereference foreign keys
+        examples:
+          '(default) Automatically replace all foreign key ids with referenced resource name ':
+            value: auto
+          Do not dereference anything, just return ids:
+            value: none
+          Dereference cloud id to cloud provider:
+            value: cloud:provider
+          Dereference cloud by provider, creator by email, owner by name:
+            value: cloud:provider, creator:email, owned_by:name
+        explode: true
+        in: query
+        name: deref
+        required: false
+        schema:
+          default: auto
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSubnetResponse'
+          description: Subnet returned successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Subnet not found
+      security:
+      - ApiKeyAuth:
+        - read:network
+        - read:cloud
+      - CookieAuth:
+        - read:network
+        - read:cloud
+      summary: Get subnet
+      tags:
+      - networks
+      x-cli-table-default:
+      - name
+      - cloud
+      - network
+      - machines
+      - tags
+      x-cli-table-extended:
+      - id
+      - name
+      - cloud
+      - location
+      - external_id
+      - subnets
+      - machines
+      - tags
+      - owned_by
+      - created_by
   /api/v2/orgs:
     get:
       description: List orgs owned by the requester. If parameter allorgs is true
@@ -4218,6 +4448,204 @@ paths:
       - locations
       - external_id
       - machines
+  /api/v2/tags:
+    get:
+      description: List tags on resources owned by the active org. READ permission
+        required on each resource.
+      operationId: list-tags
+      parameters:
+      - description: Toggle displaying resource types and ids associated with each
+          key value pair
+        examples:
+          (default) Display only {key, value} pairs:
+            value: "False"
+          Also dispalay resource types and ids:
+            value: "True"
+        explode: true
+        in: query
+        name: verbose
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: Display tags on a single resource
+        explode: true
+        in: query
+        name: resource
+        required: false
+        schema:
+          $ref: '#/components/schemas/ResourceType'
+        style: form
+      - description: Only return results matching search filter
+        examples:
+          Filter by key:
+            value: key:key1
+          Filter by key and value:
+            value: key:key1 value:value1
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Order results by
+        examples:
+          Sort by name, descending:
+            value: -name
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Start results from index or id
+        examples:
+          Start from the 50th result:
+            value: "50"
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Limit number of results, 1000 max
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Only return these fields
+        examples:
+          Only return key:
+            value: key
+          Return key, resources:
+            value: key,resources
+        explode: true
+        in: query
+        name: only
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Dereference foreign keys
+        examples:
+          (default) Do not dereference anything, just return ids:
+            value: id
+          ' Automatically replace all foreign key ids with referenced resource name ':
+            value: name
+        explode: true
+        in: query
+        name: deref
+        required: false
+        schema:
+          default: auto
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTagsResponse'
+          description: List tags response
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - read:cluster
+        - read:cloud
+        - read:image
+        - read:key
+        - read:machine
+        - read:network
+        - read:script
+        - read:volumes
+        - read:zones
+      - CookieAuth:
+        - read:cluster
+        - read:cloud
+        - read:image
+        - read:key
+        - read:machine
+        - read:network
+        - read:script
+        - read:volumes
+        - read:zones
+      summary: List tags
+      tags:
+      - tags
+      x-cli-table-default:
+      - key
+      - value
+      x-cli-table-extended:
+      - key
+      - value
+    post:
+      description: Batch operation for adding/removing tags from a list of resources.
+      operationId: tag-resources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagResourcesRequest'
+      responses:
+        "200":
+          description: Tags successfully updated
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Resource not found
+      security:
+      - ApiKeyAuth:
+        - read:cluster
+        - read:cloud
+        - read:image
+        - read:key
+        - read:machine
+        - read:network
+        - read:script
+        - read:volumes
+        - read:zones
+        - read:cluster
+        - edit:cloud
+        - edit:image
+        - edit:key
+        - edit:machine
+        - edit:network
+        - edit:script
+        - edit:volumes
+        - edit:zones
+      - CookieAuth:
+        - read:cluster
+        - read:cloud
+        - read:image
+        - read:key
+        - read:machine
+        - read:network
+        - read:script
+        - read:volumes
+        - read:zones
+        - read:cluster
+        - edit:cloud
+        - edit:image
+        - edit:key
+        - edit:machine
+        - edit:network
+        - edit:script
+        - edit:volumes
+        - edit:zones
+      summary: Tag Resources
+      tags:
+      - tags
   /api/v2/users:
     get:
       description: Return current user if requester is not admin. Return all users
@@ -6829,6 +7257,29 @@ components:
         meta:
           $ref: '#/components/schemas/ResponseMetadata'
       type: object
+    GetSubnetResponse:
+      example:
+        data:
+          cloud: cloud
+          name: name
+          external_id: external_id
+          cidr: cidr
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+          network: network
+          tags: '{}'
+        meta:
+          total: 0
+          start: 1
+          sort: sort
+          returned: 6
+      properties:
+        data:
+          $ref: '#/components/schemas/Subnet'
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
+      type: object
     GetVolumeResponse:
       example:
         data:
@@ -8015,6 +8466,62 @@ components:
         meta:
           $ref: '#/components/schemas/ResponseMetadata'
       type: object
+    ListSubnetsResponse:
+      example:
+        data:
+        - cloud: cloud
+          name: name
+          external_id: external_id
+          cidr: cidr
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+          network: network
+          tags: '{}'
+        - cloud: cloud
+          name: name
+          external_id: external_id
+          cidr: cidr
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+          network: network
+          tags: '{}'
+        meta:
+          total: 0
+          start: 1
+          sort: sort
+          returned: 6
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Subnet'
+          type: array
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
+      type: object
+    ListTagsResponse:
+      example:
+        data:
+        - resources: '{}'
+          value: value
+          key: key
+        - resources: '{}'
+          value: value
+          key: key
+        meta:
+          total: 0
+          start: 1
+          sort: sort
+          returned: 6
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Tag'
+          type: array
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
+      type: object
     ListUsersResponse:
       example:
         data:
@@ -8748,6 +9255,27 @@ components:
             $ref: '#/components/schemas/DatapointsValuesTuple'
           type: array
       type: object
+    ResourceType:
+      enum:
+      - buckets
+      - clouds
+      - clusters
+      - images
+      - keys
+      - machines
+      - networks
+      - records
+      - rules
+      - schedules
+      - scripts
+      - stacks
+      - subnets
+      - teams
+      - templates
+      - tunnels
+      - volumes
+      - zones
+      type: string
     ResponseMetadata:
       example:
         total: 0
@@ -8966,6 +9494,37 @@ components:
       type: object
     Snapshot:
       type: object
+    Subnet:
+      example:
+        cloud: cloud
+        name: name
+        external_id: external_id
+        cidr: cidr
+        owned_by: owned_by
+        id: id
+        created_by: created_by
+        network: network
+        tags: '{}'
+      properties:
+        id:
+          type: string
+        cloud:
+          type: string
+        network:
+          type: string
+        external_id:
+          type: string
+        name:
+          type: string
+        cidr:
+          type: string
+        tags:
+          type: object
+        created_by:
+          type: string
+        owned_by:
+          type: string
+      type: object
     SupportedProviders:
       enum:
       - amazon
@@ -8992,6 +9551,44 @@ components:
       - openshift
       - other
       type: string
+    Tag:
+      example:
+        resources: '{}'
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        resources:
+          type: object
+      type: object
+    TagResourcesRequest:
+      example:
+        resources:
+        - resource_id: resource_id
+          tag:
+          - op: +
+            value: value
+            key: key
+          - op: +
+            value: value
+            key: key
+        - resource_id: resource_id
+          tag:
+          - op: +
+            value: value
+            key: key
+          - op: +
+            value: value
+            key: key
+      properties:
+        resources:
+          items:
+            $ref: '#/components/schemas/TagResourcesRequest_resources'
+          type: array
+      type: object
     Team:
       example:
         members:
@@ -9562,6 +10159,49 @@ components:
           type: string
       required:
       - network
+      type: object
+    TagResourcesRequest_tag:
+      example:
+        op: +
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        op:
+          enum:
+          - +
+          - '-'
+          type: string
+      required:
+      - key
+      - value
+      type: object
+    TagResourcesRequest_resources:
+      example:
+        resource_id: resource_id
+        tag:
+        - op: +
+          value: value
+          key: key
+        - op: +
+          value: value
+          key: key
+      properties:
+        resource_id:
+          type: string
+        resource_type:
+          $ref: '#/components/schemas/ResourceType'
+        tag:
+          items:
+            $ref: '#/components/schemas/TagResourcesRequest_tag'
+          type: array
+      required:
+      - resource_id
+      - resource_type
+      - tag
       type: object
   securitySchemes:
     ApiKeyAuth:

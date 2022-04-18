@@ -120,7 +120,9 @@ Class | Method | HTTP request | Description
 *NetworksApi* | [**DeleteNetwork**](docs/NetworksApi.md#deletenetwork) | **Delete** /api/v2/networks/{network} | Delete network
 *NetworksApi* | [**EditNetwork**](docs/NetworksApi.md#editnetwork) | **Put** /api/v2/networks/{network} | Edit network
 *NetworksApi* | [**GetNetwork**](docs/NetworksApi.md#getnetwork) | **Get** /api/v2/networks/{network} | Get network
+*NetworksApi* | [**GetSubnet**](docs/NetworksApi.md#getsubnet) | **Get** /api/v2/networks/{network}/subnets/{subnet} | Get subnet
 *NetworksApi* | [**ListNetworks**](docs/NetworksApi.md#listnetworks) | **Get** /api/v2/networks | List networks
+*NetworksApi* | [**ListSubnets**](docs/NetworksApi.md#listsubnets) | **Get** /api/v2/networks/{network}/subnets | List subnets
 *OrgsApi* | [**GetMember**](docs/OrgsApi.md#getmember) | **Get** /api/v2/orgs/{org}/members/{member} | Get Org
 *OrgsApi* | [**GetOrg**](docs/OrgsApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *OrgsApi* | [**ListOrgMembers**](docs/OrgsApi.md#listorgmembers) | **Get** /api/v2/orgs/{org}/members | List org members
@@ -147,6 +149,8 @@ Class | Method | HTTP request | Description
 *SnapshotsApi* | [**ListSnapshots**](docs/SnapshotsApi.md#listsnapshots) | **Get** /api/v2/machines/{machine}/snapshots | List machine snapshots
 *SnapshotsApi* | [**RemoveSnapshot**](docs/SnapshotsApi.md#removesnapshot) | **Delete** /api/v2/machines/{machine}/snapshots/{snapshot} | Remove snapshot
 *SnapshotsApi* | [**RevertToSnapshot**](docs/SnapshotsApi.md#reverttosnapshot) | **Post** /api/v2/machines/{machine}/snapshots/{snapshot} | Revert to snapshot
+*TagsApi* | [**ListTags**](docs/TagsApi.md#listtags) | **Get** /api/v2/tags | List tags
+*TagsApi* | [**TagResources**](docs/TagsApi.md#tagresources) | **Post** /api/v2/tags | Tag Resources
 *UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **Get** /api/v2/users | List users
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /api/v2/volumes | Create volume
 *VolumesApi* | [**DeleteVolume**](docs/VolumesApi.md#deletevolume) | **Delete** /api/v2/volumes/{volume} | Delete volume
@@ -241,6 +245,7 @@ Class | Method | HTTP request | Description
  - [GetRuleResponse](docs/GetRuleResponse.md)
  - [GetScriptResponse](docs/GetScriptResponse.md)
  - [GetSizeResponse](docs/GetSizeResponse.md)
+ - [GetSubnetResponse](docs/GetSubnetResponse.md)
  - [GetVolumeResponse](docs/GetVolumeResponse.md)
  - [GetZoneResponse](docs/GetZoneResponse.md)
  - [GoogleCloudRequest](docs/GoogleCloudRequest.md)
@@ -288,6 +293,8 @@ Class | Method | HTTP request | Description
  - [ListScriptsResponse](docs/ListScriptsResponse.md)
  - [ListSizesResponse](docs/ListSizesResponse.md)
  - [ListSnapshotsResponse](docs/ListSnapshotsResponse.md)
+ - [ListSubnetsResponse](docs/ListSubnetsResponse.md)
+ - [ListTagsResponse](docs/ListTagsResponse.md)
  - [ListUsersResponse](docs/ListUsersResponse.md)
  - [ListVolumesResponse](docs/ListVolumesResponse.md)
  - [ListZonesResponse](docs/ListZonesResponse.md)
@@ -316,6 +323,7 @@ Class | Method | HTTP request | Description
  - [RackspaceCloudRequest](docs/RackspaceCloudRequest.md)
  - [RackspaceCredentials](docs/RackspaceCredentials.md)
  - [RangeVector](docs/RangeVector.md)
+ - [ResourceType](docs/ResourceType.md)
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)
  - [RuleAction](docs/RuleAction.md)
@@ -324,7 +332,12 @@ Class | Method | HTTP request | Description
  - [Script](docs/Script.md)
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)
+ - [Subnet](docs/Subnet.md)
  - [SupportedProviders](docs/SupportedProviders.md)
+ - [Tag](docs/Tag.md)
+ - [TagResourcesRequest](docs/TagResourcesRequest.md)
+ - [TagResourcesRequestResources](docs/TagResourcesRequestResources.md)
+ - [TagResourcesRequestTag](docs/TagResourcesRequestTag.md)
  - [Team](docs/Team.md)
  - [TriggerAfter](docs/TriggerAfter.md)
  - [User](docs/User.md)

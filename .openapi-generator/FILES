@@ -16,6 +16,7 @@ api_rules.go
 api_scripts.go
 api_sizes.go
 api_snapshots.go
+api_tags.go
 api_users.go
 api_volumes.go
 api_zones.go
@@ -103,6 +104,7 @@ docs/GetOrgResponse.md
 docs/GetRuleResponse.md
 docs/GetScriptResponse.md
 docs/GetSizeResponse.md
+docs/GetSubnetResponse.md
 docs/GetVolumeResponse.md
 docs/GetZoneResponse.md
 docs/GoogleCloudRequest.md
@@ -153,6 +155,8 @@ docs/ListRulesResponse.md
 docs/ListScriptsResponse.md
 docs/ListSizesResponse.md
 docs/ListSnapshotsResponse.md
+docs/ListSubnetsResponse.md
+docs/ListTagsResponse.md
 docs/ListUsersResponse.md
 docs/ListVolumesResponse.md
 docs/ListZonesResponse.md
@@ -185,6 +189,7 @@ docs/Query.md
 docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
 docs/RangeVector.md
+docs/ResourceType.md
 docs/ResponseMetadata.md
 docs/Rule.md
 docs/RuleAction.md
@@ -197,7 +202,13 @@ docs/Selector.md
 docs/Size.md
 docs/SizesApi.md
 docs/SnapshotsApi.md
+docs/Subnet.md
 docs/SupportedProviders.md
+docs/Tag.md
+docs/TagResourcesRequest.md
+docs/TagResourcesRequestResources.md
+docs/TagResourcesRequestTag.md
+docs/TagsApi.md
 docs/Team.md
 docs/TriggerAfter.md
 docs/User.md
@@ -298,6 +309,7 @@ model_get_org_response.go
 model_get_rule_response.go
 model_get_script_response.go
 model_get_size_response.go
+model_get_subnet_response.go
 model_get_volume_response.go
 model_get_zone_response.go
 model_google_cloud_request.go
@@ -343,6 +355,8 @@ model_list_rules_response.go
 model_list_scripts_response.go
 model_list_sizes_response.go
 model_list_snapshots_response.go
+model_list_subnets_response.go
+model_list_tags_response.go
 model_list_users_response.go
 model_list_volumes_response.go
 model_list_zones_response.go
@@ -373,6 +387,7 @@ model_query.go
 model_rackspace_cloud_request.go
 model_rackspace_credentials.go
 model_range_vector.go
+model_resource_type.go
 model_response_metadata.go
 model_rule.go
 model_rule_action.go
@@ -381,7 +396,12 @@ model_run_script_response.go
 model_script.go
 model_selector.go
 model_size.go
+model_subnet.go
 model_supported_providers.go
+model_tag.go
+model_tag_resources_request.go
+model_tag_resources_request_resources.go
+model_tag_resources_request_tag.go
 model_team.go
 model_trigger_after.go
 model_user.go
