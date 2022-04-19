@@ -146,6 +146,11 @@ Class | Method | HTTP request | Description
 *ScriptsApi* | [**GetScript**](docs/ScriptsApi.md#getscript) | **Get** /api/v2/scripts/{script} | Get script
 *ScriptsApi* | [**ListScripts**](docs/ScriptsApi.md#listscripts) | **Get** /api/v2/scripts | List scripts
 *ScriptsApi* | [**RunScript**](docs/ScriptsApi.md#runscript) | **Post** /api/v2/scripts/{script} | Run script
+*SecretsApi* | [**CreateSecret**](docs/SecretsApi.md#createsecret) | **Post** /api/v2/secrets | Create secret
+*SecretsApi* | [**DeleteSecret**](docs/SecretsApi.md#deletesecret) | **Delete** /api/v2/secrets/{secret} | Delete secret
+*SecretsApi* | [**EditSecret**](docs/SecretsApi.md#editsecret) | **Put** /api/v2/secrets/{secret} | Edit secret
+*SecretsApi* | [**GetSecret**](docs/SecretsApi.md#getsecret) | **Get** /api/v2/secrets/{secret} | Get secret
+*SecretsApi* | [**ListSecrets**](docs/SecretsApi.md#listsecrets) | **Get** /api/v2/secrets | List secrets
 *SizesApi* | [**GetSize**](docs/SizesApi.md#getsize) | **Get** /api/v2/sizes/{size} | Get size
 *SizesApi* | [**ListSizes**](docs/SizesApi.md#listsizes) | **Get** /api/v2/sizes | List sizes
 *SnapshotsApi* | [**CreateSnapshot**](docs/SnapshotsApi.md#createsnapshot) | **Post** /api/v2/machines/{machine}/snapshots | Create snapshot
@@ -182,7 +187,6 @@ Class | Method | HTTP request | Description
  - [AlibabaCredentials](docs/AlibabaCredentials.md)
  - [AlibabaNet](docs/AlibabaNet.md)
  - [AmazonCloudRequest](docs/AmazonCloudRequest.md)
- - [AmazonClusterRequest](docs/AmazonClusterRequest.md)
  - [AmazonCredentials](docs/AmazonCredentials.md)
  - [AmazonNet](docs/AmazonNet.md)
  - [AzureCloudRequest](docs/AzureCloudRequest.md)
@@ -206,6 +210,7 @@ Class | Method | HTTP request | Description
  - [CreateMachineResponseOneOf1](docs/CreateMachineResponseOneOf1.md)
  - [CreateNetworkRequest](docs/CreateNetworkRequest.md)
  - [CreateNetworkResponse](docs/CreateNetworkResponse.md)
+ - [CreateSecretRequest](docs/CreateSecretRequest.md)
  - [CreateVolumeRequest](docs/CreateVolumeRequest.md)
  - [CreateVolumeResponse](docs/CreateVolumeResponse.md)
  - [CreateZoneRequest](docs/CreateZoneRequest.md)
@@ -215,6 +220,7 @@ Class | Method | HTTP request | Description
  - [Datapoints](docs/Datapoints.md)
  - [DatapointsData](docs/DatapointsData.md)
  - [DatapointsValuesItem](docs/DatapointsValuesItem.md)
+ - [DestroyClusterResponse](docs/DestroyClusterResponse.md)
  - [DigitaloceanCloudRequest](docs/DigitaloceanCloudRequest.md)
  - [DigitaloceanCredentials](docs/DigitaloceanCredentials.md)
  - [DockerCloudRequest](docs/DockerCloudRequest.md)
@@ -227,6 +233,7 @@ Class | Method | HTTP request | Description
  - [EditMachineRequestExpiration](docs/EditMachineRequestExpiration.md)
  - [EditRuleRequest](docs/EditRuleRequest.md)
  - [EditScheduleRequest](docs/EditScheduleRequest.md)
+ - [EditSecretRequest](docs/EditSecretRequest.md)
  - [EquinixCloudRequest](docs/EquinixCloudRequest.md)
  - [EquinixCredentials](docs/EquinixCredentials.md)
  - [EquinixMetalExtra](docs/EquinixMetalExtra.md)
@@ -250,13 +257,16 @@ Class | Method | HTTP request | Description
  - [GetRuleResponse](docs/GetRuleResponse.md)
  - [GetScheduleResponse](docs/GetScheduleResponse.md)
  - [GetScriptResponse](docs/GetScriptResponse.md)
+ - [GetSecretResponse](docs/GetSecretResponse.md)
  - [GetSizeResponse](docs/GetSizeResponse.md)
  - [GetVolumeResponse](docs/GetVolumeResponse.md)
  - [GetZoneResponse](docs/GetZoneResponse.md)
  - [GoogleCloudRequest](docs/GoogleCloudRequest.md)
- - [GoogleClusterRequest](docs/GoogleClusterRequest.md)
  - [GoogleCredentials](docs/GoogleCredentials.md)
+ - [GoogleExtra](docs/GoogleExtra.md)
+ - [GoogleExtraServiceAccount](docs/GoogleExtraServiceAccount.md)
  - [GoogleNet](docs/GoogleNet.md)
+ - [HelmChart](docs/HelmChart.md)
  - [IbmCloudRequest](docs/IbmCloudRequest.md)
  - [IbmCredentials](docs/IbmCredentials.md)
  - [Image](docs/Image.md)
@@ -273,6 +283,7 @@ Class | Method | HTTP request | Description
  - [KeyMachineDisassociation](docs/KeyMachineDisassociation.md)
  - [KubernetesCloudRequest](docs/KubernetesCloudRequest.md)
  - [KubernetesCredentials](docs/KubernetesCredentials.md)
+ - [KubernetesManifest](docs/KubernetesManifest.md)
  - [KubevirtCloudRequest](docs/KubevirtCloudRequest.md)
  - [KvmCloudRequest](docs/KvmCloudRequest.md)
  - [LXDExtra](docs/LXDExtra.md)
@@ -294,6 +305,7 @@ Class | Method | HTTP request | Description
  - [ListRulesResponse](docs/ListRulesResponse.md)
  - [ListSchedulesResponse](docs/ListSchedulesResponse.md)
  - [ListScriptsResponse](docs/ListScriptsResponse.md)
+ - [ListSecretsResponse](docs/ListSecretsResponse.md)
  - [ListSizesResponse](docs/ListSizesResponse.md)
  - [ListSnapshotsResponse](docs/ListSnapshotsResponse.md)
  - [ListUsersResponse](docs/ListUsersResponse.md)
@@ -332,6 +344,7 @@ Class | Method | HTTP request | Description
  - [RunScriptResponse](docs/RunScriptResponse.md)
  - [Schedule](docs/Schedule.md)
  - [Script](docs/Script.md)
+ - [Secret](docs/Secret.md)
  - [Size](docs/Size.md)
  - [SupportedProviders](docs/SupportedProviders.md)
  - [TaggingSelector](docs/TaggingSelector.md)

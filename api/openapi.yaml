@@ -92,6 +92,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -391,6 +404,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -473,6 +499,10 @@ paths:
         style: simple
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DestroyClusterResponse'
           description: Cluster destruction successful
         "401":
           description: Authentication failed
@@ -802,6 +832,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1032,6 +1075,19 @@ paths:
         required: false
         schema:
           default: auto
+          type: string
+        style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -1353,6 +1409,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1546,6 +1615,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1583,15 +1665,82 @@ paths:
       - owned_by
       - created_by
     post:
-      description: Creates one or more machines on the specified cloud. If async is
-        true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES
-        permission required on cloud. READ permission required on location. CREATE_RESOURCES
-        permission required on location. CREATE permission required on machine. RUN
-        permission required on script. READ permission required on key.
+      description: |
+        Creates one or more machines on the specified cloud. If async is true, a jobId will be returned.
+        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location.
+        CREATE_RESOURCES permission required on location. CREATE permission required on machine. RUN permission required on script. READ permission required on key.
       operationId: create-machine
       requestBody:
         content:
           application/json:
+            examples:
+              NoCloudSpecifiedMachine:
+                summary: Provision a machine without defining a specific cloud
+                value:
+                  name: TestMachine
+                  image: Ubuntu
+                  size:
+                    cpu: 1
+                    memory: 1024
+                  key: TestKey
+                  monitoring: true
+              SelectedCloudMachine:
+                summary: Provision a machine in a specific cloud
+                value:
+                  cloud: 6a760c7690dc4ac9913ce9b109aa900c
+                  name: testmachine
+                  image: Ubuntu
+                  size:
+                    cpu: 2
+                    memory: 2048
+              AmazonExampleMachine:
+                summary: Provision a machine in one of your Amazon clouds
+                value:
+                  provider: amazon
+                  name: awsmachine
+                  image: Ubuntu
+                  size: t3.micro
+              GoogleExampleMachine:
+                summary: Provision a machine in one of your Google clouds
+                value:
+                  provider: google
+                  name: gcemachine
+                  image: Ubuntu
+                  size: e2-medium
+              AzureExampleMachine:
+                summary: Provision a machine in one of your Azure clouds
+                value:
+                  provider: azure
+                  name: azuremachine
+                  image: Ubuntu
+                  size: Standard_D4s_v5
+              FullExample:
+                summary: Provision 2 machines with monitoring, schedules, expiration
+                  and provisioning scripts
+                value:
+                  cloud: GCE
+                  name: testmachine
+                  image: Ubuntu
+                  size:
+                    cpu: 2
+                    memory: 2048
+                  location: us-east1-b
+                  key: TestKey
+                  monitoring: true
+                  quantity: 2
+                  expiration:
+                    action: destroy
+                    date: 2025-08-30T18:24:15Z
+                  scripts:
+                  - inline: |-
+                      #!/bin/bash
+                       touch ~/inline.txt
+                  - script: test123
+                  schedules:
+                  - schedule_type: one_off
+                    datetime: 2023-09-22T18:19:28Z
+                    script:
+                      script: test123
             schema:
               $ref: '#/components/schemas/CreateMachineRequest'
       responses:
@@ -2525,6 +2674,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -2561,9 +2723,9 @@ paths:
       - owned_by
       - created_by
     post:
-      description: Creates one or more networks on the specified cloud. If async is
-        true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES
-        permission required on cloud. CREATE permission required on network.
+      description: |
+        Creates one or more networks on the specified cloud. If async is true, a jobId will be returned.
+        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on network.
       operationId: create-network
       requestBody:
         content:
@@ -2845,6 +3007,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3013,6 +3188,19 @@ paths:
         name: only
         required: false
         schema:
+          type: string
+        style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -3191,6 +3379,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3284,6 +3485,19 @@ paths:
         name: only
         required: false
         schema:
+          type: string
+        style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -3962,6 +4176,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -4273,6 +4500,236 @@ paths:
       summary: Generate script url
       tags:
       - scripts
+  /api/v2/secrets:
+    get:
+      description: List secrets owned by the active org. READ permission required
+        on secret.
+      operationId: list-secrets
+      parameters:
+      - description: Only return results matching search filter
+        examples:
+          Filter by name:
+            value: name:clouds/EC2-Tokyo
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Order results by
+        examples:
+          Sort by name, descending:
+            value: -name
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Start results from index or id
+        examples:
+          Start from the 50th result:
+            value: "50"
+          Start from item with id xyz:
+            value: xyz
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Limit number of results, 1000 max
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Only return these fields
+        examples:
+          Only return id:
+            value: id
+          Return id, name & created_by:
+            value: id,title,created_by
+        explode: true
+        in: query
+        name: only
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSecretsResponse'
+          description: List secrets response
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - read:secret
+      - CookieAuth:
+        - read:secret
+      summary: List secrets
+      tags:
+      - secrets
+      x-cli-table-default:
+      - id
+      - name
+      - tags
+      x-cli-table-extended:
+      - id
+      - name
+      - tags
+      - owned_by
+      - created_by
+    post:
+      description: Creates a new secret and returns the secret's id. CREATE permission
+        required on secret.
+      operationId: create-secret
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSecretRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: Secret added succesfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "409":
+          description: Path already exists. Change name of key
+      security:
+      - ApiKeyAuth:
+        - create:secret
+      - CookieAuth:
+        - create:secret
+      summary: Create secret
+      tags:
+      - secrets
+  /api/v2/secrets/{secret}:
+    delete:
+      description: Delete target secret
+      operationId: delete-secret
+      parameters:
+      - explode: false
+        in: path
+        name: secret
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Secret deleted successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Secret not found
+      security:
+      - ApiKeyAuth:
+        - delete:secret
+      - CookieAuth:
+        - delete:secret
+      summary: Delete secret
+      tags:
+      - secrets
+    get:
+      description: Read target secret
+      operationId: get-secret
+      parameters:
+      - explode: false
+        in: path
+        name: secret
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Return the secret's value. Requires READ_VALUE permission on
+          secret.
+        explode: true
+        in: query
+        name: value
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSecretResponse'
+          description: Secret returned successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Secret not found
+      security:
+      - ApiKeyAuth:
+        - read:secret
+      - CookieAuth:
+        - read:secret
+      summary: Get secret
+      tags:
+      - secrets
+    put:
+      description: Edit/update target secret
+      operationId: edit-secret
+      parameters:
+      - explode: false
+        in: path
+        name: secret
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditSecretRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: Secret edited successfully
+        "400":
+          description: Missing `secret` required parameter
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Secret not found
+      security:
+      - ApiKeyAuth:
+        - edit:secret
+      - CookieAuth:
+        - edit:secret
+      summary: Edit secret
+      tags:
+      - secrets
   /api/v2/sizes:
     get:
       description: List sizes owned by the active org. READ permission required on
@@ -4363,6 +4820,19 @@ paths:
         required: false
         schema:
           default: auto
+          type: string
+        style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -4540,6 +5010,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -4659,6 +5142,19 @@ paths:
         schema:
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -4699,10 +5195,10 @@ paths:
       - owned_by
       - created_by
     post:
-      description: Creates one or more volumes on the specified cloud. If async is
-        true, a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES
-        permission required on cloud. READ permission required on location. CREATE_RESOURCES
-        permission required on location. CREATE permission required on volume.
+      description: |
+        Creates one or more volumes on the specified cloud. If async is true, a jobId will be returned.
+        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location.
+        CREATE_RESOURCES permission required on location. CREATE permission required on volume.
       operationId: create-volume
       requestBody:
         content:
@@ -4990,6 +5486,19 @@ paths:
           default: auto
           type: string
         style: form
+      - description: Limit results by specific datetime. Return resources created
+          before or at, or deleted after or at, given datetime.
+        examples:
+          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+            value: 2021-07-21T17:32:28Z
+        explode: true
+        in: query
+        name: at
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -5026,9 +5535,9 @@ paths:
       - owned_by
       - created_by
     post:
-      description: Creates one or more zones on the specified cloud. If async is true,
-        a jobId will be returned. READ permission required on cloud. CREATE_RESOURCES
-        permission required on cloud. CREATE permission required on zone.
+      description: |
+        Creates one or more zones on the specified cloud. If async is true, a jobId will be returned.
+        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on zone.
       operationId: create-zone
       requestBody:
         content:
@@ -5208,7 +5717,21 @@ components:
   examples: {}
   headers: {}
   links: {}
-  parameters: {}
+  parameters:
+    atParam:
+      description: Limit results by specific datetime. Return resources created before
+        or at, or deleted after or at, given datetime.
+      examples:
+        Return resources created before or deleted after `2021-07-21T17:32:28Z`:
+          value: 2021-07-21T17:32:28Z
+      explode: true
+      in: query
+      name: at
+      required: false
+      schema:
+        format: date-time
+        type: string
+      style: form
   requestBodies: {}
   responses: {}
   schemas:
@@ -5430,7 +5953,7 @@ components:
           items:
             allOf:
             - type: object
-            - oneOf:
+            - anyOf:
               - $ref: '#/components/schemas/ResourceSelector'
               - $ref: '#/components/schemas/FieldSelector'
               - $ref: '#/components/schemas/TaggingSelector'
@@ -5616,35 +6139,6 @@ components:
       required:
       - credentials
       - provider
-      type: object
-    AmazonClusterRequest:
-      properties:
-        role_arn:
-          description: The Amazon Resource Name (ARN) of the IAM role that provides
-            permissions for the Kubernetes control plane to make calls to AWS API
-            operations on your behalf
-          type: string
-        network:
-          description: Name or ID of the network to be associated with the cluster.
-            If not given the default network will be selected
-          type: string
-        subnets:
-          description: IDs of the subnets to be associated with the cluster. At least
-            2 subnets in different availability zones are required, if not given the
-            default subnets will be used
-          items:
-            type: string
-          type: array
-        security_groups:
-          description: The security groups associated with the cross-account elastic
-            network interfaces that are used to allow communication between your nodes
-            and the Kubernetes control plane
-          items:
-            type: string
-          type: array
-      required:
-      - role_arn
-      title: Amazon parameters
       type: object
     AmazonCredentials:
       properties:
@@ -5998,14 +6492,10 @@ components:
     CreateClusterRequest:
       allOf:
       - $ref: '#/components/schemas/CreateClusterRequest_allOf'
-      - oneOf:
-        - $ref: '#/components/schemas/AmazonClusterRequest'
-        - $ref: '#/components/schemas/GoogleClusterRequest'
       example:
         name: my-cluster
-        cloud: my-cloud
         provider: google
-        location: my-location
+        location: europe-west2-b
     CreateClusterResponse:
       example:
         jobId: jobId
@@ -6225,6 +6715,7 @@ components:
           - $ref: '#/components/schemas/AzureExtra'
           - $ref: '#/components/schemas/DockerExtra'
           - $ref: '#/components/schemas/EquinixMetalExtra'
+          - $ref: '#/components/schemas/GoogleExtra'
           - $ref: '#/components/schemas/LinodeExtra'
           - $ref: '#/components/schemas/LXDExtra'
           - $ref: '#/components/schemas/VSphereExtra'
@@ -6296,6 +6787,21 @@ components:
       oneOf:
       - $ref: '#/components/schemas/CreateMachineResponse_oneOf'
       - $ref: '#/components/schemas/CreateMachineResponse_oneOf_1'
+      type: object
+    CreateSecretRequest:
+      example:
+        name: name
+        secret: '{}'
+      properties:
+        name:
+          description: The name of the secret. This is equivalent to the path the
+            secret will be stored in Vault
+          type: string
+        secret:
+          type: object
+      required:
+      - name
+      - secret
       type: object
     CreateSnapshotResponse:
       type: object
@@ -6480,6 +6986,19 @@ components:
       items:
         $ref: '#/components/schemas/DatapointsValuesItem'
       type: array
+    DestroyClusterResponse:
+      example:
+        cloud: cloud
+        jobId: jobId
+        cluster: cluster
+      properties:
+        jobId:
+          type: string
+        cloud:
+          type: string
+        cluster:
+          type: string
+      type: object
     DigitalOceanVolumes:
       items:
         oneOf:
@@ -6796,7 +7315,7 @@ components:
           items:
             allOf:
             - type: object
-            - oneOf:
+            - anyOf:
               - $ref: '#/components/schemas/ResourceSelector'
               - $ref: '#/components/schemas/FieldSelector'
               - $ref: '#/components/schemas/TaggingSelector'
@@ -6824,6 +7343,15 @@ components:
           description: Decides if the schedule runs immediately of not
           example: false
           type: boolean
+      type: object
+    EditSecretRequest:
+      example:
+        secret: '{}'
+      properties:
+        secret:
+          type: object
+      required:
+      - secret
       type: object
     EquinixCloudRequest:
       properties:
@@ -7086,10 +7614,17 @@ components:
       example:
         data:
           cloud: cloud
+          parent: parent
+          country: country
+          available_sizes: '{}'
           extra: '{}'
           name: name
           external_id: external_id
+          owned_by: owned_by
           id: id
+          available_images: '{}'
+          created_by: created_by
+          location_type: location_type
         meta:
           total: 0
           start: 1
@@ -7304,6 +7839,25 @@ components:
         meta:
           $ref: '#/components/schemas/ResponseMetadata'
       type: object
+    GetSecretResponse:
+      example:
+        data:
+          name: name
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+          tags: '{}'
+        meta:
+          total: 0
+          start: 1
+          sort: sort
+          returned: 6
+      properties:
+        data:
+          $ref: '#/components/schemas/Secret'
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
+      type: object
     GetSizeResponse:
       example:
         data:
@@ -7389,15 +7943,6 @@ components:
       - credentials
       - provider
       type: object
-    GoogleClusterRequest:
-      properties:
-        location:
-          description: Name or ID of the location to create the cluster in
-          type: string
-      required:
-      - location
-      title: Google parameters
-      type: object
     GoogleCredentials:
       properties:
         projectId:
@@ -7413,6 +7958,12 @@ components:
       - email
       - privateKey
       - projectId
+      type: object
+    GoogleExtra:
+      properties:
+        service_account:
+          $ref: '#/components/schemas/GoogleExtra_service_account'
+      title: Google extra parameter
       type: object
     GoogleNet:
       properties:
@@ -7461,6 +8012,34 @@ components:
         type: object
       title: Google volumes parameter
       type: array
+    HelmChart:
+      properties:
+        type:
+          enum:
+          - helm
+          type: string
+        repo_url:
+          description: The url of the Helm repository
+          type: string
+        chart_name:
+          type: string
+        release_name:
+          type: string
+        namespace:
+          description: The namespace to install the release on
+          type: string
+        values:
+          description: The contents of a Helm values.yaml file
+          type: string
+        version:
+          description: A version constraint for the chart
+          type: string
+      required:
+      - chart_name
+      - release_name
+      - repo_url
+      - type
+      type: object
     IbmCloudRequest:
       properties:
         provider:
@@ -7745,6 +8324,15 @@ components:
       required:
       - host
       - port
+      type: object
+    KubernetesManifest:
+      properties:
+        type:
+          enum:
+          - manifest
+          type: string
+      required:
+      - type
       type: object
     KubevirtCloudRequest:
       properties:
@@ -8063,15 +8651,29 @@ components:
       example:
         data:
         - cloud: cloud
+          parent: parent
+          country: country
+          available_sizes: '{}'
           extra: '{}'
           name: name
           external_id: external_id
+          owned_by: owned_by
           id: id
+          available_images: '{}'
+          created_by: created_by
+          location_type: location_type
         - cloud: cloud
+          parent: parent
+          country: country
+          available_sizes: '{}'
           extra: '{}'
           name: name
           external_id: external_id
+          owned_by: owned_by
           id: id
+          available_images: '{}'
+          created_by: created_by
+          location_type: location_type
         meta:
           total: 0
           start: 1
@@ -8467,6 +9069,32 @@ components:
         meta:
           $ref: '#/components/schemas/ResponseMetadata'
       type: object
+    ListSecretsResponse:
+      example:
+        data:
+        - name: name
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+          tags: '{}'
+        - name: name
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+          tags: '{}'
+        meta:
+          total: 0
+          start: 1
+          sort: sort
+          returned: 6
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Secret'
+          type: array
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
+      type: object
     ListSizesResponse:
       example:
         data:
@@ -8624,10 +9252,17 @@ components:
     Location:
       example:
         cloud: cloud
+        parent: parent
+        country: country
+        available_sizes: '{}'
         extra: '{}'
         name: name
         external_id: external_id
+        owned_by: owned_by
         id: id
+        available_images: '{}'
+        created_by: created_by
+        location_type: location_type
       properties:
         id:
           type: string
@@ -8639,6 +9274,20 @@ components:
           type: string
         extra:
           type: object
+        parent:
+          type: string
+        location_type:
+          type: string
+        country:
+          type: string
+        available_sizes:
+          type: object
+        available_images:
+          type: object
+        owned_by:
+          type: string
+        created_by:
+          type: string
       type: object
     Log:
       example:
@@ -9437,7 +10086,7 @@ components:
           items:
             allOf:
             - type: object
-            - oneOf:
+            - anyOf:
               - $ref: '#/components/schemas/ResourceSelector'
               - $ref: '#/components/schemas/FieldSelector'
               - $ref: '#/components/schemas/TaggingSelector'
@@ -9484,6 +10133,25 @@ components:
         name:
           type: string
         description:
+          type: string
+        tags:
+          type: object
+        created_by:
+          type: string
+        owned_by:
+          type: string
+      type: object
+    Secret:
+      example:
+        name: name
+        owned_by: owned_by
+        id: id
+        created_by: created_by
+        tags: '{}'
+      properties:
+        id:
+          type: string
+        name:
           type: string
         tags:
           type: object
@@ -9948,20 +10616,15 @@ components:
           type: integer
         size:
           description: Name or ID of size to use for the nodes. If not provided, the
-            t3.medium(EKS) or e2-medium(GKE) size will be used
+            t3.medium(EKS), e2-medium(GKE) size will be used
           type: string
         disk_size:
           default: 20
           description: Size of the disk attached to each node, specified in GB.
           type: integer
-        role_arn:
-          description: Amazon specific parameter.The Amazon Resource Name (ARN) of
-            the IAM role to associate with the nodes. Required in order to create
-            a cluster nodepool
-          type: string
         disk_type:
-          description: Google specific parameter.Type of the disk attached to each
-            node. Defaults to pd-standard
+          description: Type of the disk attached to each node. Defaults to pd-standard(GKE),
+            gp3(EKS)
           type: string
         preemptible:
           description: Google specific parameter.Whether the nodes are created as
@@ -9978,9 +10641,34 @@ components:
           type: string
         provider:
           $ref: '#/components/schemas/ClusterProviders'
+        location:
+          description: Google specific parameter(Required).Name or ID of the location
+            to create the cluster in
+          type: string
         nodepools:
           items:
             $ref: '#/components/schemas/CreateClusterRequest_allOf_nodepools'
+          type: array
+        templates:
+          items:
+            allOf:
+            - properties:
+                type:
+                  enum:
+                  - helm
+                  - manifest
+                  type: string
+              required:
+              - type
+              type: object
+            - discriminator:
+                mapping:
+                  helm: '#/components/schemas/HelmChart'
+                  manifest: '#/components/schemas/KubernetesManifest'
+                propertyName: type
+              oneOf:
+              - $ref: '#/components/schemas/HelmChart'
+              - $ref: '#/components/schemas/KubernetesManifest'
           type: array
       required:
       - name
@@ -10082,6 +10770,17 @@ components:
       required:
       - period
       - value
+      type: object
+    GoogleExtra_service_account:
+      properties:
+        email:
+          description: The email address of the service account.
+          type: string
+        scopes:
+          description: A list of scopes to be made available for this machine.
+          items:
+            type: string
+          type: array
       type: object
     KVMNet_networks:
       properties:

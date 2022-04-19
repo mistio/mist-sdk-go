@@ -15,6 +15,7 @@ api_orgs.go
 api_rules.go
 api_schedules.go
 api_scripts.go
+api_secrets.go
 api_sizes.go
 api_snapshots.go
 api_users.go
@@ -37,7 +38,6 @@ docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
 docs/AlibabaNet.md
 docs/AmazonCloudRequest.md
-docs/AmazonClusterRequest.md
 docs/AmazonCredentials.md
 docs/AmazonNet.md
 docs/AzureCloudRequest.md
@@ -63,6 +63,7 @@ docs/CreateMachineResponseOneOf.md
 docs/CreateMachineResponseOneOf1.md
 docs/CreateNetworkRequest.md
 docs/CreateNetworkResponse.md
+docs/CreateSecretRequest.md
 docs/CreateVolumeRequest.md
 docs/CreateVolumeResponse.md
 docs/CreateZoneRequest.md
@@ -73,6 +74,7 @@ docs/Datapoints.md
 docs/DatapointsApi.md
 docs/DatapointsData.md
 docs/DatapointsValuesItem.md
+docs/DestroyClusterResponse.md
 docs/DigitaloceanCloudRequest.md
 docs/DigitaloceanCredentials.md
 docs/DockerCloudRequest.md
@@ -85,6 +87,7 @@ docs/EditMachineRequest.md
 docs/EditMachineRequestExpiration.md
 docs/EditRuleRequest.md
 docs/EditScheduleRequest.md
+docs/EditSecretRequest.md
 docs/EquinixCloudRequest.md
 docs/EquinixCredentials.md
 docs/EquinixMetalExtra.md
@@ -108,13 +111,16 @@ docs/GetOrgResponse.md
 docs/GetRuleResponse.md
 docs/GetScheduleResponse.md
 docs/GetScriptResponse.md
+docs/GetSecretResponse.md
 docs/GetSizeResponse.md
 docs/GetVolumeResponse.md
 docs/GetZoneResponse.md
 docs/GoogleCloudRequest.md
-docs/GoogleClusterRequest.md
 docs/GoogleCredentials.md
+docs/GoogleExtra.md
+docs/GoogleExtraServiceAccount.md
 docs/GoogleNet.md
+docs/HelmChart.md
 docs/IbmCloudRequest.md
 docs/IbmCredentials.md
 docs/Image.md
@@ -134,6 +140,7 @@ docs/KeyMachineDisassociation.md
 docs/KeysApi.md
 docs/KubernetesCloudRequest.md
 docs/KubernetesCredentials.md
+docs/KubernetesManifest.md
 docs/KubevirtCloudRequest.md
 docs/KvmCloudRequest.md
 docs/LXDExtra.md
@@ -155,6 +162,7 @@ docs/ListOrgsResponse.md
 docs/ListRulesResponse.md
 docs/ListSchedulesResponse.md
 docs/ListScriptsResponse.md
+docs/ListSecretsResponse.md
 docs/ListSizesResponse.md
 docs/ListSnapshotsResponse.md
 docs/ListUsersResponse.md
@@ -200,6 +208,8 @@ docs/Schedule.md
 docs/SchedulesApi.md
 docs/Script.md
 docs/ScriptsApi.md
+docs/Secret.md
+docs/SecretsApi.md
 docs/Size.md
 docs/SizesApi.md
 docs/SnapshotsApi.md
@@ -241,7 +251,6 @@ model_alibaba_cloud_request.go
 model_alibaba_credentials.go
 model_alibaba_net.go
 model_amazon_cloud_request.go
-model_amazon_cluster_request.go
 model_amazon_credentials.go
 model_amazon_net.go
 model_azure_cloud_request.go
@@ -265,6 +274,7 @@ model_create_machine_response_one_of.go
 model_create_machine_response_one_of_1.go
 model_create_network_request.go
 model_create_network_response.go
+model_create_secret_request.go
 model_create_volume_request.go
 model_create_volume_response.go
 model_create_zone_request.go
@@ -274,6 +284,7 @@ model_data_type.go
 model_datapoints.go
 model_datapoints_data.go
 model_datapoints_values_item.go
+model_destroy_cluster_response.go
 model_digitalocean_cloud_request.go
 model_digitalocean_credentials.go
 model_docker_cloud_request.go
@@ -286,6 +297,7 @@ model_edit_machine_request.go
 model_edit_machine_request_expiration.go
 model_edit_rule_request.go
 model_edit_schedule_request.go
+model_edit_secret_request.go
 model_equinix_cloud_request.go
 model_equinix_credentials.go
 model_equinix_metal_extra.go
@@ -309,13 +321,16 @@ model_get_org_response.go
 model_get_rule_response.go
 model_get_schedule_response.go
 model_get_script_response.go
+model_get_secret_response.go
 model_get_size_response.go
 model_get_volume_response.go
 model_get_zone_response.go
 model_google_cloud_request.go
-model_google_cluster_request.go
 model_google_credentials.go
+model_google_extra.go
+model_google_extra_service_account.go
 model_google_net.go
+model_helm_chart.go
 model_ibm_cloud_request.go
 model_ibm_credentials.go
 model_image.go
@@ -330,6 +345,7 @@ model_key_machine_association.go
 model_key_machine_disassociation.go
 model_kubernetes_cloud_request.go
 model_kubernetes_credentials.go
+model_kubernetes_manifest.go
 model_kubevirt_cloud_request.go
 model_kvm_cloud_request.go
 model_kvm_net.go
@@ -351,6 +367,7 @@ model_list_orgs_response.go
 model_list_rules_response.go
 model_list_schedules_response.go
 model_list_scripts_response.go
+model_list_secrets_response.go
 model_list_sizes_response.go
 model_list_snapshots_response.go
 model_list_users_response.go
@@ -391,6 +408,7 @@ model_run_script_request.go
 model_run_script_response.go
 model_schedule.go
 model_script.go
+model_secret.go
 model_size.go
 model_supported_providers.go
 model_tagging_selector.go

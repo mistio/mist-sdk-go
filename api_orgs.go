@@ -17,6 +17,7 @@ import (
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
+	"time"
 )
 
 // Linger please
@@ -302,6 +303,7 @@ type ApiListOrgMembersRequest struct {
 	start *string
 	limit *int32
 	only *string
+	at *time.Time
 }
 
 func (r ApiListOrgMembersRequest) Search(search string) ApiListOrgMembersRequest {
@@ -322,6 +324,10 @@ func (r ApiListOrgMembersRequest) Limit(limit int32) ApiListOrgMembersRequest {
 }
 func (r ApiListOrgMembersRequest) Only(only string) ApiListOrgMembersRequest {
 	r.only = &only
+	return r
+}
+func (r ApiListOrgMembersRequest) At(at time.Time) ApiListOrgMembersRequest {
+	r.at = &at
 	return r
 }
 
@@ -384,6 +390,9 @@ func (a *OrgsApiService) ListOrgMembersExecute(r ApiListOrgMembersRequest) (List
 	}
 	if r.only != nil {
 		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
+	}
+	if r.at != nil {
+		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -462,6 +471,7 @@ type ApiListOrgTeamsRequest struct {
 	limit *int32
 	only *string
 	deref *string
+	at *time.Time
 }
 
 func (r ApiListOrgTeamsRequest) Search(search string) ApiListOrgTeamsRequest {
@@ -486,6 +496,10 @@ func (r ApiListOrgTeamsRequest) Only(only string) ApiListOrgTeamsRequest {
 }
 func (r ApiListOrgTeamsRequest) Deref(deref string) ApiListOrgTeamsRequest {
 	r.deref = &deref
+	return r
+}
+func (r ApiListOrgTeamsRequest) At(at time.Time) ApiListOrgTeamsRequest {
+	r.at = &at
 	return r
 }
 
@@ -551,6 +565,9 @@ func (a *OrgsApiService) ListOrgTeamsExecute(r ApiListOrgTeamsRequest) (ListOrgT
 	}
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
+	}
+	if r.at != nil {
+		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -629,6 +646,7 @@ type ApiListOrgsRequest struct {
 	limit *int32
 	only *string
 	deref *string
+	at *time.Time
 }
 
 func (r ApiListOrgsRequest) Allorgs(allorgs string) ApiListOrgsRequest {
@@ -657,6 +675,10 @@ func (r ApiListOrgsRequest) Only(only string) ApiListOrgsRequest {
 }
 func (r ApiListOrgsRequest) Deref(deref string) ApiListOrgsRequest {
 	r.deref = &deref
+	return r
+}
+func (r ApiListOrgsRequest) At(at time.Time) ApiListOrgsRequest {
+	r.at = &at
 	return r
 }
 
@@ -722,6 +744,9 @@ func (a *OrgsApiService) ListOrgsExecute(r ApiListOrgsRequest) (ListOrgsResponse
 	}
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
+	}
+	if r.at != nil {
+		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
