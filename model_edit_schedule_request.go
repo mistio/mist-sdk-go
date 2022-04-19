@@ -36,8 +36,6 @@ type EditScheduleRequest struct {
 	ScheduleEntry *string `json:"schedule_entry,omitempty"`
 	// Edit the date after that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	StartAfter *string `json:"start_after,omitempty"`
-	// Decides if the schedule runs immediately of not
-	RunImmediately *bool `json:"run_immediately,omitempty"`
 }
 
 // NewEditScheduleRequest instantiates a new EditScheduleRequest object
@@ -377,38 +375,6 @@ func (o *EditScheduleRequest) SetStartAfter(v string) {
 	o.StartAfter = &v
 }
 
-// GetRunImmediately returns the RunImmediately field value if set, zero value otherwise.
-func (o *EditScheduleRequest) GetRunImmediately() bool {
-	if o == nil || o.RunImmediately == nil {
-		var ret bool
-		return ret
-	}
-	return *o.RunImmediately
-}
-
-// GetRunImmediatelyOk returns a tuple with the RunImmediately field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EditScheduleRequest) GetRunImmediatelyOk() (*bool, bool) {
-	if o == nil || o.RunImmediately == nil {
-		return nil, false
-	}
-	return o.RunImmediately, true
-}
-
-// HasRunImmediately returns a boolean if a field has been set.
-func (o *EditScheduleRequest) HasRunImmediately() bool {
-	if o != nil && o.RunImmediately != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRunImmediately gets a reference to the given bool and assigns it to the RunImmediately field.
-func (o *EditScheduleRequest) SetRunImmediately(v bool) {
-	o.RunImmediately = &v
-}
-
 func (o EditScheduleRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -440,9 +406,6 @@ func (o EditScheduleRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.StartAfter != nil {
 		toSerialize["start_after"] = o.StartAfter
-	}
-	if o.RunImmediately != nil {
-		toSerialize["run_immediately"] = o.RunImmediately
 	}
 	return json.Marshal(toSerialize)
 }
