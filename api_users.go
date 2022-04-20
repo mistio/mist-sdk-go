@@ -16,6 +16,7 @@ import (
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
+	"time"
 )
 
 // Linger please
@@ -35,6 +36,7 @@ type ApiListUsersRequest struct {
 	limit *int32
 	only *string
 	deref *string
+	at *time.Time
 }
 
 func (r ApiListUsersRequest) Search(search string) ApiListUsersRequest {
@@ -59,6 +61,10 @@ func (r ApiListUsersRequest) Only(only string) ApiListUsersRequest {
 }
 func (r ApiListUsersRequest) Deref(deref string) ApiListUsersRequest {
 	r.deref = &deref
+	return r
+}
+func (r ApiListUsersRequest) At(at time.Time) ApiListUsersRequest {
+	r.at = &at
 	return r
 }
 
@@ -121,6 +127,9 @@ func (a *UsersApiService) ListUsersExecute(r ApiListUsersRequest) (ListUsersResp
 	}
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
+	}
+	if r.at != nil {
+		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

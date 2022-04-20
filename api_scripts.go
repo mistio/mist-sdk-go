@@ -18,6 +18,7 @@ import (
 	_neturl "net/url"
 	"strings"
 	"os"
+	"time"
 )
 
 // Linger please
@@ -750,6 +751,7 @@ type ApiListScriptsRequest struct {
 	limit *int32
 	only *string
 	deref *string
+	at *time.Time
 }
 
 func (r ApiListScriptsRequest) Search(search string) ApiListScriptsRequest {
@@ -774,6 +776,10 @@ func (r ApiListScriptsRequest) Only(only string) ApiListScriptsRequest {
 }
 func (r ApiListScriptsRequest) Deref(deref string) ApiListScriptsRequest {
 	r.deref = &deref
+	return r
+}
+func (r ApiListScriptsRequest) At(at time.Time) ApiListScriptsRequest {
+	r.at = &at
 	return r
 }
 
@@ -836,6 +842,9 @@ func (a *ScriptsApiService) ListScriptsExecute(r ApiListScriptsRequest) (ListScr
 	}
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
+	}
+	if r.at != nil {
+		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
