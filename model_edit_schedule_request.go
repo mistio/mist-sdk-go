@@ -32,7 +32,7 @@ type EditScheduleRequest struct {
 	Selectors *[]map[string]interface{} `json:"selectors,omitempty"`
 	// Edit the type of the schedule
 	ScheduleType *string `json:"schedule_type,omitempty"`
-	// Edit the date that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
+	// In case of One Off schedule type the date string that schedule runs (The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS). In case of Interval and Crontab schedule types a JSON string with need time unit values. For Interval schedule type interval integer value and period string value needed. For Crontab schedule type minute, hour, day_of_week, day_of_month and month_of_year string values needed.
 	ScheduleEntry *string `json:"schedule_entry,omitempty"`
 	// Edit the date after that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	StartAfter *string `json:"start_after,omitempty"`
