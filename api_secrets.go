@@ -17,7 +17,6 @@ import (
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
-	"time"
 )
 
 // Linger please
@@ -25,32 +24,32 @@ var (
 	_ _context.Context
 )
 
-// ClustersApiService ClustersApi service
-type ClustersApiService service
+// SecretsApiService SecretsApi service
+type SecretsApiService service
 
-type ApiCreateClusterRequest struct {
+type ApiCreateSecretRequest struct {
 	ctx _context.Context
-	ApiService *ClustersApiService
-	createClusterRequest *CreateClusterRequest
+	ApiService *SecretsApiService
+	createSecretRequest *CreateSecretRequest
 }
 
-func (r ApiCreateClusterRequest) CreateClusterRequest(createClusterRequest CreateClusterRequest) ApiCreateClusterRequest {
-	r.createClusterRequest = &createClusterRequest
+func (r ApiCreateSecretRequest) CreateSecretRequest(createSecretRequest CreateSecretRequest) ApiCreateSecretRequest {
+	r.createSecretRequest = &createSecretRequest
 	return r
 }
 
-func (r ApiCreateClusterRequest) Execute() (CreateClusterResponse, *_nethttp.Response, error) {
-	return r.ApiService.CreateClusterExecute(r)
+func (r ApiCreateSecretRequest) Execute() (Secret, *_nethttp.Response, error) {
+	return r.ApiService.CreateSecretExecute(r)
 }
 
 /*
- * CreateCluster Create cluster
- * Create a new cluster and return the cluster's id
+ * CreateSecret Create secret
+ * Creates a new secret and returns the secret's id. CREATE permission required on secret.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiCreateClusterRequest
+ * @return ApiCreateSecretRequest
  */
-func (a *ClustersApiService) CreateCluster(ctx _context.Context) ApiCreateClusterRequest {
-	return ApiCreateClusterRequest{
+func (a *SecretsApiService) CreateSecret(ctx _context.Context) ApiCreateSecretRequest {
+	return ApiCreateSecretRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -58,24 +57,24 @@ func (a *ClustersApiService) CreateCluster(ctx _context.Context) ApiCreateCluste
 
 /*
  * Execute executes the request
- * @return CreateClusterResponse
+ * @return Secret
  */
-func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (CreateClusterResponse, *_nethttp.Response, error) {
+func (a *SecretsApiService) CreateSecretExecute(r ApiCreateSecretRequest) (Secret, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  CreateClusterResponse
+		localVarReturnValue  Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.CreateCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.CreateSecret")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/clusters"
+	localVarPath := localBasePath + "/api/v2/secrets"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -99,7 +98,7 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (Cr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createClusterRequest
+	localVarPostBody = r.createSecretRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -150,53 +149,51 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (Cr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestroyClusterRequest struct {
+type ApiDeleteSecretRequest struct {
 	ctx _context.Context
-	ApiService *ClustersApiService
-	cluster string
+	ApiService *SecretsApiService
+	secret string
 }
 
 
-func (r ApiDestroyClusterRequest) Execute() (DestroyClusterResponse, *_nethttp.Response, error) {
-	return r.ApiService.DestroyClusterExecute(r)
+func (r ApiDeleteSecretRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteSecretExecute(r)
 }
 
 /*
- * DestroyCluster Destroy cluster
- * Destroy target clusters
+ * DeleteSecret Delete secret
+ * Delete target secret
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param cluster
- * @return ApiDestroyClusterRequest
+ * @param secret
+ * @return ApiDeleteSecretRequest
  */
-func (a *ClustersApiService) DestroyCluster(ctx _context.Context, cluster string) ApiDestroyClusterRequest {
-	return ApiDestroyClusterRequest{
+func (a *SecretsApiService) DeleteSecret(ctx _context.Context, secret string) ApiDeleteSecretRequest {
+	return ApiDeleteSecretRequest{
 		ApiService: a,
 		ctx: ctx,
-		cluster: cluster,
+		secret: secret,
 	}
 }
 
 /*
  * Execute executes the request
- * @return DestroyClusterResponse
  */
-func (a *ClustersApiService) DestroyClusterExecute(r ApiDestroyClusterRequest) (DestroyClusterResponse, *_nethttp.Response, error) {
+func (a *SecretsApiService) DeleteSecretExecute(r ApiDeleteSecretRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  DestroyClusterResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.DestroyCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.DeleteSecret")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/clusters/{cluster}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster"+"}", _neturl.PathEscape(parameterToString(r.cluster, "")), -1)
+	localVarPath := localBasePath + "/api/v2/secrets/{secret}"
+	localVarPath = strings.Replace(localVarPath, "{"+"secret"+"}", _neturl.PathEscape(parameterToString(r.secret, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -212,6 +209,121 @@ func (a *ClustersApiService) DestroyClusterExecute(r ApiDestroyClusterRequest) (
 	}
 
 	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiEditSecretRequest struct {
+	ctx _context.Context
+	ApiService *SecretsApiService
+	secret string
+	editSecretRequest *EditSecretRequest
+}
+
+func (r ApiEditSecretRequest) EditSecretRequest(editSecretRequest EditSecretRequest) ApiEditSecretRequest {
+	r.editSecretRequest = &editSecretRequest
+	return r
+}
+
+func (r ApiEditSecretRequest) Execute() (Secret, *_nethttp.Response, error) {
+	return r.ApiService.EditSecretExecute(r)
+}
+
+/*
+ * EditSecret Edit secret
+ * Edit/update target secret
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param secret
+ * @return ApiEditSecretRequest
+ */
+func (a *SecretsApiService) EditSecret(ctx _context.Context, secret string) ApiEditSecretRequest {
+	return ApiEditSecretRequest{
+		ApiService: a,
+		ctx: ctx,
+		secret: secret,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return Secret
+ */
+func (a *SecretsApiService) EditSecretExecute(r ApiEditSecretRequest) (Secret, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  Secret
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.EditSecret")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/secrets/{secret}"
+	localVarPath = strings.Replace(localVarPath, "{"+"secret"+"}", _neturl.PathEscape(parameterToString(r.secret, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
@@ -219,6 +331,8 @@ func (a *ClustersApiService) DestroyClusterExecute(r ApiDestroyClusterRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.editSecretRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -269,81 +383,65 @@ func (a *ClustersApiService) DestroyClusterExecute(r ApiDestroyClusterRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetClusterRequest struct {
+type ApiGetSecretRequest struct {
 	ctx _context.Context
-	ApiService *ClustersApiService
-	cluster string
-	only *string
-	deref *string
-	credentials *bool
+	ApiService *SecretsApiService
+	secret string
+	value *bool
 }
 
-func (r ApiGetClusterRequest) Only(only string) ApiGetClusterRequest {
-	r.only = &only
-	return r
-}
-func (r ApiGetClusterRequest) Deref(deref string) ApiGetClusterRequest {
-	r.deref = &deref
-	return r
-}
-func (r ApiGetClusterRequest) Credentials(credentials bool) ApiGetClusterRequest {
-	r.credentials = &credentials
+func (r ApiGetSecretRequest) Value(value bool) ApiGetSecretRequest {
+	r.value = &value
 	return r
 }
 
-func (r ApiGetClusterRequest) Execute() (GetClusterResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetClusterExecute(r)
+func (r ApiGetSecretRequest) Execute() (GetSecretResponse, *_nethttp.Response, error) {
+	return r.ApiService.GetSecretExecute(r)
 }
 
 /*
- * GetCluster Get cluster
- * Get details about target cluster
+ * GetSecret Get secret
+ * Read target secret
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param cluster
- * @return ApiGetClusterRequest
+ * @param secret
+ * @return ApiGetSecretRequest
  */
-func (a *ClustersApiService) GetCluster(ctx _context.Context, cluster string) ApiGetClusterRequest {
-	return ApiGetClusterRequest{
+func (a *SecretsApiService) GetSecret(ctx _context.Context, secret string) ApiGetSecretRequest {
+	return ApiGetSecretRequest{
 		ApiService: a,
 		ctx: ctx,
-		cluster: cluster,
+		secret: secret,
 	}
 }
 
 /*
  * Execute executes the request
- * @return GetClusterResponse
+ * @return GetSecretResponse
  */
-func (a *ClustersApiService) GetClusterExecute(r ApiGetClusterRequest) (GetClusterResponse, *_nethttp.Response, error) {
+func (a *SecretsApiService) GetSecretExecute(r ApiGetSecretRequest) (GetSecretResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  GetClusterResponse
+		localVarReturnValue  GetSecretResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.GetSecret")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/clusters/{cluster}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster"+"}", _neturl.PathEscape(parameterToString(r.cluster, "")), -1)
+	localVarPath := localBasePath + "/api/v2/secrets/{secret}"
+	localVarPath = strings.Replace(localVarPath, "{"+"secret"+"}", _neturl.PathEscape(parameterToString(r.secret, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if r.only != nil {
-		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
-	}
-	if r.deref != nil {
-		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
-	}
-	if r.credentials != nil {
-		localVarQueryParams.Add("credentials", parameterToString(*r.credentials, ""))
+	if r.value != nil {
+		localVarQueryParams.Add("value", parameterToString(*r.value, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -412,64 +510,49 @@ func (a *ClustersApiService) GetClusterExecute(r ApiGetClusterRequest) (GetClust
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListClustersRequest struct {
+type ApiListSecretsRequest struct {
 	ctx _context.Context
-	ApiService *ClustersApiService
-	cloud *string
+	ApiService *SecretsApiService
 	search *string
 	sort *string
 	start *string
 	limit *int32
 	only *string
-	deref *string
-	at *time.Time
 }
 
-func (r ApiListClustersRequest) Cloud(cloud string) ApiListClustersRequest {
-	r.cloud = &cloud
-	return r
-}
-func (r ApiListClustersRequest) Search(search string) ApiListClustersRequest {
+func (r ApiListSecretsRequest) Search(search string) ApiListSecretsRequest {
 	r.search = &search
 	return r
 }
-func (r ApiListClustersRequest) Sort(sort string) ApiListClustersRequest {
+func (r ApiListSecretsRequest) Sort(sort string) ApiListSecretsRequest {
 	r.sort = &sort
 	return r
 }
-func (r ApiListClustersRequest) Start(start string) ApiListClustersRequest {
+func (r ApiListSecretsRequest) Start(start string) ApiListSecretsRequest {
 	r.start = &start
 	return r
 }
-func (r ApiListClustersRequest) Limit(limit int32) ApiListClustersRequest {
+func (r ApiListSecretsRequest) Limit(limit int32) ApiListSecretsRequest {
 	r.limit = &limit
 	return r
 }
-func (r ApiListClustersRequest) Only(only string) ApiListClustersRequest {
+func (r ApiListSecretsRequest) Only(only string) ApiListSecretsRequest {
 	r.only = &only
 	return r
 }
-func (r ApiListClustersRequest) Deref(deref string) ApiListClustersRequest {
-	r.deref = &deref
-	return r
-}
-func (r ApiListClustersRequest) At(at time.Time) ApiListClustersRequest {
-	r.at = &at
-	return r
-}
 
-func (r ApiListClustersRequest) Execute() (ListClustersResponse, *_nethttp.Response, error) {
-	return r.ApiService.ListClustersExecute(r)
+func (r ApiListSecretsRequest) Execute() (ListSecretsResponse, *_nethttp.Response, error) {
+	return r.ApiService.ListSecretsExecute(r)
 }
 
 /*
- * ListClusters List clusters
- * List clusters
+ * ListSecrets List secrets
+ * List secrets owned by the active org. READ permission required on secret.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiListClustersRequest
+ * @return ApiListSecretsRequest
  */
-func (a *ClustersApiService) ListClusters(ctx _context.Context) ApiListClustersRequest {
-	return ApiListClustersRequest{
+func (a *SecretsApiService) ListSecrets(ctx _context.Context) ApiListSecretsRequest {
+	return ApiListSecretsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -477,32 +560,29 @@ func (a *ClustersApiService) ListClusters(ctx _context.Context) ApiListClustersR
 
 /*
  * Execute executes the request
- * @return ListClustersResponse
+ * @return ListSecretsResponse
  */
-func (a *ClustersApiService) ListClustersExecute(r ApiListClustersRequest) (ListClustersResponse, *_nethttp.Response, error) {
+func (a *SecretsApiService) ListSecretsExecute(r ApiListSecretsRequest) (ListSecretsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ListClustersResponse
+		localVarReturnValue  ListSecretsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListClusters")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.ListSecrets")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/clusters"
+	localVarPath := localBasePath + "/api/v2/secrets"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if r.cloud != nil {
-		localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
-	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
 	}
@@ -517,12 +597,6 @@ func (a *ClustersApiService) ListClustersExecute(r ApiListClustersRequest) (List
 	}
 	if r.only != nil {
 		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
-	}
-	if r.deref != nil {
-		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
-	}
-	if r.at != nil {
-		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
