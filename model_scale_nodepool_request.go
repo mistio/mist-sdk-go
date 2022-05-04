@@ -15,9 +15,9 @@ import (
 	"encoding/json"
 )
 
-// ScaleNodepoolRequest To scale a GKE nodepool without autoscaling set only the desired_nodes parameter. On GKE nodepools with autoscaling, set min_nodes,max_nodes. For EKS nodepools set the min_nodes, desired_nodes, max_nodes parameters.
+// ScaleNodepoolRequest To scale a GKE nodepool without autoscaling set only the desired_nodes parameter. On GKE nodepools with autoscaling, set min_nodes,max_nodes. Enabling/Disabling autoscaling is only supported on GKE nodepools. min_nodes, max_nodes parameters are required to enable autoscaling. To disable autoscaling set only enable_autoscaling to false. For EKS nodepools set the min_nodes, desired_nodes, max_nodes parameters.
 type ScaleNodepoolRequest struct {
-	// Enable/Disable autoscaling for the specified GKE nodepool. Must be set with desired_nodes param for enable_autoscaling=false, min_nodes & max_nodes for enable_autoscaling=true
+	// Enable/Disable autoscaling for the specified GKE nodepool.
 	EnableAutoscaling *bool `json:"enable_autoscaling,omitempty"`
 	// The number of nodes that the nodepool should maintain
 	DesiredNodes *int32 `json:"desired_nodes,omitempty"`
