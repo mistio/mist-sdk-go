@@ -17,14 +17,14 @@ import (
 
 // CreateClusterRequestAllOfNodepools struct for CreateClusterRequestAllOfNodepools
 type CreateClusterRequestAllOfNodepools struct {
-	// GKE only, set to true to enable autoscaling
+	// GKE only, set to true to enable autoscaling, requires min_nodes and max_nodes to be set.
 	Autoscaling *bool `json:"autoscaling,omitempty"`
-	// The minimum number of nodes the autoscaler should maintain. On GKE nodepools this is only valid when autoscaling is set to true. On EKS nodepools if this value is not provided it will implicitly be set equal to nodes value
+	// The minimum number of nodes the autoscaler should maintain. On EKS nodepools if this value is not provided it will implicitly be set equal to nodes value
 	MinNodes *int32 `json:"min_nodes,omitempty"`
-	// The maximum number of nodes the autoscaler should maintain. On GKE nodepools this is only valid when autoscaling is set to true. On EKS nodepools if this value is not provided it will implicitly be set equal to nodes value
+	// The maximum number of nodes the autoscaler should maintain. On EKS nodepools if this value is not provided it will implicitly be set equal to nodes value
 	MaxNodes *int32 `json:"max_nodes,omitempty"`
-	// The number of nodes to provision for the cluster. Only valid for GKE nodepools when autoscaling is set to false
-	Nodes *int32 `json:"nodes,omitempty"`
+	// The number of nodes to provision for the cluster
+	Nodes int32 `json:"nodes"`
 	// Name or ID of size to use for the nodes. If not provided, the t3.medium(EKS), e2-medium(GKE) size will be used
 	Size *string `json:"size,omitempty"`
 	// Size of the disk attached to each node, specified in GB.
@@ -39,10 +39,11 @@ type CreateClusterRequestAllOfNodepools struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateClusterRequestAllOfNodepools() *CreateClusterRequestAllOfNodepools {
+func NewCreateClusterRequestAllOfNodepools(nodes int32, ) *CreateClusterRequestAllOfNodepools {
 	this := CreateClusterRequestAllOfNodepools{}
 	var autoscaling bool = false
 	this.Autoscaling = &autoscaling
+	this.Nodes = nodes
 	var diskSize int32 = 20
 	this.DiskSize = &diskSize
 	return &this
@@ -156,36 +157,28 @@ func (o *CreateClusterRequestAllOfNodepools) SetMaxNodes(v int32) {
 	o.MaxNodes = &v
 }
 
-// GetNodes returns the Nodes field value if set, zero value otherwise.
+// GetNodes returns the Nodes field value
 func (o *CreateClusterRequestAllOfNodepools) GetNodes() int32 {
-	if o == nil || o.Nodes == nil {
+	if o == nil  {
 		var ret int32
 		return ret
 	}
-	return *o.Nodes
+
+	return o.Nodes
 }
 
-// GetNodesOk returns a tuple with the Nodes field value if set, nil otherwise
+// GetNodesOk returns a tuple with the Nodes field value
 // and a boolean to check if the value has been set.
 func (o *CreateClusterRequestAllOfNodepools) GetNodesOk() (*int32, bool) {
-	if o == nil || o.Nodes == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Nodes, true
+	return &o.Nodes, true
 }
 
-// HasNodes returns a boolean if a field has been set.
-func (o *CreateClusterRequestAllOfNodepools) HasNodes() bool {
-	if o != nil && o.Nodes != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNodes gets a reference to the given int32 and assigns it to the Nodes field.
+// SetNodes sets field value
 func (o *CreateClusterRequestAllOfNodepools) SetNodes(v int32) {
-	o.Nodes = &v
+	o.Nodes = v
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
@@ -327,7 +320,7 @@ func (o CreateClusterRequestAllOfNodepools) MarshalJSON() ([]byte, error) {
 	if o.MaxNodes != nil {
 		toSerialize["max_nodes"] = o.MaxNodes
 	}
-	if o.Nodes != nil {
+	if true {
 		toSerialize["nodes"] = o.Nodes
 	}
 	if o.Size != nil {
