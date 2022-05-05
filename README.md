@@ -346,6 +346,7 @@ Class | Method | HTTP request | Description
  - [Schedule](docs/Schedule.md)
  - [Script](docs/Script.md)
  - [Secret](docs/Secret.md)
+ - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)
  - [SupportedProviders](docs/SupportedProviders.md)
  - [TaggingSelector](docs/TaggingSelector.md)

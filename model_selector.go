@@ -13,136 +13,150 @@ package mist_sdk
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// Selector struct for Selector
+// Selector - struct for Selector
 type Selector struct {
-	// one of \"machines\", \"volumes\", \"clusters\", \"networks\" or \"tags\"
-	Type string `json:"type"`
-	// a list of UUIDs in case type is resource like \"machines\", \"volumes\", \"clusters\" or \"networks\"
-	Ids *[]string `json:"ids,omitempty"`
-	// a list of tags in case type is \"tags\"
-	Include *[]string `json:"include,omitempty"`
+	AgeSelector *AgeSelector
+	FieldSelector *FieldSelector
+	ResourceSelector *ResourceSelector
+	TaggingSelector *TaggingSelector
 }
 
-// NewSelector instantiates a new Selector object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewSelector(type_ string, ) *Selector {
-	this := Selector{}
-	this.Type = type_
-	return &this
+// AgeSelectorAsSelector is a convenience function that returns AgeSelector wrapped in Selector
+func AgeSelectorAsSelector(v *AgeSelector) Selector {
+	return Selector{ AgeSelector: v}
 }
 
-// NewSelectorWithDefaults instantiates a new Selector object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewSelectorWithDefaults() *Selector {
-	this := Selector{}
-	return &this
+// FieldSelectorAsSelector is a convenience function that returns FieldSelector wrapped in Selector
+func FieldSelectorAsSelector(v *FieldSelector) Selector {
+	return Selector{ FieldSelector: v}
 }
 
-// GetType returns the Type field value
-func (o *Selector) GetType() string {
-	if o == nil  {
-		var ret string
-		return ret
+// ResourceSelectorAsSelector is a convenience function that returns ResourceSelector wrapped in Selector
+func ResourceSelectorAsSelector(v *ResourceSelector) Selector {
+	return Selector{ ResourceSelector: v}
+}
+
+// TaggingSelectorAsSelector is a convenience function that returns TaggingSelector wrapped in Selector
+func TaggingSelectorAsSelector(v *TaggingSelector) Selector {
+	return Selector{ TaggingSelector: v}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *Selector) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into AgeSelector
+	err = json.Unmarshal(data, &dst.AgeSelector)
+	if err == nil {
+		jsonAgeSelector, _ := json.Marshal(dst.AgeSelector)
+		if string(jsonAgeSelector) == "{}" { // empty struct
+			dst.AgeSelector = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AgeSelector = nil
 	}
 
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *Selector) GetTypeOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *Selector) SetType(v string) {
-	o.Type = v
-}
-
-// GetIds returns the Ids field value if set, zero value otherwise.
-func (o *Selector) GetIds() []string {
-	if o == nil || o.Ids == nil {
-		var ret []string
-		return ret
-	}
-	return *o.Ids
-}
-
-// GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Selector) GetIdsOk() (*[]string, bool) {
-	if o == nil || o.Ids == nil {
-		return nil, false
-	}
-	return o.Ids, true
-}
-
-// HasIds returns a boolean if a field has been set.
-func (o *Selector) HasIds() bool {
-	if o != nil && o.Ids != nil {
-		return true
+	// try to unmarshal data into FieldSelector
+	err = json.Unmarshal(data, &dst.FieldSelector)
+	if err == nil {
+		jsonFieldSelector, _ := json.Marshal(dst.FieldSelector)
+		if string(jsonFieldSelector) == "{}" { // empty struct
+			dst.FieldSelector = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.FieldSelector = nil
 	}
 
-	return false
-}
-
-// SetIds gets a reference to the given []string and assigns it to the Ids field.
-func (o *Selector) SetIds(v []string) {
-	o.Ids = &v
-}
-
-// GetInclude returns the Include field value if set, zero value otherwise.
-func (o *Selector) GetInclude() []string {
-	if o == nil || o.Include == nil {
-		var ret []string
-		return ret
-	}
-	return *o.Include
-}
-
-// GetIncludeOk returns a tuple with the Include field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Selector) GetIncludeOk() (*[]string, bool) {
-	if o == nil || o.Include == nil {
-		return nil, false
-	}
-	return o.Include, true
-}
-
-// HasInclude returns a boolean if a field has been set.
-func (o *Selector) HasInclude() bool {
-	if o != nil && o.Include != nil {
-		return true
+	// try to unmarshal data into ResourceSelector
+	err = json.Unmarshal(data, &dst.ResourceSelector)
+	if err == nil {
+		jsonResourceSelector, _ := json.Marshal(dst.ResourceSelector)
+		if string(jsonResourceSelector) == "{}" { // empty struct
+			dst.ResourceSelector = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.ResourceSelector = nil
 	}
 
-	return false
+	// try to unmarshal data into TaggingSelector
+	err = json.Unmarshal(data, &dst.TaggingSelector)
+	if err == nil {
+		jsonTaggingSelector, _ := json.Marshal(dst.TaggingSelector)
+		if string(jsonTaggingSelector) == "{}" { // empty struct
+			dst.TaggingSelector = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.TaggingSelector = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.AgeSelector = nil
+		dst.FieldSelector = nil
+		dst.ResourceSelector = nil
+		dst.TaggingSelector = nil
+
+		return fmt.Errorf("Data matches more than one schema in oneOf(Selector)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("Data failed to match schemas in oneOf(Selector)")
+	}
 }
 
-// SetInclude gets a reference to the given []string and assigns it to the Include field.
-func (o *Selector) SetInclude(v []string) {
-	o.Include = &v
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src Selector) MarshalJSON() ([]byte, error) {
+	if src.AgeSelector != nil {
+		return json.Marshal(&src.AgeSelector)
+	}
+
+	if src.FieldSelector != nil {
+		return json.Marshal(&src.FieldSelector)
+	}
+
+	if src.ResourceSelector != nil {
+		return json.Marshal(&src.ResourceSelector)
+	}
+
+	if src.TaggingSelector != nil {
+		return json.Marshal(&src.TaggingSelector)
+	}
+
+	return nil, nil // no data in oneOf schemas
 }
 
-func (o Selector) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
+// Get the actual instance
+func (obj *Selector) GetActualInstance() (interface{}) {
+	if obj.AgeSelector != nil {
+		return obj.AgeSelector
 	}
-	if o.Ids != nil {
-		toSerialize["ids"] = o.Ids
+
+	if obj.FieldSelector != nil {
+		return obj.FieldSelector
 	}
-	if o.Include != nil {
-		toSerialize["include"] = o.Include
+
+	if obj.ResourceSelector != nil {
+		return obj.ResourceSelector
 	}
-	return json.Marshal(toSerialize)
+
+	if obj.TaggingSelector != nil {
+		return obj.TaggingSelector
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableSelector struct {

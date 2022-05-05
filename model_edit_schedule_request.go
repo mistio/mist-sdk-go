@@ -29,7 +29,7 @@ type EditScheduleRequest struct {
 	ScriptId *string `json:"script_id,omitempty"`
 	// Edit schedule parameters
 	Params *string `json:"params,omitempty"`
-	Selectors *[]AnyOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector `json:"selectors,omitempty"`
+	Selectors *[]Selector `json:"selectors,omitempty"`
 	// Edit the type of the schedule
 	ScheduleType *string `json:"schedule_type,omitempty"`
 	// In case of One Off schedule type the date string that schedule runs (The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS). In case of Interval and Crontab schedule types a JSON string with need time unit values. For Interval schedule type interval integer value and period string value needed. For Crontab schedule type minute, hour, day_of_week, day_of_month and month_of_year string values needed.
@@ -248,9 +248,9 @@ func (o *EditScheduleRequest) SetParams(v string) {
 }
 
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
-func (o *EditScheduleRequest) GetSelectors() []AnyOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector {
+func (o *EditScheduleRequest) GetSelectors() []Selector {
 	if o == nil || o.Selectors == nil {
-		var ret []AnyOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector
+		var ret []Selector
 		return ret
 	}
 	return *o.Selectors
@@ -258,7 +258,7 @@ func (o *EditScheduleRequest) GetSelectors() []AnyOfResourceSelectorFieldSelecto
 
 // GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EditScheduleRequest) GetSelectorsOk() (*[]AnyOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector, bool) {
+func (o *EditScheduleRequest) GetSelectorsOk() (*[]Selector, bool) {
 	if o == nil || o.Selectors == nil {
 		return nil, false
 	}
@@ -274,8 +274,8 @@ func (o *EditScheduleRequest) HasSelectors() bool {
 	return false
 }
 
-// SetSelectors gets a reference to the given []AnyOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector and assigns it to the Selectors field.
-func (o *EditScheduleRequest) SetSelectors(v []AnyOfResourceSelectorFieldSelectorTaggingSelectorAgeSelector) {
+// SetSelectors gets a reference to the given []Selector and assigns it to the Selectors field.
+func (o *EditScheduleRequest) SetSelectors(v []Selector) {
 	o.Selectors = &v
 }
 

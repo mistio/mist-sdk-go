@@ -22,7 +22,7 @@ type EditRuleRequest struct {
 	Frequency *Frequency `json:"frequency,omitempty"`
 	TriggerAfter *TriggerAfter `json:"trigger_after,omitempty"`
 	Actions *[]RuleAction `json:"actions,omitempty"`
-	Selectors *[]map[string]interface{} `json:"selectors,omitempty"`
+	Selectors *Selector `json:"selectors,omitempty"`
 }
 
 // NewEditRuleRequest instantiates a new EditRuleRequest object
@@ -203,9 +203,9 @@ func (o *EditRuleRequest) SetActions(v []RuleAction) {
 }
 
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
-func (o *EditRuleRequest) GetSelectors() []map[string]interface{} {
+func (o *EditRuleRequest) GetSelectors() Selector {
 	if o == nil || o.Selectors == nil {
-		var ret []map[string]interface{}
+		var ret Selector
 		return ret
 	}
 	return *o.Selectors
@@ -213,7 +213,7 @@ func (o *EditRuleRequest) GetSelectors() []map[string]interface{} {
 
 // GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EditRuleRequest) GetSelectorsOk() (*[]map[string]interface{}, bool) {
+func (o *EditRuleRequest) GetSelectorsOk() (*Selector, bool) {
 	if o == nil || o.Selectors == nil {
 		return nil, false
 	}
@@ -229,8 +229,8 @@ func (o *EditRuleRequest) HasSelectors() bool {
 	return false
 }
 
-// SetSelectors gets a reference to the given []map[string]interface{} and assigns it to the Selectors field.
-func (o *EditRuleRequest) SetSelectors(v []map[string]interface{}) {
+// SetSelectors gets a reference to the given Selector and assigns it to the Selectors field.
+func (o *EditRuleRequest) SetSelectors(v Selector) {
 	o.Selectors = &v
 }
 

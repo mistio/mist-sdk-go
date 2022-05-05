@@ -5827,9 +5827,6 @@ components:
           period: period
           stop: 1
           start: 6
-        selectors:
-        - ""
-        - ""
         queries:
         - threshold: 0.8008281904610115
           aggregation: aggregation
@@ -5883,15 +5880,7 @@ components:
             $ref: '#/components/schemas/RuleAction'
           type: array
         selectors:
-          items:
-            allOf:
-            - type: object
-            - oneOf:
-              - $ref: '#/components/schemas/ResourceSelector'
-              - $ref: '#/components/schemas/FieldSelector'
-              - $ref: '#/components/schemas/TaggingSelector'
-              - $ref: '#/components/schemas/AgeSelector'
-          type: array
+          $ref: '#/components/schemas/Selector'
         data_type:
           $ref: '#/components/schemas/DataType'
       required:
@@ -5914,8 +5903,8 @@ components:
         run_immediately: false
         params: Parameters string
         selectors:
-        - '{}'
-        - '{}'
+        - null
+        - null
         enabled: true
       properties:
         name:
@@ -5951,12 +5940,7 @@ components:
           type: string
         selectors:
           items:
-            anyOf:
-            - $ref: '#/components/schemas/ResourceSelector'
-            - $ref: '#/components/schemas/FieldSelector'
-            - $ref: '#/components/schemas/TaggingSelector'
-            - $ref: '#/components/schemas/AgeSelector'
-            type: object
+            $ref: '#/components/schemas/Selector'
           type: array
         schedule_type:
           description: The type of the schedule
@@ -7201,9 +7185,6 @@ components:
           period: period
           stop: 1
           start: 6
-        selectors:
-        - ""
-        - ""
         queries:
         - threshold: 0.8008281904610115
           aggregation: aggregation
@@ -7257,15 +7238,7 @@ components:
             $ref: '#/components/schemas/RuleAction'
           type: array
         selectors:
-          items:
-            allOf:
-            - type: object
-            - oneOf:
-              - $ref: '#/components/schemas/ResourceSelector'
-              - $ref: '#/components/schemas/FieldSelector'
-              - $ref: '#/components/schemas/TaggingSelector'
-              - $ref: '#/components/schemas/AgeSelector'
-          type: array
+          $ref: '#/components/schemas/Selector'
       type: object
     EditScheduleRequest:
       example:
@@ -7278,8 +7251,8 @@ components:
         script_id: d5775984772949de820fa8279c306b30
         params: Parameters string
         selectors:
-        - '{}'
-        - '{}'
+        - null
+        - null
         enabled: true
       properties:
         name:
@@ -7315,12 +7288,7 @@ components:
           type: string
         selectors:
           items:
-            anyOf:
-            - $ref: '#/components/schemas/ResourceSelector'
-            - $ref: '#/components/schemas/FieldSelector'
-            - $ref: '#/components/schemas/TaggingSelector'
-            - $ref: '#/components/schemas/AgeSelector'
-            type: object
+            $ref: '#/components/schemas/Selector'
           type: array
         schedule_type:
           description: Edit the type of the schedule
@@ -7799,8 +7767,8 @@ components:
           run_immediately: true
           params: Test parameters
           selectors:
-          - '{}'
-          - '{}'
+          - null
+          - null
           created_by: Manager A
           enabled: true
           tags: '{}'
@@ -9003,8 +8971,8 @@ components:
           run_immediately: true
           params: Test parameters
           selectors:
-          - '{}'
-          - '{}'
+          - null
+          - null
           created_by: Manager A
           enabled: true
           tags: '{}'
@@ -9021,8 +8989,8 @@ components:
           run_immediately: true
           params: Test parameters
           selectors:
-          - '{}'
-          - '{}'
+          - null
+          - null
           created_by: Manager A
           enabled: true
           tags: '{}'
@@ -10045,8 +10013,8 @@ components:
         run_immediately: true
         params: Test parameters
         selectors:
-        - '{}'
-        - '{}'
+        - null
+        - null
         created_by: Manager A
         enabled: true
         tags: '{}'
@@ -10089,12 +10057,7 @@ components:
           type: string
         selectors:
           items:
-            anyOf:
-            - $ref: '#/components/schemas/ResourceSelector'
-            - $ref: '#/components/schemas/FieldSelector'
-            - $ref: '#/components/schemas/TaggingSelector'
-            - $ref: '#/components/schemas/AgeSelector'
-            type: object
+            $ref: '#/components/schemas/Selector'
           type: array
         schedule_type:
           description: The type of the schedule
@@ -10169,15 +10132,16 @@ components:
         owned_by:
           type: string
       type: object
+    Selector:
+      oneOf:
+      - $ref: '#/components/schemas/ResourceSelector'
+      - $ref: '#/components/schemas/FieldSelector'
+      - $ref: '#/components/schemas/TaggingSelector'
+      - $ref: '#/components/schemas/AgeSelector'
+      type: object
     Selectors:
       items:
-        allOf:
-        - type: object
-        - oneOf:
-          - $ref: '#/components/schemas/ResourceSelector'
-          - $ref: '#/components/schemas/FieldSelector'
-          - $ref: '#/components/schemas/TaggingSelector'
-          - $ref: '#/components/schemas/AgeSelector'
+        $ref: '#/components/schemas/Selector'
       type: array
     Size:
       example:
