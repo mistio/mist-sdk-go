@@ -18,7 +18,7 @@ import (
 // ScaleNodepoolRequest To scale a GKE nodepool without autoscaling set only the desired_nodes parameter. On GKE nodepools with autoscaling, set min_nodes,max_nodes. Enabling/Disabling autoscaling is only supported on GKE nodepools. min_nodes, max_nodes parameters are required to enable autoscaling. To disable autoscaling set only enable_autoscaling to false. For EKS nodepools set the min_nodes, desired_nodes, max_nodes parameters.
 type ScaleNodepoolRequest struct {
 	// Enable/Disable autoscaling for the specified GKE nodepool.
-	EnableAutoscaling *bool `json:"enable_autoscaling,omitempty"`
+	Autoscaling *bool `json:"autoscaling,omitempty"`
 	// The number of nodes that the nodepool should maintain
 	DesiredNodes *int32 `json:"desired_nodes,omitempty"`
 	// Minimum number of nodes for the specified nodepool
@@ -44,36 +44,36 @@ func NewScaleNodepoolRequestWithDefaults() *ScaleNodepoolRequest {
 	return &this
 }
 
-// GetEnableAutoscaling returns the EnableAutoscaling field value if set, zero value otherwise.
-func (o *ScaleNodepoolRequest) GetEnableAutoscaling() bool {
-	if o == nil || o.EnableAutoscaling == nil {
+// GetAutoscaling returns the Autoscaling field value if set, zero value otherwise.
+func (o *ScaleNodepoolRequest) GetAutoscaling() bool {
+	if o == nil || o.Autoscaling == nil {
 		var ret bool
 		return ret
 	}
-	return *o.EnableAutoscaling
+	return *o.Autoscaling
 }
 
-// GetEnableAutoscalingOk returns a tuple with the EnableAutoscaling field value if set, nil otherwise
+// GetAutoscalingOk returns a tuple with the Autoscaling field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScaleNodepoolRequest) GetEnableAutoscalingOk() (*bool, bool) {
-	if o == nil || o.EnableAutoscaling == nil {
+func (o *ScaleNodepoolRequest) GetAutoscalingOk() (*bool, bool) {
+	if o == nil || o.Autoscaling == nil {
 		return nil, false
 	}
-	return o.EnableAutoscaling, true
+	return o.Autoscaling, true
 }
 
-// HasEnableAutoscaling returns a boolean if a field has been set.
-func (o *ScaleNodepoolRequest) HasEnableAutoscaling() bool {
-	if o != nil && o.EnableAutoscaling != nil {
+// HasAutoscaling returns a boolean if a field has been set.
+func (o *ScaleNodepoolRequest) HasAutoscaling() bool {
+	if o != nil && o.Autoscaling != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableAutoscaling gets a reference to the given bool and assigns it to the EnableAutoscaling field.
-func (o *ScaleNodepoolRequest) SetEnableAutoscaling(v bool) {
-	o.EnableAutoscaling = &v
+// SetAutoscaling gets a reference to the given bool and assigns it to the Autoscaling field.
+func (o *ScaleNodepoolRequest) SetAutoscaling(v bool) {
+	o.Autoscaling = &v
 }
 
 // GetDesiredNodes returns the DesiredNodes field value if set, zero value otherwise.
@@ -174,8 +174,8 @@ func (o *ScaleNodepoolRequest) SetMaxNodes(v int32) {
 
 func (o ScaleNodepoolRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.EnableAutoscaling != nil {
-		toSerialize["enable_autoscaling"] = o.EnableAutoscaling
+	if o.Autoscaling != nil {
+		toSerialize["autoscaling"] = o.Autoscaling
 	}
 	if o.DesiredNodes != nil {
 		toSerialize["desired_nodes"] = o.DesiredNodes
