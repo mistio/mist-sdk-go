@@ -202,6 +202,7 @@ Class | Method | HTTP request | Description
  - [CreateClusterRequest](docs/CreateClusterRequest.md)
  - [CreateClusterRequestAllOf](docs/CreateClusterRequestAllOf.md)
  - [CreateClusterRequestAllOfNodepools](docs/CreateClusterRequestAllOfNodepools.md)
+ - [CreateClusterRequestAllOfWaiters](docs/CreateClusterRequestAllOfWaiters.md)
  - [CreateClusterResponse](docs/CreateClusterResponse.md)
  - [CreateMachineRequest](docs/CreateMachineRequest.md)
  - [CreateMachineRequestDisks](docs/CreateMachineRequestDisks.md)
