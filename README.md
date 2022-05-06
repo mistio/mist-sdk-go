@@ -87,7 +87,6 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**DestroyCluster**](docs/ClustersApi.md#destroycluster) | **Delete** /api/v2/clusters/{cluster} | Destroy cluster
 *ClustersApi* | [**GetCluster**](docs/ClustersApi.md#getcluster) | **Get** /api/v2/clusters/{cluster} | Get cluster
 *ClustersApi* | [**ListClusters**](docs/ClustersApi.md#listclusters) | **Get** /api/v2/clusters | List clusters
-*ClustersApi* | [**ScaleNodepool**](docs/ClustersApi.md#scalenodepool) | **Post** /api/v2/clusters/{cluster}/nodepools/{nodepool} | Scale cluster nodepool
 *DatapointsApi* | [**GetDatapoints**](docs/DatapointsApi.md#getdatapoints) | **Get** /api/v2/datapoints | Get datapoints
 *ImagesApi* | [**GetImage**](docs/ImagesApi.md#getimage) | **Get** /api/v2/images/{image} | Get image
 *ImagesApi* | [**ListImages**](docs/ImagesApi.md#listimages) | **Get** /api/v2/images | List images
@@ -142,11 +141,6 @@ Class | Method | HTTP request | Description
 *ScriptsApi* | [**GetScript**](docs/ScriptsApi.md#getscript) | **Get** /api/v2/scripts/{script} | Get script
 *ScriptsApi* | [**ListScripts**](docs/ScriptsApi.md#listscripts) | **Get** /api/v2/scripts | List scripts
 *ScriptsApi* | [**RunScript**](docs/ScriptsApi.md#runscript) | **Post** /api/v2/scripts/{script} | Run script
-*SecretsApi* | [**CreateSecret**](docs/SecretsApi.md#createsecret) | **Post** /api/v2/secrets | Create secret
-*SecretsApi* | [**DeleteSecret**](docs/SecretsApi.md#deletesecret) | **Delete** /api/v2/secrets/{secret} | Delete secret
-*SecretsApi* | [**EditSecret**](docs/SecretsApi.md#editsecret) | **Put** /api/v2/secrets/{secret} | Edit secret
-*SecretsApi* | [**GetSecret**](docs/SecretsApi.md#getsecret) | **Get** /api/v2/secrets/{secret} | Get secret
-*SecretsApi* | [**ListSecrets**](docs/SecretsApi.md#listsecrets) | **Get** /api/v2/secrets | List secrets
 *SizesApi* | [**GetSize**](docs/SizesApi.md#getsize) | **Get** /api/v2/sizes/{size} | Get size
 *SizesApi* | [**ListSizes**](docs/SizesApi.md#listsizes) | **Get** /api/v2/sizes | List sizes
 *SnapshotsApi* | [**CreateSnapshot**](docs/SnapshotsApi.md#createsnapshot) | **Post** /api/v2/machines/{machine}/snapshots | Create snapshot
@@ -196,7 +190,6 @@ Class | Method | HTTP request | Description
  - [CreateClusterRequest](docs/CreateClusterRequest.md)
  - [CreateClusterRequestAllOf](docs/CreateClusterRequestAllOf.md)
  - [CreateClusterRequestAllOfNodepools](docs/CreateClusterRequestAllOfNodepools.md)
- - [CreateClusterRequestAllOfWaiters](docs/CreateClusterRequestAllOfWaiters.md)
  - [CreateClusterResponse](docs/CreateClusterResponse.md)
  - [CreateMachineRequest](docs/CreateMachineRequest.md)
  - [CreateMachineRequestDisks](docs/CreateMachineRequestDisks.md)
@@ -205,7 +198,6 @@ Class | Method | HTTP request | Description
  - [CreateMachineResponseOneOf1](docs/CreateMachineResponseOneOf1.md)
  - [CreateNetworkRequest](docs/CreateNetworkRequest.md)
  - [CreateNetworkResponse](docs/CreateNetworkResponse.md)
- - [CreateSecretRequest](docs/CreateSecretRequest.md)
  - [CreateVolumeRequest](docs/CreateVolumeRequest.md)
  - [CreateVolumeResponse](docs/CreateVolumeResponse.md)
  - [CreateZoneRequest](docs/CreateZoneRequest.md)
@@ -227,7 +219,6 @@ Class | Method | HTTP request | Description
  - [EditMachineRequest](docs/EditMachineRequest.md)
  - [EditMachineRequestExpiration](docs/EditMachineRequestExpiration.md)
  - [EditRuleRequest](docs/EditRuleRequest.md)
- - [EditSecretRequest](docs/EditSecretRequest.md)
  - [EquinixCloudRequest](docs/EquinixCloudRequest.md)
  - [EquinixCredentials](docs/EquinixCredentials.md)
  - [EquinixMetalExtra](docs/EquinixMetalExtra.md)
@@ -249,7 +240,6 @@ Class | Method | HTTP request | Description
  - [GetOrgResponse](docs/GetOrgResponse.md)
  - [GetRuleResponse](docs/GetRuleResponse.md)
  - [GetScriptResponse](docs/GetScriptResponse.md)
- - [GetSecretResponse](docs/GetSecretResponse.md)
  - [GetSizeResponse](docs/GetSizeResponse.md)
  - [GetVolumeResponse](docs/GetVolumeResponse.md)
  - [GetZoneResponse](docs/GetZoneResponse.md)
@@ -296,7 +286,6 @@ Class | Method | HTTP request | Description
  - [ListOrgsResponse](docs/ListOrgsResponse.md)
  - [ListRulesResponse](docs/ListRulesResponse.md)
  - [ListScriptsResponse](docs/ListScriptsResponse.md)
- - [ListSecretsResponse](docs/ListSecretsResponse.md)
  - [ListSizesResponse](docs/ListSizesResponse.md)
  - [ListSnapshotsResponse](docs/ListSnapshotsResponse.md)
  - [ListUsersResponse](docs/ListUsersResponse.md)
@@ -332,9 +321,7 @@ Class | Method | HTTP request | Description
  - [RuleAction](docs/RuleAction.md)
  - [RunScriptRequest](docs/RunScriptRequest.md)
  - [RunScriptResponse](docs/RunScriptResponse.md)
- - [ScaleNodepoolRequest](docs/ScaleNodepoolRequest.md)
  - [Script](docs/Script.md)
- - [Secret](docs/Secret.md)
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)
  - [SupportedProviders](docs/SupportedProviders.md)

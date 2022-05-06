@@ -17,7 +17,6 @@ import (
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
-	"time"
 )
 
 // Linger please
@@ -542,7 +541,6 @@ type ApiListKeysRequest struct {
 	limit *int32
 	only *string
 	deref *string
-	at *time.Time
 }
 
 func (r ApiListKeysRequest) Search(search string) ApiListKeysRequest {
@@ -567,10 +565,6 @@ func (r ApiListKeysRequest) Only(only string) ApiListKeysRequest {
 }
 func (r ApiListKeysRequest) Deref(deref string) ApiListKeysRequest {
 	r.deref = &deref
-	return r
-}
-func (r ApiListKeysRequest) At(at time.Time) ApiListKeysRequest {
-	r.at = &at
 	return r
 }
 
@@ -633,9 +627,6 @@ func (a *KeysApiService) ListKeysExecute(r ApiListKeysRequest) (ListKeysResponse
 	}
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
-	}
-	if r.at != nil {
-		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

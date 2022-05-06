@@ -17,7 +17,6 @@ import (
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
-	"time"
 )
 
 // Linger please
@@ -417,7 +416,6 @@ type ApiListCloudsRequest struct {
 	limit *int32
 	only *string
 	deref *string
-	at *time.Time
 }
 
 func (r ApiListCloudsRequest) Search(search string) ApiListCloudsRequest {
@@ -442,10 +440,6 @@ func (r ApiListCloudsRequest) Only(only string) ApiListCloudsRequest {
 }
 func (r ApiListCloudsRequest) Deref(deref string) ApiListCloudsRequest {
 	r.deref = &deref
-	return r
-}
-func (r ApiListCloudsRequest) At(at time.Time) ApiListCloudsRequest {
-	r.at = &at
 	return r
 }
 
@@ -508,9 +502,6 @@ func (a *CloudsApiService) ListCloudsExecute(r ApiListCloudsRequest) (ListClouds
 	}
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
-	}
-	if r.at != nil {
-		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
