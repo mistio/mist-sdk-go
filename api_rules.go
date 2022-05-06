@@ -17,7 +17,6 @@ import (
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
-	"time"
 )
 
 // Linger please
@@ -527,7 +526,6 @@ type ApiListRulesRequest struct {
 	start *string
 	limit *int32
 	only *string
-	at *time.Time
 }
 
 func (r ApiListRulesRequest) Search(search string) ApiListRulesRequest {
@@ -548,10 +546,6 @@ func (r ApiListRulesRequest) Limit(limit int32) ApiListRulesRequest {
 }
 func (r ApiListRulesRequest) Only(only string) ApiListRulesRequest {
 	r.only = &only
-	return r
-}
-func (r ApiListRulesRequest) At(at time.Time) ApiListRulesRequest {
-	r.at = &at
 	return r
 }
 
@@ -611,9 +605,6 @@ func (a *RulesApiService) ListRulesExecute(r ApiListRulesRequest) (ListRulesResp
 	}
 	if r.only != nil {
 		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
-	}
-	if r.at != nil {
-		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -14,7 +14,6 @@ api_networks.go
 api_orgs.go
 api_rules.go
 api_scripts.go
-api_secrets.go
 api_sizes.go
 api_snapshots.go
 api_users.go
@@ -61,7 +60,6 @@ docs/CreateMachineResponseOneOf.md
 docs/CreateMachineResponseOneOf1.md
 docs/CreateNetworkRequest.md
 docs/CreateNetworkResponse.md
-docs/CreateSecretRequest.md
 docs/CreateVolumeRequest.md
 docs/CreateVolumeResponse.md
 docs/CreateZoneRequest.md
@@ -84,7 +82,6 @@ docs/EditCloudRequestAnyOf.md
 docs/EditMachineRequest.md
 docs/EditMachineRequestExpiration.md
 docs/EditRuleRequest.md
-docs/EditSecretRequest.md
 docs/EquinixCloudRequest.md
 docs/EquinixCredentials.md
 docs/EquinixMetalExtra.md
@@ -106,7 +103,6 @@ docs/GetOrgMemberResponse.md
 docs/GetOrgResponse.md
 docs/GetRuleResponse.md
 docs/GetScriptResponse.md
-docs/GetSecretResponse.md
 docs/GetSizeResponse.md
 docs/GetVolumeResponse.md
 docs/GetZoneResponse.md
@@ -156,7 +152,6 @@ docs/ListOrgTeamsResponse.md
 docs/ListOrgsResponse.md
 docs/ListRulesResponse.md
 docs/ListScriptsResponse.md
-docs/ListSecretsResponse.md
 docs/ListSizesResponse.md
 docs/ListSnapshotsResponse.md
 docs/ListUsersResponse.md
@@ -200,8 +195,6 @@ docs/RunScriptResponse.md
 docs/ScaleNodepoolRequest.md
 docs/Script.md
 docs/ScriptsApi.md
-docs/Secret.md
-docs/SecretsApi.md
 docs/Selector.md
 docs/Size.md
 docs/SizesApi.md
@@ -265,7 +258,6 @@ model_create_machine_response_one_of.go
 model_create_machine_response_one_of_1.go
 model_create_network_request.go
 model_create_network_response.go
-model_create_secret_request.go
 model_create_volume_request.go
 model_create_volume_response.go
 model_create_zone_request.go
@@ -287,7 +279,6 @@ model_edit_cloud_request_any_of.go
 model_edit_machine_request.go
 model_edit_machine_request_expiration.go
 model_edit_rule_request.go
-model_edit_secret_request.go
 model_equinix_cloud_request.go
 model_equinix_credentials.go
 model_equinix_metal_extra.go
@@ -309,7 +300,6 @@ model_get_org_member_response.go
 model_get_org_response.go
 model_get_rule_response.go
 model_get_script_response.go
-model_get_secret_response.go
 model_get_size_response.go
 model_get_volume_response.go
 model_get_zone_response.go
@@ -354,7 +344,6 @@ model_list_org_teams_response.go
 model_list_orgs_response.go
 model_list_rules_response.go
 model_list_scripts_response.go
-model_list_secrets_response.go
 model_list_sizes_response.go
 model_list_snapshots_response.go
 model_list_users_response.go
@@ -394,7 +383,6 @@ model_run_script_request.go
 model_run_script_response.go
 model_scale_nodepool_request.go
 model_script.go
-model_secret.go
 model_selector.go
 model_size.go
 model_supported_providers.go
