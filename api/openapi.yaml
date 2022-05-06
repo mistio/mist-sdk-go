@@ -3859,19 +3859,6 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
-        examples:
-          Return resources created before or deleted after `2021-07-21T17:32:28Z`:
-            value: 2021-07-21T17:32:28Z
-        explode: true
-        in: query
-        name: at
-        required: false
-        schema:
-          format: date-time
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -7325,15 +7312,6 @@ components:
             be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
           example: 2022-06-01 00:00:00
           type: string
-      type: object
-    EditSecretRequest:
-      example:
-        secret: '{}'
-      properties:
-        secret:
-          type: object
-      required:
-      - secret
       type: object
     EditSecretRequest:
       example:
