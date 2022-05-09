@@ -581,3 +581,122 @@ func (a *ClustersApiService) ListClustersExecute(r ApiListClustersRequest) (List
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiScaleNodepoolRequest struct {
+	ctx _context.Context
+	ApiService *ClustersApiService
+	cluster string
+	nodepool string
+	scaleNodepoolRequest *ScaleNodepoolRequest
+}
+
+func (r ApiScaleNodepoolRequest) ScaleNodepoolRequest(scaleNodepoolRequest ScaleNodepoolRequest) ApiScaleNodepoolRequest {
+	r.scaleNodepoolRequest = &scaleNodepoolRequest
+	return r
+}
+
+func (r ApiScaleNodepoolRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.ScaleNodepoolExecute(r)
+}
+
+/*
+ * ScaleNodepool Scale cluster nodepool
+ * Scale the nodes of the specified nodepool
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param cluster
+ * @param nodepool
+ * @return ApiScaleNodepoolRequest
+ */
+func (a *ClustersApiService) ScaleNodepool(ctx _context.Context, cluster string, nodepool string) ApiScaleNodepoolRequest {
+	return ApiScaleNodepoolRequest{
+		ApiService: a,
+		ctx: ctx,
+		cluster: cluster,
+		nodepool: nodepool,
+	}
+}
+
+/*
+ * Execute executes the request
+ */
+func (a *ClustersApiService) ScaleNodepoolExecute(r ApiScaleNodepoolRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ScaleNodepool")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/clusters/{cluster}/nodepools/{nodepool}"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster"+"}", _neturl.PathEscape(parameterToString(r.cluster, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"nodepool"+"}", _neturl.PathEscape(parameterToString(r.nodepool, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.scaleNodepoolRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}

@@ -26,6 +26,7 @@ type CreateClusterRequestAllOf struct {
 	Location *string `json:"location,omitempty"`
 	Nodepools *[]CreateClusterRequestAllOfNodepools `json:"nodepools,omitempty"`
 	Templates *[]map[string]interface{} `json:"templates,omitempty"`
+	Waiters *[]CreateClusterRequestAllOfWaiters `json:"waiters,omitempty"`
 }
 
 // NewCreateClusterRequestAllOf instantiates a new CreateClusterRequestAllOf object
@@ -230,6 +231,38 @@ func (o *CreateClusterRequestAllOf) SetTemplates(v []map[string]interface{}) {
 	o.Templates = &v
 }
 
+// GetWaiters returns the Waiters field value if set, zero value otherwise.
+func (o *CreateClusterRequestAllOf) GetWaiters() []CreateClusterRequestAllOfWaiters {
+	if o == nil || o.Waiters == nil {
+		var ret []CreateClusterRequestAllOfWaiters
+		return ret
+	}
+	return *o.Waiters
+}
+
+// GetWaitersOk returns a tuple with the Waiters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClusterRequestAllOf) GetWaitersOk() (*[]CreateClusterRequestAllOfWaiters, bool) {
+	if o == nil || o.Waiters == nil {
+		return nil, false
+	}
+	return o.Waiters, true
+}
+
+// HasWaiters returns a boolean if a field has been set.
+func (o *CreateClusterRequestAllOf) HasWaiters() bool {
+	if o != nil && o.Waiters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWaiters gets a reference to the given []CreateClusterRequestAllOfWaiters and assigns it to the Waiters field.
+func (o *CreateClusterRequestAllOf) SetWaiters(v []CreateClusterRequestAllOfWaiters) {
+	o.Waiters = &v
+}
+
 func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -249,6 +282,9 @@ func (o CreateClusterRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Templates != nil {
 		toSerialize["templates"] = o.Templates
+	}
+	if o.Waiters != nil {
+		toSerialize["waiters"] = o.Waiters
 	}
 	return json.Marshal(toSerialize)
 }

@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**DestroyCluster**](docs/ClustersApi.md#destroycluster) | **Delete** /api/v2/clusters/{cluster} | Destroy cluster
 *ClustersApi* | [**GetCluster**](docs/ClustersApi.md#getcluster) | **Get** /api/v2/clusters/{cluster} | Get cluster
 *ClustersApi* | [**ListClusters**](docs/ClustersApi.md#listclusters) | **Get** /api/v2/clusters | List clusters
+*ClustersApi* | [**ScaleNodepool**](docs/ClustersApi.md#scalenodepool) | **Post** /api/v2/clusters/{cluster}/nodepools/{nodepool} | Scale cluster nodepool
 *DatapointsApi* | [**GetDatapoints**](docs/DatapointsApi.md#getdatapoints) | **Get** /api/v2/datapoints | Get datapoints
 *ImagesApi* | [**GetImage**](docs/ImagesApi.md#getimage) | **Get** /api/v2/images/{image} | Get image
 *ImagesApi* | [**ListImages**](docs/ImagesApi.md#listimages) | **Get** /api/v2/images | List images
@@ -190,6 +191,7 @@ Class | Method | HTTP request | Description
  - [CreateClusterRequest](docs/CreateClusterRequest.md)
  - [CreateClusterRequestAllOf](docs/CreateClusterRequestAllOf.md)
  - [CreateClusterRequestAllOfNodepools](docs/CreateClusterRequestAllOfNodepools.md)
+ - [CreateClusterRequestAllOfWaiters](docs/CreateClusterRequestAllOfWaiters.md)
  - [CreateClusterResponse](docs/CreateClusterResponse.md)
  - [CreateMachineRequest](docs/CreateMachineRequest.md)
  - [CreateMachineRequestDisks](docs/CreateMachineRequestDisks.md)
@@ -321,6 +323,7 @@ Class | Method | HTTP request | Description
  - [RuleAction](docs/RuleAction.md)
  - [RunScriptRequest](docs/RunScriptRequest.md)
  - [RunScriptResponse](docs/RunScriptResponse.md)
+ - [ScaleNodepoolRequest](docs/ScaleNodepoolRequest.md)
  - [Script](docs/Script.md)
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)

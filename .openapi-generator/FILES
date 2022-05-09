@@ -51,6 +51,7 @@ docs/ClustersApi.md
 docs/CreateClusterRequest.md
 docs/CreateClusterRequestAllOf.md
 docs/CreateClusterRequestAllOfNodepools.md
+docs/CreateClusterRequestAllOfWaiters.md
 docs/CreateClusterResponse.md
 docs/CreateMachineRequest.md
 docs/CreateMachineRequestDisks.md
@@ -191,6 +192,7 @@ docs/RuleAction.md
 docs/RulesApi.md
 docs/RunScriptRequest.md
 docs/RunScriptResponse.md
+docs/ScaleNodepoolRequest.md
 docs/Script.md
 docs/ScriptsApi.md
 docs/Selector.md
@@ -247,6 +249,7 @@ model_cluster_providers.go
 model_create_cluster_request.go
 model_create_cluster_request_all_of.go
 model_create_cluster_request_all_of_nodepools.go
+model_create_cluster_request_all_of_waiters.go
 model_create_cluster_response.go
 model_create_machine_request.go
 model_create_machine_request_disks.go
@@ -378,6 +381,7 @@ model_rule.go
 model_rule_action.go
 model_run_script_request.go
 model_run_script_response.go
+model_scale_nodepool_request.go
 model_script.go
 model_selector.go
 model_size.go
