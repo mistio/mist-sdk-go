@@ -17,6 +17,8 @@ import (
 
 // AddRuleRequest struct for AddRuleRequest
 type AddRuleRequest struct {
+	// The name of the rule
+	Name string `json:"name"`
 	Queries []Query `json:"queries"`
 	Window Window `json:"window"`
 	Frequency Frequency `json:"frequency"`
@@ -30,8 +32,9 @@ type AddRuleRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddRuleRequest(queries []Query, window Window, frequency Frequency, triggerAfter TriggerAfter, actions []RuleAction, dataType DataType, ) *AddRuleRequest {
+func NewAddRuleRequest(name string, queries []Query, window Window, frequency Frequency, triggerAfter TriggerAfter, actions []RuleAction, dataType DataType, ) *AddRuleRequest {
 	this := AddRuleRequest{}
+	this.Name = name
 	this.Queries = queries
 	this.Window = window
 	this.Frequency = frequency
@@ -47,6 +50,30 @@ func NewAddRuleRequest(queries []Query, window Window, frequency Frequency, trig
 func NewAddRuleRequestWithDefaults() *AddRuleRequest {
 	this := AddRuleRequest{}
 	return &this
+}
+
+// GetName returns the Name field value
+func (o *AddRuleRequest) GetName() string {
+	if o == nil  {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *AddRuleRequest) GetNameOk() (*string, bool) {
+	if o == nil  {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *AddRuleRequest) SetName(v string) {
+	o.Name = v
 }
 
 // GetQueries returns the Queries field value
@@ -227,6 +254,9 @@ func (o *AddRuleRequest) SetDataType(v DataType) {
 
 func (o AddRuleRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["name"] = o.Name
+	}
 	if true {
 		toSerialize["queries"] = o.Queries
 	}
