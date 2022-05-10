@@ -22,7 +22,7 @@ type EditRuleRequest struct {
 	Frequency *Frequency `json:"frequency,omitempty"`
 	TriggerAfter *TriggerAfter `json:"trigger_after,omitempty"`
 	Actions *[]RuleAction `json:"actions,omitempty"`
-	Selectors *Selector `json:"selectors,omitempty"`
+	Selectors *[]Selector `json:"selectors,omitempty"`
 }
 
 // NewEditRuleRequest instantiates a new EditRuleRequest object
@@ -203,9 +203,9 @@ func (o *EditRuleRequest) SetActions(v []RuleAction) {
 }
 
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
-func (o *EditRuleRequest) GetSelectors() Selector {
+func (o *EditRuleRequest) GetSelectors() []Selector {
 	if o == nil || o.Selectors == nil {
-		var ret Selector
+		var ret []Selector
 		return ret
 	}
 	return *o.Selectors
@@ -213,7 +213,7 @@ func (o *EditRuleRequest) GetSelectors() Selector {
 
 // GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EditRuleRequest) GetSelectorsOk() (*Selector, bool) {
+func (o *EditRuleRequest) GetSelectorsOk() (*[]Selector, bool) {
 	if o == nil || o.Selectors == nil {
 		return nil, false
 	}
@@ -229,8 +229,8 @@ func (o *EditRuleRequest) HasSelectors() bool {
 	return false
 }
 
-// SetSelectors gets a reference to the given Selector and assigns it to the Selectors field.
-func (o *EditRuleRequest) SetSelectors(v Selector) {
+// SetSelectors gets a reference to the given []Selector and assigns it to the Selectors field.
+func (o *EditRuleRequest) SetSelectors(v []Selector) {
 	o.Selectors = &v
 }
 

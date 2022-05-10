@@ -205,9 +205,9 @@ docs/RuleAction.md
 docs/RulesApi.md
 docs/RunScriptRequest.md
 docs/RunScriptResponse.md
+docs/ScaleNodepoolRequest.md
 docs/Schedule.md
 docs/SchedulesApi.md
-docs/ScaleNodepoolRequest.md
 docs/Script.md
 docs/ScriptsApi.md
 docs/Secret.md
@@ -410,8 +410,8 @@ model_rule.go
 model_rule_action.go
 model_run_script_request.go
 model_run_script_response.go
-model_schedule.go
 model_scale_nodepool_request.go
+model_schedule.go
 model_script.go
 model_secret.go
 model_selector.go
