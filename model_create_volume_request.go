@@ -19,7 +19,7 @@ import (
 type CreateVolumeRequest struct {
 	// Specify volume name
 	Name string `json:"name"`
-	Provider *SupportedProviders `json:"provider,omitempty"`
+	Provider *string `json:"provider,omitempty"`
 	// Specify cloud to provision on
 	Cloud string `json:"cloud"`
 	// Where to provision e.g. region, datacenter, rack
@@ -91,9 +91,9 @@ func (o *CreateVolumeRequest) SetName(v string) {
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
-func (o *CreateVolumeRequest) GetProvider() SupportedProviders {
+func (o *CreateVolumeRequest) GetProvider() string {
 	if o == nil || o.Provider == nil {
-		var ret SupportedProviders
+		var ret string
 		return ret
 	}
 	return *o.Provider
@@ -101,7 +101,7 @@ func (o *CreateVolumeRequest) GetProvider() SupportedProviders {
 
 // GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVolumeRequest) GetProviderOk() (*SupportedProviders, bool) {
+func (o *CreateVolumeRequest) GetProviderOk() (*string, bool) {
 	if o == nil || o.Provider == nil {
 		return nil, false
 	}
@@ -117,8 +117,8 @@ func (o *CreateVolumeRequest) HasProvider() bool {
 	return false
 }
 
-// SetProvider gets a reference to the given SupportedProviders and assigns it to the Provider field.
-func (o *CreateVolumeRequest) SetProvider(v SupportedProviders) {
+// SetProvider gets a reference to the given string and assigns it to the Provider field.
+func (o *CreateVolumeRequest) SetProvider(v string) {
 	o.Provider = &v
 }
 

@@ -173,8 +173,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [AddCloudRequest](docs/AddCloudRequest.md)
- - [AddCloudRequestAllOf](docs/AddCloudRequestAllOf.md)
  - [AddKeyRequest](docs/AddKeyRequest.md)
  - [AddKeyRequestAnyOf](docs/AddKeyRequestAnyOf.md)
  - [AddKeyRequestAnyOf1](docs/AddKeyRequestAnyOf1.md)
@@ -206,8 +204,6 @@ Class | Method | HTTP request | Description
  - [CreateClusterRequestAllOfNodepools](docs/CreateClusterRequestAllOfNodepools.md)
  - [CreateClusterRequestAllOfWaiters](docs/CreateClusterRequestAllOfWaiters.md)
  - [CreateClusterResponse](docs/CreateClusterResponse.md)
- - [CreateMachineRequest](docs/CreateMachineRequest.md)
- - [CreateMachineRequestDisks](docs/CreateMachineRequestDisks.md)
  - [CreateMachineResponse](docs/CreateMachineResponse.md)
  - [CreateMachineResponseOneOf](docs/CreateMachineResponseOneOf.md)
  - [CreateMachineResponseOneOf1](docs/CreateMachineResponseOneOf1.md)
@@ -230,8 +226,6 @@ Class | Method | HTTP request | Description
  - [DockerCredentials](docs/DockerCredentials.md)
  - [DockerExtra](docs/DockerExtra.md)
  - [DockerNet](docs/DockerNet.md)
- - [EditCloudRequest](docs/EditCloudRequest.md)
- - [EditCloudRequestAnyOf](docs/EditCloudRequestAnyOf.md)
  - [EditMachineRequest](docs/EditMachineRequest.md)
  - [EditMachineRequestExpiration](docs/EditMachineRequestExpiration.md)
  - [EditRuleRequest](docs/EditRuleRequest.md)
@@ -351,7 +345,6 @@ Class | Method | HTTP request | Description
  - [Secret](docs/Secret.md)
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)
- - [SupportedProviders](docs/SupportedProviders.md)
  - [TaggingSelector](docs/TaggingSelector.md)
  - [Team](docs/Team.md)
  - [TriggerAfter](docs/TriggerAfter.md)

@@ -23,8 +23,6 @@ api_volumes.go
 api_zones.go
 client.go
 configuration.go
-docs/AddCloudRequest.md
-docs/AddCloudRequestAllOf.md
 docs/AddKeyRequest.md
 docs/AddKeyRequestAnyOf.md
 docs/AddKeyRequestAnyOf1.md
@@ -58,8 +56,6 @@ docs/CreateClusterRequestAllOf.md
 docs/CreateClusterRequestAllOfNodepools.md
 docs/CreateClusterRequestAllOfWaiters.md
 docs/CreateClusterResponse.md
-docs/CreateMachineRequest.md
-docs/CreateMachineRequestDisks.md
 docs/CreateMachineResponse.md
 docs/CreateMachineResponseOneOf.md
 docs/CreateMachineResponseOneOf1.md
@@ -83,8 +79,6 @@ docs/DockerCloudRequest.md
 docs/DockerCredentials.md
 docs/DockerExtra.md
 docs/DockerNet.md
-docs/EditCloudRequest.md
-docs/EditCloudRequestAnyOf.md
 docs/EditMachineRequest.md
 docs/EditMachineRequestExpiration.md
 docs/EditRuleRequest.md
@@ -217,7 +211,6 @@ docs/Selector.md
 docs/Size.md
 docs/SizesApi.md
 docs/SnapshotsApi.md
-docs/SupportedProviders.md
 docs/TaggingSelector.md
 docs/Team.md
 docs/TriggerAfter.md
@@ -240,8 +233,6 @@ docs/ZonesApi.md
 git_push.sh
 go.mod
 go.sum
-model_add_cloud_request.go
-model_add_cloud_request_all_of.go
 model_add_key_request.go
 model_add_key_request_any_of.go
 model_add_key_request_any_of_1.go
@@ -273,8 +264,6 @@ model_create_cluster_request_all_of.go
 model_create_cluster_request_all_of_nodepools.go
 model_create_cluster_request_all_of_waiters.go
 model_create_cluster_response.go
-model_create_machine_request.go
-model_create_machine_request_disks.go
 model_create_machine_response.go
 model_create_machine_response_one_of.go
 model_create_machine_response_one_of_1.go
@@ -297,8 +286,6 @@ model_docker_cloud_request.go
 model_docker_credentials.go
 model_docker_extra.go
 model_docker_net.go
-model_edit_cloud_request.go
-model_edit_cloud_request_any_of.go
 model_edit_machine_request.go
 model_edit_machine_request_expiration.go
 model_edit_rule_request.go
@@ -418,7 +405,6 @@ model_script.go
 model_secret.go
 model_selector.go
 model_size.go
-model_supported_providers.go
 model_tagging_selector.go
 model_team.go
 model_trigger_after.go

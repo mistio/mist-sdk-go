@@ -28,11 +28,11 @@ type CloudsApiService service
 type ApiAddCloudRequest struct {
 	ctx context.Context
 	ApiService *CloudsApiService
-	addCloudRequest *AddCloudRequest
+	body *map[string]interface{}
 }
 
-func (r ApiAddCloudRequest) AddCloudRequest(addCloudRequest AddCloudRequest) ApiAddCloudRequest {
-	r.addCloudRequest = &addCloudRequest
+func (r ApiAddCloudRequest) Body(body map[string]interface{}) ApiAddCloudRequest {
+	r.body = &body
 	return r
 }
 
@@ -94,7 +94,7 @@ func (a *CloudsApiService) AddCloudExecute(r ApiAddCloudRequest) (*InlineRespons
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.addCloudRequest
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -150,11 +150,11 @@ type ApiEditCloudRequest struct {
 	ctx context.Context
 	ApiService *CloudsApiService
 	cloud string
-	editCloudRequest *EditCloudRequest
+	body *map[string]interface{}
 }
 
-func (r ApiEditCloudRequest) EditCloudRequest(editCloudRequest EditCloudRequest) ApiEditCloudRequest {
-	r.editCloudRequest = &editCloudRequest
+func (r ApiEditCloudRequest) Body(body map[string]interface{}) ApiEditCloudRequest {
+	r.body = &body
 	return r
 }
 
@@ -217,7 +217,7 @@ func (a *CloudsApiService) EditCloudExecute(r ApiEditCloudRequest) (*http.Respon
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.editCloudRequest
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

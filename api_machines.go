@@ -373,11 +373,11 @@ func (a *MachinesApiService) ConsoleExecute(r ApiConsoleRequest) (*http.Response
 type ApiCreateMachineRequest struct {
 	ctx context.Context
 	ApiService *MachinesApiService
-	createMachineRequest *CreateMachineRequest
+	body *map[string]interface{}
 }
 
-func (r ApiCreateMachineRequest) CreateMachineRequest(createMachineRequest CreateMachineRequest) ApiCreateMachineRequest {
-	r.createMachineRequest = &createMachineRequest
+func (r ApiCreateMachineRequest) Body(body map[string]interface{}) ApiCreateMachineRequest {
+	r.body = &body
 	return r
 }
 
@@ -442,7 +442,7 @@ func (a *MachinesApiService) CreateMachineExecute(r ApiCreateMachineRequest) (*C
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createMachineRequest
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
