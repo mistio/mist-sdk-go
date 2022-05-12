@@ -40,6 +40,7 @@ docs/AlibabaNet.md
 docs/AmazonCloudRequest.md
 docs/AmazonCredentials.md
 docs/AmazonNet.md
+docs/AmazonRegions.md
 docs/AzureCloudRequest.md
 docs/AzureCredentials.md
 docs/AzureExtra.md
@@ -205,9 +206,9 @@ docs/RuleAction.md
 docs/RulesApi.md
 docs/RunScriptRequest.md
 docs/RunScriptResponse.md
+docs/ScaleNodepoolRequest.md
 docs/Schedule.md
 docs/SchedulesApi.md
-docs/ScaleNodepoolRequest.md
 docs/Script.md
 docs/ScriptsApi.md
 docs/Secret.md
@@ -256,6 +257,7 @@ model_alibaba_net.go
 model_amazon_cloud_request.go
 model_amazon_credentials.go
 model_amazon_net.go
+model_amazon_regions.go
 model_azure_cloud_request.go
 model_azure_credentials.go
 model_azure_extra.go
@@ -410,8 +412,8 @@ model_rule.go
 model_rule_action.go
 model_run_script_request.go
 model_run_script_response.go
-model_schedule.go
 model_scale_nodepool_request.go
+model_schedule.go
 model_script.go
 model_secret.go
 model_selector.go
