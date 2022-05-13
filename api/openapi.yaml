@@ -10040,6 +10040,7 @@ components:
       - started_at
       type: object
     Log:
+      additionalProperties: true
       example:
         org: org
         job_id: job_id
