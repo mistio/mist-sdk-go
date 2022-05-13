@@ -19,7 +19,10 @@ import (
 type Log struct {
 	JobId string `json:"job_id"`
 	Org string `json:"org"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Log Log
 
 // NewLog instantiates a new Log object
 // This constructor will assign default values to properties that have it defined,
@@ -96,7 +99,30 @@ func (o Log) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["org"] = o.Org
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return json.Marshal(toSerialize)
+}
+
+func (o *Log) UnmarshalJSON(bytes []byte) (err error) {
+	varLog := _Log{}
+
+	if err = json.Unmarshal(bytes, &varLog); err == nil {
+		*o = Log(varLog)
+	}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "job_id")
+		delete(additionalProperties, "org")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLog struct {
