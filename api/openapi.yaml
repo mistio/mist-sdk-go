@@ -5829,19 +5829,20 @@ components:
       - other
       type: string
     Selector:
-      discriminator:
-        mapping:
-          resource: '#/components/schemas/ResourceSelector'
-          field: '#/components/schemas/FieldSelector'
-          tag: '#/components/schemas/TaggingSelector'
-          age: '#/components/schemas/AgeSelector'
-        propertyName: type
-      oneOf:
-      - $ref: '#/components/schemas/ResourceSelector'
-      - $ref: '#/components/schemas/FieldSelector'
-      - $ref: '#/components/schemas/TaggingSelector'
-      - $ref: '#/components/schemas/AgeSelector'
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/Selector_allOf'
+      - discriminator:
+          mapping:
+            resource: '#/components/schemas/ResourceSelector'
+            field: '#/components/schemas/FieldSelector'
+            tag: '#/components/schemas/TaggingSelector'
+            age: '#/components/schemas/AgeSelector'
+          propertyName: type
+        oneOf:
+        - $ref: '#/components/schemas/ResourceSelector'
+        - $ref: '#/components/schemas/FieldSelector'
+        - $ref: '#/components/schemas/TaggingSelector'
+        - $ref: '#/components/schemas/AgeSelector'
     ResourceSelector:
       properties:
         type:
@@ -10690,6 +10691,18 @@ components:
       properties:
         url:
           type: string
+      type: object
+    Selector_allOf:
+      properties:
+        type:
+          enum:
+          - resource
+          - field
+          - tag
+          - age
+          type: string
+      required:
+      - type
       type: object
     AddCloudRequest_allOf:
       properties:

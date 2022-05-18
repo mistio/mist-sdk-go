@@ -214,6 +214,7 @@ docs/ScriptsApi.md
 docs/Secret.md
 docs/SecretsApi.md
 docs/Selector.md
+docs/SelectorAllOf.md
 docs/Size.md
 docs/SizesApi.md
 docs/SnapshotsApi.md
@@ -417,6 +418,7 @@ model_schedule.go
 model_script.go
 model_secret.go
 model_selector.go
+model_selector_all_of.go
 model_size.go
 model_supported_providers.go
 model_tagging_selector.go

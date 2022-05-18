@@ -350,6 +350,7 @@ Class | Method | HTTP request | Description
  - [Script](docs/Script.md)
  - [Secret](docs/Secret.md)
  - [Selector](docs/Selector.md)
+ - [SelectorAllOf](docs/SelectorAllOf.md)
  - [Size](docs/Size.md)
  - [SupportedProviders](docs/SupportedProviders.md)
  - [TaggingSelector](docs/TaggingSelector.md)
