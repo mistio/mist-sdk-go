@@ -5852,6 +5852,7 @@ components:
           items:
             type: string
           type: array
+      title: Resource
       type: object
     FieldSelector:
       properties:
@@ -5875,6 +5876,7 @@ components:
           - regex
           example: eq
           type: string
+      title: Field
       type: object
     TaggingSelector:
       properties:
@@ -5888,6 +5890,7 @@ components:
           items:
             type: string
           type: array
+      title: Tag
       type: object
     AgeSelector:
       properties:
@@ -5901,6 +5904,7 @@ components:
             of the resource
           example: 6000
           type: integer
+      title: Age
       type: object
     ResponseMetadata:
       example:
