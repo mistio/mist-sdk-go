@@ -13,6 +13,7 @@ api_machines.go
 api_networks.go
 api_orgs.go
 api_rules.go
+api_schedules.go
 api_scripts.go
 api_secrets.go
 api_sizes.go
@@ -30,13 +31,16 @@ docs/AddKeyRequestAnyOf1.md
 docs/AddKeyRequestAnyOf2.md
 docs/AddKeyResponse.md
 docs/AddRuleRequest.md
+docs/AddScheduleRequest.md
 docs/AddScriptRequest.md
+docs/AgeSelector.md
 docs/AlibabaCloudRequest.md
 docs/AlibabaCredentials.md
 docs/AlibabaNet.md
 docs/AmazonCloudRequest.md
 docs/AmazonCredentials.md
 docs/AmazonNet.md
+docs/AmazonRegions.md
 docs/AzureCloudRequest.md
 docs/AzureCredentials.md
 docs/AzureExtra.md
@@ -52,6 +56,7 @@ docs/ClustersApi.md
 docs/CreateClusterRequest.md
 docs/CreateClusterRequestAllOf.md
 docs/CreateClusterRequestAllOfNodepools.md
+docs/CreateClusterRequestAllOfWaiters.md
 docs/CreateClusterResponse.md
 docs/CreateMachineRequest.md
 docs/CreateMachineRequestDisks.md
@@ -83,6 +88,7 @@ docs/EditCloudRequestAnyOf.md
 docs/EditMachineRequest.md
 docs/EditMachineRequestExpiration.md
 docs/EditRuleRequest.md
+docs/EditScheduleRequest.md
 docs/EditSecretRequest.md
 docs/EquinixCloudRequest.md
 docs/EquinixCredentials.md
@@ -91,6 +97,7 @@ docs/EquinixMetalNet.md
 docs/EquinixMetalNetIpAddresses.md
 docs/Expiration.md
 docs/ExpirationNotify.md
+docs/FieldSelector.md
 docs/Frequency.md
 docs/GetCloudResponse.md
 docs/GetClusterResponse.md
@@ -104,6 +111,7 @@ docs/GetNetworkResponse.md
 docs/GetOrgMemberResponse.md
 docs/GetOrgResponse.md
 docs/GetRuleResponse.md
+docs/GetScheduleResponse.md
 docs/GetScriptResponse.md
 docs/GetSecretResponse.md
 docs/GetSizeResponse.md
@@ -154,6 +162,7 @@ docs/ListOrgMembersResponse.md
 docs/ListOrgTeamsResponse.md
 docs/ListOrgsResponse.md
 docs/ListRulesResponse.md
+docs/ListSchedulesResponse.md
 docs/ListScriptsResponse.md
 docs/ListSecretsResponse.md
 docs/ListSizesResponse.md
@@ -192,12 +201,16 @@ docs/Query.md
 docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
 docs/RangeVector.md
+docs/ResourceSelector.md
 docs/ResponseMetadata.md
 docs/Rule.md
 docs/RuleAction.md
 docs/RulesApi.md
 docs/RunScriptRequest.md
 docs/RunScriptResponse.md
+docs/ScaleNodepoolRequest.md
+docs/Schedule.md
+docs/SchedulesApi.md
 docs/Script.md
 docs/ScriptsApi.md
 docs/Secret.md
@@ -207,6 +220,7 @@ docs/Size.md
 docs/SizesApi.md
 docs/SnapshotsApi.md
 docs/SupportedProviders.md
+docs/TaggingSelector.md
 docs/Team.md
 docs/TriggerAfter.md
 docs/User.md
@@ -236,13 +250,16 @@ model_add_key_request_any_of_1.go
 model_add_key_request_any_of_2.go
 model_add_key_response.go
 model_add_rule_request.go
+model_add_schedule_request.go
 model_add_script_request.go
+model_age_selector.go
 model_alibaba_cloud_request.go
 model_alibaba_credentials.go
 model_alibaba_net.go
 model_amazon_cloud_request.go
 model_amazon_credentials.go
 model_amazon_net.go
+model_amazon_regions.go
 model_azure_cloud_request.go
 model_azure_credentials.go
 model_azure_extra.go
@@ -256,6 +273,7 @@ model_cluster_providers.go
 model_create_cluster_request.go
 model_create_cluster_request_all_of.go
 model_create_cluster_request_all_of_nodepools.go
+model_create_cluster_request_all_of_waiters.go
 model_create_cluster_response.go
 model_create_machine_request.go
 model_create_machine_request_disks.go
@@ -286,6 +304,7 @@ model_edit_cloud_request_any_of.go
 model_edit_machine_request.go
 model_edit_machine_request_expiration.go
 model_edit_rule_request.go
+model_edit_schedule_request.go
 model_edit_secret_request.go
 model_equinix_cloud_request.go
 model_equinix_credentials.go
@@ -294,6 +313,7 @@ model_equinix_metal_net.go
 model_equinix_metal_net_ip_addresses.go
 model_expiration.go
 model_expiration_notify.go
+model_field_selector.go
 model_frequency.go
 model_get_cloud_response.go
 model_get_cluster_response.go
@@ -307,6 +327,7 @@ model_get_network_response.go
 model_get_org_member_response.go
 model_get_org_response.go
 model_get_rule_response.go
+model_get_schedule_response.go
 model_get_script_response.go
 model_get_secret_response.go
 model_get_size_response.go
@@ -352,6 +373,7 @@ model_list_org_members_response.go
 model_list_org_teams_response.go
 model_list_orgs_response.go
 model_list_rules_response.go
+model_list_schedules_response.go
 model_list_scripts_response.go
 model_list_secrets_response.go
 model_list_sizes_response.go
@@ -388,16 +410,20 @@ model_query.go
 model_rackspace_cloud_request.go
 model_rackspace_credentials.go
 model_range_vector.go
+model_resource_selector.go
 model_response_metadata.go
 model_rule.go
 model_rule_action.go
 model_run_script_request.go
 model_run_script_response.go
+model_scale_nodepool_request.go
+model_schedule.go
 model_script.go
 model_secret.go
 model_selector.go
 model_size.go
 model_supported_providers.go
+model_tagging_selector.go
 model_team.go
 model_trigger_after.go
 model_user.go
