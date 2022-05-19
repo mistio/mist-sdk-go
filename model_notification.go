@@ -15,68 +15,35 @@ import (
 	"encoding/json"
 )
 
-// RuleAction struct for RuleAction
-type RuleAction struct {
-	// the action's type: notification, machine_action, command 
-	Type Enum `json:"type"`
+// Notification struct for Notification
+type Notification struct {
 	// a list of user to be notified, denoted by their UUIDs 
 	Users *[]string `json:"users,omitempty"`
 	// a list of teams, denoted by their UUIDs, whose users will be notified 
 	Teams *[]string `json:"teams,omitempty"`
 	// a list of e-mails to send a notification to 
 	Emails *[]string `json:"emails,omitempty"`
-	// the action to be performed 
-	Action string `json:"action"`
-	// the command to be executed 
-	Command string `json:"command"`
 }
 
-// NewRuleAction instantiates a new RuleAction object
+// NewNotification instantiates a new Notification object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRuleAction(type_ Enum, action string, command string, ) *RuleAction {
-	this := RuleAction{}
-	this.Type = type_
-	this.Action = action
-	this.Command = command
+func NewNotification() *Notification {
+	this := Notification{}
 	return &this
 }
 
-// NewRuleActionWithDefaults instantiates a new RuleAction object
+// NewNotificationWithDefaults instantiates a new Notification object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRuleActionWithDefaults() *RuleAction {
-	this := RuleAction{}
+func NewNotificationWithDefaults() *Notification {
+	this := Notification{}
 	return &this
-}
-
-// GetType returns the Type field value
-func (o *RuleAction) GetType() Enum {
-	if o == nil  {
-		var ret Enum
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *RuleAction) GetTypeOk() (*Enum, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *RuleAction) SetType(v Enum) {
-	o.Type = v
 }
 
 // GetUsers returns the Users field value if set, zero value otherwise.
-func (o *RuleAction) GetUsers() []string {
+func (o *Notification) GetUsers() []string {
 	if o == nil || o.Users == nil {
 		var ret []string
 		return ret
@@ -86,7 +53,7 @@ func (o *RuleAction) GetUsers() []string {
 
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuleAction) GetUsersOk() (*[]string, bool) {
+func (o *Notification) GetUsersOk() (*[]string, bool) {
 	if o == nil || o.Users == nil {
 		return nil, false
 	}
@@ -94,7 +61,7 @@ func (o *RuleAction) GetUsersOk() (*[]string, bool) {
 }
 
 // HasUsers returns a boolean if a field has been set.
-func (o *RuleAction) HasUsers() bool {
+func (o *Notification) HasUsers() bool {
 	if o != nil && o.Users != nil {
 		return true
 	}
@@ -103,12 +70,12 @@ func (o *RuleAction) HasUsers() bool {
 }
 
 // SetUsers gets a reference to the given []string and assigns it to the Users field.
-func (o *RuleAction) SetUsers(v []string) {
+func (o *Notification) SetUsers(v []string) {
 	o.Users = &v
 }
 
 // GetTeams returns the Teams field value if set, zero value otherwise.
-func (o *RuleAction) GetTeams() []string {
+func (o *Notification) GetTeams() []string {
 	if o == nil || o.Teams == nil {
 		var ret []string
 		return ret
@@ -118,7 +85,7 @@ func (o *RuleAction) GetTeams() []string {
 
 // GetTeamsOk returns a tuple with the Teams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuleAction) GetTeamsOk() (*[]string, bool) {
+func (o *Notification) GetTeamsOk() (*[]string, bool) {
 	if o == nil || o.Teams == nil {
 		return nil, false
 	}
@@ -126,7 +93,7 @@ func (o *RuleAction) GetTeamsOk() (*[]string, bool) {
 }
 
 // HasTeams returns a boolean if a field has been set.
-func (o *RuleAction) HasTeams() bool {
+func (o *Notification) HasTeams() bool {
 	if o != nil && o.Teams != nil {
 		return true
 	}
@@ -135,12 +102,12 @@ func (o *RuleAction) HasTeams() bool {
 }
 
 // SetTeams gets a reference to the given []string and assigns it to the Teams field.
-func (o *RuleAction) SetTeams(v []string) {
+func (o *Notification) SetTeams(v []string) {
 	o.Teams = &v
 }
 
 // GetEmails returns the Emails field value if set, zero value otherwise.
-func (o *RuleAction) GetEmails() []string {
+func (o *Notification) GetEmails() []string {
 	if o == nil || o.Emails == nil {
 		var ret []string
 		return ret
@@ -150,7 +117,7 @@ func (o *RuleAction) GetEmails() []string {
 
 // GetEmailsOk returns a tuple with the Emails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuleAction) GetEmailsOk() (*[]string, bool) {
+func (o *Notification) GetEmailsOk() (*[]string, bool) {
 	if o == nil || o.Emails == nil {
 		return nil, false
 	}
@@ -158,7 +125,7 @@ func (o *RuleAction) GetEmailsOk() (*[]string, bool) {
 }
 
 // HasEmails returns a boolean if a field has been set.
-func (o *RuleAction) HasEmails() bool {
+func (o *Notification) HasEmails() bool {
 	if o != nil && o.Emails != nil {
 		return true
 	}
@@ -167,63 +134,12 @@ func (o *RuleAction) HasEmails() bool {
 }
 
 // SetEmails gets a reference to the given []string and assigns it to the Emails field.
-func (o *RuleAction) SetEmails(v []string) {
+func (o *Notification) SetEmails(v []string) {
 	o.Emails = &v
 }
 
-// GetAction returns the Action field value
-func (o *RuleAction) GetAction() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Action
-}
-
-// GetActionOk returns a tuple with the Action field value
-// and a boolean to check if the value has been set.
-func (o *RuleAction) GetActionOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Action, true
-}
-
-// SetAction sets field value
-func (o *RuleAction) SetAction(v string) {
-	o.Action = v
-}
-
-// GetCommand returns the Command field value
-func (o *RuleAction) GetCommand() string {
-	if o == nil  {
-		var ret string
-		return ret
-	}
-
-	return o.Command
-}
-
-// GetCommandOk returns a tuple with the Command field value
-// and a boolean to check if the value has been set.
-func (o *RuleAction) GetCommandOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Command, true
-}
-
-// SetCommand sets field value
-func (o *RuleAction) SetCommand(v string) {
-	o.Command = v
-}
-
-func (o RuleAction) MarshalJSON() ([]byte, error) {
+func (o Notification) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
 	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}
@@ -233,47 +149,41 @@ func (o RuleAction) MarshalJSON() ([]byte, error) {
 	if o.Emails != nil {
 		toSerialize["emails"] = o.Emails
 	}
-	if true {
-		toSerialize["action"] = o.Action
-	}
-	if true {
-		toSerialize["command"] = o.Command
-	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableRuleAction struct {
-	value *RuleAction
+type NullableNotification struct {
+	value *Notification
 	isSet bool
 }
 
-func (v NullableRuleAction) Get() *RuleAction {
+func (v NullableNotification) Get() *Notification {
 	return v.value
 }
 
-func (v *NullableRuleAction) Set(val *RuleAction) {
+func (v *NullableNotification) Set(val *Notification) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRuleAction) IsSet() bool {
+func (v NullableNotification) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRuleAction) Unset() {
+func (v *NullableNotification) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRuleAction(val *RuleAction) *NullableRuleAction {
-	return &NullableRuleAction{value: val, isSet: true}
+func NewNullableNotification(val *Notification) *NullableNotification {
+	return &NullableNotification{value: val, isSet: true}
 }
 
-func (v NullableRuleAction) MarshalJSON() ([]byte, error) {
+func (v NullableNotification) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRuleAction) UnmarshalJSON(src []byte) error {
+func (v *NullableNotification) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

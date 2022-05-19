@@ -52,6 +52,7 @@ docs/CloudsApi.md
 docs/Cluster.md
 docs/ClusterProviders.md
 docs/ClustersApi.md
+docs/Command.md
 docs/CreateClusterRequest.md
 docs/CreateClusterRequestAllOf.md
 docs/CreateClusterRequestAllOfNodepools.md
@@ -175,6 +176,7 @@ docs/Log.md
 docs/LxdCloudRequest.md
 docs/LxdCredentials.md
 docs/Machine.md
+docs/MachineAction.md
 docs/MachineState.md
 docs/MachinesApi.md
 docs/MaxihostCloudRequest.md
@@ -182,6 +184,7 @@ docs/MaxihostCredentials.md
 docs/Member.md
 docs/Network.md
 docs/NetworksApi.md
+docs/Notification.md
 docs/OnappCloudRequest.md
 docs/OnappCredentials.md
 docs/OneOffSchedule.md
@@ -202,6 +205,7 @@ docs/ResourceSelector.md
 docs/ResponseMetadata.md
 docs/Rule.md
 docs/RuleAction.md
+docs/RuleActionAllOf.md
 docs/RulesApi.md
 docs/RunScriptRequest.md
 docs/RunScriptResponse.md
@@ -266,6 +270,7 @@ model_cloud_sigma_cloud_request.go
 model_cloud_sigma_credentials.go
 model_cluster.go
 model_cluster_providers.go
+model_command.go
 model_create_cluster_request.go
 model_create_cluster_request_all_of.go
 model_create_cluster_request_all_of_nodepools.go
@@ -384,11 +389,13 @@ model_lxd_credentials.go
 model_lxd_extra.go
 model_lxd_net.go
 model_machine.go
+model_machine_action.go
 model_machine_state.go
 model_maxihost_cloud_request.go
 model_maxihost_credentials.go
 model_member.go
 model_network.go
+model_notification.go
 model_onapp_cloud_request.go
 model_onapp_credentials.go
 model_one_off_schedule.go
@@ -408,6 +415,7 @@ model_resource_selector.go
 model_response_metadata.go
 model_rule.go
 model_rule_action.go
+model_rule_action_all_of.go
 model_run_script_request.go
 model_run_script_response.go
 model_scale_nodepool_request.go
