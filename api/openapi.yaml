@@ -10855,7 +10855,7 @@ components:
           - notification
           - machine_action
           - command
-          type: enum
+          type: string
       required:
       - type
       type: object

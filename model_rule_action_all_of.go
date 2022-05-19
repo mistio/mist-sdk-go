@@ -18,14 +18,14 @@ import (
 // RuleActionAllOf struct for RuleActionAllOf
 type RuleActionAllOf struct {
 	// the action's type: notification, machine_action, command 
-	Type Enum `json:"type"`
+	Type string `json:"type"`
 }
 
 // NewRuleActionAllOf instantiates a new RuleActionAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRuleActionAllOf(type_ Enum, ) *RuleActionAllOf {
+func NewRuleActionAllOf(type_ string, ) *RuleActionAllOf {
 	this := RuleActionAllOf{}
 	this.Type = type_
 	return &this
@@ -40,9 +40,9 @@ func NewRuleActionAllOfWithDefaults() *RuleActionAllOf {
 }
 
 // GetType returns the Type field value
-func (o *RuleActionAllOf) GetType() Enum {
+func (o *RuleActionAllOf) GetType() string {
 	if o == nil  {
-		var ret Enum
+		var ret string
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *RuleActionAllOf) GetType() Enum {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RuleActionAllOf) GetTypeOk() (*Enum, bool) {
+func (o *RuleActionAllOf) GetTypeOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *RuleActionAllOf) GetTypeOk() (*Enum, bool) {
 }
 
 // SetType sets field value
-func (o *RuleActionAllOf) SetType(v Enum) {
+func (o *RuleActionAllOf) SetType(v string) {
 	o.Type = v
 }
 

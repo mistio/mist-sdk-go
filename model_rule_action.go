@@ -18,7 +18,7 @@ import (
 // RuleAction struct for RuleAction
 type RuleAction struct {
 	// the action's type: notification, machine_action, command 
-	Type Enum `json:"type"`
+	Type string `json:"type"`
 	// a list of user to be notified, denoted by their UUIDs 
 	Users *[]string `json:"users,omitempty"`
 	// a list of teams, denoted by their UUIDs, whose users will be notified 
@@ -35,7 +35,7 @@ type RuleAction struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRuleAction(type_ Enum, action string, command string, ) *RuleAction {
+func NewRuleAction(type_ string, action string, command string, ) *RuleAction {
 	this := RuleAction{}
 	this.Type = type_
 	this.Action = action
@@ -52,9 +52,9 @@ func NewRuleActionWithDefaults() *RuleAction {
 }
 
 // GetType returns the Type field value
-func (o *RuleAction) GetType() Enum {
+func (o *RuleAction) GetType() string {
 	if o == nil  {
-		var ret Enum
+		var ret string
 		return ret
 	}
 
@@ -63,7 +63,7 @@ func (o *RuleAction) GetType() Enum {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RuleAction) GetTypeOk() (*Enum, bool) {
+func (o *RuleAction) GetTypeOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -71,7 +71,7 @@ func (o *RuleAction) GetTypeOk() (*Enum, bool) {
 }
 
 // SetType sets field value
-func (o *RuleAction) SetType(v Enum) {
+func (o *RuleAction) SetType(v string) {
 	o.Type = v
 }
 
