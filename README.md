@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import sw "./mist_sdk"
+import mist_sdk "github.com/mistio/mist-sdk-go"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -40,7 +40,7 @@ Default configuration comes with `Servers` field that contains server objects as
 For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
 
 ```golang
-ctx := context.WithValue(context.Background(), sw.ContextServerIndex, 1)
+ctx := context.WithValue(context.Background(), mist_sdk.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
@@ -48,7 +48,7 @@ ctx := context.WithValue(context.Background(), sw.ContextServerIndex, 1)
 Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
 
 ```golang
-ctx := context.WithValue(context.Background(), sw.ContextServerVariables, map[string]string{
+ctx := context.WithValue(context.Background(), mist_sdk.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
 ```
@@ -58,14 +58,14 @@ Note, enum values are always validated and all unused variables are silently ign
 ### URLs Configuration per Operation
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
-An operation is uniquely identifield by `"{classname}Service.{nickname}"` string.
+An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
 ```
-ctx := context.WithValue(context.Background(), sw.ContextOperationServerIndices, map[string]int{
+ctx := context.WithValue(context.Background(), mist_sdk.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
-ctx = context.WithValue(context.Background(), sw.ContextOperationServerVariables, map[string]map[string]string{
+ctx = context.WithValue(context.Background(), mist_sdk.ContextOperationServerVariables, map[string]map[string]string{
 	"{classname}Service.{nickname}": {
 		"port": "8443",
 	},
@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**DestroyCluster**](docs/ClustersApi.md#destroycluster) | **Delete** /api/v2/clusters/{cluster} | Destroy cluster
 *ClustersApi* | [**GetCluster**](docs/ClustersApi.md#getcluster) | **Get** /api/v2/clusters/{cluster} | Get cluster
 *ClustersApi* | [**ListClusters**](docs/ClustersApi.md#listclusters) | **Get** /api/v2/clusters | List clusters
+*ClustersApi* | [**ScaleNodepool**](docs/ClustersApi.md#scalenodepool) | **Post** /api/v2/clusters/{cluster}/nodepools/{nodepool} | Scale cluster nodepool
 *DatapointsApi* | [**GetDatapoints**](docs/DatapointsApi.md#getdatapoints) | **Get** /api/v2/datapoints | Get datapoints
 *ImagesApi* | [**GetImage**](docs/ImagesApi.md#getimage) | **Get** /api/v2/images/{image} | Get image
 *ImagesApi* | [**ListImages**](docs/ImagesApi.md#listimages) | **Get** /api/v2/images | List images
@@ -133,6 +134,11 @@ Class | Method | HTTP request | Description
 *RulesApi* | [**ListRules**](docs/RulesApi.md#listrules) | **Get** /api/v2/rules | List rules
 *RulesApi* | [**RenameRule**](docs/RulesApi.md#renamerule) | **Patch** /api/v2/rules/{rule} | Rename rule
 *RulesApi* | [**ToggleRule**](docs/RulesApi.md#togglerule) | **Put** /api/v2/rules/{rule} | Toggle rule
+*SchedulesApi* | [**AddSchedule**](docs/SchedulesApi.md#addschedule) | **Post** /api/v2/schedules | Add schedule
+*SchedulesApi* | [**DeleteSchedule**](docs/SchedulesApi.md#deleteschedule) | **Delete** /api/v2/schedules/{schedule} | Delete schedule
+*SchedulesApi* | [**EditSchedule**](docs/SchedulesApi.md#editschedule) | **Patch** /api/v2/schedules/{schedule} | Edit schedule
+*SchedulesApi* | [**GetSchedule**](docs/SchedulesApi.md#getschedule) | **Get** /api/v2/schedules/{schedule} | Get schedule
+*SchedulesApi* | [**ListSchedules**](docs/SchedulesApi.md#listschedules) | **Get** /api/v2/schedules | List schedules
 *ScriptsApi* | [**AddScript**](docs/ScriptsApi.md#addscript) | **Post** /api/v2/scripts | Add script
 *ScriptsApi* | [**DeleteScript**](docs/ScriptsApi.md#deletescript) | **Delete** /api/v2/scripts/{script} | Delete script
 *ScriptsApi* | [**DownloadScript**](docs/ScriptsApi.md#downloadscript) | **Get** /api/v2/scripts/{script}/file | Download script
@@ -141,6 +147,11 @@ Class | Method | HTTP request | Description
 *ScriptsApi* | [**GetScript**](docs/ScriptsApi.md#getscript) | **Get** /api/v2/scripts/{script} | Get script
 *ScriptsApi* | [**ListScripts**](docs/ScriptsApi.md#listscripts) | **Get** /api/v2/scripts | List scripts
 *ScriptsApi* | [**RunScript**](docs/ScriptsApi.md#runscript) | **Post** /api/v2/scripts/{script} | Run script
+*SecretsApi* | [**CreateSecret**](docs/SecretsApi.md#createsecret) | **Post** /api/v2/secrets | Create secret
+*SecretsApi* | [**DeleteSecret**](docs/SecretsApi.md#deletesecret) | **Delete** /api/v2/secrets/{secret} | Delete secret
+*SecretsApi* | [**EditSecret**](docs/SecretsApi.md#editsecret) | **Put** /api/v2/secrets/{secret} | Edit secret
+*SecretsApi* | [**GetSecret**](docs/SecretsApi.md#getsecret) | **Get** /api/v2/secrets/{secret} | Get secret
+*SecretsApi* | [**ListSecrets**](docs/SecretsApi.md#listsecrets) | **Get** /api/v2/secrets | List secrets
 *SizesApi* | [**GetSize**](docs/SizesApi.md#getsize) | **Get** /api/v2/sizes/{size} | Get size
 *SizesApi* | [**ListSizes**](docs/SizesApi.md#listsizes) | **Get** /api/v2/sizes | List sizes
 *SnapshotsApi* | [**CreateSnapshot**](docs/SnapshotsApi.md#createsnapshot) | **Post** /api/v2/machines/{machine}/snapshots | Create snapshot
@@ -170,14 +181,16 @@ Class | Method | HTTP request | Description
  - [AddKeyRequestAnyOf2](docs/AddKeyRequestAnyOf2.md)
  - [AddKeyResponse](docs/AddKeyResponse.md)
  - [AddRuleRequest](docs/AddRuleRequest.md)
+ - [AddScheduleRequest](docs/AddScheduleRequest.md)
  - [AddScriptRequest](docs/AddScriptRequest.md)
+ - [AgeSelector](docs/AgeSelector.md)
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)
  - [AlibabaCredentials](docs/AlibabaCredentials.md)
  - [AlibabaNet](docs/AlibabaNet.md)
  - [AmazonCloudRequest](docs/AmazonCloudRequest.md)
- - [AmazonClusterRequest](docs/AmazonClusterRequest.md)
  - [AmazonCredentials](docs/AmazonCredentials.md)
  - [AmazonNet](docs/AmazonNet.md)
+ - [AmazonRegions](docs/AmazonRegions.md)
  - [AzureCloudRequest](docs/AzureCloudRequest.md)
  - [AzureCredentials](docs/AzureCredentials.md)
  - [AzureExtra](docs/AzureExtra.md)
@@ -190,6 +203,8 @@ Class | Method | HTTP request | Description
  - [ClusterProviders](docs/ClusterProviders.md)
  - [CreateClusterRequest](docs/CreateClusterRequest.md)
  - [CreateClusterRequestAllOf](docs/CreateClusterRequestAllOf.md)
+ - [CreateClusterRequestAllOfNodepools](docs/CreateClusterRequestAllOfNodepools.md)
+ - [CreateClusterRequestAllOfWaiters](docs/CreateClusterRequestAllOfWaiters.md)
  - [CreateClusterResponse](docs/CreateClusterResponse.md)
  - [CreateMachineRequest](docs/CreateMachineRequest.md)
  - [CreateMachineRequestDisks](docs/CreateMachineRequestDisks.md)
@@ -198,6 +213,7 @@ Class | Method | HTTP request | Description
  - [CreateMachineResponseOneOf1](docs/CreateMachineResponseOneOf1.md)
  - [CreateNetworkRequest](docs/CreateNetworkRequest.md)
  - [CreateNetworkResponse](docs/CreateNetworkResponse.md)
+ - [CreateSecretRequest](docs/CreateSecretRequest.md)
  - [CreateVolumeRequest](docs/CreateVolumeRequest.md)
  - [CreateVolumeResponse](docs/CreateVolumeResponse.md)
  - [CreateZoneRequest](docs/CreateZoneRequest.md)
@@ -207,6 +223,7 @@ Class | Method | HTTP request | Description
  - [Datapoints](docs/Datapoints.md)
  - [DatapointsData](docs/DatapointsData.md)
  - [DatapointsValuesItem](docs/DatapointsValuesItem.md)
+ - [DestroyClusterResponse](docs/DestroyClusterResponse.md)
  - [DigitaloceanCloudRequest](docs/DigitaloceanCloudRequest.md)
  - [DigitaloceanCredentials](docs/DigitaloceanCredentials.md)
  - [DockerCloudRequest](docs/DockerCloudRequest.md)
@@ -218,6 +235,8 @@ Class | Method | HTTP request | Description
  - [EditMachineRequest](docs/EditMachineRequest.md)
  - [EditMachineRequestExpiration](docs/EditMachineRequestExpiration.md)
  - [EditRuleRequest](docs/EditRuleRequest.md)
+ - [EditScheduleRequest](docs/EditScheduleRequest.md)
+ - [EditSecretRequest](docs/EditSecretRequest.md)
  - [EquinixCloudRequest](docs/EquinixCloudRequest.md)
  - [EquinixCredentials](docs/EquinixCredentials.md)
  - [EquinixMetalExtra](docs/EquinixMetalExtra.md)
@@ -225,6 +244,7 @@ Class | Method | HTTP request | Description
  - [EquinixMetalNetIpAddresses](docs/EquinixMetalNetIpAddresses.md)
  - [Expiration](docs/Expiration.md)
  - [ExpirationNotify](docs/ExpirationNotify.md)
+ - [FieldSelector](docs/FieldSelector.md)
  - [Frequency](docs/Frequency.md)
  - [GetCloudResponse](docs/GetCloudResponse.md)
  - [GetClusterResponse](docs/GetClusterResponse.md)
@@ -238,14 +258,18 @@ Class | Method | HTTP request | Description
  - [GetOrgMemberResponse](docs/GetOrgMemberResponse.md)
  - [GetOrgResponse](docs/GetOrgResponse.md)
  - [GetRuleResponse](docs/GetRuleResponse.md)
+ - [GetScheduleResponse](docs/GetScheduleResponse.md)
  - [GetScriptResponse](docs/GetScriptResponse.md)
+ - [GetSecretResponse](docs/GetSecretResponse.md)
  - [GetSizeResponse](docs/GetSizeResponse.md)
  - [GetVolumeResponse](docs/GetVolumeResponse.md)
  - [GetZoneResponse](docs/GetZoneResponse.md)
  - [GoogleCloudRequest](docs/GoogleCloudRequest.md)
- - [GoogleClusterRequest](docs/GoogleClusterRequest.md)
  - [GoogleCredentials](docs/GoogleCredentials.md)
+ - [GoogleExtra](docs/GoogleExtra.md)
+ - [GoogleExtraServiceAccount](docs/GoogleExtraServiceAccount.md)
  - [GoogleNet](docs/GoogleNet.md)
+ - [HelmChart](docs/HelmChart.md)
  - [IbmCloudRequest](docs/IbmCloudRequest.md)
  - [IbmCredentials](docs/IbmCredentials.md)
  - [Image](docs/Image.md)
@@ -262,6 +286,7 @@ Class | Method | HTTP request | Description
  - [KeyMachineDisassociation](docs/KeyMachineDisassociation.md)
  - [KubernetesCloudRequest](docs/KubernetesCloudRequest.md)
  - [KubernetesCredentials](docs/KubernetesCredentials.md)
+ - [KubernetesManifest](docs/KubernetesManifest.md)
  - [KubevirtCloudRequest](docs/KubevirtCloudRequest.md)
  - [KvmCloudRequest](docs/KvmCloudRequest.md)
  - [LXDExtra](docs/LXDExtra.md)
@@ -281,7 +306,9 @@ Class | Method | HTTP request | Description
  - [ListOrgTeamsResponse](docs/ListOrgTeamsResponse.md)
  - [ListOrgsResponse](docs/ListOrgsResponse.md)
  - [ListRulesResponse](docs/ListRulesResponse.md)
+ - [ListSchedulesResponse](docs/ListSchedulesResponse.md)
  - [ListScriptsResponse](docs/ListScriptsResponse.md)
+ - [ListSecretsResponse](docs/ListSecretsResponse.md)
  - [ListSizesResponse](docs/ListSizesResponse.md)
  - [ListSnapshotsResponse](docs/ListSnapshotsResponse.md)
  - [ListUsersResponse](docs/ListUsersResponse.md)
@@ -314,15 +341,20 @@ Class | Method | HTTP request | Description
  - [RackspaceCloudRequest](docs/RackspaceCloudRequest.md)
  - [RackspaceCredentials](docs/RackspaceCredentials.md)
  - [RangeVector](docs/RangeVector.md)
+ - [ResourceSelector](docs/ResourceSelector.md)
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)
  - [RuleAction](docs/RuleAction.md)
  - [RunScriptRequest](docs/RunScriptRequest.md)
  - [RunScriptResponse](docs/RunScriptResponse.md)
+ - [ScaleNodepoolRequest](docs/ScaleNodepoolRequest.md)
+ - [Schedule](docs/Schedule.md)
  - [Script](docs/Script.md)
+ - [Secret](docs/Secret.md)
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)
  - [SupportedProviders](docs/SupportedProviders.md)
+ - [TaggingSelector](docs/TaggingSelector.md)
  - [Team](docs/Team.md)
  - [TriggerAfter](docs/TriggerAfter.md)
  - [User](docs/User.md)
