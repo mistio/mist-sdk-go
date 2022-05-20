@@ -55,7 +55,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -68,7 +68,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -83,7 +83,7 @@ paths:
           Do not dereference anything, just return ids:
             value: none
           Dereference creator by email, owner by name:
-            value: creator:email, owned_by:name
+            value: "creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -92,8 +92,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -221,7 +221,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -236,7 +236,7 @@ paths:
           Do not dereference anything, just return ids:
             value: none
           Dereference creator by email, owner by name:
-            value: creator:email, owned_by:name
+            value: "creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -365,7 +365,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -378,7 +378,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -395,7 +395,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -404,8 +404,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -537,7 +537,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -554,7 +554,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -714,7 +714,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -727,7 +727,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -744,7 +744,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -753,8 +753,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -821,7 +821,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -838,7 +838,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -941,7 +941,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -954,7 +954,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -971,7 +971,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -980,8 +980,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -1030,10 +1030,11 @@ paths:
       - owned_by
       - created_by
     post:
-      description: |
-        Creates one or more machines on the specified cloud. If async is true, a jobId will be returned.
-        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location.
-        CREATE_RESOURCES permission required on location. CREATE permission required on machine. RUN permission required on script. READ permission required on key.
+      description: "Creates one or more machines on the specified cloud. If async\
+        \ is true, a jobId will be returned.\nREAD permission required on cloud. CREATE_RESOURCES\
+        \ permission required on cloud. READ permission required on location.\nCREATE_RESOURCES\
+        \ permission required on location. CREATE permission required on machine.\
+        \ RUN permission required on script. READ permission required on key.\n"
       operationId: create-machine
       requestBody:
         content:
@@ -1080,8 +1081,8 @@ paths:
                   image: Ubuntu
                   size: Standard_D4s_v5
               FullExample:
-                summary: Provision 2 machines with monitoring, schedules, expiration
-                  and provisioning scripts
+                summary: "Provision 2 machines with monitoring, schedules, expiration\
+                  \ and provisioning scripts"
                 value:
                   cloud: GCE
                   name: testmachine
@@ -1161,7 +1162,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -1178,7 +1179,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -2000,7 +2001,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -2013,7 +2014,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -2030,7 +2031,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -2039,8 +2040,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -2088,9 +2089,9 @@ paths:
       - owned_by
       - created_by
     post:
-      description: |
-        Creates one or more networks on the specified cloud. If async is true, a jobId will be returned.
-        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on network.
+      description: "Creates one or more networks on the specified cloud. If async\
+        \ is true, a jobId will be returned.\nREAD permission required on cloud. CREATE_RESOURCES\
+        \ permission required on cloud. CREATE permission required on network.\n"
       operationId: create-network
       requestBody:
         content:
@@ -2182,7 +2183,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -2199,7 +2200,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -2340,7 +2341,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -2353,7 +2354,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -2377,8 +2378,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -2544,7 +2545,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -2557,7 +2558,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -2581,8 +2582,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -2748,7 +2749,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -2761,7 +2762,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -2778,7 +2779,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -2786,8 +2787,8 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -2839,10 +2840,10 @@ paths:
       - owned_by
       - created_by
     post:
-      description: |
-        Creates one or more volumes on the specified cloud. If async is true, a jobId will be returned.
-        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. READ permission required on location.
-        CREATE_RESOURCES permission required on location. CREATE permission required on volume.
+      description: "Creates one or more volumes on the specified cloud. If async is\
+        \ true, a jobId will be returned.\nREAD permission required on cloud. CREATE_RESOURCES\
+        \ permission required on cloud. READ permission required on location.\nCREATE_RESOURCES\
+        \ permission required on location. CREATE permission required on volume.\n"
       operationId: create-volume
       requestBody:
         content:
@@ -2929,7 +2930,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -2946,7 +2947,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -3091,7 +3092,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -3104,7 +3105,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -3121,7 +3122,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -3130,8 +3131,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -3179,9 +3180,9 @@ paths:
       - owned_by
       - created_by
     post:
-      description: |
-        Creates one or more zones on the specified cloud. If async is true, a jobId will be returned.
-        READ permission required on cloud. CREATE_RESOURCES permission required on cloud. CREATE permission required on zone.
+      description: "Creates one or more zones on the specified cloud. If async is\
+        \ true, a jobId will be returned.\nREAD permission required on cloud. CREATE_RESOURCES\
+        \ permission required on cloud. CREATE permission required on zone.\n"
       operationId: create-zone
       requestBody:
         content:
@@ -3262,7 +3263,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -3279,7 +3280,7 @@ paths:
           Dereference cloud id to cloud provider:
             value: cloud:provider
           Dereference cloud by provider, creator by email, owner by name:
-            value: cloud:provider, creator:email, owned_by:name
+            value: "cloud:provider, creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -3397,7 +3398,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -3410,7 +3411,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -3425,7 +3426,7 @@ paths:
           Do not dereference anything, just return ids:
             value: none
           Dereference creator by email, owner by name:
-            value: creator:email, owned_by:name
+            value: "creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -3434,8 +3435,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -3572,7 +3573,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -3587,7 +3588,7 @@ paths:
           Do not dereference anything, just return ids:
             value: none
           Dereference creator by email, owner by name:
-            value: creator:email, owned_by:name
+            value: "creator:email, owned_by:name"
         explode: true
         in: query
         name: deref
@@ -3715,7 +3716,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -3728,7 +3729,7 @@ paths:
           Only return id:
             value: id
           Return id, name & created_by:
-            value: id,name,created_by
+            value: "id,name,created_by"
         explode: true
         in: query
         name: only
@@ -3743,7 +3744,7 @@ paths:
           Do not dereference anything, just return ids:
             value: none
           Dereference creator by email, owner by name:
-            value: creator:email, owned_by:name'
+            value: "creator:email, owned_by:name'"
         explode: true
         in: query
         name: deref
@@ -3881,7 +3882,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -3896,7 +3897,7 @@ paths:
           Do not dereference anything, just return ids:
             value: none
           Dereference creator by email, owner by name:
-            value: creator:email, owned_by:name'
+            value: "creator:email, owned_by:name'"
         explode: true
         in: query
         name: deref
@@ -4032,7 +4033,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -4045,7 +4046,7 @@ paths:
           Only return id:
             value: id
           Return id, name & created_by:
-            value: id,name,created_by
+            value: "id,name,created_by"
         explode: true
         in: query
         name: only
@@ -4060,7 +4061,7 @@ paths:
           Do not dereference anything, just return ids:
             value: none
           Dereference creator by email, owner by name:
-            value: creator:email, owned_by:name'
+            value: "creator:email, owned_by:name'"
         explode: true
         in: query
         name: deref
@@ -4069,8 +4070,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -4185,7 +4186,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -4200,7 +4201,7 @@ paths:
           Do not dereference anything, just return ids:
             value: none
           Dereference creator by email, owner by name:
-            value: creator:email, owned_by:name'
+            value: "creator:email, owned_by:name'"
         explode: true
         in: query
         name: deref
@@ -4437,7 +4438,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -4450,7 +4451,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -4458,8 +4459,8 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -4506,8 +4507,8 @@ paths:
       - frequency
       - tags
     post:
-      description: Add a new rule, READ permission required on target resource, ADD
-        permission required on Rule
+      description: "Add a new rule, READ permission required on target resource, ADD\
+        \ permission required on Rule"
       operationId: add-rule
       requestBody:
         content:
@@ -4591,7 +4592,7 @@ paths:
           Only return id:
             value: id
           Return id, name & owned_by:
-            value: id,name,owned_by
+            value: "id,name,owned_by"
         explode: true
         in: query
         name: only
@@ -4673,7 +4674,7 @@ paths:
       tags:
       - rules
     post:
-      description: Edit a rule given its UUID, EDIT permission required on rule
+      description: "Edit a rule given its UUID, EDIT permission required on rule"
       operationId: edit-rule
       parameters:
       - example: my-rule
@@ -4802,7 +4803,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 100 max
+      - description: "Limit number of results, 100 max"
         explode: true
         in: query
         name: limit
@@ -4815,7 +4816,7 @@ paths:
           Only return id:
             value: id
           Return name, id, teams:
-            value: name,id,teams
+            value: "name,id,teams"
         explode: true
         in: query
         name: only
@@ -4839,8 +4840,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -4900,7 +4901,7 @@ paths:
           Only return id:
             value: id
           Return name, id, teams:
-            value: name,id,teams
+            value: "name,id,teams"
         explode: true
         in: query
         name: only
@@ -5001,7 +5002,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -5014,7 +5015,7 @@ paths:
           Only return id:
             value: id
           Return email, last name, registration date:
-            value: email,last_name,registration_date
+            value: "email,last_name,registration_date"
         explode: true
         in: query
         name: only
@@ -5022,8 +5023,8 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -5088,7 +5089,7 @@ paths:
           Only return id:
             value: id
           Return email, last_name:
-            value: email,last_name
+            value: "email,last_name"
         explode: true
         in: query
         name: only
@@ -5174,7 +5175,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -5187,7 +5188,7 @@ paths:
           Only return id:
             value: id
           Return name, members:
-            value: name,members
+            value: "name,members"
         explode: true
         in: query
         name: only
@@ -5211,8 +5212,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -5256,7 +5257,6 @@ paths:
     x-cli-ignore: true
   /api/v2/jobs/{job_id}:
     get:
-      description: "null"
       operationId: get-job
       parameters:
       - example: ab74e2f0b7ae4999b1e4013e20dac418
@@ -5329,7 +5329,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -5342,7 +5342,7 @@ paths:
           Only return id:
             value: id
           Return email, last_login & registration_date:
-            value: email,last_login,registration_date
+            value: "email,last_login,registration_date"
         explode: true
         in: query
         name: only
@@ -5364,8 +5364,8 @@ paths:
           default: auto
           type: string
         style: form
-      - description: Limit results by specific datetime. Return resources created
-          before or at, or deleted after or at, given datetime.
+      - description: "Limit results by specific datetime. Return resources created\
+          \ before or at, or deleted after or at, given datetime."
         examples:
           Return resources created before or deleted after `2021-07-21T17:32:28Z`:
             value: 2021-07-21T17:32:28Z
@@ -5412,7 +5412,7 @@ paths:
           Query system_load1:
             value: system_load1
           Query net_bytes_sent:
-            value: rate(net_bytes_sent{interface="eth0", machine_id="1234"})
+            value: "rate(net_bytes_sent{interface=\"eth0\", machine_id=\"1234\"})"
         explode: true
         in: query
         name: query
@@ -5422,7 +5422,7 @@ paths:
         style: form
       - examples:
           Example string:
-            value: cluster=east1,production
+            value: "cluster=east1,production"
           Example dictionary:
             value:
               cluster: east1
@@ -5570,7 +5570,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: Limit number of results, 1000 max
+      - description: "Limit number of results, 1000 max"
         explode: true
         in: query
         name: limit
@@ -5583,7 +5583,7 @@ paths:
           Only return id:
             value: id
           Return id, name & created_by:
-            value: id,title,created_by
+            value: "id,title,created_by"
         explode: true
         in: query
         name: only
@@ -5766,8 +5766,8 @@ components:
   links: {}
   parameters:
     atParam:
-      description: Limit results by specific datetime. Return resources created before
-        or at, or deleted after or at, given datetime.
+      description: "Limit results by specific datetime. Return resources created before\
+        \ or at, or deleted after or at, given datetime."
       examples:
         Return resources created before or deleted after `2021-07-21T17:32:28Z`:
           value: 2021-07-21T17:32:28Z
@@ -5838,8 +5838,8 @@ components:
     ResourceSelector:
       properties:
         type:
-          description: one of "machines", "volumes", "clusters" or "networks" resource
-            types
+          description: "one of \"machines\", \"volumes\", \"clusters\" or \"networks\"\
+            \ resource types"
           enum:
           - machines
           - volumes
@@ -5847,8 +5847,8 @@ components:
           - networks
           type: string
         ids:
-          description: a list of UUIDs in case type is resource like "machines", "volumes",
-            "clusters" or "networks"
+          description: "a list of UUIDs in case type is resource like \"machines\"\
+            , \"volumes\", \"clusters\" or \"networks\""
           items:
             type: string
           type: array
@@ -5929,22 +5929,24 @@ components:
             compute: true
             container: false
             dns: false
+          provider: null
           name: name
           owned_by: owned_by
           id: id
-          config: '{}'
+          config: "{}"
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         - features:
             compute: true
             container: false
             dns: false
+          provider: null
           name: name
           owned_by: owned_by
           id: id
-          config: '{}'
+          config: "{}"
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -5965,12 +5967,13 @@ components:
             compute: true
             container: false
             dns: false
+          provider: null
           name: name
           owned_by: owned_by
           id: id
-          config: '{}'
+          config: "{}"
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -5988,12 +5991,13 @@ components:
           compute: true
           container: false
           dns: false
+        provider: null
         name: name
         owned_by: owned_by
         id: id
-        config: '{}'
+        config: "{}"
         created_by: created_by
-        tags: '{}'
+        tags: "{}"
       properties:
         id:
           type: string
@@ -6180,13 +6184,60 @@ components:
           description: Your AWS API secret
           type: string
         region:
-          description: Your AWS region
-          type: string
+          $ref: '#/components/schemas/AmazonRegions'
       required:
       - apikey
       - apisecret
       - region
       type: object
+    AmazonRegions:
+      enum:
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - eu-central-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-north-1
+      - ca-central-1
+      - sa-east-1
+      - us-east-1
+      - us-west-1
+      - us-west-2
+      - us-east-2
+      - ap-south-1
+      - ap-east-1
+      - cn-north-1
+      - cn-northwest-1
+      - us-gov-west-1
+      - us-gov-east-1
+      type: string
+      x-enumNames:
+      - Tokyo
+      - Seoul
+      - Osaka
+      - Singapore
+      - Sydney
+      - Frankfurt
+      - Ireland
+      - London
+      - Paris
+      - Stockholm
+      - Canada Central
+      - Sao Paulo
+      - N. Virginia
+      - N. California
+      - Oregon
+      - Ohio
+      - Mumbai
+      - Hong Kong
+      - Beijing
+      - Ningxia
+      - GovCloud (US)
+      - GovCloud (US-East)
     AzureCloudRequest:
       properties:
         provider:
@@ -6638,7 +6689,7 @@ components:
           description: Your TLS CA certifcate
           type: string
         showAll:
-          description: Show all containers, including stopped
+          description: "Show all containers, including stopped"
           type: boolean
       required:
       - host
@@ -6682,7 +6733,7 @@ components:
           description: Your TLS CA certifcate
           type: string
         showAll:
-          description: Show all containers, including stopped
+          description: "Show all containers, including stopped"
           type: boolean
       required:
       - host
@@ -6757,7 +6808,7 @@ components:
           description: Your TLS CA certifcate
           type: string
         showAll:
-          description: Show all containers, including stopped
+          description: "Show all containers, including stopped"
           type: boolean
       required:
       - host
@@ -6804,42 +6855,44 @@ components:
         data:
         - owner: owner
           last_seen: last_seen
-          credentials: '{}'
+          credentials: "{}"
           created: created
           total_cpus: 6
           owned_by: owned_by
           external_id: external_id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
           cloud: cloud
           total_memory: 1
+          provider: null
           missing_since: missing_since
-          extra: '{}'
+          extra: "{}"
           name: name
           total_nodes: 0
           location: location
           id: id
           state: state
-          config: '{}'
+          config: "{}"
         - owner: owner
           last_seen: last_seen
-          credentials: '{}'
+          credentials: "{}"
           created: created
           total_cpus: 6
           owned_by: owned_by
           external_id: external_id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
           cloud: cloud
           total_memory: 1
+          provider: null
           missing_since: missing_since
-          extra: '{}'
+          extra: "{}"
           name: name
           total_nodes: 0
           location: location
           id: id
           state: state
-          config: '{}'
+          config: "{}"
         meta:
           total: 0
           start: 1
@@ -6858,23 +6911,24 @@ components:
         data:
           owner: owner
           last_seen: last_seen
-          credentials: '{}'
+          credentials: "{}"
           created: created
           total_cpus: 6
           owned_by: owned_by
           external_id: external_id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
           cloud: cloud
           total_memory: 1
+          provider: null
           missing_since: missing_since
-          extra: '{}'
+          extra: "{}"
           name: name
           total_nodes: 0
           location: location
           id: id
           state: state
-          config: '{}'
+          config: "{}"
         meta:
           total: 0
           start: 1
@@ -6894,11 +6948,12 @@ components:
           type: string
       type: object
     ScaleNodepoolRequest:
-      description: To scale a GKE nodepool without autoscaling set only the desired_nodes
-        parameter. On GKE nodepools with autoscaling, set min_nodes,max_nodes. Enabling/Disabling
-        autoscaling is only supported on GKE nodepools. min_nodes, max_nodes parameters
-        are required to enable autoscaling. To disable autoscaling set only enable_autoscaling
-        to false. For EKS nodepools set the min_nodes, desired_nodes, max_nodes parameters.
+      description: "To scale a GKE nodepool without autoscaling set only the desired_nodes\
+        \ parameter. On GKE nodepools with autoscaling, set min_nodes,max_nodes. Enabling/Disabling\
+        \ autoscaling is only supported on GKE nodepools. min_nodes, max_nodes parameters\
+        \ are required to enable autoscaling. To disable autoscaling set only enable_autoscaling\
+        \ to false. For EKS nodepools set the min_nodes, desired_nodes, max_nodes\
+        \ parameters."
       example:
         desired_nodes: 0
         max_nodes: 1
@@ -6935,23 +6990,24 @@ components:
       example:
         owner: owner
         last_seen: last_seen
-        credentials: '{}'
+        credentials: "{}"
         created: created
         total_cpus: 6
         owned_by: owned_by
         external_id: external_id
         created_by: created_by
-        tags: '{}'
+        tags: "{}"
         cloud: cloud
         total_memory: 1
+        provider: null
         missing_since: missing_since
-        extra: '{}'
+        extra: "{}"
         name: name
         total_nodes: 0
         location: location
         id: id
         state: state
-        config: '{}'
+        config: "{}"
       properties:
         id:
           type: string
@@ -7055,23 +7111,23 @@ components:
         - cloud: cloud
           starred: true
           os_type: os_type
-          extra: '{}'
+          extra: "{}"
           name: name
           external_id: external_id
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         - cloud: cloud
           starred: true
           os_type: os_type
-          extra: '{}'
+          extra: "{}"
           name: name
           external_id: external_id
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -7091,13 +7147,13 @@ components:
           cloud: cloud
           starred: true
           os_type: os_type
-          extra: '{}'
+          extra: "{}"
           name: name
           external_id: external_id
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -7114,13 +7170,13 @@ components:
         cloud: cloud
         starred: true
         os_type: os_type
-        extra: '{}'
+        extra: "{}"
         name: name
         external_id: external_id
         owned_by: owned_by
         id: id
         created_by: created_by
-        tags: '{}'
+        tags: "{}"
       properties:
         id:
           type: string
@@ -7145,7 +7201,7 @@ components:
       type: object
     CreateMachineRequest:
       example:
-        template: '{}'
+        template: "{}"
         image: Debian
         quantity: 1.4658129805029452
         disks:
@@ -7157,10 +7213,11 @@ components:
         save: true
         dry: true
         monitoring: true
-        tags: '{}'
+        tags: "{}"
         cloud: cloud
         size: m1.small
         optimize: optimize
+        provider: null
         schedules:
         - ""
         - ""
@@ -7190,7 +7247,7 @@ components:
           description: Specify cloud to provision on
           type: string
         location:
-          description: Where to provision e.g. region, datacenter, rack
+          description: "Where to provision e.g. region, datacenter, rack"
           oneOf:
           - properties:
               prefer:
@@ -7272,7 +7329,7 @@ components:
                 description: Name or ID of the SSH key to deploy
                 type: string
               user:
-                description: SSH user, supported on Google
+                description: "SSH user, supported on Google"
                 type: string
             type: object
           - description: Name or ID of the SSH key to deploy
@@ -7291,7 +7348,7 @@ components:
           - $ref: '#/components/schemas/LXDVolumes'
           - $ref: '#/components/schemas/OpenstackVolumes'
           - $ref: '#/components/schemas/VultrVolumes'
-          description: Configure of attached storage volumes, e.g. cloud disks
+          description: "Configure of attached storage volumes, e.g. cloud disks"
         fqdn:
           description: Add DNS A Record that points machine's public IP to this Fully
             Qualified Domain Name. Zone needs to be managed by a configured Cloud
@@ -7376,7 +7433,7 @@ components:
           description: Save provisioning plan as template
           type: boolean
         optimize:
-          description: Criteria optimization, e.g "cost"
+          description: "Criteria optimization, e.g \"cost\""
           type: string
       required:
       - image
@@ -7395,15 +7452,16 @@ components:
     DockerNet:
       properties:
         port_bindings:
-          description: ContainerPort,HostPort pairs. For example "80"/"80", "123/udp"/"123"
+          description: "ContainerPort,HostPort pairs. For example \"80\"/\"80\", \"\
+            123/udp\"/\"123\""
           type: object
       title: Docker net parameter
       type: object
     DockerExtra:
       properties:
         environment:
-          description: Key, value pairs of environment variables to set inside the
-            container
+          description: "Key, value pairs of environment variables to set inside the\
+            \ container"
           type: object
         command:
           description: Command to run specified as a string
@@ -7413,7 +7471,8 @@ components:
     LXDExtra:
       properties:
         ephemeral:
-          description: Whether to destroy the container on shutdown, defaults to False
+          description: "Whether to destroy the container on shutdown, defaults to\
+            \ False"
           type: boolean
       title: LXD extra parameter
       type: object
@@ -7456,10 +7515,10 @@ components:
                 the default storage pool will be selected
               type: string
             filesystem:
-              description: Filesystem of the storage volume, defaults to "ext4"
+              description: "Filesystem of the storage volume, defaults to \"ext4\""
               type: string
             mount_options:
-              description: Mount options for block devices,  defaults to "discard"
+              description: "Mount options for block devices,  defaults to \"discard\""
               type: string
             security_shifted:
               description: Whether to enable id shifting overlay (allows attach by
@@ -7540,38 +7599,38 @@ components:
     VultrNet:
       properties:
         networks:
-          description: An array of network names or IDs to attach to this machine,
-            invalid for "Bare Metal" machines
+          description: "An array of network names or IDs to attach to this machine,\
+            \ invalid for \"Bare Metal\" machines"
           items:
             type: string
           type: array
         ipv6:
-          description: Enable IPv6, defaults to false
+          description: "Enable IPv6, defaults to false"
           type: boolean
         hostname:
-          description: The hostname to use when deploying this machine, defaults to
-            machine name
+          description: "The hostname to use when deploying this machine, defaults\
+            \ to machine name"
           type: string
       title: Vultr net parameter
       type: object
     VultrExtra:
       properties:
         backups:
-          description: Enable automatic backups for the machine, invalid for "Bare
-            Metal" & "Dedicated Cloud" size types. There is an additional charge depending
-            on the size selected
+          description: "Enable automatic backups for the machine, invalid for \"Bare\
+            \ Metal\" & \"Dedicated Cloud\" size types. There is an additional charge\
+            \ depending on the size selected"
           type: boolean
         ddos_protection:
-          description: Enable DDoS protection, invalid for "Bare Metal" size type.
-            There is an additional charge depending on the type of the size selected
+          description: "Enable DDoS protection, invalid for \"Bare Metal\" size type.\
+            \ There is an additional charge depending on the type of the size selected"
           type: boolean
       title: Vultr extra parameter
       type: object
     AlibabaNet:
       properties:
         network:
-          description: Name or ID of an existing network to associate the machine
-            with. If not provided, one existing network will be selected.
+          description: "Name or ID of an existing network to associate the machine\
+            \ with. If not provided, one existing network will be selected."
           type: string
         subnet:
           description: Name or ID of an existing or new subnet(switch) to launch the
@@ -7609,7 +7668,7 @@ components:
                 to false
               type: boolean
             type:
-              description: Type of the volume to create, defaults to 'cloud'
+              description: "Type of the volume to create, defaults to 'cloud'"
               enum:
               - cloud
               - cloud_efficiency
@@ -7630,8 +7689,8 @@ components:
               description: Name or ID of an existing volume to attach
               type: string
             boot:
-              description: Use as boot volume, up to one volume can be used as boot.
-                Defaults to false
+              description: "Use as boot volume, up to one volume can be used as boot.\
+                \ Defaults to false"
               type: boolean
             delete_on_termination:
               description: Delete the volume when the machine is deleted. Defaults
@@ -7645,8 +7704,8 @@ components:
               minimum: 1
               type: integer
             boot:
-              description: Use as boot volume, up to one volume can be used as boot.
-                Defaults to false
+              description: "Use as boot volume, up to one volume can be used as boot.\
+                \ Defaults to false"
               type: boolean
             delete_on_termination:
               description: Delete the  volume when the machine is deleted. Defaults
@@ -7672,8 +7731,8 @@ components:
             type: string
           type: array
         associate_floating_ip:
-          description: Assign a floating IP to the machine, defaults to True for Openstack
-            and False for Vexxhost
+          description: "Assign a floating IP to the machine, defaults to True for\
+            \ Openstack and False for Vexxhost"
           type: boolean
       title: Openstack & Vexxhost net parameter
       type: object
@@ -7764,8 +7823,8 @@ components:
               description: Name or ID of the volume to attach
               type: string
             persist_across_boots:
-              description: Whether the volume should be attached to node across reboots,
-                defaults to True
+              description: "Whether the volume should be attached to node across reboots,\
+                \ defaults to True"
               type: boolean
           required:
           - volume
@@ -7785,7 +7844,7 @@ components:
     LinodeNet:
       properties:
         private_ip:
-          description: Assign a private IPv4 address, defaults to True
+          description: "Assign a private IPv4 address, defaults to True"
           type: boolean
       title: Linode net parameter
       type: object
@@ -7804,8 +7863,8 @@ components:
           - volume
         - properties:
             name:
-              description: Name of the volume to be created, mandatory on non-boot
-                volumes
+              description: "Name of the volume to be created, mandatory on non-boot\
+                \ volumes"
               type: string
             size:
               description: Size of the volume to be created
@@ -7816,7 +7875,7 @@ components:
                 to one volume must set this parameter
               type: boolean
             type:
-              description: Type of the volume to create, defaults to 'pd-standard'
+              description: "Type of the volume to create, defaults to 'pd-standard'"
               enum:
               - pd-standard
               - pd-ssd
@@ -7845,8 +7904,8 @@ components:
     EquinixMetalNet:
       properties:
         ip_addresses:
-          description: Specify addresses to be created with your machine.By default
-            Equinix configures public IPv4, public IPv6, and private IPv4
+          description: "Specify addresses to be created with your machine.By default\
+            \ Equinix configures public IPv4, public IPv6, and private IPv4"
           items:
             $ref: '#/components/schemas/EquinixMetalNet_ip_addresses'
           type: array
@@ -7855,8 +7914,8 @@ components:
     EquinixMetalExtra:
       properties:
         project_id:
-          description: Project UUID, if not given the first one available will be
-            selected
+          description: "Project UUID, if not given the first one available will be\
+            \ selected"
           type: string
       title: Equnix Metal extra parameter
       type: object
@@ -7906,14 +7965,14 @@ components:
               description: Name or ID of the volume
               type: string
             device:
-              description: The device name (for example, /dev/sdh or xvdh)
+              description: "The device name (for example, /dev/sdh or xvdh)"
               type: string
           required:
           - device
           - volume
         - properties:
             name:
-              description: The device name (for example, /dev/sdh or xvdh)
+              description: "The device name (for example, /dev/sdh or xvdh)"
               type: string
             size:
               description: Size of the volume in GBs
@@ -7963,7 +8022,7 @@ components:
           subnet: subnet
           last_seen: last_seen
           external_id: external_id
-          ports: '{}'
+          ports: "{}"
           type: type
           unreachable_since: unreachable_since
           network: network
@@ -7972,19 +8031,20 @@ components:
           hostname: hostname
           cores: 0.8008281904610115
           missing_since: missing_since
-          extra: '{}'
+          extra: "{}"
           id: id
+          state: null
           public_ips:
           - public_ips
           - public_ips
           image: image
-          cost: '{}'
+          cost: "{}"
           created: created
           owned_by: owned_by
           monitoring: monitoring
           created_by: created_by
-          tags: '{}'
-          probe: '{}'
+          tags: "{}"
+          probe: "{}"
           size: size
           os_type: os_type
           name: name
@@ -7993,7 +8053,7 @@ components:
           - private_ips
           expiration: expiration
           location: location
-          actions: '{}'
+          actions: "{}"
           key_associations:
           - port: 1
             machine: machine
@@ -8012,7 +8072,7 @@ components:
           subnet: subnet
           last_seen: last_seen
           external_id: external_id
-          ports: '{}'
+          ports: "{}"
           type: type
           unreachable_since: unreachable_since
           network: network
@@ -8021,19 +8081,20 @@ components:
           hostname: hostname
           cores: 0.8008281904610115
           missing_since: missing_since
-          extra: '{}'
+          extra: "{}"
           id: id
+          state: null
           public_ips:
           - public_ips
           - public_ips
           image: image
-          cost: '{}'
+          cost: "{}"
           created: created
           owned_by: owned_by
           monitoring: monitoring
           created_by: created_by
-          tags: '{}'
-          probe: '{}'
+          tags: "{}"
+          probe: "{}"
           size: size
           os_type: os_type
           name: name
@@ -8042,7 +8103,7 @@ components:
           - private_ips
           expiration: expiration
           location: location
-          actions: '{}'
+          actions: "{}"
           key_associations:
           - port: 1
             machine: machine
@@ -8077,7 +8138,7 @@ components:
           subnet: subnet
           last_seen: last_seen
           external_id: external_id
-          ports: '{}'
+          ports: "{}"
           type: type
           unreachable_since: unreachable_since
           network: network
@@ -8086,19 +8147,20 @@ components:
           hostname: hostname
           cores: 0.8008281904610115
           missing_since: missing_since
-          extra: '{}'
+          extra: "{}"
           id: id
+          state: null
           public_ips:
           - public_ips
           - public_ips
           image: image
-          cost: '{}'
+          cost: "{}"
           created: created
           owned_by: owned_by
           monitoring: monitoring
           created_by: created_by
-          tags: '{}'
-          probe: '{}'
+          tags: "{}"
+          probe: "{}"
           size: size
           os_type: os_type
           name: name
@@ -8107,7 +8169,7 @@ components:
           - private_ips
           expiration: expiration
           location: location
-          actions: '{}'
+          actions: "{}"
           key_associations:
           - port: 1
             machine: machine
@@ -8139,7 +8201,7 @@ components:
         subnet: subnet
         last_seen: last_seen
         external_id: external_id
-        ports: '{}'
+        ports: "{}"
         type: type
         unreachable_since: unreachable_since
         network: network
@@ -8148,19 +8210,20 @@ components:
         hostname: hostname
         cores: 0.8008281904610115
         missing_since: missing_since
-        extra: '{}'
+        extra: "{}"
         id: id
+        state: null
         public_ips:
         - public_ips
         - public_ips
         image: image
-        cost: '{}'
+        cost: "{}"
         created: created
         owned_by: owned_by
         monitoring: monitoring
         created_by: created_by
-        tags: '{}'
-        probe: '{}'
+        tags: "{}"
+        probe: "{}"
         size: size
         os_type: os_type
         name: name
@@ -8169,7 +8232,7 @@ components:
         - private_ips
         expiration: expiration
         location: location
-        actions: '{}'
+        actions: "{}"
         key_associations:
         - port: 1
           machine: machine
@@ -8289,7 +8352,7 @@ components:
           - one_off
           type: string
         datetime:
-          description: When one_off schedule should run, e.g 2021-09-22T18:19:28Z
+          description: "When one_off schedule should run, e.g 2021-09-22T18:19:28Z"
           format: date-time
           type: string
       required:
@@ -8315,11 +8378,11 @@ components:
         day_of_week:
           type: string
         start_after:
-          description: The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z
+          description: "The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z"
           format: date-time
           type: string
         expires:
-          description: The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z
+          description: "The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z"
           format: date-time
           type: string
         max_run_count:
@@ -8350,11 +8413,11 @@ components:
           - days
           type: string
         start_after:
-          description: The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z
+          description: "The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z"
           format: date-time
           type: string
         expires:
-          description: The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z
+          description: "The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z"
           format: date-time
           type: string
         max_run_count:
@@ -8398,7 +8461,7 @@ components:
           - destroy
           type: string
         date:
-          description: When machine should expire, e.g 2021-09-22T18:19:28Z
+          description: "When machine should expire, e.g 2021-09-22T18:19:28Z"
           format: date-time
           type: string
         notify:
@@ -8448,12 +8511,12 @@ components:
     CreateNetworkRequest:
       example:
         cloud: my-cloud
-        template: '{}'
-        extra: '{}'
+        template: "{}"
+        extra: "{}"
         name: my-network
         save: true
         dry: true
-        tags: '{}'
+        tags: "{}"
       properties:
         name:
           description: Specify network name
@@ -8467,7 +8530,7 @@ components:
           description: Assign tags to provisioned network
           type: object
         extra:
-          description: Configure additional parameters, e.g. cidr (EC2 network)
+          description: "Configure additional parameters, e.g. cidr (EC2 network)"
           type: object
         template:
           type: object
@@ -8495,14 +8558,14 @@ components:
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         - cloud: cloud
           name: name
           external_id: external_id
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -8525,7 +8588,7 @@ components:
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -8545,7 +8608,7 @@ components:
         owned_by: owned_by
         id: id
         created_by: created_by
-        tags: '{}'
+        tags: "{}"
       properties:
         id:
           type: string
@@ -8566,12 +8629,12 @@ components:
       example:
         data:
         - cloud: cloud
-          extra: '{}'
+          extra: "{}"
           name: name
           external_id: external_id
           id: id
         - cloud: cloud
-          extra: '{}'
+          extra: "{}"
           name: name
           external_id: external_id
           id: id
@@ -8592,7 +8655,7 @@ components:
       example:
         data:
           cloud: cloud
-          extra: '{}'
+          extra: "{}"
           name: name
           external_id: external_id
           id: id
@@ -8610,7 +8673,7 @@ components:
     Size:
       example:
         cloud: cloud
-        extra: '{}'
+        extra: "{}"
         name: name
         external_id: external_id
         id: id
@@ -8632,25 +8695,25 @@ components:
         - cloud: cloud
           parent: parent
           country: country
-          available_sizes: '{}'
-          extra: '{}'
+          available_sizes: "{}"
+          extra: "{}"
           name: name
           external_id: external_id
           owned_by: owned_by
           id: id
-          available_images: '{}'
+          available_images: "{}"
           created_by: created_by
           location_type: location_type
         - cloud: cloud
           parent: parent
           country: country
-          available_sizes: '{}'
-          extra: '{}'
+          available_sizes: "{}"
+          extra: "{}"
           name: name
           external_id: external_id
           owned_by: owned_by
           id: id
-          available_images: '{}'
+          available_images: "{}"
           created_by: created_by
           location_type: location_type
         meta:
@@ -8672,13 +8735,13 @@ components:
           cloud: cloud
           parent: parent
           country: country
-          available_sizes: '{}'
-          extra: '{}'
+          available_sizes: "{}"
+          extra: "{}"
           name: name
           external_id: external_id
           owned_by: owned_by
           id: id
-          available_images: '{}'
+          available_images: "{}"
           created_by: created_by
           location_type: location_type
         meta:
@@ -8697,13 +8760,13 @@ components:
         cloud: cloud
         parent: parent
         country: country
-        available_sizes: '{}'
-        extra: '{}'
+        available_sizes: "{}"
+        extra: "{}"
         name: name
         external_id: external_id
         owned_by: owned_by
         id: id
-        available_images: '{}'
+        available_images: "{}"
         created_by: created_by
         location_type: location_type
       properties:
@@ -8734,17 +8797,18 @@ components:
       type: object
     CreateVolumeRequest:
       example:
-        template: '{}'
+        template: "{}"
         quantity: 0
         ex_disk_type: pd-standard
         ex_volume_type: standard
         save: true
         dry: true
-        tags: '{}'
+        tags: "{}"
         cloud: my-cloud
         ex_iops: ex_iops
         size: 1
-        extra: '{}'
+        provider: null
+        extra: "{}"
         name: my-volume
         location: us-central1-a
       properties:
@@ -8759,7 +8823,7 @@ components:
           example: my-cloud
           type: string
         location:
-          description: Where to provision e.g. region, datacenter, rack
+          description: "Where to provision e.g. region, datacenter, rack"
           example: us-central1-a
           type: string
         size:
@@ -8821,7 +8885,7 @@ components:
           external_id: external_id
           owned_by: owned_by
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
           cloud: cloud
           default: true
           size: size
@@ -8829,16 +8893,16 @@ components:
           - attached_to
           - attached_to
           missing_since: missing_since
-          extra: '{}'
+          extra: "{}"
           name: name
           location: location
           id: id
-          actions: '{}'
+          actions: "{}"
         - last_seen: last_seen
           external_id: external_id
           owned_by: owned_by
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
           cloud: cloud
           default: true
           size: size
@@ -8846,11 +8910,11 @@ components:
           - attached_to
           - attached_to
           missing_since: missing_since
-          extra: '{}'
+          extra: "{}"
           name: name
           location: location
           id: id
-          actions: '{}'
+          actions: "{}"
         meta:
           total: 0
           start: 1
@@ -8871,7 +8935,7 @@ components:
           external_id: external_id
           owned_by: owned_by
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
           cloud: cloud
           default: true
           size: size
@@ -8879,11 +8943,11 @@ components:
           - attached_to
           - attached_to
           missing_since: missing_since
-          extra: '{}'
+          extra: "{}"
           name: name
           location: location
           id: id
-          actions: '{}'
+          actions: "{}"
         meta:
           total: 0
           start: 1
@@ -8901,7 +8965,7 @@ components:
         external_id: external_id
         owned_by: owned_by
         created_by: created_by
-        tags: '{}'
+        tags: "{}"
         cloud: cloud
         default: true
         size: size
@@ -8909,11 +8973,11 @@ components:
         - attached_to
         - attached_to
         missing_since: missing_since
-        extra: '{}'
+        extra: "{}"
         name: name
         location: location
         id: id
-        actions: '{}'
+        actions: "{}"
       properties:
         id:
           type: string
@@ -8991,14 +9055,14 @@ components:
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         - cloud: cloud
           name: name
           external_id: external_id
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -9021,7 +9085,7 @@ components:
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -9041,7 +9105,7 @@ components:
         owned_by: owned_by
         id: id
         created_by: created_by
-        tags: '{}'
+        tags: "{}"
       properties:
         id:
           type: string
@@ -9091,17 +9155,17 @@ components:
           owned_by: owned_by
           id: id
           type: ssh
-          config: '{}'
+          config: "{}"
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         - default: true
           name: name
           owned_by: owned_by
           id: id
           type: ssh
-          config: '{}'
+          config: "{}"
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -9123,9 +9187,9 @@ components:
           owned_by: owned_by
           id: id
           type: ssh
-          config: '{}'
+          config: "{}"
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -9144,9 +9208,9 @@ components:
         owned_by: owned_by
         id: id
         type: ssh
-        config: '{}'
+        config: "{}"
         created_by: created_by
-        tags: '{}'
+        tags: "{}"
       properties:
         id:
           type: string
@@ -9193,7 +9257,7 @@ components:
           example: This is a schedule
           type: string
         enabled:
-          description: Schedule status (enabled, disabled)
+          description: "Schedule status (enabled, disabled)"
           example: true
           type: boolean
         action:
@@ -9228,12 +9292,12 @@ components:
           example: one_off
           type: string
         schedule_entry:
-          description: In case of One Off schedule type the date string that schedule
-            runs (The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS). In case of Interval and
-            Crontab schedule types a JSON string with need time unit values. For Interval
-            schedule type interval integer value and period string value needed. For
-            Crontab schedule type minute, hour, day_of_week, day_of_month and month_of_year
-            string values needed.
+          description: "In case of One Off schedule type the date string that schedule\
+            \ runs (The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS). In case of Interval\
+            \ and Crontab schedule types a JSON string with need time unit values.\
+            \ For Interval schedule type interval integer value and period string\
+            \ value needed. For Crontab schedule type minute, hour, day_of_week, day_of_month\
+            \ and month_of_year string values needed."
           example: 2022-05-28 00:00:00
           type: string
         start_after:
@@ -9273,7 +9337,7 @@ components:
           example: This is a schedule that is about to be edited
           type: string
         enabled:
-          description: Schedule status (enabled, disabled)
+          description: "Schedule status (enabled, disabled)"
           example: true
           type: boolean
         action:
@@ -9308,12 +9372,12 @@ components:
           example: one_off
           type: string
         schedule_entry:
-          description: In case of One Off schedule type the date string that schedule
-            runs (The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS). In case of Interval and
-            Crontab schedule types a JSON string with need time unit values. For Interval
-            schedule type interval integer value and period string value needed. For
-            Crontab schedule type minute, hour, day_of_week, day_of_month and month_of_year
-            string values needed.
+          description: "In case of One Off schedule type the date string that schedule\
+            \ runs (The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS). In case of Interval\
+            \ and Crontab schedule types a JSON string with need time unit values.\
+            \ For Interval schedule type interval integer value and period string\
+            \ value needed. For Crontab schedule type minute, hour, day_of_week, day_of_month\
+            \ and month_of_year string values needed."
           example: 2022-05-28 00:00:00
           type: string
         start_after:
@@ -9336,10 +9400,11 @@ components:
           - null
           created_by: Manager A
           enabled: true
-          tags: '{}'
+          tags: "{}"
           start_after: 2022-05-28 00:00:00
-          schedule_entry: '{\"minute\":\"0\", \"hour\":\"0\", \"day_of_week\":\"*\",
-            \"day_of_month\":\"*\", \"month_of_year\":\"*\"}'
+          schedule_entry: "{\\\"minute\\\":\\\"0\\\", \\\"hour\\\":\\\"0\\\", \\\"\
+            day_of_week\\\":\\\"*\\\", \\\"day_of_month\\\":\\\"*\\\", \\\"month_of_year\\\
+            \":\\\"*\\\"}"
           name: reboot-schedule
           action: stop
           id: id
@@ -9354,10 +9419,11 @@ components:
           - null
           created_by: Manager A
           enabled: true
-          tags: '{}'
+          tags: "{}"
           start_after: 2022-05-28 00:00:00
-          schedule_entry: '{\"minute\":\"0\", \"hour\":\"0\", \"day_of_week\":\"*\",
-            \"day_of_month\":\"*\", \"month_of_year\":\"*\"}'
+          schedule_entry: "{\\\"minute\\\":\\\"0\\\", \\\"hour\\\":\\\"0\\\", \\\"\
+            day_of_week\\\":\\\"*\\\", \\\"day_of_month\\\":\\\"*\\\", \\\"month_of_year\\\
+            \":\\\"*\\\"}"
           name: reboot-schedule
           action: stop
           id: id
@@ -9388,10 +9454,11 @@ components:
           - null
           created_by: Manager A
           enabled: true
-          tags: '{}'
+          tags: "{}"
           start_after: 2022-05-28 00:00:00
-          schedule_entry: '{\"minute\":\"0\", \"hour\":\"0\", \"day_of_week\":\"*\",
-            \"day_of_month\":\"*\", \"month_of_year\":\"*\"}'
+          schedule_entry: "{\\\"minute\\\":\\\"0\\\", \\\"hour\\\":\\\"0\\\", \\\"\
+            day_of_week\\\":\\\"*\\\", \\\"day_of_month\\\":\\\"*\\\", \\\"month_of_year\\\
+            \":\\\"*\\\"}"
           name: reboot-schedule
           action: stop
           id: id
@@ -9419,10 +9486,11 @@ components:
         - null
         created_by: Manager A
         enabled: true
-        tags: '{}'
+        tags: "{}"
         start_after: 2022-05-28 00:00:00
-        schedule_entry: '{\"minute\":\"0\", \"hour\":\"0\", \"day_of_week\":\"*\",
-          \"day_of_month\":\"*\", \"month_of_year\":\"*\"}'
+        schedule_entry: "{\\\"minute\\\":\\\"0\\\", \\\"hour\\\":\\\"0\\\", \\\"day_of_week\\\
+          \":\\\"*\\\", \\\"day_of_month\\\":\\\"*\\\", \\\"month_of_year\\\":\\\"\
+          *\\\"}"
         name: reboot-schedule
         action: stop
         id: id
@@ -9442,7 +9510,7 @@ components:
           description: The tags related to the schedule
           type: object
         enabled:
-          description: Schedule status (enabled, disabled)
+          description: "Schedule status (enabled, disabled)"
           example: true
           type: boolean
         action:
@@ -9466,14 +9534,15 @@ components:
           example: crontab
           type: string
         schedule_entry:
-          description: In case of One Off schedule type the date string that schedule
-            runs (The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS). In case of Interval and
-            Crontab schedule types a JSON string with need time unit values. For Interval
-            schedule type interval integer value and period string value needed. For
-            Crontab schedule type minute, hour, day_of_week, day_of_month and month_of_year
-            string values needed.
-          example: '{\"minute\":\"0\", \"hour\":\"0\", \"day_of_week\":\"*\", \"day_of_month\":\"*\",
-            \"month_of_year\":\"*\"}'
+          description: "In case of One Off schedule type the date string that schedule\
+            \ runs (The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS). In case of Interval\
+            \ and Crontab schedule types a JSON string with need time unit values.\
+            \ For Interval schedule type interval integer value and period string\
+            \ value needed. For Crontab schedule type minute, hour, day_of_week, day_of_month\
+            \ and month_of_year string values needed."
+          example: "{\\\"minute\\\":\\\"0\\\", \\\"hour\\\":\\\"0\\\", \\\"day_of_week\\\
+            \":\\\"*\\\", \\\"day_of_month\\\":\\\"*\\\", \\\"month_of_year\\\":\\\
+            \"*\\\"}"
           type: string
         start_after:
           description: The date after that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD
@@ -9499,18 +9568,14 @@ components:
         name: my-script
         description: description
         exec_type: executable
-        script: |-
-          #!/usr/bin/env bash
-          echo Hello, World!
+        script: "#!/usr/bin/env bash\necho Hello, World!"
         location_type: inline
       properties:
         name:
           example: my-script
           type: string
         script:
-          example: |-
-            #!/usr/bin/env bash
-            echo Hello, World!
+          example: "#!/usr/bin/env bash\necho Hello, World!"
           type: string
         location_type:
           enum:
@@ -9580,13 +9645,13 @@ components:
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         - name: name
           description: description
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -9608,7 +9673,7 @@ components:
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -9627,7 +9692,7 @@ components:
         owned_by: owned_by
         id: id
         created_by: created_by
-        tags: '{}'
+        tags: "{}"
       properties:
         id:
           type: string
@@ -9645,24 +9710,24 @@ components:
     ListRulesResponse:
       example:
         data:
-        - triggered_after: '{}'
+        - triggered_after: "{}"
           name: name
           data_type: data_type
           disabled: disabled
           id: id
-          window: '{}'
-          queries: '{}'
-          actions: '{}'
-          frequency: '{}'
-        - triggered_after: '{}'
+          window: "{}"
+          queries: "{}"
+          actions: "{}"
+          frequency: "{}"
+        - triggered_after: "{}"
           name: name
           data_type: data_type
           disabled: disabled
           id: id
-          window: '{}'
-          queries: '{}'
-          actions: '{}'
-          frequency: '{}'
+          window: "{}"
+          queries: "{}"
+          actions: "{}"
+          frequency: "{}"
         meta:
           total: 0
           start: 1
@@ -9679,15 +9744,15 @@ components:
     GetRuleResponse:
       example:
         data:
-          triggered_after: '{}'
+          triggered_after: "{}"
           name: name
           data_type: data_type
           disabled: disabled
           id: id
-          window: '{}'
-          queries: '{}'
-          actions: '{}'
-          frequency: '{}'
+          window: "{}"
+          queries: "{}"
+          actions: "{}"
+          frequency: "{}"
         meta:
           total: 0
           start: 1
@@ -9816,15 +9881,15 @@ components:
       type: object
     Rule:
       example:
-        triggered_after: '{}'
+        triggered_after: "{}"
         name: name
         data_type: data_type
         disabled: disabled
         id: id
-        window: '{}'
-        queries: '{}'
-        actions: '{}'
-        frequency: '{}'
+        window: "{}"
+        queries: "{}"
+        actions: "{}"
+        frequency: "{}"
       properties:
         id:
           type: string
@@ -9853,7 +9918,7 @@ components:
         target: target
       properties:
         target:
-          description: the metric's name, e.g. "load.shortterm"
+          description: "the metric's name, e.g. \"load.shortterm\""
           type: string
         operator:
           description: |
@@ -9864,9 +9929,8 @@ components:
           description: the value over/under which an alert will be raised
           type: number
         aggregation:
-          description: |
-            the function to be applied on the computed series. Must be one
-            of: all, any, avg
+          description: "the function to be applied on the computed series. Must be\
+            \ one\nof: all, any, avg\n"
           type: string
       required:
       - aggregation
@@ -9877,15 +9941,13 @@ components:
     Notification:
       properties:
         users:
-          description: |
-            a list of user to be notified, denoted by their UUIDs
+          description: "a list of user to be notified, denoted by their UUIDs\n"
           items:
             type: string
           type: array
         teams:
-          description: |
-            a list of teams, denoted by their UUIDs, whose users will be
-            notified
+          description: "a list of teams, denoted by their UUIDs, whose users will\
+            \ be\nnotified\n"
           items:
             type: string
           type: array
@@ -9931,12 +9993,11 @@ components:
           type: integer
         stop:
           default: 0
-          description: |
-            a positive integer, where stop < start, denoting the end of the
-            search window. Defaults to now
+          description: "a positive integer, where stop < start, denoting the end of\
+            \ the\nsearch window. Defaults to now\n"
           type: integer
         period:
-          description: units of time, e.g. "seconds"
+          description: "units of time, e.g. \"seconds\""
           type: string
       required:
       - period
@@ -9952,7 +10013,7 @@ components:
             a positive integer denoting how often the rule must be evaluated
           type: integer
         period:
-          description: units of time, e.g. "seconds"
+          description: "units of time, e.g. \"seconds\""
           type: string
       required:
       - every
@@ -9967,7 +10028,7 @@ components:
           description: a positive integer denoting the tolerance period
           type: integer
         period:
-          description: units of time, e.g. "seconds"
+          description: "units of time, e.g. \"seconds\""
           type: string
       required:
       - offset
@@ -10003,7 +10064,7 @@ components:
     ListOrgsResponse:
       example:
         data:
-        - enterprise_plan: '{}'
+        - enterprise_plan: "{}"
           total_machine_count: total_machine_count
           selected_plan: selected_plan
           created: true
@@ -10012,7 +10073,7 @@ components:
           last_active: last_active
           clouds_count: clouds_count
           teams_count: teams_count
-        - enterprise_plan: '{}'
+        - enterprise_plan: "{}"
           total_machine_count: total_machine_count
           selected_plan: selected_plan
           created: true
@@ -10037,7 +10098,7 @@ components:
     GetOrgResponse:
       example:
         data:
-          enterprise_plan: '{}'
+          enterprise_plan: "{}"
           total_machine_count: total_machine_count
           selected_plan: selected_plan
           created: true
@@ -10059,7 +10120,7 @@ components:
       type: object
     Org:
       example:
-        enterprise_plan: '{}'
+        enterprise_plan: "{}"
         total_machine_count: total_machine_count
         selected_plan: selected_plan
         created: true
@@ -10194,7 +10255,7 @@ components:
           description: description
           members_count: members_count
           id: id
-          policy: '{}'
+          policy: "{}"
         - members:
           - registration_date: registration_date
             last_login: last_login
@@ -10216,7 +10277,7 @@ components:
           description: description
           members_count: members_count
           id: id
-          policy: '{}'
+          policy: "{}"
         meta:
           total: 0
           start: 1
@@ -10253,7 +10314,7 @@ components:
         description: description
         members_count: members_count
         id: id
-        policy: '{}'
+        policy: "{}"
       properties:
         id:
           type: string
@@ -10347,6 +10408,7 @@ components:
       - started_at
       type: object
     Log:
+      additionalProperties: true
       example:
         org: org
         job_id: job_id
@@ -10486,12 +10548,12 @@ components:
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         - name: name
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -10512,7 +10574,7 @@ components:
           owned_by: owned_by
           id: id
           created_by: created_by
-          tags: '{}'
+          tags: "{}"
         meta:
           total: 0
           start: 1
@@ -10530,7 +10592,7 @@ components:
         owned_by: owned_by
         id: id
         created_by: created_by
-        tags: '{}'
+        tags: "{}"
       properties:
         id:
           type: string
@@ -10546,7 +10608,7 @@ components:
     CreateSecretRequest:
       example:
         name: name
-        secret: '{}'
+        secret: "{}"
       properties:
         name:
           description: The name of the secret. This is equivalent to the path the
@@ -10560,7 +10622,7 @@ components:
       type: object
     EditSecretRequest:
       example:
-        secret: '{}'
+        secret: "{}"
       properties:
         secret:
           type: object
@@ -10596,8 +10658,8 @@ components:
       properties:
         autoscaling:
           default: false
-          description: GKE only, set to true to enable autoscaling, requires min_nodes
-            and max_nodes to be set.
+          description: "GKE only, set to true to enable autoscaling, requires min_nodes\
+            \ and max_nodes to be set."
           type: boolean
         min_nodes:
           description: The minimum number of nodes the autoscaler should maintain.
@@ -10613,16 +10675,16 @@ components:
           description: The number of nodes to provision for the cluster
           type: integer
         size:
-          description: Name or ID of size to use for the nodes. If not provided, the
-            t3.medium(EKS), e2-medium(GKE) size will be used
+          description: "Name or ID of size to use for the nodes. If not provided,\
+            \ the t3.medium(EKS), e2-medium(GKE) size will be used"
           type: string
         disk_size:
           default: 20
-          description: Size of the disk attached to each node, specified in GB.
+          description: "Size of the disk attached to each node, specified in GB."
           type: integer
         disk_type:
-          description: Type of the disk attached to each node. Defaults to pd-standard(GKE),
-            gp3(EKS)
+          description: "Type of the disk attached to each node. Defaults to pd-standard(GKE),\
+            \ gp3(EKS)"
           type: string
         preemptible:
           description: Google specific parameter.Whether the nodes are created as
@@ -10700,7 +10762,7 @@ components:
         disk_path: disk_path
       properties:
         disk_size:
-          description: KVM, CloudSigma specific parameter
+          description: "KVM, CloudSigma specific parameter"
           type: integer
         disk_path:
           description: KVM specific parameter. Where the VM disk file will be created
@@ -10741,7 +10803,7 @@ components:
     EquinixMetalNet_ip_addresses:
       properties:
         address_family:
-          description: Address Family for IP Address(IPv4, IPv6)
+          description: "Address Family for IP Address(IPv4, IPv6)"
           enum:
           - 4
           - 6
@@ -10750,9 +10812,9 @@ components:
           description: Address Type for IP Address
           type: boolean
         cidr:
-          description: Cidr Size for the IP Block created. Valid values depend on
-            the operating system being provisioned. (28..32 for IPv4 addresses, 124..127
-            for IPv6 addresses)
+          description: "Cidr Size for the IP Block created. Valid values depend on\
+            \ the operating system being provisioned. (28..32 for IPv4 addresses,\
+            \ 124..127 for IPv6 addresses)"
           type: integer
       required:
       - address_family
@@ -10762,8 +10824,8 @@ components:
     KVMNet_networks:
       properties:
         network:
-          description: Name or ID of the network, if only this field is provided a
-            dynamic IP address will be assigned
+          description: "Name or ID of the network, if only this field is provided\
+            \ a dynamic IP address will be assigned"
           type: string
         ip:
           description: The IPv4 address to statically assign to the interface
@@ -10772,8 +10834,8 @@ components:
           description: The IPv4 address for the default Gateway
           type: string
         primary:
-          description: The primary interface, which will be assigned a routing rule
-            for the default GW
+          description: "The primary interface, which will be assigned a routing rule\
+            \ for the default GW"
           type: string
       required:
       - network
@@ -10816,7 +10878,7 @@ components:
           description: The private key
           type: string
         certificate:
-          description: The signed public key, when using signed ssh keys
+          description: "The signed public key, when using signed ssh keys"
           type: string
       required:
       - name
@@ -10849,8 +10911,7 @@ components:
     RuleAction_allOf:
       properties:
         type:
-          description: |
-            the action's type: notification, machine_action, command
+          description: "the action's type: notification, machine_action, command\n"
           enum:
           - notification
           - machine_action
@@ -10900,7 +10961,7 @@ x-cli-waiters:
       test: notEqual
       expected: false
       state: failure
-    updates: response.body#data.logs[:].action
+    updates: "response.body#data.logs[:].action"
     after:
       create-machine:
         job_id: response.body#jobId
