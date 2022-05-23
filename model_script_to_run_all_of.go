@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// RuleActionAllOf struct for RuleActionAllOf
-type RuleActionAllOf struct {
-	// the action's type: notification, machine_action, command, script 
+// ScriptToRunAllOf struct for ScriptToRunAllOf
+type ScriptToRunAllOf struct {
+	// the script's type: inline, existing 
 	Type string `json:"type"`
 }
 
-// NewRuleActionAllOf instantiates a new RuleActionAllOf object
+// NewScriptToRunAllOf instantiates a new ScriptToRunAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRuleActionAllOf(type_ string) *RuleActionAllOf {
-	this := RuleActionAllOf{}
+func NewScriptToRunAllOf(type_ string) *ScriptToRunAllOf {
+	this := ScriptToRunAllOf{}
 	this.Type = type_
 	return &this
 }
 
-// NewRuleActionAllOfWithDefaults instantiates a new RuleActionAllOf object
+// NewScriptToRunAllOfWithDefaults instantiates a new ScriptToRunAllOf object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRuleActionAllOfWithDefaults() *RuleActionAllOf {
-	this := RuleActionAllOf{}
+func NewScriptToRunAllOfWithDefaults() *ScriptToRunAllOf {
+	this := ScriptToRunAllOf{}
 	return &this
 }
 
 // GetType returns the Type field value
-func (o *RuleActionAllOf) GetType() string {
+func (o *ScriptToRunAllOf) GetType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -51,7 +51,7 @@ func (o *RuleActionAllOf) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RuleActionAllOf) GetTypeOk() (*string, bool) {
+func (o *ScriptToRunAllOf) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -59,11 +59,11 @@ func (o *RuleActionAllOf) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *RuleActionAllOf) SetType(v string) {
+func (o *ScriptToRunAllOf) SetType(v string) {
 	o.Type = v
 }
 
-func (o RuleActionAllOf) MarshalJSON() ([]byte, error) {
+func (o ScriptToRunAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["type"] = o.Type
@@ -71,38 +71,38 @@ func (o RuleActionAllOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableRuleActionAllOf struct {
-	value *RuleActionAllOf
+type NullableScriptToRunAllOf struct {
+	value *ScriptToRunAllOf
 	isSet bool
 }
 
-func (v NullableRuleActionAllOf) Get() *RuleActionAllOf {
+func (v NullableScriptToRunAllOf) Get() *ScriptToRunAllOf {
 	return v.value
 }
 
-func (v *NullableRuleActionAllOf) Set(val *RuleActionAllOf) {
+func (v *NullableScriptToRunAllOf) Set(val *ScriptToRunAllOf) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRuleActionAllOf) IsSet() bool {
+func (v NullableScriptToRunAllOf) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRuleActionAllOf) Unset() {
+func (v *NullableScriptToRunAllOf) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRuleActionAllOf(val *RuleActionAllOf) *NullableRuleActionAllOf {
-	return &NullableRuleActionAllOf{value: val, isSet: true}
+func NewNullableScriptToRunAllOf(val *ScriptToRunAllOf) *NullableScriptToRunAllOf {
+	return &NullableScriptToRunAllOf{value: val, isSet: true}
 }
 
-func (v NullableRuleActionAllOf) MarshalJSON() ([]byte, error) {
+func (v NullableScriptToRunAllOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRuleActionAllOf) UnmarshalJSON(src []byte) error {
+func (v *NullableScriptToRunAllOf) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

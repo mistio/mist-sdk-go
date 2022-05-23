@@ -5828,6 +5828,22 @@ components:
       - openshift
       - other
       type: string
+    InlineScript:
+      properties:
+        inline:
+          type: string
+      required:
+      - inline
+      type: object
+    ExistingScript:
+      properties:
+        scriptId:
+          description: |
+            the Id of the existing script to be executed
+          type: string
+      required:
+      - scriptId
+      type: object
     Selector:
       oneOf:
       - $ref: '#/components/schemas/ResourceSelector'
@@ -8429,13 +8445,6 @@ components:
       - schedule_type
       title: Interval
       type: object
-    InlineScript:
-      properties:
-        inline:
-          type: string
-      required:
-      - inline
-      type: object
     PostDeployScript:
       properties:
         script:
@@ -9976,6 +9985,17 @@ components:
       required:
       - command
       type: object
+    ScriptToRun:
+      allOf:
+      - $ref: '#/components/schemas/ScriptToRun_allOf'
+      - discriminator:
+          mapping:
+            inline: '#/components/schemas/InlineScript'
+            existing: '#/components/schemas/ExistingScript'
+          propertyName: type
+        oneOf:
+        - $ref: '#/components/schemas/InlineScript'
+        - $ref: '#/components/schemas/ExistingScript'
     Queries:
       items:
         $ref: '#/components/schemas/Query'
@@ -10042,11 +10062,13 @@ components:
             notification: '#/components/schemas/Notification'
             machine_action: '#/components/schemas/MachineAction'
             command: '#/components/schemas/Command'
+            script: '#/components/schemas/ScriptToRun'
           propertyName: type
         oneOf:
         - $ref: '#/components/schemas/Notification'
         - $ref: '#/components/schemas/MachineAction'
         - $ref: '#/components/schemas/Command'
+        - $ref: '#/components/schemas/ScriptToRun'
     RuleActions:
       items:
         $ref: '#/components/schemas/RuleAction'
@@ -10908,14 +10930,27 @@ components:
       required:
       - dry
       - generate
+    ScriptToRun_allOf:
+      properties:
+        type:
+          description: "the script's type: inline, existing\n"
+          enum:
+          - inline
+          - existing
+          type: string
+      required:
+      - type
+      type: object
     RuleAction_allOf:
       properties:
         type:
-          description: "the action's type: notification, machine_action, command\n"
+          description: "the action's type: notification, machine_action, command,\
+            \ script\n"
           enum:
           - notification
           - machine_action
           - command
+          - script
           type: string
       required:
       - type
