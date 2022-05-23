@@ -40,7 +40,7 @@ type CreateMachineRequest struct {
 	// Run this Cloud Init script on first boot
 	Cloudinit *string `json:"cloudinit,omitempty"`
 	// Run post deploy scripts over SSH
-	Scripts []interface{} `json:"scripts,omitempty"`
+	Scripts []ScriptToRun `json:"scripts,omitempty"`
 	// Configure scheduled actions for the provisioned machine
 	Schedules []interface{} `json:"schedules,omitempty"`
 	// Assign tags to provisioned machine
@@ -501,9 +501,9 @@ func (o *CreateMachineRequest) SetCloudinit(v string) {
 }
 
 // GetScripts returns the Scripts field value if set, zero value otherwise.
-func (o *CreateMachineRequest) GetScripts() []interface{} {
+func (o *CreateMachineRequest) GetScripts() []ScriptToRun {
 	if o == nil || o.Scripts == nil {
-		var ret []interface{}
+		var ret []ScriptToRun
 		return ret
 	}
 	return o.Scripts
@@ -511,7 +511,7 @@ func (o *CreateMachineRequest) GetScripts() []interface{} {
 
 // GetScriptsOk returns a tuple with the Scripts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateMachineRequest) GetScriptsOk() ([]interface{}, bool) {
+func (o *CreateMachineRequest) GetScriptsOk() ([]ScriptToRun, bool) {
 	if o == nil || o.Scripts == nil {
 		return nil, false
 	}
@@ -527,8 +527,8 @@ func (o *CreateMachineRequest) HasScripts() bool {
 	return false
 }
 
-// SetScripts gets a reference to the given []interface{} and assigns it to the Scripts field.
-func (o *CreateMachineRequest) SetScripts(v []interface{}) {
+// SetScripts gets a reference to the given []ScriptToRun and assigns it to the Scripts field.
+func (o *CreateMachineRequest) SetScripts(v []ScriptToRun) {
 	o.Scripts = v
 }
 

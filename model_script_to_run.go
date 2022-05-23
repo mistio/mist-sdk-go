@@ -13,121 +13,101 @@ package mist_sdk
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// ScriptToRun struct for ScriptToRun
+// ScriptToRun - struct for ScriptToRun
 type ScriptToRun struct {
-	// the script's type: inline, existing 
-	Type string `json:"type"`
-	Inline string `json:"inline"`
-	// the Id of the existing script to be executed 
-	ScriptId string `json:"scriptId"`
+	RunCommand *RunCommand
+	RunExistingScript *RunExistingScript
 }
 
-// NewScriptToRun instantiates a new ScriptToRun object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewScriptToRun(type_ string, inline string, scriptId string) *ScriptToRun {
-	this := ScriptToRun{}
-	this.Type = type_
-	this.Inline = inline
-	this.ScriptId = scriptId
-	return &this
+// RunCommandAsScriptToRun is a convenience function that returns RunCommand wrapped in ScriptToRun
+func RunCommandAsScriptToRun(v *RunCommand) ScriptToRun {
+	return ScriptToRun{
+		RunCommand: v,
+	}
 }
 
-// NewScriptToRunWithDefaults instantiates a new ScriptToRun object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewScriptToRunWithDefaults() *ScriptToRun {
-	this := ScriptToRun{}
-	return &this
+// RunExistingScriptAsScriptToRun is a convenience function that returns RunExistingScript wrapped in ScriptToRun
+func RunExistingScriptAsScriptToRun(v *RunExistingScript) ScriptToRun {
+	return ScriptToRun{
+		RunExistingScript: v,
+	}
 }
 
-// GetType returns the Type field value
-func (o *ScriptToRun) GetType() string {
-	if o == nil {
-		var ret string
-		return ret
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *ScriptToRun) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into RunCommand
+	err = newStrictDecoder(data).Decode(&dst.RunCommand)
+	if err == nil {
+		jsonRunCommand, _ := json.Marshal(dst.RunCommand)
+		if string(jsonRunCommand) == "{}" { // empty struct
+			dst.RunCommand = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.RunCommand = nil
 	}
 
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *ScriptToRun) GetTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *ScriptToRun) SetType(v string) {
-	o.Type = v
-}
-
-// GetInline returns the Inline field value
-func (o *ScriptToRun) GetInline() string {
-	if o == nil {
-		var ret string
-		return ret
+	// try to unmarshal data into RunExistingScript
+	err = newStrictDecoder(data).Decode(&dst.RunExistingScript)
+	if err == nil {
+		jsonRunExistingScript, _ := json.Marshal(dst.RunExistingScript)
+		if string(jsonRunExistingScript) == "{}" { // empty struct
+			dst.RunExistingScript = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.RunExistingScript = nil
 	}
 
-	return o.Inline
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.RunCommand = nil
+		dst.RunExistingScript = nil
+
+		return fmt.Errorf("Data matches more than one schema in oneOf(ScriptToRun)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("Data failed to match schemas in oneOf(ScriptToRun)")
+	}
 }
 
-// GetInlineOk returns a tuple with the Inline field value
-// and a boolean to check if the value has been set.
-func (o *ScriptToRun) GetInlineOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src ScriptToRun) MarshalJSON() ([]byte, error) {
+	if src.RunCommand != nil {
+		return json.Marshal(&src.RunCommand)
 	}
-	return &o.Inline, true
+
+	if src.RunExistingScript != nil {
+		return json.Marshal(&src.RunExistingScript)
+	}
+
+	return nil, nil // no data in oneOf schemas
 }
 
-// SetInline sets field value
-func (o *ScriptToRun) SetInline(v string) {
-	o.Inline = v
-}
-
-// GetScriptId returns the ScriptId field value
-func (o *ScriptToRun) GetScriptId() string {
-	if o == nil {
-		var ret string
-		return ret
+// Get the actual instance
+func (obj *ScriptToRun) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.RunCommand != nil {
+		return obj.RunCommand
 	}
 
-	return o.ScriptId
-}
+	if obj.RunExistingScript != nil {
+		return obj.RunExistingScript
+	}
 
-// GetScriptIdOk returns a tuple with the ScriptId field value
-// and a boolean to check if the value has been set.
-func (o *ScriptToRun) GetScriptIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ScriptId, true
-}
-
-// SetScriptId sets field value
-func (o *ScriptToRun) SetScriptId(v string) {
-	o.ScriptId = v
-}
-
-func (o ScriptToRun) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["inline"] = o.Inline
-	}
-	if true {
-		toSerialize["scriptId"] = o.ScriptId
-	}
-	return json.Marshal(toSerialize)
+	// all schemas are nil
+	return nil
 }
 
 type NullableScriptToRun struct {

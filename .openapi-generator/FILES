@@ -53,7 +53,6 @@ docs/CloudsApi.md
 docs/Cluster.md
 docs/ClusterProviders.md
 docs/ClustersApi.md
-docs/Command.md
 docs/CreateClusterRequest.md
 docs/CreateClusterRequestAllOf.md
 docs/CreateClusterRequestAllOfNodepools.md
@@ -96,7 +95,6 @@ docs/EquinixCredentials.md
 docs/EquinixMetalExtra.md
 docs/EquinixMetalNet.md
 docs/EquinixMetalNetIpAddresses.md
-docs/ExistingScript.md
 docs/Expiration.md
 docs/ExpirationNotify.md
 docs/FieldSelector.md
@@ -131,7 +129,6 @@ docs/Image.md
 docs/ImagesApi.md
 docs/InlineResponse200.md
 docs/InlineResponse2001.md
-docs/InlineScript.md
 docs/InstantVector.md
 docs/IntervalSchedule.md
 docs/Job.md
@@ -198,7 +195,6 @@ docs/OpenstackNet.md
 docs/Org.md
 docs/OrgsApi.md
 docs/OtherCloudRequest.md
-docs/PostDeployScript.md
 docs/Query.md
 docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
@@ -209,6 +205,8 @@ docs/Rule.md
 docs/RuleAction.md
 docs/RuleActionAllOf.md
 docs/RulesApi.md
+docs/RunCommand.md
+docs/RunExistingScript.md
 docs/RunScriptRequest.md
 docs/RunScriptResponse.md
 docs/ScaleNodepoolRequest.md
@@ -216,7 +214,6 @@ docs/Schedule.md
 docs/SchedulesApi.md
 docs/Script.md
 docs/ScriptToRun.md
-docs/ScriptToRunAllOf.md
 docs/ScriptsApi.md
 docs/Secret.md
 docs/SecretsApi.md
@@ -275,7 +272,6 @@ model_cloud_sigma_cloud_request.go
 model_cloud_sigma_credentials.go
 model_cluster.go
 model_cluster_providers.go
-model_command.go
 model_create_cluster_request.go
 model_create_cluster_request_all_of.go
 model_create_cluster_request_all_of_nodepools.go
@@ -317,7 +313,6 @@ model_equinix_credentials.go
 model_equinix_metal_extra.go
 model_equinix_metal_net.go
 model_equinix_metal_net_ip_addresses.go
-model_existing_script.go
 model_expiration.go
 model_expiration_notify.go
 model_field_selector.go
@@ -351,7 +346,6 @@ model_ibm_credentials.go
 model_image.go
 model_inline_response_200.go
 model_inline_response_200_1.go
-model_inline_script.go
 model_instant_vector.go
 model_interval_schedule.go
 model_job.go
@@ -412,7 +406,6 @@ model_openstack_credentials.go
 model_openstack_net.go
 model_org.go
 model_other_cloud_request.go
-model_post_deploy_script.go
 model_query.go
 model_rackspace_cloud_request.go
 model_rackspace_credentials.go
@@ -422,13 +415,14 @@ model_response_metadata.go
 model_rule.go
 model_rule_action.go
 model_rule_action_all_of.go
+model_run_command.go
+model_run_existing_script.go
 model_run_script_request.go
 model_run_script_response.go
 model_scale_nodepool_request.go
 model_schedule.go
 model_script.go
 model_script_to_run.go
-model_script_to_run_all_of.go
 model_secret.go
 model_selector.go
 model_size.go

@@ -17,7 +17,7 @@ import (
 
 // RuleAction struct for RuleAction
 type RuleAction struct {
-	// the script's type: inline, existing 
+	// the action's type: notification, machine_action, command, script 
 	Type string `json:"type"`
 	// a list of user to be notified, denoted by their UUIDs 
 	Users []string `json:"users,omitempty"`
@@ -27,24 +27,23 @@ type RuleAction struct {
 	Emails []string `json:"emails,omitempty"`
 	// the action to be performed 
 	Action string `json:"action"`
-	// the command to be executed 
+	// Command that is about to run
 	Command string `json:"command"`
-	Inline string `json:"inline"`
-	// the Id of the existing script to be executed 
-	ScriptId string `json:"scriptId"`
+	// Name or ID of the script to run
+	Script string `json:"script"`
+	Params *string `json:"params,omitempty"`
 }
 
 // NewRuleAction instantiates a new RuleAction object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRuleAction(type_ string, action string, command string, inline string, scriptId string) *RuleAction {
+func NewRuleAction(type_ string, action string, command string, script string) *RuleAction {
 	this := RuleAction{}
 	this.Type = type_
 	this.Action = action
 	this.Command = command
-	this.Inline = inline
-	this.ScriptId = scriptId
+	this.Script = script
 	return &this
 }
 
@@ -224,52 +223,60 @@ func (o *RuleAction) SetCommand(v string) {
 	o.Command = v
 }
 
-// GetInline returns the Inline field value
-func (o *RuleAction) GetInline() string {
+// GetScript returns the Script field value
+func (o *RuleAction) GetScript() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Inline
+	return o.Script
 }
 
-// GetInlineOk returns a tuple with the Inline field value
+// GetScriptOk returns a tuple with the Script field value
 // and a boolean to check if the value has been set.
-func (o *RuleAction) GetInlineOk() (*string, bool) {
+func (o *RuleAction) GetScriptOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Inline, true
+	return &o.Script, true
 }
 
-// SetInline sets field value
-func (o *RuleAction) SetInline(v string) {
-	o.Inline = v
+// SetScript sets field value
+func (o *RuleAction) SetScript(v string) {
+	o.Script = v
 }
 
-// GetScriptId returns the ScriptId field value
-func (o *RuleAction) GetScriptId() string {
-	if o == nil {
+// GetParams returns the Params field value if set, zero value otherwise.
+func (o *RuleAction) GetParams() string {
+	if o == nil || o.Params == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ScriptId
+	return *o.Params
 }
 
-// GetScriptIdOk returns a tuple with the ScriptId field value
+// GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuleAction) GetScriptIdOk() (*string, bool) {
-	if o == nil {
+func (o *RuleAction) GetParamsOk() (*string, bool) {
+	if o == nil || o.Params == nil {
 		return nil, false
 	}
-	return &o.ScriptId, true
+	return o.Params, true
 }
 
-// SetScriptId sets field value
-func (o *RuleAction) SetScriptId(v string) {
-	o.ScriptId = v
+// HasParams returns a boolean if a field has been set.
+func (o *RuleAction) HasParams() bool {
+	if o != nil && o.Params != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetParams gets a reference to the given string and assigns it to the Params field.
+func (o *RuleAction) SetParams(v string) {
+	o.Params = &v
 }
 
 func (o RuleAction) MarshalJSON() ([]byte, error) {
@@ -293,10 +300,10 @@ func (o RuleAction) MarshalJSON() ([]byte, error) {
 		toSerialize["command"] = o.Command
 	}
 	if true {
-		toSerialize["inline"] = o.Inline
+		toSerialize["script"] = o.Script
 	}
-	if true {
-		toSerialize["scriptId"] = o.ScriptId
+	if o.Params != nil {
+		toSerialize["params"] = o.Params
 	}
 	return json.Marshal(toSerialize)
 }
