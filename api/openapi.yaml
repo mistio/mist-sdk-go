@@ -5759,6 +5759,204 @@ paths:
       summary: Edit secret
       tags:
       - secrets
+  /api/v2/tags:
+    get:
+      description: List tags on resources owned by the active org. READ permission
+        required on each resource.
+      operationId: list-tags
+      parameters:
+      - description: Toggle displaying resource types and ids associated with each
+          key value pair
+        examples:
+          (default) Display only {key, value} pairs:
+            value: "False"
+          Also dispalay resource types and ids:
+            value: "True"
+        explode: true
+        in: query
+        name: verbose
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: Display tags on a single resource
+        explode: true
+        in: query
+        name: resource
+        required: false
+        schema:
+          $ref: '#/components/schemas/TaggableResourceTypes'
+        style: form
+      - description: Only return results matching search filter
+        examples:
+          Filter by key:
+            value: key:key1
+          Filter by key and value:
+            value: key:key1 value:value1
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Order results by
+        examples:
+          Sort by name, descending:
+            value: -name
+        explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Start results from index or id
+        examples:
+          Start from the 50th result:
+            value: "50"
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Limit number of results, 1000 max"
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Only return these fields
+        examples:
+          Only return key:
+            value: key
+          Return key, resources:
+            value: "key,resources"
+        explode: true
+        in: query
+        name: only
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Dereference foreign keys
+        examples:
+          (default) Do not dereference anything, just return ids:
+            value: id
+          ' Automatically replace all foreign key ids with referenced resource name ':
+            value: name
+        explode: true
+        in: query
+        name: deref
+        required: false
+        schema:
+          default: id
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTagsResponse'
+          description: List tags response
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - read:cluster
+        - read:cloud
+        - read:image
+        - read:key
+        - read:machine
+        - read:network
+        - read:script
+        - read:volumes
+        - read:zones
+      - CookieAuth:
+        - read:cluster
+        - read:cloud
+        - read:image
+        - read:key
+        - read:machine
+        - read:network
+        - read:script
+        - read:volumes
+        - read:zones
+      summary: List tags
+      tags:
+      - tags
+      x-cli-table-default:
+      - key
+      - value
+      x-cli-table-extended:
+      - key
+      - value
+    post:
+      description: Batch operation for adding/removing tags from a list of resources.
+      operationId: tag-resources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagResourcesRequest'
+      responses:
+        "200":
+          description: Tags successfully updated
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Resource not found
+      security:
+      - ApiKeyAuth:
+        - read:cluster
+        - read:cloud
+        - read:image
+        - read:key
+        - read:machine
+        - read:network
+        - read:script
+        - read:volumes
+        - read:zones
+        - read:cluster
+        - edit:cloud
+        - edit:image
+        - edit:key
+        - edit:machine
+        - edit:network
+        - edit:script
+        - edit:volumes
+        - edit:zones
+      - CookieAuth:
+        - read:cluster
+        - read:cloud
+        - read:image
+        - read:key
+        - read:machine
+        - read:network
+        - read:script
+        - read:volumes
+        - read:zones
+        - read:cluster
+        - edit:cloud
+        - edit:image
+        - edit:key
+        - edit:machine
+        - edit:network
+        - edit:script
+        - edit:volumes
+        - edit:zones
+      summary: Tag Resources
+      tags:
+      - tags
 components:
   callbacks: {}
   examples: {}
@@ -5902,6 +6100,25 @@ components:
           example: 6000
           type: integer
       type: object
+    TaggableResourceTypes:
+      enum:
+      - buckets
+      - clouds
+      - clusters
+      - images
+      - keys
+      - machines
+      - networks
+      - records
+      - schedules
+      - scripts
+      - stacks
+      - subnets
+      - templates
+      - tunnels
+      - volumes
+      - zones
+      type: string
     ResponseMetadata:
       example:
         total: 0
@@ -10651,6 +10868,81 @@ components:
       required:
       - secret
       type: object
+    ListTagsResponse:
+      example:
+        data:
+        - resources: "{}"
+          tag:
+            value: value
+            key: key
+        - resources: "{}"
+          tag:
+            value: value
+            key: key
+        meta:
+          total: 0
+          start: 1
+          sort: sort
+          returned: 6
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ListTagsResponse_data'
+          type: array
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
+      type: object
+    TagResourcesRequest:
+      example:
+        operations:
+        - resources:
+          - resource_type: null
+            resource_id: resource_id
+          - resource_type: null
+            resource_id: resource_id
+          operation: add
+          tags:
+          - value: value
+            key: key
+          - value: value
+            key: key
+        - resources:
+          - resource_type: null
+            resource_id: resource_id
+          - resource_type: null
+            resource_id: resource_id
+          operation: add
+          tags:
+          - value: value
+            key: key
+          - value: value
+            key: key
+      properties:
+        operations:
+          items:
+            $ref: '#/components/schemas/TagResourcesRequest_operations'
+          type: array
+      type: object
+    Tag:
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      type: object
+    Resource:
+      example:
+        resource_type: null
+        resource_id: resource_id
+      properties:
+        resource_type:
+          $ref: '#/components/schemas/TaggableResourceTypes'
+        resource_id:
+          type: string
+      type: object
     inline_response_200:
       example:
         id: id
@@ -10942,6 +11234,46 @@ components:
         result:
           items:
             $ref: '#/components/schemas/Vector'
+          type: array
+      type: object
+    ListTagsResponse_data:
+      example:
+        resources: "{}"
+        tag:
+          value: value
+          key: key
+      properties:
+        tag:
+          $ref: '#/components/schemas/Tag'
+        resources:
+          type: object
+      type: object
+    TagResourcesRequest_operations:
+      example:
+        resources:
+        - resource_type: null
+          resource_id: resource_id
+        - resource_type: null
+          resource_id: resource_id
+        operation: add
+        tags:
+        - value: value
+          key: key
+        - value: value
+          key: key
+      properties:
+        operation:
+          enum:
+          - add
+          - remove
+          type: string
+        tags:
+          items:
+            $ref: '#/components/schemas/Tag'
+          type: array
+        resources:
+          items:
+            $ref: '#/components/schemas/Resource'
           type: array
       type: object
   securitySchemes:
