@@ -18,11 +18,14 @@ api_scripts.go
 api_secrets.go
 api_sizes.go
 api_snapshots.go
+api_tags.go
 api_users.go
 api_volumes.go
 api_zones.go
 client.go
 configuration.go
+docs/Action.md
+docs/ActionAllOf.md
 docs/AddCloudRequest.md
 docs/AddCloudRequestAllOf.md
 docs/AddKeyRequest.md
@@ -32,6 +35,7 @@ docs/AddKeyRequestAnyOf2.md
 docs/AddKeyResponse.md
 docs/AddRuleRequest.md
 docs/AddScheduleRequest.md
+docs/AddScheduleRequestReminder.md
 docs/AddScriptRequest.md
 docs/AgeSelector.md
 docs/AlibabaCloudRequest.md
@@ -53,6 +57,7 @@ docs/CloudsApi.md
 docs/Cluster.md
 docs/ClusterProviders.md
 docs/ClustersApi.md
+docs/Condition.md
 docs/CreateClusterRequest.md
 docs/CreateClusterRequestAllOf.md
 docs/CreateClusterRequestAllOfNodepools.md
@@ -98,7 +103,6 @@ docs/EquinixMetalNetIpAddresses.md
 docs/Expiration.md
 docs/ExpirationNotify.md
 docs/FieldSelector.md
-docs/Frequency.md
 docs/GetCloudResponse.md
 docs/GetClusterResponse.md
 docs/GetDatapointsResponse.md
@@ -166,6 +170,8 @@ docs/ListScriptsResponse.md
 docs/ListSecretsResponse.md
 docs/ListSizesResponse.md
 docs/ListSnapshotsResponse.md
+docs/ListTagsResponse.md
+docs/ListTagsResponseData.md
 docs/ListUsersResponse.md
 docs/ListVolumesResponse.md
 docs/ListZonesResponse.md
@@ -199,11 +205,10 @@ docs/Query.md
 docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
 docs/RangeVector.md
+docs/Resource.md
 docs/ResourceSelector.md
 docs/ResponseMetadata.md
 docs/Rule.md
-docs/RuleAction.md
-docs/RuleActionAllOf.md
 docs/RulesApi.md
 docs/RunCommand.md
 docs/RunExistingScript.md
@@ -222,7 +227,12 @@ docs/Size.md
 docs/SizesApi.md
 docs/SnapshotsApi.md
 docs/SupportedProviders.md
+docs/Tag.md
+docs/TagResourcesRequest.md
+docs/TagResourcesRequestOperations.md
+docs/TaggableResourceTypes.md
 docs/TaggingSelector.md
+docs/TagsApi.md
 docs/Team.md
 docs/TriggerAfter.md
 docs/User.md
@@ -238,12 +248,16 @@ docs/VultrCloudRequest.md
 docs/VultrCredentials.md
 docs/VultrExtra.md
 docs/VultrNet.md
+docs/When.md
+docs/WhenAllOf.md
 docs/Window.md
 docs/Zone.md
 docs/ZonesApi.md
 git_push.sh
 go.mod
 go.sum
+model_action.go
+model_action_all_of.go
 model_add_cloud_request.go
 model_add_cloud_request_all_of.go
 model_add_key_request.go
@@ -253,6 +267,7 @@ model_add_key_request_any_of_2.go
 model_add_key_response.go
 model_add_rule_request.go
 model_add_schedule_request.go
+model_add_schedule_request_reminder.go
 model_add_script_request.go
 model_age_selector.go
 model_alibaba_cloud_request.go
@@ -272,6 +287,7 @@ model_cloud_sigma_cloud_request.go
 model_cloud_sigma_credentials.go
 model_cluster.go
 model_cluster_providers.go
+model_condition.go
 model_create_cluster_request.go
 model_create_cluster_request_all_of.go
 model_create_cluster_request_all_of_nodepools.go
@@ -316,7 +332,6 @@ model_equinix_metal_net_ip_addresses.go
 model_expiration.go
 model_expiration_notify.go
 model_field_selector.go
-model_frequency.go
 model_get_cloud_response.go
 model_get_cluster_response.go
 model_get_datapoints_response.go
@@ -379,6 +394,8 @@ model_list_scripts_response.go
 model_list_secrets_response.go
 model_list_sizes_response.go
 model_list_snapshots_response.go
+model_list_tags_response.go
+model_list_tags_response_data.go
 model_list_users_response.go
 model_list_volumes_response.go
 model_list_zones_response.go
@@ -410,11 +427,10 @@ model_query.go
 model_rackspace_cloud_request.go
 model_rackspace_credentials.go
 model_range_vector.go
+model_resource.go
 model_resource_selector.go
 model_response_metadata.go
 model_rule.go
-model_rule_action.go
-model_rule_action_all_of.go
 model_run_command.go
 model_run_existing_script.go
 model_run_script_request.go
@@ -427,6 +443,10 @@ model_secret.go
 model_selector.go
 model_size.go
 model_supported_providers.go
+model_tag.go
+model_tag_resources_request.go
+model_tag_resources_request_operations.go
+model_taggable_resource_types.go
 model_tagging_selector.go
 model_team.go
 model_trigger_after.go
@@ -441,6 +461,8 @@ model_vultr_cloud_request.go
 model_vultr_credentials.go
 model_vultr_extra.go
 model_vultr_net.go
+model_when.go
+model_when_all_of.go
 model_window.go
 model_zone.go
 response.go

@@ -158,6 +158,8 @@ Class | Method | HTTP request | Description
 *SnapshotsApi* | [**ListSnapshots**](docs/SnapshotsApi.md#listsnapshots) | **Get** /api/v2/machines/{machine}/snapshots | List machine snapshots
 *SnapshotsApi* | [**RemoveSnapshot**](docs/SnapshotsApi.md#removesnapshot) | **Delete** /api/v2/machines/{machine}/snapshots/{snapshot} | Remove snapshot
 *SnapshotsApi* | [**RevertToSnapshot**](docs/SnapshotsApi.md#reverttosnapshot) | **Post** /api/v2/machines/{machine}/snapshots/{snapshot} | Revert to snapshot
+*TagsApi* | [**ListTags**](docs/TagsApi.md#listtags) | **Get** /api/v2/tags | List tags
+*TagsApi* | [**TagResources**](docs/TagsApi.md#tagresources) | **Post** /api/v2/tags | Tag Resources
 *UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **Get** /api/v2/users | List users
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /api/v2/volumes | Create volume
 *VolumesApi* | [**DeleteVolume**](docs/VolumesApi.md#deletevolume) | **Delete** /api/v2/volumes/{volume} | Delete volume
@@ -173,6 +175,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Action](docs/Action.md)
+ - [ActionAllOf](docs/ActionAllOf.md)
  - [AddCloudRequest](docs/AddCloudRequest.md)
  - [AddCloudRequestAllOf](docs/AddCloudRequestAllOf.md)
  - [AddKeyRequest](docs/AddKeyRequest.md)
@@ -182,6 +186,7 @@ Class | Method | HTTP request | Description
  - [AddKeyResponse](docs/AddKeyResponse.md)
  - [AddRuleRequest](docs/AddRuleRequest.md)
  - [AddScheduleRequest](docs/AddScheduleRequest.md)
+ - [AddScheduleRequestReminder](docs/AddScheduleRequestReminder.md)
  - [AddScriptRequest](docs/AddScriptRequest.md)
  - [AgeSelector](docs/AgeSelector.md)
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)
@@ -201,6 +206,7 @@ Class | Method | HTTP request | Description
  - [CloudSigmaCredentials](docs/CloudSigmaCredentials.md)
  - [Cluster](docs/Cluster.md)
  - [ClusterProviders](docs/ClusterProviders.md)
+ - [Condition](docs/Condition.md)
  - [CreateClusterRequest](docs/CreateClusterRequest.md)
  - [CreateClusterRequestAllOf](docs/CreateClusterRequestAllOf.md)
  - [CreateClusterRequestAllOfNodepools](docs/CreateClusterRequestAllOfNodepools.md)
@@ -245,7 +251,6 @@ Class | Method | HTTP request | Description
  - [Expiration](docs/Expiration.md)
  - [ExpirationNotify](docs/ExpirationNotify.md)
  - [FieldSelector](docs/FieldSelector.md)
- - [Frequency](docs/Frequency.md)
  - [GetCloudResponse](docs/GetCloudResponse.md)
  - [GetClusterResponse](docs/GetClusterResponse.md)
  - [GetDatapointsResponse](docs/GetDatapointsResponse.md)
@@ -310,6 +315,8 @@ Class | Method | HTTP request | Description
  - [ListSecretsResponse](docs/ListSecretsResponse.md)
  - [ListSizesResponse](docs/ListSizesResponse.md)
  - [ListSnapshotsResponse](docs/ListSnapshotsResponse.md)
+ - [ListTagsResponse](docs/ListTagsResponse.md)
+ - [ListTagsResponseData](docs/ListTagsResponseData.md)
  - [ListUsersResponse](docs/ListUsersResponse.md)
  - [ListVolumesResponse](docs/ListVolumesResponse.md)
  - [ListZonesResponse](docs/ListZonesResponse.md)
@@ -339,11 +346,10 @@ Class | Method | HTTP request | Description
  - [RackspaceCloudRequest](docs/RackspaceCloudRequest.md)
  - [RackspaceCredentials](docs/RackspaceCredentials.md)
  - [RangeVector](docs/RangeVector.md)
+ - [Resource](docs/Resource.md)
  - [ResourceSelector](docs/ResourceSelector.md)
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)
- - [RuleAction](docs/RuleAction.md)
- - [RuleActionAllOf](docs/RuleActionAllOf.md)
  - [RunCommand](docs/RunCommand.md)
  - [RunExistingScript](docs/RunExistingScript.md)
  - [RunScriptRequest](docs/RunScriptRequest.md)
@@ -356,6 +362,10 @@ Class | Method | HTTP request | Description
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)
  - [SupportedProviders](docs/SupportedProviders.md)
+ - [Tag](docs/Tag.md)
+ - [TagResourcesRequest](docs/TagResourcesRequest.md)
+ - [TagResourcesRequestOperations](docs/TagResourcesRequestOperations.md)
+ - [TaggableResourceTypes](docs/TaggableResourceTypes.md)
  - [TaggingSelector](docs/TaggingSelector.md)
  - [Team](docs/Team.md)
  - [TriggerAfter](docs/TriggerAfter.md)
@@ -370,6 +380,8 @@ Class | Method | HTTP request | Description
  - [VultrCredentials](docs/VultrCredentials.md)
  - [VultrExtra](docs/VultrExtra.md)
  - [VultrNet](docs/VultrNet.md)
+ - [When](docs/When.md)
+ - [WhenAllOf](docs/WhenAllOf.md)
  - [Window](docs/Window.md)
  - [Zone](docs/Zone.md)
 

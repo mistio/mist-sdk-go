@@ -23,19 +23,14 @@ type AddScheduleRequest struct {
 	Description *string `json:"description,omitempty"`
 	// Schedule status (enabled, disabled)
 	Enabled *bool `json:"enabled,omitempty"`
-	// The action that a schedule performs on a resource
-	Action string `json:"action"`
-	// The id of the script that schedule is about to run
-	ScriptId *string `json:"script_id,omitempty"`
-	// Schedule parameters
-	Params *string `json:"params,omitempty"`
 	Selectors []Selector `json:"selectors,omitempty"`
-	// The type of the schedule
-	ScheduleType *string `json:"schedule_type,omitempty"`
-	// In case of One Off schedule type the date string that schedule runs (The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS). In case of Interval and Crontab schedule types a JSON string with need time unit values. For Interval schedule type interval integer value and period string value needed. For Crontab schedule type minute, hour, day_of_week, day_of_month and month_of_year string values needed.
-	ScheduleEntry *string `json:"schedule_entry,omitempty"`
+	Actions []Action `json:"actions"`
+	When *When `json:"when,omitempty"`
 	// The date after that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	StartAfter *string `json:"start_after,omitempty"`
+	// The date after that schedule expires. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
+	Expires *string `json:"expires,omitempty"`
+	Reminder *AddScheduleRequestReminder `json:"reminder,omitempty"`
 	// Decides if the schedule runs immediately of not
 	RunImmediately *bool `json:"run_immediately,omitempty"`
 }
@@ -44,10 +39,10 @@ type AddScheduleRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddScheduleRequest(name string, action string) *AddScheduleRequest {
+func NewAddScheduleRequest(name string, actions []Action) *AddScheduleRequest {
 	this := AddScheduleRequest{}
 	this.Name = name
-	this.Action = action
+	this.Actions = actions
 	return &this
 }
 
@@ -147,94 +142,6 @@ func (o *AddScheduleRequest) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetAction returns the Action field value
-func (o *AddScheduleRequest) GetAction() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Action
-}
-
-// GetActionOk returns a tuple with the Action field value
-// and a boolean to check if the value has been set.
-func (o *AddScheduleRequest) GetActionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Action, true
-}
-
-// SetAction sets field value
-func (o *AddScheduleRequest) SetAction(v string) {
-	o.Action = v
-}
-
-// GetScriptId returns the ScriptId field value if set, zero value otherwise.
-func (o *AddScheduleRequest) GetScriptId() string {
-	if o == nil || o.ScriptId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ScriptId
-}
-
-// GetScriptIdOk returns a tuple with the ScriptId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddScheduleRequest) GetScriptIdOk() (*string, bool) {
-	if o == nil || o.ScriptId == nil {
-		return nil, false
-	}
-	return o.ScriptId, true
-}
-
-// HasScriptId returns a boolean if a field has been set.
-func (o *AddScheduleRequest) HasScriptId() bool {
-	if o != nil && o.ScriptId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetScriptId gets a reference to the given string and assigns it to the ScriptId field.
-func (o *AddScheduleRequest) SetScriptId(v string) {
-	o.ScriptId = &v
-}
-
-// GetParams returns the Params field value if set, zero value otherwise.
-func (o *AddScheduleRequest) GetParams() string {
-	if o == nil || o.Params == nil {
-		var ret string
-		return ret
-	}
-	return *o.Params
-}
-
-// GetParamsOk returns a tuple with the Params field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddScheduleRequest) GetParamsOk() (*string, bool) {
-	if o == nil || o.Params == nil {
-		return nil, false
-	}
-	return o.Params, true
-}
-
-// HasParams returns a boolean if a field has been set.
-func (o *AddScheduleRequest) HasParams() bool {
-	if o != nil && o.Params != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetParams gets a reference to the given string and assigns it to the Params field.
-func (o *AddScheduleRequest) SetParams(v string) {
-	o.Params = &v
-}
-
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
 func (o *AddScheduleRequest) GetSelectors() []Selector {
 	if o == nil || o.Selectors == nil {
@@ -267,68 +174,60 @@ func (o *AddScheduleRequest) SetSelectors(v []Selector) {
 	o.Selectors = v
 }
 
-// GetScheduleType returns the ScheduleType field value if set, zero value otherwise.
-func (o *AddScheduleRequest) GetScheduleType() string {
-	if o == nil || o.ScheduleType == nil {
-		var ret string
+// GetActions returns the Actions field value
+func (o *AddScheduleRequest) GetActions() []Action {
+	if o == nil {
+		var ret []Action
 		return ret
 	}
-	return *o.ScheduleType
+
+	return o.Actions
 }
 
-// GetScheduleTypeOk returns a tuple with the ScheduleType field value if set, nil otherwise
+// GetActionsOk returns a tuple with the Actions field value
 // and a boolean to check if the value has been set.
-func (o *AddScheduleRequest) GetScheduleTypeOk() (*string, bool) {
-	if o == nil || o.ScheduleType == nil {
+func (o *AddScheduleRequest) GetActionsOk() ([]Action, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ScheduleType, true
+	return o.Actions, true
 }
 
-// HasScheduleType returns a boolean if a field has been set.
-func (o *AddScheduleRequest) HasScheduleType() bool {
-	if o != nil && o.ScheduleType != nil {
+// SetActions sets field value
+func (o *AddScheduleRequest) SetActions(v []Action) {
+	o.Actions = v
+}
+
+// GetWhen returns the When field value if set, zero value otherwise.
+func (o *AddScheduleRequest) GetWhen() When {
+	if o == nil || o.When == nil {
+		var ret When
+		return ret
+	}
+	return *o.When
+}
+
+// GetWhenOk returns a tuple with the When field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddScheduleRequest) GetWhenOk() (*When, bool) {
+	if o == nil || o.When == nil {
+		return nil, false
+	}
+	return o.When, true
+}
+
+// HasWhen returns a boolean if a field has been set.
+func (o *AddScheduleRequest) HasWhen() bool {
+	if o != nil && o.When != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetScheduleType gets a reference to the given string and assigns it to the ScheduleType field.
-func (o *AddScheduleRequest) SetScheduleType(v string) {
-	o.ScheduleType = &v
-}
-
-// GetScheduleEntry returns the ScheduleEntry field value if set, zero value otherwise.
-func (o *AddScheduleRequest) GetScheduleEntry() string {
-	if o == nil || o.ScheduleEntry == nil {
-		var ret string
-		return ret
-	}
-	return *o.ScheduleEntry
-}
-
-// GetScheduleEntryOk returns a tuple with the ScheduleEntry field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddScheduleRequest) GetScheduleEntryOk() (*string, bool) {
-	if o == nil || o.ScheduleEntry == nil {
-		return nil, false
-	}
-	return o.ScheduleEntry, true
-}
-
-// HasScheduleEntry returns a boolean if a field has been set.
-func (o *AddScheduleRequest) HasScheduleEntry() bool {
-	if o != nil && o.ScheduleEntry != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetScheduleEntry gets a reference to the given string and assigns it to the ScheduleEntry field.
-func (o *AddScheduleRequest) SetScheduleEntry(v string) {
-	o.ScheduleEntry = &v
+// SetWhen gets a reference to the given When and assigns it to the When field.
+func (o *AddScheduleRequest) SetWhen(v When) {
+	o.When = &v
 }
 
 // GetStartAfter returns the StartAfter field value if set, zero value otherwise.
@@ -361,6 +260,70 @@ func (o *AddScheduleRequest) HasStartAfter() bool {
 // SetStartAfter gets a reference to the given string and assigns it to the StartAfter field.
 func (o *AddScheduleRequest) SetStartAfter(v string) {
 	o.StartAfter = &v
+}
+
+// GetExpires returns the Expires field value if set, zero value otherwise.
+func (o *AddScheduleRequest) GetExpires() string {
+	if o == nil || o.Expires == nil {
+		var ret string
+		return ret
+	}
+	return *o.Expires
+}
+
+// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddScheduleRequest) GetExpiresOk() (*string, bool) {
+	if o == nil || o.Expires == nil {
+		return nil, false
+	}
+	return o.Expires, true
+}
+
+// HasExpires returns a boolean if a field has been set.
+func (o *AddScheduleRequest) HasExpires() bool {
+	if o != nil && o.Expires != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExpires gets a reference to the given string and assigns it to the Expires field.
+func (o *AddScheduleRequest) SetExpires(v string) {
+	o.Expires = &v
+}
+
+// GetReminder returns the Reminder field value if set, zero value otherwise.
+func (o *AddScheduleRequest) GetReminder() AddScheduleRequestReminder {
+	if o == nil || o.Reminder == nil {
+		var ret AddScheduleRequestReminder
+		return ret
+	}
+	return *o.Reminder
+}
+
+// GetReminderOk returns a tuple with the Reminder field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddScheduleRequest) GetReminderOk() (*AddScheduleRequestReminder, bool) {
+	if o == nil || o.Reminder == nil {
+		return nil, false
+	}
+	return o.Reminder, true
+}
+
+// HasReminder returns a boolean if a field has been set.
+func (o *AddScheduleRequest) HasReminder() bool {
+	if o != nil && o.Reminder != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReminder gets a reference to the given AddScheduleRequestReminder and assigns it to the Reminder field.
+func (o *AddScheduleRequest) SetReminder(v AddScheduleRequestReminder) {
+	o.Reminder = &v
 }
 
 // GetRunImmediately returns the RunImmediately field value if set, zero value otherwise.
@@ -406,26 +369,23 @@ func (o AddScheduleRequest) MarshalJSON() ([]byte, error) {
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if true {
-		toSerialize["action"] = o.Action
-	}
-	if o.ScriptId != nil {
-		toSerialize["script_id"] = o.ScriptId
-	}
-	if o.Params != nil {
-		toSerialize["params"] = o.Params
-	}
 	if o.Selectors != nil {
 		toSerialize["selectors"] = o.Selectors
 	}
-	if o.ScheduleType != nil {
-		toSerialize["schedule_type"] = o.ScheduleType
+	if true {
+		toSerialize["actions"] = o.Actions
 	}
-	if o.ScheduleEntry != nil {
-		toSerialize["schedule_entry"] = o.ScheduleEntry
+	if o.When != nil {
+		toSerialize["when"] = o.When
 	}
 	if o.StartAfter != nil {
 		toSerialize["start_after"] = o.StartAfter
+	}
+	if o.Expires != nil {
+		toSerialize["expires"] = o.Expires
+	}
+	if o.Reminder != nil {
+		toSerialize["reminder"] = o.Reminder
 	}
 	if o.RunImmediately != nil {
 		toSerialize["run_immediately"] = o.RunImmediately
