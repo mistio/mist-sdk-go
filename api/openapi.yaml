@@ -9442,6 +9442,9 @@ components:
         expires: 2022-06-01 T00:00:00
         reminder:
           message: message
+          when:
+            unit: seconds
+            value: 0
         name: backup-schedule
         description: Backup schedule
         run_immediately: false
@@ -9502,6 +9505,9 @@ components:
         expires: 2022-06-01 T00:00:00
         reminder:
           message: message
+          when:
+            unit: seconds
+            value: 0
         name: schedule-name
         description: Edited Schedule
         actions:
@@ -9547,6 +9553,9 @@ components:
         - expires: 2022-06-01 T00:00:00
           reminder:
             message: message
+            when:
+              unit: seconds
+              value: 0
           description: This is an test schedule
           owned_by: Officer B
           run_immediately: false
@@ -9566,6 +9575,9 @@ components:
         - expires: 2022-06-01 T00:00:00
           reminder:
             message: message
+            when:
+              unit: seconds
+              value: 0
           description: This is an test schedule
           owned_by: Officer B
           run_immediately: false
@@ -9601,6 +9613,9 @@ components:
           expires: 2022-06-01 T00:00:00
           reminder:
             message: message
+            when:
+              unit: seconds
+              value: 0
           description: This is an test schedule
           owned_by: Officer B
           run_immediately: false
@@ -9633,6 +9648,9 @@ components:
         expires: 2022-06-01 T00:00:00
         reminder:
           message: message
+          when:
+            unit: seconds
+            value: 0
         description: This is an test schedule
         owned_by: Officer B
         run_immediately: false
@@ -10181,26 +10199,6 @@ components:
         trigger_after:
           $ref: '#/components/schemas/TriggerAfter'
       type: object
-    Condition:
-      example:
-        query:
-          threshold: 1.4658129805029452
-          aggregation: aggregation
-          operator: operator
-          target: target
-        data_type: logs
-        window:
-          period: period
-          stop: 6
-          start: 0
-      properties:
-        data_type:
-          $ref: '#/components/schemas/DataType'
-        window:
-          $ref: '#/components/schemas/Window'
-        query:
-          $ref: '#/components/schemas/Query'
-      type: object
     Query:
       example:
         threshold: 1.4658129805029452
@@ -10277,6 +10275,26 @@ components:
       - logs
       example: logs
       type: string
+    Condition:
+      example:
+        query:
+          threshold: 1.4658129805029452
+          aggregation: aggregation
+          operator: operator
+          target: target
+        data_type: logs
+        window:
+          period: period
+          stop: 6
+          start: 0
+      properties:
+        data_type:
+          $ref: '#/components/schemas/DataType'
+        window:
+          $ref: '#/components/schemas/Window'
+        query:
+          $ref: '#/components/schemas/Query'
+      type: object
     ListOrgsResponse:
       example:
         data:
@@ -11218,13 +11236,33 @@ components:
       required:
       - dry
       - generate
+    AddScheduleRequest_reminder_when:
+      example:
+        unit: seconds
+        value: 0
+      properties:
+        value:
+          type: integer
+        unit:
+          enum:
+          - seconds
+          - minutes
+          - hours
+          - days
+          type: string
+      type: object
     AddScheduleRequest_reminder:
       example:
         message: message
+        when:
+          unit: seconds
+          value: 0
       properties:
         message:
           description: The reminder message to be sent
           type: string
+        when:
+          $ref: '#/components/schemas/AddScheduleRequest_reminder_when'
       type: object
     Datapoints_data:
       example:

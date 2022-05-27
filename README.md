@@ -187,6 +187,7 @@ Class | Method | HTTP request | Description
  - [AddRuleRequest](docs/AddRuleRequest.md)
  - [AddScheduleRequest](docs/AddScheduleRequest.md)
  - [AddScheduleRequestReminder](docs/AddScheduleRequestReminder.md)
+ - [AddScheduleRequestReminderWhen](docs/AddScheduleRequestReminderWhen.md)
  - [AddScriptRequest](docs/AddScriptRequest.md)
  - [AgeSelector](docs/AgeSelector.md)
  - [AlibabaCloudRequest](docs/AlibabaCloudRequest.md)

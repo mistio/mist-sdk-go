@@ -19,6 +19,7 @@ import (
 type AddScheduleRequestReminder struct {
 	// The reminder message to be sent
 	Message *string `json:"message,omitempty"`
+	When *AddScheduleRequestReminderWhen `json:"when,omitempty"`
 }
 
 // NewAddScheduleRequestReminder instantiates a new AddScheduleRequestReminder object
@@ -70,10 +71,45 @@ func (o *AddScheduleRequestReminder) SetMessage(v string) {
 	o.Message = &v
 }
 
+// GetWhen returns the When field value if set, zero value otherwise.
+func (o *AddScheduleRequestReminder) GetWhen() AddScheduleRequestReminderWhen {
+	if o == nil || o.When == nil {
+		var ret AddScheduleRequestReminderWhen
+		return ret
+	}
+	return *o.When
+}
+
+// GetWhenOk returns a tuple with the When field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddScheduleRequestReminder) GetWhenOk() (*AddScheduleRequestReminderWhen, bool) {
+	if o == nil || o.When == nil {
+		return nil, false
+	}
+	return o.When, true
+}
+
+// HasWhen returns a boolean if a field has been set.
+func (o *AddScheduleRequestReminder) HasWhen() bool {
+	if o != nil && o.When != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWhen gets a reference to the given AddScheduleRequestReminderWhen and assigns it to the When field.
+func (o *AddScheduleRequestReminder) SetWhen(v AddScheduleRequestReminderWhen) {
+	o.When = &v
+}
+
 func (o AddScheduleRequestReminder) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Message != nil {
 		toSerialize["message"] = o.Message
+	}
+	if o.When != nil {
+		toSerialize["when"] = o.When
 	}
 	return json.Marshal(toSerialize)
 }
