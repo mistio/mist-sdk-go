@@ -30,8 +30,6 @@ type Schedule struct {
 	Selectors []Selector `json:"selectors,omitempty"`
 	Actions []Action `json:"actions,omitempty"`
 	When *When `json:"when,omitempty"`
-	// The date after that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
-	StartAfter *string `json:"start_after,omitempty"`
 	// The date after that schedule expires. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	Expires *string `json:"expires,omitempty"`
 	Reminder *AddScheduleRequestReminder `json:"reminder,omitempty"`
@@ -316,38 +314,6 @@ func (o *Schedule) SetWhen(v When) {
 	o.When = &v
 }
 
-// GetStartAfter returns the StartAfter field value if set, zero value otherwise.
-func (o *Schedule) GetStartAfter() string {
-	if o == nil || o.StartAfter == nil {
-		var ret string
-		return ret
-	}
-	return *o.StartAfter
-}
-
-// GetStartAfterOk returns a tuple with the StartAfter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Schedule) GetStartAfterOk() (*string, bool) {
-	if o == nil || o.StartAfter == nil {
-		return nil, false
-	}
-	return o.StartAfter, true
-}
-
-// HasStartAfter returns a boolean if a field has been set.
-func (o *Schedule) HasStartAfter() bool {
-	if o != nil && o.StartAfter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStartAfter gets a reference to the given string and assigns it to the StartAfter field.
-func (o *Schedule) SetStartAfter(v string) {
-	o.StartAfter = &v
-}
-
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *Schedule) GetExpires() string {
 	if o == nil || o.Expires == nil {
@@ -533,9 +499,6 @@ func (o Schedule) MarshalJSON() ([]byte, error) {
 	}
 	if o.When != nil {
 		toSerialize["when"] = o.When
-	}
-	if o.StartAfter != nil {
-		toSerialize["start_after"] = o.StartAfter
 	}
 	if o.Expires != nil {
 		toSerialize["expires"] = o.Expires
