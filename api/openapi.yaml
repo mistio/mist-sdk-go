@@ -3766,6 +3766,32 @@ paths:
       requestBody:
         content:
           application/json:
+            examples:
+              RebootMachineOneOffSchedule:
+                summary: Create a reboot machine schedule that runs once
+                value:
+                  actions:
+                  - reboot
+                  description: Backup schedule
+                  enabled: true
+                  expires: 2022-06-01T00:00:00Z
+                  name: backup-schedule
+                  reminder:
+                    message: message
+                    when:
+                      unit: seconds
+                      value: 10
+                  run_immediately: false
+                  selectors:
+                    ResourceSelector:
+                      type: machines
+                      ids:
+                      - 738f633d987148a8b2c1628e0cd416b4
+                  when:
+                    schedule_type: one_off
+                    OneOffSchedule:
+                      datetime: 2022-06-22T18:19:28Z
+                      schedule_type: one_off
             schema:
               $ref: '#/components/schemas/AddScheduleRequest'
       responses:
@@ -5975,9 +6001,11 @@ components:
         schedule_type:
           enum:
           - one_off
+          example: one_off
           type: string
         datetime:
           description: "When one_off schedule should run, e.g 2021-09-22T18:19:28Z"
+          example: 2022-06-22T18:19:28Z
           format: date-time
           type: string
       required:
@@ -5991,26 +6019,35 @@ components:
         schedule_type:
           enum:
           - crontab
+          example: crontab
           type: string
         minute:
+          example: '*'
           type: string
         hour:
+          example: '*'
           type: string
         day_of_month:
+          example: "0"
           type: string
         month_of_year:
+          example: "0"
           type: string
         day_of_week:
+          example: '*'
           type: string
         start_after:
           description: "The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z"
+          example: 2022-07-22T18:19:28Z
           format: date-time
           type: string
         expires:
           description: "The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z"
+          example: 2022-08-29T18:19:28Z
           format: date-time
           type: string
         max_run_count:
+          example: 5
           minimum: 1
           type: integer
       required:
@@ -6028,24 +6065,30 @@ components:
         schedule_type:
           enum:
           - interval
+          example: interval
           type: string
         every:
+          example: 20
           type: integer
         period:
           enum:
           - minutes
           - hours
           - days
+          example: hours
           type: string
         start_after:
           description: "The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z"
+          example: 2022-10-22T18:19:28Z
           format: date-time
           type: string
         expires:
           description: "The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z"
+          example: 2022-12-22T18:19:28Z
           format: date-time
           type: string
         max_run_count:
+          example: 10
           minimum: 1
           type: integer
       required:
@@ -6131,10 +6174,13 @@ components:
           - volumes
           - clusters
           - networks
+          example: machines
           type: string
         ids:
           description: "a list of UUIDs in case type is resource like \"machines\"\
             , \"volumes\", \"clusters\" or \"networks\""
+          example:
+          - 738f633d987148a8b2c1628e0cd416b4
           items:
             type: string
           type: array
@@ -6145,6 +6191,7 @@ components:
           description: field type
           enum:
           - field
+          example: field
           type: string
         field:
           description: the name of the field
@@ -6168,6 +6215,7 @@ components:
           description: tag type
           enum:
           - tags
+          example: tags
           type: string
         include:
           description: a list of tags in case type is "tags"
@@ -6181,6 +6229,7 @@ components:
           description: age type
           enum:
           - age
+          example: age
           type: string
         minutes:
           description: an integer that represents the minutes passed from the creation
@@ -10959,6 +11008,7 @@ components:
           - crontab
           - interval
           - one_off
+          example: one_off
           type: string
     AddCloudRequest_allOf:
       properties:
