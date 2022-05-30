@@ -5885,8 +5885,7 @@ paths:
       tags:
       - tags
       x-cli-table-default:
-      - key
-      - value
+      - tag
       - buckets
       - clouds
       - clusters
@@ -5904,9 +5903,9 @@ paths:
       - tunnels
       - volumes
       - zones
+      - resource_count
       x-cli-table-extended:
-      - key
-      - value
+      - tag
       - buckets
       - clouds
       - clusters
@@ -5924,6 +5923,7 @@ paths:
       - tunnels
       - volumes
       - zones
+      - resource_count
     post:
       description: Batch operation for adding/removing tags from a list of resources.
       operationId: tag-resources
@@ -10898,20 +10898,114 @@ components:
     ListTagsResponse:
       example:
         data:
-        - resources:
-            key:
-            - resources
-            - resources
+        - images:
+          - images
+          - images
+          records:
+          - records
+          - records
+          keys:
+          - keys
+          - keys
+          stacks:
+          - stacks
+          - stacks
+          buckets:
+          - buckets
+          - buckets
+          templates:
+          - templates
+          - templates
+          volumes:
+          - volumes
+          - volumes
+          clouds:
+          - clouds
+          - clouds
+          networks:
+          - networks
+          - networks
+          zones:
+          - zones
+          - zones
+          secrets:
+          - secrets
+          - secrets
+          tunnels:
+          - tunnels
+          - tunnels
+          schedules:
+          - schedules
+          - schedules
+          subnets:
+          - subnets
+          - subnets
           tag:
             value: value
             key: key
-        - resources:
-            key:
-            - resources
-            - resources
+          machines:
+          - machines
+          - machines
+          scripts:
+          - scripts
+          - scripts
+          clusters:
+          - clusters
+          - clusters
+        - images:
+          - images
+          - images
+          records:
+          - records
+          - records
+          keys:
+          - keys
+          - keys
+          stacks:
+          - stacks
+          - stacks
+          buckets:
+          - buckets
+          - buckets
+          templates:
+          - templates
+          - templates
+          volumes:
+          - volumes
+          - volumes
+          clouds:
+          - clouds
+          - clouds
+          networks:
+          - networks
+          - networks
+          zones:
+          - zones
+          - zones
+          secrets:
+          - secrets
+          - secrets
+          tunnels:
+          - tunnels
+          - tunnels
+          schedules:
+          - schedules
+          - schedules
+          subnets:
+          - subnets
+          - subnets
           tag:
             value: value
             key: key
+          machines:
+          - machines
+          - machines
+          scripts:
+          - scripts
+          - scripts
+          clusters:
+          - clusters
+          - clusters
         meta:
           total: 0
           start: 1
@@ -11271,57 +11365,131 @@ components:
       type: object
     ListTagsResponse_data:
       example:
-        resources:
-          key:
-          - resources
-          - resources
+        images:
+        - images
+        - images
+        records:
+        - records
+        - records
+        keys:
+        - keys
+        - keys
+        stacks:
+        - stacks
+        - stacks
+        buckets:
+        - buckets
+        - buckets
+        templates:
+        - templates
+        - templates
+        volumes:
+        - volumes
+        - volumes
+        clouds:
+        - clouds
+        - clouds
+        networks:
+        - networks
+        - networks
+        zones:
+        - zones
+        - zones
+        secrets:
+        - secrets
+        - secrets
+        tunnels:
+        - tunnels
+        - tunnels
+        schedules:
+        - schedules
+        - schedules
+        subnets:
+        - subnets
+        - subnets
         tag:
           value: value
           key: key
+        machines:
+        - machines
+        - machines
+        scripts:
+        - scripts
+        - scripts
+        clusters:
+        - clusters
+        - clusters
       properties:
         tag:
           $ref: '#/components/schemas/Tag'
-        resources:
-          additionalProperties:
-            items:
-              type: string
-            type: array
-          properties:
-            buckets:
-              type: string
-            clouds:
-              type: string
-            clusters:
-              type: string
-            images:
-              type: string
-            keys:
-              type: string
-            machines:
-              type: string
-            networks:
-              type: string
-            records:
-              type: string
-            schedules:
-              type: string
-            scripts:
-              type: string
-            secrets:
-              type: string
-            stacks:
-              type: string
-            subnets:
-              type: string
-            templates:
-              type: string
-            tunnels:
-              type: string
-            volumes:
-              type: string
-            zones:
-              type: string
-          type: object
+        buckets:
+          items:
+            type: string
+          type: array
+        clouds:
+          items:
+            type: string
+          type: array
+        clusters:
+          items:
+            type: string
+          type: array
+        images:
+          items:
+            type: string
+          type: array
+        keys:
+          items:
+            type: string
+          type: array
+        machines:
+          items:
+            type: string
+          type: array
+        networks:
+          items:
+            type: string
+          type: array
+        records:
+          items:
+            type: string
+          type: array
+        schedules:
+          items:
+            type: string
+          type: array
+        scripts:
+          items:
+            type: string
+          type: array
+        secrets:
+          items:
+            type: string
+          type: array
+        stacks:
+          items:
+            type: string
+          type: array
+        subnets:
+          items:
+            type: string
+          type: array
+        templates:
+          items:
+            type: string
+          type: array
+        tunnels:
+          items:
+            type: string
+          type: array
+        volumes:
+          items:
+            type: string
+          type: array
+        zones:
+          items:
+            type: string
+          type: array
       type: object
     TagResourcesRequest_operations:
       example:

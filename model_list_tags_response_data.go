@@ -18,7 +18,23 @@ import (
 // ListTagsResponseData struct for ListTagsResponseData
 type ListTagsResponseData struct {
 	Tag *Tag `json:"tag,omitempty"`
-	Resources *map[string][]string `json:"resources,omitempty"`
+	Buckets []string `json:"buckets,omitempty"`
+	Clouds []string `json:"clouds,omitempty"`
+	Clusters []string `json:"clusters,omitempty"`
+	Images []string `json:"images,omitempty"`
+	Keys []string `json:"keys,omitempty"`
+	Machines []string `json:"machines,omitempty"`
+	Networks []string `json:"networks,omitempty"`
+	Records []string `json:"records,omitempty"`
+	Schedules []string `json:"schedules,omitempty"`
+	Scripts []string `json:"scripts,omitempty"`
+	Secrets []string `json:"secrets,omitempty"`
+	Stacks []string `json:"stacks,omitempty"`
+	Subnets []string `json:"subnets,omitempty"`
+	Templates []string `json:"templates,omitempty"`
+	Tunnels []string `json:"tunnels,omitempty"`
+	Volumes []string `json:"volumes,omitempty"`
+	Zones []string `json:"zones,omitempty"`
 }
 
 // NewListTagsResponseData instantiates a new ListTagsResponseData object
@@ -70,36 +86,548 @@ func (o *ListTagsResponseData) SetTag(v Tag) {
 	o.Tag = &v
 }
 
-// GetResources returns the Resources field value if set, zero value otherwise.
-func (o *ListTagsResponseData) GetResources() map[string][]string {
-	if o == nil || o.Resources == nil {
-		var ret map[string][]string
+// GetBuckets returns the Buckets field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetBuckets() []string {
+	if o == nil || o.Buckets == nil {
+		var ret []string
 		return ret
 	}
-	return *o.Resources
+	return o.Buckets
 }
 
-// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
+// GetBucketsOk returns a tuple with the Buckets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListTagsResponseData) GetResourcesOk() (*map[string][]string, bool) {
-	if o == nil || o.Resources == nil {
+func (o *ListTagsResponseData) GetBucketsOk() ([]string, bool) {
+	if o == nil || o.Buckets == nil {
 		return nil, false
 	}
-	return o.Resources, true
+	return o.Buckets, true
 }
 
-// HasResources returns a boolean if a field has been set.
-func (o *ListTagsResponseData) HasResources() bool {
-	if o != nil && o.Resources != nil {
+// HasBuckets returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasBuckets() bool {
+	if o != nil && o.Buckets != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetResources gets a reference to the given map[string][]string and assigns it to the Resources field.
-func (o *ListTagsResponseData) SetResources(v map[string][]string) {
-	o.Resources = &v
+// SetBuckets gets a reference to the given []string and assigns it to the Buckets field.
+func (o *ListTagsResponseData) SetBuckets(v []string) {
+	o.Buckets = v
+}
+
+// GetClouds returns the Clouds field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetClouds() []string {
+	if o == nil || o.Clouds == nil {
+		var ret []string
+		return ret
+	}
+	return o.Clouds
+}
+
+// GetCloudsOk returns a tuple with the Clouds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetCloudsOk() ([]string, bool) {
+	if o == nil || o.Clouds == nil {
+		return nil, false
+	}
+	return o.Clouds, true
+}
+
+// HasClouds returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasClouds() bool {
+	if o != nil && o.Clouds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClouds gets a reference to the given []string and assigns it to the Clouds field.
+func (o *ListTagsResponseData) SetClouds(v []string) {
+	o.Clouds = v
+}
+
+// GetClusters returns the Clusters field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetClusters() []string {
+	if o == nil || o.Clusters == nil {
+		var ret []string
+		return ret
+	}
+	return o.Clusters
+}
+
+// GetClustersOk returns a tuple with the Clusters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetClustersOk() ([]string, bool) {
+	if o == nil || o.Clusters == nil {
+		return nil, false
+	}
+	return o.Clusters, true
+}
+
+// HasClusters returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasClusters() bool {
+	if o != nil && o.Clusters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusters gets a reference to the given []string and assigns it to the Clusters field.
+func (o *ListTagsResponseData) SetClusters(v []string) {
+	o.Clusters = v
+}
+
+// GetImages returns the Images field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetImages() []string {
+	if o == nil || o.Images == nil {
+		var ret []string
+		return ret
+	}
+	return o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetImagesOk() ([]string, bool) {
+	if o == nil || o.Images == nil {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// HasImages returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasImages() bool {
+	if o != nil && o.Images != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given []string and assigns it to the Images field.
+func (o *ListTagsResponseData) SetImages(v []string) {
+	o.Images = v
+}
+
+// GetKeys returns the Keys field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetKeys() []string {
+	if o == nil || o.Keys == nil {
+		var ret []string
+		return ret
+	}
+	return o.Keys
+}
+
+// GetKeysOk returns a tuple with the Keys field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetKeysOk() ([]string, bool) {
+	if o == nil || o.Keys == nil {
+		return nil, false
+	}
+	return o.Keys, true
+}
+
+// HasKeys returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasKeys() bool {
+	if o != nil && o.Keys != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeys gets a reference to the given []string and assigns it to the Keys field.
+func (o *ListTagsResponseData) SetKeys(v []string) {
+	o.Keys = v
+}
+
+// GetMachines returns the Machines field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetMachines() []string {
+	if o == nil || o.Machines == nil {
+		var ret []string
+		return ret
+	}
+	return o.Machines
+}
+
+// GetMachinesOk returns a tuple with the Machines field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetMachinesOk() ([]string, bool) {
+	if o == nil || o.Machines == nil {
+		return nil, false
+	}
+	return o.Machines, true
+}
+
+// HasMachines returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasMachines() bool {
+	if o != nil && o.Machines != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMachines gets a reference to the given []string and assigns it to the Machines field.
+func (o *ListTagsResponseData) SetMachines(v []string) {
+	o.Machines = v
+}
+
+// GetNetworks returns the Networks field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetNetworks() []string {
+	if o == nil || o.Networks == nil {
+		var ret []string
+		return ret
+	}
+	return o.Networks
+}
+
+// GetNetworksOk returns a tuple with the Networks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetNetworksOk() ([]string, bool) {
+	if o == nil || o.Networks == nil {
+		return nil, false
+	}
+	return o.Networks, true
+}
+
+// HasNetworks returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasNetworks() bool {
+	if o != nil && o.Networks != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworks gets a reference to the given []string and assigns it to the Networks field.
+func (o *ListTagsResponseData) SetNetworks(v []string) {
+	o.Networks = v
+}
+
+// GetRecords returns the Records field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetRecords() []string {
+	if o == nil || o.Records == nil {
+		var ret []string
+		return ret
+	}
+	return o.Records
+}
+
+// GetRecordsOk returns a tuple with the Records field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetRecordsOk() ([]string, bool) {
+	if o == nil || o.Records == nil {
+		return nil, false
+	}
+	return o.Records, true
+}
+
+// HasRecords returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasRecords() bool {
+	if o != nil && o.Records != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRecords gets a reference to the given []string and assigns it to the Records field.
+func (o *ListTagsResponseData) SetRecords(v []string) {
+	o.Records = v
+}
+
+// GetSchedules returns the Schedules field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetSchedules() []string {
+	if o == nil || o.Schedules == nil {
+		var ret []string
+		return ret
+	}
+	return o.Schedules
+}
+
+// GetSchedulesOk returns a tuple with the Schedules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetSchedulesOk() ([]string, bool) {
+	if o == nil || o.Schedules == nil {
+		return nil, false
+	}
+	return o.Schedules, true
+}
+
+// HasSchedules returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasSchedules() bool {
+	if o != nil && o.Schedules != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSchedules gets a reference to the given []string and assigns it to the Schedules field.
+func (o *ListTagsResponseData) SetSchedules(v []string) {
+	o.Schedules = v
+}
+
+// GetScripts returns the Scripts field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetScripts() []string {
+	if o == nil || o.Scripts == nil {
+		var ret []string
+		return ret
+	}
+	return o.Scripts
+}
+
+// GetScriptsOk returns a tuple with the Scripts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetScriptsOk() ([]string, bool) {
+	if o == nil || o.Scripts == nil {
+		return nil, false
+	}
+	return o.Scripts, true
+}
+
+// HasScripts returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasScripts() bool {
+	if o != nil && o.Scripts != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScripts gets a reference to the given []string and assigns it to the Scripts field.
+func (o *ListTagsResponseData) SetScripts(v []string) {
+	o.Scripts = v
+}
+
+// GetSecrets returns the Secrets field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetSecrets() []string {
+	if o == nil || o.Secrets == nil {
+		var ret []string
+		return ret
+	}
+	return o.Secrets
+}
+
+// GetSecretsOk returns a tuple with the Secrets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetSecretsOk() ([]string, bool) {
+	if o == nil || o.Secrets == nil {
+		return nil, false
+	}
+	return o.Secrets, true
+}
+
+// HasSecrets returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasSecrets() bool {
+	if o != nil && o.Secrets != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecrets gets a reference to the given []string and assigns it to the Secrets field.
+func (o *ListTagsResponseData) SetSecrets(v []string) {
+	o.Secrets = v
+}
+
+// GetStacks returns the Stacks field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetStacks() []string {
+	if o == nil || o.Stacks == nil {
+		var ret []string
+		return ret
+	}
+	return o.Stacks
+}
+
+// GetStacksOk returns a tuple with the Stacks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetStacksOk() ([]string, bool) {
+	if o == nil || o.Stacks == nil {
+		return nil, false
+	}
+	return o.Stacks, true
+}
+
+// HasStacks returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasStacks() bool {
+	if o != nil && o.Stacks != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStacks gets a reference to the given []string and assigns it to the Stacks field.
+func (o *ListTagsResponseData) SetStacks(v []string) {
+	o.Stacks = v
+}
+
+// GetSubnets returns the Subnets field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetSubnets() []string {
+	if o == nil || o.Subnets == nil {
+		var ret []string
+		return ret
+	}
+	return o.Subnets
+}
+
+// GetSubnetsOk returns a tuple with the Subnets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetSubnetsOk() ([]string, bool) {
+	if o == nil || o.Subnets == nil {
+		return nil, false
+	}
+	return o.Subnets, true
+}
+
+// HasSubnets returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasSubnets() bool {
+	if o != nil && o.Subnets != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubnets gets a reference to the given []string and assigns it to the Subnets field.
+func (o *ListTagsResponseData) SetSubnets(v []string) {
+	o.Subnets = v
+}
+
+// GetTemplates returns the Templates field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetTemplates() []string {
+	if o == nil || o.Templates == nil {
+		var ret []string
+		return ret
+	}
+	return o.Templates
+}
+
+// GetTemplatesOk returns a tuple with the Templates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetTemplatesOk() ([]string, bool) {
+	if o == nil || o.Templates == nil {
+		return nil, false
+	}
+	return o.Templates, true
+}
+
+// HasTemplates returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasTemplates() bool {
+	if o != nil && o.Templates != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTemplates gets a reference to the given []string and assigns it to the Templates field.
+func (o *ListTagsResponseData) SetTemplates(v []string) {
+	o.Templates = v
+}
+
+// GetTunnels returns the Tunnels field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetTunnels() []string {
+	if o == nil || o.Tunnels == nil {
+		var ret []string
+		return ret
+	}
+	return o.Tunnels
+}
+
+// GetTunnelsOk returns a tuple with the Tunnels field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetTunnelsOk() ([]string, bool) {
+	if o == nil || o.Tunnels == nil {
+		return nil, false
+	}
+	return o.Tunnels, true
+}
+
+// HasTunnels returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasTunnels() bool {
+	if o != nil && o.Tunnels != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTunnels gets a reference to the given []string and assigns it to the Tunnels field.
+func (o *ListTagsResponseData) SetTunnels(v []string) {
+	o.Tunnels = v
+}
+
+// GetVolumes returns the Volumes field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetVolumes() []string {
+	if o == nil || o.Volumes == nil {
+		var ret []string
+		return ret
+	}
+	return o.Volumes
+}
+
+// GetVolumesOk returns a tuple with the Volumes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetVolumesOk() ([]string, bool) {
+	if o == nil || o.Volumes == nil {
+		return nil, false
+	}
+	return o.Volumes, true
+}
+
+// HasVolumes returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasVolumes() bool {
+	if o != nil && o.Volumes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVolumes gets a reference to the given []string and assigns it to the Volumes field.
+func (o *ListTagsResponseData) SetVolumes(v []string) {
+	o.Volumes = v
+}
+
+// GetZones returns the Zones field value if set, zero value otherwise.
+func (o *ListTagsResponseData) GetZones() []string {
+	if o == nil || o.Zones == nil {
+		var ret []string
+		return ret
+	}
+	return o.Zones
+}
+
+// GetZonesOk returns a tuple with the Zones field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListTagsResponseData) GetZonesOk() ([]string, bool) {
+	if o == nil || o.Zones == nil {
+		return nil, false
+	}
+	return o.Zones, true
+}
+
+// HasZones returns a boolean if a field has been set.
+func (o *ListTagsResponseData) HasZones() bool {
+	if o != nil && o.Zones != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetZones gets a reference to the given []string and assigns it to the Zones field.
+func (o *ListTagsResponseData) SetZones(v []string) {
+	o.Zones = v
 }
 
 func (o ListTagsResponseData) MarshalJSON() ([]byte, error) {
@@ -107,8 +635,56 @@ func (o ListTagsResponseData) MarshalJSON() ([]byte, error) {
 	if o.Tag != nil {
 		toSerialize["tag"] = o.Tag
 	}
-	if o.Resources != nil {
-		toSerialize["resources"] = o.Resources
+	if o.Buckets != nil {
+		toSerialize["buckets"] = o.Buckets
+	}
+	if o.Clouds != nil {
+		toSerialize["clouds"] = o.Clouds
+	}
+	if o.Clusters != nil {
+		toSerialize["clusters"] = o.Clusters
+	}
+	if o.Images != nil {
+		toSerialize["images"] = o.Images
+	}
+	if o.Keys != nil {
+		toSerialize["keys"] = o.Keys
+	}
+	if o.Machines != nil {
+		toSerialize["machines"] = o.Machines
+	}
+	if o.Networks != nil {
+		toSerialize["networks"] = o.Networks
+	}
+	if o.Records != nil {
+		toSerialize["records"] = o.Records
+	}
+	if o.Schedules != nil {
+		toSerialize["schedules"] = o.Schedules
+	}
+	if o.Scripts != nil {
+		toSerialize["scripts"] = o.Scripts
+	}
+	if o.Secrets != nil {
+		toSerialize["secrets"] = o.Secrets
+	}
+	if o.Stacks != nil {
+		toSerialize["stacks"] = o.Stacks
+	}
+	if o.Subnets != nil {
+		toSerialize["subnets"] = o.Subnets
+	}
+	if o.Templates != nil {
+		toSerialize["templates"] = o.Templates
+	}
+	if o.Tunnels != nil {
+		toSerialize["tunnels"] = o.Tunnels
+	}
+	if o.Volumes != nil {
+		toSerialize["volumes"] = o.Volumes
+	}
+	if o.Zones != nil {
+		toSerialize["zones"] = o.Zones
 	}
 	return json.Marshal(toSerialize)
 }
