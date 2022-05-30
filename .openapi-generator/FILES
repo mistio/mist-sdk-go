@@ -182,7 +182,6 @@ docs/Log.md
 docs/LxdCloudRequest.md
 docs/LxdCredentials.md
 docs/Machine.md
-docs/MachineAction.md
 docs/MachineState.md
 docs/MachinesApi.md
 docs/MaxihostCloudRequest.md
@@ -207,6 +206,8 @@ docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
 docs/RangeVector.md
 docs/Resource.md
+docs/ResourceAction.md
+docs/ResourceActionAllOf.md
 docs/ResourceSelector.md
 docs/ResponseMetadata.md
 docs/Rule.md
@@ -408,7 +409,6 @@ model_lxd_credentials.go
 model_lxd_extra.go
 model_lxd_net.go
 model_machine.go
-model_machine_action.go
 model_machine_state.go
 model_maxihost_cloud_request.go
 model_maxihost_credentials.go
@@ -430,6 +430,8 @@ model_rackspace_cloud_request.go
 model_rackspace_credentials.go
 model_range_vector.go
 model_resource.go
+model_resource_action.go
+model_resource_action_all_of.go
 model_resource_selector.go
 model_response_metadata.go
 model_rule.go
