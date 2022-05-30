@@ -18,7 +18,7 @@ import (
 // ListTagsResponseData struct for ListTagsResponseData
 type ListTagsResponseData struct {
 	Tag *Tag `json:"tag,omitempty"`
-	Resources map[string]interface{} `json:"resources,omitempty"`
+	Resources *map[string][]string `json:"resources,omitempty"`
 }
 
 // NewListTagsResponseData instantiates a new ListTagsResponseData object
@@ -71,17 +71,17 @@ func (o *ListTagsResponseData) SetTag(v Tag) {
 }
 
 // GetResources returns the Resources field value if set, zero value otherwise.
-func (o *ListTagsResponseData) GetResources() map[string]interface{} {
+func (o *ListTagsResponseData) GetResources() map[string][]string {
 	if o == nil || o.Resources == nil {
-		var ret map[string]interface{}
+		var ret map[string][]string
 		return ret
 	}
-	return o.Resources
+	return *o.Resources
 }
 
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListTagsResponseData) GetResourcesOk() (map[string]interface{}, bool) {
+func (o *ListTagsResponseData) GetResourcesOk() (*map[string][]string, bool) {
 	if o == nil || o.Resources == nil {
 		return nil, false
 	}
@@ -97,9 +97,9 @@ func (o *ListTagsResponseData) HasResources() bool {
 	return false
 }
 
-// SetResources gets a reference to the given map[string]interface{} and assigns it to the Resources field.
-func (o *ListTagsResponseData) SetResources(v map[string]interface{}) {
-	o.Resources = v
+// SetResources gets a reference to the given map[string][]string and assigns it to the Resources field.
+func (o *ListTagsResponseData) SetResources(v map[string][]string) {
+	o.Resources = &v
 }
 
 func (o ListTagsResponseData) MarshalJSON() ([]byte, error) {
