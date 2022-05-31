@@ -17,7 +17,7 @@ import (
 
 // Action struct for Action
 type Action struct {
-	// the type of the action to be executed 
+	// the action's type: notification, resource_action, run_script 
 	Type string `json:"type"`
 	// a list of user to be notified, denoted by their UUIDs 
 	Users []string `json:"users,omitempty"`
@@ -25,6 +25,8 @@ type Action struct {
 	Teams []string `json:"teams,omitempty"`
 	// a list of e-mails to send a notification to 
 	Emails []string `json:"emails,omitempty"`
+	// the type of the action to be executed 
+	Action string `json:"action"`
 	// Command that is about to run
 	Command string `json:"command"`
 	// Name or ID of the script to run
@@ -36,9 +38,10 @@ type Action struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAction(type_ string, command string, script string) *Action {
+func NewAction(type_ string, action string, command string, script string) *Action {
 	this := Action{}
 	this.Type = type_
+	this.Action = action
 	this.Command = command
 	this.Script = script
 	return &this
@@ -172,6 +175,30 @@ func (o *Action) SetEmails(v []string) {
 	o.Emails = v
 }
 
+// GetAction returns the Action field value
+func (o *Action) GetAction() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Action
+}
+
+// GetActionOk returns a tuple with the Action field value
+// and a boolean to check if the value has been set.
+func (o *Action) GetActionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Action, true
+}
+
+// SetAction sets field value
+func (o *Action) SetAction(v string) {
+	o.Action = v
+}
+
 // GetCommand returns the Command field value
 func (o *Action) GetCommand() string {
 	if o == nil {
@@ -265,6 +292,9 @@ func (o Action) MarshalJSON() ([]byte, error) {
 	}
 	if o.Emails != nil {
 		toSerialize["emails"] = o.Emails
+	}
+	if true {
+		toSerialize["action"] = o.Action
 	}
 	if true {
 		toSerialize["command"] = o.Command

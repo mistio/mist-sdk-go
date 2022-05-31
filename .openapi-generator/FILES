@@ -207,7 +207,6 @@ docs/RackspaceCredentials.md
 docs/RangeVector.md
 docs/Resource.md
 docs/ResourceAction.md
-docs/ResourceActionAllOf.md
 docs/ResourceSelector.md
 docs/ResponseMetadata.md
 docs/Rule.md
@@ -431,7 +430,6 @@ model_rackspace_credentials.go
 model_range_vector.go
 model_resource.go
 model_resource_action.go
-model_resource_action_all_of.go
 model_resource_selector.go
 model_response_metadata.go
 model_rule.go

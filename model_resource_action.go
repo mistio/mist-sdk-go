@@ -18,15 +18,16 @@ import (
 // ResourceAction struct for ResourceAction
 type ResourceAction struct {
 	// the type of the action to be executed 
-	Type *string `json:"type,omitempty"`
+	Action string `json:"action"`
 }
 
 // NewResourceAction instantiates a new ResourceAction object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResourceAction() *ResourceAction {
+func NewResourceAction(action string) *ResourceAction {
 	this := ResourceAction{}
+	this.Action = action
 	return &this
 }
 
@@ -38,42 +39,34 @@ func NewResourceActionWithDefaults() *ResourceAction {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *ResourceAction) GetType() string {
-	if o == nil || o.Type == nil {
+// GetAction returns the Action field value
+func (o *ResourceAction) GetAction() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Type
+
+	return o.Action
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetActionOk returns a tuple with the Action field value
 // and a boolean to check if the value has been set.
-func (o *ResourceAction) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+func (o *ResourceAction) GetActionOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Action, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *ResourceAction) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ResourceAction) SetType(v string) {
-	o.Type = &v
+// SetAction sets field value
+func (o *ResourceAction) SetAction(v string) {
+	o.Action = v
 }
 
 func (o ResourceAction) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	if true {
+		toSerialize["action"] = o.Action
 	}
 	return json.Marshal(toSerialize)
 }

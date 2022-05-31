@@ -348,7 +348,6 @@ Class | Method | HTTP request | Description
  - [RangeVector](docs/RangeVector.md)
  - [Resource](docs/Resource.md)
  - [ResourceAction](docs/ResourceAction.md)
- - [ResourceActionAllOf](docs/ResourceActionAllOf.md)
  - [ResourceSelector](docs/ResourceSelector.md)
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)

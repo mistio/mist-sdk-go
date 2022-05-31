@@ -1080,6 +1080,33 @@ paths:
                   name: azuremachine
                   image: Ubuntu
                   size: Standard_D4s_v5
+              FullExample:
+                summary: "Provision 2 machines with monitoring, schedules, expiration\
+                  \ and provisioning scripts"
+                value:
+                  cloud: GCE
+                  name: testmachine
+                  image: Ubuntu
+                  size:
+                    cpu: 2
+                    memory: 2048
+                  location: us-east1-b
+                  key: TestKey
+                  monitoring: true
+                  quantity: 2
+                  expiration:
+                    action: destroy
+                    date: 2025-08-30T18:24:15Z
+                  scripts:
+                  - inline: |-
+                      #!/bin/bash
+                       touch ~/inline.txt
+                  - script: test123
+                  schedules:
+                  - schedule_type: one_off
+                    datetime: 2023-09-22T18:19:28Z
+                    script:
+                      script: test123
             schema:
               $ref: '#/components/schemas/CreateMachineRequest'
       responses:
@@ -3771,7 +3798,9 @@ paths:
                 summary: Create a reboot machine schedule that runs once
                 value:
                   actions:
-                  - reboot
+                    type: resource_action
+                    ResourceAction:
+                      action: reboot
                   description: Backup schedule
                   enabled: true
                   expires: 2022-06-01T00:00:00Z
@@ -3935,6 +3964,18 @@ paths:
       requestBody:
         content:
           application/json:
+            examples:
+              RenameSchedule:
+                summary: Rename an existing schedule
+                value:
+                  name: RenamedSchedule
+                  description: This is a renamed schedule
+              DeactivateSchedule:
+                summary: Deactivate an existing active schedule
+                value:
+                  name: DeactivatedSchedule
+                  description: This is a deactivated schedule
+                  enabled: false
             schema:
               $ref: '#/components/schemas/EditScheduleRequest'
       responses:
@@ -5949,8 +5990,20 @@ components:
         propertyName: type
       type: object
     ResourceAction:
-      allOf:
-      - $ref: '#/components/schemas/ResourceAction_allOf'
+      properties:
+        action:
+          description: |
+            the type of the action to be executed
+          enum:
+          - start
+          - stop
+          - reboot
+          - destroy
+          - notify
+          - delete
+          type: string
+      required:
+      - action
       type: object
     Notification:
       properties:
@@ -10986,21 +11039,6 @@ components:
           type: string
       required:
       - type
-    ResourceAction_allOf:
-      properties:
-        type:
-          description: |
-            the type of the action to be executed
-          enum:
-          - start
-          - stop
-          - reboot
-          - destroy
-          - notify
-          - delete
-          type: string
-      required:
-      - action
     When_allOf:
       properties:
         schedule_type:
