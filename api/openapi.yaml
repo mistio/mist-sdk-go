@@ -3794,7 +3794,7 @@ paths:
         content:
           application/json:
             examples:
-              RebootMachineOneOffSchedule:
+              AddRebootMachineOneOffSchedule:
                 summary: Create a reboot machine schedule that runs once
                 value:
                   actions:
@@ -3804,7 +3804,7 @@ paths:
                   description: Backup schedule
                   enabled: true
                   expires: 2022-06-01T00:00:00Z
-                  name: backup-schedule
+                  name: AddRebootMachineOneOffSchedule
                   reminder:
                     message: message
                     when:
@@ -4518,7 +4518,9 @@ paths:
                   and is evaluated every 2 hours
                 value:
                   actions:
-                  - stop
+                    type: resource_action
+                    ResourceAction:
+                      action: stop
                   conditions:
                     data_type: logs
                     query:
@@ -4726,7 +4728,9 @@ paths:
                   and is evaluated once
                 value:
                   actions:
-                  - reboot
+                    type: resource_action
+                    ResourceAction:
+                      action: reboot
                   conditions:
                     data_type: logs
                     query:
