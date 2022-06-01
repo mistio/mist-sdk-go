@@ -976,6 +976,7 @@ type ApiListMachinesRequest struct {
 	only *string
 	deref *string
 	at *time.Time
+	excludedTypes *string
 }
 
 func (r ApiListMachinesRequest) Cloud(cloud string) ApiListMachinesRequest {
@@ -1022,6 +1023,12 @@ func (r ApiListMachinesRequest) Deref(deref string) ApiListMachinesRequest {
 // Limit results by specific datetime. Return resources created before or at, or deleted after or at, given datetime.
 func (r ApiListMachinesRequest) At(at time.Time) ApiListMachinesRequest {
 	r.at = &at
+	return r
+}
+
+// Machine types to exclude, separated by commas
+func (r ApiListMachinesRequest) ExcludedTypes(excludedTypes string) ApiListMachinesRequest {
+	r.excludedTypes = &excludedTypes
 	return r
 }
 
@@ -1088,6 +1095,9 @@ func (a *MachinesApiService) ListMachinesExecute(r ApiListMachinesRequest) (*Lis
 	}
 	if r.at != nil {
 		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
+	}
+	if r.excludedTypes != nil {
+		localVarQueryParams.Add("excludedTypes", parameterToString(*r.excludedTypes, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
