@@ -17,7 +17,6 @@ import (
 
 // ScriptToRunAllOf struct for ScriptToRunAllOf
 type ScriptToRunAllOf struct {
-	// the script's type: inline, existing 
 	Type string `json:"type"`
 }
 

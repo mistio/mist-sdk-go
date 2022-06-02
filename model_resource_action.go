@@ -17,6 +17,7 @@ import (
 
 // ResourceAction struct for ResourceAction
 type ResourceAction struct {
+	Type string `json:"type"`
 	// the type of the action to be executed 
 	Action string `json:"action"`
 }
@@ -25,8 +26,9 @@ type ResourceAction struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResourceAction(action string) *ResourceAction {
+func NewResourceAction(type_ string, action string) *ResourceAction {
 	this := ResourceAction{}
+	this.Type = type_
 	this.Action = action
 	return &this
 }
@@ -37,6 +39,30 @@ func NewResourceAction(action string) *ResourceAction {
 func NewResourceActionWithDefaults() *ResourceAction {
 	this := ResourceAction{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *ResourceAction) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *ResourceAction) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *ResourceAction) SetType(v string) {
+	o.Type = v
 }
 
 // GetAction returns the Action field value
@@ -65,6 +91,9 @@ func (o *ResourceAction) SetAction(v string) {
 
 func (o ResourceAction) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["type"] = o.Type
+	}
 	if true {
 		toSerialize["action"] = o.Action
 	}

@@ -359,6 +359,7 @@ Class | Method | HTTP request | Description
  - [Schedule](docs/Schedule.md)
  - [Script](docs/Script.md)
  - [ScriptToRun](docs/ScriptToRun.md)
+ - [ScriptToRunAllOf](docs/ScriptToRunAllOf.md)
  - [Secret](docs/Secret.md)
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)

@@ -13,101 +13,157 @@ package mist_sdk
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// ScriptToRun - struct for ScriptToRun
+// ScriptToRun struct for ScriptToRun
 type ScriptToRun struct {
-	RunCommand *RunCommand
-	RunExistingScript *RunExistingScript
+	Type string `json:"type"`
+	// Command that is about to run
+	Command string `json:"command"`
+	// Name or ID of the script to run
+	Script string `json:"script"`
+	Params *string `json:"params,omitempty"`
 }
 
-// RunCommandAsScriptToRun is a convenience function that returns RunCommand wrapped in ScriptToRun
-func RunCommandAsScriptToRun(v *RunCommand) ScriptToRun {
-	return ScriptToRun{
-		RunCommand: v,
-	}
+// NewScriptToRun instantiates a new ScriptToRun object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewScriptToRun(type_ string, command string, script string) *ScriptToRun {
+	this := ScriptToRun{}
+	this.Type = type_
+	this.Command = command
+	this.Script = script
+	return &this
 }
 
-// RunExistingScriptAsScriptToRun is a convenience function that returns RunExistingScript wrapped in ScriptToRun
-func RunExistingScriptAsScriptToRun(v *RunExistingScript) ScriptToRun {
-	return ScriptToRun{
-		RunExistingScript: v,
-	}
+// NewScriptToRunWithDefaults instantiates a new ScriptToRun object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewScriptToRunWithDefaults() *ScriptToRun {
+	this := ScriptToRun{}
+	return &this
 }
 
-
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *ScriptToRun) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into RunCommand
-	err = newStrictDecoder(data).Decode(&dst.RunCommand)
-	if err == nil {
-		jsonRunCommand, _ := json.Marshal(dst.RunCommand)
-		if string(jsonRunCommand) == "{}" { // empty struct
-			dst.RunCommand = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.RunCommand = nil
+// GetType returns the Type field value
+func (o *ScriptToRun) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
 
-	// try to unmarshal data into RunExistingScript
-	err = newStrictDecoder(data).Decode(&dst.RunExistingScript)
-	if err == nil {
-		jsonRunExistingScript, _ := json.Marshal(dst.RunExistingScript)
-		if string(jsonRunExistingScript) == "{}" { // empty struct
-			dst.RunExistingScript = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.RunExistingScript = nil
-	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.RunCommand = nil
-		dst.RunExistingScript = nil
-
-		return fmt.Errorf("Data matches more than one schema in oneOf(ScriptToRun)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("Data failed to match schemas in oneOf(ScriptToRun)")
-	}
+	return o.Type
 }
 
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src ScriptToRun) MarshalJSON() ([]byte, error) {
-	if src.RunCommand != nil {
-		return json.Marshal(&src.RunCommand)
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *ScriptToRun) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
 	}
-
-	if src.RunExistingScript != nil {
-		return json.Marshal(&src.RunExistingScript)
-	}
-
-	return nil, nil // no data in oneOf schemas
+	return &o.Type, true
 }
 
-// Get the actual instance
-func (obj *ScriptToRun) GetActualInstance() (interface{}) {
-	if obj == nil {
-		return nil
-	}
-	if obj.RunCommand != nil {
-		return obj.RunCommand
+// SetType sets field value
+func (o *ScriptToRun) SetType(v string) {
+	o.Type = v
+}
+
+// GetCommand returns the Command field value
+func (o *ScriptToRun) GetCommand() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
 
-	if obj.RunExistingScript != nil {
-		return obj.RunExistingScript
+	return o.Command
+}
+
+// GetCommandOk returns a tuple with the Command field value
+// and a boolean to check if the value has been set.
+func (o *ScriptToRun) GetCommandOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Command, true
+}
+
+// SetCommand sets field value
+func (o *ScriptToRun) SetCommand(v string) {
+	o.Command = v
+}
+
+// GetScript returns the Script field value
+func (o *ScriptToRun) GetScript() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
 
-	// all schemas are nil
-	return nil
+	return o.Script
+}
+
+// GetScriptOk returns a tuple with the Script field value
+// and a boolean to check if the value has been set.
+func (o *ScriptToRun) GetScriptOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Script, true
+}
+
+// SetScript sets field value
+func (o *ScriptToRun) SetScript(v string) {
+	o.Script = v
+}
+
+// GetParams returns the Params field value if set, zero value otherwise.
+func (o *ScriptToRun) GetParams() string {
+	if o == nil || o.Params == nil {
+		var ret string
+		return ret
+	}
+	return *o.Params
+}
+
+// GetParamsOk returns a tuple with the Params field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ScriptToRun) GetParamsOk() (*string, bool) {
+	if o == nil || o.Params == nil {
+		return nil, false
+	}
+	return o.Params, true
+}
+
+// HasParams returns a boolean if a field has been set.
+func (o *ScriptToRun) HasParams() bool {
+	if o != nil && o.Params != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetParams gets a reference to the given string and assigns it to the Params field.
+func (o *ScriptToRun) SetParams(v string) {
+	o.Params = &v
+}
+
+func (o ScriptToRun) MarshalJSON() ([]byte, error) {
+	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["type"] = o.Type
+	}
+	if true {
+		toSerialize["command"] = o.Command
+	}
+	if true {
+		toSerialize["script"] = o.Script
+	}
+	if o.Params != nil {
+		toSerialize["params"] = o.Params
+	}
+	return json.Marshal(toSerialize)
 }
 
 type NullableScriptToRun struct {

@@ -17,6 +17,7 @@ import (
 
 // Notification struct for Notification
 type Notification struct {
+	Type string `json:"type"`
 	// a list of user to be notified, denoted by their UUIDs 
 	Users []string `json:"users,omitempty"`
 	// a list of teams, denoted by their UUIDs, whose users will be notified 
@@ -29,8 +30,9 @@ type Notification struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotification() *Notification {
+func NewNotification(type_ string) *Notification {
 	this := Notification{}
+	this.Type = type_
 	return &this
 }
 
@@ -40,6 +42,30 @@ func NewNotification() *Notification {
 func NewNotificationWithDefaults() *Notification {
 	this := Notification{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *Notification) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *Notification) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *Notification) SetType(v string) {
+	o.Type = v
 }
 
 // GetUsers returns the Users field value if set, zero value otherwise.
@@ -140,6 +166,9 @@ func (o *Notification) SetEmails(v []string) {
 
 func (o Notification) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["type"] = o.Type
+	}
 	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}

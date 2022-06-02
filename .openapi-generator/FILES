@@ -220,6 +220,7 @@ docs/Schedule.md
 docs/SchedulesApi.md
 docs/Script.md
 docs/ScriptToRun.md
+docs/ScriptToRunAllOf.md
 docs/ScriptsApi.md
 docs/Secret.md
 docs/SecretsApi.md
@@ -441,6 +442,7 @@ model_scale_nodepool_request.go
 model_schedule.go
 model_script.go
 model_script_to_run.go
+model_script_to_run_all_of.go
 model_secret.go
 model_selector.go
 model_size.go

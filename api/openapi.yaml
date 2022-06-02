@@ -4546,11 +4546,9 @@ paths:
                     period: minutes
                   when:
                     schedule_type: interval
-                    IntervalSchedule:
-                      schedule_type: interval
-                      every: 2
-                      period: hours
-                      start_after: 2022-10-22T18:19:28Z
+                    every: 2
+                    period: hours
+                    start_after: 2022-10-22T18:19:28Z
             schema:
               $ref: '#/components/schemas/AddRuleRequest'
       responses:
@@ -4729,14 +4727,13 @@ paths:
                 value:
                   actions:
                     type: resource_action
-                    ResourceAction:
-                      action: reboot
+                    action: reboot
                   conditions:
                     data_type: logs
                     query:
                       aggregation: sum
                       operator: eq
-                      target: 10
+                      target: "10"
                       threshold: 9.5
                     window:
                       period: hours
@@ -4747,18 +4744,15 @@ paths:
                   enabled: true
                   name: EditedRebootMachineOneOffRule
                   selectors:
-                    ResourceSelector:
-                      type: machines
-                      ids:
-                      - 738f633d987148a8b2c1628e0cd416b4
+                    type: machines
+                    ids:
+                    - 738f633d987148a8b2c1628e0cd416b4
                   trigger_after:
                     offset: 20
                     period: minutes
                   when:
+                    datetime: 2022-06-22T18:19:28Z
                     schedule_type: one_off
-                    OneOffSchedule:
-                      datetime: 2022-06-22T18:19:28Z
-                      schedule_type: one_off
             schema:
               $ref: '#/components/schemas/EditRuleRequest'
       responses:
@@ -6067,6 +6061,11 @@ components:
       type: object
     ResourceAction:
       properties:
+        type:
+          enum:
+          - resource_action
+          example: resource_action
+          type: string
         action:
           description: |
             the type of the action to be executed
@@ -6080,9 +6079,15 @@ components:
           type: string
       required:
       - action
+      - type
       type: object
     Notification:
       properties:
+        type:
+          enum:
+          - notification
+          example: notification
+          type: string
         users:
           description: "a list of user to be notified, denoted by their UUIDs\n"
           items:
@@ -6100,6 +6105,8 @@ components:
           items:
             type: string
           type: array
+      required:
+      - type
       type: object
     RunCommand:
       properties:
@@ -6120,10 +6127,11 @@ components:
       - script
       type: object
     ScriptToRun:
-      oneOf:
-      - $ref: '#/components/schemas/RunCommand'
-      - $ref: '#/components/schemas/RunExistingScript'
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/ScriptToRun_allOf'
+      - oneOf:
+        - $ref: '#/components/schemas/RunCommand'
+        - $ref: '#/components/schemas/RunExistingScript'
     OneOffSchedule:
       description: one_off schedule
       properties:
@@ -11112,6 +11120,15 @@ components:
           - notification
           - resource_action
           - run_script
+          type: string
+      required:
+      - type
+    ScriptToRun_allOf:
+      properties:
+        type:
+          enum:
+          - run_script
+          example: run_script
           type: string
       required:
       - type
