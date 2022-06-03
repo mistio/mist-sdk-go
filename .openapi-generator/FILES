@@ -36,7 +36,7 @@ docs/AddKeyResponse.md
 docs/AddRuleRequest.md
 docs/AddScheduleRequest.md
 docs/AddScheduleRequestReminder.md
-docs/AddScheduleRequestReminderWhen.md
+docs/AddScheduleRequestReminderReminderWhen.md
 docs/AddScriptRequest.md
 docs/AgeSelector.md
 docs/AlibabaCloudRequest.md
@@ -269,7 +269,7 @@ model_add_key_response.go
 model_add_rule_request.go
 model_add_schedule_request.go
 model_add_schedule_request_reminder.go
-model_add_schedule_request_reminder_when.go
+model_add_schedule_request_reminder_reminder_when.go
 model_add_script_request.go
 model_age_selector.go
 model_alibaba_cloud_request.go
