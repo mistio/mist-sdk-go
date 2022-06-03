@@ -13,17 +13,12 @@ package mist_sdk
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // IntervalSchedule interval schedule
 type IntervalSchedule struct {
 	Every int32 `json:"every"`
 	Period string `json:"period"`
-	// The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z
-	StartAfter *time.Time `json:"start_after,omitempty"`
-	// The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z
-	Expires *time.Time `json:"expires,omitempty"`
 	MaxRunCount *int32 `json:"max_run_count,omitempty"`
 }
 
@@ -94,70 +89,6 @@ func (o *IntervalSchedule) SetPeriod(v string) {
 	o.Period = v
 }
 
-// GetStartAfter returns the StartAfter field value if set, zero value otherwise.
-func (o *IntervalSchedule) GetStartAfter() time.Time {
-	if o == nil || o.StartAfter == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.StartAfter
-}
-
-// GetStartAfterOk returns a tuple with the StartAfter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntervalSchedule) GetStartAfterOk() (*time.Time, bool) {
-	if o == nil || o.StartAfter == nil {
-		return nil, false
-	}
-	return o.StartAfter, true
-}
-
-// HasStartAfter returns a boolean if a field has been set.
-func (o *IntervalSchedule) HasStartAfter() bool {
-	if o != nil && o.StartAfter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStartAfter gets a reference to the given time.Time and assigns it to the StartAfter field.
-func (o *IntervalSchedule) SetStartAfter(v time.Time) {
-	o.StartAfter = &v
-}
-
-// GetExpires returns the Expires field value if set, zero value otherwise.
-func (o *IntervalSchedule) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.Expires
-}
-
-// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IntervalSchedule) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
-		return nil, false
-	}
-	return o.Expires, true
-}
-
-// HasExpires returns a boolean if a field has been set.
-func (o *IntervalSchedule) HasExpires() bool {
-	if o != nil && o.Expires != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
-func (o *IntervalSchedule) SetExpires(v time.Time) {
-	o.Expires = &v
-}
-
 // GetMaxRunCount returns the MaxRunCount field value if set, zero value otherwise.
 func (o *IntervalSchedule) GetMaxRunCount() int32 {
 	if o == nil || o.MaxRunCount == nil {
@@ -197,12 +128,6 @@ func (o IntervalSchedule) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["period"] = o.Period
-	}
-	if o.StartAfter != nil {
-		toSerialize["start_after"] = o.StartAfter
-	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
 	}
 	if o.MaxRunCount != nil {
 		toSerialize["max_run_count"] = o.MaxRunCount

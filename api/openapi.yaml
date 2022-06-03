@@ -6148,16 +6148,6 @@ components:
         day_of_week:
           example: '*'
           type: string
-        start_after:
-          description: "The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z"
-          example: 2022-07-22T18:19:28Z
-          format: date-time
-          type: string
-        expires:
-          description: "The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z"
-          example: 2022-08-29T18:19:28Z
-          format: date-time
-          type: string
         max_run_count:
           example: 5
           minimum: 1
@@ -6182,16 +6172,6 @@ components:
           - hours
           - days
           example: hours
-          type: string
-        start_after:
-          description: "The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z"
-          example: 2022-10-22T18:19:28Z
-          format: date-time
-          type: string
-        expires:
-          description: "The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z"
-          example: 2022-12-22T18:19:28Z
-          format: date-time
           type: string
         max_run_count:
           example: 10

@@ -26,10 +26,6 @@ type When struct {
 	DayOfMonth string `json:"day_of_month"`
 	MonthOfYear string `json:"month_of_year"`
 	DayOfWeek string `json:"day_of_week"`
-	// The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z
-	StartAfter *time.Time `json:"start_after,omitempty"`
-	// The datetime when schedule should expire, e.g 2021-09-22T18:19:28Z
-	Expires *time.Time `json:"expires,omitempty"`
 	MaxRunCount *int32 `json:"max_run_count,omitempty"`
 	Every int32 `json:"every"`
 	Period string `json:"period"`
@@ -236,70 +232,6 @@ func (o *When) SetDayOfWeek(v string) {
 	o.DayOfWeek = v
 }
 
-// GetStartAfter returns the StartAfter field value if set, zero value otherwise.
-func (o *When) GetStartAfter() time.Time {
-	if o == nil || o.StartAfter == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.StartAfter
-}
-
-// GetStartAfterOk returns a tuple with the StartAfter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *When) GetStartAfterOk() (*time.Time, bool) {
-	if o == nil || o.StartAfter == nil {
-		return nil, false
-	}
-	return o.StartAfter, true
-}
-
-// HasStartAfter returns a boolean if a field has been set.
-func (o *When) HasStartAfter() bool {
-	if o != nil && o.StartAfter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStartAfter gets a reference to the given time.Time and assigns it to the StartAfter field.
-func (o *When) SetStartAfter(v time.Time) {
-	o.StartAfter = &v
-}
-
-// GetExpires returns the Expires field value if set, zero value otherwise.
-func (o *When) GetExpires() time.Time {
-	if o == nil || o.Expires == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.Expires
-}
-
-// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *When) GetExpiresOk() (*time.Time, bool) {
-	if o == nil || o.Expires == nil {
-		return nil, false
-	}
-	return o.Expires, true
-}
-
-// HasExpires returns a boolean if a field has been set.
-func (o *When) HasExpires() bool {
-	if o != nil && o.Expires != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
-func (o *When) SetExpires(v time.Time) {
-	o.Expires = &v
-}
-
 // GetMaxRunCount returns the MaxRunCount field value if set, zero value otherwise.
 func (o *When) GetMaxRunCount() int32 {
 	if o == nil || o.MaxRunCount == nil {
@@ -402,12 +334,6 @@ func (o When) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["day_of_week"] = o.DayOfWeek
-	}
-	if o.StartAfter != nil {
-		toSerialize["start_after"] = o.StartAfter
-	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
 	}
 	if o.MaxRunCount != nil {
 		toSerialize["max_run_count"] = o.MaxRunCount
