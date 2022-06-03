@@ -18,16 +18,16 @@ import (
 // ActionAllOf struct for ActionAllOf
 type ActionAllOf struct {
 	// the action's type: notification, resource_action, run_script 
-	Type string `json:"type"`
+	ActionType string `json:"action_type"`
 }
 
 // NewActionAllOf instantiates a new ActionAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewActionAllOf(type_ string) *ActionAllOf {
+func NewActionAllOf(actionType string) *ActionAllOf {
 	this := ActionAllOf{}
-	this.Type = type_
+	this.ActionType = actionType
 	return &this
 }
 
@@ -39,34 +39,34 @@ func NewActionAllOfWithDefaults() *ActionAllOf {
 	return &this
 }
 
-// GetType returns the Type field value
-func (o *ActionAllOf) GetType() string {
+// GetActionType returns the ActionType field value
+func (o *ActionAllOf) GetActionType() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Type
+	return o.ActionType
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetActionTypeOk returns a tuple with the ActionType field value
 // and a boolean to check if the value has been set.
-func (o *ActionAllOf) GetTypeOk() (*string, bool) {
+func (o *ActionAllOf) GetActionTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Type, true
+	return &o.ActionType, true
 }
 
-// SetType sets field value
-func (o *ActionAllOf) SetType(v string) {
-	o.Type = v
+// SetActionType sets field value
+func (o *ActionAllOf) SetActionType(v string) {
+	o.ActionType = v
 }
 
 func (o ActionAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["type"] = o.Type
+		toSerialize["action_type"] = o.ActionType
 	}
 	return json.Marshal(toSerialize)
 }

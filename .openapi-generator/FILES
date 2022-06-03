@@ -205,8 +205,8 @@ docs/Query.md
 docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
 docs/RangeVector.md
+docs/ResizeAction.md
 docs/Resource.md
-docs/ResourceAction.md
 docs/ResourceSelector.md
 docs/ResponseMetadata.md
 docs/Rule.md
@@ -220,7 +220,6 @@ docs/Schedule.md
 docs/SchedulesApi.md
 docs/Script.md
 docs/ScriptToRun.md
-docs/ScriptToRunAllOf.md
 docs/ScriptsApi.md
 docs/Secret.md
 docs/SecretsApi.md
@@ -429,8 +428,8 @@ model_query.go
 model_rackspace_cloud_request.go
 model_rackspace_credentials.go
 model_range_vector.go
+model_resize_action.go
 model_resource.go
-model_resource_action.go
 model_resource_selector.go
 model_response_metadata.go
 model_rule.go
@@ -442,7 +441,6 @@ model_scale_nodepool_request.go
 model_schedule.go
 model_script.go
 model_script_to_run.go
-model_script_to_run_all_of.go
 model_secret.go
 model_selector.go
 model_size.go

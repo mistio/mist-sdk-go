@@ -17,30 +17,29 @@ import (
 
 // Action struct for Action
 type Action struct {
-	Type string `json:"type"`
+	// the action's type: notification, resource_action, run_script 
+	ActionType string `json:"action_type"`
 	// a list of user to be notified, denoted by their UUIDs 
 	Users []string `json:"users,omitempty"`
 	// a list of teams, denoted by their UUIDs, whose users will be notified 
 	Teams []string `json:"teams,omitempty"`
 	// a list of e-mails to send a notification to 
 	Emails []string `json:"emails,omitempty"`
-	// the type of the action to be executed 
-	Action string `json:"action"`
+	Params string `json:"params"`
 	// Command that is about to run
 	Command string `json:"command"`
 	// Name or ID of the script to run
 	Script string `json:"script"`
-	Params *string `json:"params,omitempty"`
 }
 
 // NewAction instantiates a new Action object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAction(type_ string, action string, command string, script string) *Action {
+func NewAction(actionType string, params string, command string, script string) *Action {
 	this := Action{}
-	this.Type = type_
-	this.Action = action
+	this.ActionType = actionType
+	this.Params = params
 	this.Command = command
 	this.Script = script
 	return &this
@@ -54,28 +53,28 @@ func NewActionWithDefaults() *Action {
 	return &this
 }
 
-// GetType returns the Type field value
-func (o *Action) GetType() string {
+// GetActionType returns the ActionType field value
+func (o *Action) GetActionType() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Type
+	return o.ActionType
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetActionTypeOk returns a tuple with the ActionType field value
 // and a boolean to check if the value has been set.
-func (o *Action) GetTypeOk() (*string, bool) {
+func (o *Action) GetActionTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Type, true
+	return &o.ActionType, true
 }
 
-// SetType sets field value
-func (o *Action) SetType(v string) {
-	o.Type = v
+// SetActionType sets field value
+func (o *Action) SetActionType(v string) {
+	o.ActionType = v
 }
 
 // GetUsers returns the Users field value if set, zero value otherwise.
@@ -174,28 +173,28 @@ func (o *Action) SetEmails(v []string) {
 	o.Emails = v
 }
 
-// GetAction returns the Action field value
-func (o *Action) GetAction() string {
+// GetParams returns the Params field value
+func (o *Action) GetParams() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Action
+	return o.Params
 }
 
-// GetActionOk returns a tuple with the Action field value
+// GetParamsOk returns a tuple with the Params field value
 // and a boolean to check if the value has been set.
-func (o *Action) GetActionOk() (*string, bool) {
+func (o *Action) GetParamsOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Action, true
+	return &o.Params, true
 }
 
-// SetAction sets field value
-func (o *Action) SetAction(v string) {
-	o.Action = v
+// SetParams sets field value
+func (o *Action) SetParams(v string) {
+	o.Params = v
 }
 
 // GetCommand returns the Command field value
@@ -246,42 +245,10 @@ func (o *Action) SetScript(v string) {
 	o.Script = v
 }
 
-// GetParams returns the Params field value if set, zero value otherwise.
-func (o *Action) GetParams() string {
-	if o == nil || o.Params == nil {
-		var ret string
-		return ret
-	}
-	return *o.Params
-}
-
-// GetParamsOk returns a tuple with the Params field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Action) GetParamsOk() (*string, bool) {
-	if o == nil || o.Params == nil {
-		return nil, false
-	}
-	return o.Params, true
-}
-
-// HasParams returns a boolean if a field has been set.
-func (o *Action) HasParams() bool {
-	if o != nil && o.Params != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetParams gets a reference to the given string and assigns it to the Params field.
-func (o *Action) SetParams(v string) {
-	o.Params = &v
-}
-
 func (o Action) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["type"] = o.Type
+		toSerialize["action_type"] = o.ActionType
 	}
 	if o.Users != nil {
 		toSerialize["users"] = o.Users
@@ -293,16 +260,13 @@ func (o Action) MarshalJSON() ([]byte, error) {
 		toSerialize["emails"] = o.Emails
 	}
 	if true {
-		toSerialize["action"] = o.Action
+		toSerialize["params"] = o.Params
 	}
 	if true {
 		toSerialize["command"] = o.Command
 	}
 	if true {
 		toSerialize["script"] = o.Script
-	}
-	if o.Params != nil {
-		toSerialize["params"] = o.Params
 	}
 	return json.Marshal(toSerialize)
 }
