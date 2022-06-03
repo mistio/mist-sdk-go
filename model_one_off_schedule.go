@@ -18,7 +18,6 @@ import (
 
 // OneOffSchedule one_off schedule
 type OneOffSchedule struct {
-	ScheduleType string `json:"schedule_type"`
 	// When one_off schedule should run, e.g 2021-09-22T18:19:28Z
 	Datetime time.Time `json:"datetime"`
 }
@@ -27,9 +26,8 @@ type OneOffSchedule struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOneOffSchedule(scheduleType string, datetime time.Time) *OneOffSchedule {
+func NewOneOffSchedule(datetime time.Time) *OneOffSchedule {
 	this := OneOffSchedule{}
-	this.ScheduleType = scheduleType
 	this.Datetime = datetime
 	return &this
 }
@@ -40,30 +38,6 @@ func NewOneOffSchedule(scheduleType string, datetime time.Time) *OneOffSchedule 
 func NewOneOffScheduleWithDefaults() *OneOffSchedule {
 	this := OneOffSchedule{}
 	return &this
-}
-
-// GetScheduleType returns the ScheduleType field value
-func (o *OneOffSchedule) GetScheduleType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ScheduleType
-}
-
-// GetScheduleTypeOk returns a tuple with the ScheduleType field value
-// and a boolean to check if the value has been set.
-func (o *OneOffSchedule) GetScheduleTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ScheduleType, true
-}
-
-// SetScheduleType sets field value
-func (o *OneOffSchedule) SetScheduleType(v string) {
-	o.ScheduleType = v
 }
 
 // GetDatetime returns the Datetime field value
@@ -92,9 +66,6 @@ func (o *OneOffSchedule) SetDatetime(v time.Time) {
 
 func (o OneOffSchedule) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["schedule_type"] = o.ScheduleType
-	}
 	if true {
 		toSerialize["datetime"] = o.Datetime
 	}
