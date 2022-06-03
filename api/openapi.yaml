@@ -4514,10 +4514,10 @@ paths:
                   and is evaluated every 2 hours
                 value:
                   actions:
-                    type: resource_action
+                  - type: resource_action
                     action: stop
                   conditions:
-                    data_type: logs
+                  - data_type: logs
                     query:
                       aggregation: sum
                       operator: eq
@@ -4532,7 +4532,7 @@ paths:
                   enabled: true
                   name: NewStopMachineIntervalRule
                   selectors:
-                    type: machines
+                  - type: machines
                     ids:
                     - 738f633d987148a8b2c1628e0cd416b4
                   trigger_after:
@@ -4723,7 +4723,7 @@ paths:
                   - type: resource_action
                     action: reboot
                   conditions:
-                    data_type: logs
+                  - data_type: logs
                     query:
                       aggregation: sum
                       operator: eq
