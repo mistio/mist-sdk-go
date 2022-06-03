@@ -19,7 +19,7 @@ import (
 type AddScheduleRequestReminder struct {
 	// The reminder message to be sent
 	Message *string `json:"message,omitempty"`
-	ReminderWhen *AddScheduleRequestReminderReminderWhen `json:"reminder_when,omitempty"`
+	When *AddScheduleRequestReminderWhen `json:"when,omitempty"`
 }
 
 // NewAddScheduleRequestReminder instantiates a new AddScheduleRequestReminder object
@@ -71,36 +71,36 @@ func (o *AddScheduleRequestReminder) SetMessage(v string) {
 	o.Message = &v
 }
 
-// GetReminderWhen returns the ReminderWhen field value if set, zero value otherwise.
-func (o *AddScheduleRequestReminder) GetReminderWhen() AddScheduleRequestReminderReminderWhen {
-	if o == nil || o.ReminderWhen == nil {
-		var ret AddScheduleRequestReminderReminderWhen
+// GetWhen returns the When field value if set, zero value otherwise.
+func (o *AddScheduleRequestReminder) GetWhen() AddScheduleRequestReminderWhen {
+	if o == nil || o.When == nil {
+		var ret AddScheduleRequestReminderWhen
 		return ret
 	}
-	return *o.ReminderWhen
+	return *o.When
 }
 
-// GetReminderWhenOk returns a tuple with the ReminderWhen field value if set, nil otherwise
+// GetWhenOk returns a tuple with the When field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddScheduleRequestReminder) GetReminderWhenOk() (*AddScheduleRequestReminderReminderWhen, bool) {
-	if o == nil || o.ReminderWhen == nil {
+func (o *AddScheduleRequestReminder) GetWhenOk() (*AddScheduleRequestReminderWhen, bool) {
+	if o == nil || o.When == nil {
 		return nil, false
 	}
-	return o.ReminderWhen, true
+	return o.When, true
 }
 
-// HasReminderWhen returns a boolean if a field has been set.
-func (o *AddScheduleRequestReminder) HasReminderWhen() bool {
-	if o != nil && o.ReminderWhen != nil {
+// HasWhen returns a boolean if a field has been set.
+func (o *AddScheduleRequestReminder) HasWhen() bool {
+	if o != nil && o.When != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetReminderWhen gets a reference to the given AddScheduleRequestReminderReminderWhen and assigns it to the ReminderWhen field.
-func (o *AddScheduleRequestReminder) SetReminderWhen(v AddScheduleRequestReminderReminderWhen) {
-	o.ReminderWhen = &v
+// SetWhen gets a reference to the given AddScheduleRequestReminderWhen and assigns it to the When field.
+func (o *AddScheduleRequestReminder) SetWhen(v AddScheduleRequestReminderWhen) {
+	o.When = &v
 }
 
 func (o AddScheduleRequestReminder) MarshalJSON() ([]byte, error) {
@@ -108,8 +108,8 @@ func (o AddScheduleRequestReminder) MarshalJSON() ([]byte, error) {
 	if o.Message != nil {
 		toSerialize["message"] = o.Message
 	}
-	if o.ReminderWhen != nil {
-		toSerialize["reminder_when"] = o.ReminderWhen
+	if o.When != nil {
+		toSerialize["when"] = o.When
 	}
 	return json.Marshal(toSerialize)
 }

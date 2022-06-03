@@ -18,7 +18,7 @@ import (
 
 // When struct for When
 type When struct {
-	ScheduleType *string `json:"schedule_type,omitempty"`
+	ScheduleType string `json:"schedule_type"`
 	// When one_off schedule should run, e.g 2021-09-22T18:19:28Z
 	Datetime time.Time `json:"datetime"`
 	Minute string `json:"minute"`
@@ -39,8 +39,9 @@ type When struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWhen(datetime time.Time, minute string, hour string, dayOfMonth string, monthOfYear string, dayOfWeek string, every int32, period string) *When {
+func NewWhen(scheduleType string, datetime time.Time, minute string, hour string, dayOfMonth string, monthOfYear string, dayOfWeek string, every int32, period string) *When {
 	this := When{}
+	this.ScheduleType = scheduleType
 	this.Datetime = datetime
 	this.Minute = minute
 	this.Hour = hour
@@ -60,36 +61,28 @@ func NewWhenWithDefaults() *When {
 	return &this
 }
 
-// GetScheduleType returns the ScheduleType field value if set, zero value otherwise.
+// GetScheduleType returns the ScheduleType field value
 func (o *When) GetScheduleType() string {
-	if o == nil || o.ScheduleType == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ScheduleType
+
+	return o.ScheduleType
 }
 
-// GetScheduleTypeOk returns a tuple with the ScheduleType field value if set, nil otherwise
+// GetScheduleTypeOk returns a tuple with the ScheduleType field value
 // and a boolean to check if the value has been set.
 func (o *When) GetScheduleTypeOk() (*string, bool) {
-	if o == nil || o.ScheduleType == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ScheduleType, true
+	return &o.ScheduleType, true
 }
 
-// HasScheduleType returns a boolean if a field has been set.
-func (o *When) HasScheduleType() bool {
-	if o != nil && o.ScheduleType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetScheduleType gets a reference to the given string and assigns it to the ScheduleType field.
+// SetScheduleType sets field value
 func (o *When) SetScheduleType(v string) {
-	o.ScheduleType = &v
+	o.ScheduleType = v
 }
 
 // GetDatetime returns the Datetime field value
@@ -382,7 +375,7 @@ func (o *When) SetPeriod(v string) {
 
 func (o When) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ScheduleType != nil {
+	if true {
 		toSerialize["schedule_type"] = o.ScheduleType
 	}
 	if true {

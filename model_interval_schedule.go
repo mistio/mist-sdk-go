@@ -18,6 +18,7 @@ import (
 
 // IntervalSchedule interval schedule
 type IntervalSchedule struct {
+	ScheduleType string `json:"schedule_type"`
 	Every int32 `json:"every"`
 	Period string `json:"period"`
 	// The datetime when schedule should start running, e.g 2021-09-22T18:19:28Z
@@ -31,8 +32,9 @@ type IntervalSchedule struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIntervalSchedule(every int32, period string) *IntervalSchedule {
+func NewIntervalSchedule(scheduleType string, every int32, period string) *IntervalSchedule {
 	this := IntervalSchedule{}
+	this.ScheduleType = scheduleType
 	this.Every = every
 	this.Period = period
 	return &this
@@ -44,6 +46,30 @@ func NewIntervalSchedule(every int32, period string) *IntervalSchedule {
 func NewIntervalScheduleWithDefaults() *IntervalSchedule {
 	this := IntervalSchedule{}
 	return &this
+}
+
+// GetScheduleType returns the ScheduleType field value
+func (o *IntervalSchedule) GetScheduleType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ScheduleType
+}
+
+// GetScheduleTypeOk returns a tuple with the ScheduleType field value
+// and a boolean to check if the value has been set.
+func (o *IntervalSchedule) GetScheduleTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ScheduleType, true
+}
+
+// SetScheduleType sets field value
+func (o *IntervalSchedule) SetScheduleType(v string) {
+	o.ScheduleType = v
 }
 
 // GetEvery returns the Every field value
@@ -192,6 +218,9 @@ func (o *IntervalSchedule) SetMaxRunCount(v int32) {
 
 func (o IntervalSchedule) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["schedule_type"] = o.ScheduleType
+	}
 	if true {
 		toSerialize["every"] = o.Every
 	}
