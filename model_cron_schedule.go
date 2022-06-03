@@ -18,7 +18,6 @@ import (
 
 // CronSchedule crontab schedule
 type CronSchedule struct {
-	ScheduleType string `json:"schedule_type"`
 	Minute string `json:"minute"`
 	Hour string `json:"hour"`
 	DayOfMonth string `json:"day_of_month"`
@@ -35,9 +34,8 @@ type CronSchedule struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCronSchedule(scheduleType string, minute string, hour string, dayOfMonth string, monthOfYear string, dayOfWeek string) *CronSchedule {
+func NewCronSchedule(minute string, hour string, dayOfMonth string, monthOfYear string, dayOfWeek string) *CronSchedule {
 	this := CronSchedule{}
-	this.ScheduleType = scheduleType
 	this.Minute = minute
 	this.Hour = hour
 	this.DayOfMonth = dayOfMonth
@@ -52,30 +50,6 @@ func NewCronSchedule(scheduleType string, minute string, hour string, dayOfMonth
 func NewCronScheduleWithDefaults() *CronSchedule {
 	this := CronSchedule{}
 	return &this
-}
-
-// GetScheduleType returns the ScheduleType field value
-func (o *CronSchedule) GetScheduleType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ScheduleType
-}
-
-// GetScheduleTypeOk returns a tuple with the ScheduleType field value
-// and a boolean to check if the value has been set.
-func (o *CronSchedule) GetScheduleTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ScheduleType, true
-}
-
-// SetScheduleType sets field value
-func (o *CronSchedule) SetScheduleType(v string) {
-	o.ScheduleType = v
 }
 
 // GetMinute returns the Minute field value
@@ -296,9 +270,6 @@ func (o *CronSchedule) SetMaxRunCount(v int32) {
 
 func (o CronSchedule) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["schedule_type"] = o.ScheduleType
-	}
 	if true {
 		toSerialize["minute"] = o.Minute
 	}
