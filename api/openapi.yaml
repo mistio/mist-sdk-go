@@ -6124,7 +6124,6 @@ components:
         datetime:
           description: "When one_off schedule should run, e.g 2021-09-22T18:19:28Z"
           example: 2022-06-22T18:19:28Z
-          format: date-time
           type: string
       required:
       - datetime

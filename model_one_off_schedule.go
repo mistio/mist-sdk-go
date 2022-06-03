@@ -13,20 +13,19 @@ package mist_sdk
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // OneOffSchedule one_off schedule
 type OneOffSchedule struct {
 	// When one_off schedule should run, e.g 2021-09-22T18:19:28Z
-	Datetime time.Time `json:"datetime"`
+	Datetime string `json:"datetime"`
 }
 
 // NewOneOffSchedule instantiates a new OneOffSchedule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOneOffSchedule(datetime time.Time) *OneOffSchedule {
+func NewOneOffSchedule(datetime string) *OneOffSchedule {
 	this := OneOffSchedule{}
 	this.Datetime = datetime
 	return &this
@@ -41,9 +40,9 @@ func NewOneOffScheduleWithDefaults() *OneOffSchedule {
 }
 
 // GetDatetime returns the Datetime field value
-func (o *OneOffSchedule) GetDatetime() time.Time {
+func (o *OneOffSchedule) GetDatetime() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
@@ -52,7 +51,7 @@ func (o *OneOffSchedule) GetDatetime() time.Time {
 
 // GetDatetimeOk returns a tuple with the Datetime field value
 // and a boolean to check if the value has been set.
-func (o *OneOffSchedule) GetDatetimeOk() (*time.Time, bool) {
+func (o *OneOffSchedule) GetDatetimeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +59,7 @@ func (o *OneOffSchedule) GetDatetimeOk() (*time.Time, bool) {
 }
 
 // SetDatetime sets field value
-func (o *OneOffSchedule) SetDatetime(v time.Time) {
+func (o *OneOffSchedule) SetDatetime(v string) {
 	o.Datetime = v
 }
 

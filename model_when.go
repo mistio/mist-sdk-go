@@ -13,14 +13,13 @@ package mist_sdk
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // When struct for When
 type When struct {
 	ScheduleType *string `json:"schedule_type,omitempty"`
 	// When one_off schedule should run, e.g 2021-09-22T18:19:28Z
-	Datetime time.Time `json:"datetime"`
+	Datetime string `json:"datetime"`
 	Minute string `json:"minute"`
 	Hour string `json:"hour"`
 	DayOfMonth string `json:"day_of_month"`
@@ -35,7 +34,7 @@ type When struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWhen(datetime time.Time, minute string, hour string, dayOfMonth string, monthOfYear string, dayOfWeek string, every int32, period string) *When {
+func NewWhen(datetime string, minute string, hour string, dayOfMonth string, monthOfYear string, dayOfWeek string, every int32, period string) *When {
 	this := When{}
 	this.Datetime = datetime
 	this.Minute = minute
@@ -89,9 +88,9 @@ func (o *When) SetScheduleType(v string) {
 }
 
 // GetDatetime returns the Datetime field value
-func (o *When) GetDatetime() time.Time {
+func (o *When) GetDatetime() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
@@ -100,7 +99,7 @@ func (o *When) GetDatetime() time.Time {
 
 // GetDatetimeOk returns a tuple with the Datetime field value
 // and a boolean to check if the value has been set.
-func (o *When) GetDatetimeOk() (*time.Time, bool) {
+func (o *When) GetDatetimeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +107,7 @@ func (o *When) GetDatetimeOk() (*time.Time, bool) {
 }
 
 // SetDatetime sets field value
-func (o *When) SetDatetime(v time.Time) {
+func (o *When) SetDatetime(v string) {
 	o.Datetime = v
 }
 
