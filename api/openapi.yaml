@@ -11125,6 +11125,8 @@ components:
           - existing
           example: inline
           type: string
+      required:
+      - script_type
     When_allOf:
       properties:
         schedule_type:

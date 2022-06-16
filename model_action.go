@@ -27,7 +27,7 @@ type Action struct {
 	Emails []string `json:"emails,omitempty"`
 	// the query string parameters of the HTTP request
 	Params string `json:"params"`
-	ScriptType *string `json:"script_type,omitempty"`
+	ScriptType string `json:"script_type"`
 	// Command that is about to run
 	Command string `json:"command"`
 	// Name or ID of the script to run
@@ -48,10 +48,11 @@ type Action struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAction(actionType string, params string, command string, script string, method string, url string) *Action {
+func NewAction(actionType string, params string, scriptType string, command string, script string, method string, url string) *Action {
 	this := Action{}
 	this.ActionType = actionType
 	this.Params = params
+	this.ScriptType = scriptType
 	this.Command = command
 	this.Script = script
 	this.Method = method
@@ -211,36 +212,28 @@ func (o *Action) SetParams(v string) {
 	o.Params = v
 }
 
-// GetScriptType returns the ScriptType field value if set, zero value otherwise.
+// GetScriptType returns the ScriptType field value
 func (o *Action) GetScriptType() string {
-	if o == nil || o.ScriptType == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ScriptType
+
+	return o.ScriptType
 }
 
-// GetScriptTypeOk returns a tuple with the ScriptType field value if set, nil otherwise
+// GetScriptTypeOk returns a tuple with the ScriptType field value
 // and a boolean to check if the value has been set.
 func (o *Action) GetScriptTypeOk() (*string, bool) {
-	if o == nil || o.ScriptType == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ScriptType, true
+	return &o.ScriptType, true
 }
 
-// HasScriptType returns a boolean if a field has been set.
-func (o *Action) HasScriptType() bool {
-	if o != nil && o.ScriptType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetScriptType gets a reference to the given string and assigns it to the ScriptType field.
+// SetScriptType sets field value
 func (o *Action) SetScriptType(v string) {
-	o.ScriptType = &v
+	o.ScriptType = v
 }
 
 // GetCommand returns the Command field value
@@ -452,7 +445,7 @@ func (o Action) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["params"] = o.Params
 	}
-	if o.ScriptType != nil {
+	if true {
 		toSerialize["script_type"] = o.ScriptType
 	}
 	if true {

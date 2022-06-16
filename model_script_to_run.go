@@ -17,7 +17,7 @@ import (
 
 // ScriptToRun struct for ScriptToRun
 type ScriptToRun struct {
-	ScriptType *string `json:"script_type,omitempty"`
+	ScriptType string `json:"script_type"`
 	// Command that is about to run
 	Command string `json:"command"`
 	// Name or ID of the script to run
@@ -29,8 +29,9 @@ type ScriptToRun struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScriptToRun(command string, script string) *ScriptToRun {
+func NewScriptToRun(scriptType string, command string, script string) *ScriptToRun {
 	this := ScriptToRun{}
+	this.ScriptType = scriptType
 	this.Command = command
 	this.Script = script
 	return &this
@@ -44,36 +45,28 @@ func NewScriptToRunWithDefaults() *ScriptToRun {
 	return &this
 }
 
-// GetScriptType returns the ScriptType field value if set, zero value otherwise.
+// GetScriptType returns the ScriptType field value
 func (o *ScriptToRun) GetScriptType() string {
-	if o == nil || o.ScriptType == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ScriptType
+
+	return o.ScriptType
 }
 
-// GetScriptTypeOk returns a tuple with the ScriptType field value if set, nil otherwise
+// GetScriptTypeOk returns a tuple with the ScriptType field value
 // and a boolean to check if the value has been set.
 func (o *ScriptToRun) GetScriptTypeOk() (*string, bool) {
-	if o == nil || o.ScriptType == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ScriptType, true
+	return &o.ScriptType, true
 }
 
-// HasScriptType returns a boolean if a field has been set.
-func (o *ScriptToRun) HasScriptType() bool {
-	if o != nil && o.ScriptType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetScriptType gets a reference to the given string and assigns it to the ScriptType field.
+// SetScriptType sets field value
 func (o *ScriptToRun) SetScriptType(v string) {
-	o.ScriptType = &v
+	o.ScriptType = v
 }
 
 // GetCommand returns the Command field value
@@ -158,7 +151,7 @@ func (o *ScriptToRun) SetParams(v string) {
 
 func (o ScriptToRun) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ScriptType != nil {
+	if true {
 		toSerialize["script_type"] = o.ScriptType
 	}
 	if true {

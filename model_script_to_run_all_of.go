@@ -17,15 +17,16 @@ import (
 
 // ScriptToRunAllOf struct for ScriptToRunAllOf
 type ScriptToRunAllOf struct {
-	ScriptType *string `json:"script_type,omitempty"`
+	ScriptType string `json:"script_type"`
 }
 
 // NewScriptToRunAllOf instantiates a new ScriptToRunAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScriptToRunAllOf() *ScriptToRunAllOf {
+func NewScriptToRunAllOf(scriptType string) *ScriptToRunAllOf {
 	this := ScriptToRunAllOf{}
+	this.ScriptType = scriptType
 	return &this
 }
 
@@ -37,41 +38,33 @@ func NewScriptToRunAllOfWithDefaults() *ScriptToRunAllOf {
 	return &this
 }
 
-// GetScriptType returns the ScriptType field value if set, zero value otherwise.
+// GetScriptType returns the ScriptType field value
 func (o *ScriptToRunAllOf) GetScriptType() string {
-	if o == nil || o.ScriptType == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ScriptType
+
+	return o.ScriptType
 }
 
-// GetScriptTypeOk returns a tuple with the ScriptType field value if set, nil otherwise
+// GetScriptTypeOk returns a tuple with the ScriptType field value
 // and a boolean to check if the value has been set.
 func (o *ScriptToRunAllOf) GetScriptTypeOk() (*string, bool) {
-	if o == nil || o.ScriptType == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ScriptType, true
+	return &o.ScriptType, true
 }
 
-// HasScriptType returns a boolean if a field has been set.
-func (o *ScriptToRunAllOf) HasScriptType() bool {
-	if o != nil && o.ScriptType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetScriptType gets a reference to the given string and assigns it to the ScriptType field.
+// SetScriptType sets field value
 func (o *ScriptToRunAllOf) SetScriptType(v string) {
-	o.ScriptType = &v
+	o.ScriptType = v
 }
 
 func (o ScriptToRunAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ScriptType != nil {
+	if true {
 		toSerialize["script_type"] = o.ScriptType
 	}
 	return json.Marshal(toSerialize)
