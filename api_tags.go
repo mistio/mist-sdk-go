@@ -26,8 +26,7 @@ type TagsApiService service
 type ApiListTagsRequest struct {
 	ctx context.Context
 	ApiService *TagsApiService
-	verbose *bool
-	resource *TaggableResourceTypes
+	types *string
 	search *string
 	sort *string
 	start *string
@@ -36,15 +35,9 @@ type ApiListTagsRequest struct {
 	deref *string
 }
 
-// Toggle displaying resource types and ids associated with each key value pair
-func (r ApiListTagsRequest) Verbose(verbose bool) ApiListTagsRequest {
-	r.verbose = &verbose
-	return r
-}
-
-// Display tags on a single resource
-func (r ApiListTagsRequest) Resource(resource TaggableResourceTypes) ApiListTagsRequest {
-	r.resource = &resource
+// Choose resource types to by displayed
+func (r ApiListTagsRequest) Types(types string) ApiListTagsRequest {
+	r.types = &types
 	return r
 }
 
@@ -124,11 +117,8 @@ func (a *TagsApiService) ListTagsExecute(r ApiListTagsRequest) (*ListTagsRespons
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.verbose != nil {
-		localVarQueryParams.Add("verbose", parameterToString(*r.verbose, ""))
-	}
-	if r.resource != nil {
-		localVarQueryParams.Add("resource", parameterToString(*r.resource, ""))
+	if r.types != nil {
+		localVarQueryParams.Add("types", parameterToString(*r.types, ""))
 	}
 	if r.search != nil {
 		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
