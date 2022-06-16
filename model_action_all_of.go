@@ -17,7 +17,7 @@ import (
 
 // ActionAllOf struct for ActionAllOf
 type ActionAllOf struct {
-	// the action's type: notification, resource_action, run_script 
+	// the action's type: notification, resource_action, run_script, webhook 
 	ActionType string `json:"action_type"`
 }
 

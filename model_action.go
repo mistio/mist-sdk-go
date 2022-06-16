@@ -17,7 +17,7 @@ import (
 
 // Action struct for Action
 type Action struct {
-	// the action's type: notification, resource_action, run_script 
+	// the action's type: notification, resource_action, run_script, webhook 
 	ActionType string `json:"action_type"`
 	// a list of user to be notified, denoted by their UUIDs 
 	Users []string `json:"users,omitempty"`
@@ -25,23 +25,37 @@ type Action struct {
 	Teams []string `json:"teams,omitempty"`
 	// a list of e-mails to send a notification to 
 	Emails []string `json:"emails,omitempty"`
+	// the query string parameters of the HTTP request
 	Params string `json:"params"`
+	ScriptType *string `json:"script_type,omitempty"`
 	// Command that is about to run
 	Command string `json:"command"`
 	// Name or ID of the script to run
 	Script string `json:"script"`
+	// the HTTP method to be executed by the webhook
+	Method string `json:"method"`
+	// the URL of the endpoint that is called by the webhook
+	Url string `json:"url"`
+	// the body of the HTTP request
+	Data *string `json:"data,omitempty"`
+	// the JSON body of the HTTP request
+	Json *string `json:"json,omitempty"`
+	// the HTTP headers of the request
+	Headers *string `json:"headers,omitempty"`
 }
 
 // NewAction instantiates a new Action object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAction(actionType string, params string, command string, script string) *Action {
+func NewAction(actionType string, params string, command string, script string, method string, url string) *Action {
 	this := Action{}
 	this.ActionType = actionType
 	this.Params = params
 	this.Command = command
 	this.Script = script
+	this.Method = method
+	this.Url = url
 	return &this
 }
 
@@ -197,6 +211,38 @@ func (o *Action) SetParams(v string) {
 	o.Params = v
 }
 
+// GetScriptType returns the ScriptType field value if set, zero value otherwise.
+func (o *Action) GetScriptType() string {
+	if o == nil || o.ScriptType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ScriptType
+}
+
+// GetScriptTypeOk returns a tuple with the ScriptType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Action) GetScriptTypeOk() (*string, bool) {
+	if o == nil || o.ScriptType == nil {
+		return nil, false
+	}
+	return o.ScriptType, true
+}
+
+// HasScriptType returns a boolean if a field has been set.
+func (o *Action) HasScriptType() bool {
+	if o != nil && o.ScriptType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScriptType gets a reference to the given string and assigns it to the ScriptType field.
+func (o *Action) SetScriptType(v string) {
+	o.ScriptType = &v
+}
+
 // GetCommand returns the Command field value
 func (o *Action) GetCommand() string {
 	if o == nil {
@@ -245,6 +291,150 @@ func (o *Action) SetScript(v string) {
 	o.Script = v
 }
 
+// GetMethod returns the Method field value
+func (o *Action) GetMethod() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Method
+}
+
+// GetMethodOk returns a tuple with the Method field value
+// and a boolean to check if the value has been set.
+func (o *Action) GetMethodOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Method, true
+}
+
+// SetMethod sets field value
+func (o *Action) SetMethod(v string) {
+	o.Method = v
+}
+
+// GetUrl returns the Url field value
+func (o *Action) GetUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value
+// and a boolean to check if the value has been set.
+func (o *Action) GetUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Url, true
+}
+
+// SetUrl sets field value
+func (o *Action) SetUrl(v string) {
+	o.Url = v
+}
+
+// GetData returns the Data field value if set, zero value otherwise.
+func (o *Action) GetData() string {
+	if o == nil || o.Data == nil {
+		var ret string
+		return ret
+	}
+	return *o.Data
+}
+
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Action) GetDataOk() (*string, bool) {
+	if o == nil || o.Data == nil {
+		return nil, false
+	}
+	return o.Data, true
+}
+
+// HasData returns a boolean if a field has been set.
+func (o *Action) HasData() bool {
+	if o != nil && o.Data != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given string and assigns it to the Data field.
+func (o *Action) SetData(v string) {
+	o.Data = &v
+}
+
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *Action) GetJson() string {
+	if o == nil || o.Json == nil {
+		var ret string
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Action) GetJsonOk() (*string, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *Action) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given string and assigns it to the Json field.
+func (o *Action) SetJson(v string) {
+	o.Json = &v
+}
+
+// GetHeaders returns the Headers field value if set, zero value otherwise.
+func (o *Action) GetHeaders() string {
+	if o == nil || o.Headers == nil {
+		var ret string
+		return ret
+	}
+	return *o.Headers
+}
+
+// GetHeadersOk returns a tuple with the Headers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Action) GetHeadersOk() (*string, bool) {
+	if o == nil || o.Headers == nil {
+		return nil, false
+	}
+	return o.Headers, true
+}
+
+// HasHeaders returns a boolean if a field has been set.
+func (o *Action) HasHeaders() bool {
+	if o != nil && o.Headers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHeaders gets a reference to the given string and assigns it to the Headers field.
+func (o *Action) SetHeaders(v string) {
+	o.Headers = &v
+}
+
 func (o Action) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -262,11 +452,29 @@ func (o Action) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["params"] = o.Params
 	}
+	if o.ScriptType != nil {
+		toSerialize["script_type"] = o.ScriptType
+	}
 	if true {
 		toSerialize["command"] = o.Command
 	}
 	if true {
 		toSerialize["script"] = o.Script
+	}
+	if true {
+		toSerialize["method"] = o.Method
+	}
+	if true {
+		toSerialize["url"] = o.Url
+	}
+	if o.Data != nil {
+		toSerialize["data"] = o.Data
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
+	}
+	if o.Headers != nil {
+		toSerialize["headers"] = o.Headers
 	}
 	return json.Marshal(toSerialize)
 }

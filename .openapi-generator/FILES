@@ -220,6 +220,7 @@ docs/Schedule.md
 docs/SchedulesApi.md
 docs/Script.md
 docs/ScriptToRun.md
+docs/ScriptToRunAllOf.md
 docs/ScriptsApi.md
 docs/Secret.md
 docs/SecretsApi.md
@@ -249,6 +250,7 @@ docs/VultrCloudRequest.md
 docs/VultrCredentials.md
 docs/VultrExtra.md
 docs/VultrNet.md
+docs/WebHookAction.md
 docs/When.md
 docs/WhenAllOf.md
 docs/Window.md
@@ -441,6 +443,7 @@ model_scale_nodepool_request.go
 model_schedule.go
 model_script.go
 model_script_to_run.go
+model_script_to_run_all_of.go
 model_secret.go
 model_selector.go
 model_size.go
@@ -463,6 +466,7 @@ model_vultr_cloud_request.go
 model_vultr_credentials.go
 model_vultr_extra.go
 model_vultr_net.go
+model_web_hook_action.go
 model_when.go
 model_when_all_of.go
 model_window.go

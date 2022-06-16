@@ -17,16 +17,15 @@ import (
 
 // ScriptToRunAllOf struct for ScriptToRunAllOf
 type ScriptToRunAllOf struct {
-	Type string `json:"type"`
+	ScriptType *string `json:"script_type,omitempty"`
 }
 
 // NewScriptToRunAllOf instantiates a new ScriptToRunAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScriptToRunAllOf(type_ string) *ScriptToRunAllOf {
+func NewScriptToRunAllOf() *ScriptToRunAllOf {
 	this := ScriptToRunAllOf{}
-	this.Type = type_
 	return &this
 }
 
@@ -38,34 +37,42 @@ func NewScriptToRunAllOfWithDefaults() *ScriptToRunAllOf {
 	return &this
 }
 
-// GetType returns the Type field value
-func (o *ScriptToRunAllOf) GetType() string {
-	if o == nil {
+// GetScriptType returns the ScriptType field value if set, zero value otherwise.
+func (o *ScriptToRunAllOf) GetScriptType() string {
+	if o == nil || o.ScriptType == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.ScriptType
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetScriptTypeOk returns a tuple with the ScriptType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScriptToRunAllOf) GetTypeOk() (*string, bool) {
-	if o == nil {
+func (o *ScriptToRunAllOf) GetScriptTypeOk() (*string, bool) {
+	if o == nil || o.ScriptType == nil {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.ScriptType, true
 }
 
-// SetType sets field value
-func (o *ScriptToRunAllOf) SetType(v string) {
-	o.Type = v
+// HasScriptType returns a boolean if a field has been set.
+func (o *ScriptToRunAllOf) HasScriptType() bool {
+	if o != nil && o.ScriptType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScriptType gets a reference to the given string and assigns it to the ScriptType field.
+func (o *ScriptToRunAllOf) SetScriptType(v string) {
+	o.ScriptType = &v
 }
 
 func (o ScriptToRunAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
+	if o.ScriptType != nil {
+		toSerialize["script_type"] = o.ScriptType
 	}
 	return json.Marshal(toSerialize)
 }
