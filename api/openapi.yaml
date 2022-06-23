@@ -5999,6 +5999,7 @@ paths:
       summary: Tag Resources
       tags:
       - tags
+      x-cli-ignore: true
 components:
   callbacks: {}
   examples: {}
