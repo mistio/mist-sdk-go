@@ -21,8 +21,6 @@ type AddRuleRequest struct {
 	Name string `json:"name"`
 	// The description of the rule
 	Description *string `json:"description,omitempty"`
-	// Rule status (enabled, disabled)
-	Enabled *bool `json:"enabled,omitempty"`
 	Selectors []Selector `json:"selectors,omitempty"`
 	Conditions []Condition `json:"conditions"`
 	Actions []Action `json:"actions"`
@@ -105,38 +103,6 @@ func (o *AddRuleRequest) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *AddRuleRequest) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *AddRuleRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Enabled
-}
-
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AddRuleRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
-		return nil, false
-	}
-	return o.Enabled, true
-}
-
-// HasEnabled returns a boolean if a field has been set.
-func (o *AddRuleRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
-func (o *AddRuleRequest) SetEnabled(v bool) {
-	o.Enabled = &v
 }
 
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
@@ -282,9 +248,6 @@ func (o AddRuleRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
 	}
 	if o.Selectors != nil {
 		toSerialize["selectors"] = o.Selectors
