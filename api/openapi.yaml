@@ -9701,6 +9701,9 @@ components:
             value: 0
         name: schedule-name
         description: Edited Schedule
+        selectors:
+        - null
+        - null
         actions:
         - null
         - null
@@ -9719,6 +9722,10 @@ components:
           description: "Schedule status (enabled, disabled)"
           example: true
           type: boolean
+        selectors:
+          items:
+            $ref: '#/components/schemas/Selector'
+          type: array
         actions:
           items:
             $ref: '#/components/schemas/Action'

@@ -23,6 +23,7 @@ type EditScheduleRequest struct {
 	Description *string `json:"description,omitempty"`
 	// Schedule status (enabled, disabled)
 	Enabled *bool `json:"enabled,omitempty"`
+	Selectors []Selector `json:"selectors,omitempty"`
 	Actions []Action `json:"actions,omitempty"`
 	When *When `json:"when,omitempty"`
 	// The date after that schedule expires. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
@@ -141,6 +142,38 @@ func (o *EditScheduleRequest) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *EditScheduleRequest) SetEnabled(v bool) {
 	o.Enabled = &v
+}
+
+// GetSelectors returns the Selectors field value if set, zero value otherwise.
+func (o *EditScheduleRequest) GetSelectors() []Selector {
+	if o == nil || o.Selectors == nil {
+		var ret []Selector
+		return ret
+	}
+	return o.Selectors
+}
+
+// GetSelectorsOk returns a tuple with the Selectors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EditScheduleRequest) GetSelectorsOk() ([]Selector, bool) {
+	if o == nil || o.Selectors == nil {
+		return nil, false
+	}
+	return o.Selectors, true
+}
+
+// HasSelectors returns a boolean if a field has been set.
+func (o *EditScheduleRequest) HasSelectors() bool {
+	if o != nil && o.Selectors != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectors gets a reference to the given []Selector and assigns it to the Selectors field.
+func (o *EditScheduleRequest) SetSelectors(v []Selector) {
+	o.Selectors = v
 }
 
 // GetActions returns the Actions field value if set, zero value otherwise.
@@ -281,6 +314,9 @@ func (o EditScheduleRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
+	}
+	if o.Selectors != nil {
+		toSerialize["selectors"] = o.Selectors
 	}
 	if o.Actions != nil {
 		toSerialize["actions"] = o.Actions
