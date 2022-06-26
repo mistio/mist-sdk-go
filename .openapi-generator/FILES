@@ -18,6 +18,7 @@ api_scripts.go
 api_secrets.go
 api_sizes.go
 api_snapshots.go
+api_tags.go
 api_users.go
 api_volumes.go
 api_zones.go
@@ -167,6 +168,8 @@ docs/ListScriptsResponse.md
 docs/ListSecretsResponse.md
 docs/ListSizesResponse.md
 docs/ListSnapshotsResponse.md
+docs/ListTagsResponse.md
+docs/ListTagsResponseData.md
 docs/ListUsersResponse.md
 docs/ListVolumesResponse.md
 docs/ListZonesResponse.md
@@ -201,6 +204,7 @@ docs/Query.md
 docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
 docs/RangeVector.md
+docs/Resource.md
 docs/ResourceSelector.md
 docs/ResponseMetadata.md
 docs/Rule.md
@@ -220,7 +224,12 @@ docs/Size.md
 docs/SizesApi.md
 docs/SnapshotsApi.md
 docs/SupportedProviders.md
+docs/Tag.md
+docs/TagResourcesRequest.md
+docs/TagResourcesRequestOperations.md
+docs/TaggableResourceTypes.md
 docs/TaggingSelector.md
+docs/TagsApi.md
 docs/Team.md
 docs/TriggerAfter.md
 docs/User.md
@@ -378,6 +387,8 @@ model_list_scripts_response.go
 model_list_secrets_response.go
 model_list_sizes_response.go
 model_list_snapshots_response.go
+model_list_tags_response.go
+model_list_tags_response_data.go
 model_list_users_response.go
 model_list_volumes_response.go
 model_list_zones_response.go
@@ -410,6 +421,7 @@ model_query.go
 model_rackspace_cloud_request.go
 model_rackspace_credentials.go
 model_range_vector.go
+model_resource.go
 model_resource_selector.go
 model_response_metadata.go
 model_rule.go
@@ -423,6 +435,10 @@ model_secret.go
 model_selector.go
 model_size.go
 model_supported_providers.go
+model_tag.go
+model_tag_resources_request.go
+model_tag_resources_request_operations.go
+model_taggable_resource_types.go
 model_tagging_selector.go
 model_team.go
 model_trigger_after.go

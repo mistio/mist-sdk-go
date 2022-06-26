@@ -158,6 +158,8 @@ Class | Method | HTTP request | Description
 *SnapshotsApi* | [**ListSnapshots**](docs/SnapshotsApi.md#listsnapshots) | **Get** /api/v2/machines/{machine}/snapshots | List machine snapshots
 *SnapshotsApi* | [**RemoveSnapshot**](docs/SnapshotsApi.md#removesnapshot) | **Delete** /api/v2/machines/{machine}/snapshots/{snapshot} | Remove snapshot
 *SnapshotsApi* | [**RevertToSnapshot**](docs/SnapshotsApi.md#reverttosnapshot) | **Post** /api/v2/machines/{machine}/snapshots/{snapshot} | Revert to snapshot
+*TagsApi* | [**ListTags**](docs/TagsApi.md#listtags) | **Get** /api/v2/tags | List tags
+*TagsApi* | [**TagResources**](docs/TagsApi.md#tagresources) | **Post** /api/v2/tags | Tag Resources
 *UsersApi* | [**ListUsers**](docs/UsersApi.md#listusers) | **Get** /api/v2/users | List users
 *VolumesApi* | [**CreateVolume**](docs/VolumesApi.md#createvolume) | **Post** /api/v2/volumes | Create volume
 *VolumesApi* | [**DeleteVolume**](docs/VolumesApi.md#deletevolume) | **Delete** /api/v2/volumes/{volume} | Delete volume
@@ -311,6 +313,8 @@ Class | Method | HTTP request | Description
  - [ListSecretsResponse](docs/ListSecretsResponse.md)
  - [ListSizesResponse](docs/ListSizesResponse.md)
  - [ListSnapshotsResponse](docs/ListSnapshotsResponse.md)
+ - [ListTagsResponse](docs/ListTagsResponse.md)
+ - [ListTagsResponseData](docs/ListTagsResponseData.md)
  - [ListUsersResponse](docs/ListUsersResponse.md)
  - [ListVolumesResponse](docs/ListVolumesResponse.md)
  - [ListZonesResponse](docs/ListZonesResponse.md)
@@ -341,6 +345,7 @@ Class | Method | HTTP request | Description
  - [RackspaceCloudRequest](docs/RackspaceCloudRequest.md)
  - [RackspaceCredentials](docs/RackspaceCredentials.md)
  - [RangeVector](docs/RangeVector.md)
+ - [Resource](docs/Resource.md)
  - [ResourceSelector](docs/ResourceSelector.md)
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)
@@ -354,6 +359,10 @@ Class | Method | HTTP request | Description
  - [Selector](docs/Selector.md)
  - [Size](docs/Size.md)
  - [SupportedProviders](docs/SupportedProviders.md)
+ - [Tag](docs/Tag.md)
+ - [TagResourcesRequest](docs/TagResourcesRequest.md)
+ - [TagResourcesRequestOperations](docs/TagResourcesRequestOperations.md)
+ - [TaggableResourceTypes](docs/TaggableResourceTypes.md)
  - [TaggingSelector](docs/TaggingSelector.md)
  - [Team](docs/Team.md)
  - [TriggerAfter](docs/TriggerAfter.md)
