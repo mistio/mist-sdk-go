@@ -31,6 +31,7 @@ const (
 	RECORDS TaggableResourceTypes = "records"
 	SCHEDULES TaggableResourceTypes = "schedules"
 	SCRIPTS TaggableResourceTypes = "scripts"
+	SECRETS TaggableResourceTypes = "secrets"
 	STACKS TaggableResourceTypes = "stacks"
 	SUBNETS TaggableResourceTypes = "subnets"
 	TEMPLATES TaggableResourceTypes = "templates"
@@ -51,6 +52,7 @@ var AllowedTaggableResourceTypesEnumValues = []TaggableResourceTypes{
 	"records",
 	"schedules",
 	"scripts",
+	"secrets",
 	"stacks",
 	"subnets",
 	"templates",
