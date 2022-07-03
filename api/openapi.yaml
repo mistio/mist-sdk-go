@@ -6198,7 +6198,7 @@ components:
           description: the URL of the endpoint that is called by the webhook
           example: http://localhost
           type: string
-        params:
+        query_string_params:
           description: the query string parameters of the HTTP request
           example: ?id=test
           type: string

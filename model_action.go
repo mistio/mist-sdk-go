@@ -25,7 +25,6 @@ type Action struct {
 	Teams []string `json:"teams,omitempty"`
 	// a list of e-mails to send a notification to 
 	Emails []string `json:"emails,omitempty"`
-	// the query string parameters of the HTTP request
 	Params string `json:"params"`
 	ScriptType string `json:"script_type"`
 	// Command that is about to run
@@ -36,6 +35,8 @@ type Action struct {
 	Method string `json:"method"`
 	// the URL of the endpoint that is called by the webhook
 	Url string `json:"url"`
+	// the query string parameters of the HTTP request
+	QueryStringParams *string `json:"query_string_params,omitempty"`
 	// the body of the HTTP request
 	Data *string `json:"data,omitempty"`
 	// the JSON body of the HTTP request
@@ -332,6 +333,38 @@ func (o *Action) SetUrl(v string) {
 	o.Url = v
 }
 
+// GetQueryStringParams returns the QueryStringParams field value if set, zero value otherwise.
+func (o *Action) GetQueryStringParams() string {
+	if o == nil || o.QueryStringParams == nil {
+		var ret string
+		return ret
+	}
+	return *o.QueryStringParams
+}
+
+// GetQueryStringParamsOk returns a tuple with the QueryStringParams field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Action) GetQueryStringParamsOk() (*string, bool) {
+	if o == nil || o.QueryStringParams == nil {
+		return nil, false
+	}
+	return o.QueryStringParams, true
+}
+
+// HasQueryStringParams returns a boolean if a field has been set.
+func (o *Action) HasQueryStringParams() bool {
+	if o != nil && o.QueryStringParams != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetQueryStringParams gets a reference to the given string and assigns it to the QueryStringParams field.
+func (o *Action) SetQueryStringParams(v string) {
+	o.QueryStringParams = &v
+}
+
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *Action) GetData() string {
 	if o == nil || o.Data == nil {
@@ -459,6 +492,9 @@ func (o Action) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["url"] = o.Url
+	}
+	if o.QueryStringParams != nil {
+		toSerialize["query_string_params"] = o.QueryStringParams
 	}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data

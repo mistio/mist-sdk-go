@@ -22,7 +22,7 @@ type WebHookAction struct {
 	// the URL of the endpoint that is called by the webhook
 	Url string `json:"url"`
 	// the query string parameters of the HTTP request
-	Params *string `json:"params,omitempty"`
+	QueryStringParams *string `json:"query_string_params,omitempty"`
 	// the body of the HTTP request
 	Data *string `json:"data,omitempty"`
 	// the JSON body of the HTTP request
@@ -98,36 +98,36 @@ func (o *WebHookAction) SetUrl(v string) {
 	o.Url = v
 }
 
-// GetParams returns the Params field value if set, zero value otherwise.
-func (o *WebHookAction) GetParams() string {
-	if o == nil || o.Params == nil {
+// GetQueryStringParams returns the QueryStringParams field value if set, zero value otherwise.
+func (o *WebHookAction) GetQueryStringParams() string {
+	if o == nil || o.QueryStringParams == nil {
 		var ret string
 		return ret
 	}
-	return *o.Params
+	return *o.QueryStringParams
 }
 
-// GetParamsOk returns a tuple with the Params field value if set, nil otherwise
+// GetQueryStringParamsOk returns a tuple with the QueryStringParams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WebHookAction) GetParamsOk() (*string, bool) {
-	if o == nil || o.Params == nil {
+func (o *WebHookAction) GetQueryStringParamsOk() (*string, bool) {
+	if o == nil || o.QueryStringParams == nil {
 		return nil, false
 	}
-	return o.Params, true
+	return o.QueryStringParams, true
 }
 
-// HasParams returns a boolean if a field has been set.
-func (o *WebHookAction) HasParams() bool {
-	if o != nil && o.Params != nil {
+// HasQueryStringParams returns a boolean if a field has been set.
+func (o *WebHookAction) HasQueryStringParams() bool {
+	if o != nil && o.QueryStringParams != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetParams gets a reference to the given string and assigns it to the Params field.
-func (o *WebHookAction) SetParams(v string) {
-	o.Params = &v
+// SetQueryStringParams gets a reference to the given string and assigns it to the QueryStringParams field.
+func (o *WebHookAction) SetQueryStringParams(v string) {
+	o.QueryStringParams = &v
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
@@ -234,8 +234,8 @@ func (o WebHookAction) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["url"] = o.Url
 	}
-	if o.Params != nil {
-		toSerialize["params"] = o.Params
+	if o.QueryStringParams != nil {
+		toSerialize["query_string_params"] = o.QueryStringParams
 	}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
