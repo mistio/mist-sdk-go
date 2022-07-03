@@ -6096,7 +6096,7 @@ components:
           resize: '#/components/schemas/ResizeAction'
           run_script: '#/components/schemas/ScriptToRun'
           webhook: '#/components/schemas/WebHookAction'
-        propertyName: type
+        propertyName: action_type
       type: object
     ResizeAction:
       properties:
