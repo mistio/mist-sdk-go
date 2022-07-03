@@ -6200,7 +6200,7 @@ components:
           type: string
         query_string_params:
           description: the query string parameters of the HTTP request
-          example: ?id=test
+          example: id=test
           type: string
         data:
           description: the body of the HTTP request
