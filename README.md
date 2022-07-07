@@ -78,6 +78,11 @@ All URIs are relative to *https://mist.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AuthApi* | [**CreateToken**](docs/AuthApi.md#createtoken) | **Post** /api/v2/auth/tokens | Create token
+*AuthApi* | [**DescribeAuth**](docs/AuthApi.md#describeauth) | **Get** /api/v2/auth | Authentication info
+*AuthApi* | [**ListSessions**](docs/AuthApi.md#listsessions) | **Get** /api/v2/auth/sessions | List sessions
+*AuthApi* | [**ListTokens**](docs/AuthApi.md#listtokens) | **Get** /api/v2/auth/tokens | List API tokens
+*AuthApi* | [**Login**](docs/AuthApi.md#login) | **Post** /api/v2/auth/sessions | Sign in to the portal
 *CloudsApi* | [**AddCloud**](docs/CloudsApi.md#addcloud) | **Post** /api/v2/clouds | Add cloud
 *CloudsApi* | [**EditCloud**](docs/CloudsApi.md#editcloud) | **Put** /api/v2/clouds/{cloud} | Edit cloud
 *CloudsApi* | [**GetCloud**](docs/CloudsApi.md#getcloud) | **Get** /api/v2/clouds/{cloud} | Get cloud
@@ -193,6 +198,8 @@ Class | Method | HTTP request | Description
  - [AmazonCredentials](docs/AmazonCredentials.md)
  - [AmazonNet](docs/AmazonNet.md)
  - [AmazonRegions](docs/AmazonRegions.md)
+ - [AuthInfo](docs/AuthInfo.md)
+ - [AuthInfoData](docs/AuthInfoData.md)
  - [AzureCloudRequest](docs/AzureCloudRequest.md)
  - [AzureCredentials](docs/AzureCredentials.md)
  - [AzureExtra](docs/AzureExtra.md)
