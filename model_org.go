@@ -19,8 +19,6 @@ import (
 type Org struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Avatar *string `json:"avatar,omitempty"`
 	Created *bool `json:"created,omitempty"`
 	Billing map[string]interface{} `json:"billing,omitempty"`
 	LastActive *string `json:"last_active,omitempty"`
@@ -106,70 +104,6 @@ func (o *Org) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Org) SetName(v string) {
 	o.Name = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *Org) GetDescription() string {
-	if o == nil || o.Description == nil {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Org) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *Org) HasDescription() bool {
-	if o != nil && o.Description != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *Org) SetDescription(v string) {
-	o.Description = &v
-}
-
-// GetAvatar returns the Avatar field value if set, zero value otherwise.
-func (o *Org) GetAvatar() string {
-	if o == nil || o.Avatar == nil {
-		var ret string
-		return ret
-	}
-	return *o.Avatar
-}
-
-// GetAvatarOk returns a tuple with the Avatar field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Org) GetAvatarOk() (*string, bool) {
-	if o == nil || o.Avatar == nil {
-		return nil, false
-	}
-	return o.Avatar, true
-}
-
-// HasAvatar returns a boolean if a field has been set.
-func (o *Org) HasAvatar() bool {
-	if o != nil && o.Avatar != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAvatar gets a reference to the given string and assigns it to the Avatar field.
-func (o *Org) SetAvatar(v string) {
-	o.Avatar = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
@@ -307,12 +241,6 @@ func (o Org) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.Avatar != nil {
-		toSerialize["avatar"] = o.Avatar
 	}
 	if o.Created != nil {
 		toSerialize["created"] = o.Created

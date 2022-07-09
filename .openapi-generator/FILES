@@ -2,7 +2,6 @@
 .travis.yml
 README.md
 api/openapi.yaml
-api_auth.go
 api_clouds.go
 api_clusters.go
 api_datapoints.go
@@ -43,9 +42,6 @@ docs/AmazonCloudRequest.md
 docs/AmazonCredentials.md
 docs/AmazonNet.md
 docs/AmazonRegions.md
-docs/AuthApi.md
-docs/AuthInfo.md
-docs/AuthInfoData.md
 docs/AzureCloudRequest.md
 docs/AzureCredentials.md
 docs/AzureExtra.md
@@ -273,8 +269,6 @@ model_amazon_cloud_request.go
 model_amazon_credentials.go
 model_amazon_net.go
 model_amazon_regions.go
-model_auth_info.go
-model_auth_info_data.go
 model_azure_cloud_request.go
 model_azure_credentials.go
 model_azure_extra.go
