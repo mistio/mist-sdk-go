@@ -17,77 +17,58 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"time"
 )
 
 
-// OrgsApiService OrgsApi service
-type OrgsApiService service
+// AuthApiService AuthApi service
+type AuthApiService service
 
-type ApiGetMemberRequest struct {
+type ApiCreateTokenRequest struct {
 	ctx context.Context
-	ApiService *OrgsApiService
-	org string
-	member string
-	only *string
+	ApiService *AuthApiService
 }
 
-// Only return these fields
-func (r ApiGetMemberRequest) Only(only string) ApiGetMemberRequest {
-	r.only = &only
-	return r
-}
-
-func (r ApiGetMemberRequest) Execute() (*GetOrgMemberResponse, *http.Response, error) {
-	return r.ApiService.GetMemberExecute(r)
+func (r ApiCreateTokenRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.CreateTokenExecute(r)
 }
 
 /*
-GetMember Get Org
+CreateToken Create token
 
-Get details about target member
+Create new API token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param org
- @param member
- @return ApiGetMemberRequest
+ @return ApiCreateTokenRequest
 */
-func (a *OrgsApiService) GetMember(ctx context.Context, org string, member string) ApiGetMemberRequest {
-	return ApiGetMemberRequest{
+func (a *AuthApiService) CreateToken(ctx context.Context) ApiCreateTokenRequest {
+	return ApiCreateTokenRequest{
 		ApiService: a,
 		ctx: ctx,
-		org: org,
-		member: member,
 	}
 }
 
 // Execute executes the request
-//  @return GetOrgMemberResponse
-func (a *OrgsApiService) GetMemberExecute(r ApiGetMemberRequest) (*GetOrgMemberResponse, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *AuthApiService) CreateTokenExecute(r ApiCreateTokenRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetOrgMemberResponse
+		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgsApiService.GetMember")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthApiService.CreateToken")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/orgs/{org}/members/{member}"
-	localVarPath = strings.Replace(localVarPath, "{"+"org"+"}", url.PathEscape(parameterToString(r.org, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"member"+"}", url.PathEscape(parameterToString(r.member, "")), -1)
+	localVarPath := localBasePath + "/api/v2/auth/tokens"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.only != nil {
-		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -156,85 +137,51 @@ func (a *OrgsApiService) GetMemberExecute(r ApiGetMemberRequest) (*GetOrgMemberR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetOrgRequest struct {
+type ApiDescribeAuthRequest struct {
 	ctx context.Context
-	ApiService *OrgsApiService
-	org string
-	summary *bool
-	only *string
-	deref *string
+	ApiService *AuthApiService
 }
 
-// Return total number for each org specific resource
-func (r ApiGetOrgRequest) Summary(summary bool) ApiGetOrgRequest {
-	r.summary = &summary
-	return r
-}
-
-// Only return these fields
-func (r ApiGetOrgRequest) Only(only string) ApiGetOrgRequest {
-	r.only = &only
-	return r
-}
-
-// Dereference foreign keys
-func (r ApiGetOrgRequest) Deref(deref string) ApiGetOrgRequest {
-	r.deref = &deref
-	return r
-}
-
-func (r ApiGetOrgRequest) Execute() (*GetOrgResponse, *http.Response, error) {
-	return r.ApiService.GetOrgExecute(r)
+func (r ApiDescribeAuthRequest) Execute() (*AuthInfo, *http.Response, error) {
+	return r.ApiService.DescribeAuthExecute(r)
 }
 
 /*
-GetOrg Get Org
+DescribeAuth Authentication info
 
-Get details about target org
+Return info about current authenticated session.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param org
- @return ApiGetOrgRequest
+ @return ApiDescribeAuthRequest
 */
-func (a *OrgsApiService) GetOrg(ctx context.Context, org string) ApiGetOrgRequest {
-	return ApiGetOrgRequest{
+func (a *AuthApiService) DescribeAuth(ctx context.Context) ApiDescribeAuthRequest {
+	return ApiDescribeAuthRequest{
 		ApiService: a,
 		ctx: ctx,
-		org: org,
 	}
 }
 
 // Execute executes the request
-//  @return GetOrgResponse
-func (a *OrgsApiService) GetOrgExecute(r ApiGetOrgRequest) (*GetOrgResponse, *http.Response, error) {
+//  @return AuthInfo
+func (a *AuthApiService) DescribeAuthExecute(r ApiDescribeAuthRequest) (*AuthInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetOrgResponse
+		localVarReturnValue  *AuthInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgsApiService.GetOrg")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthApiService.DescribeAuth")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/orgs/{org}"
-	localVarPath = strings.Replace(localVarPath, "{"+"org"+"}", url.PathEscape(parameterToString(r.org, "")), -1)
+	localVarPath := localBasePath + "/api/v2/auth"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.summary != nil {
-		localVarQueryParams.Add("summary", parameterToString(*r.summary, ""))
-	}
-	if r.only != nil {
-		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
-	}
-	if r.deref != nil {
-		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -303,92 +250,93 @@ func (a *OrgsApiService) GetOrgExecute(r ApiGetOrgRequest) (*GetOrgResponse, *ht
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListOrgMembersRequest struct {
+type ApiListSessionsRequest struct {
 	ctx context.Context
-	ApiService *OrgsApiService
-	org string
+	ApiService *AuthApiService
 	search *string
 	sort *string
 	start *string
 	limit *int32
 	only *string
+	deref *string
 	at *time.Time
 }
 
 // Only return results matching search filter
-func (r ApiListOrgMembersRequest) Search(search string) ApiListOrgMembersRequest {
+func (r ApiListSessionsRequest) Search(search string) ApiListSessionsRequest {
 	r.search = &search
 	return r
 }
 
 // Order results by
-func (r ApiListOrgMembersRequest) Sort(sort string) ApiListOrgMembersRequest {
+func (r ApiListSessionsRequest) Sort(sort string) ApiListSessionsRequest {
 	r.sort = &sort
 	return r
 }
 
 // Start results from index or id
-func (r ApiListOrgMembersRequest) Start(start string) ApiListOrgMembersRequest {
+func (r ApiListSessionsRequest) Start(start string) ApiListSessionsRequest {
 	r.start = &start
 	return r
 }
 
 // Limit number of results, 1000 max
-func (r ApiListOrgMembersRequest) Limit(limit int32) ApiListOrgMembersRequest {
+func (r ApiListSessionsRequest) Limit(limit int32) ApiListSessionsRequest {
 	r.limit = &limit
 	return r
 }
 
 // Only return these fields
-func (r ApiListOrgMembersRequest) Only(only string) ApiListOrgMembersRequest {
+func (r ApiListSessionsRequest) Only(only string) ApiListSessionsRequest {
 	r.only = &only
 	return r
 }
 
+// Dereference foreign keys
+func (r ApiListSessionsRequest) Deref(deref string) ApiListSessionsRequest {
+	r.deref = &deref
+	return r
+}
+
 // Limit results by specific datetime. Return resources created before or at, or deleted after or at, given datetime.
-func (r ApiListOrgMembersRequest) At(at time.Time) ApiListOrgMembersRequest {
+func (r ApiListSessionsRequest) At(at time.Time) ApiListSessionsRequest {
 	r.at = &at
 	return r
 }
 
-func (r ApiListOrgMembersRequest) Execute() (*ListOrgMembersResponse, *http.Response, error) {
-	return r.ApiService.ListOrgMembersExecute(r)
+func (r ApiListSessionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.ListSessionsExecute(r)
 }
 
 /*
-ListOrgMembers List org members
-
-List org members owned by the requester. The requester must be a member of the org.
+ListSessions List sessions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param org
- @return ApiListOrgMembersRequest
+ @return ApiListSessionsRequest
 */
-func (a *OrgsApiService) ListOrgMembers(ctx context.Context, org string) ApiListOrgMembersRequest {
-	return ApiListOrgMembersRequest{
+func (a *AuthApiService) ListSessions(ctx context.Context) ApiListSessionsRequest {
+	return ApiListSessionsRequest{
 		ApiService: a,
 		ctx: ctx,
-		org: org,
 	}
 }
 
 // Execute executes the request
-//  @return ListOrgMembersResponse
-func (a *OrgsApiService) ListOrgMembersExecute(r ApiListOrgMembersRequest) (*ListOrgMembersResponse, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *AuthApiService) ListSessionsExecute(r ApiListSessionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListOrgMembersResponse
+		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgsApiService.ListOrgMembers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthApiService.ListSessions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/orgs/{org}/members"
-	localVarPath = strings.Replace(localVarPath, "{"+"org"+"}", url.PathEscape(parameterToString(r.org, "")), -1)
+	localVarPath := localBasePath + "/api/v2/auth/sessions"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -408,6 +356,9 @@ func (a *OrgsApiService) ListOrgMembersExecute(r ApiListOrgMembersRequest) (*Lis
 	}
 	if r.only != nil {
 		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
+	}
+	if r.deref != nil {
+		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
 	}
 	if r.at != nil {
 		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
@@ -480,10 +431,9 @@ func (a *OrgsApiService) ListOrgMembersExecute(r ApiListOrgMembersRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListOrgTeamsRequest struct {
+type ApiListTokensRequest struct {
 	ctx context.Context
-	ApiService *OrgsApiService
-	org string
+	ApiService *AuthApiService
 	search *string
 	sort *string
 	start *string
@@ -494,85 +444,82 @@ type ApiListOrgTeamsRequest struct {
 }
 
 // Only return results matching search filter
-func (r ApiListOrgTeamsRequest) Search(search string) ApiListOrgTeamsRequest {
+func (r ApiListTokensRequest) Search(search string) ApiListTokensRequest {
 	r.search = &search
 	return r
 }
 
 // Order results by
-func (r ApiListOrgTeamsRequest) Sort(sort string) ApiListOrgTeamsRequest {
+func (r ApiListTokensRequest) Sort(sort string) ApiListTokensRequest {
 	r.sort = &sort
 	return r
 }
 
 // Start results from index or id
-func (r ApiListOrgTeamsRequest) Start(start string) ApiListOrgTeamsRequest {
+func (r ApiListTokensRequest) Start(start string) ApiListTokensRequest {
 	r.start = &start
 	return r
 }
 
 // Limit number of results, 1000 max
-func (r ApiListOrgTeamsRequest) Limit(limit int32) ApiListOrgTeamsRequest {
+func (r ApiListTokensRequest) Limit(limit int32) ApiListTokensRequest {
 	r.limit = &limit
 	return r
 }
 
 // Only return these fields
-func (r ApiListOrgTeamsRequest) Only(only string) ApiListOrgTeamsRequest {
+func (r ApiListTokensRequest) Only(only string) ApiListTokensRequest {
 	r.only = &only
 	return r
 }
 
 // Dereference foreign keys
-func (r ApiListOrgTeamsRequest) Deref(deref string) ApiListOrgTeamsRequest {
+func (r ApiListTokensRequest) Deref(deref string) ApiListTokensRequest {
 	r.deref = &deref
 	return r
 }
 
 // Limit results by specific datetime. Return resources created before or at, or deleted after or at, given datetime.
-func (r ApiListOrgTeamsRequest) At(at time.Time) ApiListOrgTeamsRequest {
+func (r ApiListTokensRequest) At(at time.Time) ApiListTokensRequest {
 	r.at = &at
 	return r
 }
 
-func (r ApiListOrgTeamsRequest) Execute() (*ListOrgTeamsResponse, *http.Response, error) {
-	return r.ApiService.ListOrgTeamsExecute(r)
+func (r ApiListTokensRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.ListTokensExecute(r)
 }
 
 /*
-ListOrgTeams List org teams
+ListTokens List API tokens
 
-List teams in org.
+List API tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param org Organization id
- @return ApiListOrgTeamsRequest
+ @return ApiListTokensRequest
 */
-func (a *OrgsApiService) ListOrgTeams(ctx context.Context, org string) ApiListOrgTeamsRequest {
-	return ApiListOrgTeamsRequest{
+func (a *AuthApiService) ListTokens(ctx context.Context) ApiListTokensRequest {
+	return ApiListTokensRequest{
 		ApiService: a,
 		ctx: ctx,
-		org: org,
 	}
 }
 
 // Execute executes the request
-//  @return ListOrgTeamsResponse
-func (a *OrgsApiService) ListOrgTeamsExecute(r ApiListOrgTeamsRequest) (*ListOrgTeamsResponse, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *AuthApiService) ListTokensExecute(r ApiListTokensRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListOrgTeamsResponse
+		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgsApiService.ListOrgTeams")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthApiService.ListTokens")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/orgs/{org}/teams"
-	localVarPath = strings.Replace(localVarPath, "{"+"org"+"}", url.PathEscape(parameterToString(r.org, "")), -1)
+	localVarPath := localBasePath + "/api/v2/auth/tokens"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -667,133 +614,59 @@ func (a *OrgsApiService) ListOrgTeamsExecute(r ApiListOrgTeamsRequest) (*ListOrg
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListOrgsRequest struct {
+type ApiLoginRequest struct {
 	ctx context.Context
-	ApiService *OrgsApiService
-	allorgs *string
-	search *string
-	sort *string
-	start *string
-	limit *int32
-	only *string
-	deref *string
-	at *time.Time
+	ApiService *AuthApiService
+	body *map[string]interface{}
 }
 
-// Return all existing organizations
-func (r ApiListOrgsRequest) Allorgs(allorgs string) ApiListOrgsRequest {
-	r.allorgs = &allorgs
+func (r ApiLoginRequest) Body(body map[string]interface{}) ApiLoginRequest {
+	r.body = &body
 	return r
 }
 
-// Only return results matching search filter
-func (r ApiListOrgsRequest) Search(search string) ApiListOrgsRequest {
-	r.search = &search
-	return r
-}
-
-// Order results by
-func (r ApiListOrgsRequest) Sort(sort string) ApiListOrgsRequest {
-	r.sort = &sort
-	return r
-}
-
-// Start results from index or id
-func (r ApiListOrgsRequest) Start(start string) ApiListOrgsRequest {
-	r.start = &start
-	return r
-}
-
-// Limit number of results, 100 max
-func (r ApiListOrgsRequest) Limit(limit int32) ApiListOrgsRequest {
-	r.limit = &limit
-	return r
-}
-
-// Only return these fields
-func (r ApiListOrgsRequest) Only(only string) ApiListOrgsRequest {
-	r.only = &only
-	return r
-}
-
-// Dereference foreign keys
-func (r ApiListOrgsRequest) Deref(deref string) ApiListOrgsRequest {
-	r.deref = &deref
-	return r
-}
-
-// Limit results by specific datetime. Return resources created before or at, or deleted after or at, given datetime.
-func (r ApiListOrgsRequest) At(at time.Time) ApiListOrgsRequest {
-	r.at = &at
-	return r
-}
-
-func (r ApiListOrgsRequest) Execute() (*ListOrgsResponse, *http.Response, error) {
-	return r.ApiService.ListOrgsExecute(r)
+func (r ApiLoginRequest) Execute() (*AuthInfo, *http.Response, error) {
+	return r.ApiService.LoginExecute(r)
 }
 
 /*
-ListOrgs List orgs
+Login Sign in to the portal
 
-List orgs owned by the requester. If parameter allorgs is true and requester is an admin then all orgs will be listed.
+Sign in
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListOrgsRequest
+ @return ApiLoginRequest
 */
-func (a *OrgsApiService) ListOrgs(ctx context.Context) ApiListOrgsRequest {
-	return ApiListOrgsRequest{
+func (a *AuthApiService) Login(ctx context.Context) ApiLoginRequest {
+	return ApiLoginRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ListOrgsResponse
-func (a *OrgsApiService) ListOrgsExecute(r ApiListOrgsRequest) (*ListOrgsResponse, *http.Response, error) {
+//  @return AuthInfo
+func (a *AuthApiService) LoginExecute(r ApiLoginRequest) (*AuthInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListOrgsResponse
+		localVarReturnValue  *AuthInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgsApiService.ListOrgs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthApiService.Login")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/orgs"
+	localVarPath := localBasePath + "/api/v2/auth/sessions"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.allorgs != nil {
-		localVarQueryParams.Add("allorgs", parameterToString(*r.allorgs, ""))
-	}
-	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
-	}
-	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
-	}
-	if r.start != nil {
-		localVarQueryParams.Add("start", parameterToString(*r.start, ""))
-	}
-	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
-	}
-	if r.only != nil {
-		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
-	}
-	if r.deref != nil {
-		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
-	}
-	if r.at != nil {
-		localVarQueryParams.Add("at", parameterToString(*r.at, ""))
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -809,20 +682,8 @@ func (a *OrgsApiService) ListOrgsExecute(r ApiListOrgsRequest) (*ListOrgsRespons
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["ApiKeyAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
+	// body params
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
