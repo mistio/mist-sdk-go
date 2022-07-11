@@ -70,6 +70,7 @@ docs/CreateMachineResponseOneOf.md
 docs/CreateMachineResponseOneOf1.md
 docs/CreateNetworkRequest.md
 docs/CreateNetworkResponse.md
+docs/CreateOrgRequest.md
 docs/CreateSecretRequest.md
 docs/CreateVolumeRequest.md
 docs/CreateVolumeResponse.md
@@ -297,6 +298,7 @@ model_create_machine_response_one_of.go
 model_create_machine_response_one_of_1.go
 model_create_network_request.go
 model_create_network_response.go
+model_create_org_request.go
 model_create_secret_request.go
 model_create_volume_request.go
 model_create_volume_response.go

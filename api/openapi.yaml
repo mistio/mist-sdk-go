@@ -5171,6 +5171,35 @@ paths:
       - clouds_count
       - teams_count
       - last_active
+    post:
+      description: Creates a new org and returns the org's id.
+      operationId: create-org
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrgRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrgResponse'
+          description: Organization created succesfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "409":
+          description: Organization name not available
+      security:
+      - ApiKeyAuth:
+        - ""
+      - CookieAuth:
+        - ""
+      summary: Create Organization
+      tags:
+      - orgs
     x-cli-ignore: true
   /api/v2/orgs/{org}:
     get:
@@ -10757,6 +10786,22 @@ components:
       - logs
       example: logs
       type: string
+    CreateOrgRequest:
+      example:
+        name: name
+        description: description
+        logo: logo
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        logo:
+          format: data-url
+          type: string
+      type: object
+    CreateOrgResponse:
+      type: object
     BillingInfo:
       type: object
     ResourceCount:

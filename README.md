@@ -127,6 +127,7 @@ Class | Method | HTTP request | Description
 *NetworksApi* | [**EditNetwork**](docs/NetworksApi.md#editnetwork) | **Put** /api/v2/networks/{network} | Edit network
 *NetworksApi* | [**GetNetwork**](docs/NetworksApi.md#getnetwork) | **Get** /api/v2/networks/{network} | Get network
 *NetworksApi* | [**ListNetworks**](docs/NetworksApi.md#listnetworks) | **Get** /api/v2/networks | List networks
+*OrgsApi* | [**CreateOrg**](docs/OrgsApi.md#createorg) | **Post** /api/v2/orgs | Create Organization
 *OrgsApi* | [**GetMember**](docs/OrgsApi.md#getmember) | **Get** /api/v2/orgs/{org}/members/{member} | Get Org
 *OrgsApi* | [**GetOrg**](docs/OrgsApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *OrgsApi* | [**ListOrgMembers**](docs/OrgsApi.md#listorgmembers) | **Get** /api/v2/orgs/{org}/members | List org members
@@ -222,6 +223,7 @@ Class | Method | HTTP request | Description
  - [CreateMachineResponseOneOf1](docs/CreateMachineResponseOneOf1.md)
  - [CreateNetworkRequest](docs/CreateNetworkRequest.md)
  - [CreateNetworkResponse](docs/CreateNetworkResponse.md)
+ - [CreateOrgRequest](docs/CreateOrgRequest.md)
  - [CreateSecretRequest](docs/CreateSecretRequest.md)
  - [CreateVolumeRequest](docs/CreateVolumeRequest.md)
  - [CreateVolumeResponse](docs/CreateVolumeResponse.md)
