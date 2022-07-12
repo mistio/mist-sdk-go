@@ -160,8 +160,15 @@ type ApiGetOrgRequest struct {
 	ctx context.Context
 	ApiService *OrgsApiService
 	org string
+	summary *bool
 	only *string
 	deref *string
+}
+
+// Return total number for each org specific resource
+func (r ApiGetOrgRequest) Summary(summary bool) ApiGetOrgRequest {
+	r.summary = &summary
+	return r
 }
 
 // Only return these fields
@@ -219,6 +226,9 @@ func (a *OrgsApiService) GetOrgExecute(r ApiGetOrgRequest) (*GetOrgResponse, *ht
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.summary != nil {
+		localVarQueryParams.Add("summary", parameterToString(*r.summary, ""))
+	}
 	if r.only != nil {
 		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
 	}

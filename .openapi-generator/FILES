@@ -195,6 +195,7 @@ docs/OpenstackCloudRequest.md
 docs/OpenstackCredentials.md
 docs/OpenstackNet.md
 docs/Org.md
+docs/OrgResourcesSummary.md
 docs/OrgsApi.md
 docs/OtherCloudRequest.md
 docs/PostDeployScript.md
@@ -203,6 +204,7 @@ docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
 docs/RangeVector.md
 docs/Resource.md
+docs/ResourceCount.md
 docs/ResourceSelector.md
 docs/ResponseMetadata.md
 docs/Rule.md
@@ -411,6 +413,7 @@ model_openstack_cloud_request.go
 model_openstack_credentials.go
 model_openstack_net.go
 model_org.go
+model_org_resources_summary.go
 model_other_cloud_request.go
 model_post_deploy_script.go
 model_query.go
@@ -418,6 +421,7 @@ model_rackspace_cloud_request.go
 model_rackspace_credentials.go
 model_range_vector.go
 model_resource.go
+model_resource_count.go
 model_resource_selector.go
 model_response_metadata.go
 model_rule.go

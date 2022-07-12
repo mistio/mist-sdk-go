@@ -20,6 +20,8 @@ type AddCloudRequestAllOf struct {
 	// The name of the cloud to add
 	Name string `json:"name"`
 	Provider SupportedProviders `json:"provider"`
+	// Use existing Vault secret to add a cloud. When this option is set to true all the parameters should be Vault paths
+	FromSecret *bool `json:"from_secret,omitempty"`
 }
 
 // NewAddCloudRequestAllOf instantiates a new AddCloudRequestAllOf object
@@ -30,6 +32,8 @@ func NewAddCloudRequestAllOf(name string, provider SupportedProviders) *AddCloud
 	this := AddCloudRequestAllOf{}
 	this.Name = name
 	this.Provider = provider
+	var fromSecret bool = false
+	this.FromSecret = &fromSecret
 	return &this
 }
 
@@ -38,6 +42,8 @@ func NewAddCloudRequestAllOf(name string, provider SupportedProviders) *AddCloud
 // but it doesn't guarantee that properties required by API are set
 func NewAddCloudRequestAllOfWithDefaults() *AddCloudRequestAllOf {
 	this := AddCloudRequestAllOf{}
+	var fromSecret bool = false
+	this.FromSecret = &fromSecret
 	return &this
 }
 
@@ -89,6 +95,38 @@ func (o *AddCloudRequestAllOf) SetProvider(v SupportedProviders) {
 	o.Provider = v
 }
 
+// GetFromSecret returns the FromSecret field value if set, zero value otherwise.
+func (o *AddCloudRequestAllOf) GetFromSecret() bool {
+	if o == nil || o.FromSecret == nil {
+		var ret bool
+		return ret
+	}
+	return *o.FromSecret
+}
+
+// GetFromSecretOk returns a tuple with the FromSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddCloudRequestAllOf) GetFromSecretOk() (*bool, bool) {
+	if o == nil || o.FromSecret == nil {
+		return nil, false
+	}
+	return o.FromSecret, true
+}
+
+// HasFromSecret returns a boolean if a field has been set.
+func (o *AddCloudRequestAllOf) HasFromSecret() bool {
+	if o != nil && o.FromSecret != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFromSecret gets a reference to the given bool and assigns it to the FromSecret field.
+func (o *AddCloudRequestAllOf) SetFromSecret(v bool) {
+	o.FromSecret = &v
+}
+
 func (o AddCloudRequestAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -96,6 +134,9 @@ func (o AddCloudRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["provider"] = o.Provider
+	}
+	if o.FromSecret != nil {
+		toSerialize["from_secret"] = o.FromSecret
 	}
 	return json.Marshal(toSerialize)
 }

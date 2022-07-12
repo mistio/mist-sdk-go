@@ -20,6 +20,8 @@ type AddCloudRequest struct {
 	// The name of the cloud to add
 	Name string `json:"name"`
 	Provider string `json:"provider"`
+	// Use existing Vault secret to add a cloud. When this option is set to true all the parameters should be Vault paths
+	FromSecret *bool `json:"from_secret,omitempty"`
 	Credentials map[string]interface{} `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
 }
@@ -32,6 +34,8 @@ func NewAddCloudRequest(name string, provider string, credentials map[string]int
 	this := AddCloudRequest{}
 	this.Name = name
 	this.Provider = provider
+	var fromSecret bool = false
+	this.FromSecret = &fromSecret
 	this.Credentials = credentials
 	return &this
 }
@@ -41,6 +45,8 @@ func NewAddCloudRequest(name string, provider string, credentials map[string]int
 // but it doesn't guarantee that properties required by API are set
 func NewAddCloudRequestWithDefaults() *AddCloudRequest {
 	this := AddCloudRequest{}
+	var fromSecret bool = false
+	this.FromSecret = &fromSecret
 	return &this
 }
 
@@ -90,6 +96,38 @@ func (o *AddCloudRequest) GetProviderOk() (*string, bool) {
 // SetProvider sets field value
 func (o *AddCloudRequest) SetProvider(v string) {
 	o.Provider = v
+}
+
+// GetFromSecret returns the FromSecret field value if set, zero value otherwise.
+func (o *AddCloudRequest) GetFromSecret() bool {
+	if o == nil || o.FromSecret == nil {
+		var ret bool
+		return ret
+	}
+	return *o.FromSecret
+}
+
+// GetFromSecretOk returns a tuple with the FromSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AddCloudRequest) GetFromSecretOk() (*bool, bool) {
+	if o == nil || o.FromSecret == nil {
+		return nil, false
+	}
+	return o.FromSecret, true
+}
+
+// HasFromSecret returns a boolean if a field has been set.
+func (o *AddCloudRequest) HasFromSecret() bool {
+	if o != nil && o.FromSecret != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFromSecret gets a reference to the given bool and assigns it to the FromSecret field.
+func (o *AddCloudRequest) SetFromSecret(v bool) {
+	o.FromSecret = &v
 }
 
 // GetCredentials returns the Credentials field value
@@ -155,6 +193,9 @@ func (o AddCloudRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["provider"] = o.Provider
+	}
+	if o.FromSecret != nil {
+		toSerialize["from_secret"] = o.FromSecret
 	}
 	if true {
 		toSerialize["credentials"] = o.Credentials
