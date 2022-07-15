@@ -4900,6 +4900,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: Return total number for each org specific resource
+        explode: true
+        in: query
+        name: summary
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       - description: Only return these fields
         examples:
           Only return id:
@@ -5999,6 +6008,7 @@ paths:
       summary: Tag Resources
       tags:
       - tags
+      x-cli-ignore: true
 components:
   callbacks: {}
   examples: {}
@@ -10343,27 +10353,102 @@ components:
       - logs
       example: logs
       type: string
+    BillingInfo:
+      type: object
+    ResourceCount:
+      example:
+        total: 0
+      properties:
+        total:
+          type: integer
+      type: object
     ListOrgsResponse:
       example:
         data:
-        - enterprise_plan: "{}"
-          total_machine_count: total_machine_count
-          selected_plan: selected_plan
-          created: true
+        - created: true
           name: name
+          resources:
+            images:
+              total: 0
+            teams:
+              total: 0
+            stacks:
+              total: 0
+            keys:
+              total: 0
+            buckets:
+              total: 0
+            templates:
+              total: 0
+            volumes:
+              total: 0
+            rules:
+              total: 0
+            clouds:
+              total: 0
+            networks:
+              total: 0
+            zones:
+              total: 0
+            secrets:
+              total: 0
+            tunnels:
+              total: 0
+            schedules:
+              total: 0
+            members:
+              total: 0
+            machines:
+              total: 0
+            scripts:
+              total: 0
+            clusters:
+              total: 0
           id: id
           last_active: last_active
-          clouds_count: clouds_count
-          teams_count: teams_count
-        - enterprise_plan: "{}"
-          total_machine_count: total_machine_count
-          selected_plan: selected_plan
-          created: true
+          billing: "{}"
+        - created: true
           name: name
+          resources:
+            images:
+              total: 0
+            teams:
+              total: 0
+            stacks:
+              total: 0
+            keys:
+              total: 0
+            buckets:
+              total: 0
+            templates:
+              total: 0
+            volumes:
+              total: 0
+            rules:
+              total: 0
+            clouds:
+              total: 0
+            networks:
+              total: 0
+            zones:
+              total: 0
+            secrets:
+              total: 0
+            tunnels:
+              total: 0
+            schedules:
+              total: 0
+            members:
+              total: 0
+            machines:
+              total: 0
+            scripts:
+              total: 0
+            clusters:
+              total: 0
           id: id
           last_active: last_active
-          clouds_count: clouds_count
-          teams_count: teams_count
+          billing: "{}"
         meta:
           total: 0
           start: 1
@@ -10380,15 +10465,48 @@ components:
     GetOrgResponse:
       example:
         data:
-          enterprise_plan: "{}"
-          total_machine_count: total_machine_count
-          selected_plan: selected_plan
           created: true
           name: name
+          resources:
+            images:
+              total: 0
+            teams:
+              total: 0
+            stacks:
+              total: 0
+            keys:
+              total: 0
+            buckets:
+              total: 0
+            templates:
+              total: 0
+            volumes:
+              total: 0
+            rules:
+              total: 0
+            clouds:
+              total: 0
+            networks:
+              total: 0
+            zones:
+              total: 0
+            secrets:
+              total: 0
+            tunnels:
+              total: 0
+            schedules:
+              total: 0
+            members:
+              total: 0
+            machines:
+              total: 0
+            scripts:
+              total: 0
+            clusters:
+              total: 0
           id: id
           last_active: last_active
-          clouds_count: clouds_count
-          teams_count: teams_count
+          billing: "{}"
         meta:
           total: 0
           start: 1
@@ -10402,34 +10520,137 @@ components:
       type: object
     Org:
       example:
-        enterprise_plan: "{}"
-        total_machine_count: total_machine_count
-        selected_plan: selected_plan
         created: true
         name: name
+        resources:
+          images:
+            total: 0
+          teams:
+            total: 0
+          stacks:
+            total: 0
+          keys:
+            total: 0
+          buckets:
+            total: 0
+          templates:
+            total: 0
+          volumes:
+            total: 0
+          rules:
+            total: 0
+          clouds:
+            total: 0
+          networks:
+            total: 0
+          zones:
+            total: 0
+          secrets:
+            total: 0
+          tunnels:
+            total: 0
+          schedules:
+            total: 0
+          members:
+            total: 0
+          machines:
+            total: 0
+          scripts:
+            total: 0
+          clusters:
+            total: 0
         id: id
         last_active: last_active
-        clouds_count: clouds_count
-        teams_count: teams_count
+        billing: "{}"
       properties:
         id:
           type: string
         name:
           type: string
-        clouds_count:
-          type: string
-        teams_count:
-          type: string
-        total_machine_count:
-          type: string
         created:
           type: boolean
-        enterprise_plan:
+        billing:
           type: object
-        selected_plan:
-          type: string
         last_active:
           type: string
+        resources:
+          $ref: '#/components/schemas/OrgResourcesSummary'
+      type: object
+    OrgResourcesSummary:
+      example:
+        images:
+          total: 0
+        teams:
+          total: 0
+        stacks:
+          total: 0
+        keys:
+          total: 0
+        buckets:
+          total: 0
+        templates:
+          total: 0
+        volumes:
+          total: 0
+        rules:
+          total: 0
+        clouds:
+          total: 0
+        networks:
+          total: 0
+        zones:
+          total: 0
+        secrets:
+          total: 0
+        tunnels:
+          total: 0
+        schedules:
+          total: 0
+        members:
+          total: 0
+        machines:
+          total: 0
+        scripts:
+          total: 0
+        clusters:
+          total: 0
+      properties:
+        clouds:
+          $ref: '#/components/schemas/ResourceCount'
+        stacks:
+          $ref: '#/components/schemas/ResourceCount'
+        clusters:
+          $ref: '#/components/schemas/ResourceCount'
+        machines:
+          $ref: '#/components/schemas/ResourceCount'
+        volumes:
+          $ref: '#/components/schemas/ResourceCount'
+        buckets:
+          $ref: '#/components/schemas/ResourceCount'
+        networks:
+          $ref: '#/components/schemas/ResourceCount'
+        zones:
+          $ref: '#/components/schemas/ResourceCount'
+        images:
+          $ref: '#/components/schemas/ResourceCount'
+        keys:
+          $ref: '#/components/schemas/ResourceCount'
+        scripts:
+          $ref: '#/components/schemas/ResourceCount'
+        templates:
+          $ref: '#/components/schemas/ResourceCount'
+        tunnels:
+          $ref: '#/components/schemas/ResourceCount'
+        secrets:
+          $ref: '#/components/schemas/ResourceCount'
+        schedules:
+          $ref: '#/components/schemas/ResourceCount'
+        rules:
+          $ref: '#/components/schemas/ResourceCount'
+        teams:
+          $ref: '#/components/schemas/ResourceCount'
+        members:
+          $ref: '#/components/schemas/ResourceCount'
       type: object
     ListOrgMembersResponse:
       example:
@@ -11554,14 +11775,14 @@ x-cli-waiters:
     - 404
     operationId: get-job
     matchers:
-    - select: response.body#data.finished_at
-      test: notEqual
-      expected: 0
-      state: success
     - select: response.body#data.error
       test: notEqual
       expected: false
       state: failure
+    - select: response.body#data.finished_at
+      test: notEqual
+      expected: 0
+      state: success
     updates: "response.body#data.logs[:].action"
     after:
       create-machine:
