@@ -25,6 +25,127 @@ import (
 // ZonesApiService ZonesApi service
 type ZonesApiService service
 
+type ApiCreateRecordRequest struct {
+	ctx context.Context
+	ApiService *ZonesApiService
+	createRecordRequest *CreateRecordRequest
+}
+
+func (r ApiCreateRecordRequest) CreateRecordRequest(createRecordRequest CreateRecordRequest) ApiCreateRecordRequest {
+	r.createRecordRequest = &createRecordRequest
+	return r
+}
+
+func (r ApiCreateRecordRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.CreateRecordExecute(r)
+}
+
+/*
+CreateRecord Create record
+
+Creates a new record under a specific zone. CREATE_RESOURCES permission required on cloud. CREATE_RECORDS permission required on zone
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCreateRecordRequest
+*/
+func (a *ZonesApiService) CreateRecord(ctx context.Context) ApiCreateRecordRequest {
+	return ApiCreateRecordRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *ZonesApiService) CreateRecordExecute(r ApiCreateRecordRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.CreateRecord")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/records"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.createRecordRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCreateZoneRequest struct {
 	ctx context.Context
 	ApiService *ZonesApiService
@@ -146,6 +267,132 @@ func (a *ZonesApiService) CreateZoneExecute(r ApiCreateZoneRequest) (*CreateZone
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteRecordRequest struct {
+	ctx context.Context
+	ApiService *ZonesApiService
+	record string
+	cloud *string
+	zone *string
+}
+
+func (r ApiDeleteRecordRequest) Cloud(cloud string) ApiDeleteRecordRequest {
+	r.cloud = &cloud
+	return r
+}
+
+func (r ApiDeleteRecordRequest) Zone(zone string) ApiDeleteRecordRequest {
+	r.zone = &zone
+	return r
+}
+
+func (r ApiDeleteRecordRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteRecordExecute(r)
+}
+
+/*
+DeleteRecord Delete record
+
+Deletes a specific DNS record under a zone. REMOVE permission required on zone.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param record
+ @return ApiDeleteRecordRequest
+*/
+func (a *ZonesApiService) DeleteRecord(ctx context.Context, record string) ApiDeleteRecordRequest {
+	return ApiDeleteRecordRequest{
+		ApiService: a,
+		ctx: ctx,
+		record: record,
+	}
+}
+
+// Execute executes the request
+func (a *ZonesApiService) DeleteRecordExecute(r ApiDeleteRecordRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.DeleteRecord")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/records/{record}"
+	localVarPath = strings.Replace(localVarPath, "{"+"record"+"}", url.PathEscape(parameterToString(r.record, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.cloud == nil {
+		return nil, reportError("cloud is required and must be specified")
+	}
+	if r.zone == nil {
+		return nil, reportError("zone is required and must be specified")
+	}
+
+	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	localVarQueryParams.Add("zone", parameterToString(*r.zone, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type ApiDeleteZoneRequest struct {
@@ -360,6 +607,143 @@ func (a *ZonesApiService) EditZoneExecute(r ApiEditZoneRequest) (*http.Response,
 	return localVarHTTPResponse, nil
 }
 
+type ApiGetRecordRequest struct {
+	ctx context.Context
+	ApiService *ZonesApiService
+	record string
+	cloud *string
+	zone *string
+}
+
+func (r ApiGetRecordRequest) Cloud(cloud string) ApiGetRecordRequest {
+	r.cloud = &cloud
+	return r
+}
+
+func (r ApiGetRecordRequest) Zone(zone string) ApiGetRecordRequest {
+	r.zone = &zone
+	return r
+}
+
+func (r ApiGetRecordRequest) Execute() (*GetRecordResponse, *http.Response, error) {
+	return r.ApiService.GetRecordExecute(r)
+}
+
+/*
+GetRecord Get record
+
+Get details about target record
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param record
+ @return ApiGetRecordRequest
+*/
+func (a *ZonesApiService) GetRecord(ctx context.Context, record string) ApiGetRecordRequest {
+	return ApiGetRecordRequest{
+		ApiService: a,
+		ctx: ctx,
+		record: record,
+	}
+}
+
+// Execute executes the request
+//  @return GetRecordResponse
+func (a *ZonesApiService) GetRecordExecute(r ApiGetRecordRequest) (*GetRecordResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetRecordResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.GetRecord")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/records/{record}"
+	localVarPath = strings.Replace(localVarPath, "{"+"record"+"}", url.PathEscape(parameterToString(r.record, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.cloud == nil {
+		return localVarReturnValue, nil, reportError("cloud is required and must be specified")
+	}
+	if r.zone == nil {
+		return localVarReturnValue, nil, reportError("zone is required and must be specified")
+	}
+
+	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	localVarQueryParams.Add("zone", parameterToString(*r.zone, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetZoneRequest struct {
 	ctx context.Context
 	ApiService *ZonesApiService
@@ -429,6 +813,139 @@ func (a *ZonesApiService) GetZoneExecute(r ApiGetZoneRequest) (*GetZoneResponse,
 	if r.deref != nil {
 		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
 	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListRecordsRequest struct {
+	ctx context.Context
+	ApiService *ZonesApiService
+	cloud *string
+	zone *string
+}
+
+func (r ApiListRecordsRequest) Cloud(cloud string) ApiListRecordsRequest {
+	r.cloud = &cloud
+	return r
+}
+
+func (r ApiListRecordsRequest) Zone(zone string) ApiListRecordsRequest {
+	r.zone = &zone
+	return r
+}
+
+func (r ApiListRecordsRequest) Execute() (*ListRecordsResponse, *http.Response, error) {
+	return r.ApiService.ListRecordsExecute(r)
+}
+
+/*
+ListRecords List records
+
+Lists all DNS records for a particular zone. READ permission required on zone and record.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListRecordsRequest
+*/
+func (a *ZonesApiService) ListRecords(ctx context.Context) ApiListRecordsRequest {
+	return ApiListRecordsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ListRecordsResponse
+func (a *ZonesApiService) ListRecordsExecute(r ApiListRecordsRequest) (*ListRecordsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListRecordsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.ListRecords")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/records"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.cloud == nil {
+		return localVarReturnValue, nil, reportError("cloud is required and must be specified")
+	}
+	if r.zone == nil {
+		return localVarReturnValue, nil, reportError("zone is required and must be specified")
+	}
+
+	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	localVarQueryParams.Add("zone", parameterToString(*r.zone, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -166,10 +166,14 @@ Class | Method | HTTP request | Description
 *VolumesApi* | [**EditVolume**](docs/VolumesApi.md#editvolume) | **Put** /api/v2/volumes/{volume} | Edit volume
 *VolumesApi* | [**GetVolume**](docs/VolumesApi.md#getvolume) | **Get** /api/v2/volumes/{volume} | Get volume
 *VolumesApi* | [**ListVolumes**](docs/VolumesApi.md#listvolumes) | **Get** /api/v2/volumes | List volumes
+*ZonesApi* | [**CreateRecord**](docs/ZonesApi.md#createrecord) | **Post** /api/v2/records | Create record
 *ZonesApi* | [**CreateZone**](docs/ZonesApi.md#createzone) | **Post** /api/v2/zones | Create zone
+*ZonesApi* | [**DeleteRecord**](docs/ZonesApi.md#deleterecord) | **Delete** /api/v2/records/{record} | Delete record
 *ZonesApi* | [**DeleteZone**](docs/ZonesApi.md#deletezone) | **Delete** /api/v2/zones/{zone} | Delete zone
 *ZonesApi* | [**EditZone**](docs/ZonesApi.md#editzone) | **Put** /api/v2/zones/{zone} | Edit zone
+*ZonesApi* | [**GetRecord**](docs/ZonesApi.md#getrecord) | **Get** /api/v2/records/{record} | Get record
 *ZonesApi* | [**GetZone**](docs/ZonesApi.md#getzone) | **Get** /api/v2/zones/{zone} | Get zone
+*ZonesApi* | [**ListRecords**](docs/ZonesApi.md#listrecords) | **Get** /api/v2/records | List records
 *ZonesApi* | [**ListZones**](docs/ZonesApi.md#listzones) | **Get** /api/v2/zones | List zones
 
 
@@ -215,6 +219,7 @@ Class | Method | HTTP request | Description
  - [CreateMachineResponseOneOf1](docs/CreateMachineResponseOneOf1.md)
  - [CreateNetworkRequest](docs/CreateNetworkRequest.md)
  - [CreateNetworkResponse](docs/CreateNetworkResponse.md)
+ - [CreateRecordRequest](docs/CreateRecordRequest.md)
  - [CreateSecretRequest](docs/CreateSecretRequest.md)
  - [CreateVolumeRequest](docs/CreateVolumeRequest.md)
  - [CreateVolumeResponse](docs/CreateVolumeResponse.md)
@@ -259,6 +264,7 @@ Class | Method | HTTP request | Description
  - [GetNetworkResponse](docs/GetNetworkResponse.md)
  - [GetOrgMemberResponse](docs/GetOrgMemberResponse.md)
  - [GetOrgResponse](docs/GetOrgResponse.md)
+ - [GetRecordResponse](docs/GetRecordResponse.md)
  - [GetRuleResponse](docs/GetRuleResponse.md)
  - [GetScheduleResponse](docs/GetScheduleResponse.md)
  - [GetScriptResponse](docs/GetScriptResponse.md)
@@ -307,6 +313,7 @@ Class | Method | HTTP request | Description
  - [ListOrgMembersResponse](docs/ListOrgMembersResponse.md)
  - [ListOrgTeamsResponse](docs/ListOrgTeamsResponse.md)
  - [ListOrgsResponse](docs/ListOrgsResponse.md)
+ - [ListRecordsResponse](docs/ListRecordsResponse.md)
  - [ListRulesResponse](docs/ListRulesResponse.md)
  - [ListSchedulesResponse](docs/ListSchedulesResponse.md)
  - [ListScriptsResponse](docs/ListScriptsResponse.md)
@@ -337,13 +344,16 @@ Class | Method | HTTP request | Description
  - [OpenstackCredentials](docs/OpenstackCredentials.md)
  - [OpenstackNet](docs/OpenstackNet.md)
  - [Org](docs/Org.md)
+ - [OrgResourcesSummary](docs/OrgResourcesSummary.md)
  - [OtherCloudRequest](docs/OtherCloudRequest.md)
  - [PostDeployScript](docs/PostDeployScript.md)
  - [Query](docs/Query.md)
  - [RackspaceCloudRequest](docs/RackspaceCloudRequest.md)
  - [RackspaceCredentials](docs/RackspaceCredentials.md)
  - [RangeVector](docs/RangeVector.md)
+ - [Record](docs/Record.md)
  - [Resource](docs/Resource.md)
+ - [ResourceCount](docs/ResourceCount.md)
  - [ResourceSelector](docs/ResourceSelector.md)
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)
