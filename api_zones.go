@@ -28,6 +28,7 @@ type ZonesApiService service
 type ApiCreateRecordRequest struct {
 	ctx context.Context
 	ApiService *ZonesApiService
+	zone string
 	createRecordRequest *CreateRecordRequest
 }
 
@@ -46,12 +47,14 @@ CreateRecord Create record
 Creates a new record under a specific zone. CREATE_RESOURCES permission required on cloud. CREATE_RECORDS permission required on zone
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param zone
  @return ApiCreateRecordRequest
 */
-func (a *ZonesApiService) CreateRecord(ctx context.Context) ApiCreateRecordRequest {
+func (a *ZonesApiService) CreateRecord(ctx context.Context, zone string) ApiCreateRecordRequest {
 	return ApiCreateRecordRequest{
 		ApiService: a,
 		ctx: ctx,
+		zone: zone,
 	}
 }
 
@@ -70,7 +73,8 @@ func (a *ZonesApiService) CreateRecordExecute(r ApiCreateRecordRequest) (map[str
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/records"
+	localVarPath := localBasePath + "/api/v2/zones/{zone}/records"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone"+"}", url.PathEscape(parameterToString(r.zone, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -272,18 +276,13 @@ func (a *ZonesApiService) CreateZoneExecute(r ApiCreateZoneRequest) (*CreateZone
 type ApiDeleteRecordRequest struct {
 	ctx context.Context
 	ApiService *ZonesApiService
+	zone string
 	record string
 	cloud *string
-	zone *string
 }
 
 func (r ApiDeleteRecordRequest) Cloud(cloud string) ApiDeleteRecordRequest {
 	r.cloud = &cloud
-	return r
-}
-
-func (r ApiDeleteRecordRequest) Zone(zone string) ApiDeleteRecordRequest {
-	r.zone = &zone
 	return r
 }
 
@@ -297,13 +296,15 @@ DeleteRecord Delete record
 Deletes a specific DNS record under a zone. REMOVE permission required on zone.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param zone
  @param record
  @return ApiDeleteRecordRequest
 */
-func (a *ZonesApiService) DeleteRecord(ctx context.Context, record string) ApiDeleteRecordRequest {
+func (a *ZonesApiService) DeleteRecord(ctx context.Context, zone string, record string) ApiDeleteRecordRequest {
 	return ApiDeleteRecordRequest{
 		ApiService: a,
 		ctx: ctx,
+		zone: zone,
 		record: record,
 	}
 }
@@ -321,7 +322,8 @@ func (a *ZonesApiService) DeleteRecordExecute(r ApiDeleteRecordRequest) (*http.R
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/records/{record}"
+	localVarPath := localBasePath + "/api/v2/zones/{zone}/records/{record}"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone"+"}", url.PathEscape(parameterToString(r.zone, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"record"+"}", url.PathEscape(parameterToString(r.record, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -330,12 +332,8 @@ func (a *ZonesApiService) DeleteRecordExecute(r ApiDeleteRecordRequest) (*http.R
 	if r.cloud == nil {
 		return nil, reportError("cloud is required and must be specified")
 	}
-	if r.zone == nil {
-		return nil, reportError("zone is required and must be specified")
-	}
 
 	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
-	localVarQueryParams.Add("zone", parameterToString(*r.zone, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -610,18 +608,13 @@ func (a *ZonesApiService) EditZoneExecute(r ApiEditZoneRequest) (*http.Response,
 type ApiGetRecordRequest struct {
 	ctx context.Context
 	ApiService *ZonesApiService
+	zone string
 	record string
 	cloud *string
-	zone *string
 }
 
 func (r ApiGetRecordRequest) Cloud(cloud string) ApiGetRecordRequest {
 	r.cloud = &cloud
-	return r
-}
-
-func (r ApiGetRecordRequest) Zone(zone string) ApiGetRecordRequest {
-	r.zone = &zone
 	return r
 }
 
@@ -635,13 +628,15 @@ GetRecord Get record
 Get details about target record
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param zone
  @param record
  @return ApiGetRecordRequest
 */
-func (a *ZonesApiService) GetRecord(ctx context.Context, record string) ApiGetRecordRequest {
+func (a *ZonesApiService) GetRecord(ctx context.Context, zone string, record string) ApiGetRecordRequest {
 	return ApiGetRecordRequest{
 		ApiService: a,
 		ctx: ctx,
+		zone: zone,
 		record: record,
 	}
 }
@@ -661,7 +656,8 @@ func (a *ZonesApiService) GetRecordExecute(r ApiGetRecordRequest) (*GetRecordRes
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/records/{record}"
+	localVarPath := localBasePath + "/api/v2/zones/{zone}/records/{record}"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone"+"}", url.PathEscape(parameterToString(r.zone, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"record"+"}", url.PathEscape(parameterToString(r.record, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -670,12 +666,8 @@ func (a *ZonesApiService) GetRecordExecute(r ApiGetRecordRequest) (*GetRecordRes
 	if r.cloud == nil {
 		return localVarReturnValue, nil, reportError("cloud is required and must be specified")
 	}
-	if r.zone == nil {
-		return localVarReturnValue, nil, reportError("zone is required and must be specified")
-	}
 
 	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
-	localVarQueryParams.Add("zone", parameterToString(*r.zone, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -884,17 +876,12 @@ func (a *ZonesApiService) GetZoneExecute(r ApiGetZoneRequest) (*GetZoneResponse,
 type ApiListRecordsRequest struct {
 	ctx context.Context
 	ApiService *ZonesApiService
+	zone string
 	cloud *string
-	zone *string
 }
 
 func (r ApiListRecordsRequest) Cloud(cloud string) ApiListRecordsRequest {
 	r.cloud = &cloud
-	return r
-}
-
-func (r ApiListRecordsRequest) Zone(zone string) ApiListRecordsRequest {
-	r.zone = &zone
 	return r
 }
 
@@ -908,12 +895,14 @@ ListRecords List records
 Lists all DNS records for a particular zone. READ permission required on zone and record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param zone
  @return ApiListRecordsRequest
 */
-func (a *ZonesApiService) ListRecords(ctx context.Context) ApiListRecordsRequest {
+func (a *ZonesApiService) ListRecords(ctx context.Context, zone string) ApiListRecordsRequest {
 	return ApiListRecordsRequest{
 		ApiService: a,
 		ctx: ctx,
+		zone: zone,
 	}
 }
 
@@ -932,7 +921,8 @@ func (a *ZonesApiService) ListRecordsExecute(r ApiListRecordsRequest) (*ListReco
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v2/records"
+	localVarPath := localBasePath + "/api/v2/zones/{zone}/records"
+	localVarPath = strings.Replace(localVarPath, "{"+"zone"+"}", url.PathEscape(parameterToString(r.zone, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -940,12 +930,8 @@ func (a *ZonesApiService) ListRecordsExecute(r ApiListRecordsRequest) (*ListReco
 	if r.cloud == nil {
 		return localVarReturnValue, nil, reportError("cloud is required and must be specified")
 	}
-	if r.zone == nil {
-		return localVarReturnValue, nil, reportError("zone is required and must be specified")
-	}
 
 	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
-	localVarQueryParams.Add("zone", parameterToString(*r.zone, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

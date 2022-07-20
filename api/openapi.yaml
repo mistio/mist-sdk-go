@@ -3359,24 +3359,24 @@ paths:
       summary: Edit zone
       tags:
       - zones
-  /api/v2/records:
+  /api/v2/zones/{zone}/records:
     get:
       description: Lists all DNS records for a particular zone. READ permission required
         on zone and record.
       operationId: list-records
       parameters:
+      - example: my-zone
+        explode: false
+        in: path
+        name: zone
+        required: true
+        schema:
+          type: string
+        style: simple
       - example: my-cloud
         explode: true
         in: query
         name: cloud
-        required: true
-        schema:
-          type: string
-        style: form
-      - example: my-zone
-        explode: true
-        in: query
-        name: zone
         required: true
         schema:
           type: string
@@ -3414,6 +3414,15 @@ paths:
       description: Creates a new record under a specific zone. CREATE_RESOURCES permission
         required on cloud. CREATE_RECORDS permission required on zone
       operationId: create-record
+      parameters:
+      - example: my-zone
+        explode: false
+        in: path
+        name: zone
+        required: true
+        schema:
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:
@@ -3444,12 +3453,20 @@ paths:
       summary: Create record
       tags:
       - zones
-  /api/v2/records/{record}:
+  /api/v2/zones/{zone}/records/{record}:
     delete:
       description: Deletes a specific DNS record under a zone. REMOVE permission required
         on zone.
       operationId: delete-record
       parameters:
+      - example: my-zone
+        explode: false
+        in: path
+        name: zone
+        required: true
+        schema:
+          type: string
+        style: simple
       - example: my-zone
         explode: false
         in: path
@@ -3462,14 +3479,6 @@ paths:
         explode: true
         in: query
         name: cloud
-        required: true
-        schema:
-          type: string
-        style: form
-      - example: my-zone
-        explode: true
-        in: query
-        name: zone
         required: true
         schema:
           type: string
@@ -3495,6 +3504,14 @@ paths:
       description: Get details about target record
       operationId: get-record
       parameters:
+      - example: my-zone
+        explode: false
+        in: path
+        name: zone
+        required: true
+        schema:
+          type: string
+        style: simple
       - example: my-record
         explode: false
         in: path
@@ -3507,14 +3524,6 @@ paths:
         explode: true
         in: query
         name: cloud
-        required: true
-        schema:
-          type: string
-        style: form
-      - example: my-zone
-        explode: true
-        in: query
-        name: zone
         required: true
         schema:
           type: string

@@ -166,14 +166,14 @@ Class | Method | HTTP request | Description
 *VolumesApi* | [**EditVolume**](docs/VolumesApi.md#editvolume) | **Put** /api/v2/volumes/{volume} | Edit volume
 *VolumesApi* | [**GetVolume**](docs/VolumesApi.md#getvolume) | **Get** /api/v2/volumes/{volume} | Get volume
 *VolumesApi* | [**ListVolumes**](docs/VolumesApi.md#listvolumes) | **Get** /api/v2/volumes | List volumes
-*ZonesApi* | [**CreateRecord**](docs/ZonesApi.md#createrecord) | **Post** /api/v2/records | Create record
+*ZonesApi* | [**CreateRecord**](docs/ZonesApi.md#createrecord) | **Post** /api/v2/zones/{zone}/records | Create record
 *ZonesApi* | [**CreateZone**](docs/ZonesApi.md#createzone) | **Post** /api/v2/zones | Create zone
-*ZonesApi* | [**DeleteRecord**](docs/ZonesApi.md#deleterecord) | **Delete** /api/v2/records/{record} | Delete record
+*ZonesApi* | [**DeleteRecord**](docs/ZonesApi.md#deleterecord) | **Delete** /api/v2/zones/{zone}/records/{record} | Delete record
 *ZonesApi* | [**DeleteZone**](docs/ZonesApi.md#deletezone) | **Delete** /api/v2/zones/{zone} | Delete zone
 *ZonesApi* | [**EditZone**](docs/ZonesApi.md#editzone) | **Put** /api/v2/zones/{zone} | Edit zone
-*ZonesApi* | [**GetRecord**](docs/ZonesApi.md#getrecord) | **Get** /api/v2/records/{record} | Get record
+*ZonesApi* | [**GetRecord**](docs/ZonesApi.md#getrecord) | **Get** /api/v2/zones/{zone}/records/{record} | Get record
 *ZonesApi* | [**GetZone**](docs/ZonesApi.md#getzone) | **Get** /api/v2/zones/{zone} | Get zone
-*ZonesApi* | [**ListRecords**](docs/ZonesApi.md#listrecords) | **Get** /api/v2/records | List records
+*ZonesApi* | [**ListRecords**](docs/ZonesApi.md#listrecords) | **Get** /api/v2/zones/{zone}/records | List records
 *ZonesApi* | [**ListZones**](docs/ZonesApi.md#listzones) | **Get** /api/v2/zones | List zones
 
 
