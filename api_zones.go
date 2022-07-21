@@ -611,10 +611,24 @@ type ApiGetRecordRequest struct {
 	zone string
 	record string
 	cloud *string
+	only *string
+	deref *string
 }
 
 func (r ApiGetRecordRequest) Cloud(cloud string) ApiGetRecordRequest {
 	r.cloud = &cloud
+	return r
+}
+
+// Only return these fields
+func (r ApiGetRecordRequest) Only(only string) ApiGetRecordRequest {
+	r.only = &only
+	return r
+}
+
+// Dereference foreign keys
+func (r ApiGetRecordRequest) Deref(deref string) ApiGetRecordRequest {
+	r.deref = &deref
 	return r
 }
 
@@ -668,6 +682,12 @@ func (a *ZonesApiService) GetRecordExecute(r ApiGetRecordRequest) (*GetRecordRes
 	}
 
 	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	if r.only != nil {
+		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
+	}
+	if r.deref != nil {
+		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -878,10 +898,24 @@ type ApiListRecordsRequest struct {
 	ApiService *ZonesApiService
 	zone string
 	cloud *string
+	only *string
+	deref *string
 }
 
 func (r ApiListRecordsRequest) Cloud(cloud string) ApiListRecordsRequest {
 	r.cloud = &cloud
+	return r
+}
+
+// Only return these fields
+func (r ApiListRecordsRequest) Only(only string) ApiListRecordsRequest {
+	r.only = &only
+	return r
+}
+
+// Dereference foreign keys
+func (r ApiListRecordsRequest) Deref(deref string) ApiListRecordsRequest {
+	r.deref = &deref
 	return r
 }
 
@@ -932,6 +966,12 @@ func (a *ZonesApiService) ListRecordsExecute(r ApiListRecordsRequest) (*ListReco
 	}
 
 	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	if r.only != nil {
+		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
+	}
+	if r.deref != nil {
+		localVarQueryParams.Add("deref", parameterToString(*r.deref, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
