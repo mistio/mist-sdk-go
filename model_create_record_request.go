@@ -18,9 +18,9 @@ import (
 // CreateRecordRequest struct for CreateRecordRequest
 type CreateRecordRequest struct {
 	Name string `json:"name"`
-	Cloud string `json:"cloud"`
-	Zone string `json:"zone"`
-	Data *string `json:"data,omitempty"`
+	Cloud *string `json:"cloud,omitempty"`
+	Zone *string `json:"zone,omitempty"`
+	Value *string `json:"value,omitempty"`
 	Type *string `json:"type,omitempty"`
 }
 
@@ -28,11 +28,9 @@ type CreateRecordRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateRecordRequest(name string, cloud string, zone string) *CreateRecordRequest {
+func NewCreateRecordRequest(name string) *CreateRecordRequest {
 	this := CreateRecordRequest{}
 	this.Name = name
-	this.Cloud = cloud
-	this.Zone = zone
 	return &this
 }
 
@@ -68,84 +66,100 @@ func (o *CreateRecordRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetCloud returns the Cloud field value
+// GetCloud returns the Cloud field value if set, zero value otherwise.
 func (o *CreateRecordRequest) GetCloud() string {
-	if o == nil {
+	if o == nil || o.Cloud == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Cloud
+	return *o.Cloud
 }
 
-// GetCloudOk returns a tuple with the Cloud field value
+// GetCloudOk returns a tuple with the Cloud field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateRecordRequest) GetCloudOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Cloud == nil {
 		return nil, false
 	}
-	return &o.Cloud, true
+	return o.Cloud, true
 }
 
-// SetCloud sets field value
-func (o *CreateRecordRequest) SetCloud(v string) {
-	o.Cloud = v
-}
-
-// GetZone returns the Zone field value
-func (o *CreateRecordRequest) GetZone() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Zone
-}
-
-// GetZoneOk returns a tuple with the Zone field value
-// and a boolean to check if the value has been set.
-func (o *CreateRecordRequest) GetZoneOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Zone, true
-}
-
-// SetZone sets field value
-func (o *CreateRecordRequest) SetZone(v string) {
-	o.Zone = v
-}
-
-// GetData returns the Data field value if set, zero value otherwise.
-func (o *CreateRecordRequest) GetData() string {
-	if o == nil || o.Data == nil {
-		var ret string
-		return ret
-	}
-	return *o.Data
-}
-
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateRecordRequest) GetDataOk() (*string, bool) {
-	if o == nil || o.Data == nil {
-		return nil, false
-	}
-	return o.Data, true
-}
-
-// HasData returns a boolean if a field has been set.
-func (o *CreateRecordRequest) HasData() bool {
-	if o != nil && o.Data != nil {
+// HasCloud returns a boolean if a field has been set.
+func (o *CreateRecordRequest) HasCloud() bool {
+	if o != nil && o.Cloud != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetData gets a reference to the given string and assigns it to the Data field.
-func (o *CreateRecordRequest) SetData(v string) {
-	o.Data = &v
+// SetCloud gets a reference to the given string and assigns it to the Cloud field.
+func (o *CreateRecordRequest) SetCloud(v string) {
+	o.Cloud = &v
+}
+
+// GetZone returns the Zone field value if set, zero value otherwise.
+func (o *CreateRecordRequest) GetZone() string {
+	if o == nil || o.Zone == nil {
+		var ret string
+		return ret
+	}
+	return *o.Zone
+}
+
+// GetZoneOk returns a tuple with the Zone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRecordRequest) GetZoneOk() (*string, bool) {
+	if o == nil || o.Zone == nil {
+		return nil, false
+	}
+	return o.Zone, true
+}
+
+// HasZone returns a boolean if a field has been set.
+func (o *CreateRecordRequest) HasZone() bool {
+	if o != nil && o.Zone != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetZone gets a reference to the given string and assigns it to the Zone field.
+func (o *CreateRecordRequest) SetZone(v string) {
+	o.Zone = &v
+}
+
+// GetValue returns the Value field value if set, zero value otherwise.
+func (o *CreateRecordRequest) GetValue() string {
+	if o == nil || o.Value == nil {
+		var ret string
+		return ret
+	}
+	return *o.Value
+}
+
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRecordRequest) GetValueOk() (*string, bool) {
+	if o == nil || o.Value == nil {
+		return nil, false
+	}
+	return o.Value, true
+}
+
+// HasValue returns a boolean if a field has been set.
+func (o *CreateRecordRequest) HasValue() bool {
+	if o != nil && o.Value != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given string and assigns it to the Value field.
+func (o *CreateRecordRequest) SetValue(v string) {
+	o.Value = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -185,14 +199,14 @@ func (o CreateRecordRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
+	if o.Cloud != nil {
 		toSerialize["cloud"] = o.Cloud
 	}
-	if true {
+	if o.Zone != nil {
 		toSerialize["zone"] = o.Zone
 	}
-	if o.Data != nil {
-		toSerialize["data"] = o.Data
+	if o.Value != nil {
+		toSerialize["value"] = o.Value
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
