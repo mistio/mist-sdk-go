@@ -19,7 +19,7 @@ import (
 type CreateRecordRequest struct {
 	Name string `json:"name"`
 	Cloud *string `json:"cloud,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Value string `json:"value"`
 	Type *string `json:"type,omitempty"`
 }
 
@@ -27,9 +27,12 @@ type CreateRecordRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateRecordRequest(name string) *CreateRecordRequest {
+func NewCreateRecordRequest(name string, value string) *CreateRecordRequest {
 	this := CreateRecordRequest{}
 	this.Name = name
+	this.Value = value
+	var type_ string = "A"
+	this.Type = &type_
 	return &this
 }
 
@@ -38,6 +41,8 @@ func NewCreateRecordRequest(name string) *CreateRecordRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateRecordRequestWithDefaults() *CreateRecordRequest {
 	this := CreateRecordRequest{}
+	var type_ string = "A"
+	this.Type = &type_
 	return &this
 }
 
@@ -97,36 +102,28 @@ func (o *CreateRecordRequest) SetCloud(v string) {
 	o.Cloud = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value
 func (o *CreateRecordRequest) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Value
+
+	return o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 func (o *CreateRecordRequest) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return &o.Value, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *CreateRecordRequest) HasValue() bool {
-	if o != nil && o.Value != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue sets field value
 func (o *CreateRecordRequest) SetValue(v string) {
-	o.Value = &v
+	o.Value = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -169,7 +166,7 @@ func (o CreateRecordRequest) MarshalJSON() ([]byte, error) {
 	if o.Cloud != nil {
 		toSerialize["cloud"] = o.Cloud
 	}
-	if o.Value != nil {
+	if true {
 		toSerialize["value"] = o.Value
 	}
 	if o.Type != nil {

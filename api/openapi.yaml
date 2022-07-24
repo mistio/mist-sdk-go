@@ -9583,6 +9583,7 @@ components:
     CreateRecordRequest:
       example:
         name: my-record
+        value: 123.23.23.2
       properties:
         name:
           type: string
@@ -9591,6 +9592,7 @@ components:
         value:
           type: string
         type:
+          default: A
           enum:
           - A
           - AAAA
@@ -9598,6 +9600,7 @@ components:
           type: string
       required:
       - name
+      - value
       type: object
     CreateRecordResponse:
       type: object
