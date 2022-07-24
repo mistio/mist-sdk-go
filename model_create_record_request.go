@@ -21,6 +21,7 @@ type CreateRecordRequest struct {
 	Cloud *string `json:"cloud,omitempty"`
 	Value string `json:"value"`
 	Type *string `json:"type,omitempty"`
+	Ttl *int32 `json:"ttl,omitempty"`
 }
 
 // NewCreateRecordRequest instantiates a new CreateRecordRequest object
@@ -33,6 +34,8 @@ func NewCreateRecordRequest(name string, value string) *CreateRecordRequest {
 	this.Value = value
 	var type_ string = "A"
 	this.Type = &type_
+	var ttl int32 = 300
+	this.Ttl = &ttl
 	return &this
 }
 
@@ -43,6 +46,8 @@ func NewCreateRecordRequestWithDefaults() *CreateRecordRequest {
 	this := CreateRecordRequest{}
 	var type_ string = "A"
 	this.Type = &type_
+	var ttl int32 = 300
+	this.Ttl = &ttl
 	return &this
 }
 
@@ -158,6 +163,38 @@ func (o *CreateRecordRequest) SetType(v string) {
 	o.Type = &v
 }
 
+// GetTtl returns the Ttl field value if set, zero value otherwise.
+func (o *CreateRecordRequest) GetTtl() int32 {
+	if o == nil || o.Ttl == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Ttl
+}
+
+// GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRecordRequest) GetTtlOk() (*int32, bool) {
+	if o == nil || o.Ttl == nil {
+		return nil, false
+	}
+	return o.Ttl, true
+}
+
+// HasTtl returns a boolean if a field has been set.
+func (o *CreateRecordRequest) HasTtl() bool {
+	if o != nil && o.Ttl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTtl gets a reference to the given int32 and assigns it to the Ttl field.
+func (o *CreateRecordRequest) SetTtl(v int32) {
+	o.Ttl = &v
+}
+
 func (o CreateRecordRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -171,6 +208,9 @@ func (o CreateRecordRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
+	}
+	if o.Ttl != nil {
+		toSerialize["ttl"] = o.Ttl
 	}
 	return json.Marshal(toSerialize)
 }
