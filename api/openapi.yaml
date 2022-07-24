@@ -9588,8 +9588,6 @@ components:
           type: string
         cloud:
           type: string
-        zone:
-          type: string
         value:
           type: string
         type:
