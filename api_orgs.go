@@ -160,8 +160,15 @@ type ApiGetOrgRequest struct {
 	ctx context.Context
 	ApiService *OrgsApiService
 	org string
+	summary *bool
 	only *string
 	deref *string
+}
+
+// Return total number for each org specific resource
+func (r ApiGetOrgRequest) Summary(summary bool) ApiGetOrgRequest {
+	r.summary = &summary
+	return r
 }
 
 // Only return these fields
@@ -219,6 +226,9 @@ func (a *OrgsApiService) GetOrgExecute(r ApiGetOrgRequest) (*GetOrgResponse, *ht
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.summary != nil {
+		localVarQueryParams.Add("summary", parameterToString(*r.summary, ""))
+	}
 	if r.only != nil {
 		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
 	}
@@ -848,4 +858,118 @@ func (a *OrgsApiService) ListOrgsExecute(r ApiListOrgsRequest) (*ListOrgsRespons
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateOrgRequest struct {
+	ctx context.Context
+	ApiService *OrgsApiService
+	org string
+	patchOrganizationRequest *PatchOrganizationRequest
+}
+
+func (r ApiUpdateOrgRequest) PatchOrganizationRequest(patchOrganizationRequest PatchOrganizationRequest) ApiUpdateOrgRequest {
+	r.patchOrganizationRequest = &patchOrganizationRequest
+	return r
+}
+
+func (r ApiUpdateOrgRequest) Execute() (*http.Response, error) {
+	return r.ApiService.UpdateOrgExecute(r)
+}
+
+/*
+UpdateOrg Method for UpdateOrg
+
+Update organization
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org Organization id
+ @return ApiUpdateOrgRequest
+*/
+func (a *OrgsApiService) UpdateOrg(ctx context.Context, org string) ApiUpdateOrgRequest {
+	return ApiUpdateOrgRequest{
+		ApiService: a,
+		ctx: ctx,
+		org: org,
+	}
+}
+
+// Execute executes the request
+func (a *OrgsApiService) UpdateOrgExecute(r ApiUpdateOrgRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgsApiService.UpdateOrg")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v2/orgs/{org}"
+	localVarPath = strings.Replace(localVarPath, "{"+"org"+"}", url.PathEscape(parameterToString(r.org, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchOrganizationRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }

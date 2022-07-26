@@ -89,6 +89,7 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**ListClusters**](docs/ClustersApi.md#listclusters) | **Get** /api/v2/clusters | List clusters
 *ClustersApi* | [**ScaleNodepool**](docs/ClustersApi.md#scalenodepool) | **Post** /api/v2/clusters/{cluster}/nodepools/{nodepool} | Scale cluster nodepool
 *DatapointsApi* | [**GetDatapoints**](docs/DatapointsApi.md#getdatapoints) | **Get** /api/v2/datapoints | Get datapoints
+*DefaultApi* | [**CreateOrg**](docs/DefaultApi.md#createorg) | **Post** /api/v2/orgs | 
 *ImagesApi* | [**GetImage**](docs/ImagesApi.md#getimage) | **Get** /api/v2/images/{image} | Get image
 *ImagesApi* | [**ListImages**](docs/ImagesApi.md#listimages) | **Get** /api/v2/images | List images
 *JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **Get** /api/v2/jobs/{job_id} | Get job
@@ -127,6 +128,7 @@ Class | Method | HTTP request | Description
 *OrgsApi* | [**ListOrgMembers**](docs/OrgsApi.md#listorgmembers) | **Get** /api/v2/orgs/{org}/members | List org members
 *OrgsApi* | [**ListOrgTeams**](docs/OrgsApi.md#listorgteams) | **Get** /api/v2/orgs/{org}/teams | List org teams
 *OrgsApi* | [**ListOrgs**](docs/OrgsApi.md#listorgs) | **Get** /api/v2/orgs | List orgs
+*OrgsApi* | [**UpdateOrg**](docs/OrgsApi.md#updateorg) | **Patch** /api/v2/orgs/{org} | 
 *RulesApi* | [**AddRule**](docs/RulesApi.md#addrule) | **Post** /api/v2/rules | Add rule
 *RulesApi* | [**DeleteRule**](docs/RulesApi.md#deleterule) | **Delete** /api/v2/rules/{rule} | Delete rule
 *RulesApi* | [**EditRule**](docs/RulesApi.md#editrule) | **Post** /api/v2/rules/{rule} | Update rule
@@ -215,6 +217,7 @@ Class | Method | HTTP request | Description
  - [CreateMachineResponseOneOf1](docs/CreateMachineResponseOneOf1.md)
  - [CreateNetworkRequest](docs/CreateNetworkRequest.md)
  - [CreateNetworkResponse](docs/CreateNetworkResponse.md)
+ - [CreateOrganizationRequest](docs/CreateOrganizationRequest.md)
  - [CreateSecretRequest](docs/CreateSecretRequest.md)
  - [CreateVolumeRequest](docs/CreateVolumeRequest.md)
  - [CreateVolumeResponse](docs/CreateVolumeResponse.md)
@@ -337,13 +340,16 @@ Class | Method | HTTP request | Description
  - [OpenstackCredentials](docs/OpenstackCredentials.md)
  - [OpenstackNet](docs/OpenstackNet.md)
  - [Org](docs/Org.md)
+ - [OrgResourcesSummary](docs/OrgResourcesSummary.md)
  - [OtherCloudRequest](docs/OtherCloudRequest.md)
+ - [PatchOrganizationRequest](docs/PatchOrganizationRequest.md)
  - [PostDeployScript](docs/PostDeployScript.md)
  - [Query](docs/Query.md)
  - [RackspaceCloudRequest](docs/RackspaceCloudRequest.md)
  - [RackspaceCredentials](docs/RackspaceCredentials.md)
  - [RangeVector](docs/RangeVector.md)
  - [Resource](docs/Resource.md)
+ - [ResourceCount](docs/ResourceCount.md)
  - [ResourceSelector](docs/ResourceSelector.md)
  - [ResponseMetadata](docs/ResponseMetadata.md)
  - [Rule](docs/Rule.md)

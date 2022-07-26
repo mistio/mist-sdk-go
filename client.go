@@ -56,6 +56,8 @@ type APIClient struct {
 
 	DatapointsApi *DatapointsApiService
 
+	DefaultApi *DefaultApiService
+
 	ImagesApi *ImagesApiService
 
 	JobsApi *JobsApiService
@@ -110,6 +112,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CloudsApi = (*CloudsApiService)(&c.common)
 	c.ClustersApi = (*ClustersApiService)(&c.common)
 	c.DatapointsApi = (*DatapointsApiService)(&c.common)
+	c.DefaultApi = (*DefaultApiService)(&c.common)
 	c.ImagesApi = (*ImagesApiService)(&c.common)
 	c.JobsApi = (*JobsApiService)(&c.common)
 	c.KeysApi = (*KeysApiService)(&c.common)
