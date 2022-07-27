@@ -89,7 +89,6 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**ListClusters**](docs/ClustersApi.md#listclusters) | **Get** /api/v2/clusters | List clusters
 *ClustersApi* | [**ScaleNodepool**](docs/ClustersApi.md#scalenodepool) | **Post** /api/v2/clusters/{cluster}/nodepools/{nodepool} | Scale cluster nodepool
 *DatapointsApi* | [**GetDatapoints**](docs/DatapointsApi.md#getdatapoints) | **Get** /api/v2/datapoints | Get datapoints
-*DefaultApi* | [**CreateOrg**](docs/DefaultApi.md#createorg) | **Post** /api/v2/orgs | 
 *ImagesApi* | [**GetImage**](docs/ImagesApi.md#getimage) | **Get** /api/v2/images/{image} | Get image
 *ImagesApi* | [**ListImages**](docs/ImagesApi.md#listimages) | **Get** /api/v2/images | List images
 *JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **Get** /api/v2/jobs/{job_id} | Get job
@@ -123,6 +122,7 @@ Class | Method | HTTP request | Description
 *NetworksApi* | [**EditNetwork**](docs/NetworksApi.md#editnetwork) | **Put** /api/v2/networks/{network} | Edit network
 *NetworksApi* | [**GetNetwork**](docs/NetworksApi.md#getnetwork) | **Get** /api/v2/networks/{network} | Get network
 *NetworksApi* | [**ListNetworks**](docs/NetworksApi.md#listnetworks) | **Get** /api/v2/networks | List networks
+*OrgsApi* | [**CreateOrg**](docs/OrgsApi.md#createorg) | **Post** /api/v2/orgs | Create org
 *OrgsApi* | [**GetMember**](docs/OrgsApi.md#getmember) | **Get** /api/v2/orgs/{org}/members/{member} | Get Org
 *OrgsApi* | [**GetOrg**](docs/OrgsApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *OrgsApi* | [**ListOrgMembers**](docs/OrgsApi.md#listorgmembers) | **Get** /api/v2/orgs/{org}/members | List org members

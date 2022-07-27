@@ -5,7 +5,6 @@ api/openapi.yaml
 api_clouds.go
 api_clusters.go
 api_datapoints.go
-api_default.go
 api_images.go
 api_jobs.go
 api_keys.go
@@ -79,7 +78,6 @@ docs/Datapoints.md
 docs/DatapointsApi.md
 docs/DatapointsData.md
 docs/DatapointsValuesItem.md
-docs/DefaultApi.md
 docs/DestroyClusterResponse.md
 docs/DigitaloceanCloudRequest.md
 docs/DigitaloceanCredentials.md
