@@ -10907,6 +10907,8 @@ components:
         super_org:
           default: false
           type: boolean
+      required:
+      - name
       type: object
     PatchOrganizationRequest:
       example:
