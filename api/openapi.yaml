@@ -3377,7 +3377,7 @@ paths:
         explode: true
         in: query
         name: cloud
-        required: true
+        required: false
         schema:
           type: string
         style: form
@@ -3555,7 +3555,7 @@ paths:
         explode: true
         in: query
         name: cloud
-        required: true
+        required: false
         schema:
           type: string
         style: form

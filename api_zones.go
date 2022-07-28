@@ -677,11 +677,10 @@ func (a *ZonesApiService) GetRecordExecute(r ApiGetRecordRequest) (*GetRecordRes
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cloud == nil {
-		return localVarReturnValue, nil, reportError("cloud is required and must be specified")
-	}
 
-	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	if r.cloud != nil {
+		localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	}
 	if r.only != nil {
 		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
 	}
@@ -961,11 +960,10 @@ func (a *ZonesApiService) ListRecordsExecute(r ApiListRecordsRequest) (*ListReco
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cloud == nil {
-		return localVarReturnValue, nil, reportError("cloud is required and must be specified")
-	}
 
-	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	if r.cloud != nil {
+		localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	}
 	if r.only != nil {
 		localVarQueryParams.Add("only", parameterToString(*r.only, ""))
 	}
