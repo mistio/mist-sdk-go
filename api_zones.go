@@ -329,11 +329,10 @@ func (a *ZonesApiService) DeleteRecordExecute(r ApiDeleteRecordRequest) (*http.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cloud == nil {
-		return nil, reportError("cloud is required and must be specified")
-	}
 
-	localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	if r.cloud != nil {
+		localVarQueryParams.Add("cloud", parameterToString(*r.cloud, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
