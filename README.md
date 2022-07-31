@@ -122,11 +122,13 @@ Class | Method | HTTP request | Description
 *NetworksApi* | [**EditNetwork**](docs/NetworksApi.md#editnetwork) | **Put** /api/v2/networks/{network} | Edit network
 *NetworksApi* | [**GetNetwork**](docs/NetworksApi.md#getnetwork) | **Get** /api/v2/networks/{network} | Get network
 *NetworksApi* | [**ListNetworks**](docs/NetworksApi.md#listnetworks) | **Get** /api/v2/networks | List networks
+*OrgsApi* | [**CreateOrg**](docs/OrgsApi.md#createorg) | **Post** /api/v2/orgs | Create org
 *OrgsApi* | [**GetMember**](docs/OrgsApi.md#getmember) | **Get** /api/v2/orgs/{org}/members/{member} | Get Org
 *OrgsApi* | [**GetOrg**](docs/OrgsApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *OrgsApi* | [**ListOrgMembers**](docs/OrgsApi.md#listorgmembers) | **Get** /api/v2/orgs/{org}/members | List org members
 *OrgsApi* | [**ListOrgTeams**](docs/OrgsApi.md#listorgteams) | **Get** /api/v2/orgs/{org}/teams | List org teams
 *OrgsApi* | [**ListOrgs**](docs/OrgsApi.md#listorgs) | **Get** /api/v2/orgs | List orgs
+*OrgsApi* | [**UpdateOrg**](docs/OrgsApi.md#updateorg) | **Patch** /api/v2/orgs/{org} | 
 *RulesApi* | [**AddRule**](docs/RulesApi.md#addrule) | **Post** /api/v2/rules | Add rule
 *RulesApi* | [**DeleteRule**](docs/RulesApi.md#deleterule) | **Delete** /api/v2/rules/{rule} | Delete rule
 *RulesApi* | [**EditRule**](docs/RulesApi.md#editrule) | **Post** /api/v2/rules/{rule} | Update rule
@@ -220,6 +222,7 @@ Class | Method | HTTP request | Description
  - [CreateNetworkRequest](docs/CreateNetworkRequest.md)
  - [CreateNetworkResponse](docs/CreateNetworkResponse.md)
  - [CreateRecordRequest](docs/CreateRecordRequest.md)
+ - [CreateOrganizationRequest](docs/CreateOrganizationRequest.md)
  - [CreateSecretRequest](docs/CreateSecretRequest.md)
  - [CreateVolumeRequest](docs/CreateVolumeRequest.md)
  - [CreateVolumeResponse](docs/CreateVolumeResponse.md)
@@ -346,6 +349,7 @@ Class | Method | HTTP request | Description
  - [Org](docs/Org.md)
  - [OrgResourcesSummary](docs/OrgResourcesSummary.md)
  - [OtherCloudRequest](docs/OtherCloudRequest.md)
+ - [PatchOrganizationRequest](docs/PatchOrganizationRequest.md)
  - [PostDeployScript](docs/PostDeployScript.md)
  - [Query](docs/Query.md)
  - [RackspaceCloudRequest](docs/RackspaceCloudRequest.md)

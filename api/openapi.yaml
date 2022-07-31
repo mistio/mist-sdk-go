@@ -5150,6 +5150,35 @@ paths:
       - clouds_count
       - teams_count
       - last_active
+    post:
+      description: Create an organization.
+      operationId: create-org
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrganizationRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Org'
+          description: Organization created
+        "400":
+          description: Bad Request
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - ""
+      - CookieAuth:
+        - ""
+      summary: Create org
+      tags:
+      - orgs
     x-cli-ignore: true
   /api/v2/orgs/{org}:
     get:
@@ -5229,6 +5258,40 @@ paths:
       - clouds_count
       - total_machine_count
       - last_active
+    patch:
+      description: Update organization
+      operationId: update-org
+      parameters:
+      - description: Organization id
+        example: my-org
+        explode: false
+        in: path
+        name: org
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOrganizationRequest'
+      responses:
+        "200":
+          description: Organization updated succesfully
+        "400":
+          description: Bad Request
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - ""
+      - CookieAuth:
+        - ""
+      tags:
+      - orgs
     x-cli-ignore: true
   /api/v2/orgs/{org}/members:
     get:
@@ -11200,6 +11263,50 @@ components:
           type: string
         policy:
           type: object
+      type: object
+    CreateOrganizationRequest:
+      example:
+        name: name
+        super_org: false
+      properties:
+        name:
+          type: string
+        super_org:
+          default: false
+          type: boolean
+      required:
+      - name
+      type: object
+    PatchOrganizationRequest:
+      example:
+        vault_secret_id: vault_secret_id
+        vault_token: vault_token
+        name: name
+        vault_address: vault_address
+        vault_secrets_engine_path: vault_secrets_engine_path
+        vault_role_id: vault_role_id
+      properties:
+        name:
+          description: The organization's name
+          type: string
+        vault_address:
+          description: The Vault's url
+          type: string
+        vault_secrets_engine_path:
+          description: Vault secrets engine path
+          type: string
+        vault_token:
+          description: The Vault token that will be used to authenticate against the
+            new Vault. Either token or both role_id and secret_id must be specified
+          type: string
+        vault_role_id:
+          description: The Vault RoleID to use for approle authentication. Either
+            token or both role_id and secret_id must be specified
+          type: string
+        vault_secret_id:
+          description: The Vault SecretID to use for approle authentication. Either
+            token or both role_id and secret_id must be specified
+          type: string
       type: object
     GetJobResponse:
       example:
