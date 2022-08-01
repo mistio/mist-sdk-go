@@ -67,7 +67,6 @@ docs/CreateMachineResponseOneOf1.md
 docs/CreateNetworkRequest.md
 docs/CreateNetworkResponse.md
 docs/CreateRecordRequest.md
-docs/CreateOrganizationRequest.md
 docs/CreateSecretRequest.md
 docs/CreateVolumeRequest.md
 docs/CreateVolumeResponse.md
@@ -202,7 +201,6 @@ docs/Org.md
 docs/OrgResourcesSummary.md
 docs/OrgsApi.md
 docs/OtherCloudRequest.md
-docs/PatchOrganizationRequest.md
 docs/PostDeployScript.md
 docs/Query.md
 docs/RackspaceCloudRequest.md
@@ -298,7 +296,6 @@ model_create_machine_response_one_of_1.go
 model_create_network_request.go
 model_create_network_response.go
 model_create_record_request.go
-model_create_organization_request.go
 model_create_secret_request.go
 model_create_volume_request.go
 model_create_volume_response.go
@@ -425,7 +422,6 @@ model_openstack_net.go
 model_org.go
 model_org_resources_summary.go
 model_other_cloud_request.go
-model_patch_organization_request.go
 model_post_deploy_script.go
 model_query.go
 model_rackspace_cloud_request.go
