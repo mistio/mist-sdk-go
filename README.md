@@ -127,12 +127,13 @@ Class | Method | HTTP request | Description
 *NetworksApi* | [**EditNetwork**](docs/NetworksApi.md#editnetwork) | **Put** /api/v2/networks/{network} | Edit network
 *NetworksApi* | [**GetNetwork**](docs/NetworksApi.md#getnetwork) | **Get** /api/v2/networks/{network} | Get network
 *NetworksApi* | [**ListNetworks**](docs/NetworksApi.md#listnetworks) | **Get** /api/v2/networks | List networks
-*OrgsApi* | [**CreateOrg**](docs/OrgsApi.md#createorg) | **Post** /api/v2/orgs | Create Organization
+*OrgsApi* | [**CreateOrg**](docs/OrgsApi.md#createorg) | **Post** /api/v2/orgs | Create org
 *OrgsApi* | [**GetMember**](docs/OrgsApi.md#getmember) | **Get** /api/v2/orgs/{org}/members/{member} | Get Org
 *OrgsApi* | [**GetOrg**](docs/OrgsApi.md#getorg) | **Get** /api/v2/orgs/{org} | Get Org
 *OrgsApi* | [**ListOrgMembers**](docs/OrgsApi.md#listorgmembers) | **Get** /api/v2/orgs/{org}/members | List org members
 *OrgsApi* | [**ListOrgTeams**](docs/OrgsApi.md#listorgteams) | **Get** /api/v2/orgs/{org}/teams | List org teams
 *OrgsApi* | [**ListOrgs**](docs/OrgsApi.md#listorgs) | **Get** /api/v2/orgs | List orgs
+*OrgsApi* | [**UpdateOrg**](docs/OrgsApi.md#updateorg) | **Patch** /api/v2/orgs/{org} | 
 *RulesApi* | [**AddRule**](docs/RulesApi.md#addrule) | **Post** /api/v2/rules | Add rule
 *RulesApi* | [**DeleteRule**](docs/RulesApi.md#deleterule) | **Delete** /api/v2/rules/{rule} | Delete rule
 *RulesApi* | [**EditRule**](docs/RulesApi.md#editrule) | **Post** /api/v2/rules/{rule} | Update rule
@@ -172,10 +173,14 @@ Class | Method | HTTP request | Description
 *VolumesApi* | [**EditVolume**](docs/VolumesApi.md#editvolume) | **Put** /api/v2/volumes/{volume} | Edit volume
 *VolumesApi* | [**GetVolume**](docs/VolumesApi.md#getvolume) | **Get** /api/v2/volumes/{volume} | Get volume
 *VolumesApi* | [**ListVolumes**](docs/VolumesApi.md#listvolumes) | **Get** /api/v2/volumes | List volumes
+*ZonesApi* | [**CreateRecord**](docs/ZonesApi.md#createrecord) | **Post** /api/v2/zones/{zone}/records | Create record
 *ZonesApi* | [**CreateZone**](docs/ZonesApi.md#createzone) | **Post** /api/v2/zones | Create zone
+*ZonesApi* | [**DeleteRecord**](docs/ZonesApi.md#deleterecord) | **Delete** /api/v2/zones/{zone}/records/{record} | Delete record
 *ZonesApi* | [**DeleteZone**](docs/ZonesApi.md#deletezone) | **Delete** /api/v2/zones/{zone} | Delete zone
 *ZonesApi* | [**EditZone**](docs/ZonesApi.md#editzone) | **Put** /api/v2/zones/{zone} | Edit zone
+*ZonesApi* | [**GetRecord**](docs/ZonesApi.md#getrecord) | **Get** /api/v2/zones/{zone}/records/{record} | Get record
 *ZonesApi* | [**GetZone**](docs/ZonesApi.md#getzone) | **Get** /api/v2/zones/{zone} | Get zone
+*ZonesApi* | [**ListRecords**](docs/ZonesApi.md#listrecords) | **Get** /api/v2/zones/{zone}/records | List records
 *ZonesApi* | [**ListZones**](docs/ZonesApi.md#listzones) | **Get** /api/v2/zones | List zones
 
 
@@ -224,6 +229,8 @@ Class | Method | HTTP request | Description
  - [CreateNetworkRequest](docs/CreateNetworkRequest.md)
  - [CreateNetworkResponse](docs/CreateNetworkResponse.md)
  - [CreateOrgRequest](docs/CreateOrgRequest.md)
+ - [CreateOrganizationRequest](docs/CreateOrganizationRequest.md)
+ - [CreateRecordRequest](docs/CreateRecordRequest.md)
  - [CreateSecretRequest](docs/CreateSecretRequest.md)
  - [CreateVolumeRequest](docs/CreateVolumeRequest.md)
  - [CreateVolumeResponse](docs/CreateVolumeResponse.md)
@@ -268,6 +275,7 @@ Class | Method | HTTP request | Description
  - [GetNetworkResponse](docs/GetNetworkResponse.md)
  - [GetOrgMemberResponse](docs/GetOrgMemberResponse.md)
  - [GetOrgResponse](docs/GetOrgResponse.md)
+ - [GetRecordResponse](docs/GetRecordResponse.md)
  - [GetRuleResponse](docs/GetRuleResponse.md)
  - [GetScheduleResponse](docs/GetScheduleResponse.md)
  - [GetScriptResponse](docs/GetScriptResponse.md)
@@ -316,6 +324,7 @@ Class | Method | HTTP request | Description
  - [ListOrgMembersResponse](docs/ListOrgMembersResponse.md)
  - [ListOrgTeamsResponse](docs/ListOrgTeamsResponse.md)
  - [ListOrgsResponse](docs/ListOrgsResponse.md)
+ - [ListRecordsResponse](docs/ListRecordsResponse.md)
  - [ListRulesResponse](docs/ListRulesResponse.md)
  - [ListSchedulesResponse](docs/ListSchedulesResponse.md)
  - [ListScriptsResponse](docs/ListScriptsResponse.md)
@@ -348,11 +357,13 @@ Class | Method | HTTP request | Description
  - [Org](docs/Org.md)
  - [OrgResourcesSummary](docs/OrgResourcesSummary.md)
  - [OtherCloudRequest](docs/OtherCloudRequest.md)
+ - [PatchOrganizationRequest](docs/PatchOrganizationRequest.md)
  - [PostDeployScript](docs/PostDeployScript.md)
  - [Query](docs/Query.md)
  - [RackspaceCloudRequest](docs/RackspaceCloudRequest.md)
  - [RackspaceCredentials](docs/RackspaceCredentials.md)
  - [RangeVector](docs/RangeVector.md)
+ - [Record](docs/Record.md)
  - [Resource](docs/Resource.md)
  - [ResourceCount](docs/ResourceCount.md)
  - [ResourceSelector](docs/ResourceSelector.md)

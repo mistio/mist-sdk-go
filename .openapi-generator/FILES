@@ -71,6 +71,8 @@ docs/CreateMachineResponseOneOf1.md
 docs/CreateNetworkRequest.md
 docs/CreateNetworkResponse.md
 docs/CreateOrgRequest.md
+docs/CreateOrganizationRequest.md
+docs/CreateRecordRequest.md
 docs/CreateSecretRequest.md
 docs/CreateVolumeRequest.md
 docs/CreateVolumeResponse.md
@@ -116,6 +118,7 @@ docs/GetMachineResponse.md
 docs/GetNetworkResponse.md
 docs/GetOrgMemberResponse.md
 docs/GetOrgResponse.md
+docs/GetRecordResponse.md
 docs/GetRuleResponse.md
 docs/GetScheduleResponse.md
 docs/GetScriptResponse.md
@@ -167,6 +170,7 @@ docs/ListNetworksResponse.md
 docs/ListOrgMembersResponse.md
 docs/ListOrgTeamsResponse.md
 docs/ListOrgsResponse.md
+docs/ListRecordsResponse.md
 docs/ListRulesResponse.md
 docs/ListSchedulesResponse.md
 docs/ListScriptsResponse.md
@@ -203,11 +207,13 @@ docs/Org.md
 docs/OrgResourcesSummary.md
 docs/OrgsApi.md
 docs/OtherCloudRequest.md
+docs/PatchOrganizationRequest.md
 docs/PostDeployScript.md
 docs/Query.md
 docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
 docs/RangeVector.md
+docs/Record.md
 docs/Resource.md
 docs/ResourceCount.md
 docs/ResourceSelector.md
@@ -299,6 +305,8 @@ model_create_machine_response_one_of_1.go
 model_create_network_request.go
 model_create_network_response.go
 model_create_org_request.go
+model_create_organization_request.go
+model_create_record_request.go
 model_create_secret_request.go
 model_create_volume_request.go
 model_create_volume_response.go
@@ -343,6 +351,7 @@ model_get_machine_response.go
 model_get_network_response.go
 model_get_org_member_response.go
 model_get_org_response.go
+model_get_record_response.go
 model_get_rule_response.go
 model_get_schedule_response.go
 model_get_script_response.go
@@ -389,6 +398,7 @@ model_list_networks_response.go
 model_list_org_members_response.go
 model_list_org_teams_response.go
 model_list_orgs_response.go
+model_list_records_response.go
 model_list_rules_response.go
 model_list_schedules_response.go
 model_list_scripts_response.go
@@ -423,11 +433,13 @@ model_openstack_net.go
 model_org.go
 model_org_resources_summary.go
 model_other_cloud_request.go
+model_patch_organization_request.go
 model_post_deploy_script.go
 model_query.go
 model_rackspace_cloud_request.go
 model_rackspace_credentials.go
 model_range_vector.go
+model_record.go
 model_resource.go
 model_resource_count.go
 model_resource_selector.go
