@@ -18,7 +18,9 @@ import (
 // AmazonCredentials struct for AmazonCredentials
 type AmazonCredentials struct {
 	Region AmazonRegions `json:"region"`
+	// Your AWS API key
 	Apikey string `json:"apikey"`
+	// Your AWS API secret
 	Apisecret string `json:"apisecret"`
 }
 

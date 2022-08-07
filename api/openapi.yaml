@@ -7218,9 +7218,11 @@ components:
         region:
           $ref: '#/components/schemas/AmazonRegions'
         apikey:
+          description: Your AWS API key
           title: API key
           type: string
         apisecret:
+          description: Your AWS API secret
           title: API secret
           type: string
       required:
@@ -7252,6 +7254,7 @@ components:
       - cn-northwest-1
       - us-gov-west-1
       - us-gov-east-1
+      title: Region
       type: string
       x-enumNames:
       - Tokyo
