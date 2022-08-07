@@ -18,15 +18,15 @@ import (
 // OtherCloudRequest struct for OtherCloudRequest
 type OtherCloudRequest struct {
 	Provider string `json:"provider"`
-	Credentials map[string]interface{} `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Credentials []map[string]interface{} `json:"credentials"`
+	Features *OtherCloudFeatures `json:"features,omitempty"`
 }
 
 // NewOtherCloudRequest instantiates a new OtherCloudRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOtherCloudRequest(provider string, credentials map[string]interface{}) *OtherCloudRequest {
+func NewOtherCloudRequest(provider string, credentials []map[string]interface{}) *OtherCloudRequest {
 	this := OtherCloudRequest{}
 	this.Provider = provider
 	this.Credentials = credentials
@@ -66,9 +66,9 @@ func (o *OtherCloudRequest) SetProvider(v string) {
 }
 
 // GetCredentials returns the Credentials field value
-func (o *OtherCloudRequest) GetCredentials() map[string]interface{} {
+func (o *OtherCloudRequest) GetCredentials() []map[string]interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret []map[string]interface{}
 		return ret
 	}
 
@@ -77,7 +77,7 @@ func (o *OtherCloudRequest) GetCredentials() map[string]interface{} {
 
 // GetCredentialsOk returns a tuple with the Credentials field value
 // and a boolean to check if the value has been set.
-func (o *OtherCloudRequest) GetCredentialsOk() (map[string]interface{}, bool) {
+func (o *OtherCloudRequest) GetCredentialsOk() ([]map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -85,14 +85,14 @@ func (o *OtherCloudRequest) GetCredentialsOk() (map[string]interface{}, bool) {
 }
 
 // SetCredentials sets field value
-func (o *OtherCloudRequest) SetCredentials(v map[string]interface{}) {
+func (o *OtherCloudRequest) SetCredentials(v []map[string]interface{}) {
 	o.Credentials = v
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *OtherCloudRequest) GetFeatures() CloudFeatures {
+func (o *OtherCloudRequest) GetFeatures() OtherCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret OtherCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *OtherCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OtherCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *OtherCloudRequest) GetFeaturesOk() (*OtherCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *OtherCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *OtherCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given OtherCloudFeatures and assigns it to the Features field.
+func (o *OtherCloudRequest) SetFeatures(v OtherCloudFeatures) {
 	o.Features = &v
 }
 

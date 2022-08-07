@@ -31,7 +31,6 @@ const (
 	DIGITALOCEAN SupportedProviders = "digitalocean"
 	LINODE SupportedProviders = "linode"
 	RACKSPACE SupportedProviders = "rackspace"
-	MAXIHOST SupportedProviders = "maxihost"
 	VULTR SupportedProviders = "vultr"
 	OPENSTACK SupportedProviders = "openstack"
 	ONAPP SupportedProviders = "onapp"
@@ -58,7 +57,6 @@ var AllowedSupportedProvidersEnumValues = []SupportedProviders{
 	"digitalocean",
 	"linode",
 	"rackspace",
-	"maxihost",
 	"vultr",
 	"openstack",
 	"onapp",

@@ -6676,7 +6676,6 @@ components:
       - digitalocean
       - linode
       - rackspace
-      - maxihost
       - vultr
       - openstack
       - onapp
@@ -6929,6 +6928,7 @@ components:
         - features:
             compute: true
             container: false
+            objectstorage: true
             dns: false
           provider: null
           name: name
@@ -6940,6 +6940,7 @@ components:
         - features:
             compute: true
             container: false
+            objectstorage: true
             dns: false
           provider: null
           name: name
@@ -6967,6 +6968,7 @@ components:
           features:
             compute: true
             container: false
+            objectstorage: true
             dns: false
           provider: null
           name: name
@@ -6991,6 +6993,7 @@ components:
         features:
           compute: true
           container: false
+          objectstorage: true
           dns: false
         provider: null
         name: name
@@ -7031,7 +7034,6 @@ components:
             ibm: '#/components/schemas/IbmCloudRequest'
             linode: '#/components/schemas/LinodeCloudRequest'
             rackspace: '#/components/schemas/RackspaceCloudRequest'
-            maxihost: '#/components/schemas/MaxihostCloudRequest'
             vultr: '#/components/schemas/VultrCloudRequest'
             openstack: '#/components/schemas/OpenstackCloudRequest'
             onapp: '#/components/schemas/OnappCloudRequest'
@@ -7055,7 +7057,6 @@ components:
         - $ref: '#/components/schemas/DigitaloceanCloudRequest'
         - $ref: '#/components/schemas/LinodeCloudRequest'
         - $ref: '#/components/schemas/RackspaceCloudRequest'
-        - $ref: '#/components/schemas/MaxihostCloudRequest'
         - $ref: '#/components/schemas/VultrCloudRequest'
         - $ref: '#/components/schemas/OpenstackCloudRequest'
         - $ref: '#/components/schemas/OnappCloudRequest'
@@ -7074,6 +7075,7 @@ components:
           projectId: projectId
           privateKey: privateKey
           email: email
+      title: Add cloud
     EditCloudRequest_anyOf:
       additionalProperties: false
       properties:
@@ -7104,7 +7106,6 @@ components:
               ibm: '#/components/schemas/IbmCloudRequest'
               linode: '#/components/schemas/LinodeCloudRequest'
               rackspace: '#/components/schemas/RackspaceCloudRequest'
-              maxihost: '#/components/schemas/MaxihostCloudRequest'
               vultr: '#/components/schemas/VultrCloudRequest'
               openstack: '#/components/schemas/OpenstackCloudRequest'
               onapp: '#/components/schemas/OnappCloudRequest'
@@ -7128,7 +7129,6 @@ components:
           - $ref: '#/components/schemas/DigitaloceanCloudRequest'
           - $ref: '#/components/schemas/LinodeCloudRequest'
           - $ref: '#/components/schemas/RackspaceCloudRequest'
-          - $ref: '#/components/schemas/MaxihostCloudRequest'
           - $ref: '#/components/schemas/VultrCloudRequest'
           - $ref: '#/components/schemas/OpenstackCloudRequest'
           - $ref: '#/components/schemas/OnappCloudRequest'
@@ -7143,24 +7143,61 @@ components:
       example:
         name: my-renamed-cloud
     CloudFeatures:
-      description: The cloud features that should be enabled
       example:
         compute: true
         container: false
+        objectstorage: true
         dns: false
       properties:
         compute:
           default: true
-          description: Enable compute services
+          title: Compute
           type: boolean
         dns:
           default: false
-          description: Enable DNS services
+          title: DNS
           type: boolean
         container:
           default: false
-          description: Enable container services
+          title: Container
           type: boolean
+        objectstorage:
+          title: Object storage
+          type: boolean
+      type: object
+    ComputeFeature:
+      default: true
+      title: Compute
+      type: boolean
+    DnsFeature:
+      default: false
+      title: DNS
+      type: boolean
+    ContainerFeature:
+      default: false
+      title: Container
+      type: boolean
+    ObjectStorageFeature:
+      title: Object storage
+      type: boolean
+    AmazonCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+        dns:
+          default: false
+          title: DNS
+          type: boolean
+        container:
+          default: false
+          title: Container
+          type: boolean
+        objectstorage:
+          title: Object storage
+          type: boolean
+      title: Features
       type: object
     AmazonCloudRequest:
       properties:
@@ -7171,21 +7208,21 @@ components:
         credentials:
           $ref: '#/components/schemas/AmazonCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/AmazonCloudFeatures'
       required:
       - credentials
       - provider
       type: object
     AmazonCredentials:
       properties:
-        apikey:
-          description: Your AWS API key
-          type: string
-        apisecret:
-          description: Your AWS API secret
-          type: string
         region:
           $ref: '#/components/schemas/AmazonRegions'
+        apikey:
+          title: API key
+          type: string
+        apisecret:
+          title: API secret
+          type: string
       required:
       - apikey
       - apisecret
@@ -7239,6 +7276,14 @@ components:
       - Ningxia
       - GovCloud (US)
       - GovCloud (US-East)
+    AzureCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
+      type: object
     AzureCloudRequest:
       properties:
         provider:
@@ -7248,7 +7293,7 @@ components:
         credentials:
           $ref: '#/components/schemas/AzureCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/AzureCloudFeatures'
       required:
       - credentials
       - provider
@@ -7257,21 +7302,44 @@ components:
       properties:
         tenantId:
           description: Your Azure tenant ID
+          title: Tenant ID
           type: string
         subscriptionId:
           description: Your Azure subscription ID
+          title: Subcription ID
           type: string
         key:
           description: Your Azure key
+          title: Key
           type: string
         secret:
           description: Your Azure secret
+          title: Secret
           type: string
       required:
       - key
       - secret
       - subscriptionId
       - tenantId
+      type: object
+    GoogleCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+        dns:
+          default: false
+          title: DNS
+          type: boolean
+        container:
+          default: false
+          title: Container
+          type: boolean
+        objectstorage:
+          title: Object storage
+          type: boolean
+      title: Features
       type: object
     GoogleCloudRequest:
       properties:
@@ -7282,7 +7350,7 @@ components:
         credentials:
           $ref: '#/components/schemas/GoogleCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/GoogleCloudFeatures'
       required:
       - credentials
       - provider
@@ -7291,12 +7359,15 @@ components:
       properties:
         projectId:
           description: The Id of your GCP project
+          title: Project ID
           type: string
         privateKey:
           description: Your GCP private key
+          title: Private key
           type: string
         email:
           description: Your GCP client email
+          title: Email
           type: string
       required:
       - email
@@ -7312,21 +7383,32 @@ components:
         credentials:
           $ref: '#/components/schemas/AlibabaCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/AlibabaCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    AlibabaCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
       type: object
     AlibabaCredentials:
       properties:
         apikey:
           description: Your Alibaba Cloud API key
+          title: API key
           type: string
         apisecret:
           description: Your Alibaba Cloud API secret
+          title: API secret
           type: string
         region:
           description: Your Alibaba Cloud region
+          title: Region
           type: string
       required:
       - apikey
@@ -7342,18 +7424,28 @@ components:
         credentials:
           $ref: '#/components/schemas/CloudSigmaCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/CloudSigmaCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    CloudSigmaCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
       type: object
     CloudSigmaCredentials:
       properties:
         username:
           description: Your CloudSigma username
+          title: Username
           type: string
         password:
           description: Your CloudSigma password
+          title: Password
           type: string
         region:
           description: Your CloudSigma region
@@ -7372,16 +7464,25 @@ components:
         credentials:
           $ref: '#/components/schemas/EquinixCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/EquinixCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    EquinixCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
       type: object
     EquinixCredentials:
       additionalProperties: false
       properties:
         apikey:
           description: Your Equinix Metal API key
+          title: API key
           type: string
       required:
       - apikey
@@ -7395,25 +7496,39 @@ components:
         credentials:
           $ref: '#/components/schemas/IbmCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/IbmCloudFeatures'
       required:
       - credentials
       - provider
       type: object
+    IbmCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
+      type: object
     IbmCredentials:
       properties:
-        provider:
-          enum:
-          - ibm
-          type: string
         username:
           description: Your IBM Cloud username
+          title: Username
           type: string
         apikey:
           description: Your IBM Cloud API key
+          title: API key
           type: string
       required:
       - apikey
+      type: object
+    DigitaloceanCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
       type: object
     DigitaloceanCloudRequest:
       properties:
@@ -7424,7 +7539,7 @@ components:
         credentials:
           $ref: '#/components/schemas/DigitaloceanCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/DigitaloceanCloudFeatures'
       required:
       - credentials
       - provider
@@ -7433,6 +7548,7 @@ components:
       properties:
         token:
           description: Your DigitalOcean API token
+          title: Token
           type: string
       required:
       - token
@@ -7446,15 +7562,24 @@ components:
         credentials:
           $ref: '#/components/schemas/LinodeCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/LinodeCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    LinodeCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
       type: object
     LinodeCredentials:
       properties:
         apikey:
           description: You Linode API key
+          title: API key
           type: string
       required:
       - apikey
@@ -7468,52 +7593,37 @@ components:
         credentials:
           $ref: '#/components/schemas/RackspaceCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/RackspaceCloudFeatures'
       required:
       - credentials
       - provider
       type: object
+    RackspaceCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
+      type: object
     RackspaceCredentials:
       properties:
-        provider:
-          enum:
-          - rackspace
-          type: string
         username:
           description: Your Rackspace Cloud username
+          title: Username
           type: string
         apikey:
           description: Your Rackspace Cloud API key
+          title: API key
           type: string
         region:
           description: Your Rackspace Cloud region
+          title: Region
           type: string
       required:
       - apikey
       - region
       - username
-      type: object
-    MaxihostCloudRequest:
-      properties:
-        provider:
-          enum:
-          - maxihost
-          type: string
-        credentials:
-          $ref: '#/components/schemas/MaxihostCredentials'
-        features:
-          $ref: '#/components/schemas/CloudFeatures'
-      required:
-      - credentials
-      - provider
-      type: object
-    MaxihostCredentials:
-      properties:
-        token:
-          description: Your Maxihost API token
-          type: string
-      required:
-      - token
       type: object
     VultrCloudRequest:
       properties:
@@ -7524,15 +7634,24 @@ components:
         credentials:
           $ref: '#/components/schemas/VultrCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/VultrCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    VultrCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
       type: object
     VultrCredentials:
       properties:
         apikey:
           description: Your Vultr API key
+          title: API key
           type: string
       required:
       - apikey
@@ -7546,10 +7665,21 @@ components:
         credentials:
           $ref: '#/components/schemas/OpenstackCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/OpenstackCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    OpenstackCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+        objectstorage:
+          title: Object storage
+          type: boolean
+      title: Features
       type: object
     OpenstackCredentials:
       properties:
@@ -7581,10 +7711,18 @@ components:
         credentials:
           $ref: '#/components/schemas/OnappCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/OnappCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    OnappCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
       type: object
     OnappCredentials:
       properties:
@@ -7612,10 +7750,18 @@ components:
         credentials:
           $ref: '#/components/schemas/VsphereCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/VsphereCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    VsphereCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
       type: object
     VsphereCredentials:
       properties:
@@ -7643,15 +7789,27 @@ components:
           - kvm
           type: string
         credentials:
-          type: object
+          items:
+            type: object
+          type: array
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/KvmCloudFeatures'
       required:
       - credentials
       - provider
       type: object
-    KvmCredentials:
+    KvmCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
       type: object
+    KvmCredentials:
+      items:
+        type: object
+      type: array
     LxdCloudRequest:
       properties:
         provider:
@@ -7661,10 +7819,18 @@ components:
         credentials:
           $ref: '#/components/schemas/LxdCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/LxdCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    LxdCloudFeatures:
+      properties:
+        container:
+          default: false
+          title: Container
+          type: boolean
+      title: Features
       type: object
     LxdCredentials:
       properties:
@@ -7705,10 +7871,18 @@ components:
         credentials:
           $ref: '#/components/schemas/DockerCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/DockerCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    DockerCloudFeatures:
+      properties:
+        container:
+          default: false
+          title: Container
+          type: boolean
+      title: Features
       type: object
     DockerCredentials:
       properties:
@@ -7749,10 +7923,18 @@ components:
         credentials:
           $ref: '#/components/schemas/KubernetesCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/KubevirtCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    KubevirtCloudFeatures:
+      properties:
+        container:
+          default: false
+          title: Container
+          type: boolean
+      title: Features
       type: object
     KubernetesCloudRequest:
       properties:
@@ -7763,10 +7945,18 @@ components:
         credentials:
           $ref: '#/components/schemas/KubernetesCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/KubernetesCloudFeatures'
       required:
       - credentials
       - provider
+      type: object
+    KubernetesCloudFeatures:
+      properties:
+        container:
+          default: false
+          title: Container
+          type: boolean
+      title: Features
       type: object
     OpenshiftCloudRequest:
       properties:
@@ -7777,7 +7967,7 @@ components:
         credentials:
           $ref: '#/components/schemas/OpenshiftCredentials'
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/KubernetesCloudFeatures'
       required:
       - credentials
       - provider
@@ -7842,15 +8032,27 @@ components:
           - other
           type: string
         credentials:
-          type: object
+          items:
+            type: object
+          type: array
         features:
-          $ref: '#/components/schemas/CloudFeatures'
+          $ref: '#/components/schemas/OtherCloudFeatures'
       required:
       - credentials
       - provider
       type: object
-    OtherCredentials:
+    OtherCloudFeatures:
+      properties:
+        compute:
+          default: true
+          title: Compute
+          type: boolean
+      title: Features
       type: object
+    OtherCredentials:
+      items:
+        type: object
+      type: array
     ListClustersResponse:
       example:
         data:
@@ -11187,18 +11389,6 @@ components:
       - logs
       example: logs
       type: string
-    CreateOrgRequest:
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        logo:
-          format: data-url
-          type: string
-      type: object
-    CreateOrgResponse:
-      type: object
     BillingInfo:
       type: object
     ResourceCount:
@@ -11695,15 +11885,19 @@ components:
     CreateOrganizationRequest:
       example:
         name: name
-        super_org: false
+        description: description
+        logo: logo
       properties:
         name:
           type: string
-        super_org:
-          default: false
-          type: boolean
+        description:
+          type: string
+        logo:
+          format: data-url
+          type: string
       required:
       - name
+      title: Create organization
       type: object
     PatchOrganizationRequest:
       example:
@@ -12334,7 +12528,7 @@ components:
     AddCloudRequest_allOf:
       properties:
         name:
-          description: The name of the cloud to add
+          title: Name
           type: string
         provider:
           $ref: '#/components/schemas/SupportedProviders'

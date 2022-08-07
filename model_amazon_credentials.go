@@ -17,22 +17,20 @@ import (
 
 // AmazonCredentials struct for AmazonCredentials
 type AmazonCredentials struct {
-	// Your AWS API key
-	Apikey string `json:"apikey"`
-	// Your AWS API secret
-	Apisecret string `json:"apisecret"`
 	Region AmazonRegions `json:"region"`
+	Apikey string `json:"apikey"`
+	Apisecret string `json:"apisecret"`
 }
 
 // NewAmazonCredentials instantiates a new AmazonCredentials object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmazonCredentials(apikey string, apisecret string, region AmazonRegions) *AmazonCredentials {
+func NewAmazonCredentials(region AmazonRegions, apikey string, apisecret string) *AmazonCredentials {
 	this := AmazonCredentials{}
+	this.Region = region
 	this.Apikey = apikey
 	this.Apisecret = apisecret
-	this.Region = region
 	return &this
 }
 
@@ -42,6 +40,30 @@ func NewAmazonCredentials(apikey string, apisecret string, region AmazonRegions)
 func NewAmazonCredentialsWithDefaults() *AmazonCredentials {
 	this := AmazonCredentials{}
 	return &this
+}
+
+// GetRegion returns the Region field value
+func (o *AmazonCredentials) GetRegion() AmazonRegions {
+	if o == nil {
+		var ret AmazonRegions
+		return ret
+	}
+
+	return o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value
+// and a boolean to check if the value has been set.
+func (o *AmazonCredentials) GetRegionOk() (*AmazonRegions, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Region, true
+}
+
+// SetRegion sets field value
+func (o *AmazonCredentials) SetRegion(v AmazonRegions) {
+	o.Region = v
 }
 
 // GetApikey returns the Apikey field value
@@ -92,40 +114,16 @@ func (o *AmazonCredentials) SetApisecret(v string) {
 	o.Apisecret = v
 }
 
-// GetRegion returns the Region field value
-func (o *AmazonCredentials) GetRegion() AmazonRegions {
-	if o == nil {
-		var ret AmazonRegions
-		return ret
-	}
-
-	return o.Region
-}
-
-// GetRegionOk returns a tuple with the Region field value
-// and a boolean to check if the value has been set.
-func (o *AmazonCredentials) GetRegionOk() (*AmazonRegions, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Region, true
-}
-
-// SetRegion sets field value
-func (o *AmazonCredentials) SetRegion(v AmazonRegions) {
-	o.Region = v
-}
-
 func (o AmazonCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["region"] = o.Region
+	}
 	if true {
 		toSerialize["apikey"] = o.Apikey
 	}
 	if true {
 		toSerialize["apisecret"] = o.Apisecret
-	}
-	if true {
-		toSerialize["region"] = o.Region
 	}
 	return json.Marshal(toSerialize)
 }

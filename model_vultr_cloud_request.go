@@ -19,7 +19,7 @@ import (
 type VultrCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials VultrCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *VultrCloudFeatures `json:"features,omitempty"`
 }
 
 // NewVultrCloudRequest instantiates a new VultrCloudRequest object
@@ -90,9 +90,9 @@ func (o *VultrCloudRequest) SetCredentials(v VultrCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *VultrCloudRequest) GetFeatures() CloudFeatures {
+func (o *VultrCloudRequest) GetFeatures() VultrCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret VultrCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *VultrCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VultrCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *VultrCloudRequest) GetFeaturesOk() (*VultrCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *VultrCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *VultrCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given VultrCloudFeatures and assigns it to the Features field.
+func (o *VultrCloudRequest) SetFeatures(v VultrCloudFeatures) {
 	o.Features = &v
 }
 

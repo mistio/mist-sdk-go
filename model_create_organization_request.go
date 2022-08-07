@@ -18,7 +18,8 @@ import (
 // CreateOrganizationRequest struct for CreateOrganizationRequest
 type CreateOrganizationRequest struct {
 	Name string `json:"name"`
-	SuperOrg *bool `json:"super_org,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Logo *string `json:"logo,omitempty"`
 }
 
 // NewCreateOrganizationRequest instantiates a new CreateOrganizationRequest object
@@ -28,8 +29,6 @@ type CreateOrganizationRequest struct {
 func NewCreateOrganizationRequest(name string) *CreateOrganizationRequest {
 	this := CreateOrganizationRequest{}
 	this.Name = name
-	var superOrg bool = false
-	this.SuperOrg = &superOrg
 	return &this
 }
 
@@ -38,8 +37,6 @@ func NewCreateOrganizationRequest(name string) *CreateOrganizationRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateOrganizationRequestWithDefaults() *CreateOrganizationRequest {
 	this := CreateOrganizationRequest{}
-	var superOrg bool = false
-	this.SuperOrg = &superOrg
 	return &this
 }
 
@@ -67,36 +64,68 @@ func (o *CreateOrganizationRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetSuperOrg returns the SuperOrg field value if set, zero value otherwise.
-func (o *CreateOrganizationRequest) GetSuperOrg() bool {
-	if o == nil || o.SuperOrg == nil {
-		var ret bool
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CreateOrganizationRequest) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
 		return ret
 	}
-	return *o.SuperOrg
+	return *o.Description
 }
 
-// GetSuperOrgOk returns a tuple with the SuperOrg field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationRequest) GetSuperOrgOk() (*bool, bool) {
-	if o == nil || o.SuperOrg == nil {
+func (o *CreateOrganizationRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
 		return nil, false
 	}
-	return o.SuperOrg, true
+	return o.Description, true
 }
 
-// HasSuperOrg returns a boolean if a field has been set.
-func (o *CreateOrganizationRequest) HasSuperOrg() bool {
-	if o != nil && o.SuperOrg != nil {
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateOrganizationRequest) HasDescription() bool {
+	if o != nil && o.Description != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSuperOrg gets a reference to the given bool and assigns it to the SuperOrg field.
-func (o *CreateOrganizationRequest) SetSuperOrg(v bool) {
-	o.SuperOrg = &v
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CreateOrganizationRequest) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetLogo returns the Logo field value if set, zero value otherwise.
+func (o *CreateOrganizationRequest) GetLogo() string {
+	if o == nil || o.Logo == nil {
+		var ret string
+		return ret
+	}
+	return *o.Logo
+}
+
+// GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOrganizationRequest) GetLogoOk() (*string, bool) {
+	if o == nil || o.Logo == nil {
+		return nil, false
+	}
+	return o.Logo, true
+}
+
+// HasLogo returns a boolean if a field has been set.
+func (o *CreateOrganizationRequest) HasLogo() bool {
+	if o != nil && o.Logo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLogo gets a reference to the given string and assigns it to the Logo field.
+func (o *CreateOrganizationRequest) SetLogo(v string) {
+	o.Logo = &v
 }
 
 func (o CreateOrganizationRequest) MarshalJSON() ([]byte, error) {
@@ -104,8 +133,11 @@ func (o CreateOrganizationRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.SuperOrg != nil {
-		toSerialize["super_org"] = o.SuperOrg
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
+	if o.Logo != nil {
+		toSerialize["logo"] = o.Logo
 	}
 	return json.Marshal(toSerialize)
 }

@@ -19,7 +19,7 @@ import (
 type GoogleCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials GoogleCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *GoogleCloudFeatures `json:"features,omitempty"`
 }
 
 // NewGoogleCloudRequest instantiates a new GoogleCloudRequest object
@@ -90,9 +90,9 @@ func (o *GoogleCloudRequest) SetCredentials(v GoogleCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *GoogleCloudRequest) GetFeatures() CloudFeatures {
+func (o *GoogleCloudRequest) GetFeatures() GoogleCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret GoogleCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *GoogleCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GoogleCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *GoogleCloudRequest) GetFeaturesOk() (*GoogleCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *GoogleCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *GoogleCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given GoogleCloudFeatures and assigns it to the Features field.
+func (o *GoogleCloudRequest) SetFeatures(v GoogleCloudFeatures) {
 	o.Features = &v
 }
 

@@ -15,20 +15,20 @@ import (
 	"encoding/json"
 )
 
-// CloudFeatures struct for CloudFeatures
-type CloudFeatures struct {
+// GoogleCloudFeatures struct for GoogleCloudFeatures
+type GoogleCloudFeatures struct {
 	Compute *bool `json:"compute,omitempty"`
 	Dns *bool `json:"dns,omitempty"`
 	Container *bool `json:"container,omitempty"`
 	Objectstorage *bool `json:"objectstorage,omitempty"`
 }
 
-// NewCloudFeatures instantiates a new CloudFeatures object
+// NewGoogleCloudFeatures instantiates a new GoogleCloudFeatures object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudFeatures() *CloudFeatures {
-	this := CloudFeatures{}
+func NewGoogleCloudFeatures() *GoogleCloudFeatures {
+	this := GoogleCloudFeatures{}
 	var compute bool = true
 	this.Compute = &compute
 	var dns bool = false
@@ -38,11 +38,11 @@ func NewCloudFeatures() *CloudFeatures {
 	return &this
 }
 
-// NewCloudFeaturesWithDefaults instantiates a new CloudFeatures object
+// NewGoogleCloudFeaturesWithDefaults instantiates a new GoogleCloudFeatures object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCloudFeaturesWithDefaults() *CloudFeatures {
-	this := CloudFeatures{}
+func NewGoogleCloudFeaturesWithDefaults() *GoogleCloudFeatures {
+	this := GoogleCloudFeatures{}
 	var compute bool = true
 	this.Compute = &compute
 	var dns bool = false
@@ -53,7 +53,7 @@ func NewCloudFeaturesWithDefaults() *CloudFeatures {
 }
 
 // GetCompute returns the Compute field value if set, zero value otherwise.
-func (o *CloudFeatures) GetCompute() bool {
+func (o *GoogleCloudFeatures) GetCompute() bool {
 	if o == nil || o.Compute == nil {
 		var ret bool
 		return ret
@@ -63,7 +63,7 @@ func (o *CloudFeatures) GetCompute() bool {
 
 // GetComputeOk returns a tuple with the Compute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudFeatures) GetComputeOk() (*bool, bool) {
+func (o *GoogleCloudFeatures) GetComputeOk() (*bool, bool) {
 	if o == nil || o.Compute == nil {
 		return nil, false
 	}
@@ -71,7 +71,7 @@ func (o *CloudFeatures) GetComputeOk() (*bool, bool) {
 }
 
 // HasCompute returns a boolean if a field has been set.
-func (o *CloudFeatures) HasCompute() bool {
+func (o *GoogleCloudFeatures) HasCompute() bool {
 	if o != nil && o.Compute != nil {
 		return true
 	}
@@ -80,12 +80,12 @@ func (o *CloudFeatures) HasCompute() bool {
 }
 
 // SetCompute gets a reference to the given bool and assigns it to the Compute field.
-func (o *CloudFeatures) SetCompute(v bool) {
+func (o *GoogleCloudFeatures) SetCompute(v bool) {
 	o.Compute = &v
 }
 
 // GetDns returns the Dns field value if set, zero value otherwise.
-func (o *CloudFeatures) GetDns() bool {
+func (o *GoogleCloudFeatures) GetDns() bool {
 	if o == nil || o.Dns == nil {
 		var ret bool
 		return ret
@@ -95,7 +95,7 @@ func (o *CloudFeatures) GetDns() bool {
 
 // GetDnsOk returns a tuple with the Dns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudFeatures) GetDnsOk() (*bool, bool) {
+func (o *GoogleCloudFeatures) GetDnsOk() (*bool, bool) {
 	if o == nil || o.Dns == nil {
 		return nil, false
 	}
@@ -103,7 +103,7 @@ func (o *CloudFeatures) GetDnsOk() (*bool, bool) {
 }
 
 // HasDns returns a boolean if a field has been set.
-func (o *CloudFeatures) HasDns() bool {
+func (o *GoogleCloudFeatures) HasDns() bool {
 	if o != nil && o.Dns != nil {
 		return true
 	}
@@ -112,12 +112,12 @@ func (o *CloudFeatures) HasDns() bool {
 }
 
 // SetDns gets a reference to the given bool and assigns it to the Dns field.
-func (o *CloudFeatures) SetDns(v bool) {
+func (o *GoogleCloudFeatures) SetDns(v bool) {
 	o.Dns = &v
 }
 
 // GetContainer returns the Container field value if set, zero value otherwise.
-func (o *CloudFeatures) GetContainer() bool {
+func (o *GoogleCloudFeatures) GetContainer() bool {
 	if o == nil || o.Container == nil {
 		var ret bool
 		return ret
@@ -127,7 +127,7 @@ func (o *CloudFeatures) GetContainer() bool {
 
 // GetContainerOk returns a tuple with the Container field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudFeatures) GetContainerOk() (*bool, bool) {
+func (o *GoogleCloudFeatures) GetContainerOk() (*bool, bool) {
 	if o == nil || o.Container == nil {
 		return nil, false
 	}
@@ -135,7 +135,7 @@ func (o *CloudFeatures) GetContainerOk() (*bool, bool) {
 }
 
 // HasContainer returns a boolean if a field has been set.
-func (o *CloudFeatures) HasContainer() bool {
+func (o *GoogleCloudFeatures) HasContainer() bool {
 	if o != nil && o.Container != nil {
 		return true
 	}
@@ -144,12 +144,12 @@ func (o *CloudFeatures) HasContainer() bool {
 }
 
 // SetContainer gets a reference to the given bool and assigns it to the Container field.
-func (o *CloudFeatures) SetContainer(v bool) {
+func (o *GoogleCloudFeatures) SetContainer(v bool) {
 	o.Container = &v
 }
 
 // GetObjectstorage returns the Objectstorage field value if set, zero value otherwise.
-func (o *CloudFeatures) GetObjectstorage() bool {
+func (o *GoogleCloudFeatures) GetObjectstorage() bool {
 	if o == nil || o.Objectstorage == nil {
 		var ret bool
 		return ret
@@ -159,7 +159,7 @@ func (o *CloudFeatures) GetObjectstorage() bool {
 
 // GetObjectstorageOk returns a tuple with the Objectstorage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudFeatures) GetObjectstorageOk() (*bool, bool) {
+func (o *GoogleCloudFeatures) GetObjectstorageOk() (*bool, bool) {
 	if o == nil || o.Objectstorage == nil {
 		return nil, false
 	}
@@ -167,7 +167,7 @@ func (o *CloudFeatures) GetObjectstorageOk() (*bool, bool) {
 }
 
 // HasObjectstorage returns a boolean if a field has been set.
-func (o *CloudFeatures) HasObjectstorage() bool {
+func (o *GoogleCloudFeatures) HasObjectstorage() bool {
 	if o != nil && o.Objectstorage != nil {
 		return true
 	}
@@ -176,11 +176,11 @@ func (o *CloudFeatures) HasObjectstorage() bool {
 }
 
 // SetObjectstorage gets a reference to the given bool and assigns it to the Objectstorage field.
-func (o *CloudFeatures) SetObjectstorage(v bool) {
+func (o *GoogleCloudFeatures) SetObjectstorage(v bool) {
 	o.Objectstorage = &v
 }
 
-func (o CloudFeatures) MarshalJSON() ([]byte, error) {
+func (o GoogleCloudFeatures) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Compute != nil {
 		toSerialize["compute"] = o.Compute
@@ -197,38 +197,38 @@ func (o CloudFeatures) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableCloudFeatures struct {
-	value *CloudFeatures
+type NullableGoogleCloudFeatures struct {
+	value *GoogleCloudFeatures
 	isSet bool
 }
 
-func (v NullableCloudFeatures) Get() *CloudFeatures {
+func (v NullableGoogleCloudFeatures) Get() *GoogleCloudFeatures {
 	return v.value
 }
 
-func (v *NullableCloudFeatures) Set(val *CloudFeatures) {
+func (v *NullableGoogleCloudFeatures) Set(val *GoogleCloudFeatures) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCloudFeatures) IsSet() bool {
+func (v NullableGoogleCloudFeatures) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCloudFeatures) Unset() {
+func (v *NullableGoogleCloudFeatures) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCloudFeatures(val *CloudFeatures) *NullableCloudFeatures {
-	return &NullableCloudFeatures{value: val, isSet: true}
+func NewNullableGoogleCloudFeatures(val *GoogleCloudFeatures) *NullableGoogleCloudFeatures {
+	return &NullableGoogleCloudFeatures{value: val, isSet: true}
 }
 
-func (v NullableCloudFeatures) MarshalJSON() ([]byte, error) {
+func (v NullableGoogleCloudFeatures) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCloudFeatures) UnmarshalJSON(src []byte) error {
+func (v *NullableGoogleCloudFeatures) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

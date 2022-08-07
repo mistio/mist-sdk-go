@@ -19,7 +19,7 @@ import (
 type EquinixCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials EquinixCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *EquinixCloudFeatures `json:"features,omitempty"`
 }
 
 // NewEquinixCloudRequest instantiates a new EquinixCloudRequest object
@@ -90,9 +90,9 @@ func (o *EquinixCloudRequest) SetCredentials(v EquinixCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *EquinixCloudRequest) GetFeatures() CloudFeatures {
+func (o *EquinixCloudRequest) GetFeatures() EquinixCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret EquinixCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *EquinixCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EquinixCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *EquinixCloudRequest) GetFeaturesOk() (*EquinixCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *EquinixCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *EquinixCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given EquinixCloudFeatures and assigns it to the Features field.
+func (o *EquinixCloudRequest) SetFeatures(v EquinixCloudFeatures) {
 	o.Features = &v
 }
 

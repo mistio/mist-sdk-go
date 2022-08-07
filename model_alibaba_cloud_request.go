@@ -19,7 +19,7 @@ import (
 type AlibabaCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials AlibabaCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *AlibabaCloudFeatures `json:"features,omitempty"`
 }
 
 // NewAlibabaCloudRequest instantiates a new AlibabaCloudRequest object
@@ -90,9 +90,9 @@ func (o *AlibabaCloudRequest) SetCredentials(v AlibabaCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *AlibabaCloudRequest) GetFeatures() CloudFeatures {
+func (o *AlibabaCloudRequest) GetFeatures() AlibabaCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret AlibabaCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *AlibabaCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlibabaCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *AlibabaCloudRequest) GetFeaturesOk() (*AlibabaCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *AlibabaCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *AlibabaCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given AlibabaCloudFeatures and assigns it to the Features field.
+func (o *AlibabaCloudRequest) SetFeatures(v AlibabaCloudFeatures) {
 	o.Features = &v
 }
 

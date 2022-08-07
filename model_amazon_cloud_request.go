@@ -19,7 +19,7 @@ import (
 type AmazonCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials AmazonCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *AmazonCloudFeatures `json:"features,omitempty"`
 }
 
 // NewAmazonCloudRequest instantiates a new AmazonCloudRequest object
@@ -90,9 +90,9 @@ func (o *AmazonCloudRequest) SetCredentials(v AmazonCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *AmazonCloudRequest) GetFeatures() CloudFeatures {
+func (o *AmazonCloudRequest) GetFeatures() AmazonCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret AmazonCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *AmazonCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AmazonCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *AmazonCloudRequest) GetFeaturesOk() (*AmazonCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *AmazonCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *AmazonCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given AmazonCloudFeatures and assigns it to the Features field.
+func (o *AmazonCloudRequest) SetFeatures(v AmazonCloudFeatures) {
 	o.Features = &v
 }
 

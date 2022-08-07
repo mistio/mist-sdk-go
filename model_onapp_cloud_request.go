@@ -19,7 +19,7 @@ import (
 type OnappCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials OnappCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *OnappCloudFeatures `json:"features,omitempty"`
 }
 
 // NewOnappCloudRequest instantiates a new OnappCloudRequest object
@@ -90,9 +90,9 @@ func (o *OnappCloudRequest) SetCredentials(v OnappCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *OnappCloudRequest) GetFeatures() CloudFeatures {
+func (o *OnappCloudRequest) GetFeatures() OnappCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret OnappCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *OnappCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OnappCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *OnappCloudRequest) GetFeaturesOk() (*OnappCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *OnappCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *OnappCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given OnappCloudFeatures and assigns it to the Features field.
+func (o *OnappCloudRequest) SetFeatures(v OnappCloudFeatures) {
 	o.Features = &v
 }
 
