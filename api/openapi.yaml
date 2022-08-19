@@ -11885,19 +11885,78 @@ components:
         policy:
           type: object
       type: object
+    AppRoleAuth:
+      properties:
+        role_id:
+          description: The Vault RoleID to use for approle authentication. Either
+            token or both role_id and secret_id must be specified
+          title: Role ID
+          type: string
+        secret_id:
+          description: The Vault SecretID to use for approle authentication. Either
+            token or both role_id and secret_id must be specified
+          title: Secret ID
+          type: string
+      type: object
+    TokenAuth:
+      properties:
+        token:
+          description: The Vault token that will be used to authenticate against the
+            new Vault. Either token or both role_id and secret_id must be specified
+          title: Token
+          type: string
+      type: object
+    ExternalVault:
+      allOf:
+      - $ref: '#/components/schemas/ExternalVault_allOf'
+      - discriminator:
+          mapping:
+            AppRole: '#/components/schemas/AppRoleAuth'
+            Token: '#/components/schemas/TokenAuth'
+          propertyName: auth_method
+        oneOf:
+        - $ref: '#/components/schemas/AppRoleAuth'
+        - $ref: '#/components/schemas/TokenAuth'
+    DefaultVault:
+      type: object
     CreateOrganizationRequest:
       example:
         name: name
         description: description
         logo: logo
+        vault: ""
       properties:
         name:
+          title: Name
           type: string
         description:
+          title: Description
           type: string
         logo:
           format: data-url
+          title: Logo
           type: string
+        vault:
+          allOf:
+          - properties:
+              external:
+                default: false
+                description: Use an external instance of Hashicorp Vault for storing
+                  cloud credentials and SSH private keys.
+                enum:
+                - true
+                - false
+                title: External Vault
+                type: boolean
+            type: object
+          - discriminator:
+              mapping:
+                "true": '#/components/schemas/ExternalVault'
+                "false": '#/components/schemas/DefaultVault'
+              propertyName: external
+            oneOf:
+            - $ref: '#/components/schemas/ExternalVault'
+            - $ref: '#/components/schemas/DefaultVault'
       required:
       - name
       title: Create organization
@@ -12143,6 +12202,23 @@ components:
         data:
           $ref: '#/components/schemas/Datapoints_data'
       type: object
+    KeyValuePairs:
+      properties:
+        secret:
+          description: Secret data
+          items:
+            $ref: '#/components/schemas/KeyValuePairs_secret'
+          minItems: 2
+          type: array
+      type: object
+    SecretString:
+      properties:
+        secret:
+          title: Secret data
+          type: string
+      required:
+      - secret
+      type: object
     ListSecretsResponse:
       example:
         data:
@@ -12208,20 +12284,19 @@ components:
           type: string
       type: object
     CreateSecretRequest:
-      example:
-        name: name
-        secret: "{}"
-      properties:
-        name:
-          description: The name of the secret. This is equivalent to the path the
-            secret will be stored in Vault
-          type: string
-        secret:
-          type: object
+      allOf:
+      - $ref: '#/components/schemas/Create_secret'
+      - discriminator:
+          mapping:
+            "true": '#/components/schemas/SecretString'
+            "false": '#/components/schemas/KeyValuePairs'
+          propertyName: json
+        oneOf:
+        - $ref: '#/components/schemas/KeyValuePairs'
+        - $ref: '#/components/schemas/SecretString'
       required:
       - name
       - secret
-      type: object
     EditSecretRequest:
       example:
         secret: "{}"
@@ -12793,6 +12868,23 @@ components:
       required:
       - dry
       - generate
+    ExternalVault_allOf:
+      properties:
+        address:
+          description: The URL of your Hashicorp Vault instance
+          title: Vault address
+          type: string
+        secrets_engine_path:
+          description: Vault secrets engine path
+          title: Secrets engine
+          type: string
+        auth_method:
+          enum:
+          - AppRole
+          - Token
+          title: Authentication method
+          type: string
+      type: object
     Datapoints_data:
       example:
         result:
@@ -12806,6 +12898,29 @@ components:
           items:
             $ref: '#/components/schemas/Vector'
           type: array
+      type: object
+    KeyValuePairs_secret:
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+      - key
+      type: object
+    Create_secret:
+      properties:
+        name:
+          description: The full path of the secret
+          type: string
+        json:
+          default: false
+          enum:
+          - false
+          - true
+          title: JSON
+          type: boolean
+      title: Create secret
       type: object
     ListTagsResponse_data:
       example:

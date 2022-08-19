@@ -45,6 +45,7 @@ docs/AmazonCloudRequest.md
 docs/AmazonCredentials.md
 docs/AmazonNet.md
 docs/AmazonRegions.md
+docs/AppRoleAuth.md
 docs/AuthApi.md
 docs/AuthInfo.md
 docs/AuthInfoData.md
@@ -76,6 +77,7 @@ docs/CreateNetworkRequest.md
 docs/CreateNetworkResponse.md
 docs/CreateOrganizationRequest.md
 docs/CreateRecordRequest.md
+docs/CreateSecret.md
 docs/CreateSecretRequest.md
 docs/CreateVolumeRequest.md
 docs/CreateVolumeResponse.md
@@ -111,6 +113,8 @@ docs/EquinixMetalNet.md
 docs/EquinixMetalNetIpAddresses.md
 docs/Expiration.md
 docs/ExpirationNotify.md
+docs/ExternalVault.md
+docs/ExternalVaultAllOf.md
 docs/FieldSelector.md
 docs/Frequency.md
 docs/GetCloudResponse.md
@@ -156,6 +160,8 @@ docs/KVMNetNetworks.md
 docs/Key.md
 docs/KeyMachineAssociation.md
 docs/KeyMachineDisassociation.md
+docs/KeyValuePairs.md
+docs/KeyValuePairsSecret.md
 docs/KeysApi.md
 docs/KubernetesCloudFeatures.md
 docs/KubernetesCloudRequest.md
@@ -244,6 +250,7 @@ docs/SchedulesApi.md
 docs/Script.md
 docs/ScriptsApi.md
 docs/Secret.md
+docs/SecretString.md
 docs/SecretsApi.md
 docs/Selector.md
 docs/Size.md
@@ -257,6 +264,7 @@ docs/TaggableResourceTypes.md
 docs/TaggingSelector.md
 docs/TagsApi.md
 docs/Team.md
+docs/TokenAuth.md
 docs/TriggerAfter.md
 docs/User.md
 docs/UsersApi.md
@@ -299,6 +307,7 @@ model_amazon_cloud_request.go
 model_amazon_credentials.go
 model_amazon_net.go
 model_amazon_regions.go
+model_app_role_auth.go
 model_auth_info.go
 model_auth_info_data.go
 model_azure_cloud_features.go
@@ -327,6 +336,7 @@ model_create_network_request.go
 model_create_network_response.go
 model_create_organization_request.go
 model_create_record_request.go
+model_create_secret.go
 model_create_secret_request.go
 model_create_volume_request.go
 model_create_volume_response.go
@@ -361,6 +371,8 @@ model_equinix_metal_net.go
 model_equinix_metal_net_ip_addresses.go
 model_expiration.go
 model_expiration_notify.go
+model_external_vault.go
+model_external_vault_all_of.go
 model_field_selector.go
 model_frequency.go
 model_get_cloud_response.go
@@ -402,6 +414,8 @@ model_job.go
 model_key.go
 model_key_machine_association.go
 model_key_machine_disassociation.go
+model_key_value_pairs.go
+model_key_value_pairs_secret.go
 model_kubernetes_cloud_features.go
 model_kubernetes_cloud_request.go
 model_kubernetes_credentials.go
@@ -484,6 +498,7 @@ model_scale_nodepool_request.go
 model_schedule.go
 model_script.go
 model_secret.go
+model_secret_string.go
 model_selector.go
 model_size.go
 model_supported_providers.go
@@ -493,6 +508,7 @@ model_tag_resources_request_operations.go
 model_taggable_resource_types.go
 model_tagging_selector.go
 model_team.go
+model_token_auth.go
 model_trigger_after.go
 model_user.go
 model_v_sphere_extra.go

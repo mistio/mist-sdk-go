@@ -20,6 +20,7 @@ type CreateOrganizationRequest struct {
 	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
 	Logo *string `json:"logo,omitempty"`
+	Vault NullableInterface{} `json:"vault,omitempty"`
 }
 
 // NewCreateOrganizationRequest instantiates a new CreateOrganizationRequest object
@@ -128,6 +129,48 @@ func (o *CreateOrganizationRequest) SetLogo(v string) {
 	o.Logo = &v
 }
 
+// GetVault returns the Vault field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateOrganizationRequest) GetVault() interface{} {
+	if o == nil || o.Vault.Get() == nil {
+		var ret interface{}
+		return ret
+	}
+	return *o.Vault.Get()
+}
+
+// GetVaultOk returns a tuple with the Vault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateOrganizationRequest) GetVaultOk() (*interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Vault.Get(), o.Vault.IsSet()
+}
+
+// HasVault returns a boolean if a field has been set.
+func (o *CreateOrganizationRequest) HasVault() bool {
+	if o != nil && o.Vault.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVault gets a reference to the given NullableInterface{} and assigns it to the Vault field.
+func (o *CreateOrganizationRequest) SetVault(v interface{}) {
+	o.Vault.Set(&v)
+}
+// SetVaultNil sets the value for Vault to be an explicit nil
+func (o *CreateOrganizationRequest) SetVaultNil() {
+	o.Vault.Set(nil)
+}
+
+// UnsetVault ensures that no value is present for Vault, not even an explicit nil
+func (o *CreateOrganizationRequest) UnsetVault() {
+	o.Vault.Unset()
+}
+
 func (o CreateOrganizationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -138,6 +181,9 @@ func (o CreateOrganizationRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Logo != nil {
 		toSerialize["logo"] = o.Logo
+	}
+	if o.Vault.IsSet() {
+		toSerialize["vault"] = o.Vault.Get()
 	}
 	return json.Marshal(toSerialize)
 }
