@@ -3359,6 +3359,270 @@ paths:
       summary: Edit zone
       tags:
       - zones
+  /api/v2/zones/{zone}/records:
+    get:
+      description: Lists all DNS records for a particular zone. READ permission required
+        on zone and record.
+      operationId: list-records
+      parameters:
+      - example: my-zone
+        explode: false
+        in: path
+        name: zone
+        required: true
+        schema:
+          type: string
+        style: simple
+      - example: my-cloud
+        explode: true
+        in: query
+        name: cloud
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Only return these fields
+        examples:
+          Only return id:
+            value: id
+          Return id, name & owned_by:
+            value: "id,name,owned_by"
+        explode: true
+        in: query
+        name: only
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Dereference foreign keys
+        examples:
+          '(default) Automatically replace all foreign key ids with referenced resource name ':
+            value: auto
+          Do not dereference anything, just return ids:
+            value: none
+          Dereference cloud id to cloud provider:
+            value: cloud:provider
+          Dereference cloud by provider, creator by email, owner by name:
+            value: "cloud:provider, creator:email, owned_by:name"
+        explode: true
+        in: query
+        name: deref
+        required: false
+        schema:
+          default: auto
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRecordsResponse'
+          description: List records response
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - read:zone
+        - read:record
+      - CookieAuth:
+        - read:zone
+        - read:record
+      summary: List records
+      tags:
+      - zones
+      x-cli-table-default:
+      - name
+      - cloud
+      x-cli-table-extended:
+      - id
+      - name
+      - cloud
+      - external_id
+    post:
+      description: Creates a new record under a specific zone. CREATE_RESOURCES permission
+        required on cloud. CREATE_RECORDS permission required on zone
+      operationId: create-record
+      parameters:
+      - example: my-zone
+        explode: false
+        in: path
+        name: zone
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRecordRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateRecordResponse'
+          description: Zone provisioning started
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - read:zone
+        - read:cloud
+        - create_resources:cloud
+        - create_records:zone
+      - CookieAuth:
+        - read:zone
+        - read:cloud
+        - create_resources:cloud
+        - create_records:zone
+      summary: Create record
+      tags:
+      - zones
+  /api/v2/zones/{zone}/records/{record}:
+    delete:
+      description: Deletes a specific DNS record under a zone. REMOVE permission required
+        on zone.
+      operationId: delete-record
+      parameters:
+      - example: my-zone
+        explode: false
+        in: path
+        name: zone
+        required: true
+        schema:
+          type: string
+        style: simple
+      - example: my-zone
+        explode: false
+        in: path
+        name: record
+        required: true
+        schema:
+          type: string
+        style: simple
+      - example: my-cloud
+        explode: true
+        in: query
+        name: cloud
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          description: Record successfully deleted
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Record not found
+      security:
+      - ApiKeyAuth:
+        - remove:zone
+      - CookieAuth:
+        - remove:zone
+      summary: Delete record
+      tags:
+      - zones
+    get:
+      description: Get details about target record
+      operationId: get-record
+      parameters:
+      - example: my-zone
+        explode: false
+        in: path
+        name: zone
+        required: true
+        schema:
+          type: string
+        style: simple
+      - example: my-record
+        explode: false
+        in: path
+        name: record
+        required: true
+        schema:
+          type: string
+        style: simple
+      - example: my-cloud
+        explode: true
+        in: query
+        name: cloud
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Only return these fields
+        examples:
+          Only return id:
+            value: id
+          Return id, name & owned_by:
+            value: "id,name,owned_by"
+        explode: true
+        in: query
+        name: only
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Dereference foreign keys
+        examples:
+          '(default) Automatically replace all foreign key ids with referenced resource name ':
+            value: auto
+          Do not dereference anything, just return ids:
+            value: none
+          Dereference cloud id to cloud provider:
+            value: cloud:provider
+          Dereference cloud by provider, creator by email, owner by name:
+            value: "cloud:provider, creator:email, owned_by:name"
+        explode: true
+        in: query
+        name: deref
+        required: false
+        schema:
+          default: auto
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRecordResponse'
+          description: Record returned successfully
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+        "404":
+          description: Record not found
+      security:
+      - ApiKeyAuth:
+        - read:zone
+        - read:cloud
+      - CookieAuth:
+        - read:zone
+        - read:cloud
+      summary: Get record
+      tags:
+      - zones
+      x-cli-table-default:
+      - name
+      - cloud
+      x-cli-table-extended:
+      - id
+      - name
+      - cloud
+      - external_id
+      - owned_by
+      - created_by
   /api/v2/keys:
     get:
       description: List keys owned by the active org. READ permission required on
@@ -4972,6 +5236,35 @@ paths:
       - clouds_count
       - teams_count
       - last_active
+    post:
+      description: Create an organization.
+      operationId: create-org
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrganizationRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Org'
+          description: Organization created
+        "400":
+          description: Bad Request
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - ""
+      - CookieAuth:
+        - ""
+      summary: Create org
+      tags:
+      - orgs
     x-cli-ignore: true
   /api/v2/orgs/{org}:
     get:
@@ -4986,6 +5279,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: Return total number for each org specific resource
+        explode: true
+        in: query
+        name: summary
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       - description: Only return these fields
         examples:
           Only return id:
@@ -5042,6 +5344,40 @@ paths:
       - clouds_count
       - total_machine_count
       - last_active
+    patch:
+      description: Update organization
+      operationId: update-org
+      parameters:
+      - description: Organization id
+        example: my-org
+        explode: false
+        in: path
+        name: org
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchOrganizationRequest'
+      responses:
+        "200":
+          description: Organization updated succesfully
+        "400":
+          description: Bad Request
+        "401":
+          description: Authentication failed
+        "403":
+          description: You are not authorized to perform this action
+      security:
+      - ApiKeyAuth:
+        - ""
+      - CookieAuth:
+        - ""
+      tags:
+      - orgs
     x-cli-ignore: true
   /api/v2/orgs/{org}/members:
     get:
@@ -9476,6 +9812,33 @@ components:
       - $ref: '#/components/schemas/CreateMachineResponse_oneOf'
       - $ref: '#/components/schemas/CreateMachineResponse_oneOf_1'
       type: object
+    CreateRecordRequest:
+      example:
+        name: my-record
+        value: 123.23.23.2
+      properties:
+        name:
+          type: string
+        cloud:
+          type: string
+        value:
+          type: string
+        type:
+          default: A
+          enum:
+          - A
+          - AAAA
+          - CNAME
+          type: string
+        ttl:
+          default: 300
+          type: integer
+      required:
+      - name
+      - value
+      type: object
+    CreateRecordResponse:
+      type: object
     ListZonesResponse:
       example:
         data:
@@ -9547,6 +9910,82 @@ components:
           type: string
         tags:
           type: object
+        created_by:
+          type: string
+        owned_by:
+          type: string
+      type: object
+    ListRecordsResponse:
+      example:
+        data:
+        - cloud: cloud
+          zone: zone
+          name: name
+          external_id: external_id
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+        - cloud: cloud
+          zone: zone
+          name: name
+          external_id: external_id
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+        meta:
+          total: 0
+          start: 1
+          sort: sort
+          returned: 6
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Record'
+          type: array
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
+      type: object
+    GetRecordResponse:
+      example:
+        data:
+          cloud: cloud
+          zone: zone
+          name: name
+          external_id: external_id
+          owned_by: owned_by
+          id: id
+          created_by: created_by
+        meta:
+          total: 0
+          start: 1
+          sort: sort
+          returned: 6
+      properties:
+        data:
+          $ref: '#/components/schemas/Record'
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
+      type: object
+    Record:
+      example:
+        cloud: cloud
+        zone: zone
+        name: name
+        external_id: external_id
+        owned_by: owned_by
+        id: id
+        created_by: created_by
+      properties:
+        id:
+          type: string
+        external_id:
+          type: string
+        name:
+          type: string
+        cloud:
+          type: string
+        zone:
+          type: string
         created_by:
           type: string
         owned_by:
@@ -10486,27 +10925,102 @@ components:
         query:
           $ref: '#/components/schemas/Query'
       type: object
+    BillingInfo:
+      type: object
+    ResourceCount:
+      example:
+        total: 0
+      properties:
+        total:
+          type: integer
+      type: object
     ListOrgsResponse:
       example:
         data:
-        - enterprise_plan: "{}"
-          total_machine_count: total_machine_count
-          selected_plan: selected_plan
-          created: true
+        - created: true
           name: name
+          resources:
+            images:
+              total: 0
+            teams:
+              total: 0
+            stacks:
+              total: 0
+            keys:
+              total: 0
+            buckets:
+              total: 0
+            templates:
+              total: 0
+            volumes:
+              total: 0
+            rules:
+              total: 0
+            clouds:
+              total: 0
+            networks:
+              total: 0
+            zones:
+              total: 0
+            secrets:
+              total: 0
+            tunnels:
+              total: 0
+            schedules:
+              total: 0
+            members:
+              total: 0
+            machines:
+              total: 0
+            scripts:
+              total: 0
+            clusters:
+              total: 0
           id: id
           last_active: last_active
-          clouds_count: clouds_count
-          teams_count: teams_count
-        - enterprise_plan: "{}"
-          total_machine_count: total_machine_count
-          selected_plan: selected_plan
-          created: true
+          billing: "{}"
+        - created: true
           name: name
+          resources:
+            images:
+              total: 0
+            teams:
+              total: 0
+            stacks:
+              total: 0
+            keys:
+              total: 0
+            buckets:
+              total: 0
+            templates:
+              total: 0
+            volumes:
+              total: 0
+            rules:
+              total: 0
+            clouds:
+              total: 0
+            networks:
+              total: 0
+            zones:
+              total: 0
+            secrets:
+              total: 0
+            tunnels:
+              total: 0
+            schedules:
+              total: 0
+            members:
+              total: 0
+            machines:
+              total: 0
+            scripts:
+              total: 0
+            clusters:
+              total: 0
           id: id
           last_active: last_active
-          clouds_count: clouds_count
-          teams_count: teams_count
+          billing: "{}"
         meta:
           total: 0
           start: 1
@@ -10523,15 +11037,48 @@ components:
     GetOrgResponse:
       example:
         data:
-          enterprise_plan: "{}"
-          total_machine_count: total_machine_count
-          selected_plan: selected_plan
           created: true
           name: name
+          resources:
+            images:
+              total: 0
+            teams:
+              total: 0
+            stacks:
+              total: 0
+            keys:
+              total: 0
+            buckets:
+              total: 0
+            templates:
+              total: 0
+            volumes:
+              total: 0
+            rules:
+              total: 0
+            clouds:
+              total: 0
+            networks:
+              total: 0
+            zones:
+              total: 0
+            secrets:
+              total: 0
+            tunnels:
+              total: 0
+            schedules:
+              total: 0
+            members:
+              total: 0
+            machines:
+              total: 0
+            scripts:
+              total: 0
+            clusters:
+              total: 0
           id: id
           last_active: last_active
-          clouds_count: clouds_count
-          teams_count: teams_count
+          billing: "{}"
         meta:
           total: 0
           start: 1
@@ -10545,34 +11092,137 @@ components:
       type: object
     Org:
       example:
-        enterprise_plan: "{}"
-        total_machine_count: total_machine_count
-        selected_plan: selected_plan
         created: true
         name: name
+        resources:
+          images:
+            total: 0
+          teams:
+            total: 0
+          stacks:
+            total: 0
+          keys:
+            total: 0
+          buckets:
+            total: 0
+          templates:
+            total: 0
+          volumes:
+            total: 0
+          rules:
+            total: 0
+          clouds:
+            total: 0
+          networks:
+            total: 0
+          zones:
+            total: 0
+          secrets:
+            total: 0
+          tunnels:
+            total: 0
+          schedules:
+            total: 0
+          members:
+            total: 0
+          machines:
+            total: 0
+          scripts:
+            total: 0
+          clusters:
+            total: 0
         id: id
         last_active: last_active
-        clouds_count: clouds_count
-        teams_count: teams_count
+        billing: "{}"
       properties:
         id:
           type: string
         name:
           type: string
-        clouds_count:
-          type: string
-        teams_count:
-          type: string
-        total_machine_count:
-          type: string
         created:
           type: boolean
-        enterprise_plan:
+        billing:
           type: object
-        selected_plan:
-          type: string
         last_active:
           type: string
+        resources:
+          $ref: '#/components/schemas/OrgResourcesSummary'
+      type: object
+    OrgResourcesSummary:
+      example:
+        images:
+          total: 0
+        teams:
+          total: 0
+        stacks:
+          total: 0
+        keys:
+          total: 0
+        buckets:
+          total: 0
+        templates:
+          total: 0
+        volumes:
+          total: 0
+        rules:
+          total: 0
+        clouds:
+          total: 0
+        networks:
+          total: 0
+        zones:
+          total: 0
+        secrets:
+          total: 0
+        tunnels:
+          total: 0
+        schedules:
+          total: 0
+        members:
+          total: 0
+        machines:
+          total: 0
+        scripts:
+          total: 0
+        clusters:
+          total: 0
+      properties:
+        clouds:
+          $ref: '#/components/schemas/ResourceCount'
+        stacks:
+          $ref: '#/components/schemas/ResourceCount'
+        clusters:
+          $ref: '#/components/schemas/ResourceCount'
+        machines:
+          $ref: '#/components/schemas/ResourceCount'
+        volumes:
+          $ref: '#/components/schemas/ResourceCount'
+        buckets:
+          $ref: '#/components/schemas/ResourceCount'
+        networks:
+          $ref: '#/components/schemas/ResourceCount'
+        zones:
+          $ref: '#/components/schemas/ResourceCount'
+        images:
+          $ref: '#/components/schemas/ResourceCount'
+        keys:
+          $ref: '#/components/schemas/ResourceCount'
+        scripts:
+          $ref: '#/components/schemas/ResourceCount'
+        templates:
+          $ref: '#/components/schemas/ResourceCount'
+        tunnels:
+          $ref: '#/components/schemas/ResourceCount'
+        secrets:
+          $ref: '#/components/schemas/ResourceCount'
+        schedules:
+          $ref: '#/components/schemas/ResourceCount'
+        rules:
+          $ref: '#/components/schemas/ResourceCount'
+        teams:
+          $ref: '#/components/schemas/ResourceCount'
+        members:
+          $ref: '#/components/schemas/ResourceCount'
       type: object
     ListOrgMembersResponse:
       example:
@@ -10755,6 +11405,50 @@ components:
           type: string
         policy:
           type: object
+      type: object
+    CreateOrganizationRequest:
+      example:
+        name: name
+        super_org: false
+      properties:
+        name:
+          type: string
+        super_org:
+          default: false
+          type: boolean
+      required:
+      - name
+      type: object
+    PatchOrganizationRequest:
+      example:
+        vault_secret_id: vault_secret_id
+        vault_token: vault_token
+        name: name
+        vault_address: vault_address
+        vault_secrets_engine_path: vault_secrets_engine_path
+        vault_role_id: vault_role_id
+      properties:
+        name:
+          description: The organization's name
+          type: string
+        vault_address:
+          description: The Vault's url
+          type: string
+        vault_secrets_engine_path:
+          description: Vault secrets engine path
+          type: string
+        vault_token:
+          description: The Vault token that will be used to authenticate against the
+            new Vault. Either token or both role_id and secret_id must be specified
+          type: string
+        vault_role_id:
+          description: The Vault RoleID to use for approle authentication. Either
+            token or both role_id and secret_id must be specified
+          type: string
+        vault_secret_id:
+          description: The Vault SecretID to use for approle authentication. Either
+            token or both role_id and secret_id must be specified
+          type: string
       type: object
     GetJobResponse:
       example:
@@ -11762,14 +12456,14 @@ x-cli-waiters:
     - 404
     operationId: get-job
     matchers:
-    - select: response.body#data.finished_at
-      test: notEqual
-      expected: 0
-      state: success
     - select: response.body#data.error
       test: notEqual
       expected: false
       state: failure
+    - select: response.body#data.finished_at
+      test: notEqual
+      expected: 0
+      state: success
     updates: "response.body#data.logs[:].action"
     after:
       create-machine:
