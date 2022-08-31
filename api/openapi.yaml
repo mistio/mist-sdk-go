@@ -7792,24 +7792,7 @@ components:
           - kvm
           type: string
         credentials:
-          items:
-            properties:
-              hosts:
-                items:
-                  properties:
-                    host:
-                      type: string
-                    alias:
-                      type: string
-                    key:
-                      type: string
-                  required:
-                  - host
-                  - key
-                  type: object
-                type: array
-            type: object
-          type: array
+          $ref: '#/components/schemas/KvmCredentials'
         features:
           $ref: '#/components/schemas/KvmCloudFeatures'
       required:
@@ -7825,24 +7808,12 @@ components:
       title: Features
       type: object
     KvmCredentials:
-      items:
-        properties:
-          hosts:
-            items:
-              properties:
-                host:
-                  type: string
-                alias:
-                  type: string
-                key:
-                  type: string
-              required:
-              - host
-              - key
-              type: object
-            type: array
-        type: object
-      type: array
+      properties:
+        hosts:
+          items:
+            $ref: '#/components/schemas/KvmCredentials_hosts'
+          type: array
+      type: object
     LxdCloudRequest:
       properties:
         provider:
@@ -8065,9 +8036,7 @@ components:
           - other
           type: string
         credentials:
-          items:
-            type: object
-          type: array
+          $ref: '#/components/schemas/OtherCredentials'
         features:
           $ref: '#/components/schemas/OtherCloudFeatures'
       required:
@@ -8083,9 +8052,12 @@ components:
       title: Features
       type: object
     OtherCredentials:
-      items:
-        type: object
-      type: array
+      properties:
+        hosts:
+          items:
+            $ref: '#/components/schemas/KvmCredentials_hosts'
+          type: array
+      type: object
     ListClustersResponse:
       example:
         data:
@@ -12643,6 +12615,23 @@ components:
       required:
       - name
       - provider
+      type: object
+    KvmCredentials_hosts:
+      properties:
+        host:
+          type: string
+        alias:
+          type: string
+        key:
+          type: string
+        user:
+          type: string
+        port:
+          default: "22"
+          type: string
+      required:
+      - host
+      - key
       type: object
     CreateClusterRequest_allOf_nodepools:
       properties:

@@ -171,6 +171,8 @@ docs/KubevirtCloudFeatures.md
 docs/KubevirtCloudRequest.md
 docs/KvmCloudFeatures.md
 docs/KvmCloudRequest.md
+docs/KvmCredentials.md
+docs/KvmCredentialsHosts.md
 docs/LXDExtra.md
 docs/LXDNet.md
 docs/LinodeCloudFeatures.md
@@ -227,6 +229,7 @@ docs/OrgResourcesSummary.md
 docs/OrgsApi.md
 docs/OtherCloudFeatures.md
 docs/OtherCloudRequest.md
+docs/OtherCredentials.md
 docs/PatchOrganizationRequest.md
 docs/PostDeployScript.md
 docs/Query.md
@@ -424,6 +427,8 @@ model_kubevirt_cloud_features.go
 model_kubevirt_cloud_request.go
 model_kvm_cloud_features.go
 model_kvm_cloud_request.go
+model_kvm_credentials.go
+model_kvm_credentials_hosts.go
 model_kvm_net.go
 model_kvm_net_networks.go
 model_linode_cloud_features.go
@@ -478,6 +483,7 @@ model_org.go
 model_org_resources_summary.go
 model_other_cloud_features.go
 model_other_cloud_request.go
+model_other_credentials.go
 model_patch_organization_request.go
 model_post_deploy_script.go
 model_query.go

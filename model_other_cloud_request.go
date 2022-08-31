@@ -18,7 +18,7 @@ import (
 // OtherCloudRequest struct for OtherCloudRequest
 type OtherCloudRequest struct {
 	Provider string `json:"provider"`
-	Credentials []map[string]interface{} `json:"credentials"`
+	Credentials OtherCredentials `json:"credentials"`
 	Features *OtherCloudFeatures `json:"features,omitempty"`
 }
 
@@ -26,7 +26,7 @@ type OtherCloudRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOtherCloudRequest(provider string, credentials []map[string]interface{}) *OtherCloudRequest {
+func NewOtherCloudRequest(provider string, credentials OtherCredentials) *OtherCloudRequest {
 	this := OtherCloudRequest{}
 	this.Provider = provider
 	this.Credentials = credentials
@@ -66,9 +66,9 @@ func (o *OtherCloudRequest) SetProvider(v string) {
 }
 
 // GetCredentials returns the Credentials field value
-func (o *OtherCloudRequest) GetCredentials() []map[string]interface{} {
+func (o *OtherCloudRequest) GetCredentials() OtherCredentials {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret OtherCredentials
 		return ret
 	}
 
@@ -77,15 +77,15 @@ func (o *OtherCloudRequest) GetCredentials() []map[string]interface{} {
 
 // GetCredentialsOk returns a tuple with the Credentials field value
 // and a boolean to check if the value has been set.
-func (o *OtherCloudRequest) GetCredentialsOk() ([]map[string]interface{}, bool) {
+func (o *OtherCloudRequest) GetCredentialsOk() (*OtherCredentials, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Credentials, true
+	return &o.Credentials, true
 }
 
 // SetCredentials sets field value
-func (o *OtherCloudRequest) SetCredentials(v []map[string]interface{}) {
+func (o *OtherCloudRequest) SetCredentials(v OtherCredentials) {
 	o.Credentials = v
 }
 

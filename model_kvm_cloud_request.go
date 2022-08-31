@@ -18,7 +18,7 @@ import (
 // KvmCloudRequest struct for KvmCloudRequest
 type KvmCloudRequest struct {
 	Provider string `json:"provider"`
-	Credentials []map[string]interface{} `json:"credentials"`
+	Credentials KvmCredentials `json:"credentials"`
 	Features *KvmCloudFeatures `json:"features,omitempty"`
 }
 
@@ -26,7 +26,7 @@ type KvmCloudRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKvmCloudRequest(provider string, credentials []map[string]interface{}) *KvmCloudRequest {
+func NewKvmCloudRequest(provider string, credentials KvmCredentials) *KvmCloudRequest {
 	this := KvmCloudRequest{}
 	this.Provider = provider
 	this.Credentials = credentials
@@ -66,9 +66,9 @@ func (o *KvmCloudRequest) SetProvider(v string) {
 }
 
 // GetCredentials returns the Credentials field value
-func (o *KvmCloudRequest) GetCredentials() []map[string]interface{} {
+func (o *KvmCloudRequest) GetCredentials() KvmCredentials {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret KvmCredentials
 		return ret
 	}
 
@@ -77,15 +77,15 @@ func (o *KvmCloudRequest) GetCredentials() []map[string]interface{} {
 
 // GetCredentialsOk returns a tuple with the Credentials field value
 // and a boolean to check if the value has been set.
-func (o *KvmCloudRequest) GetCredentialsOk() ([]map[string]interface{}, bool) {
+func (o *KvmCloudRequest) GetCredentialsOk() (*KvmCredentials, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Credentials, true
+	return &o.Credentials, true
 }
 
 // SetCredentials sets field value
-func (o *KvmCloudRequest) SetCredentials(v []map[string]interface{}) {
+func (o *KvmCloudRequest) SetCredentials(v KvmCredentials) {
 	o.Credentials = v
 }
 
