@@ -18,7 +18,7 @@ import (
 // AuthInfoData struct for AuthInfoData
 type AuthInfoData struct {
 	User *User `json:"user,omitempty"`
-	// Orgs available to user for auth session
+	// Orgs available in current authenticated session
 	Orgs []Org `json:"orgs,omitempty"`
 }
 

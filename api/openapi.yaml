@@ -7793,6 +7793,21 @@ components:
           type: string
         credentials:
           items:
+            properties:
+              hosts:
+                items:
+                  properties:
+                    host:
+                      type: string
+                    alias:
+                      type: string
+                    key:
+                      type: string
+                  required:
+                  - host
+                  - key
+                  type: object
+                type: array
             type: object
           type: array
         features:
@@ -7811,6 +7826,21 @@ components:
       type: object
     KvmCredentials:
       items:
+        properties:
+          hosts:
+            items:
+              properties:
+                host:
+                  type: string
+                alias:
+                  type: string
+                key:
+                  type: string
+              required:
+              - host
+              - key
+              type: object
+            type: array
         type: object
       type: array
     LxdCloudRequest:
@@ -12598,7 +12628,7 @@ components:
         user:
           $ref: '#/components/schemas/User'
         orgs:
-          description: Orgs available to user for auth session
+          description: Orgs available in current authenticated session
           items:
             $ref: '#/components/schemas/Org'
           type: array
