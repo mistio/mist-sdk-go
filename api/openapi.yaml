@@ -7342,6 +7342,7 @@ components:
             google: '#/components/schemas/GoogleCloudRequest'
             cloudsigma: '#/components/schemas/CloudSigmaCloudRequest'
             alibaba: '#/components/schemas/AlibabaCloudRequest'
+            digitalocean: '#/components/schemas/DigitaloceanCloudRequest'
             equinix: '#/components/schemas/EquinixCloudRequest'
             ibm: '#/components/schemas/IbmCloudRequest'
             linode: '#/components/schemas/LinodeCloudRequest'
@@ -7380,6 +7381,7 @@ components:
         - $ref: '#/components/schemas/KubevirtCloudRequest'
         - $ref: '#/components/schemas/OpenshiftCloudRequest'
         - $ref: '#/components/schemas/OtherCloudRequest'
+        - $ref: '#/components/schemas/GenericCloudRequest'
       example:
         name: my-cloud
         provider: google
@@ -7414,6 +7416,7 @@ components:
               google: '#/components/schemas/GoogleCloudRequest'
               cloudsigma: '#/components/schemas/CloudSigmaCloudRequest'
               alibaba: '#/components/schemas/AlibabaCloudRequest'
+              digitalocean: '#/components/schemas/DigitaloceanCloudRequest'
               equinix: '#/components/schemas/EquinixCloudRequest'
               ibm: '#/components/schemas/IbmCloudRequest'
               linode: '#/components/schemas/LinodeCloudRequest'
@@ -7452,8 +7455,11 @@ components:
           - $ref: '#/components/schemas/KubevirtCloudRequest'
           - $ref: '#/components/schemas/OpenshiftCloudRequest'
           - $ref: '#/components/schemas/OtherCloudRequest'
+          - $ref: '#/components/schemas/GenericCloudRequest'
       example:
         name: my-renamed-cloud
+    CloudCredentials:
+      type: object
     CloudFeatures:
       example:
         compute: true
@@ -7609,6 +7615,20 @@ components:
           $ref: '#/components/schemas/AzureCredentials'
         features:
           $ref: '#/components/schemas/AzureCloudFeatures'
+      required:
+      - credentials
+      - provider
+      type: object
+    GenericCloudRequest:
+      properties:
+        provider:
+          enum:
+          - azure
+          type: string
+        credentials:
+          type: object
+        features:
+          $ref: '#/components/schemas/CloudFeatures'
       required:
       - credentials
       - provider

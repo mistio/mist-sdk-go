@@ -121,6 +121,7 @@ docs/ExpirationNotify.md
 docs/ExternalVault.md
 docs/ExternalVaultAllOf.md
 docs/FieldSelector.md
+docs/GenericCloudRequest.md
 docs/GetCloudResponse.md
 docs/GetClusterResponse.md
 docs/GetDatapointsResponse.md
@@ -395,6 +396,7 @@ model_expiration_notify.go
 model_external_vault.go
 model_external_vault_all_of.go
 model_field_selector.go
+model_generic_cloud_request.go
 model_get_cloud_response.go
 model_get_cluster_response.go
 model_get_datapoints_response.go

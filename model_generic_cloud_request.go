@@ -15,60 +15,34 @@ import (
 	"encoding/json"
 )
 
-// AddCloudRequest struct for AddCloudRequest
-type AddCloudRequest struct {
-	Name string `json:"name"`
+// GenericCloudRequest struct for GenericCloudRequest
+type GenericCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials map[string]interface{} `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
 }
 
-// NewAddCloudRequest instantiates a new AddCloudRequest object
+// NewGenericCloudRequest instantiates a new GenericCloudRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddCloudRequest(name string, provider string, credentials map[string]interface{}) *AddCloudRequest {
-	this := AddCloudRequest{}
-	this.Name = name
+func NewGenericCloudRequest(provider string, credentials map[string]interface{}) *GenericCloudRequest {
+	this := GenericCloudRequest{}
 	this.Provider = provider
 	this.Credentials = credentials
 	return &this
 }
 
-// NewAddCloudRequestWithDefaults instantiates a new AddCloudRequest object
+// NewGenericCloudRequestWithDefaults instantiates a new GenericCloudRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAddCloudRequestWithDefaults() *AddCloudRequest {
-	this := AddCloudRequest{}
+func NewGenericCloudRequestWithDefaults() *GenericCloudRequest {
+	this := GenericCloudRequest{}
 	return &this
 }
 
-// GetName returns the Name field value
-func (o *AddCloudRequest) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *AddCloudRequest) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *AddCloudRequest) SetName(v string) {
-	o.Name = v
-}
-
 // GetProvider returns the Provider field value
-func (o *AddCloudRequest) GetProvider() string {
+func (o *GenericCloudRequest) GetProvider() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -79,7 +53,7 @@ func (o *AddCloudRequest) GetProvider() string {
 
 // GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
-func (o *AddCloudRequest) GetProviderOk() (*string, bool) {
+func (o *GenericCloudRequest) GetProviderOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,12 +61,12 @@ func (o *AddCloudRequest) GetProviderOk() (*string, bool) {
 }
 
 // SetProvider sets field value
-func (o *AddCloudRequest) SetProvider(v string) {
+func (o *GenericCloudRequest) SetProvider(v string) {
 	o.Provider = v
 }
 
 // GetCredentials returns the Credentials field value
-func (o *AddCloudRequest) GetCredentials() map[string]interface{} {
+func (o *GenericCloudRequest) GetCredentials() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
@@ -103,7 +77,7 @@ func (o *AddCloudRequest) GetCredentials() map[string]interface{} {
 
 // GetCredentialsOk returns a tuple with the Credentials field value
 // and a boolean to check if the value has been set.
-func (o *AddCloudRequest) GetCredentialsOk() (map[string]interface{}, bool) {
+func (o *GenericCloudRequest) GetCredentialsOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -111,12 +85,12 @@ func (o *AddCloudRequest) GetCredentialsOk() (map[string]interface{}, bool) {
 }
 
 // SetCredentials sets field value
-func (o *AddCloudRequest) SetCredentials(v map[string]interface{}) {
+func (o *GenericCloudRequest) SetCredentials(v map[string]interface{}) {
 	o.Credentials = v
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *AddCloudRequest) GetFeatures() CloudFeatures {
+func (o *GenericCloudRequest) GetFeatures() CloudFeatures {
 	if o == nil || o.Features == nil {
 		var ret CloudFeatures
 		return ret
@@ -126,7 +100,7 @@ func (o *AddCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *GenericCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -134,7 +108,7 @@ func (o *AddCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
 }
 
 // HasFeatures returns a boolean if a field has been set.
-func (o *AddCloudRequest) HasFeatures() bool {
+func (o *GenericCloudRequest) HasFeatures() bool {
 	if o != nil && o.Features != nil {
 		return true
 	}
@@ -143,15 +117,12 @@ func (o *AddCloudRequest) HasFeatures() bool {
 }
 
 // SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *AddCloudRequest) SetFeatures(v CloudFeatures) {
+func (o *GenericCloudRequest) SetFeatures(v CloudFeatures) {
 	o.Features = &v
 }
 
-func (o AddCloudRequest) MarshalJSON() ([]byte, error) {
+func (o GenericCloudRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
 	if true {
 		toSerialize["provider"] = o.Provider
 	}
@@ -164,38 +135,38 @@ func (o AddCloudRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableAddCloudRequest struct {
-	value *AddCloudRequest
+type NullableGenericCloudRequest struct {
+	value *GenericCloudRequest
 	isSet bool
 }
 
-func (v NullableAddCloudRequest) Get() *AddCloudRequest {
+func (v NullableGenericCloudRequest) Get() *GenericCloudRequest {
 	return v.value
 }
 
-func (v *NullableAddCloudRequest) Set(val *AddCloudRequest) {
+func (v *NullableGenericCloudRequest) Set(val *GenericCloudRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAddCloudRequest) IsSet() bool {
+func (v NullableGenericCloudRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAddCloudRequest) Unset() {
+func (v *NullableGenericCloudRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAddCloudRequest(val *AddCloudRequest) *NullableAddCloudRequest {
-	return &NullableAddCloudRequest{value: val, isSet: true}
+func NewNullableGenericCloudRequest(val *GenericCloudRequest) *NullableGenericCloudRequest {
+	return &NullableGenericCloudRequest{value: val, isSet: true}
 }
 
-func (v NullableAddCloudRequest) MarshalJSON() ([]byte, error) {
+func (v NullableGenericCloudRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAddCloudRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableGenericCloudRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

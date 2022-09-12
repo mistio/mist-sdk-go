@@ -278,6 +278,7 @@ Class | Method | HTTP request | Description
  - [ExternalVault](docs/ExternalVault.md)
  - [ExternalVaultAllOf](docs/ExternalVaultAllOf.md)
  - [FieldSelector](docs/FieldSelector.md)
+ - [GenericCloudRequest](docs/GenericCloudRequest.md)
  - [GetCloudResponse](docs/GetCloudResponse.md)
  - [GetClusterResponse](docs/GetClusterResponse.md)
  - [GetDatapointsResponse](docs/GetDatapointsResponse.md)
