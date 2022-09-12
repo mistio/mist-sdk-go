@@ -199,10 +199,12 @@ docs/ListRulesResponse.md
 docs/ListSchedulesResponse.md
 docs/ListScriptsResponse.md
 docs/ListSecretsResponse.md
+docs/ListSessionsResponse.md
 docs/ListSizesResponse.md
 docs/ListSnapshotsResponse.md
 docs/ListTagsResponse.md
 docs/ListTagsResponseData.md
+docs/ListTokensResponse.md
 docs/ListUsersResponse.md
 docs/ListVolumesResponse.md
 docs/ListZonesResponse.md
@@ -466,10 +468,12 @@ model_list_rules_response.go
 model_list_schedules_response.go
 model_list_scripts_response.go
 model_list_secrets_response.go
+model_list_sessions_response.go
 model_list_sizes_response.go
 model_list_snapshots_response.go
 model_list_tags_response.go
 model_list_tags_response_data.go
+model_list_tokens_response.go
 model_list_users_response.go
 model_list_volumes_response.go
 model_list_zones_response.go

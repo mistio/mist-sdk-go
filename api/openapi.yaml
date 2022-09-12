@@ -35,6 +35,7 @@ paths:
       - auth
   /api/v2/auth/sessions:
     get:
+      description: Return a list of active sessions
       operationId: list-sessions
       parameters:
       - description: Only return results matching search filter
@@ -7190,12 +7191,48 @@ components:
           $ref: '#/components/schemas/ResponseMetadata'
       type: object
     ListSessionsResponse:
+      example:
+        data:
+        - null
+        - null
+        meta:
+          total: 6
+          start: 5
+          sort: sort
+          returned: 1
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Session'
+          type: array
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
       type: object
     ListTokensResponse:
+      example:
+        data:
+        - null
+        - null
+        meta:
+          total: 6
+          start: 5
+          sort: sort
+          returned: 1
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+        meta:
+          $ref: '#/components/schemas/ResponseMetadata'
       type: object
     CreateTokenResponse:
       type: object
     LoginCredentials:
+      type: object
+    Session:
+      type: object
+    Token:
       type: object
     ListCloudsResponse:
       example:

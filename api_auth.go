@@ -304,12 +304,14 @@ func (r ApiListSessionsRequest) At(at time.Time) ApiListSessionsRequest {
 	return r
 }
 
-func (r ApiListSessionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiListSessionsRequest) Execute() (*ListSessionsResponse, *http.Response, error) {
 	return r.ApiService.ListSessionsExecute(r)
 }
 
 /*
 ListSessions List sessions
+
+Return a list of active sessions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSessionsRequest
@@ -322,13 +324,13 @@ func (a *AuthApiService) ListSessions(ctx context.Context) ApiListSessionsReques
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AuthApiService) ListSessionsExecute(r ApiListSessionsRequest) (map[string]interface{}, *http.Response, error) {
+//  @return ListSessionsResponse
+func (a *AuthApiService) ListSessionsExecute(r ApiListSessionsRequest) (*ListSessionsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *ListSessionsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthApiService.ListSessions")
@@ -485,7 +487,7 @@ func (r ApiListTokensRequest) At(at time.Time) ApiListTokensRequest {
 	return r
 }
 
-func (r ApiListTokensRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiListTokensRequest) Execute() (*ListTokensResponse, *http.Response, error) {
 	return r.ApiService.ListTokensExecute(r)
 }
 
@@ -505,13 +507,13 @@ func (a *AuthApiService) ListTokens(ctx context.Context) ApiListTokensRequest {
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AuthApiService) ListTokensExecute(r ApiListTokensRequest) (map[string]interface{}, *http.Response, error) {
+//  @return ListTokensResponse
+func (a *AuthApiService) ListTokensExecute(r ApiListTokensRequest) (*ListTokensResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *ListTokensResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthApiService.ListTokens")
