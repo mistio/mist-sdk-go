@@ -7381,7 +7381,6 @@ components:
         - $ref: '#/components/schemas/KubevirtCloudRequest'
         - $ref: '#/components/schemas/OpenshiftCloudRequest'
         - $ref: '#/components/schemas/OtherCloudRequest'
-        - $ref: '#/components/schemas/GenericCloudRequest'
       example:
         name: my-cloud
         provider: google
@@ -7455,7 +7454,6 @@ components:
           - $ref: '#/components/schemas/KubevirtCloudRequest'
           - $ref: '#/components/schemas/OpenshiftCloudRequest'
           - $ref: '#/components/schemas/OtherCloudRequest'
-          - $ref: '#/components/schemas/GenericCloudRequest'
       example:
         name: my-renamed-cloud
     CloudCredentials:
