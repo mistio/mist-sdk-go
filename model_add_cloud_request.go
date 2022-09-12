@@ -18,7 +18,7 @@ import (
 // AddCloudRequest struct for AddCloudRequest
 type AddCloudRequest struct {
 	Name string `json:"name"`
-	Provider string `json:"provider"`
+	Provider SupportedProviders `json:"provider"`
 	Credentials map[string]interface{} `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
 }
@@ -27,7 +27,7 @@ type AddCloudRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddCloudRequest(name string, provider string, credentials map[string]interface{}) *AddCloudRequest {
+func NewAddCloudRequest(name string, provider SupportedProviders, credentials map[string]interface{}) *AddCloudRequest {
 	this := AddCloudRequest{}
 	this.Name = name
 	this.Provider = provider
@@ -68,9 +68,9 @@ func (o *AddCloudRequest) SetName(v string) {
 }
 
 // GetProvider returns the Provider field value
-func (o *AddCloudRequest) GetProvider() string {
+func (o *AddCloudRequest) GetProvider() SupportedProviders {
 	if o == nil {
-		var ret string
+		var ret SupportedProviders
 		return ret
 	}
 
@@ -79,7 +79,7 @@ func (o *AddCloudRequest) GetProvider() string {
 
 // GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
-func (o *AddCloudRequest) GetProviderOk() (*string, bool) {
+func (o *AddCloudRequest) GetProviderOk() (*SupportedProviders, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,7 +87,7 @@ func (o *AddCloudRequest) GetProviderOk() (*string, bool) {
 }
 
 // SetProvider sets field value
-func (o *AddCloudRequest) SetProvider(v string) {
+func (o *AddCloudRequest) SetProvider(v SupportedProviders) {
 	o.Provider = v
 }
 

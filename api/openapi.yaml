@@ -7622,9 +7622,7 @@ components:
     GenericCloudRequest:
       properties:
         provider:
-          enum:
-          - azure
-          type: string
+          $ref: '#/components/schemas/SupportedProviders'
         credentials:
           type: object
         features:

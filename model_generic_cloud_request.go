@@ -17,7 +17,7 @@ import (
 
 // GenericCloudRequest struct for GenericCloudRequest
 type GenericCloudRequest struct {
-	Provider string `json:"provider"`
+	Provider SupportedProviders `json:"provider"`
 	Credentials map[string]interface{} `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
 }
@@ -26,7 +26,7 @@ type GenericCloudRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGenericCloudRequest(provider string, credentials map[string]interface{}) *GenericCloudRequest {
+func NewGenericCloudRequest(provider SupportedProviders, credentials map[string]interface{}) *GenericCloudRequest {
 	this := GenericCloudRequest{}
 	this.Provider = provider
 	this.Credentials = credentials
@@ -42,9 +42,9 @@ func NewGenericCloudRequestWithDefaults() *GenericCloudRequest {
 }
 
 // GetProvider returns the Provider field value
-func (o *GenericCloudRequest) GetProvider() string {
+func (o *GenericCloudRequest) GetProvider() SupportedProviders {
 	if o == nil {
-		var ret string
+		var ret SupportedProviders
 		return ret
 	}
 
@@ -53,7 +53,7 @@ func (o *GenericCloudRequest) GetProvider() string {
 
 // GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
-func (o *GenericCloudRequest) GetProviderOk() (*string, bool) {
+func (o *GenericCloudRequest) GetProviderOk() (*SupportedProviders, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *GenericCloudRequest) GetProviderOk() (*string, bool) {
 }
 
 // SetProvider sets field value
-func (o *GenericCloudRequest) SetProvider(v string) {
+func (o *GenericCloudRequest) SetProvider(v SupportedProviders) {
 	o.Provider = v
 }
 
