@@ -17,6 +17,7 @@ import (
 
 // GenericCloudRequest struct for GenericCloudRequest
 type GenericCloudRequest struct {
+	Name *string `json:"name,omitempty"`
 	Provider SupportedProviders `json:"provider"`
 	Credentials map[string]interface{} `json:"credentials"`
 	Features *CloudFeatures `json:"features,omitempty"`
@@ -39,6 +40,38 @@ func NewGenericCloudRequest(provider SupportedProviders, credentials map[string]
 func NewGenericCloudRequestWithDefaults() *GenericCloudRequest {
 	this := GenericCloudRequest{}
 	return &this
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *GenericCloudRequest) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenericCloudRequest) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *GenericCloudRequest) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *GenericCloudRequest) SetName(v string) {
+	o.Name = &v
 }
 
 // GetProvider returns the Provider field value
@@ -123,6 +156,9 @@ func (o *GenericCloudRequest) SetFeatures(v CloudFeatures) {
 
 func (o GenericCloudRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
 	if true {
 		toSerialize["provider"] = o.Provider
 	}
