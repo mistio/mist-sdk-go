@@ -17,6 +17,7 @@ import (
 
 // Notification struct for Notification
 type Notification struct {
+	ActionType *string `json:"action_type,omitempty"`
 	// a list of user to be notified, denoted by their UUIDs 
 	Users []string `json:"users,omitempty"`
 	// a list of teams, denoted by their UUIDs, whose users will be notified 
@@ -40,6 +41,38 @@ func NewNotification() *Notification {
 func NewNotificationWithDefaults() *Notification {
 	this := Notification{}
 	return &this
+}
+
+// GetActionType returns the ActionType field value if set, zero value otherwise.
+func (o *Notification) GetActionType() string {
+	if o == nil || o.ActionType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ActionType
+}
+
+// GetActionTypeOk returns a tuple with the ActionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Notification) GetActionTypeOk() (*string, bool) {
+	if o == nil || o.ActionType == nil {
+		return nil, false
+	}
+	return o.ActionType, true
+}
+
+// HasActionType returns a boolean if a field has been set.
+func (o *Notification) HasActionType() bool {
+	if o != nil && o.ActionType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActionType gets a reference to the given string and assigns it to the ActionType field.
+func (o *Notification) SetActionType(v string) {
+	o.ActionType = &v
 }
 
 // GetUsers returns the Users field value if set, zero value otherwise.
@@ -140,6 +173,9 @@ func (o *Notification) SetEmails(v []string) {
 
 func (o Notification) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ActionType != nil {
+		toSerialize["action_type"] = o.ActionType
+	}
 	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}
