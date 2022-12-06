@@ -10841,7 +10841,6 @@ components:
           type: boolean
       required:
       - actions
-      - name
       type: object
     EditScheduleRequest:
       example:
