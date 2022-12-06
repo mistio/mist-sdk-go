@@ -17,6 +17,7 @@ import (
 
 // WebHookAction struct for WebHookAction
 type WebHookAction struct {
+	ActionType *string `json:"action_type,omitempty"`
 	// the HTTP method to be executed by the webhook
 	Method string `json:"method"`
 	// the URL of the endpoint that is called by the webhook
@@ -48,6 +49,38 @@ func NewWebHookAction(method string, url string) *WebHookAction {
 func NewWebHookActionWithDefaults() *WebHookAction {
 	this := WebHookAction{}
 	return &this
+}
+
+// GetActionType returns the ActionType field value if set, zero value otherwise.
+func (o *WebHookAction) GetActionType() string {
+	if o == nil || o.ActionType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ActionType
+}
+
+// GetActionTypeOk returns a tuple with the ActionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WebHookAction) GetActionTypeOk() (*string, bool) {
+	if o == nil || o.ActionType == nil {
+		return nil, false
+	}
+	return o.ActionType, true
+}
+
+// HasActionType returns a boolean if a field has been set.
+func (o *WebHookAction) HasActionType() bool {
+	if o != nil && o.ActionType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActionType gets a reference to the given string and assigns it to the ActionType field.
+func (o *WebHookAction) SetActionType(v string) {
+	o.ActionType = &v
 }
 
 // GetMethod returns the Method field value
@@ -228,6 +261,9 @@ func (o *WebHookAction) SetHeaders(v string) {
 
 func (o WebHookAction) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ActionType != nil {
+		toSerialize["action_type"] = o.ActionType
+	}
 	if true {
 		toSerialize["method"] = o.Method
 	}

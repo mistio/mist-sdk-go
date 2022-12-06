@@ -17,7 +17,6 @@ import (
 
 // Action struct for Action
 type Action struct {
-	// the action's type: notification, resource_action, run_script, webhook 
 	ActionType string `json:"action_type"`
 	// a list of user to be notified, denoted by their UUIDs 
 	Users []string `json:"users,omitempty"`

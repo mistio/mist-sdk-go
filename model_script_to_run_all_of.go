@@ -17,6 +17,7 @@ import (
 
 // ScriptToRunAllOf struct for ScriptToRunAllOf
 type ScriptToRunAllOf struct {
+	ActionType *string `json:"action_type,omitempty"`
 	ScriptType string `json:"script_type"`
 }
 
@@ -36,6 +37,38 @@ func NewScriptToRunAllOf(scriptType string) *ScriptToRunAllOf {
 func NewScriptToRunAllOfWithDefaults() *ScriptToRunAllOf {
 	this := ScriptToRunAllOf{}
 	return &this
+}
+
+// GetActionType returns the ActionType field value if set, zero value otherwise.
+func (o *ScriptToRunAllOf) GetActionType() string {
+	if o == nil || o.ActionType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ActionType
+}
+
+// GetActionTypeOk returns a tuple with the ActionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ScriptToRunAllOf) GetActionTypeOk() (*string, bool) {
+	if o == nil || o.ActionType == nil {
+		return nil, false
+	}
+	return o.ActionType, true
+}
+
+// HasActionType returns a boolean if a field has been set.
+func (o *ScriptToRunAllOf) HasActionType() bool {
+	if o != nil && o.ActionType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActionType gets a reference to the given string and assigns it to the ActionType field.
+func (o *ScriptToRunAllOf) SetActionType(v string) {
+	o.ActionType = &v
 }
 
 // GetScriptType returns the ScriptType field value
@@ -64,6 +97,9 @@ func (o *ScriptToRunAllOf) SetScriptType(v string) {
 
 func (o ScriptToRunAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ActionType != nil {
+		toSerialize["action_type"] = o.ActionType
+	}
 	if true {
 		toSerialize["script_type"] = o.ScriptType
 	}

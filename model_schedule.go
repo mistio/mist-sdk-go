@@ -33,8 +33,6 @@ type Schedule struct {
 	// The date after that schedule expires. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
 	Expires *string `json:"expires,omitempty"`
 	Reminder *AddScheduleRequestReminder `json:"reminder,omitempty"`
-	// Decides if the schedule runs immediately of not
-	RunImmediately *bool `json:"run_immediately,omitempty"`
 	// The name of user that created the schedule
 	CreatedBy *string `json:"created_by,omitempty"`
 	// The name of user that owns the schedule
@@ -378,38 +376,6 @@ func (o *Schedule) SetReminder(v AddScheduleRequestReminder) {
 	o.Reminder = &v
 }
 
-// GetRunImmediately returns the RunImmediately field value if set, zero value otherwise.
-func (o *Schedule) GetRunImmediately() bool {
-	if o == nil || o.RunImmediately == nil {
-		var ret bool
-		return ret
-	}
-	return *o.RunImmediately
-}
-
-// GetRunImmediatelyOk returns a tuple with the RunImmediately field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Schedule) GetRunImmediatelyOk() (*bool, bool) {
-	if o == nil || o.RunImmediately == nil {
-		return nil, false
-	}
-	return o.RunImmediately, true
-}
-
-// HasRunImmediately returns a boolean if a field has been set.
-func (o *Schedule) HasRunImmediately() bool {
-	if o != nil && o.RunImmediately != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRunImmediately gets a reference to the given bool and assigns it to the RunImmediately field.
-func (o *Schedule) SetRunImmediately(v bool) {
-	o.RunImmediately = &v
-}
-
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *Schedule) GetCreatedBy() string {
 	if o == nil || o.CreatedBy == nil {
@@ -505,9 +471,6 @@ func (o Schedule) MarshalJSON() ([]byte, error) {
 	}
 	if o.Reminder != nil {
 		toSerialize["reminder"] = o.Reminder
-	}
-	if o.RunImmediately != nil {
-		toSerialize["run_immediately"] = o.RunImmediately
 	}
 	if o.CreatedBy != nil {
 		toSerialize["created_by"] = o.CreatedBy

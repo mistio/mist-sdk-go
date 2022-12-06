@@ -42,7 +42,7 @@ type CreateMachineRequest struct {
 	// Run post deploy scripts over SSH
 	Scripts []ScriptToRun `json:"scripts,omitempty"`
 	// Configure scheduled actions for the provisioned machine
-	Schedules []interface{} `json:"schedules,omitempty"`
+	Schedules []AddScheduleRequest `json:"schedules,omitempty"`
 	// Assign tags to provisioned machine
 	Tags map[string]interface{} `json:"tags,omitempty"`
 	Expiration *Expiration `json:"expiration,omitempty"`
@@ -533,9 +533,9 @@ func (o *CreateMachineRequest) SetScripts(v []ScriptToRun) {
 }
 
 // GetSchedules returns the Schedules field value if set, zero value otherwise.
-func (o *CreateMachineRequest) GetSchedules() []interface{} {
+func (o *CreateMachineRequest) GetSchedules() []AddScheduleRequest {
 	if o == nil || o.Schedules == nil {
-		var ret []interface{}
+		var ret []AddScheduleRequest
 		return ret
 	}
 	return o.Schedules
@@ -543,7 +543,7 @@ func (o *CreateMachineRequest) GetSchedules() []interface{} {
 
 // GetSchedulesOk returns a tuple with the Schedules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateMachineRequest) GetSchedulesOk() ([]interface{}, bool) {
+func (o *CreateMachineRequest) GetSchedulesOk() ([]AddScheduleRequest, bool) {
 	if o == nil || o.Schedules == nil {
 		return nil, false
 	}
@@ -559,8 +559,8 @@ func (o *CreateMachineRequest) HasSchedules() bool {
 	return false
 }
 
-// SetSchedules gets a reference to the given []interface{} and assigns it to the Schedules field.
-func (o *CreateMachineRequest) SetSchedules(v []interface{}) {
+// SetSchedules gets a reference to the given []AddScheduleRequest and assigns it to the Schedules field.
+func (o *CreateMachineRequest) SetSchedules(v []AddScheduleRequest) {
 	o.Schedules = v
 }
 
