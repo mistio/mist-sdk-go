@@ -19,7 +19,7 @@ import (
 type DockerCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials DockerCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *DockerCloudFeatures `json:"features,omitempty"`
 }
 
 // NewDockerCloudRequest instantiates a new DockerCloudRequest object
@@ -90,9 +90,9 @@ func (o *DockerCloudRequest) SetCredentials(v DockerCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *DockerCloudRequest) GetFeatures() CloudFeatures {
+func (o *DockerCloudRequest) GetFeatures() DockerCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret DockerCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *DockerCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DockerCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *DockerCloudRequest) GetFeaturesOk() (*DockerCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *DockerCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *DockerCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given DockerCloudFeatures and assigns it to the Features field.
+func (o *DockerCloudRequest) SetFeatures(v DockerCloudFeatures) {
 	o.Features = &v
 }
 

@@ -37,7 +37,7 @@ func (r ApiAddScriptRequest) AddScriptRequest(addScriptRequest AddScriptRequest)
 	return r
 }
 
-func (r ApiAddScriptRequest) Execute() (*InlineResponse200, *http.Response, error) {
+func (r ApiAddScriptRequest) Execute() (*InlineResponse2001, *http.Response, error) {
 	return r.ApiService.AddScriptExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *ScriptsApiService) AddScript(ctx context.Context) ApiAddScriptRequest {
 }
 
 // Execute executes the request
-//  @return InlineResponse200
-func (a *ScriptsApiService) AddScriptExecute(r ApiAddScriptRequest) (*InlineResponse200, *http.Response, error) {
+//  @return InlineResponse2001
+func (a *ScriptsApiService) AddScriptExecute(r ApiAddScriptRequest) (*InlineResponse2001, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InlineResponse200
+		localVarReturnValue  *InlineResponse2001
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsApiService.AddScript")
@@ -488,7 +488,7 @@ type ApiGenerateScriptUrlRequest struct {
 	script string
 }
 
-func (r ApiGenerateScriptUrlRequest) Execute() (*InlineResponse2001, *http.Response, error) {
+func (r ApiGenerateScriptUrlRequest) Execute() (*InlineResponse2002, *http.Response, error) {
 	return r.ApiService.GenerateScriptUrlExecute(r)
 }
 
@@ -510,13 +510,13 @@ func (a *ScriptsApiService) GenerateScriptUrl(ctx context.Context, script string
 }
 
 // Execute executes the request
-//  @return InlineResponse2001
-func (a *ScriptsApiService) GenerateScriptUrlExecute(r ApiGenerateScriptUrlRequest) (*InlineResponse2001, *http.Response, error) {
+//  @return InlineResponse2002
+func (a *ScriptsApiService) GenerateScriptUrlExecute(r ApiGenerateScriptUrlRequest) (*InlineResponse2002, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InlineResponse2001
+		localVarReturnValue  *InlineResponse2002
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsApiService.GenerateScriptUrl")

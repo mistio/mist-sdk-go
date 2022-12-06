@@ -19,7 +19,7 @@ import (
 type DigitaloceanCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials DigitaloceanCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *DigitaloceanCloudFeatures `json:"features,omitempty"`
 }
 
 // NewDigitaloceanCloudRequest instantiates a new DigitaloceanCloudRequest object
@@ -90,9 +90,9 @@ func (o *DigitaloceanCloudRequest) SetCredentials(v DigitaloceanCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *DigitaloceanCloudRequest) GetFeatures() CloudFeatures {
+func (o *DigitaloceanCloudRequest) GetFeatures() DigitaloceanCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret DigitaloceanCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *DigitaloceanCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DigitaloceanCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *DigitaloceanCloudRequest) GetFeaturesOk() (*DigitaloceanCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *DigitaloceanCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *DigitaloceanCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given DigitaloceanCloudFeatures and assigns it to the Features field.
+func (o *DigitaloceanCloudRequest) SetFeatures(v DigitaloceanCloudFeatures) {
 	o.Features = &v
 }
 

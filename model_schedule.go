@@ -27,21 +27,12 @@ type Schedule struct {
 	Tags map[string]interface{} `json:"tags,omitempty"`
 	// Schedule status (enabled, disabled)
 	Enabled *bool `json:"enabled,omitempty"`
-	// The action that a schedule performs on a resource
-	Action *string `json:"action,omitempty"`
-	// The id of the script that schedule is about to run
-	ScriptId *string `json:"script_id,omitempty"`
-	// Schedule parameters
-	Params *string `json:"params,omitempty"`
 	Selectors []Selector `json:"selectors,omitempty"`
-	// The type of the schedule
-	ScheduleType *string `json:"schedule_type,omitempty"`
-	// In case of One Off schedule type the date string that schedule runs (The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS). In case of Interval and Crontab schedule types a JSON string with need time unit values. For Interval schedule type interval integer value and period string value needed. For Crontab schedule type minute, hour, day_of_week, day_of_month and month_of_year string values needed.
-	ScheduleEntry *string `json:"schedule_entry,omitempty"`
-	// The date after that schedule starts. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
-	StartAfter *string `json:"start_after,omitempty"`
-	// Decides if the schedule runs immediately of not
-	RunImmediately *bool `json:"run_immediately,omitempty"`
+	Actions []Action `json:"actions,omitempty"`
+	When *When `json:"when,omitempty"`
+	// The date after that schedule expires. The format should be ΥΥΥΥ-ΜΜ-DD HH:MM:SS
+	Expires *string `json:"expires,omitempty"`
+	Reminder *AddScheduleRequestReminder `json:"reminder,omitempty"`
 	// The name of user that created the schedule
 	CreatedBy *string `json:"created_by,omitempty"`
 	// The name of user that owns the schedule
@@ -225,102 +216,6 @@ func (o *Schedule) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetAction returns the Action field value if set, zero value otherwise.
-func (o *Schedule) GetAction() string {
-	if o == nil || o.Action == nil {
-		var ret string
-		return ret
-	}
-	return *o.Action
-}
-
-// GetActionOk returns a tuple with the Action field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Schedule) GetActionOk() (*string, bool) {
-	if o == nil || o.Action == nil {
-		return nil, false
-	}
-	return o.Action, true
-}
-
-// HasAction returns a boolean if a field has been set.
-func (o *Schedule) HasAction() bool {
-	if o != nil && o.Action != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAction gets a reference to the given string and assigns it to the Action field.
-func (o *Schedule) SetAction(v string) {
-	o.Action = &v
-}
-
-// GetScriptId returns the ScriptId field value if set, zero value otherwise.
-func (o *Schedule) GetScriptId() string {
-	if o == nil || o.ScriptId == nil {
-		var ret string
-		return ret
-	}
-	return *o.ScriptId
-}
-
-// GetScriptIdOk returns a tuple with the ScriptId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Schedule) GetScriptIdOk() (*string, bool) {
-	if o == nil || o.ScriptId == nil {
-		return nil, false
-	}
-	return o.ScriptId, true
-}
-
-// HasScriptId returns a boolean if a field has been set.
-func (o *Schedule) HasScriptId() bool {
-	if o != nil && o.ScriptId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetScriptId gets a reference to the given string and assigns it to the ScriptId field.
-func (o *Schedule) SetScriptId(v string) {
-	o.ScriptId = &v
-}
-
-// GetParams returns the Params field value if set, zero value otherwise.
-func (o *Schedule) GetParams() string {
-	if o == nil || o.Params == nil {
-		var ret string
-		return ret
-	}
-	return *o.Params
-}
-
-// GetParamsOk returns a tuple with the Params field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Schedule) GetParamsOk() (*string, bool) {
-	if o == nil || o.Params == nil {
-		return nil, false
-	}
-	return o.Params, true
-}
-
-// HasParams returns a boolean if a field has been set.
-func (o *Schedule) HasParams() bool {
-	if o != nil && o.Params != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetParams gets a reference to the given string and assigns it to the Params field.
-func (o *Schedule) SetParams(v string) {
-	o.Params = &v
-}
-
 // GetSelectors returns the Selectors field value if set, zero value otherwise.
 func (o *Schedule) GetSelectors() []Selector {
 	if o == nil || o.Selectors == nil {
@@ -353,132 +248,132 @@ func (o *Schedule) SetSelectors(v []Selector) {
 	o.Selectors = v
 }
 
-// GetScheduleType returns the ScheduleType field value if set, zero value otherwise.
-func (o *Schedule) GetScheduleType() string {
-	if o == nil || o.ScheduleType == nil {
+// GetActions returns the Actions field value if set, zero value otherwise.
+func (o *Schedule) GetActions() []Action {
+	if o == nil || o.Actions == nil {
+		var ret []Action
+		return ret
+	}
+	return o.Actions
+}
+
+// GetActionsOk returns a tuple with the Actions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Schedule) GetActionsOk() ([]Action, bool) {
+	if o == nil || o.Actions == nil {
+		return nil, false
+	}
+	return o.Actions, true
+}
+
+// HasActions returns a boolean if a field has been set.
+func (o *Schedule) HasActions() bool {
+	if o != nil && o.Actions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActions gets a reference to the given []Action and assigns it to the Actions field.
+func (o *Schedule) SetActions(v []Action) {
+	o.Actions = v
+}
+
+// GetWhen returns the When field value if set, zero value otherwise.
+func (o *Schedule) GetWhen() When {
+	if o == nil || o.When == nil {
+		var ret When
+		return ret
+	}
+	return *o.When
+}
+
+// GetWhenOk returns a tuple with the When field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Schedule) GetWhenOk() (*When, bool) {
+	if o == nil || o.When == nil {
+		return nil, false
+	}
+	return o.When, true
+}
+
+// HasWhen returns a boolean if a field has been set.
+func (o *Schedule) HasWhen() bool {
+	if o != nil && o.When != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWhen gets a reference to the given When and assigns it to the When field.
+func (o *Schedule) SetWhen(v When) {
+	o.When = &v
+}
+
+// GetExpires returns the Expires field value if set, zero value otherwise.
+func (o *Schedule) GetExpires() string {
+	if o == nil || o.Expires == nil {
 		var ret string
 		return ret
 	}
-	return *o.ScheduleType
+	return *o.Expires
 }
 
-// GetScheduleTypeOk returns a tuple with the ScheduleType field value if set, nil otherwise
+// GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Schedule) GetScheduleTypeOk() (*string, bool) {
-	if o == nil || o.ScheduleType == nil {
+func (o *Schedule) GetExpiresOk() (*string, bool) {
+	if o == nil || o.Expires == nil {
 		return nil, false
 	}
-	return o.ScheduleType, true
+	return o.Expires, true
 }
 
-// HasScheduleType returns a boolean if a field has been set.
-func (o *Schedule) HasScheduleType() bool {
-	if o != nil && o.ScheduleType != nil {
+// HasExpires returns a boolean if a field has been set.
+func (o *Schedule) HasExpires() bool {
+	if o != nil && o.Expires != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetScheduleType gets a reference to the given string and assigns it to the ScheduleType field.
-func (o *Schedule) SetScheduleType(v string) {
-	o.ScheduleType = &v
+// SetExpires gets a reference to the given string and assigns it to the Expires field.
+func (o *Schedule) SetExpires(v string) {
+	o.Expires = &v
 }
 
-// GetScheduleEntry returns the ScheduleEntry field value if set, zero value otherwise.
-func (o *Schedule) GetScheduleEntry() string {
-	if o == nil || o.ScheduleEntry == nil {
-		var ret string
+// GetReminder returns the Reminder field value if set, zero value otherwise.
+func (o *Schedule) GetReminder() AddScheduleRequestReminder {
+	if o == nil || o.Reminder == nil {
+		var ret AddScheduleRequestReminder
 		return ret
 	}
-	return *o.ScheduleEntry
+	return *o.Reminder
 }
 
-// GetScheduleEntryOk returns a tuple with the ScheduleEntry field value if set, nil otherwise
+// GetReminderOk returns a tuple with the Reminder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Schedule) GetScheduleEntryOk() (*string, bool) {
-	if o == nil || o.ScheduleEntry == nil {
+func (o *Schedule) GetReminderOk() (*AddScheduleRequestReminder, bool) {
+	if o == nil || o.Reminder == nil {
 		return nil, false
 	}
-	return o.ScheduleEntry, true
+	return o.Reminder, true
 }
 
-// HasScheduleEntry returns a boolean if a field has been set.
-func (o *Schedule) HasScheduleEntry() bool {
-	if o != nil && o.ScheduleEntry != nil {
+// HasReminder returns a boolean if a field has been set.
+func (o *Schedule) HasReminder() bool {
+	if o != nil && o.Reminder != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetScheduleEntry gets a reference to the given string and assigns it to the ScheduleEntry field.
-func (o *Schedule) SetScheduleEntry(v string) {
-	o.ScheduleEntry = &v
-}
-
-// GetStartAfter returns the StartAfter field value if set, zero value otherwise.
-func (o *Schedule) GetStartAfter() string {
-	if o == nil || o.StartAfter == nil {
-		var ret string
-		return ret
-	}
-	return *o.StartAfter
-}
-
-// GetStartAfterOk returns a tuple with the StartAfter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Schedule) GetStartAfterOk() (*string, bool) {
-	if o == nil || o.StartAfter == nil {
-		return nil, false
-	}
-	return o.StartAfter, true
-}
-
-// HasStartAfter returns a boolean if a field has been set.
-func (o *Schedule) HasStartAfter() bool {
-	if o != nil && o.StartAfter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStartAfter gets a reference to the given string and assigns it to the StartAfter field.
-func (o *Schedule) SetStartAfter(v string) {
-	o.StartAfter = &v
-}
-
-// GetRunImmediately returns the RunImmediately field value if set, zero value otherwise.
-func (o *Schedule) GetRunImmediately() bool {
-	if o == nil || o.RunImmediately == nil {
-		var ret bool
-		return ret
-	}
-	return *o.RunImmediately
-}
-
-// GetRunImmediatelyOk returns a tuple with the RunImmediately field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Schedule) GetRunImmediatelyOk() (*bool, bool) {
-	if o == nil || o.RunImmediately == nil {
-		return nil, false
-	}
-	return o.RunImmediately, true
-}
-
-// HasRunImmediately returns a boolean if a field has been set.
-func (o *Schedule) HasRunImmediately() bool {
-	if o != nil && o.RunImmediately != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRunImmediately gets a reference to the given bool and assigns it to the RunImmediately field.
-func (o *Schedule) SetRunImmediately(v bool) {
-	o.RunImmediately = &v
+// SetReminder gets a reference to the given AddScheduleRequestReminder and assigns it to the Reminder field.
+func (o *Schedule) SetReminder(v AddScheduleRequestReminder) {
+	o.Reminder = &v
 }
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
@@ -562,29 +457,20 @@ func (o Schedule) MarshalJSON() ([]byte, error) {
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.Action != nil {
-		toSerialize["action"] = o.Action
-	}
-	if o.ScriptId != nil {
-		toSerialize["script_id"] = o.ScriptId
-	}
-	if o.Params != nil {
-		toSerialize["params"] = o.Params
-	}
 	if o.Selectors != nil {
 		toSerialize["selectors"] = o.Selectors
 	}
-	if o.ScheduleType != nil {
-		toSerialize["schedule_type"] = o.ScheduleType
+	if o.Actions != nil {
+		toSerialize["actions"] = o.Actions
 	}
-	if o.ScheduleEntry != nil {
-		toSerialize["schedule_entry"] = o.ScheduleEntry
+	if o.When != nil {
+		toSerialize["when"] = o.When
 	}
-	if o.StartAfter != nil {
-		toSerialize["start_after"] = o.StartAfter
+	if o.Expires != nil {
+		toSerialize["expires"] = o.Expires
 	}
-	if o.RunImmediately != nil {
-		toSerialize["run_immediately"] = o.RunImmediately
+	if o.Reminder != nil {
+		toSerialize["reminder"] = o.Reminder
 	}
 	if o.CreatedBy != nil {
 		toSerialize["created_by"] = o.CreatedBy

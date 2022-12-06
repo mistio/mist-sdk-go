@@ -17,7 +17,7 @@ import (
 
 // InlineResponse2001 struct for InlineResponse2001
 type InlineResponse2001 struct {
-	Url *string `json:"url,omitempty"`
+	Id *string `json:"id,omitempty"`
 }
 
 // NewInlineResponse2001 instantiates a new InlineResponse2001 object
@@ -37,42 +37,42 @@ func NewInlineResponse2001WithDefaults() *InlineResponse2001 {
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
-func (o *InlineResponse2001) GetUrl() string {
-	if o == nil || o.Url == nil {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *InlineResponse2001) GetId() string {
+	if o == nil || o.Id == nil {
 		var ret string
 		return ret
 	}
-	return *o.Url
+	return *o.Id
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2001) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
+func (o *InlineResponse2001) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return o.Id, true
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *InlineResponse2001) HasUrl() bool {
-	if o != nil && o.Url != nil {
+// HasId returns a boolean if a field has been set.
+func (o *InlineResponse2001) HasId() bool {
+	if o != nil && o.Id != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given string and assigns it to the Url field.
-func (o *InlineResponse2001) SetUrl(v string) {
-	o.Url = &v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *InlineResponse2001) SetId(v string) {
+	o.Id = &v
 }
 
 func (o InlineResponse2001) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
 	return json.Marshal(toSerialize)
 }

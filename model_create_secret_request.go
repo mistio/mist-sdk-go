@@ -17,18 +17,21 @@ import (
 
 // CreateSecretRequest struct for CreateSecretRequest
 type CreateSecretRequest struct {
-	// The name of the secret. This is equivalent to the path the secret will be stored in Vault
+	// The full path of the secret
 	Name string `json:"name"`
-	Secret map[string]interface{} `json:"secret"`
+	Json *bool `json:"json,omitempty"`
+	Secret string `json:"secret"`
 }
 
 // NewCreateSecretRequest instantiates a new CreateSecretRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateSecretRequest(name string, secret map[string]interface{}) *CreateSecretRequest {
+func NewCreateSecretRequest(name string, secret string) *CreateSecretRequest {
 	this := CreateSecretRequest{}
 	this.Name = name
+	var json bool = false
+	this.Json = &json
 	this.Secret = secret
 	return &this
 }
@@ -38,6 +41,8 @@ func NewCreateSecretRequest(name string, secret map[string]interface{}) *CreateS
 // but it doesn't guarantee that properties required by API are set
 func NewCreateSecretRequestWithDefaults() *CreateSecretRequest {
 	this := CreateSecretRequest{}
+	var json bool = false
+	this.Json = &json
 	return &this
 }
 
@@ -65,10 +70,42 @@ func (o *CreateSecretRequest) SetName(v string) {
 	o.Name = v
 }
 
+// GetJson returns the Json field value if set, zero value otherwise.
+func (o *CreateSecretRequest) GetJson() bool {
+	if o == nil || o.Json == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Json
+}
+
+// GetJsonOk returns a tuple with the Json field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecretRequest) GetJsonOk() (*bool, bool) {
+	if o == nil || o.Json == nil {
+		return nil, false
+	}
+	return o.Json, true
+}
+
+// HasJson returns a boolean if a field has been set.
+func (o *CreateSecretRequest) HasJson() bool {
+	if o != nil && o.Json != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJson gets a reference to the given bool and assigns it to the Json field.
+func (o *CreateSecretRequest) SetJson(v bool) {
+	o.Json = &v
+}
+
 // GetSecret returns the Secret field value
-func (o *CreateSecretRequest) GetSecret() map[string]interface{} {
+func (o *CreateSecretRequest) GetSecret() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -77,15 +114,15 @@ func (o *CreateSecretRequest) GetSecret() map[string]interface{} {
 
 // GetSecretOk returns a tuple with the Secret field value
 // and a boolean to check if the value has been set.
-func (o *CreateSecretRequest) GetSecretOk() (map[string]interface{}, bool) {
+func (o *CreateSecretRequest) GetSecretOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Secret, true
+	return &o.Secret, true
 }
 
 // SetSecret sets field value
-func (o *CreateSecretRequest) SetSecret(v map[string]interface{}) {
+func (o *CreateSecretRequest) SetSecret(v string) {
 	o.Secret = v
 }
 
@@ -93,6 +130,9 @@ func (o CreateSecretRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Json != nil {
+		toSerialize["json"] = o.Json
 	}
 	if true {
 		toSerialize["secret"] = o.Secret

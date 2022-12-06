@@ -35,7 +35,7 @@ func (r ApiAddScheduleRequest) AddScheduleRequest(addScheduleRequest AddSchedule
 	return r
 }
 
-func (r ApiAddScheduleRequest) Execute() (*InlineResponse200, *http.Response, error) {
+func (r ApiAddScheduleRequest) Execute() (*InlineResponse2001, *http.Response, error) {
 	return r.ApiService.AddScheduleExecute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *SchedulesApiService) AddSchedule(ctx context.Context) ApiAddScheduleReq
 }
 
 // Execute executes the request
-//  @return InlineResponse200
-func (a *SchedulesApiService) AddScheduleExecute(r ApiAddScheduleRequest) (*InlineResponse200, *http.Response, error) {
+//  @return InlineResponse2001
+func (a *SchedulesApiService) AddScheduleExecute(r ApiAddScheduleRequest) (*InlineResponse2001, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InlineResponse200
+		localVarReturnValue  *InlineResponse2001
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SchedulesApiService.AddSchedule")

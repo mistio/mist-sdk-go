@@ -19,7 +19,7 @@ import (
 type LxdCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials LxdCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *LxdCloudFeatures `json:"features,omitempty"`
 }
 
 // NewLxdCloudRequest instantiates a new LxdCloudRequest object
@@ -90,9 +90,9 @@ func (o *LxdCloudRequest) SetCredentials(v LxdCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *LxdCloudRequest) GetFeatures() CloudFeatures {
+func (o *LxdCloudRequest) GetFeatures() LxdCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret LxdCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *LxdCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LxdCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *LxdCloudRequest) GetFeaturesOk() (*LxdCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *LxdCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *LxdCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given LxdCloudFeatures and assigns it to the Features field.
+func (o *LxdCloudRequest) SetFeatures(v LxdCloudFeatures) {
 	o.Features = &v
 }
 
