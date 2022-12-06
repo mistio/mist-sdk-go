@@ -17,6 +17,7 @@ import (
 
 // ResizeAction struct for ResizeAction
 type ResizeAction struct {
+	ActionType *string `json:"action_type,omitempty"`
 	// the params of the resize action to be executed 
 	Params string `json:"params"`
 }
@@ -37,6 +38,38 @@ func NewResizeAction(params string) *ResizeAction {
 func NewResizeActionWithDefaults() *ResizeAction {
 	this := ResizeAction{}
 	return &this
+}
+
+// GetActionType returns the ActionType field value if set, zero value otherwise.
+func (o *ResizeAction) GetActionType() string {
+	if o == nil || o.ActionType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ActionType
+}
+
+// GetActionTypeOk returns a tuple with the ActionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResizeAction) GetActionTypeOk() (*string, bool) {
+	if o == nil || o.ActionType == nil {
+		return nil, false
+	}
+	return o.ActionType, true
+}
+
+// HasActionType returns a boolean if a field has been set.
+func (o *ResizeAction) HasActionType() bool {
+	if o != nil && o.ActionType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActionType gets a reference to the given string and assigns it to the ActionType field.
+func (o *ResizeAction) SetActionType(v string) {
+	o.ActionType = &v
 }
 
 // GetParams returns the Params field value
@@ -65,6 +98,9 @@ func (o *ResizeAction) SetParams(v string) {
 
 func (o ResizeAction) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ActionType != nil {
+		toSerialize["action_type"] = o.ActionType
+	}
 	if true {
 		toSerialize["params"] = o.Params
 	}
