@@ -6734,15 +6734,69 @@ components:
       - oneOf:
         - $ref: '#/components/schemas/Notification'
         - $ref: '#/components/schemas/ResizeAction'
+        - $ref: '#/components/schemas/RebootAction'
+        - $ref: '#/components/schemas/DestroyAction'
+        - $ref: '#/components/schemas/DeleteAction'
+        - $ref: '#/components/schemas/UndefineAction'
+        - $ref: '#/components/schemas/StartAction'
+        - $ref: '#/components/schemas/StopAction'
         - $ref: '#/components/schemas/ScriptToRun'
         - $ref: '#/components/schemas/WebHookAction'
       discriminator:
         mapping:
           notify: '#/components/schemas/Notification'
+          start: '#/components/schemas/StartAction'
+          stop: '#/components/schemas/StopAction'
+          destroy: '#/components/schemas/DestroyAction'
+          delete: '#/components/schemas/DeleteAction'
+          reboot: '#/components/schemas/RebootAction'
+          undefine: '#/components/schemas/UndefineAction'
           resize: '#/components/schemas/ResizeAction'
           run_script: '#/components/schemas/ScriptToRun'
           webhook: '#/components/schemas/WebHookAction'
         propertyName: action_type
+      type: object
+    StartAction:
+      properties:
+        action_type:
+          enum:
+          - start
+          type: string
+      type: object
+    StopAction:
+      properties:
+        action_type:
+          enum:
+          - stop
+          type: string
+      type: object
+    DestroyAction:
+      properties:
+        action_type:
+          enum:
+          - destroy
+          type: string
+      type: object
+    DeleteAction:
+      properties:
+        action_type:
+          enum:
+          - delete
+          type: string
+      type: object
+    UndefineAction:
+      properties:
+        action_type:
+          enum:
+          - undefine
+          type: string
+      type: object
+    RebootAction:
+      properties:
+        action_type:
+          enum:
+          - reboot
+          type: string
       type: object
     ResizeAction:
       properties:
@@ -12730,6 +12784,7 @@ components:
           - destroy
           - notify
           - delete
+          - undefine
           - resize
           - run_script
           - webhook

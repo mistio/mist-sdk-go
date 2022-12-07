@@ -94,6 +94,8 @@ docs/Datapoints.md
 docs/DatapointsApi.md
 docs/DatapointsData.md
 docs/DatapointsValuesItem.md
+docs/DeleteAction.md
+docs/DestroyAction.md
 docs/DestroyClusterResponse.md
 docs/DigitaloceanCloudFeatures.md
 docs/DigitaloceanCloudRequest.md
@@ -244,6 +246,7 @@ docs/RackspaceCloudFeatures.md
 docs/RackspaceCloudRequest.md
 docs/RackspaceCredentials.md
 docs/RangeVector.md
+docs/RebootAction.md
 docs/Record.md
 docs/ResizeAction.md
 docs/Resource.md
@@ -270,6 +273,8 @@ docs/Selector.md
 docs/Size.md
 docs/SizesApi.md
 docs/SnapshotsApi.md
+docs/StartAction.md
+docs/StopAction.md
 docs/SupportedProviders.md
 docs/Tag.md
 docs/TagResourcesRequest.md
@@ -280,6 +285,7 @@ docs/TagsApi.md
 docs/Team.md
 docs/TokenAuth.md
 docs/TriggerAfter.md
+docs/UndefineAction.md
 docs/User.md
 docs/UsersApi.md
 docs/VSphereExtra.md
@@ -369,6 +375,8 @@ model_data_type.go
 model_datapoints.go
 model_datapoints_data.go
 model_datapoints_values_item.go
+model_delete_action.go
+model_destroy_action.go
 model_destroy_cluster_response.go
 model_digitalocean_cloud_features.go
 model_digitalocean_cloud_request.go
@@ -512,6 +520,7 @@ model_rackspace_cloud_features.go
 model_rackspace_cloud_request.go
 model_rackspace_credentials.go
 model_range_vector.go
+model_reboot_action.go
 model_record.go
 model_resize_action.go
 model_resource.go
@@ -532,6 +541,8 @@ model_secret.go
 model_secret_string.go
 model_selector.go
 model_size.go
+model_start_action.go
+model_stop_action.go
 model_supported_providers.go
 model_tag.go
 model_tag_resources_request.go
@@ -541,6 +552,7 @@ model_tagging_selector.go
 model_team.go
 model_token_auth.go
 model_trigger_after.go
+model_undefine_action.go
 model_user.go
 model_v_sphere_extra.go
 model_v_sphere_net.go
