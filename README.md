@@ -391,6 +391,7 @@ Class | Method | HTTP request | Description
  - [OtherCloudRequest](docs/OtherCloudRequest.md)
  - [OtherCredentials](docs/OtherCredentials.md)
  - [PatchOrganizationRequest](docs/PatchOrganizationRequest.md)
+ - [PatchOrganizationRequestVault](docs/PatchOrganizationRequestVault.md)
  - [Query](docs/Query.md)
  - [RackspaceCloudFeatures](docs/RackspaceCloudFeatures.md)
  - [RackspaceCloudRequest](docs/RackspaceCloudRequest.md)

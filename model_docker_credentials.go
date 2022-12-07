@@ -31,7 +31,6 @@ type DockerCredentials struct {
 	TlsCert *string `json:"tlsCert,omitempty"`
 	// Your TLS CA certifcate
 	TlsCaCert *string `json:"tlsCaCert,omitempty"`
-	// Show all containers, including stopped
 	ShowAll *bool `json:"showAll,omitempty"`
 }
 

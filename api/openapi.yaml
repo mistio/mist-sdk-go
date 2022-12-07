@@ -7460,15 +7460,6 @@ components:
           privateKey: privateKey
           email: email
       title: Add cloud
-    EditCloudRequest_anyOf:
-      additionalProperties: false
-      properties:
-        name:
-          description: Updated name
-          type: string
-      required:
-      - name
-      type: object
     EditCloudRequest:
       anyOf:
       - $ref: '#/components/schemas/EditCloudRequest_anyOf'
@@ -8314,7 +8305,7 @@ components:
           description: Your TLS CA certifcate
           type: string
         showAll:
-          description: "Show all containers, including stopped"
+          title: "Show all containers, including stopped"
           type: boolean
       required:
       - host
@@ -12226,34 +12217,19 @@ components:
       type: object
     PatchOrganizationRequest:
       example:
-        vault_secret_id: vault_secret_id
-        vault_token: vault_token
         name: name
-        vault_address: vault_address
-        vault_secrets_engine_path: vault_secrets_engine_path
-        vault_role_id: vault_role_id
+        vault:
+          secret_id: secret_id
+          address: address
+          role_id: role_id
+          secrets_engine_path: secrets_engine_path
+          token: token
       properties:
         name:
           description: The organization's name
           type: string
-        vault_address:
-          description: The Vault's url
-          type: string
-        vault_secrets_engine_path:
-          description: Vault secrets engine path
-          type: string
-        vault_token:
-          description: The Vault token that will be used to authenticate against the
-            new Vault. Either token or both role_id and secret_id must be specified
-          type: string
-        vault_role_id:
-          description: The Vault RoleID to use for approle authentication. Either
-            token or both role_id and secret_id must be specified
-          type: string
-        vault_secret_id:
-          description: The Vault SecretID to use for approle authentication. Either
-            token or both role_id and secret_id must be specified
-          type: string
+        vault:
+          $ref: '#/components/schemas/PatchOrganizationRequest_vault'
       type: object
     GetJobResponse:
       example:
@@ -12471,7 +12447,6 @@ components:
           description: Secret data
           items:
             $ref: '#/components/schemas/KeyValuePairs_secret'
-          minItems: 2
           type: array
       type: object
     SecretString:
@@ -12557,6 +12532,7 @@ components:
         oneOf:
         - $ref: '#/components/schemas/KeyValuePairs'
         - $ref: '#/components/schemas/SecretString'
+        - type: object
       required:
       - name
       - secret
@@ -12933,6 +12909,14 @@ components:
       - name
       - provider
       type: object
+    EditCloudRequest_anyOf:
+      properties:
+        name:
+          description: Updated name
+          type: string
+      required:
+      - name
+      type: object
     KvmCredentials_hosts:
       properties:
         host:
@@ -13247,6 +13231,33 @@ components:
           - AppRole
           - Token
           title: Authentication method
+          type: string
+      type: object
+    PatchOrganizationRequest_vault:
+      example:
+        secret_id: secret_id
+        address: address
+        role_id: role_id
+        secrets_engine_path: secrets_engine_path
+        token: token
+      properties:
+        address:
+          description: The Vault's url
+          type: string
+        secrets_engine_path:
+          description: Vault secrets engine path
+          type: string
+        token:
+          description: The Vault token that will be used to authenticate against the
+            new Vault. Either token or both role_id and secret_id must be specified
+          type: string
+        role_id:
+          description: The Vault RoleID to use for approle authentication. Either
+            token or both role_id and secret_id must be specified
+          type: string
+        secret_id:
+          description: The Vault SecretID to use for approle authentication. Either
+            token or both role_id and secret_id must be specified
           type: string
       type: object
     Datapoints_data:

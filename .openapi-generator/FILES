@@ -241,6 +241,7 @@ docs/OtherCloudFeatures.md
 docs/OtherCloudRequest.md
 docs/OtherCredentials.md
 docs/PatchOrganizationRequest.md
+docs/PatchOrganizationRequestVault.md
 docs/Query.md
 docs/RackspaceCloudFeatures.md
 docs/RackspaceCloudRequest.md
@@ -515,6 +516,7 @@ model_other_cloud_features.go
 model_other_cloud_request.go
 model_other_credentials.go
 model_patch_organization_request.go
+model_patch_organization_request_vault.go
 model_query.go
 model_rackspace_cloud_features.go
 model_rackspace_cloud_request.go

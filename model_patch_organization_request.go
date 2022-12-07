@@ -19,16 +19,7 @@ import (
 type PatchOrganizationRequest struct {
 	// The organization's name
 	Name *string `json:"name,omitempty"`
-	// The Vault's url
-	VaultAddress *string `json:"vault_address,omitempty"`
-	// Vault secrets engine path
-	VaultSecretsEnginePath *string `json:"vault_secrets_engine_path,omitempty"`
-	// The Vault token that will be used to authenticate against the new Vault. Either token or both role_id and secret_id must be specified
-	VaultToken *string `json:"vault_token,omitempty"`
-	// The Vault RoleID to use for approle authentication. Either token or both role_id and secret_id must be specified
-	VaultRoleId *string `json:"vault_role_id,omitempty"`
-	// The Vault SecretID to use for approle authentication. Either token or both role_id and secret_id must be specified
-	VaultSecretId *string `json:"vault_secret_id,omitempty"`
+	Vault *PatchOrganizationRequestVault `json:"vault,omitempty"`
 }
 
 // NewPatchOrganizationRequest instantiates a new PatchOrganizationRequest object
@@ -80,164 +71,36 @@ func (o *PatchOrganizationRequest) SetName(v string) {
 	o.Name = &v
 }
 
-// GetVaultAddress returns the VaultAddress field value if set, zero value otherwise.
-func (o *PatchOrganizationRequest) GetVaultAddress() string {
-	if o == nil || o.VaultAddress == nil {
-		var ret string
+// GetVault returns the Vault field value if set, zero value otherwise.
+func (o *PatchOrganizationRequest) GetVault() PatchOrganizationRequestVault {
+	if o == nil || o.Vault == nil {
+		var ret PatchOrganizationRequestVault
 		return ret
 	}
-	return *o.VaultAddress
+	return *o.Vault
 }
 
-// GetVaultAddressOk returns a tuple with the VaultAddress field value if set, nil otherwise
+// GetVaultOk returns a tuple with the Vault field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchOrganizationRequest) GetVaultAddressOk() (*string, bool) {
-	if o == nil || o.VaultAddress == nil {
+func (o *PatchOrganizationRequest) GetVaultOk() (*PatchOrganizationRequestVault, bool) {
+	if o == nil || o.Vault == nil {
 		return nil, false
 	}
-	return o.VaultAddress, true
+	return o.Vault, true
 }
 
-// HasVaultAddress returns a boolean if a field has been set.
-func (o *PatchOrganizationRequest) HasVaultAddress() bool {
-	if o != nil && o.VaultAddress != nil {
+// HasVault returns a boolean if a field has been set.
+func (o *PatchOrganizationRequest) HasVault() bool {
+	if o != nil && o.Vault != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetVaultAddress gets a reference to the given string and assigns it to the VaultAddress field.
-func (o *PatchOrganizationRequest) SetVaultAddress(v string) {
-	o.VaultAddress = &v
-}
-
-// GetVaultSecretsEnginePath returns the VaultSecretsEnginePath field value if set, zero value otherwise.
-func (o *PatchOrganizationRequest) GetVaultSecretsEnginePath() string {
-	if o == nil || o.VaultSecretsEnginePath == nil {
-		var ret string
-		return ret
-	}
-	return *o.VaultSecretsEnginePath
-}
-
-// GetVaultSecretsEnginePathOk returns a tuple with the VaultSecretsEnginePath field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchOrganizationRequest) GetVaultSecretsEnginePathOk() (*string, bool) {
-	if o == nil || o.VaultSecretsEnginePath == nil {
-		return nil, false
-	}
-	return o.VaultSecretsEnginePath, true
-}
-
-// HasVaultSecretsEnginePath returns a boolean if a field has been set.
-func (o *PatchOrganizationRequest) HasVaultSecretsEnginePath() bool {
-	if o != nil && o.VaultSecretsEnginePath != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVaultSecretsEnginePath gets a reference to the given string and assigns it to the VaultSecretsEnginePath field.
-func (o *PatchOrganizationRequest) SetVaultSecretsEnginePath(v string) {
-	o.VaultSecretsEnginePath = &v
-}
-
-// GetVaultToken returns the VaultToken field value if set, zero value otherwise.
-func (o *PatchOrganizationRequest) GetVaultToken() string {
-	if o == nil || o.VaultToken == nil {
-		var ret string
-		return ret
-	}
-	return *o.VaultToken
-}
-
-// GetVaultTokenOk returns a tuple with the VaultToken field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchOrganizationRequest) GetVaultTokenOk() (*string, bool) {
-	if o == nil || o.VaultToken == nil {
-		return nil, false
-	}
-	return o.VaultToken, true
-}
-
-// HasVaultToken returns a boolean if a field has been set.
-func (o *PatchOrganizationRequest) HasVaultToken() bool {
-	if o != nil && o.VaultToken != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVaultToken gets a reference to the given string and assigns it to the VaultToken field.
-func (o *PatchOrganizationRequest) SetVaultToken(v string) {
-	o.VaultToken = &v
-}
-
-// GetVaultRoleId returns the VaultRoleId field value if set, zero value otherwise.
-func (o *PatchOrganizationRequest) GetVaultRoleId() string {
-	if o == nil || o.VaultRoleId == nil {
-		var ret string
-		return ret
-	}
-	return *o.VaultRoleId
-}
-
-// GetVaultRoleIdOk returns a tuple with the VaultRoleId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchOrganizationRequest) GetVaultRoleIdOk() (*string, bool) {
-	if o == nil || o.VaultRoleId == nil {
-		return nil, false
-	}
-	return o.VaultRoleId, true
-}
-
-// HasVaultRoleId returns a boolean if a field has been set.
-func (o *PatchOrganizationRequest) HasVaultRoleId() bool {
-	if o != nil && o.VaultRoleId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVaultRoleId gets a reference to the given string and assigns it to the VaultRoleId field.
-func (o *PatchOrganizationRequest) SetVaultRoleId(v string) {
-	o.VaultRoleId = &v
-}
-
-// GetVaultSecretId returns the VaultSecretId field value if set, zero value otherwise.
-func (o *PatchOrganizationRequest) GetVaultSecretId() string {
-	if o == nil || o.VaultSecretId == nil {
-		var ret string
-		return ret
-	}
-	return *o.VaultSecretId
-}
-
-// GetVaultSecretIdOk returns a tuple with the VaultSecretId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PatchOrganizationRequest) GetVaultSecretIdOk() (*string, bool) {
-	if o == nil || o.VaultSecretId == nil {
-		return nil, false
-	}
-	return o.VaultSecretId, true
-}
-
-// HasVaultSecretId returns a boolean if a field has been set.
-func (o *PatchOrganizationRequest) HasVaultSecretId() bool {
-	if o != nil && o.VaultSecretId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVaultSecretId gets a reference to the given string and assigns it to the VaultSecretId field.
-func (o *PatchOrganizationRequest) SetVaultSecretId(v string) {
-	o.VaultSecretId = &v
+// SetVault gets a reference to the given PatchOrganizationRequestVault and assigns it to the Vault field.
+func (o *PatchOrganizationRequest) SetVault(v PatchOrganizationRequestVault) {
+	o.Vault = &v
 }
 
 func (o PatchOrganizationRequest) MarshalJSON() ([]byte, error) {
@@ -245,20 +108,8 @@ func (o PatchOrganizationRequest) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.VaultAddress != nil {
-		toSerialize["vault_address"] = o.VaultAddress
-	}
-	if o.VaultSecretsEnginePath != nil {
-		toSerialize["vault_secrets_engine_path"] = o.VaultSecretsEnginePath
-	}
-	if o.VaultToken != nil {
-		toSerialize["vault_token"] = o.VaultToken
-	}
-	if o.VaultRoleId != nil {
-		toSerialize["vault_role_id"] = o.VaultRoleId
-	}
-	if o.VaultSecretId != nil {
-		toSerialize["vault_secret_id"] = o.VaultSecretId
+	if o.Vault != nil {
+		toSerialize["vault"] = o.Vault
 	}
 	return json.Marshal(toSerialize)
 }
