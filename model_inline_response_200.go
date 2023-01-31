@@ -18,6 +18,7 @@ import (
 // InlineResponse200 struct for InlineResponse200
 type InlineResponse200 struct {
 	Id *string `json:"id,omitempty"`
+	Errors []string `json:"errors,omitempty"`
 }
 
 // NewInlineResponse200 instantiates a new InlineResponse200 object
@@ -69,10 +70,45 @@ func (o *InlineResponse200) SetId(v string) {
 	o.Id = &v
 }
 
+// GetErrors returns the Errors field value if set, zero value otherwise.
+func (o *InlineResponse200) GetErrors() []string {
+	if o == nil || o.Errors == nil {
+		var ret []string
+		return ret
+	}
+	return o.Errors
+}
+
+// GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse200) GetErrorsOk() ([]string, bool) {
+	if o == nil || o.Errors == nil {
+		return nil, false
+	}
+	return o.Errors, true
+}
+
+// HasErrors returns a boolean if a field has been set.
+func (o *InlineResponse200) HasErrors() bool {
+	if o != nil && o.Errors != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetErrors gets a reference to the given []string and assigns it to the Errors field.
+func (o *InlineResponse200) SetErrors(v []string) {
+	o.Errors = v
+}
+
 func (o InlineResponse200) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.Errors != nil {
+		toSerialize["errors"] = o.Errors
 	}
 	return json.Marshal(toSerialize)
 }

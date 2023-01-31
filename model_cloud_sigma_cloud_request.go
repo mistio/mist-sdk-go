@@ -19,7 +19,7 @@ import (
 type CloudSigmaCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials CloudSigmaCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *CloudSigmaCloudFeatures `json:"features,omitempty"`
 }
 
 // NewCloudSigmaCloudRequest instantiates a new CloudSigmaCloudRequest object
@@ -90,9 +90,9 @@ func (o *CloudSigmaCloudRequest) SetCredentials(v CloudSigmaCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *CloudSigmaCloudRequest) GetFeatures() CloudFeatures {
+func (o *CloudSigmaCloudRequest) GetFeatures() CloudSigmaCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret CloudSigmaCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *CloudSigmaCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudSigmaCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *CloudSigmaCloudRequest) GetFeaturesOk() (*CloudSigmaCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *CloudSigmaCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *CloudSigmaCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given CloudSigmaCloudFeatures and assigns it to the Features field.
+func (o *CloudSigmaCloudRequest) SetFeatures(v CloudSigmaCloudFeatures) {
 	o.Features = &v
 }
 

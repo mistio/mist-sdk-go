@@ -19,7 +19,7 @@ import (
 type IbmCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials IbmCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *IbmCloudFeatures `json:"features,omitempty"`
 }
 
 // NewIbmCloudRequest instantiates a new IbmCloudRequest object
@@ -90,9 +90,9 @@ func (o *IbmCloudRequest) SetCredentials(v IbmCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *IbmCloudRequest) GetFeatures() CloudFeatures {
+func (o *IbmCloudRequest) GetFeatures() IbmCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret IbmCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *IbmCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IbmCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *IbmCloudRequest) GetFeaturesOk() (*IbmCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *IbmCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *IbmCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given IbmCloudFeatures and assigns it to the Features field.
+func (o *IbmCloudRequest) SetFeatures(v IbmCloudFeatures) {
 	o.Features = &v
 }
 

@@ -18,15 +18,15 @@ import (
 // KvmCloudRequest struct for KvmCloudRequest
 type KvmCloudRequest struct {
 	Provider string `json:"provider"`
-	Credentials map[string]interface{} `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Credentials KvmCredentials `json:"credentials"`
+	Features *KvmCloudFeatures `json:"features,omitempty"`
 }
 
 // NewKvmCloudRequest instantiates a new KvmCloudRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKvmCloudRequest(provider string, credentials map[string]interface{}) *KvmCloudRequest {
+func NewKvmCloudRequest(provider string, credentials KvmCredentials) *KvmCloudRequest {
 	this := KvmCloudRequest{}
 	this.Provider = provider
 	this.Credentials = credentials
@@ -66,9 +66,9 @@ func (o *KvmCloudRequest) SetProvider(v string) {
 }
 
 // GetCredentials returns the Credentials field value
-func (o *KvmCloudRequest) GetCredentials() map[string]interface{} {
+func (o *KvmCloudRequest) GetCredentials() KvmCredentials {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret KvmCredentials
 		return ret
 	}
 
@@ -77,22 +77,22 @@ func (o *KvmCloudRequest) GetCredentials() map[string]interface{} {
 
 // GetCredentialsOk returns a tuple with the Credentials field value
 // and a boolean to check if the value has been set.
-func (o *KvmCloudRequest) GetCredentialsOk() (map[string]interface{}, bool) {
+func (o *KvmCloudRequest) GetCredentialsOk() (*KvmCredentials, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Credentials, true
+	return &o.Credentials, true
 }
 
 // SetCredentials sets field value
-func (o *KvmCloudRequest) SetCredentials(v map[string]interface{}) {
+func (o *KvmCloudRequest) SetCredentials(v KvmCredentials) {
 	o.Credentials = v
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *KvmCloudRequest) GetFeatures() CloudFeatures {
+func (o *KvmCloudRequest) GetFeatures() KvmCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret KvmCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *KvmCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KvmCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *KvmCloudRequest) GetFeaturesOk() (*KvmCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *KvmCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *KvmCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given KvmCloudFeatures and assigns it to the Features field.
+func (o *KvmCloudRequest) SetFeatures(v KvmCloudFeatures) {
 	o.Features = &v
 }
 

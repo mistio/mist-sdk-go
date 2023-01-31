@@ -19,7 +19,7 @@ import (
 type VsphereCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials VsphereCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *VsphereCloudFeatures `json:"features,omitempty"`
 }
 
 // NewVsphereCloudRequest instantiates a new VsphereCloudRequest object
@@ -90,9 +90,9 @@ func (o *VsphereCloudRequest) SetCredentials(v VsphereCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *VsphereCloudRequest) GetFeatures() CloudFeatures {
+func (o *VsphereCloudRequest) GetFeatures() VsphereCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret VsphereCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *VsphereCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VsphereCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *VsphereCloudRequest) GetFeaturesOk() (*VsphereCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *VsphereCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *VsphereCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given VsphereCloudFeatures and assigns it to the Features field.
+func (o *VsphereCloudRequest) SetFeatures(v VsphereCloudFeatures) {
 	o.Features = &v
 }
 

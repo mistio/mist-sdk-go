@@ -19,7 +19,7 @@ import (
 type RackspaceCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials RackspaceCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *RackspaceCloudFeatures `json:"features,omitempty"`
 }
 
 // NewRackspaceCloudRequest instantiates a new RackspaceCloudRequest object
@@ -90,9 +90,9 @@ func (o *RackspaceCloudRequest) SetCredentials(v RackspaceCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *RackspaceCloudRequest) GetFeatures() CloudFeatures {
+func (o *RackspaceCloudRequest) GetFeatures() RackspaceCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret RackspaceCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *RackspaceCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RackspaceCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *RackspaceCloudRequest) GetFeaturesOk() (*RackspaceCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *RackspaceCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *RackspaceCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given RackspaceCloudFeatures and assigns it to the Features field.
+func (o *RackspaceCloudRequest) SetFeatures(v RackspaceCloudFeatures) {
 	o.Features = &v
 }
 

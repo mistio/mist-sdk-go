@@ -19,7 +19,7 @@ import (
 type LinodeCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials LinodeCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *LinodeCloudFeatures `json:"features,omitempty"`
 }
 
 // NewLinodeCloudRequest instantiates a new LinodeCloudRequest object
@@ -90,9 +90,9 @@ func (o *LinodeCloudRequest) SetCredentials(v LinodeCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *LinodeCloudRequest) GetFeatures() CloudFeatures {
+func (o *LinodeCloudRequest) GetFeatures() LinodeCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret LinodeCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *LinodeCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LinodeCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *LinodeCloudRequest) GetFeaturesOk() (*LinodeCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *LinodeCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *LinodeCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given LinodeCloudFeatures and assigns it to the Features field.
+func (o *LinodeCloudRequest) SetFeatures(v LinodeCloudFeatures) {
 	o.Features = &v
 }
 

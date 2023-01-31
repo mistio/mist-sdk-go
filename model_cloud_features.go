@@ -15,14 +15,12 @@ import (
 	"encoding/json"
 )
 
-// CloudFeatures The cloud features that should be enabled
+// CloudFeatures struct for CloudFeatures
 type CloudFeatures struct {
-	// Enable compute services
 	Compute *bool `json:"compute,omitempty"`
-	// Enable DNS services
 	Dns *bool `json:"dns,omitempty"`
-	// Enable container services
 	Container *bool `json:"container,omitempty"`
+	Objectstorage *bool `json:"objectstorage,omitempty"`
 }
 
 // NewCloudFeatures instantiates a new CloudFeatures object
@@ -150,6 +148,38 @@ func (o *CloudFeatures) SetContainer(v bool) {
 	o.Container = &v
 }
 
+// GetObjectstorage returns the Objectstorage field value if set, zero value otherwise.
+func (o *CloudFeatures) GetObjectstorage() bool {
+	if o == nil || o.Objectstorage == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Objectstorage
+}
+
+// GetObjectstorageOk returns a tuple with the Objectstorage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudFeatures) GetObjectstorageOk() (*bool, bool) {
+	if o == nil || o.Objectstorage == nil {
+		return nil, false
+	}
+	return o.Objectstorage, true
+}
+
+// HasObjectstorage returns a boolean if a field has been set.
+func (o *CloudFeatures) HasObjectstorage() bool {
+	if o != nil && o.Objectstorage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetObjectstorage gets a reference to the given bool and assigns it to the Objectstorage field.
+func (o *CloudFeatures) SetObjectstorage(v bool) {
+	o.Objectstorage = &v
+}
+
 func (o CloudFeatures) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Compute != nil {
@@ -160,6 +190,9 @@ func (o CloudFeatures) MarshalJSON() ([]byte, error) {
 	}
 	if o.Container != nil {
 		toSerialize["container"] = o.Container
+	}
+	if o.Objectstorage != nil {
+		toSerialize["objectstorage"] = o.Objectstorage
 	}
 	return json.Marshal(toSerialize)
 }

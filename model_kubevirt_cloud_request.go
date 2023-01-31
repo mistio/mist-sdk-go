@@ -19,7 +19,7 @@ import (
 type KubevirtCloudRequest struct {
 	Provider string `json:"provider"`
 	Credentials KubernetesCredentials `json:"credentials"`
-	Features *CloudFeatures `json:"features,omitempty"`
+	Features *KubevirtCloudFeatures `json:"features,omitempty"`
 }
 
 // NewKubevirtCloudRequest instantiates a new KubevirtCloudRequest object
@@ -90,9 +90,9 @@ func (o *KubevirtCloudRequest) SetCredentials(v KubernetesCredentials) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *KubevirtCloudRequest) GetFeatures() CloudFeatures {
+func (o *KubevirtCloudRequest) GetFeatures() KubevirtCloudFeatures {
 	if o == nil || o.Features == nil {
-		var ret CloudFeatures
+		var ret KubevirtCloudFeatures
 		return ret
 	}
 	return *o.Features
@@ -100,7 +100,7 @@ func (o *KubevirtCloudRequest) GetFeatures() CloudFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KubevirtCloudRequest) GetFeaturesOk() (*CloudFeatures, bool) {
+func (o *KubevirtCloudRequest) GetFeaturesOk() (*KubevirtCloudFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *KubevirtCloudRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given CloudFeatures and assigns it to the Features field.
-func (o *KubevirtCloudRequest) SetFeatures(v CloudFeatures) {
+// SetFeatures gets a reference to the given KubevirtCloudFeatures and assigns it to the Features field.
+func (o *KubevirtCloudRequest) SetFeatures(v KubevirtCloudFeatures) {
 	o.Features = &v
 }
 

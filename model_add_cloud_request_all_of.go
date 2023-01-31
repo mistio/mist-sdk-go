@@ -17,7 +17,6 @@ import (
 
 // AddCloudRequestAllOf struct for AddCloudRequestAllOf
 type AddCloudRequestAllOf struct {
-	// The name of the cloud to add
 	Name string `json:"name"`
 	Provider SupportedProviders `json:"provider"`
 }
